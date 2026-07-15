@@ -1,5 +1,5 @@
 class_name ZoneDifficultyInfo
-extends Reference
+extends RefCounted
 
 var zone_id: = 0
 var difficulty_selected_value: = 0

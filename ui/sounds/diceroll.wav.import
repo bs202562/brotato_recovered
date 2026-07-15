@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/diceroll.wav-bb0f20e7984abc584c22e499d4d08c81.sample"
+type="AudioStreamWAV"
+uid="uid://hm6cyk5x73tv"
+path="res://.godot/imported/diceroll.wav-bb0f20e7984abc584c22e499d4d08c81.sample"
 
 [deps]
 
 source_file="res://ui/sounds/diceroll.wav"
-dest_files=[ "res://.import/diceroll.wav-bb0f20e7984abc584c22e499d4d08c81.sample" ]
+dest_files=["res://.godot/imported/diceroll.wav-bb0f20e7984abc584c22e499d4d08c81.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

@@ -1,14 +1,14 @@
 class_name UIProgressBar
-extends TextureProgress
+extends TextureProgressBar
 
-export (Color) var progress_color: = Color.white
-export (Dictionary) var effect_colors: = {}
+@export var progress_color := Color.WHITE
+@export var effect_colors := {}
 
 var _initialized = false
 
-onready var _non_flash_color: = progress_color
-onready var _flash_timer = $Timer
-onready var _hide_flasher: Flasher = $HideFlasher
+@onready var _non_flash_color: = progress_color
+@onready var _flash_timer = $Timer
+@onready var _hide_flasher: Flasher = $HideFlasher
 
 
 func _ready() -> void :
@@ -23,7 +23,7 @@ func update_value(current_val: int, max_val: int) -> void :
 	set_value(new_value)
 
 	if _initialized and not is_healing:
-		tint_progress = Color.white
+		tint_progress = Color.WHITE
 		_flash_timer.start()
 	else:
 		_initialized = true

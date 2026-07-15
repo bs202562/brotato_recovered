@@ -1,13 +1,13 @@
 class_name KnockbackAuraEffectBehavior
 extends PlayerEffectBehavior
 
-export (AudioStreamSample) var sound_effect
+@export var sound_effect: AudioStreamWAV
 
 var enemies_in_aura: = []
 
-onready var knockback_timer: Timer = $"%KnockbackTimer"
-onready var _hitbox: Hitbox = $"%Hitbox"
-onready var _animation_player: AnimationPlayer = $"%AnimationPlayer"
+@onready var knockback_timer: Timer = $"%KnockbackTimer"
+@onready var _hitbox: Hitbox = $"%Hitbox"
+@onready var _animation_player: AnimationPlayer = $"%AnimationPlayer"
 
 
 func _ready() -> void :

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/zombie_voice_general_emote_02.wav-a38626c6752618a41573bac21860369f.sample"
+type="AudioStreamWAV"
+uid="uid://dwsbf5y3urbx6"
+path="res://.godot/imported/zombie_voice_general_emote_02.wav-a38626c6752618a41573bac21860369f.sample"
 
 [deps]
 
 source_file="res://dlcs/dlc_1/enemies/stargazer/zombie_voice_general_emote_02.wav"
-dest_files=[ "res://.import/zombie_voice_general_emote_02.wav-a38626c6752618a41573bac21860369f.sample" ]
+dest_files=["res://.godot/imported/zombie_voice_general_emote_02.wav-a38626c6752618a41573bac21860369f.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

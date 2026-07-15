@@ -1,14 +1,15 @@
 extends Enemy
 class_name Looter
 
-export (String, FILE) var animation_whistle: String
-export (String, FILE) var effect_exclamation: String
+@export var animation_whistle: String # (String, FILE)
+@export var effect_exclamation: String # (String, FILE)
 
 func _ready():
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	_whistle_fx()
 
 func respawn():
-	.respawn()
+	super.respawn()
 	_whistle_fx()
 
 

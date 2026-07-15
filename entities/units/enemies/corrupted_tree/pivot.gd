@@ -1,15 +1,15 @@
 class_name Pivot
 extends Node2D
 
-export (float) var rotation_speed = PI
-export (float) var start_rotation = 0.0
+@export var rotation_speed: float = PI
+@export var start_rotation: float = 0.0
 
 var direction: float
 
 
 func _ready():
 	direction = Utils.get_rand_element([ - 1, 1])
-	rotation = deg2rad(start_rotation)
+	rotation = deg_to_rad(start_rotation)
 
 
 func _physics_process(delta: float) -> void :

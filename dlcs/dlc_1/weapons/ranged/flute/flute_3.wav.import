@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/flute_3.wav-73a8241c1768e2e4d01fc48566296f28.sample"
+type="AudioStreamWAV"
+uid="uid://ci7yakdsthk4a"
+path="res://.godot/imported/flute_3.wav-73a8241c1768e2e4d01fc48566296f28.sample"
 
 [deps]
 
 source_file="res://dlcs/dlc_1/weapons/ranged/flute/flute_3.wav"
-dest_files=[ "res://.import/flute_3.wav-73a8241c1768e2e4d01fc48566296f28.sample" ]
+dest_files=["res://.godot/imported/flute_3.wav-73a8241c1768e2e4d01fc48566296f28.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

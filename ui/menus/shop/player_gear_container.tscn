@@ -4,27 +4,27 @@
 [ext_resource path="res://ui/menus/shop/inventory_container.tscn" type="PackedScene" id=3]
 
 [node name="PlayerGearContainer" type="HBoxContainer"]
-margin_right = 886.0
-margin_bottom = 245.0
+offset_right = 886.0
+offset_bottom = 245.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 
 [node name="ItemsContainer" parent="." instance=ExtResource( 3 )]
-margin_right = 858.0
-margin_bottom = 250.0
+offset_right = 858.0
+offset_bottom = 250.0
 display_banned = false
 reserve_column_count = 8
 
 [node name="EmptySpace" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 862.0
-margin_right = 862.0
-margin_bottom = 250.0
+offset_left = 862.0
+offset_right = 862.0
+offset_bottom = 250.0
 size_flags_horizontal = 3
 
 [node name="WeaponsContainer" parent="." instance=ExtResource( 3 )]
-margin_left = 866.0
-margin_right = 1194.0
-margin_bottom = 250.0
+offset_left = 866.0
+offset_right = 1194.0
+offset_bottom = 250.0
 display_banned = false
 reserve_column_count = 3

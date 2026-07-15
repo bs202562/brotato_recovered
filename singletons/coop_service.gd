@@ -3,40 +3,40 @@ extends Node
 signal connected_players_updated(connected_players)
 signal connection_progress_updated(progress_values)
 
-export (float, 0.0, 1.0, 0.01) var additional_enemies_per_coop_player: = 0.0
-export (float, 0.0, 1.0, 0.01) var additional_enemy_health_per_coop_player: = 0.0
-export (float, 0.0, 1.0, 0.01) var additional_enemy_damage_per_coop_player: = 0.0
+@export var additional_enemies_per_coop_player: = 0.0 # (float, 0.0, 1.0, 0.01)
+@export var additional_enemy_health_per_coop_player: = 0.0 # (float, 0.0, 1.0, 0.01)
+@export var additional_enemy_damage_per_coop_player: = 0.0 # (float, 0.0, 1.0, 0.01)
 
-export (Texture) var keyboard_ui_accept_icon
-export (Texture) var gamepad_xbox_ui_accept_icon
-export (Texture) var gamepad_playstation_ui_accept_icon
-export (Texture) var gamepad_switch_ui_accept_icon
-export (Texture) var keyboard_ui_select_icon
-export (Texture) var gamepad_xbox_ui_select_icon
-export (Texture) var gamepad_playstation_ui_select_icon
-export (Texture) var gamepad_switch_ui_select_icon
-export (Texture) var keyboard_ui_info_icon
-export (Texture) var gamepad_xbox_ui_info_icon
-export (Texture) var gamepad_playstation_ui_info_icon
-export (Texture) var gamepad_switch_ui_info_icon
-export (Texture) var gamepad_ltrigger_icon
-export (Texture) var gamepad_rtrigger_icon
-export (Texture) var keyboard_ui_coop_ban_icon
-export (Texture) var gamepad_xbox_ui_coop_ban_icon
-export (Texture) var gamepad_playstation_ui_coop_ban_icon
-export (Texture) var gamepad_switch_ui_coop_ban_icon
-export (Texture) var gamepad_switch_ltrigger_icon
-export (Texture) var gamepad_switch_rtrigger_icon
-export (Texture) var gamepad_playstation_ltrigger_icon
-export (Texture) var gamepad_playstation_rtrigger_icon
-export (Texture) var gamepad_switch_pos_down_icon
-export (Texture) var gamepad_switch_pos_up_icon
-export (Texture) var gamepad_switch_pos_right_icon
-export (Texture) var gamepad_switch_pos_left_icon
-export (Texture) var gamepad_switch_sl_icon
-export (Texture) var gamepad_switch_sr_icon
+@export var keyboard_ui_accept_icon: Texture2D
+@export var gamepad_xbox_ui_accept_icon: Texture2D
+@export var gamepad_playstation_ui_accept_icon: Texture2D
+@export var gamepad_switch_ui_accept_icon: Texture2D
+@export var keyboard_ui_select_icon: Texture2D
+@export var gamepad_xbox_ui_select_icon: Texture2D
+@export var gamepad_playstation_ui_select_icon: Texture2D
+@export var gamepad_switch_ui_select_icon: Texture2D
+@export var keyboard_ui_info_icon: Texture2D
+@export var gamepad_xbox_ui_info_icon: Texture2D
+@export var gamepad_playstation_ui_info_icon: Texture2D
+@export var gamepad_switch_ui_info_icon: Texture2D
+@export var gamepad_ltrigger_icon: Texture2D
+@export var gamepad_rtrigger_icon: Texture2D
+@export var keyboard_ui_coop_ban_icon: Texture2D
+@export var gamepad_xbox_ui_coop_ban_icon: Texture2D
+@export var gamepad_playstation_ui_coop_ban_icon: Texture2D
+@export var gamepad_switch_ui_coop_ban_icon: Texture2D
+@export var gamepad_switch_ltrigger_icon: Texture2D
+@export var gamepad_switch_rtrigger_icon: Texture2D
+@export var gamepad_playstation_ltrigger_icon: Texture2D
+@export var gamepad_playstation_rtrigger_icon: Texture2D
+@export var gamepad_switch_pos_down_icon: Texture2D
+@export var gamepad_switch_pos_up_icon: Texture2D
+@export var gamepad_switch_pos_right_icon: Texture2D
+@export var gamepad_switch_pos_left_icon: Texture2D
+@export var gamepad_switch_sl_icon: Texture2D
+@export var gamepad_switch_sr_icon: Texture2D
 
-export (Array, Color) var player_colors: = [
+@export var player_colors: = [ # (Array, Color)
 	Color("a1fced"), 
 	Color("f2ad87"), 
 	Color("a9fca1"), 
@@ -73,7 +73,7 @@ func _ready() -> void :
 	if Utils.is_on_console() and not Utils.on_gdk:
 		force_gamepad = true
 
-	var _err = Input.connect("joy_connection_changed", self, "_on_Input_joy_connection_changed")
+	var _err = Input.connect("joy_connection_changed", Callable(self, "_on_Input_joy_connection_changed"))
 	set_process_input(false)
 
 	_initial_additional_enemies = additional_enemies_per_coop_player
@@ -130,14 +130,14 @@ func _process(delta: float) -> void :
 		if Utils.on_nintendo_nx_or_ounce:
 			_add_player(device, PlayerType.GAMEPAD_SWITCH)
 		elif Utils.on_gdk:
-			if device == KEYBOARD_REMAPPED_DEVICE_ID or joy_name.empty():
+			if device == KEYBOARD_REMAPPED_DEVICE_ID or joy_name.is_empty():
 				_add_player(device, PlayerType.KEYBOARD_AND_MOUSE)
 			else:
 				_add_player(device, PlayerType.GAMEPAD_XBOX)
 		elif Utils.on_playstation:
 			_add_player(device, PlayerType.GAMEPAD_PLAYSTATION)
 		else:
-			if device == KEYBOARD_REMAPPED_DEVICE_ID or joy_name.empty():
+			if device == KEYBOARD_REMAPPED_DEVICE_ID or joy_name.is_empty():
 				_add_player(device, PlayerType.KEYBOARD_AND_MOUSE)
 			elif "ps4" in joy_name_components or "ps5" in joy_name_components or "playstation" in joy_name_components or "dualsense" in joy_name_components:
 				_add_player(device, PlayerType.GAMEPAD_PLAYSTATION)
@@ -148,7 +148,7 @@ func _process(delta: float) -> void :
 		break
 
 	_update_connection_progress()
-	if _hold_timers.empty():
+	if _hold_timers.is_empty():
 		set_process(false)
 
 const ADDITIONAL_MATERIALS_FACTOR: = 0.8
@@ -192,7 +192,7 @@ func change_stylebox_for_player(stylebox: StyleBox, player_index: int) -> void :
 
 		var player_color = get_player_color(player_index, clamp(background_value, 0.2, 0.75))
 		var a = stylebox.bg_color.a
-		stylebox.bg_color = stylebox.bg_color.linear_interpolate(player_color, 0.7)
+		stylebox.bg_color = stylebox.bg_color.lerp(player_color, 0.7)
 		stylebox.bg_color.a = a
 
 	elif stylebox is StyleBoxTexture:
@@ -223,7 +223,7 @@ func is_player_using_gamepad(player_index: int) -> bool:
 	return get_player_input_type(player_index) != PlayerType.KEYBOARD_AND_MOUSE
 
 
-func get_player_key_texture(action: String, player_index: int) -> Texture:
+func get_player_key_texture(action: String, player_index: int) -> Texture2D:
 	if player_index < 0 or player_index >= len(connected_players):
 		var device = UIService.current_device
 		var input_style = OS_Seaven.get_controller_style(player_index)
@@ -233,7 +233,7 @@ func get_player_key_texture(action: String, player_index: int) -> Texture:
 	return get_input_type_key_texture(action, input_type, input_style)
 
 
-func get_input_type_key_texture(action: String, input_type: int, input_style: int) -> Texture:
+func get_input_type_key_texture(action: String, input_type: int, input_style: int) -> Texture2D:
 	if action == "ui_accept":
 		match input_type:
 			PlayerType.KEYBOARD_AND_MOUSE:
@@ -330,7 +330,7 @@ func _remove_player(device: int) -> void :
 	for i in len(connected_players):
 		if connected_players[i][0] == device:
 			print("removing player " + str(i))
-			connected_players.remove(i)
+			connected_players.remove_at(i)
 			emit_signal("connected_players_updated", connected_players)
 			return
 
@@ -338,7 +338,7 @@ func _update_connection_progress() -> void :
 	connection_progress = _hold_timers.values()
 	
 	connection_progress.sort()
-	connection_progress.invert()
+	connection_progress.reverse()
 	for i in connection_progress.size():
 		connection_progress[i] = min(connection_progress[i] / HOLD_DURATION, 1.0)
 	emit_signal("connection_progress_updated", connection_progress)
@@ -374,6 +374,6 @@ func _on_Input_joy_connection_changed(device: int, connected: bool) -> void :
 		var player = connected_players[player_index]
 		if player[0] != device:
 			continue
-		connected_players.remove(player_index)
+		connected_players.remove_at(player_index)
 		emit_signal("connected_players_updated", connected_players)
 		break

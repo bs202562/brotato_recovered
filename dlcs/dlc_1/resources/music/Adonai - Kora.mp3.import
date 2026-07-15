@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Adonai - Kora.mp3-ffbcd1d8615d8e2d8926c1629ccdc838.mp3str"
+uid="uid://vp67s3angbc"
+path="res://.godot/imported/Adonai - Kora.mp3-ffbcd1d8615d8e2d8926c1629ccdc838.mp3str"
 
 [deps]
 
 source_file="res://dlcs/dlc_1/resources/music/Adonai - Kora.mp3"
-dest_files=[ "res://.import/Adonai - Kora.mp3-ffbcd1d8615d8e2d8926c1629ccdc838.mp3str" ]
+dest_files=["res://.godot/imported/Adonai - Kora.mp3-ffbcd1d8615d8e2d8926c1629ccdc838.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

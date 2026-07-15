@@ -1,8 +1,8 @@
 class_name EelPivots
 extends Node2D
 
-onready var bullets_far = $BulletsFar
-onready var bullets_close = $BulletsClose
+@onready var bullets_far = $BulletsFar
+@onready var bullets_close = $BulletsClose
 
 
 func _ready():

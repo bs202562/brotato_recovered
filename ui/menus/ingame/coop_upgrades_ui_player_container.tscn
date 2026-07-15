@@ -2,17 +2,17 @@
 
 [ext_resource path="res://ui/menus/global/carousel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/menus/upgrades/coop_upgrade_ui.tscn" type="PackedScene" id=2]
-[ext_resource path="res://resources/fonts/actual/base/font_35_outline.tres" type="DynamicFont" id=3]
+[ext_resource path="res://resources/fonts/actual/base/font_35_outline.tres" type="FontFile" id=3]
 [ext_resource path="res://ui/menus/ingame/coop_upgrades_ui_player_container.gd" type="Script" id=4]
 [ext_resource path="res://ui/menus/shop/button_with_icon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/menus/shop/reroll_button.gd" type="Script" id=6]
-[ext_resource path="res://resources/fonts/actual/base/font_26.tres" type="DynamicFont" id=7]
+[ext_resource path="res://resources/fonts/actual/base/font_26.tres" type="FontFile" id=7]
 [ext_resource path="res://resources/themes/small_label_theme.tres" type="Theme" id=8]
 [ext_resource path="res://ui/menus/shop/stats_container.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/menus/run/gold_label.gd" type="Script" id=10]
 [ext_resource path="res://ui/menus/run/gold_icon.gd" type="Script" id=11]
-[ext_resource path="res://items/materials/material_ui.png" type="Texture" id=12]
-[ext_resource path="res://ui/menus/global/big_checkmark.png" type="Texture" id=13]
+[ext_resource path="res://items/materials/material_ui.png" type="Texture2D" id=12]
+[ext_resource path="res://ui/menus/global/big_checkmark.png" type="Texture2D" id=13]
 [ext_resource path="res://ui/menus/global/dim_screen.tscn" type="PackedScene" id=14]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=15]
 [ext_resource path="res://ui/menus/ingame/coop_player_label.tscn" type="PackedScene" id=16]
@@ -23,8 +23,8 @@
 [ext_resource path="res://ui/menus/shop/player_gear_container.gd" type="Script" id=21]
 [ext_resource path="res://ui/menus/shop/coop_item_popup.tscn" type="PackedScene" id=22]
 [ext_resource path="res://ui/menus/shop/coop_shop_hint.tscn" type="PackedScene" id=23]
-[ext_resource path="res://ui/menus/global/key_xbox_b.png" type="Texture" id=24]
-[ext_resource path="res://items/global/baned_item.png" type="Texture" id=25]
+[ext_resource path="res://ui/menus/global/key_xbox_b.png" type="Texture2D" id=24]
+[ext_resource path="res://items/global/baned_item.png" type="Texture2D" id=25]
 [ext_resource path="res://ui/hud/ui_input_icon.gd" type="Script" id=26]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -46,11 +46,11 @@ corner_radius_bottom_left = 15
 
 [node name="CoopUpgradesUIPlayerContainer" type="PanelContainer"]
 self_modulate = Color( 1, 1, 1, 0.2 )
-margin_right = 339.0
-margin_bottom = 780.0
-rect_min_size = Vector2( 0, 780 )
+offset_right = 339.0
+offset_bottom = 780.0
+custom_minimum_size = Vector2( 0, 780 )
 theme = ExtResource( 15 )
-custom_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource( 1 )
 script = ExtResource( 4 )
 
 [node name="ButtonDelayTimer" type="Timer" parent="."]
@@ -58,29 +58,29 @@ wait_time = 0.1
 one_shot = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_right = 460.0
-margin_bottom = 780.0
-custom_constants/margin_right = 15
-custom_constants/margin_top = 24
-custom_constants/margin_left = 15
-custom_constants/margin_bottom = 15
+offset_right = 460.0
+offset_bottom = 780.0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_bottom = 15
 
 [node name="Control" type="Control" parent="MarginContainer"]
-margin_left = 15.0
-margin_top = 24.0
-margin_right = 445.0
-margin_bottom = 765.0
+offset_left = 15.0
+offset_top = 24.0
+offset_right = 445.0
+offset_bottom = 765.0
 
 [node name="GoldUI" type="HBoxContainer" parent="MarginContainer/Control"]
-margin_right = 355.0
-margin_bottom = 40.0
+offset_right = 355.0
+offset_bottom = 40.0
 size_flags_vertical = 4
 
 [node name="GoldIcon" type="TextureRect" parent="MarginContainer/Control/GoldUI"]
 unique_name_in_owner = true
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+offset_right = 40.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 40 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 12 )
@@ -92,331 +92,331 @@ __meta__ = {
 
 [node name="GoldLabel" type="Label" parent="MarginContainer/Control/GoldUI"]
 unique_name_in_owner = true
-margin_left = 44.0
-margin_right = 63.0
-margin_bottom = 40.0
-custom_fonts/font = ExtResource( 3 )
+offset_left = 44.0
+offset_right = 63.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource( 3 )
 text = "0"
 script = ExtResource( 10 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_left = 15.0
-margin_top = 24.0
-margin_right = 445.0
-margin_bottom = 765.0
-custom_constants/separation = 20
+offset_left = 15.0
+offset_top = 24.0
+offset_right = 445.0
+offset_bottom = 765.0
+theme_override_constants/separation = 20
 
 [node name="CoopPlayerLabel" parent="MarginContainer/VBoxContainer" instance=ExtResource( 16 )]
-margin_right = 430.0
-margin_bottom = 40.0
-custom_fonts/font = ExtResource( 3 )
+offset_right = 430.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource( 3 )
 align = 1
 
 [node name="Carousel" parent="MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
 unique_name_in_owner = true
-margin_top = 60.0
-margin_right = 430.0
-margin_bottom = 741.0
+offset_top = 60.0
+offset_right = 430.0
+offset_bottom = 741.0
 size_flags_vertical = 3
 
 [node name="MarginContainer" parent="MarginContainer/VBoxContainer/Carousel" index="0"]
-margin_right = 430.0
-margin_bottom = 50.0
+offset_right = 430.0
+offset_bottom = 50.0
 
 [node name="HBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer" index="0"]
-margin_right = 420.0
-margin_bottom = 40.0
+offset_right = 420.0
+offset_bottom = 40.0
 
 [node name="ArrowLeft" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer" index="0"]
-margin_left = 0.0
-margin_top = 5.0
-margin_right = 50.0
-margin_bottom = 35.0
+offset_left = 0.0
+offset_top = 5.0
+offset_right = 50.0
+offset_bottom = 35.0
 
 [node name="Headings" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer" index="1"]
-margin_left = 80.0
-margin_right = 330.0
-margin_bottom = 40.0
+offset_left = 80.0
+offset_right = 330.0
+offset_bottom = 40.0
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="0"]
-margin_right = 250.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 250, 0 )
+offset_right = 250.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 250, 0 )
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 3 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "UPGRADES"
 align = 1
 autowrap = true
 
 [node name="InventoryLabel" type="Label" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="1"]
 visible = false
-margin_right = 250.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 250, 0 )
+offset_right = 250.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 250, 0 )
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 3 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "INVENTORY"
 align = 1
 autowrap = true
 
 [node name="PrimaryStatsLabel" type="Label" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="2"]
 visible = false
-margin_right = 250.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 250, 0 )
-custom_fonts/font = ExtResource( 3 )
+offset_right = 250.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 250, 0 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "STATS"
 align = 1
 autowrap = true
 
 [node name="SecondaryStatsLabel" type="Label" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="3"]
 visible = false
-margin_right = 250.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 250, 0 )
-custom_fonts/font = ExtResource( 3 )
+offset_right = 250.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 250, 0 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "STATS"
 align = 1
 autowrap = true
 
 [node name="ArrowRight" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer" index="2"]
-margin_left = 360.0
-margin_top = 5.0
-margin_right = 410.0
-margin_bottom = 35.0
+offset_left = 360.0
+offset_top = 5.0
+offset_right = 410.0
+offset_bottom = 35.0
 
 [node name="Content" parent="MarginContainer/VBoxContainer/Carousel" index="1"]
-margin_top = 60.0
-margin_right = 430.0
-margin_bottom = 681.0
+offset_top = 60.0
+offset_right = 430.0
+offset_bottom = 681.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Carousel/Content" index="0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 35
-custom_constants/margin_left = 35
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_left = 35
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer"]
-margin_left = 35.0
-margin_right = 395.0
-margin_bottom = 2372.0
-custom_constants/separation = 20
+offset_left = 35.0
+offset_right = 395.0
+offset_bottom = 2372.0
+theme_override_constants/separation = 20
 
 [node name="UpgradesContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_right = 360.0
-margin_bottom = 1545.0
+offset_right = 360.0
+offset_bottom = 1545.0
 size_flags_vertical = 3
-custom_constants/separation = 8
+theme_override_constants/separation = 8
 alignment = 1
 
 [node name="UpgradeUI" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer" instance=ExtResource( 2 )]
 unique_name_in_owner = true
-margin_left = 17.0
-margin_right = 342.0
-margin_bottom = 355.0
+offset_left = 17.0
+offset_right = 342.0
+offset_bottom = 355.0
 
 [node name="MarginContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI" index="0"]
-margin_bottom = 355.0
-custom_constants/margin_bottom = -20
+offset_bottom = 355.0
+theme_override_constants/margin_bottom = -20
 
 [node name="UpgradeDescription" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI/MarginContainer" index="0"]
-margin_bottom = 375.0
+offset_bottom = 375.0
 
 [node name="ScrollContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI/MarginContainer/UpgradeDescription" index="2"]
-margin_top = 90.0
-margin_right = 285.0
-margin_bottom = 355.0
+offset_top = 90.0
+offset_right = 285.0
+offset_bottom = 355.0
 
 [node name="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI/MarginContainer/UpgradeDescription/ScrollContainer" index="0"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="PlayerStatsDescr_scrolled" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI/MarginContainer/UpgradeDescription/ScrollContainer/VBoxContainer" index="0"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="PlayerStatsDescr_scrolled_left" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI/MarginContainer/UpgradeDescription/ScrollContainer/VBoxContainer/PlayerStatsDescr_scrolled" index="0"]
-margin_right = 245.0
+offset_right = 245.0
 
 [node name="PlayerStatsDescr_scrolled_right" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI/MarginContainer/UpgradeDescription/ScrollContainer/VBoxContainer/PlayerStatsDescr_scrolled" index="1"]
-margin_right = 245.0
+offset_right = 245.0
 
 [node name="Effects_scrolled" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI/MarginContainer/UpgradeDescription/ScrollContainer/VBoxContainer" index="2"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="effect_line" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI/MarginContainer/UpgradeDescription/ScrollContainer/VBoxContainer/Effects_scrolled" index="0"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="ChooseButton" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI" index="1"]
-margin_bottom = 355.0
+offset_bottom = 355.0
 
 [node name="UpgradeUI2" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer" instance=ExtResource( 2 )]
 unique_name_in_owner = true
-margin_left = 17.0
-margin_top = 363.0
-margin_right = 342.0
-margin_bottom = 718.0
+offset_left = 17.0
+offset_top = 363.0
+offset_right = 342.0
+offset_bottom = 718.0
 
 [node name="MarginContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI2" index="0"]
-margin_bottom = 355.0
-custom_constants/margin_bottom = -20
+offset_bottom = 355.0
+theme_override_constants/margin_bottom = -20
 
 [node name="UpgradeDescription" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI2/MarginContainer" index="0"]
-margin_bottom = 375.0
+offset_bottom = 375.0
 
 [node name="ScrollContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI2/MarginContainer/UpgradeDescription" index="2"]
-margin_top = 90.0
-margin_right = 285.0
-margin_bottom = 355.0
+offset_top = 90.0
+offset_right = 285.0
+offset_bottom = 355.0
 
 [node name="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI2/MarginContainer/UpgradeDescription/ScrollContainer" index="0"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="Effects_scrolled" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI2/MarginContainer/UpgradeDescription/ScrollContainer/VBoxContainer" index="2"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="effect_line" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI2/MarginContainer/UpgradeDescription/ScrollContainer/VBoxContainer/Effects_scrolled" index="0"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="ChooseButton" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI2" index="1"]
-margin_bottom = 355.0
+offset_bottom = 355.0
 
 [node name="UpgradeUI3" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer" instance=ExtResource( 2 )]
 unique_name_in_owner = true
-margin_left = 17.0
-margin_top = 726.0
-margin_right = 342.0
-margin_bottom = 1081.0
+offset_left = 17.0
+offset_top = 726.0
+offset_right = 342.0
+offset_bottom = 1081.0
 
 [node name="MarginContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI3" index="0"]
-margin_bottom = 355.0
-custom_constants/margin_bottom = -20
+offset_bottom = 355.0
+theme_override_constants/margin_bottom = -20
 
 [node name="UpgradeDescription" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI3/MarginContainer" index="0"]
-margin_bottom = 375.0
+offset_bottom = 375.0
 
 [node name="ScrollContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI3/MarginContainer/UpgradeDescription" index="2"]
-margin_top = 90.0
-margin_right = 285.0
-margin_bottom = 355.0
+offset_top = 90.0
+offset_right = 285.0
+offset_bottom = 355.0
 
 [node name="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI3/MarginContainer/UpgradeDescription/ScrollContainer" index="0"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="Effects_scrolled" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI3/MarginContainer/UpgradeDescription/ScrollContainer/VBoxContainer" index="2"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="effect_line" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI3/MarginContainer/UpgradeDescription/ScrollContainer/VBoxContainer/Effects_scrolled" index="0"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="ChooseButton" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI3" index="1"]
-margin_bottom = 355.0
+offset_bottom = 355.0
 
 [node name="UpgradeUI4" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer" instance=ExtResource( 2 )]
 unique_name_in_owner = true
-margin_left = 17.0
-margin_top = 1089.0
-margin_right = 342.0
-margin_bottom = 1444.0
+offset_left = 17.0
+offset_top = 1089.0
+offset_right = 342.0
+offset_bottom = 1444.0
 
 [node name="MarginContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI4" index="0"]
-margin_bottom = 355.0
-custom_constants/margin_bottom = -20
+offset_bottom = 355.0
+theme_override_constants/margin_bottom = -20
 
 [node name="UpgradeDescription" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI4/MarginContainer" index="0"]
-margin_bottom = 375.0
+offset_bottom = 375.0
 
 [node name="ScrollContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI4/MarginContainer/UpgradeDescription" index="2"]
-margin_top = 90.0
-margin_right = 285.0
-margin_bottom = 355.0
+offset_top = 90.0
+offset_right = 285.0
+offset_bottom = 355.0
 
 [node name="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI4/MarginContainer/UpgradeDescription/ScrollContainer" index="0"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="Effects_scrolled" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI4/MarginContainer/UpgradeDescription/ScrollContainer/VBoxContainer" index="2"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="effect_line" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI4/MarginContainer/UpgradeDescription/ScrollContainer/VBoxContainer/Effects_scrolled" index="0"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="ChooseButton" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/UpgradeUI4" index="1"]
-margin_bottom = 355.0
+offset_bottom = 355.0
 
 [node name="EmptySpace" type="Control" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer"]
-margin_top = 1452.0
-margin_right = 360.0
-margin_bottom = 1472.0
-rect_min_size = Vector2( 0, 20 )
+offset_top = 1452.0
+offset_right = 360.0
+offset_bottom = 1472.0
+custom_minimum_size = Vector2( 0, 20 )
 
 [node name="RerollButton" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer" instance=ExtResource( 5 )]
 unique_name_in_owner = true
-margin_left = 165.0
-margin_top = 1480.0
-margin_right = 195.0
-margin_bottom = 1545.0
+offset_left = 165.0
+offset_top = 1480.0
+offset_right = 195.0
+offset_bottom = 1545.0
 size_flags_horizontal = 4
 script = ExtResource( 6 )
 
 [node name="Margin" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/RerollButton/HBoxContainer" index="0"]
-margin_bottom = 65.0
+offset_bottom = 65.0
 
 [node name="Label" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/RerollButton/HBoxContainer" index="1"]
-margin_top = 17.0
-margin_right = 58.0
-margin_bottom = 48.0
-custom_fonts/font = ExtResource( 7 )
+offset_top = 17.0
+offset_right = 58.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource( 7 )
 
 [node name="GoldIcon" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/RerollButton/HBoxContainer" index="2"]
-margin_left = 62.0
-margin_right = 97.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 35, 0 )
+offset_left = 62.0
+offset_right = 97.0
+offset_bottom = 65.0
+custom_minimum_size = Vector2( 35, 0 )
 
 [node name="AdditionalIcon" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/RerollButton/HBoxContainer" index="3"]
-margin_left = 101.0
-margin_right = 101.0
-margin_bottom = 65.0
+offset_left = 101.0
+offset_right = 101.0
+offset_bottom = 65.0
 
 [node name="ItemsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 1565.0
-margin_right = 360.0
-margin_bottom = 2222.0
+offset_top = 1565.0
+offset_right = 360.0
+offset_bottom = 2222.0
 size_flags_vertical = 3
-custom_constants/separation = 32
+theme_override_constants/separation = 32
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer"]
-margin_right = 360.0
-margin_bottom = 40.0
+offset_right = 360.0
+offset_bottom = 40.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 3 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "ITEM_FOUND"
 align = 1
 
 [node name="ItemPanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer"]
 unique_name_in_owner = true
-margin_left = 17.0
-margin_top = 72.0
-margin_right = 342.0
-margin_bottom = 452.0
+offset_left = 17.0
+offset_top = 72.0
+offset_right = 342.0
+offset_bottom = 452.0
 size_flags_horizontal = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 320.0
-margin_bottom = 375.0
-custom_constants/margin_right = 15
-custom_constants/margin_top = 15
-custom_constants/margin_left = 15
-custom_constants/margin_bottom = 15
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 320.0
+offset_bottom = 375.0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_bottom = 15
 
 [node name="ItemDescription" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer/MarginContainer" instance=ExtResource( 19 )]
 unique_name_in_owner = true
@@ -424,73 +424,73 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 15.0
-margin_top = 15.0
-margin_right = 300.0
-margin_bottom = 355.0
-custom_constants/separation = 15
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 300.0
+offset_bottom = 355.0
+theme_override_constants/separation = 15
 
 [node name="HBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer/MarginContainer/ItemDescription" index="0"]
-margin_right = 285.0
-margin_bottom = 60.0
+offset_right = 285.0
+offset_bottom = 60.0
 
 [node name="IconPanel" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer/MarginContainer/ItemDescription/HBoxContainer" index="0"]
-margin_right = 60.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
+offset_right = 60.0
+offset_bottom = 60.0
+custom_minimum_size = Vector2( 60, 60 )
 
 [node name="ScrollContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer/MarginContainer/ItemDescription/HBoxContainer" index="1"]
-margin_left = 75.0
-margin_right = 285.0
-margin_bottom = 60.0
+offset_left = 75.0
+offset_right = 285.0
+offset_bottom = 60.0
 
 [node name="ScrollContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer/MarginContainer/ItemDescription" index="2"]
-margin_top = 75.0
-margin_right = 285.0
-margin_bottom = 340.0
+offset_top = 75.0
+offset_right = 285.0
+offset_bottom = 340.0
 
 [node name="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer/MarginContainer/ItemDescription/ScrollContainer" index="0"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="Effects_scrolled" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer/MarginContainer/ItemDescription/ScrollContainer/VBoxContainer" index="2"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="effect_line" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer/MarginContainer/ItemDescription/ScrollContainer/VBoxContainer/Effects_scrolled" index="0"]
-margin_right = 285.0
+offset_right = 285.0
 
 [node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer"]
-margin_top = 484.0
-margin_right = 360.0
-margin_bottom = 657.0
+offset_top = 484.0
+offset_right = 360.0
+offset_bottom = 657.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
-custom_constants/separation = 10
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="TakeButton" type="Button" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 360.0
-margin_bottom = 51.0
-custom_fonts/font = ExtResource( 7 )
+offset_right = 360.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource( 7 )
 text = "MENU_TAKE"
 script = ExtResource( 18 )
 
 [node name="DiscardButton" type="Button" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/HBoxContainer"]
 unique_name_in_owner = true
-margin_top = 61.0
-margin_right = 360.0
-margin_bottom = 112.0
-custom_fonts/font = ExtResource( 7 )
+offset_top = 61.0
+offset_right = 360.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource( 7 )
 text = "MENU_RECYCLE"
 script = ExtResource( 18 )
 
 [node name="BanButton" type="Button" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/HBoxContainer"]
 unique_name_in_owner = true
-margin_top = 122.0
-margin_right = 360.0
-margin_bottom = 173.0
+offset_top = 122.0
+offset_right = 360.0
+offset_bottom = 173.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 7 )
+theme_override_fonts/font = ExtResource( 7 )
 action_mode = 0
 script = ExtResource( 18 )
 
@@ -500,8 +500,8 @@ modulate = Color( 1, 0, 0, 0.407843 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
+theme_override_styles/fg = SubResource( 2 )
+theme_override_styles/bg = SubResource( 3 )
 max_value = 1.0
 step = 0.001
 percent_visible = false
@@ -509,37 +509,37 @@ percent_visible = false
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/HBoxContainer/BanButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 6.0
-margin_top = 2.0
-margin_right = -6.0
-margin_bottom = -2.0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = -6.0
+offset_bottom = -2.0
 
 [node name="button_b_icon" type="TextureRect" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/HBoxContainer/BanButton/HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 47.0
-margin_bottom = 47.0
-rect_min_size = Vector2( 47, 0 )
+offset_right = 47.0
+offset_bottom = 47.0
+custom_minimum_size = Vector2( 47, 0 )
 texture = ExtResource( 24 )
 expand = true
 script = ExtResource( 26 )
 
 [node name="label_banitem" type="Label" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/HBoxContainer/BanButton/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 51.0
-margin_top = 8.0
-margin_right = 304.0
-margin_bottom = 39.0
+offset_left = 51.0
+offset_top = 8.0
+offset_right = 304.0
+offset_bottom = 39.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 7 )
+theme_override_fonts/font = ExtResource( 7 )
 text = "MENU_BAN"
 align = 1
 
 [node name="icon_ban" type="TextureRect" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/HBoxContainer/BanButton/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 308.0
-margin_right = 348.0
-margin_bottom = 47.0
-rect_min_size = Vector2( 40, 40 )
+offset_left = 308.0
+offset_right = 348.0
+offset_bottom = 47.0
+custom_minimum_size = Vector2( 40, 40 )
 mouse_filter = 2
 size_flags_horizontal = 5
 texture = ExtResource( 25 )
@@ -548,22 +548,22 @@ stretch_mode = 6
 
 [node name="UIThingsToProcessPlayerContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer" instance=ExtResource( 17 )]
 unique_name_in_owner = true
-margin_top = 2242.0
-margin_right = 360.0
-margin_bottom = 2372.0
-rect_min_size = Vector2( 0, 130 )
+offset_top = 2242.0
+offset_right = 360.0
+offset_bottom = 2372.0
+custom_minimum_size = Vector2( 0, 130 )
 vertical_alignment = 1
 
 [node name="PlayerGearContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content" index="1"]
 unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/separation = 15
+theme_override_constants/separation = 15
 script = ExtResource( 21 )
 
 [node name="WeaponsContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/PlayerGearContainer" instance=ExtResource( 20 )]
-margin_right = 430.0
-margin_bottom = 196.0
+offset_right = 430.0
+offset_bottom = 196.0
 set_neighbour_top = true
 set_neighbour_right = true
 set_neighbour_left = true
@@ -571,9 +571,9 @@ reserve_column_count = 6
 reserve_row_count = 1
 
 [node name="ItemsContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/PlayerGearContainer" instance=ExtResource( 20 )]
-margin_top = 211.0
-margin_right = 430.0
-margin_bottom = 571.0
+offset_top = 211.0
+offset_right = 430.0
+offset_bottom = 571.0
 size_flags_vertical = 3
 set_neighbour_bottom = true
 set_neighbour_right = true
@@ -582,10 +582,10 @@ reserve_column_count = 6
 
 [node name="TogglePopupHint" parent="MarginContainer/VBoxContainer/Carousel/Content/PlayerGearContainer" instance=ExtResource( 23 )]
 unique_name_in_owner = true
-margin_left = 139.0
-margin_top = 586.0
-margin_right = 291.0
-margin_bottom = 621.0
+offset_left = 139.0
+offset_top = 586.0
+offset_right = 291.0
+offset_bottom = 621.0
 text = "COOP_POPUP_DISABLE_HINT"
 ui_action = "ui_info"
 
@@ -595,11 +595,11 @@ anchor_right = 1.0
 
 [node name="PrimaryStatsContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/CenterContainer" instance=ExtResource( 9 )]
 unique_name_in_owner = true
-margin_left = 15.0
-margin_top = 0.0
-margin_right = 415.0
-margin_bottom = 700.0
-rect_min_size = Vector2( 400, 700 )
+offset_left = 15.0
+offset_top = 0.0
+offset_right = 415.0
+offset_bottom = 700.0
+custom_minimum_size = Vector2( 400, 700 )
 theme = ExtResource( 8 )
 show_buttons = false
 title = "PRIMARY"
@@ -610,35 +610,35 @@ anchor_right = 1.0
 
 [node name="SecondaryStatsContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/CenterContainer2" instance=ExtResource( 9 )]
 unique_name_in_owner = true
-margin_left = 15.0
-margin_top = 0.0
-margin_right = 415.0
-margin_bottom = 700.0
-rect_min_size = Vector2( 400, 700 )
+offset_left = 15.0
+offset_top = 0.0
+offset_right = 415.0
+offset_bottom = 700.0
+custom_minimum_size = Vector2( 400, 700 )
 theme = ExtResource( 8 )
 show_buttons = false
 focused_tab = 1
 title = "SECONDARY"
 
 [node name="Control" type="Control" parent="."]
-margin_right = 460.0
-margin_bottom = 780.0
+offset_right = 460.0
+offset_bottom = 780.0
 
 [node name="ItemPopup" parent="Control" instance=ExtResource( 22 )]
 unique_name_in_owner = true
 visible = false
-margin_right = 464.0
-margin_bottom = 637.0
+offset_right = 464.0
+offset_bottom = 637.0
 parent_node_path = NodePath("../../MarginContainer/VBoxContainer/Carousel")
 anchor_to_panel = false
 
 [node name="CheckmarkGroup" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 376.0
-margin_bottom = 773.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 376.0
+offset_bottom = 773.0
 
 [node name="CheckmarkDimScreen" parent="CheckmarkGroup" instance=ExtResource( 14 )]
 color = Color( 0, 0, 0, 0.686275 )

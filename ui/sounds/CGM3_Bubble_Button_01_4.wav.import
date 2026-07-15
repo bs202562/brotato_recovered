@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/CGM3_Bubble_Button_01_4.wav-0dbad618ae8bfd0ae847ca88a4347a22.sample"
+type="AudioStreamWAV"
+uid="uid://cobv4c8kfy5c5"
+path="res://.godot/imported/CGM3_Bubble_Button_01_4.wav-0dbad618ae8bfd0ae847ca88a4347a22.sample"
 
 [deps]
 
 source_file="res://ui/sounds/CGM3_Bubble_Button_01_4.wav"
-dest_files=[ "res://.import/CGM3_Bubble_Button_01_4.wav-0dbad618ae8bfd0ae847ca88a4347a22.sample" ]
+dest_files=["res://.godot/imported/CGM3_Bubble_Button_01_4.wav-0dbad618ae8bfd0ae847ca88a4347a22.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

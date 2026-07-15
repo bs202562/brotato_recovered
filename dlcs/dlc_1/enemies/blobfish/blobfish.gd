@@ -1,8 +1,8 @@
 class_name Blobfish
 extends Enemy
 
-export (PackedScene) var enemy_to_spawn
-export (PackedScene) var enemy2_to_spawn
+@export var enemy_to_spawn: PackedScene
+@export var enemy2_to_spawn: PackedScene
 
 var nb_spawns_on_death = 4
 
@@ -17,16 +17,16 @@ func _on_Hurtbox_area_entered(hitbox: Area2D) -> void :
 		elif hitbox.from is Pet:
 			nb_spawns_on_death = 4 if hitbox.from.shoot_projectiles else 2
 
-	._on_Hurtbox_area_entered(hitbox)
+	super._on_Hurtbox_area_entered(hitbox)
 
 
 func respawn() -> void :
-	.respawn()
+	super.respawn()
 	nb_spawns_on_death = 4
 
 
-func die(args: = Utils.default_die_args) -> void :
-	.die(args)
+func die(args = Utils.default_die_args) -> void :
+	super.die(args)
 
 	if args.cleaning_up:
 		return

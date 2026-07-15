@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://weapons/melee/sword/3/sword_3_stats.tres" type="Resource" id=1]
-[ext_resource path="res://weapons/melee/sword/sword_icon.png" type="Texture" id=2]
+[ext_resource path="res://weapons/melee/sword/sword_icon.png" type="Texture2D" id=2]
 [ext_resource path="res://weapons/melee/sword/4/sword_4_data.tres" type="Resource" id=3]
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=4]
 [ext_resource path="res://weapons/melee/sword/sword.tscn" type="PackedScene" id=5]

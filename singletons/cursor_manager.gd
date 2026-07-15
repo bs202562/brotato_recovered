@@ -6,7 +6,7 @@ var current_image = null
 
 
 func _ready() -> void :
-	pause_mode = PAUSE_MODE_PROCESS
+	process_mode = PROCESS_MODE_ALWAYS
 
 
 func _process(_delta):

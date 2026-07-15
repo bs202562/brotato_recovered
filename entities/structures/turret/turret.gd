@@ -18,12 +18,13 @@ var _damage_tracking_key_hash: int
 var _nb_shots_taken: int = 0
 var _spawn_projectile_args = WeaponServiceSpawnProjectileArgs.new()
 
-onready var _range_shape = $Range / CollisionShape2D
-onready var _boost_timer = get_node_or_null("BoostTimer")
+@onready var _range_shape = $Range / CollisionShape2D
+@onready var _boost_timer = get_node_or_null("BoostTimer")
 
 
 func _ready() -> void :
-	get_tree().current_scene._pause_menu._menu_options.connect("turret_highlighting_changed", self, "update_highlight")
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_ready 为基类优先）
+	get_tree().current_scene._pause_menu._menu_options.connect("turret_highlighting_changed", Callable(self, "update_highlight"))
 	update_highlight()
 
 
@@ -37,12 +38,12 @@ func _physics_process(delta: float) -> void :
 
 	if should_shoot():
 		_is_shooting = true
-		_animation_player.playback_speed = _shooting_speed
+		_animation_player.speed_scale = _shooting_speed
 		_animation_player.play("shoot")
 
 
 func set_data(data: Resource) -> void :
-	.set_data(data)
+	super.set_data(data)
 	_shooting_speed = data.shooting_animation_speed
 	_damage_tracking_key_hash = data.tracking_key_hash if data.tracking_key_hash != Keys.empty_hash else Keys.generate_hash(data.tracking_key)
 	if data.is_cursed:
@@ -52,14 +53,14 @@ func set_data(data: Resource) -> void :
 
 
 func set_current_stats(new_stats: RangedWeaponStats) -> void :
-	.set_current_stats(new_stats)
+	super.set_current_stats(new_stats)
 	if _range_shape:
 		_range_shape.shape.radius = stats.max_range
 	set_shooting_speed()
 
 
 func reload_data() -> void :
-	.reload_data()
+	super.reload_data()
 	if _range_shape:
 		_range_shape.shape.radius = stats.max_range
 
@@ -91,7 +92,7 @@ func shoot() -> void :
 		_is_shooting = false
 		_cooldown = _get_next_cooldown()
 	else:
-		_next_proj_rotation = (_current_target[0].global_position - global_position).angle() + rand_range( - 1 + stats.accuracy, 1 - stats.accuracy)
+		_next_proj_rotation = (_current_target[0].global_position - global_position).angle() + randf_range( - 1 + stats.accuracy, 1 - stats.accuracy)
 
 	SoundManager2D.play(Utils.get_rand_element(stats.shooting_sounds), global_position, stats.sound_db_mod, 0.2)
 
@@ -110,7 +111,7 @@ func set_instant_shoot() -> void :
 
 
 func _spawn_projectile(position: Vector2) -> Node:
-	var proj_rotation = rand_range(_next_proj_rotation - stats.projectile_spread, _next_proj_rotation + stats.projectile_spread)
+	var proj_rotation = randf_range(_next_proj_rotation - stats.projectile_spread, _next_proj_rotation + stats.projectile_spread)
 	_spawn_projectile_args.knockback_direction = Vector2(cos(proj_rotation), sin(proj_rotation))
 	_spawn_projectile_args.effects = effects
 	_spawn_projectile_args.from_player_index = player_index
@@ -122,7 +123,7 @@ func _get_next_cooldown(at_wave_begin: bool = false) -> float:
 	if is_big_reload_active(at_wave_begin):
 		return WeaponService.apply_structure_attack_speed_effects(stats.cooldown * stats.additional_cooldown_multiplier, player_index) as float
 	var max_cooldown = _get_max_cooldown()
-	return rand_range(max(1, max_cooldown * 0.7), max_cooldown * 1.3)
+	return randf_range(max(1, max_cooldown * 0.7), max_cooldown * 1.3)
 
 
 func _get_max_cooldown() -> int:
@@ -135,14 +136,14 @@ func is_big_reload_active(at_wave_begin: bool = false) -> bool:
 
 func _on_Range_body_entered(body: Node) -> void :
 	_targets_in_range.push_back(body)
-	var _error = body.connect("died", self, "on_target_died")
+	var _error = body.connect("died", Callable(self, "on_target_died"))
 
 
 func _on_Range_body_exited(body: Node) -> void :
 	_targets_in_range.erase(body)
 	if _current_target.size() > 0 and body == _current_target[0]:
 		_current_target.clear()
-	body.disconnect("died", self, "on_target_died")
+	body.disconnect("died", Callable(self, "on_target_died"))
 
 
 func on_target_died(target: Node, _args: Entity.DieArgs) -> void :
@@ -155,13 +156,13 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void :
 	if anim_name == "shoot" and not dead:
 		_is_shooting = false
 		_cooldown = _get_next_cooldown()
-		_animation_player.playback_speed = 1.0
+		_animation_player.speed_scale = 1.0
 		_animation_player.play("idle")
 
 
 func boost(boost_args: BoostArgs) -> void :
 	if can_be_boosted:
-		.boost(boost_args)
+		super.boost(boost_args)
 		_original_base_stats = base_stats
 		base_stats = base_stats.duplicate()
 
@@ -176,7 +177,7 @@ func boost(boost_args: BoostArgs) -> void :
 
 
 func boost_ended() -> void :
-	.boost_ended()
+	super.boost_ended()
 	base_stats = _original_base_stats
 	reload_data()
 

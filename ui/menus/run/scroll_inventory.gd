@@ -1,3 +1,3 @@
 extends ScrollContainer
 
-onready var inventory: Inventory = $Inventory
+@onready var inventory: Inventory = $Inventory

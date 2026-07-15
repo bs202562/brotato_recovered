@@ -1,15 +1,15 @@
 class_name GainStatForEveryStatEffect
 extends Effect
 
-export(int) var nb_stat_scaled = 0
-export(String) var stat_scaled = ""
-export(bool) var perm_stats_only = true
+@export var nb_stat_scaled: int = 0
+@export var stat_scaled: String = ""
+@export var perm_stats_only: bool = true
 
 var stat_scaled_hash: int = Keys.empty_hash
 
 
 func _generate_hashes() -> void:
-	._generate_hashes()
+	super._generate_hashes()
 	stat_scaled_hash = Keys.generate_hash(stat_scaled)
 
 
@@ -44,7 +44,7 @@ func get_args(player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.nb_stat_scaled = nb_stat_scaled
 	serialized.stat_scaled = stat_scaled
@@ -53,7 +53,7 @@ func serialize() -> Dictionary:
 	return serialized
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	nb_stat_scaled = serialized.nb_stat_scaled as int
 	stat_scaled = serialized.stat_scaled
@@ -61,7 +61,7 @@ func deserialize_and_merge(serialized: Dictionary) -> void:
 	perm_stats_only = serialized.perm_stats_only if "perm_stats_only" in serialized else true
 
 func duplicate(subresources := false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 
 	if stat_scaled_hash == Keys.empty_hash and stat_scaled != "":
 		stat_scaled_hash = Keys.generate_hash(stat_scaled)

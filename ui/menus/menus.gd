@@ -4,18 +4,18 @@ extends Control
 signal menu_page_switched(from, to)
 signal codex_closed()
 
-onready var _main_menu = $MainMenu
-onready var _menu_choose_options = $MenuOptions
-onready var _codex = $MenuCodex
+@onready var _main_menu = $MainMenu
+@onready var _menu_choose_options = $MenuOptions
+@onready var _codex = $MenuCodex
 
 var _current_page: Control
 
 
 func _ready() -> void :
-	var _error_options = _main_menu.connect("options_button_pressed", self, "on_options_button_pressed")
-	var _error_codex = _main_menu.connect("codex_button_pressed", self, "on_codex_button_pressed")
-	_error_codex = _codex.connect("codex_closed", self, "on_codex_closed")
-	var _error_back_choose_options = _menu_choose_options.connect("back_button_pressed", self, "on_options_back_button_pressed")
+	var _error_options = _main_menu.connect("options_button_pressed", Callable(self, "on_options_button_pressed"))
+	var _error_codex = _main_menu.connect("codex_button_pressed", Callable(self, "on_codex_button_pressed"))
+	_error_codex = _codex.connect("codex_closed", Callable(self, "on_codex_closed"))
+	var _error_back_choose_options = _menu_choose_options.connect("back_button_pressed", Callable(self, "on_options_back_button_pressed"))
 	_current_page = _main_menu
 
 

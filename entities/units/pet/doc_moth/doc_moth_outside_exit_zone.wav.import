@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/doc_moth_outside_exit_zone.wav-494cbe075de59ec478f0d7fa51686772.sample"
+type="AudioStreamWAV"
+uid="uid://efsptedhsnqw"
+path="res://.godot/imported/doc_moth_outside_exit_zone.wav-494cbe075de59ec478f0d7fa51686772.sample"
 
 [deps]
 
 source_file="res://entities/units/pet/doc_moth/doc_moth_outside_exit_zone.wav"
-dest_files=[ "res://.import/doc_moth_outside_exit_zone.wav-494cbe075de59ec478f0d7fa51686772.sample" ]
+dest_files=["res://.godot/imported/doc_moth_outside_exit_zone.wav-494cbe075de59ec478f0d7fa51686772.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

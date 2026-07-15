@@ -1,12 +1,12 @@
 class_name BurningData
 extends Resource
 
-export (float) var chance: = 0.0
-export (int) var damage: = 0
-export (int) var duration: = 0
-export (int) var spread: = 0
-export (Array, Array) var scaling_stats = [["stat_elemental_damage", 1.0]]
-export (bool) var is_global_burn: = false
+@export var chance := 0.0
+@export var damage := 0
+@export var duration := 0
+@export var spread := 0
+@export var scaling_stats = [["stat_elemental_damage", 1.0]] # (Array, Array)
+@export var is_global_burn := false
 
 var from: Node = null
 
@@ -74,7 +74,7 @@ func is_not_burning() -> bool:
 
 
 func duplicate(subresources: = false) -> Resource:
-	var duplication: = .duplicate(subresources)
+	var duplication: = super.duplicate(subresources)
 	duplication.from = self.from
 	duplication.scaling_stats = scaling_stats.duplicate()
 	return duplication

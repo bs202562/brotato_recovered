@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
-[ext_resource path="res://items/all/lucky_coin/lucky_coin_icon.png" type="Texture" id=2]
+[ext_resource path="res://items/all/lucky_coin/lucky_coin_icon.png" type="Texture2D" id=2]
 [ext_resource path="res://items/all/lucky_coin/lucky_coin_effect_2.tres" type="Resource" id=3]
 [ext_resource path="res://items/all/lucky_coin/lucky_coin_effect_1.tres" type="Resource" id=4]
 

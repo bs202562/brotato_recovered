@@ -4,11 +4,11 @@ extends Node2D
 signal hit_something(thing_hit, damage_dealt)
 signal critically_hit_something(thing_hit, damage_dealt)
 
-export (bool) var destroy_on_leaving_screen = true
-export (float) var stop_delay = 0.0
+@export var destroy_on_leaving_screen: bool = true
+@export var stop_delay: float = 0.0
 
-export (Vector2) var sinusoidal_motion = Vector2(0, 0)
-export (Vector2) var sinusoidal_motion_speed = Vector2(5, 5)
+@export var sinusoidal_motion: Vector2 = Vector2(0, 0)
+@export var sinusoidal_motion_speed: Vector2 = Vector2(5, 5)
 
 var sinusoidal_time: Vector2 = Vector2(0, 0)
 var sinusoidal_offset: Vector2 = Vector2(0, 0)
@@ -26,10 +26,10 @@ var critically_hit_something_connected: = false
 
 var _hitbox_args: = Hitbox.HitboxArgs.new()
 
-onready var _sprite: = $"%Sprite" as Sprite
-export (bool) var clear_material_when_pooled: = true
-onready var _hitbox: = $"%Hitbox" as Area2D
-onready var _animation_player: = $"%AnimationPlayer"
+@onready var _sprite: = $"%Sprite2D" as Sprite2D
+@export var clear_material_when_pooled := true
+@onready var _hitbox: = $"%Hitbox" as Area2D
+@onready var _animation_player: = $"%AnimationPlayer"
 
 
 func _ready() -> void :
@@ -96,8 +96,8 @@ func _return_to_pool() -> void :
 	Utils.disconnect_all_signal_connections(self._hitbox, "killed_something")
 	Utils.disconnect_all_signal_connections(self, "critically_hit_something")
 
-	if is_instance_valid(_hitbox.from) and _hitbox.from.has_signal("died") and _hitbox.from.is_connected("died", self, "on_entity_died"):
-		_hitbox.from.disconnect("died", self, "on_entity_died")
+	if is_instance_valid(_hitbox.from) and _hitbox.from.has_signal("died") and _hitbox.from.is_connected("died", Callable(self, "on_entity_died")):
+		_hitbox.from.disconnect("died", Callable(self, "on_entity_died"))
 
 	if get_parent() != null:
 		Utils.get_scene_node().add_node_to_pool(self, get_meta("pool_id"))

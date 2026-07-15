@@ -1,5 +1,5 @@
 class_name DifficultyScore
-extends Reference
+extends RefCounted
 
 var difficulty_value: = - 1
 var wave_number: = - 1

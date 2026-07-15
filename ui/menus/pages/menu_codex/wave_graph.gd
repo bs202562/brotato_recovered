@@ -1,14 +1,14 @@
 extends HBoxContainer
 class_name WaveGraph
 
-onready var polygon: Polygon2D = $"%polygon"
-onready var graph_container: Container = $"%GraphContainer"
-onready var base_stat_label_number: Label = $"%base_stat_label_number"
-onready var adding_stat_label_number: Label = $"%adding_stat_label_number"
-onready var label_scale_0: Label = $"%scale_0"
-onready var label_scale_1: Label = $"%scale_1"
-onready var label_scale_2: Label = $"%scale_2"
-onready var label_scale_3: Label = $"%scale_3"
+@onready var polygon: Polygon2D = $"%polygon"
+@onready var graph_container: Container = $"%GraphContainer"
+@onready var base_stat_label_number: Label = $"%base_stat_label_number"
+@onready var adding_stat_label_number: Label = $"%adding_stat_label_number"
+@onready var label_scale_0: Label = $"%scale_0"
+@onready var label_scale_1: Label = $"%scale_1"
+@onready var label_scale_2: Label = $"%scale_2"
+@onready var label_scale_3: Label = $"%scale_3"
 
 
 func set_graph(base_value: float, adding_value: float, max_scale_value: float, exponential_scale: float = 1) -> void :
@@ -34,7 +34,7 @@ func _y_position_in_graph(value: float, max_scale_value: float, exponential_scal
 	else:
 		linear_position = value / max_scale_value
 	var exponential_position: float = pow(linear_position, 1 / exponential_scale)
-	return (1 - exponential_position) * graph_container.rect_size.y
+	return (1 - exponential_position) * graph_container.size.y
 
 
 func _scale(label_index: int, max_scale_value: float, exponential_scale: float = 1, start_from_one: bool = false) -> void :
@@ -52,4 +52,4 @@ func _scale(label_index: int, max_scale_value: float, exponential_scale: float =
 	var linear_position: float = (float(label_index) + 1) / 4
 	var exponential_position: float = pow(linear_position, exponential_scale)
 
-	label_to_change.text = String(int(exponential_position * max_scale_value))
+	label_to_change.text = str(int(exponential_position * max_scale_value))

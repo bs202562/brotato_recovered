@@ -1,27 +1,27 @@
 extends DLCData
 
-export (Resource) var cursed_chest
-export (float, 0.0, 1.0, 0.01) var base_cursed_chest_chance: = 0.03
-export (float, 0.0, 1.0, 0.01) var base_item_curse_chance: = 0.03
+@export var cursed_chest: Resource
+@export var base_cursed_chest_chance: = 0.03 # (float, 0.0, 1.0, 0.01)
+@export var base_item_curse_chance: = 0.03 # (float, 0.0, 1.0, 0.01)
 
-export (int, 0, 100) var cursed_item_base_percent_modifier: = 40
-export (int, 0, 100) var cursed_item_random_percent_modifier: = 30
-export (int, 0, 100) var cursed_item_percent_modifier_increase_each_wave: = 2
-export (float, 0.0, 0.1, 0.001) var curse_per_item_value = 0.04
-export (float, 0.0, 1.0, 0.01) var max_curse_item_chance = 0.01
+@export var cursed_item_base_percent_modifier: = 40 # (int, 0, 100)
+@export var cursed_item_random_percent_modifier: = 30 # (int, 0, 100)
+@export var cursed_item_percent_modifier_increase_each_wave: = 2 # (int, 0, 100)
+@export var curse_per_item_value = 0.04 # (float, 0.0, 0.1, 0.001)
+@export var max_curse_item_chance = 0.01 # (float, 0.0, 1.0, 0.01)
 
-export var increase_factor_for_mediocre_boosts: = 3
-export var treasure_map_luck: = 5
-export var wandering_bot_speed: = 5
-export var anvil_armor: = 3
-export var mirror_item_price: = - 10
-export var sifds_relic_dodge: = 10
-export var axolotl_stats: = 5
-export var jerky_hp_regen: = 2
-export var hunting_trophy_crit_chance: = 5
-export var curse_hook_damage: = 3
+@export var increase_factor_for_mediocre_boosts: = 3
+@export var treasure_map_luck: = 5
+@export var wandering_bot_speed: = 5
+@export var anvil_armor: = 3
+@export var mirror_item_price: = - 10
+@export var sifds_relic_dodge: = 10
+@export var axolotl_stats: = 5
+@export var jerky_hp_regen: = 2
+@export var hunting_trophy_crit_chance: = 5
+@export var curse_hook_damage: = 3
 
-export (Resource) var poisoned_fruit
+@export var poisoned_fruit: Resource
 
 
 func update_consumable_to_get(base_consumable_data: ConsumableData) -> ConsumableData:
@@ -83,7 +83,7 @@ func curse_item(item_data: ItemParentData, player_index: int, turn_randomization
 			elif effect.spawn_cooldown > 0:
 				
 				new_effect.spawn_cooldown = WeaponService.apply_attack_speed_mod_to_cooldown(effect.spawn_cooldown, effect_modifier)
-			elif not effect.stats.scaling_stats.empty():
+			elif not effect.stats.scaling_stats.is_empty():
 				
 				new_effect.stats = _boost_weapon_stats_damage(effect.stats, effect_modifier)
 			elif effect.effects.size() >= 1 and effect.effects[0] is BurningEffect:
@@ -356,7 +356,7 @@ func curse_item(item_data: ItemParentData, player_index: int, turn_randomization
 func _get_cursed_item_effect_modifier(turn_randomization_off: bool = false, min_modifier: float = 0.0) -> float:
 	var random_modifier: = 0 if turn_randomization_off else Utils.randi_range( - cursed_item_random_percent_modifier, cursed_item_random_percent_modifier)
 	var wave_basis = 0 if turn_randomization_off else RunData.current_wave
-	var percent_modifier: = cursed_item_base_percent_modifier + cursed_item_percent_modifier_increase_each_wave * min(20, (wave_basis - 1)) + random_modifier
+	var percent_modifier = cursed_item_base_percent_modifier + cursed_item_percent_modifier_increase_each_wave * min(20, (wave_basis - 1)) + random_modifier
 	return max(min_modifier, percent_modifier / 100.0)
 
 
@@ -383,10 +383,10 @@ func _boost_weapon_stats_damage(stats: WeaponStats, effect_modifier: float) -> W
 	var new_stats = stats.duplicate()
 	new_stats.damage = int(ceil(stats.damage * (1.0 + effect_modifier)))
 	new_stats.scaling_stats = _boost_scaling_sats(stats.scaling_stats, effect_modifier)
-	new_stats.crit_damage = stepify(stats.crit_damage * (1.0 + effect_modifier / 5.0), 0.1)
+	new_stats.crit_damage = snapped(stats.crit_damage * (1.0 + effect_modifier / 5.0), 0.1)
 
 	if new_stats.lifesteal > 0:
-		new_stats.lifesteal = stepify(stats.lifesteal * (1.0 + effect_modifier), 0.01)
+		new_stats.lifesteal = snapped(stats.lifesteal * (1.0 + effect_modifier), 0.01)
 
 	if stats is RangedWeaponStats:
 		if new_stats.piercing > 0:

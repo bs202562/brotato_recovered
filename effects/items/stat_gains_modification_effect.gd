@@ -1,8 +1,8 @@
 class_name StatGainsModificationEffect
 extends Effect
 
-export(String) var stat_displayed = ""
-export(Array, String) var stats_modified
+@export var stat_displayed: String = ""
+@export var stats_modified: Array = [] # (Array, String)
 
 
 static func get_id() -> String:
@@ -12,14 +12,14 @@ static func get_id() -> String:
 func apply(player_index: int) -> void:
 	var effects = RunData.get_player_effects(player_index)
 	for stat in stats_modified:
-		assert(stat is String and not stat.is_valid_integer())
+		assert(stat is String and not stat.is_valid_int())
 		effects[Keys.generate_hash("gain_" + stat)] += value
 
 
 func unapply(player_index: int) -> void:
 	var effects = RunData.get_player_effects(player_index)
 	for stat in stats_modified:
-		assert(stat is String and not stat.is_valid_integer())
+		assert(stat is String and not stat.is_valid_int())
 		effects[Keys.generate_hash("gain_" + stat)] -= value
 
 
@@ -28,7 +28,7 @@ func get_args(_player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.stat_displayed = stat_displayed
 	serialized.stats_modified = stats_modified
@@ -37,7 +37,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	stat_displayed = serialized.stat_displayed
 	stats_modified = serialized.stats_modified

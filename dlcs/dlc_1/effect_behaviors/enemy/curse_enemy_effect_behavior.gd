@@ -5,7 +5,7 @@ const CURSED_ENEMIES_BONUS_GOLD: = 0.33
 
 
 func init(parent: Enemy) -> EnemyEffectBehavior:
-	var _self = .init(parent)
+	var _self = super.init(parent)
 	_parent.add_outline(Utils.CURSE_COLOR)
 	return self
 

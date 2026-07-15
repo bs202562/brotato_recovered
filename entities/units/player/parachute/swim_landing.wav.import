@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/swim_landing.wav-2d3f845ed6aa84d82dbda5856543ad33.sample"
+type="AudioStreamWAV"
+uid="uid://cijib5uwrkw0k"
+path="res://.godot/imported/swim_landing.wav-2d3f845ed6aa84d82dbda5856543ad33.sample"
 
 [deps]
 
 source_file="res://entities/units/player/parachute/swim_landing.wav"
-dest_files=[ "res://.import/swim_landing.wav-2d3f845ed6aa84d82dbda5856543ad33.sample" ]
+dest_files=["res://.godot/imported/swim_landing.wav-2d3f845ed6aa84d82dbda5856543ad33.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

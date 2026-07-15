@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/gun_shotgun_sawed_off_shot_01.wav-fafa98be1588cd8ff98048a8a8de7d98.sample"
+type="AudioStreamWAV"
+uid="uid://0ooy15x6e0y0"
+path="res://.godot/imported/gun_shotgun_sawed_off_shot_01.wav-fafa98be1588cd8ff98048a8a8de7d98.sample"
 
 [deps]
 
 source_file="res://weapons/ranged/double_barrel_shotgun/gun_shotgun_sawed_off_shot_01.wav"
-dest_files=[ "res://.import/gun_shotgun_sawed_off_shot_01.wav-fafa98be1588cd8ff98048a8a8de7d98.sample" ]
+dest_files=["res://.godot/imported/gun_shotgun_sawed_off_shot_01.wav-fafa98be1588cd8ff98048a8a8de7d98.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

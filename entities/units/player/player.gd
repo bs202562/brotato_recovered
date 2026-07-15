@@ -8,14 +8,14 @@ signal run_won_screen()
 const MIN_IFRAMES = 0.2
 const MAX_IFRAMES = 0.4
 
-export (Array, Resource) var hp_regen_sounds
-export (Array, Resource) var step_sounds
-export (Array, AudioStream) var swim_sounds
-export (Array, Resource) var alien_sounds
+@export var hp_regen_sounds: Array = [] # (Array, Resource)
+@export var step_sounds: Array = [] # (Array, Resource)
+@export var swim_sounds: Array = [] # (Array, AudioStream)
+@export var alien_sounds: Array = [] # (Array, Resource)
 
-export (PackedScene) var starship_beam_scene
-export (PackedScene) var parachute_scene
-export (PackedScene) var jellyshield_scene
+@export var starship_beam_scene: PackedScene
+@export var parachute_scene: PackedScene
+@export var jellyshield_scene: PackedScene
 
 var not_moving_bonuses_applied = false
 var moving_bonuses_applied = false
@@ -63,30 +63,31 @@ var animation_landing: String
 var _take_damage_args = TakeDamageArgs.new( - 1)
 var _dodge_damage_args = TakeDamageArgs.new( - 1)
 
-onready var _lifesteal_timer = $LifestealTimer
-onready var _invincibility_timer = $InvincibilityTimer
-onready var _legs = $Animation / Legs
-onready var _shadow: = $Animation / Shadow as Sprite
-onready var _item_attract_area: = $ItemAttractArea as ItemAttractArea
-onready var _item_pickup_area: = $ItemPickupArea as Area2D
+@onready var _lifesteal_timer = $LifestealTimer
+@onready var _invincibility_timer = $InvincibilityTimer
+@onready var _legs = $Animation / Legs
+@onready var _shadow: = $Animation / Shadow as Sprite2D
+@onready var _item_attract_area: = $ItemAttractArea as ItemAttractArea
+@onready var _item_pickup_area: = $ItemPickupArea as Area2D
 
-onready var _weapons_container = $Weapons
+@onready var _weapons_container = $Weapons
 
-onready var highlight: Sprite = $Animation / Highlight
+@onready var highlight: Sprite2D = $Animation / Highlight
 
-onready var _running_smoke: CPUParticles2D = $RunningSmoke
-onready var _lose_health_timer: Timer = $LoseHealthTimer
-onready var _one_second_timer: Timer = $OneSecondTimer
-onready var _moving_timer: Timer = $MovingTimer
-onready var _not_moving_timer: Timer = $NotMovingTimer
-onready var _boost_timer: Timer = $BoostTimer
+@onready var _running_smoke: CPUParticles2D = $RunningSmoke
+@onready var _lose_health_timer: Timer = $LoseHealthTimer
+@onready var _one_second_timer: Timer = $OneSecondTimer
+@onready var _moving_timer: Timer = $MovingTimer
+@onready var _not_moving_timer: Timer = $NotMovingTimer
+@onready var _boost_timer: Timer = $BoostTimer
 
 
 
-onready var _life_bar_transform: = $LifeBarTransform as RemoteTransform2D
-onready var _animation_node: Node = $Animation / Sprite
+@onready var _life_bar_transform: = $LifeBarTransform as RemoteTransform2D
+@onready var _animation_node: Node = $Animation / Sprite2D
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_ready 为基类优先）
 	match RunData.current_zone:
 		1:
 			animation_idle = "idle_swim"
@@ -132,7 +133,7 @@ func _ready() -> void :
 	if alien_eyes_effect.size() > 0:
 		_alien_eyes_timer = Timer.new()
 		_alien_eyes_timer.wait_time = alien_eyes_effect[3]
-		var _alien_eyes = _alien_eyes_timer.connect("timeout", self, "on_alien_eyes_timeout")
+		var _alien_eyes = _alien_eyes_timer.connect("timeout", Callable(self, "on_alien_eyes_timeout"))
 		add_child(_alien_eyes_timer)
 		_alien_eyes_timer.start()
 
@@ -157,7 +158,7 @@ func _ready() -> void :
 
 
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void :
-	.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
+	super.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
 
 	var effects = RunData.get_player_effects(player_index)
 	if effects.has(Keys.stat_jellyshield_count_hash):
@@ -178,7 +179,7 @@ func respawn() -> void :
 func init_effect_behaviors() -> void :
 	assert (effect_behaviors.get_child_count() == 0, "init_effect_behaviors should only be called once")
 	for effect_behavior_data in EffectBehaviorService.player_effect_behaviors:
-		var effect_behavior = effect_behavior_data.scene.instance().init(self)
+		var effect_behavior = effect_behavior_data.scene.instantiate().init(self)
 		if effect_behavior.should_add_on_spawn():
 			effect_behaviors.add_child(effect_behavior)
 		else:
@@ -200,9 +201,9 @@ func update_animation(movement: Vector2) -> void :
 			sprite.scale.x = - abs(sprite.scale.x)
 
 	if _animation_player.current_animation == animation_idle:
-		_animation_player.playback_speed = 1
+		_animation_player.speed_scale = 1
 	elif _animation_player.current_animation == animation_move:
-		_animation_player.playback_speed = get_move_speed() / stats.speed
+		_animation_player.speed_scale = get_move_speed() / stats.speed
 
 	if _animation_player.current_animation == animation_idle and movement != Vector2.ZERO:
 		_animation_player.play(animation_move)
@@ -281,8 +282,8 @@ func enable_hurtbox() -> void :
 
 
 func disable_gold_pickup() -> void :
-	_item_attract_area.set_collision_mask_bit(6, false)
-	_item_pickup_area.set_collision_mask_bit(6, false)
+	_item_attract_area.set_collision_mask_value(6, false)
+	_item_pickup_area.set_collision_mask_value(6, false)
 
 
 func get_nb_weapons() -> int:
@@ -324,7 +325,7 @@ func apply_items_effects() -> void :
 
 	
 	for appearance in RunData.get_player_appearances(player_index):
-		var item_sprite = Sprite.new()
+		var item_sprite = Sprite2D.new()
 		item_sprite.texture = appearance.get_sprite()
 		_animation_node.add_child(item_sprite)
 
@@ -369,7 +370,7 @@ func update_player_stats(reset_current_health: = false) -> void :
 
 
 func add_weapon(weapon: WeaponData, pos: int) -> void :
-	var instance = weapon.scene.instance()
+	var instance = weapon.scene.instantiate()
 
 	instance.weapon_pos = pos
 	instance.stats = weapon.stats.duplicate()
@@ -378,9 +379,9 @@ func add_weapon(weapon: WeaponData, pos: int) -> void :
 	instance.tier = weapon.tier
 	instance.weapon_sets = weapon.sets
 	instance.is_cursed = weapon.is_cursed
-	instance.connect("tracked_value_updated", weapon, "on_tracked_value_updated")
-	instance.connect("tracked_value_set", weapon, "on_tracked_value_set")
-	instance.connect("wanted_to_break", self, "on_weapon_wanted_to_break")
+	instance.connect("tracked_value_updated", Callable(weapon, "on_tracked_value_updated"))
+	instance.connect("tracked_value_set", Callable(weapon, "on_tracked_value_set"))
+	instance.connect("wanted_to_break", Callable(self, "on_weapon_wanted_to_break"))
 
 	for effect in weapon.effects:
 		instance.effects.push_back(effect.duplicate())
@@ -611,22 +612,22 @@ func play_step_sound() -> void :
 
 
 func land() -> void :
-	_animation_player.playback_speed = 1
+	_animation_player.speed_scale = 1
 	_animation_player.play(animation_landing)
 
 	
-	var animation_node = $Animation / Sprite
-	var parachute: Node = parachute_scene.instance()
+	var animation_node = $Animation / Sprite2D
+	var parachute: Node = parachute_scene.instantiate()
 	animation_node.add_child(parachute)
 	parachute._play(RunData.current_zone == 1)
 
-	yield(_animation_player, "animation_finished")
+	await _animation_player.animation_finished
 	_animation_player.play(animation_idle)
 	_animation_player.play(animation_idle)
 
 
-func die(args: = Utils.default_die_args) -> void :
-	.die(args)
+func die(args = Utils.default_die_args) -> void :
+	super.die(args)
 
 	for weapon in current_weapons:
 		weapon.disable_hitbox()
@@ -653,24 +654,23 @@ func die(args: = Utils.default_die_args) -> void :
 
 func won() -> void :
 	if not dead:
-		yield(get_tree().create_timer(0.25), "timeout")
-		_animation_player.playback_speed = 1
+		await get_tree().create_timer(0.25).timeout
+		_animation_player.speed_scale = 1
 		_animation_player.play("won")
-		yield(get_tree().create_timer(1.0), "timeout")
+		await get_tree().create_timer(1.0).timeout
 
-		var starship_beam: CPUParticles2D = starship_beam_scene.instance()
+		var starship_beam: CPUParticles2D = starship_beam_scene.instantiate()
 		add_child(starship_beam)
-		var tween: Tween = starship_beam.get_node("Tween")
-		tween.interpolate_property(starship_beam, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.1)
-		tween.start()
+		var tween: Tween = starship_beam.create_tween()
+		tween.tween_property(starship_beam, "modulate", Color(1, 1, 1, 1), 0.1).from(Color(1, 1, 1, 0))
 	else:
-		yield(get_tree().create_timer(0.25), "timeout")
-		run_won_screen()
+		await get_tree().create_timer(0.25).timeout
+		play_run_won_screen()
 
 
 
 func dance() -> void :
-	_animation_player.playback_speed = 1
+	_animation_player.speed_scale = 1
 	_animation_player.play("dance", 0.1)
 
 
@@ -681,10 +681,12 @@ func death_animation_finished() -> void :
 
 
 func _physics_process(delta: float) -> void :
-	
+
 	var loop_count: = _health_regen_timer.try_loop(delta)
 	if loop_count > 0:
 		on_health_regen(loop_count)
+
+	super._physics_process(delta) # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_physics_process 为子类优先，玩家移动逻辑在 Unit._physics_process 中）
 
 
 
@@ -758,7 +760,7 @@ func on_heal_over_time_effect(total_healing: int, duration: int) -> void :
 
 	for i in range(1, total_healing + 1):
 		var timer: SceneTreeTimer = get_tree().create_timer(interval * i, false)
-		var _hot_error: = timer.connect("timeout", self, "on_heal_over_time_timer_timeout")
+		var _hot_error: = timer.connect("timeout", Callable(self, "on_heal_over_time_timer_timeout"))
 
 
 func on_heal_over_time_timer_timeout() -> void :
@@ -797,7 +799,7 @@ func heal(value: int, is_from_torture: bool = false) -> int:
 func init_exploding_stats(init_triggers: bool = false) -> void :
 	var explode_on_hit = RunData.get_player_effect(Keys.explode_on_hit_hash, player_index)
 	var explode_when_below_hp = RunData.get_player_effect(Keys.explode_when_below_hp_hash, player_index)
-	if explode_on_hit.empty() and explode_when_below_hp.empty():
+	if explode_on_hit.is_empty() and explode_when_below_hp.is_empty():
 		return
 	for effect in explode_on_hit:
 		var args: = WeaponServiceInitStatsArgs.new()
@@ -1000,7 +1002,7 @@ func _start_decaying_stats_effect_timer(stats_array: Array, stat_hash: int, stat
 	stats_array.push_back(stat_item)
 	TempStats.add_stat(stat_hash, stat_value, player_index)
 	LinkedStats.reset_player(player_index)
-	var _error = timer.connect("timeout", self, "_on_decaying_stats_timer_timeout", [stat_item, stats_array])
+	var _error = timer.connect("timeout", Callable(self, "_on_decaying_stats_timer_timeout").bind(stat_item, stats_array))
 
 
 func _on_decaying_stats_timer_timeout(stat_item: Dictionary, stats_array: Array) -> void :
@@ -1103,9 +1105,9 @@ func _on_OneSecondTimer_timeout() -> void :
 
 
 func _set_outlines(alpha: float = 1.0, desaturation: float = 0.0) -> void :
-	._set_outlines(alpha, desaturation)
+	super._set_outlines(alpha, desaturation)
 	for leg in _legs.get_children():
-		var leg_sprite: Sprite = leg.get_node("Sprite")
+		var leg_sprite: Sprite2D = leg.get_node("Sprite2D")
 		leg_sprite.material = sprite.material
 
 
@@ -1113,7 +1115,7 @@ func boost(boost_args: BoostArgs) -> void :
 	if not can_be_boosted:
 		return
 
-	.boost(boost_args)
+	super.boost(boost_args)
 	_original_boost_args = boost_args
 	_max_hp_before_boost = max_stats.health
 	var health_increase: = int(max_stats.health * (boost_args.hp_boost / 100.0))
@@ -1126,7 +1128,7 @@ func boost(boost_args: BoostArgs) -> void :
 
 
 func boost_ended() -> void :
-	.boost_ended()
+	super.boost_ended()
 
 	if cleaning_up:
 		return
@@ -1143,5 +1145,5 @@ func _on_BoostTimer_timeout() -> void :
 		boost_ended()
 
 
-func run_won_screen() -> void :
+func play_run_won_screen() -> void :
 	emit_signal("run_won_screen")

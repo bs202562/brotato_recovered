@@ -10,7 +10,7 @@ script = ExtResource( 2 )
 text = "POPUP_BETA_SAVE_TITLE"
 
 [node name="rich_text_description" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" index="0"]
-margin_top = 274.0
-margin_bottom = 312.0
-bbcode_text = "POPUP_BETA_SAVE_DESCRIPTION"
+offset_top = 274.0
+offset_bottom = 312.0
+text = "POPUP_BETA_SAVE_DESCRIPTION"
 text = "POPUP_BETA_SAVE_DESCRIPTION"

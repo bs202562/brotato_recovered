@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://dlcs/dlc_1/enemies/lobster/lobster.png" type="Texture" id=1]
+[ext_resource path="res://dlcs/dlc_1/enemies/lobster/lobster.png" type="Texture2D" id=1]
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://dlcs/dlc_1/enemies/lobster/lobster_stats.tres" type="Resource" id=3]
 
@@ -18,7 +18,7 @@ stats = ExtResource( 3 )
 enemy_id = "lobster"
 to_be_removed_in_priority = true
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -23 )
 texture = ExtResource( 1 )
 

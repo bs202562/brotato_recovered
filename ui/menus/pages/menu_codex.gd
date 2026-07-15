@@ -5,30 +5,30 @@ signal codex_closed()
 
 const SCROLL_SPEED: = 600.0
 
-onready var tab_challenge: ProgressionUI = $"%tab_challenges"
-onready var inventory_items: Inventory = $"%InventoryItems"
-onready var inventory_weapons: Inventory = $"%InventoryWeapons"
-onready var inventory_enemies: Inventory = $"%InventoryEnemies"
-onready var but_tier0: Button = $"%ButTier0"
-onready var but_tier1: Button = $"%ButTier1"
-onready var but_tier2: Button = $"%ButTier2"
-onready var but_tier3: Button = $"%ButTier3"
-onready var scroll_right_item: ScrollContainer = $"%scroll_right_items"
-onready var scroll_right_weapons: ScrollContainer = $"%scroll_right_weapons"
-onready var scroll_right_enemies: ScrollContainer = $"%scroll_right_enemies"
+@onready var tab_challenge: ProgressionUI = $"%tab_challenges"
+@onready var inventory_items: Inventory = $"%InventoryItems"
+@onready var inventory_weapons: Inventory = $"%InventoryWeapons"
+@onready var inventory_enemies: Inventory = $"%InventoryEnemies"
+@onready var but_tier0: Button = $"%ButTier0"
+@onready var but_tier1: Button = $"%ButTier1"
+@onready var but_tier2: Button = $"%ButTier2"
+@onready var but_tier3: Button = $"%ButTier3"
+@onready var scroll_right_item: ScrollContainer = $"%scroll_right_items"
+@onready var scroll_right_weapons: ScrollContainer = $"%scroll_right_weapons"
+@onready var scroll_right_enemies: ScrollContainer = $"%scroll_right_enemies"
 
-onready var animation_tree: AnimationTree = $AnimationTree
-onready var progressbar: ProgressBar = $"%ProgressBar_codex"
-onready var progressbar_label: Label = $"%Progress_label_codex"
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var progressbar: ProgressBar = $"%ProgressBar_codex"
+@onready var progressbar_label: Label = $"%Progress_label_codex"
 
-onready var lb_texture: TextureRect = $"%lb_texture"
-onready var rb_texture: TextureRect = $"%rb_texture"
+@onready var lb_texture: TextureRect = $"%lb_texture"
+@onready var rb_texture: TextureRect = $"%rb_texture"
 
-onready var focus_before_created: Control = null
+@onready var focus_before_created: Control = null
 
-onready var _unlockall_icon: TextureRect = $"%unlockall_icon"
+@onready var _unlockall_icon: TextureRect = $"%unlockall_icon"
 
-export (int) var player_index: = 0
+@export var player_index := 0
 
 var unlocked_items: = 0
 var unlocked_weapons: = 0
@@ -41,7 +41,7 @@ func _pop():
 	unlocked_weapons = 0
 	unlocked_entities = 0
 
-	focus_before_created = get_focus_owner()
+	focus_before_created = get_viewport().gui_get_focus_owner()
 
 	popup()
 	if RunData.is_coop_run:
@@ -58,7 +58,7 @@ func _pop():
 	_focus_control($"%but_tab_challenger")
 
 	var list_of_items: Array = ItemService.items.duplicate()
-	list_of_items.sort_custom(SortItem, "sort_by_tier")
+	list_of_items.sort_custom(Callable(SortItem, "sort_by_tier"))
 
 	for item in list_of_items:
 		if ProgressData.items_unlocked.has(item.my_id_hash):
@@ -72,7 +72,7 @@ func _pop():
 	inventory_items.on_element_focused(inventory_items.get_child(0))
 
 	var list_of_weapons: Array = ItemService.weapons.duplicate()
-	list_of_weapons.sort_custom(SortItem, "sort_by_tier")
+	list_of_weapons.sort_custom(Callable(SortItem, "sort_by_tier"))
 
 	var list_to_remove: Array
 	for weapon in list_of_weapons:
@@ -135,12 +135,12 @@ func _process(delta: float) -> void :
 
 
 func _change_color_tier_button(button: Button, tier: int) -> void :
-	var stylebox_color = button.get_stylebox("normal").duplicate()
+	var stylebox_color = button.get_theme_stylebox("normal").duplicate()
 	ItemService.change_inventory_element_stylebox_from_tier(stylebox_color, tier, 0.25)
-	button.add_stylebox_override("normal", stylebox_color)
-	var stylebox_color_pressed = button.get_stylebox("pressed").duplicate()
+	button.add_theme_stylebox_override("normal", stylebox_color)
+	var stylebox_color_pressed = button.get_theme_stylebox("pressed").duplicate()
 	ItemService.change_inventory_element_stylebox_from_tier(stylebox_color_pressed, tier, 0.25)
-	button.add_stylebox_override("pressed", stylebox_color_pressed)
+	button.add_theme_stylebox_override("pressed", stylebox_color_pressed)
 
 
 class SortItem:
@@ -184,24 +184,24 @@ func _on_InventoryWeapons_element_pressed(element: InventoryElement):
 	for w in weapon_evolution_list:
 		match w.tier:
 			0:
-				if but_tier0.is_connected("pressed", $"%codex_weapon_description", "set_item"):
-					but_tier0.disconnect("pressed", $"%codex_weapon_description", "set_item")
-				but_tier0.connect("pressed", $"%codex_weapon_description", "set_item", [w, 0])
+				if but_tier0.is_connected("pressed", Callable($"%codex_weapon_description", "set_item")):
+					but_tier0.disconnect("pressed", Callable($"%codex_weapon_description", "set_item"))
+				but_tier0.connect("pressed", Callable($"%codex_weapon_description", "set_item").bind(w, 0))
 				_button_weapon_tier_visible(but_tier0)
 			1:
-				if but_tier1.is_connected("pressed", $"%codex_weapon_description", "set_item"):
-					but_tier1.disconnect("pressed", $"%codex_weapon_description", "set_item")
-				but_tier1.connect("pressed", $"%codex_weapon_description", "set_item", [w, 0])
+				if but_tier1.is_connected("pressed", Callable($"%codex_weapon_description", "set_item")):
+					but_tier1.disconnect("pressed", Callable($"%codex_weapon_description", "set_item"))
+				but_tier1.connect("pressed", Callable($"%codex_weapon_description", "set_item").bind(w, 0))
 				_button_weapon_tier_visible(but_tier1)
 			2:
-				if but_tier2.is_connected("pressed", $"%codex_weapon_description", "set_item"):
-					but_tier2.disconnect("pressed", $"%codex_weapon_description", "set_item")
-				but_tier2.connect("pressed", $"%codex_weapon_description", "set_item", [w, 0])
+				if but_tier2.is_connected("pressed", Callable($"%codex_weapon_description", "set_item")):
+					but_tier2.disconnect("pressed", Callable($"%codex_weapon_description", "set_item"))
+				but_tier2.connect("pressed", Callable($"%codex_weapon_description", "set_item").bind(w, 0))
 				_button_weapon_tier_visible(but_tier2)
 			3:
-				if but_tier3.is_connected("pressed", $"%codex_weapon_description", "set_item"):
-					but_tier3.disconnect("pressed", $"%codex_weapon_description", "set_item")
-				but_tier3.connect("pressed", $"%codex_weapon_description", "set_item", [w, 0])
+				if but_tier3.is_connected("pressed", Callable($"%codex_weapon_description", "set_item")):
+					but_tier3.disconnect("pressed", Callable($"%codex_weapon_description", "set_item"))
+				but_tier3.connect("pressed", Callable($"%codex_weapon_description", "set_item").bind(w, 0))
 				_button_weapon_tier_visible(but_tier3)
 
 
@@ -221,13 +221,13 @@ func _input(event):
 	if visible:
 		if event.is_action_released("ui_cancel"):
 			_on_BackButton_pressed()
-			get_tree().set_input_as_handled()
+			get_viewport().set_input_as_handled()
 
 
 func _on_BackButton_pressed() -> void :
 	emit_signal("codex_closed")
 	animation_tree.set("parameters/conditions/finish", true)
-	yield(get_tree().create_timer(0.4), "timeout")
+	await get_tree().create_timer(0.4).timeout
 	_focus_control(focus_before_created)
 	hide()
 	if RunData.is_coop_run:

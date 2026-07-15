@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/explosion_small_no_tail_03.wav-9c2c7d6dd3ce407edda4a10e0830a8a0.sample"
+type="AudioStreamWAV"
+uid="uid://c4io68uhhpxmw"
+path="res://.godot/imported/explosion_small_no_tail_03.wav-9c2c7d6dd3ce407edda4a10e0830a8a0.sample"
 
 [deps]
 
 source_file="res://projectiles/rocket/explosion_small_no_tail_03.wav"
-dest_files=[ "res://.import/explosion_small_no_tail_03.wav-9c2c7d6dd3ce407edda4a10e0830a8a0.sample" ]
+dest_files=["res://.godot/imported/explosion_small_no_tail_03.wav-9c2c7d6dd3ce407edda4a10e0830a8a0.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

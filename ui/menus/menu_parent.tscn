@@ -8,7 +8,7 @@ extends Control
 
 
 func _on_BackButton_pressed() -> void:
-	get_tree().change_scene(\"res://ui/menus/title_screen.tscn\")
+	get_tree().change_scene_to_file(\"res://ui/menus/title_screen.tscn\")
 "
 
 [node name="MenuParent" type="Control"]
@@ -37,12 +37,12 @@ __meta__ = {
 }
 
 [node name="Buttons" type="VBoxContainer" parent="Margins"]
-margin_left = 660.0
-margin_right = 1260.0
-margin_bottom = 1080.0
-rect_min_size = Vector2( 600, 0 )
+offset_left = 660.0
+offset_right = 1260.0
+offset_bottom = 1080.0
+custom_minimum_size = Vector2( 600, 0 )
 size_flags_horizontal = 4
-custom_constants/separation = 25
+theme_override_constants/separation = 25
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false

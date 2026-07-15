@@ -7,11 +7,11 @@ signal target_player()
 var main: Main = null
 
 func init(parent: Node) -> Node:
-	.init(parent)
+	super.init(parent)
 
 	if main == null:
 		main = parent._entity_spawner_ref._main
-		main.connect("gold_spawned", self, "on_gold_spawned")
+		main.connect("gold_spawned", Callable(self, "on_gold_spawned"))
 
 	return self
 
@@ -20,7 +20,7 @@ func update_target():
 	var active_golds = main._active_golds
 
 	if _parent.current_target != null:
-		_parent.current_target.disconnect("picked_up", self, "on_gold_picked_up_by_player")
+		_parent.current_target.disconnect("picked_up", Callable(self, "on_gold_picked_up_by_player"))
 
 	_parent.current_target = null
 	for gold in active_golds:
@@ -33,14 +33,14 @@ func update_target():
 
 	
 	if _parent.current_target != null:
-		var _error = _parent.current_target.connect("picked_up", self, "on_gold_picked_up_by_player")
+		var _error = _parent.current_target.connect("picked_up", Callable(self, "on_gold_picked_up_by_player"))
 		emit_signal("target_found", self)
 	else:
 		_parent.current_target = _parent.players_ref[_parent.player_index]
 		emit_signal("target_player", self)
 
 func on_gold_picked_up_by_player(gold: Node, player_index: int) -> void :
-	gold.disconnect("picked_up", self, "on_gold_picked_up_by_player")
+	gold.disconnect("picked_up", Callable(self, "on_gold_picked_up_by_player"))
 	_parent.current_target = null
 
 func on_gold_spawned():

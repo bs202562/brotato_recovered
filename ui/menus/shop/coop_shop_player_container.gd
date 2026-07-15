@@ -2,7 +2,7 @@ class_name CoopShopPlayerContainer
 extends Container
 
 
-export (int) var player_index: = 0 setget _set_player_index
+@export var player_index := 0: set = _set_player_index
 func _set_player_index(v: int) -> void :
 	player_index = v
 	if not is_inside_tree() or player_index >= RunData.get_player_count():
@@ -16,30 +16,30 @@ func _set_player_index(v: int) -> void :
 	item_popup.player_index = player_index
 	var player_color = CoopService.get_player_color(player_index)
 	gold_icon.modulate = player_color
-	gold_label.add_color_override("font_color", player_color)
+	gold_label.add_theme_color_override("font_color", player_color)
 	reroll_button.gold_icon.modulate = player_color
 	_endless_button.visible = player_index == 0 and RunData.should_show_endless_button()
 	_update_stylebox()
 
 
-onready var margin_container = $MarginContainer
-onready var carousel = $"%Carousel"
-onready var gold_icon = $"%GoldIcon"
-onready var gold_label = $"%GoldLabel"
-onready var reroll_button = $"%RerollButton"
-onready var checkmark_group = $"%CheckmarkGroup"
-onready var go_button = $"%GoButton"
-onready var item_popup = $"%ItemPopup"
-onready var player_gear_container = $"%PlayerGearContainer"
-onready var shop_items_container: ShopItemsContainer = $"%ShopItemsContainer"
-onready var elite_info_panel: EliteInfoPanel = $"%EliteInfoPanel"
-onready var elite_container: Container = $"%EliteContainer"
-onready var primary_stats_container: StatsContainer = $"%PrimaryStatsContainer"
-onready var secondary_stats_container: StatsContainer = $"%SecondaryStatsContainer"
+@onready var margin_container = $MarginContainer
+@onready var carousel = $"%Carousel"
+@onready var gold_icon = $"%GoldIcon"
+@onready var gold_label = $"%GoldLabel"
+@onready var reroll_button = $"%RerollButton"
+@onready var checkmark_group = $"%CheckmarkGroup"
+@onready var go_button = $"%GoButton"
+@onready var item_popup = $"%ItemPopup"
+@onready var player_gear_container = $"%PlayerGearContainer"
+@onready var shop_items_container: ShopItemsContainer = $"%ShopItemsContainer"
+@onready var elite_info_panel: EliteInfoPanel = $"%EliteInfoPanel"
+@onready var elite_container: Container = $"%EliteContainer"
+@onready var primary_stats_container: StatsContainer = $"%PrimaryStatsContainer"
+@onready var secondary_stats_container: StatsContainer = $"%SecondaryStatsContainer"
 
-onready var _popup_dim_screen = $"%PopupDimScreen"
-onready var _endless_button = $"%EndlessButton"
-onready var _toggle_popup_hint: Container = $"%TogglePopupHint"
+@onready var _popup_dim_screen = $"%PopupDimScreen"
+@onready var _endless_button = $"%EndlessButton"
+@onready var _toggle_popup_hint: Container = $"%TogglePopupHint"
 
 
 var _resume_shop_control_focus = null
@@ -50,11 +50,11 @@ func _ready():
 	_set_player_index(player_index)
 	
 	if RunData.get_player_count() == 2:
-		margin_container.add_constant_override("margin_left", 75)
-		margin_container.add_constant_override("margin_right", 75)
+		margin_container.add_theme_constant_override("offset_left", 75)
+		margin_container.add_theme_constant_override("offset_right", 75)
 	item_popup.set_synergies_visible(_should_show_synergies())
 	_set_focus_neighbours()
-	item_popup.connect("popup_toggled", self, "on_popup_toggled")
+	item_popup.connect("popup_toggled", Callable(self, "on_popup_toggled"))
 
 
 func update_stats() -> void :
@@ -102,9 +102,9 @@ func _should_show_synergies() -> bool:
 
 
 func _update_stylebox() -> void :
-	var stylebox = get_stylebox("panel").duplicate()
+	var stylebox = get_theme_stylebox("panel").duplicate()
 	CoopService.change_stylebox_for_player(stylebox, player_index)
-	add_stylebox_override("panel", stylebox)
+	add_theme_stylebox_override("panel", stylebox)
 
 
 func _on_Carousel_index_changed(index: int) -> void :
@@ -119,7 +119,7 @@ func _on_Carousel_index_changed(index: int) -> void :
 
 func _set_focus_after_carousel_index_change(index: int) -> void :
 	var focused_control = Utils.get_player_focused_control(self, player_index)
-	if focused_control and carousel.get_content_element(0).is_a_parent_of(focused_control):
+	if focused_control and carousel.get_content_element(0).is_ancestor_of(focused_control):
 		_resume_shop_control_focus = focused_control
 	if index == 0:
 		
@@ -137,24 +137,24 @@ func _on_EndlessButton_toggled(button_pressed: bool) -> void :
 
 
 func _set_focus_neighbours() -> void :
-	for margin in [MARGIN_TOP, MARGIN_TOP, MARGIN_LEFT, MARGIN_RIGHT]:
-		carousel.arrow_left.set_focus_neighbour(margin, NodePath(""))
-		carousel.arrow_right.set_focus_neighbour(margin, NodePath(""))
-		go_button.set_focus_neighbour(margin, NodePath(""))
+	for margin in [SIDE_TOP, SIDE_TOP, SIDE_LEFT, SIDE_RIGHT]:
+		carousel.arrow_left.set_focus_neighbor(margin, NodePath(""))
+		carousel.arrow_right.set_focus_neighbor(margin, NodePath(""))
+		go_button.set_focus_neighbor(margin, NodePath(""))
 
 	if carousel.index == 0:
-		go_button.set_focus_neighbour(MARGIN_BOTTOM, NodePath(""))
-		carousel.arrow_left.set_focus_neighbour(MARGIN_TOP, NodePath(""))
-		carousel.arrow_right.set_focus_neighbour(MARGIN_TOP, NodePath(""))
+		go_button.set_focus_neighbor(SIDE_BOTTOM, NodePath(""))
+		carousel.arrow_left.set_focus_neighbor(SIDE_TOP, NodePath(""))
+		carousel.arrow_right.set_focus_neighbor(SIDE_TOP, NodePath(""))
 
 	elif carousel.index == 1:
 		if carousel.are_trigger_buttons_active():
-			primary_stats_container.first_primary_stat.focus_neighbour_top = primary_stats_container.first_primary_stat.get_path_to(go_button)
-			go_button.focus_neighbour_bottom = go_button.get_path_to(primary_stats_container.first_primary_stat)
+			primary_stats_container.first_primary_stat.focus_neighbor_top = primary_stats_container.first_primary_stat.get_path_to(go_button)
+			go_button.focus_neighbor_bottom = go_button.get_path_to(primary_stats_container.first_primary_stat)
 		else:
-			carousel.arrow_left.focus_neighbour_top = carousel.arrow_left.get_path_to(go_button)
-			carousel.arrow_right.focus_neighbour_top = carousel.arrow_right.get_path_to(go_button)
-			go_button.focus_neighbour_bottom = go_button.get_path_to(carousel.arrow_left)
+			carousel.arrow_left.focus_neighbor_top = carousel.arrow_left.get_path_to(go_button)
+			carousel.arrow_right.focus_neighbor_top = carousel.arrow_right.get_path_to(go_button)
+			go_button.focus_neighbor_bottom = go_button.get_path_to(carousel.arrow_left)
 
 
 func on_popup_toggled(hide_popup, _player_index) -> void :

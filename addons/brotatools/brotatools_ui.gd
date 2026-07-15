@@ -1,4 +1,4 @@
-tool
+@tool
 class_name BrotatoolsUI
 extends Control
 
@@ -6,27 +6,27 @@ const ICON_SIZE: int = 96
 const APPEARANCE_SIZE: int = 150
 const WEAPON_RESIZE_FACTOR: float = 3.4
 
-export var item_dir_path: String = "res://items/all/"
-export var set_dir_path: String = "res://items/sets/"
-export var character_dir_path: String = "res://items/characters/"
-export var melee_weapon_dir_path: String = "res://weapons/melee/"
-export var ranged_weapon_dir_path: String = "res://weapons/ranged/"
+@export var item_dir_path: String = "res://items/all/"
+@export var set_dir_path: String = "res://items/sets/"
+@export var character_dir_path: String = "res://items/characters/"
+@export var melee_weapon_dir_path: String = "res://weapons/melee/"
+@export var ranged_weapon_dir_path: String = "res://weapons/ranged/"
 
-export var based_on_melee_weapon_dir_path: String = "res://weapons/melee/"
-export var based_on_ranged_weapon_dir_path: String = "res://weapons/ranged/"
+@export var based_on_melee_weapon_dir_path: String = "res://weapons/melee/"
+@export var based_on_ranged_weapon_dir_path: String = "res://weapons/ranged/"
 
 
-export var sprites_dir_path: String = OS.get_system_dir(OS.SYSTEM_DIR_DESKTOP) + "/assets/art/brotato/brotato_presskit"
+@export var sprites_dir_path: String = OS.get_system_dir(OS.SYSTEM_DIR_DESKTOP) + "/assets/art/brotato/brotato_presskit"
 
-onready var content_name_input: LineEdit = $"%ContentName"
-onready var based_on_input: LineEdit = $"%BasedOn"
-onready var content_type_button: OptionButton = $"%ContentTypeButton"
-onready var generate_button: Button = $"%GenerateButton"
-onready var link_button: Button = $"%LinkButton"
+@onready var content_name_input: LineEdit = $"%ContentName"
+@onready var based_on_input: LineEdit = $"%BasedOn"
+@onready var content_type_button: OptionButton = $"%ContentTypeButton"
+@onready var generate_button: Button = $"%GenerateButton"
+@onready var link_button: Button = $"%LinkButton"
 
-onready var console: TextEdit = $"%Console"
-onready var clear_console_button: Button = $"%ClearConsoleButton"
-onready var timer: Timer = $Timer
+@onready var console: TextEdit = $"%Console"
+@onready var clear_console_button: Button = $"%ClearConsoleButton"
+@onready var timer: Timer = $Timer
 
 var brotatools_utils: BrotatoolsUtils
 
@@ -45,8 +45,8 @@ func _ready():
 	content_type_button.select(0)
 	_on_ContentTypeButton_item_selected(0)
 
-	generate_button.connect("pressed", self, "generate")
-	link_button.connect("pressed", self, "link")
+	generate_button.connect("pressed", Callable(self, "generate"))
+	link_button.connect("pressed", Callable(self, "link"))
 
 
 func generate() -> void :
@@ -56,8 +56,7 @@ func generate() -> void :
 	var dir_path: String = ""
 	var based_on_dir_path: String = ""
 	var sprite_cat: String = ""
-	var dir = Directory.new()
-	var file = File.new()
+	var dir = DirAccess.open("res://")
 
 	brotatools_utils.print_console("Generating %s %s..." % [type, content_name])
 
@@ -112,7 +111,7 @@ func generate() -> void :
 	brotatools_utils.print_console("Generation done. Don't forget to link the resources!")
 
 
-func generate_item(type: String, item_class, dir: Directory, path: String, id: String, content_name: String, spr_dir_path: String, new_data_path: String, nb_effects: int = 3) -> void :
+func generate_item(type: String, item_class, dir: DirAccess, path: String, id: String, content_name: String, spr_dir_path: String, new_data_path: String, nb_effects: int = 3) -> void :
 	dir.make_dir(path + "/appearances")
 	dir.make_dir(path + "/effects")
 
@@ -148,7 +147,7 @@ func generate_item(type: String, item_class, dir: Directory, path: String, id: S
 	_save_resource(data, new_data_path)
 
 
-func generate_weapon(type: String, dir: Directory, path: String, based_on_path: String, id: String, content_name: String, spr_dir_path: String, category_dir_path: String) -> void :
+func generate_weapon(type: String, dir: DirAccess, path: String, based_on_path: String, id: String, content_name: String, spr_dir_path: String, category_dir_path: String) -> void :
 
 	var sprites: Dictionary = brotatools_utils.find_sprites(content_name, spr_dir_path, true)
 
@@ -177,8 +176,8 @@ func generate_weapon(type: String, dir: Directory, path: String, based_on_path: 
 
 	var based_on_stats_dict = {}
 
-	dir.open(based_on_dir)
-	dir.list_dir_begin(true, true)
+	dir = DirAccess.open(based_on_dir)
+	dir.list_dir_begin()
 	var file_name = dir.get_next()
 
 	while file_name:
@@ -234,7 +233,7 @@ func generate_weapon(type: String, dir: Directory, path: String, based_on_path: 
 
 
 func link() -> void :
-	var dir = Directory.new()
+	var dir = DirAccess.open("res://")
 	var type: String = content_types[content_type_button.selected]
 	var content_name: String = content_name_input.text
 	var path: String = ""
@@ -251,12 +250,12 @@ func link() -> void :
 		link_weapon(dir, ranged_weapon_dir_path + "/" + content_name, content_name)
 	elif type == "set":
 		path = set_dir_path + "/" + content_name
-		var data = load(path.plus_file(content_name + "_set_data.tres"))
+		var data = load(path.path_join(content_name + "_set_data.tres"))
 		var effects = [[], [], [], [], []]
 
 		for i in [2, 3, 4, 5, 6]:
-			dir.open(path + "/" + str(i))
-			dir.list_dir_begin(true, true)
+			dir = DirAccess.open(path + "/" + str(i))
+			dir.list_dir_begin()
 			var file_name = dir.get_next()
 
 			while file_name:
@@ -273,26 +272,26 @@ func link() -> void :
 			dir.list_dir_end()
 
 		data.set_bonuses = effects
-		_save_resource(data, path.plus_file(content_name + "_set_data.tres"))
+		_save_resource(data, path.path_join(content_name + "_set_data.tres"))
 
 	brotatools_utils.refresh_filesystem()
 	brotatools_utils.print_console("Linking done. Don't forget to add it to ItemService!")
 
 
-func link_item(dir: Directory, path: String, content_name: String) -> void :
-	var data = load(path.plus_file(content_name + "_data.tres"))
-	var icon = load(path.plus_file(content_name + "_icon.png"))
+func link_item(dir: DirAccess, path: String, content_name: String) -> void :
+	var data = load(path.path_join(content_name + "_data.tres"))
+	var icon = load(path.path_join(content_name + "_icon.png"))
 
 	data.icon = icon
 
-	dir.open(path + "/appearances")
-	dir.list_dir_begin(true, true)
+	dir = DirAccess.open(path + "/appearances")
+	dir.list_dir_begin()
 	var file_name = dir.get_next()
 	var appearances = []
 
 	while file_name:
 		if ".tres" in file_name:
-			var appearance_data = load(path + "/appearances/".plus_file(file_name))
+			var appearance_data = load(path + "/appearances/".path_join(file_name))
 
 			if appearance_data.depth == 1 and appearance_data.position == ItemAppearanceData.Position.OTHER:
 				if "_0" in file_name:
@@ -302,22 +301,22 @@ func link_item(dir: Directory, path: String, content_name: String) -> void :
 					appearance_data.position = ItemAppearanceData.Position.MOUTH
 					appearance_data.depth = 250.0
 
-			appearance_data.sprite = load(path + "/appearances/".plus_file(file_name.replace(".tres", ".png")))
+			appearance_data.sprite = load(path + "/appearances/".path_join(file_name.replace(".tres", ".png")))
 			appearances.push_back(appearance_data)
-			_save_resource(appearance_data, path + "/appearances/".plus_file(file_name))
+			_save_resource(appearance_data, path + "/appearances/".path_join(file_name))
 
 		file_name = dir.get_next()
 
 	dir.list_dir_end()
 
-	dir.open(path + "/effects")
-	dir.list_dir_begin(true, true)
+	dir = DirAccess.open(path + "/effects")
+	dir.list_dir_begin()
 
 	var effect_file_name = dir.get_next()
 	var effects = []
 
 	while effect_file_name:
-		var effect = load(path + "/effects/".plus_file(effect_file_name))
+		var effect = load(path + "/effects/".path_join(effect_file_name))
 		effects.push_back(effect)
 		effect_file_name = dir.get_next()
 
@@ -325,13 +324,13 @@ func link_item(dir: Directory, path: String, content_name: String) -> void :
 
 	data.item_appearances = appearances
 	data.effects = effects
-	_save_resource(data, path.plus_file(content_name + "_data.tres"))
+	_save_resource(data, path.path_join(content_name + "_data.tres"))
 
 
-func link_weapon(dir: Directory, path: String, content_name: String) -> void :
+func link_weapon(dir: DirAccess, path: String, content_name: String) -> void :
 
-	dir.open(path)
-	dir.list_dir_begin(true, true)
+	dir = DirAccess.open(path)
+	dir.list_dir_begin()
 	var file_name = dir.get_next()
 
 	var weapon_scene = load(path + "/" + content_name + ".tscn")
@@ -371,7 +370,7 @@ func link_weapon(dir: Directory, path: String, content_name: String) -> void :
 
 func _save_resource(resource: Resource, path: String) -> void :
 	brotatools_utils.print_console("Saving resource: %s" % path)
-	ResourceSaver.save(path, resource)
+	ResourceSaver.save(resource, path)
 
 
 func _on_ContentTypeButton_item_selected(index: int):

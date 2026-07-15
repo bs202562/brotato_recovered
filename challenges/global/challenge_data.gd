@@ -3,18 +3,18 @@ extends ItemParentData
 
 enum RewardType { ITEM, WEAPON, ZONE, STARTING_WEAPON, CONSUMABLE, UPGRADE, CHARACTER, DIFFICULTY, SYSTEM }
 
-export(String) var description = ""
-export(RewardType) var reward_type = RewardType.ITEM
-export(Resource) var reward
-export(int) var number = 0
-export(String) var stat = ""
-export(Array) var additional_args
+@export var description: String = ""
+@export var reward_type: int = RewardType.ITEM # 4.x 移植: 枚举与全局类同名，统一 int
+@export var reward: Resource
+@export var number: int = 0
+@export var stat: String = ""
+@export var additional_args: Array
 
 var stat_hash: int = Keys.empty_hash
 
 
 func _generate_hashes() -> void:
-	._generate_hashes()
+	super._generate_hashes()
 	stat_hash = Keys.generate_hash(stat)
 
 

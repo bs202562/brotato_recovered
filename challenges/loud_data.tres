@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://items/characters/loud/loud_icon.png" type="Texture" id=1]
+[ext_resource path="res://items/characters/loud/loud_icon.png" type="Texture2D" id=1]
 [ext_resource path="res://items/all/rip_and_tear/rip_and_tear_data.tres" type="Resource" id=2]
 [ext_resource path="res://challenges/global/challenge_data.gd" type="Script" id=3]
 

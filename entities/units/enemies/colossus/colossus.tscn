@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://projectiles/pillar_enemy/pillar_projectile.tscn" type="PackedScene" id=1]
-[ext_resource path="res://entities/units/enemies/colossus/colossus.png" type="Texture" id=2]
+[ext_resource path="res://entities/units/enemies/colossus/colossus.png" type="Texture2D" id=2]
 [ext_resource path="res://entities/units/enemies/colossus/colossus_stats.tres" type="Resource" id=3]
 [ext_resource path="res://entities/units/enemies/boss/boss.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/units/enemies/attack_behaviors/enemy_charge_prep_animation.tres" type="Animation" id=5]
@@ -25,7 +25,7 @@ can_be_boosted = false
 stats = ExtResource( 3 )
 enemy_id = "colossus"
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -52 )
 texture = ExtResource( 2 )
 
@@ -110,8 +110,8 @@ rotate_projectile = false
 delete_projectile_on_death = true
 
 [node name="LifeBar" parent="." index="12"]
-margin_top = -160.0
-margin_bottom = -144.0
+offset_top = -160.0
+offset_bottom = -144.0
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]

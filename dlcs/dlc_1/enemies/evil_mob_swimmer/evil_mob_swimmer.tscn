@@ -5,9 +5,9 @@
 [ext_resource path="res://entities/units/player/item_attract_area.gd" type="Script" id=3]
 [ext_resource path="res://entities/units/enemies/evil_mob/evil_mob.tres" type="Resource" id=4]
 [ext_resource path="res://entities/units/enemies/evil_mob/evil_mob.gd" type="Script" id=5]
-[ext_resource path="res://dlcs/dlc_1/enemies/evil_mob_swimmer/evil_mob_swimmer_1.png" type="Texture" id=6]
-[ext_resource path="res://dlcs/dlc_1/enemies/evil_mob_swimmer/evil_mob_swimmer_2.png" type="Texture" id=7]
-[ext_resource path="res://dlcs/dlc_1/enemies/evil_mob_swimmer/evil_mob_swimmer_0.png" type="Texture" id=8]
+[ext_resource path="res://dlcs/dlc_1/enemies/evil_mob_swimmer/evil_mob_swimmer_1.png" type="Texture2D" id=6]
+[ext_resource path="res://dlcs/dlc_1/enemies/evil_mob_swimmer/evil_mob_swimmer_2.png" type="Texture2D" id=7]
+[ext_resource path="res://dlcs/dlc_1/enemies/evil_mob_swimmer/evil_mob_swimmer_0.png" type="Texture2D" id=8]
 [ext_resource path="res://ui/hud/ui_progress_bar.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CircleShape2D" id=2]
@@ -31,7 +31,7 @@ textures_evolution = [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ) ]
 quantity_to_evolve = [ 0, 10, 20 ]
 decrease_speed_by_evolve = 125
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 texture = ExtResource( 8 )
 offset = Vector2( 2.63, -12.266 )
 region_rect = Rect2( 0, 0, 250, 250 )
@@ -50,10 +50,10 @@ script = ExtResource( 2 )
 [node name="LifeBar" parent="." index="11" instance=ExtResource( 9 )]
 unique_name_in_owner = true
 visible = false
-margin_left = -32.0
-margin_top = -100.0
-margin_right = 32.0
-margin_bottom = -84.0
+offset_left = -32.0
+offset_top = -100.0
+offset_right = 32.0
+offset_bottom = -84.0
 nine_patch_stretch = true
 progress_color = Color( 0.721569, 0, 0, 1 )
 

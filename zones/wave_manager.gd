@@ -5,8 +5,8 @@ signal group_spawn_timing_reached(group_data)
 
 enum {DATA, REPEATING, REPEATING_INTERVAL, REDUCE_REPEATING_INTERVAL, MIN_REPEATING_INTERVAL, NEXT_REPEAT}
 
-export (Array, Resource) var debug_groups
-export (Resource) var elite_group
+@export var debug_groups: Array = [] # (Array, Resource)
+@export var elite_group: Resource
 
 var wave_timer: Timer
 var current_zone_data: Resource
@@ -52,7 +52,7 @@ func init(p_wave_timer: Timer, zone_data: ZoneData, wave_data: Resource) -> void
 				for i in effects[Keys.extra_loot_aliens_at_wave_hash][RunData.current_wave]:
 					for group in zone_data.loot_alien_groups:
 						var new_group = group.duplicate()
-						new_group.spawn_timing = rand_range(5, wave_timer.time_left - 10)
+						new_group.spawn_timing = randf_range(5, wave_timer.time_left - 10)
 						current_wave_data.groups_data.push_back(new_group)
 
 		var extra_loot_alien_groups = effects[Keys.extra_loot_aliens_next_wave_hash] + effects[Keys.extra_loot_aliens_hash]
@@ -65,7 +65,7 @@ func init(p_wave_timer: Timer, zone_data: ZoneData, wave_data: Resource) -> void
 		for i in extra_loot_alien_groups:
 			for group in zone_data.loot_alien_groups:
 				var new_group = group.duplicate()
-				new_group.spawn_timing = rand_range(5, wave_timer.time_left - 10)
+				new_group.spawn_timing = randf_range(5, wave_timer.time_left - 10)
 				current_wave_data.groups_data.push_back(new_group)
 		effects[Keys.extra_loot_aliens_next_wave_hash] = 0
 

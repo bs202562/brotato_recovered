@@ -23,8 +23,8 @@ func _ready() -> void :
 	_http_request = HTTPRequest.new()
 	_http_request.timeout = 20
 	add_child(_http_request)
-	var _http_err = _http_request.connect("request_completed", self, "_on_announcements_fetched")
-	var _lang_err = ProgressData.connect("language_changed", self, "_on_language_changed")
+	var _http_err = _http_request.connect("request_completed", Callable(self, "_on_announcements_fetched"))
+	var _lang_err = ProgressData.connect("language_changed", Callable(self, "_on_language_changed"))
 
 	_query_params = _query_params.replace("{0}", _status_to_fetch)
 	_query_params = _query_params.replace("{1}", Platform.get_type_as_string().to_lower())
@@ -34,12 +34,19 @@ func _ready() -> void :
 
 
 func _on_announcements_fetched(result, _response_code, _headers, body) -> void :
-	_http_request.disconnect("request_completed", self, "_on_announcements_fetched")
+	_http_request.disconnect("request_completed", Callable(self, "_on_announcements_fetched"))
 	if result != HTTPRequest.RESULT_SUCCESS:
 		return
 
-	var data = parse_json(body.get_string_from_utf8()).data
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(body.get_string_from_utf8())
+	var data = test_json_conv.get_data()
+	# 4.x 移植: 服务器响应异常(非公告数组)时直接跳过，避免对字符串取键崩溃
+	if typeof(data) != TYPE_ARRAY:
+		return
 	for announcement in data:
+		if typeof(announcement) != TYPE_DICTIONARY:
+			continue
 		if not announcement["id"] in ProgressData.read_announcements:
 			var current_utc_unix: = Time.get_unix_time_from_system()
 			var date_start_unix: = Time.get_unix_time_from_datetime_string(announcement["date_start"])
@@ -54,17 +61,17 @@ func _on_announcements_fetched(result, _response_code, _headers, body) -> void :
 
 
 func add_translations(announcement: Dictionary) -> void :
-	for translation in announcement.translations:
+	for position in announcement.translations:
 		var translation_res = Translation.new()
-		translation_res.locale = translation["language_code"]
-		if translation.get("header"):
-			translation_res.add_message("ANNOUNCEMENT_HEADER", translation["header"])
-		if translation.get("content"):
-			translation_res.add_message("ANNOUNCEMENT_CONTENT", translation["content"])
-		if translation.get("link"):
-			translation_res.add_message("ANNOUNCEMENT_LINK", translation["link"])
-		if translation.get("image"):
-			translation_res.add_message("ANNOUNCEMENT_IMAGE_ID", translation["image"])
+		translation_res.locale = position["language_code"]
+		if position.get("header"):
+			translation_res.add_message("ANNOUNCEMENT_HEADER", position["header"])
+		if position.get("content"):
+			translation_res.add_message("ANNOUNCEMENT_CONTENT", position["content"])
+		if position.get("link"):
+			translation_res.add_message("ANNOUNCEMENT_LINK", position["link"])
+		if position.get("image"):
+			translation_res.add_message("ANNOUNCEMENT_IMAGE_ID", position["image"])
 		TranslationServer.add_translation(translation_res)
 
 	get_tree().notification(NOTIFICATION_TRANSLATION_CHANGED)
@@ -79,7 +86,7 @@ func _download_image() -> void :
 		emit_signal("announcement_ready")
 		return
 
-	var _err = _http_request.connect("request_completed", self, "_on_image_downloaded")
+	var _err = _http_request.connect("request_completed", Callable(self, "_on_image_downloaded"))
 	_image_to_download = tr("ANNOUNCEMENT_IMAGE_ID")
 	var error = _http_request.request(_asset_url + _image_to_download)
 	if error != OK:
@@ -87,7 +94,7 @@ func _download_image() -> void :
 
 
 func _on_image_downloaded(result, _response_code, _headers, body) -> void :
-	_http_request.disconnect("request_completed", self, "_on_image_downloaded")
+	_http_request.disconnect("request_completed", Callable(self, "_on_image_downloaded"))
 	if result != HTTPRequest.RESULT_SUCCESS:
 		return
 

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/explosion_small_short_01.wav-a8d808257bf857a9c2aaed8078f16c06.sample"
+type="AudioStreamWAV"
+uid="uid://dr2lc3cxu5mxt"
+path="res://.godot/imported/explosion_small_short_01.wav-a8d808257bf857a9c2aaed8078f16c06.sample"
 
 [deps]
 
 source_file="res://projectiles/rocket/explosion_small_short_01.wav"
-dest_files=[ "res://.import/explosion_small_short_01.wav-a8d808257bf857a9c2aaed8078f16c06.sample" ]
+dest_files=["res://.godot/imported/explosion_small_short_01.wav-a8d808257bf857a9c2aaed8078f16c06.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

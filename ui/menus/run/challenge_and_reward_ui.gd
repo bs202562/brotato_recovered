@@ -1,10 +1,10 @@
 class_name ChallengeAndRewardUI
 extends VBoxContainer
 
-onready var _chal_ui = $ProgressChallengeUI
-onready var _item_panel_ui = $VBoxContainer / ItemPanelUI
-onready var _zone_panel_ui = $VBoxContainer / ZonePanel
-onready var _reward_label = $VBoxContainer / Label
+@onready var _chal_ui = $ProgressChallengeUI
+@onready var _item_panel_ui = $VBoxContainer / ItemPanelUI
+@onready var _zone_panel_ui = $VBoxContainer / ZonePanel
+@onready var _reward_label = $VBoxContainer / Label
 
 
 func _ready() -> void :
@@ -14,14 +14,14 @@ func _ready() -> void :
 	_item_panel_ui.hide()
 
 
-func set_challenge(challenge: ChallengeData, locked_icon: Texture = null) -> void :
+func set_challenge(challenge: ChallengeData, locked_icon: Texture2D = null) -> void :
 	modulate.a = 1
 	var locked = true
 
 	if ProgressData.challenges_completed.has(challenge.my_id_hash):
 		locked = false
 		_reward_label.show()
-		if challenge.reward_type == RewardType.ZONE:
+		if int(challenge.reward_type) == int(RewardType.ZONE):
 			_zone_panel_ui.show()
 			_zone_panel_ui.set_data(challenge.reward)
 			_item_panel_ui.hide()

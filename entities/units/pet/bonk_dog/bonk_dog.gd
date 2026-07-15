@@ -1,13 +1,12 @@
 class_name BonkDog
 extends Pet
 
-export (float) var charge_duration = 0.5
-export (float) var min_squared_distance_for_jump_attack = 250
-export (Array, Resource) var sound_attack
+@export var charge_duration: float = 0.5
+@export var min_squared_distance_for_jump_attack: float = 250
+@export var sound_attack: Array = [] # (Array, Resource)
 
-onready var _hitbox: = $Hitbox as Hitbox
-onready var _tween: = $Tween as Tween
-onready var _audio_stream_player: = $"%AudioStreamPlayer2D" as AudioStreamPlayer2D
+@onready var _hitbox: = $Hitbox as Hitbox
+@onready var _audio_stream_player: = $"%AudioStreamPlayer2D" as AudioStreamPlayer2D
 var _current_cooldown: float = 0
 var _is_shooting = false
 var _is_jumping = false
@@ -22,12 +21,12 @@ var _current_ultime_cooldown: float = 0
 
 
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void :
-	.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
+	super.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
 
 	_hitbox.from = self
 
 func update_data(effect: PetEffect) -> void :
-	.update_data(effect)
+	super.update_data(effect)
 	_explosion_effect = effect.explosion_effect
 	_base_weapon_stats = effect.weapon_stats
 	_base_explosion_weapon_stats = effect.explosion_effect.stats as WeaponStats
@@ -35,7 +34,7 @@ func update_data(effect: PetEffect) -> void :
 	reload_data()
 
 	_current_cooldown = _current_weapon_stats.cooldown
-	_current_ultime_cooldown = rand_range(effect.explosion_effect.stats.cooldown / 4, effect.explosion_effect.stats.cooldown)
+	_current_ultime_cooldown = randf_range(effect.explosion_effect.stats.cooldown / 4, effect.explosion_effect.stats.cooldown)
 
 func should_data_be_reload() -> bool:
 	return true
@@ -106,6 +105,8 @@ func _physics_process(delta: float) -> void :
 		_current_cooldown = _current_weapon_stats.cooldown
 		_is_shooting = false
 
+	super._physics_process(delta) # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_physics_process 为子类优先）
+
 func shoot() -> void :
 	_is_shooting = true
 	_hitbox.enable()
@@ -135,11 +136,11 @@ func jump() -> void :
 	_animation_player.play("attack")
 	SoundService.play_sound2d_with_limit("bonk_dog_attack", sound_attack.pick_random(), 1, global_position)
 
-	
-	_tween.interpolate_property(self, "global_position", global_position, target_enemy.global_position, charge_duration, 5)
-	_tween.interpolate_callback(self, charge_duration, "jump_landing")
-	_tween.start()
-	
+
+	var _tween: = create_tween()
+	_tween.tween_property(self, "global_position", target_enemy.global_position, charge_duration).from(global_position).set_trans(Tween.TRANS_EXPO)
+	_tween.tween_callback(Callable(self, "jump_landing"))
+
 
 func jump_landing() -> void :
 	_is_jumping = false
@@ -151,7 +152,7 @@ func jump_landing() -> void :
 
 
 func update_animation(movement: Vector2) -> void :
-	.update_animation(movement)
+	super.update_animation(movement)
 	if movement.length() > 0.1:
 		if not (_animation_player.current_animation == "move" or _animation_player.current_animation == "attack" or _animation_player.current_animation == "pet_the_dog"):
 			_animation_player.play("move")
@@ -168,7 +169,7 @@ func _on_Hitbox_hit_something(thing_hit, damage_dealt):
 
 func _can_pet():
 	if _check_can_be_pet():
-		yield(get_tree().create_timer(0.1), "timeout")
+		await get_tree().create_timer(0.1).timeout
 		_animation_player.play("pet_the_dog")
-		yield(get_tree().create_timer(2.5), "timeout")
+		await get_tree().create_timer(2.5).timeout
 		_animation_player.play("idle_dog")

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/bot_o_mine_pet.wav-b38f7d8d77c066c672c1931530f09e56.sample"
+type="AudioStreamWAV"
+uid="uid://81iepbc48dcn"
+path="res://.godot/imported/bot_o_mine_pet.wav-b38f7d8d77c066c672c1931530f09e56.sample"
 
 [deps]
 
 source_file="res://entities/units/pet/bot_o_mine/bot_o_mine_pet.wav"
-dest_files=[ "res://.import/bot_o_mine_pet.wav-b38f7d8d77c066c672c1931530f09e56.sample" ]
+dest_files=["res://.godot/imported/bot_o_mine_pet.wav-b38f7d8d77c066c672c1931530f09e56.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

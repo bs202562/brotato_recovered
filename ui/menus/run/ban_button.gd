@@ -8,8 +8,8 @@ func _ready() -> void :
 		RunData.is_ban_mode_active = false
 		return
 
-	var _e = connect("toggled", self, "_on_toggled")
-	pressed = ProgressData.settings.ban_mode_toggled
+	var _e = connect("toggled", Callable(self, "_on_toggled"))
+	button_pressed = ProgressData.settings.ban_mode_toggled
 	RunData.is_ban_mode_active = ProgressData.settings.ban_mode_toggled
 
 

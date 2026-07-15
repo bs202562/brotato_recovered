@@ -21,11 +21,11 @@ func add_item_popup(item_popup: ItemPopup, player_index: int) -> void :
 
 func connect_inventory_container(container: InventoryContainer) -> void :
 	var inventory = container._elements
-	var _err = inventory.connect("element_hovered", self, "_on_element_hovered")
-	_err = inventory.connect("element_unhovered", self, "_on_element_unhovered")
-	_err = inventory.connect("element_focused", self, "_on_element_focused")
-	_err = inventory.connect("element_unfocused", self, "_on_element_unfocused")
-	_err = inventory.connect("element_pressed", self, "_on_element_pressed")
+	var _err = inventory.connect("element_hovered", Callable(self, "_on_element_hovered"))
+	_err = inventory.connect("element_unhovered", Callable(self, "_on_element_unhovered"))
+	_err = inventory.connect("element_focused", Callable(self, "_on_element_focused"))
+	_err = inventory.connect("element_unfocused", Callable(self, "_on_element_unfocused"))
+	_err = inventory.connect("element_pressed", Callable(self, "_on_element_pressed"))
 
 
 func add_stat_popup(stat_popup: StatPopup, player_index: int) -> void :
@@ -33,15 +33,15 @@ func add_stat_popup(stat_popup: StatPopup, player_index: int) -> void :
 
 
 func connect_stats_container(container: StatsContainer) -> void :
-	var _err = container.connect("stat_focused", self, "_on_stat_focused")
-	_err = container.connect("stat_unfocused", self, "_on_stat_unfocused")
-	_err = container.connect("stat_hovered", self, "_on_stat_hovered")
-	_err = container.connect("stat_unhovered", self, "_on_stat_unhovered")
+	var _err = container.connect("stat_focused", Callable(self, "_on_stat_focused"))
+	_err = container.connect("stat_unfocused", Callable(self, "_on_stat_unfocused"))
+	_err = container.connect("stat_hovered", Callable(self, "_on_stat_hovered"))
+	_err = container.connect("stat_unhovered", Callable(self, "_on_stat_unhovered"))
 
 
 func connect_shop_items_container(container: ShopItemsContainer) -> void :
-	var _err = container.connect("shop_item_focused", self, "_on_shop_item_focused")
-	_err = container.connect("shop_item_unfocused", self, "_on_shop_item_unfocused")
+	var _err = container.connect("shop_item_focused", Callable(self, "_on_shop_item_focused"))
+	_err = container.connect("shop_item_unfocused", Callable(self, "_on_shop_item_unfocused"))
 
 
 func reset_focus(player_index: int) -> void :

@@ -1,7 +1,7 @@
 class_name Hurtbox
 extends Area2D
 
-onready var _collision = $Collision as CollisionShape2D
+@onready var _collision = $Collision as CollisionShape2D
 
 
 func is_disabled() -> bool:

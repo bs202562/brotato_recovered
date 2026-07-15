@@ -1,7 +1,7 @@
 class_name ZoneUILocked
 extends PanelContainer
 
-onready var _description = $MarginContainer / VBoxContainer / Description
+@onready var _description = $MarginContainer / VBoxContainer / Description
 
 
 func focus() -> void :

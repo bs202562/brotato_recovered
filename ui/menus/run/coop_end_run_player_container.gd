@@ -1,9 +1,9 @@
 class_name EndRunPlayerContainer
 extends Container
 
-export (Resource) var small_label_theme
+@export var small_label_theme: Resource
 
-export (int) var player_index: = 0 setget _set_player_index
+@export var player_index := 0: set = _set_player_index
 func _set_player_index(v: int) -> void :
 	player_index = v
 	if not is_inside_tree() or player_index >= RunData.get_player_count():
@@ -14,12 +14,12 @@ func _set_player_index(v: int) -> void :
 		stats_container.update_player_stats(player_index)
 	_update_stylebox()
 
-onready var carousel = $"%Carousel"
-onready var primary_stats_container = $"%PrimaryStatsContainer"
-onready var secondary_stats_container = $"%SecondaryStatsContainer"
-onready var weapons_container: InventoryContainer = $"%WeaponsContainer"
-onready var items_container: InventoryContainer = $"%ItemsContainer"
-onready var toggle_popup_hint: ScrollContainer = $"%TogglePopupHint"
+@onready var carousel = $"%Carousel"
+@onready var primary_stats_container = $"%PrimaryStatsContainer"
+@onready var secondary_stats_container = $"%SecondaryStatsContainer"
+@onready var weapons_container: InventoryContainer = $"%WeaponsContainer"
+@onready var items_container: InventoryContainer = $"%ItemsContainer"
+@onready var toggle_popup_hint: ScrollContainer = $"%TogglePopupHint"
 
 
 var _resume_element_control_focus = null
@@ -45,10 +45,10 @@ func focus() -> void :
 
 
 func _update_stylebox() -> void :
-	var stylebox = get_stylebox("panel").duplicate()
+	var stylebox = get_theme_stylebox("panel").duplicate()
 	CoopService.change_stylebox_for_player(stylebox, player_index)
 	stylebox.draw_center = true
-	add_stylebox_override("panel", stylebox)
+	add_theme_stylebox_override("panel", stylebox)
 
 
 func _on_Carousel_index_changed(index: int) -> void :
@@ -56,7 +56,7 @@ func _on_Carousel_index_changed(index: int) -> void :
 		
 		return
 	var focused_control = Utils.get_player_focused_control(self, player_index)
-	if focused_control and carousel.get_content_element(0).is_a_parent_of(focused_control):
+	if focused_control and carousel.get_content_element(0).is_ancestor_of(focused_control):
 		_resume_element_control_focus = focused_control
 	focus()
 	if index == 0:

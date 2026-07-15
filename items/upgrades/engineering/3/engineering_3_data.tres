@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://items/upgrades/engineering/engineering.png" type="Texture" id=1]
+[ext_resource path="res://items/upgrades/engineering/engineering.png" type="Texture2D" id=1]
 [ext_resource path="res://items/upgrades/upgrade_data.gd" type="Script" id=2]
 [ext_resource path="res://items/upgrades/engineering/3/engineering_3_effect.tres" type="Resource" id=3]
 

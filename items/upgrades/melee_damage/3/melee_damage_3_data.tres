@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://items/upgrades/upgrade_data.gd" type="Script" id=1]
-[ext_resource path="res://items/upgrades/melee_damage/melee_dmg.png" type="Texture" id=2]
+[ext_resource path="res://items/upgrades/melee_damage/melee_dmg.png" type="Texture2D" id=2]
 [ext_resource path="res://items/upgrades/melee_damage/3/melee_damage_3_effect.tres" type="Resource" id=3]
 
 [resource]

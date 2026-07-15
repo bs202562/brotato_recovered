@@ -8,15 +8,15 @@ func set_text(new_text: String) -> void :
 	_label2.text = split[1].strip_edges()
 
 	if _label1.get_total_character_count() + _label2.get_total_character_count() >= 30:
-		rect_min_size.x = 350
-		scroll_horizontal_enabled = true
-		_label1.add_font_override("font", small_font)
-		_label2.add_font_override("font", small_font)
+		custom_minimum_size.x = 350
+		horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+		_label1.add_theme_font_override("font", small_font)
+		_label2.add_theme_font_override("font", small_font)
 	else:
-		rect_min_size.x = 0
-		scroll_horizontal_enabled = false
-		_label1.add_font_override("font", normal_font)
-		_label2.add_font_override("font", normal_font)
+		custom_minimum_size.x = 0
+		horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+		_label1.add_theme_font_override("font", normal_font)
+		_label2.add_theme_font_override("font", normal_font)
 
 func update_text() -> void :
 	set_text(text)

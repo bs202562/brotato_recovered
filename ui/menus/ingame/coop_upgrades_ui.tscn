@@ -63,47 +63,47 @@ focus_neighbour_right_paths = [  ]
 [node name="CoopUpgradesUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( -312, -488 )
+pivot_offset = Vector2( -312, -488 )
 theme = ExtResource( 6 )
 script = ExtResource( 5 )
 is_coop_ui = true
 
 [node name="Content" type="Control" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Content"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/separation = 0
+theme_override_constants/separation = 0
 
 [node name="UpgradesUIPlayerContainer1" parent="Content/HBoxContainer2" instance=ExtResource( 4 )]
 unique_name_in_owner = true
-margin_right = 480.0
-margin_bottom = 1080.0
+offset_right = 480.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 
 [node name="UpgradesUIPlayerContainer2" parent="Content/HBoxContainer2" instance=ExtResource( 4 )]
 unique_name_in_owner = true
-margin_left = 480.0
-margin_right = 960.0
-margin_bottom = 1080.0
+offset_left = 480.0
+offset_right = 960.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 player_index = 1
 
 [node name="UpgradesUIPlayerContainer3" parent="Content/HBoxContainer2" instance=ExtResource( 4 )]
 unique_name_in_owner = true
-margin_left = 960.0
-margin_right = 1440.0
-margin_bottom = 1080.0
+offset_left = 960.0
+offset_right = 1440.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 player_index = 2
 
 [node name="UpgradesUIPlayerContainer4" parent="Content/HBoxContainer2" instance=ExtResource( 4 )]
 unique_name_in_owner = true
-margin_left = 1440.0
-margin_right = 1920.0
-margin_bottom = 1080.0
+offset_left = 1440.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 player_index = 3
 

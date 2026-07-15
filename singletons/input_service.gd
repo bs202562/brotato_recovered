@@ -19,8 +19,8 @@ var _disable_input: = false
 
 
 func _ready() -> void :
-	pause_mode = Node.PAUSE_MODE_PROCESS
-	var _input_connect = Input.connect("joy_connection_changed", self, "on_joy_connection_changed")
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	var _input_connect = Input.connect("joy_connection_changed", Callable(self, "on_joy_connection_changed"))
 
 	if ProgressData.settings.movement_with_gamepad:
 		enable_gamepad_movement()
@@ -61,7 +61,7 @@ func disable_gamepad_movement() -> void :
 		enable_gamepad_movement()
 		return
 
-	InputMap.load_from_globals()
+	InputMap.load_from_project_settings()
 	_copy_device_actions()
 
 	for action in InputMap.get_actions():
@@ -70,13 +70,13 @@ func disable_gamepad_movement() -> void :
 			"rjoy_left", "rjoy_right", "rjoy_up", "rjoy_down"]
 
 		if action in actions_to_disable:
-			for input_event in InputMap.get_action_list(action):
+			for input_event in InputMap.action_get_events(action):
 				if input_event is InputEventJoypadButton or input_event is InputEventJoypadMotion:
 					InputMap.action_erase_event(action, input_event)
 
 
 func enable_gamepad_movement() -> void :
-	InputMap.load_from_globals()
+	InputMap.load_from_project_settings()
 	_copy_device_actions()
 
 
@@ -88,15 +88,15 @@ func on_joy_connection_changed(_device: int, connected: bool) -> void :
 
 
 func _notification(what):
-	if what == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
+	if what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT:
 		if ProgressData.settings.mute_on_focus_lost:
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear2db(0.0))
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(0.0))
 		if ProgressData.settings.on_lost_focus == 2:
 			_disable_input = true
 		emit_signal("game_lost_focus")
-	elif what == MainLoop.NOTIFICATION_WM_FOCUS_IN:
+	elif what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_IN:
 		if ProgressData.settings.has("volume"):
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear2db(ProgressData.settings.volume.master ))
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(ProgressData.settings.volume.master ))
 		_disable_input = false
 		emit_signal("game_regained_focus")
 
@@ -123,19 +123,19 @@ func _process(delta: float) -> void :
 
 	for device in _joystick_timers.keys():
 		var is_any_input_pressed = false
-		for input in [JOY_AXIS_0, JOY_AXIS_1]:
+		for input in [JOY_AXIS_LEFT_X, JOY_AXIS_LEFT_Y]:
 			if _is_input_pressed(device, input, "axis"):
 				is_any_input_pressed = true
 				break
 		if not is_any_input_pressed:
 			var _erased = _joystick_timers.erase(device)
 
-	_process_input_timers(delta, _d_pad_button_range(), funcref(self, "_on_dpad_timer_timeout"), "button")
-	_process_input_timers(delta, [JOY_AXIS_0, JOY_AXIS_1], funcref(self, "_on_joystick_timer_timeout"), "axis")
+	_process_input_timers(delta, _d_pad_button_range(), Callable(self, "_on_dpad_timer_timeout"), "button")
+	_process_input_timers(delta, [JOY_AXIS_LEFT_X, JOY_AXIS_LEFT_Y], Callable(self, "_on_joystick_timer_timeout"), "axis")
 
 	if Utils.on_nintendo_nx_or_ounce:
 		
-		if RunData.is_coop_run and (OS.get_controller_count() != RunData.get_player_count()):
+		if RunData.is_coop_run and (Input.get_connected_joypads().size() != RunData.get_player_count()):
 			if _switch_asked_pause == false:
 				_switch_asked_pause = true
 				emit_signal("game_lost_focus")
@@ -143,7 +143,7 @@ func _process(delta: float) -> void :
 			_switch_asked_pause = false
 
 
-func _process_input_timers(delta: float, input_range: Array, timeout_callback: FuncRef, input_type: String) -> void :
+func _process_input_timers(delta: float, input_range: Array, timeout_callback: Callable, input_type: String) -> void :
 	var timers = _dpad_timers if input_type == "button" else _joystick_timers
 
 	
@@ -152,7 +152,7 @@ func _process_input_timers(delta: float, input_range: Array, timeout_callback: F
 		timer.try_advance(delta)
 		if not timer.completed():
 			continue
-		timeout_callback.call_func(device)
+		timeout_callback.call(device)
 		var _erased = timers.erase(device)
 		for input in input_range:
 			if not _is_input_pressed(device, input, input_type):
@@ -175,7 +175,7 @@ func _process_input_timers(delta: float, input_range: Array, timeout_callback: F
 				timers[device] = timer
 				if input_type == "axis":
 					
-					timeout_callback.call_func(device)
+					timeout_callback.call(device)
 				break
 
 
@@ -198,14 +198,14 @@ func _on_dpad_timer_timeout(device: int) -> void :
 
 
 func _on_joystick_timer_timeout(device: int) -> void :
-	if abs(Input.get_joy_axis(device, JOY_AXIS_0)) > joystick_deadzone:
-		_emulate_action(device, JOY_AXIS_0, "ui_right" if Input.get_joy_axis(device, JOY_AXIS_0) > 0 else "ui_left")
-	elif abs(Input.get_joy_axis(device, JOY_AXIS_1)) > joystick_deadzone:
-		_emulate_action(device, JOY_AXIS_1, "ui_down" if Input.get_joy_axis(device, JOY_AXIS_1) > 0 else "ui_up")
+	if abs(Input.get_joy_axis(device, JOY_AXIS_LEFT_X)) > joystick_deadzone:
+		_emulate_action(device, JOY_AXIS_LEFT_X, "ui_right" if Input.get_joy_axis(device, JOY_AXIS_LEFT_X) > 0 else "ui_left")
+	elif abs(Input.get_joy_axis(device, JOY_AXIS_LEFT_Y)) > joystick_deadzone:
+		_emulate_action(device, JOY_AXIS_LEFT_Y, "ui_down" if Input.get_joy_axis(device, JOY_AXIS_LEFT_Y) > 0 else "ui_up")
 
 
 func _emulate_action(device: int, input, action: String) -> void :
-	var input_type = "axis" if input in [JOY_AXIS_0, JOY_AXIS_1] else "button"
+	var input_type = "axis" if input in [JOY_AXIS_LEFT_X, JOY_AXIS_LEFT_Y] else "button"
 	if not _is_input_pressed(device, input, input_type):
 		return
 
@@ -215,7 +215,7 @@ func _emulate_action(device: int, input, action: String) -> void :
 	var a = InputEventAction.new()
 	a.action = action + suffix
 	a.device = device
-	a.pressed = true
+	a.button_pressed = true
 	Input.parse_input_event(a)
 
 
@@ -224,7 +224,7 @@ func _copy_device_actions():
 
 	var action_names = InputMap.get_actions()
 	for action_name in action_names:
-		var action_events = InputMap.get_action_list(action_name)
+		var action_events = InputMap.action_get_events(action_name)
 		var deadzone = InputMap.action_get_deadzone(action_name)
 		for event in action_events:
 			
@@ -236,7 +236,7 @@ func _copy_device_actions():
 					var new_event = InputEventJoypadButton.new()
 					new_event.device = 0 if remapped_device == CoopService.GAMEPAD_REMAPPED_DEVICE_ID else remapped_device
 					new_event.button_index = event.button_index
-					new_event.pressed = event.pressed
+					new_event.pressed = event.pressed # 4.x 移植: InputEvent 的属性仍叫 pressed
 					add_action(action_name, remapped_device, deadzone, new_event)
 
 			elif event is InputEventJoypadMotion:
@@ -303,7 +303,7 @@ func _copy_device_actions():
 				var device: = 0
 				var new_event = InputEventKey.new()
 				new_event.device = device
-				new_event.physical_scancode = key
+				new_event.physical_keycode = key
 				
 				InputMap.action_add_event(action_name, new_event)
 				add_key_action(action_name, remapped_device, device, new_event)
@@ -312,8 +312,8 @@ func _copy_device_actions():
 func add_key_action(action_name: String, remapped_device: int, device: int, event: InputEventKey) -> void :
 	var new_event = InputEventKey.new()
 	new_event.device = device
-	new_event.scancode = event.scancode
-	new_event.physical_scancode = event.physical_scancode
+	new_event.keycode = event.keycode
+	new_event.physical_keycode = event.physical_keycode
 	add_action(action_name, remapped_device, 0.5, new_event)
 
 
@@ -330,5 +330,5 @@ func _set_bug_report_key() -> void :
 	if OS.has_feature("editor"):
 		InputMap.action_erase_events("open_bug_report")
 		var new_key_event = InputEventKey.new()
-		new_key_event.physical_scancode = KEY_F7
+		new_key_event.physical_keycode = KEY_F7
 		InputMap.action_add_event("open_bug_report", new_key_event)

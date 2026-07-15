@@ -4,11 +4,11 @@ extends Resource
 enum Position{OTHER, ABOVE_HEAD, TOP_LEFT, TOP_RIGHT, HAT, FOREHEAD, EYES, NOSE, MOUTH, BACK, NECK, TORSO, POCKET_LEFT, POCKET_RIGHT, SKIN, TAIL, ACCESSORY_LEFT, ACCESSORY_RIGHT}
 enum Priority{VERY_LOW, LOW, MEDIUM, HIGH, VERY_HIGH}
 
-export (Resource) var sprite = null
-export (Position) var position = Position.OTHER
-export (Priority) var display_priority = Priority.VERY_LOW
-export (float) var depth = 1.0
-export (bool) var is_character_appearance = false
+@export var sprite: Resource = null
+@export var position: Position = Position.OTHER
+@export var display_priority: Priority = Priority.VERY_LOW
+@export var depth: float = 1.0
+@export var is_character_appearance: bool = false
 
 
 func get_sprite() -> Resource:

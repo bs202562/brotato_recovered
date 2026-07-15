@@ -3,17 +3,17 @@ extends Control
 
 signal back_button_pressed
 
-export (PackedScene) var mod_container_scene
+@export var mod_container_scene: PackedScene
 
-onready var _mod_list_container = $"%ModListContainer"
-onready var _mod_info_container = $"%ModInfoContainer"
-onready var _back_button = $"%BackButton"
-onready var workshop_button: Button = $"%WorkshopButton"
+@onready var _mod_list_container = $"%ModListContainer"
+@onready var _mod_info_container = $"%ModInfoContainer"
+@onready var _back_button = $"%BackButton"
+@onready var workshop_button: Button = $"%WorkshopButton"
 
-onready var focus_before_created: Control = get_focus_owner()
+@onready var focus_before_created: Control = get_viewport().gui_get_focus_owner()
 
 func init() -> void :
-	focus_before_created = get_focus_owner()
+	focus_before_created = get_viewport().gui_get_focus_owner()
 	if Platform.get_type() == PlatformType.STEAM:
 		workshop_button.visible = true
 
@@ -24,12 +24,12 @@ func init() -> void :
 		n.queue_free()
 
 	for mod_id in ModLoaderMod.get_mod_data_all():
-		var instance = mod_container_scene.instance()
+		var instance = mod_container_scene.instantiate()
 		_mod_list_container.add_child(instance)
 		var mod_data = ModLoaderMod.get_mod_data(mod_id)
 		instance.set_data(mod_data)
-		var _error = instance.connect("mod_focused", self, "on_mod_focused")
-		var _error_2 = instance.connect("mod_unfocused", self, "on_mod_unfocused")
+		var _error = instance.connect("mod_focused", Callable(self, "on_mod_focused"))
+		var _error_2 = instance.connect("mod_unfocused", Callable(self, "on_mod_unfocused"))
 
 
 func on_mod_focused(mod: ModData) -> void :

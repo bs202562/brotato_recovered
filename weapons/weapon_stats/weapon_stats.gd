@@ -1,29 +1,29 @@
 class_name WeaponStats
 extends Resource
 
-export(int) var cooldown := 60 # ticks - we have 60 ticks per second
-export(int) var damage := 1
-export(float, 0.0, 1.0, 0.05) var accuracy = 1.0
-export(float, 0.0, 1.0, 0.01) var crit_chance = 0.03
-export(float) var crit_damage = 1.5
-export(int, 0, 10000) var min_range := 0
-export(int, 0, 10000) var max_range := 150
-export(int, -10000, 10000) var knockback := 0
-export(float, 0.0, 1.0, 0.05) var knockback_piercing := 0.0 # Bypasses enemies' knockback_resistance stat
-export(bool) var can_have_positive_knockback := true
-export(bool) var can_have_negative_knockback := false
-export(float, 0.0, 1.0, 0.1) var effect_scale := 1.0
-export(Array, Array) var scaling_stats = [["stat_melee_damage", 1.0]]
-export(float, 0, 1.0, 0.01) var lifesteal := 0.0
-export(Array, Resource) var shooting_sounds
-export(int) var sound_db_mod = -5
-export(bool) var is_healing = false
-export(Resource) var custom_on_cooldown_sprite = null
-export(int, 0, 1000) var recoil := 25
-export(float, 0.01, 0.2) var recoil_duration := 0.1
-export(int) var additional_cooldown_every_x_shots = -1
-export(float) var additional_cooldown_multiplier = -1.0
-export(int) var speed_percent_modifier := 0
+@export var cooldown := 60 # ticks - we have 60 ticks per second
+@export var damage := 1
+@export var accuracy = 1.0 # (float, 0.0, 1.0, 0.05)
+@export var crit_chance = 0.03 # (float, 0.0, 1.0, 0.01)
+@export var crit_damage: float = 1.5
+@export var min_range := 0 # (int, 0, 10000)
+@export var max_range := 150 # (int, 0, 10000)
+@export var knockback := 0 # (int, -10000, 10000)
+@export var knockback_piercing := 0.0 # Bypasses enemies' knockback_resistance stat # (float, 0.0, 1.0, 0.05)
+@export var can_have_positive_knockback := true
+@export var can_have_negative_knockback := false
+@export var effect_scale := 1.0 # (float, 0.0, 1.0, 0.1)
+@export var scaling_stats = [["stat_melee_damage", 1.0]] # (Array, Array)
+@export var lifesteal := 0.0 # (float, 0, 1.0, 0.01)
+@export var shooting_sounds: Array = [] # (Array, Resource)
+@export var sound_db_mod: int = -5
+@export var is_healing: bool = false
+@export var custom_on_cooldown_sprite: Resource = null
+@export var recoil := 25 # (int, 0, 1000)
+@export var recoil_duration := 0.1 # (float, 0.01, 0.2)
+@export var additional_cooldown_every_x_shots: int = -1
+@export var additional_cooldown_multiplier: float = -1.0
+@export var speed_percent_modifier := 0
 
 var burning_data: BurningData = BurningData.new()
 var attack_speed_mod := 0.0 # modified in items for class bonus
@@ -74,7 +74,7 @@ func get_cooldown_text(base_stats: Resource, player_index: int, multiplier: floa
 	var a = get_signed_col_a(-cd, -base_cd)
 
 	var step = 0.001 if cd < 0.2 else 0.01
-	return a + str(stepify(cd, step)) + "s" + col_b
+	return a + str(snapped(cd, step)) + "s" + col_b
 
 
 func get_additional_cooldown_text(base_stats: Resource, player_index: int) -> String:
@@ -276,7 +276,7 @@ func deserialize_and_merge(serialized: Dictionary):
 
 
 func duplicate(subresources := false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 	duplication.scaling_stats = self.scaling_stats.duplicate()
 
 	return duplication

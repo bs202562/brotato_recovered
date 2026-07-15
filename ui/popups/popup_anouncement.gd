@@ -1,19 +1,19 @@
 extends Popup
 class_name PopupAnouncement
 
-onready var _rich_text_description = $"%rich_text_description"
-onready var _validation_button = $"%validation_button"
-onready var focus_before_created: Control = null
+@onready var _rich_text_description = $"%rich_text_description"
+@onready var _validation_button = $"%validation_button"
+@onready var focus_before_created: Control = null
 
 func _ready():
-	_validation_button.connect("pressed", self, "_on_validation_button_pressed")
-	_rich_text_description.bbcode_text = "[center]" + tr(_rich_text_description.bbcode_text)
+	_validation_button.connect("pressed", Callable(self, "_on_validation_button_pressed"))
+	_rich_text_description.text = "[center]" + tr(_rich_text_description.text)
 
 
-func popup(bounds: Rect2 = Rect2(0, 0, 0, 0)):
-	focus_before_created = get_focus_owner()
+func popup_announcement():
+	focus_before_created = get_viewport().gui_get_focus_owner()
 
-	.popup()
+	super.popup()
 	if RunData.is_coop_run:
 		Utils._popup = self
 
@@ -22,7 +22,7 @@ func _input(event):
 	if visible:
 		if event.is_action_released("ui_cancel"):
 			_on_validation_button_pressed()
-			get_tree().set_input_as_handled()
+			get_viewport().set_input_as_handled()
 
 
 func _focus_control(control: Control, player: int = 0) -> void :

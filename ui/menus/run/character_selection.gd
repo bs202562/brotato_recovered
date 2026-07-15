@@ -5,34 +5,35 @@ var _player_characters: = [null, null, null, null]
 
 var __restore_player0_element = null
 
-onready var _back_button: Button = $"%BackButton"
-onready var _run_options_panel: PanelContainer = $"%RunOptionsPanel"
-onready var _endless_button: CheckButton = $"%EndlessButton"
-onready var _coop_button: CheckButton = $"%CoopButton"
-onready var _info_panel: PanelContainer = $"%InfoPanel"
-onready var _coop_join_instructions: Control = $"%CoopJoinInstructions"
-onready var _inventories: Control = $"%Inventories"
-onready var _zone_selection_button: OptionButton = $"%ZoneSelectionButton"
+@onready var _back_button: Button = $"%BackButton"
+@onready var _run_options_panel: PanelContainer = $"%RunOptionsPanel"
+@onready var _endless_button: CheckButton = $"%EndlessButton"
+@onready var _coop_button: CheckButton = $"%CoopButton"
+@onready var _info_panel: PanelContainer = $"%InfoPanel"
+@onready var _coop_join_instructions: Control = $"%CoopJoinInstructions"
+@onready var _inventories: Control = $"%Inventories"
+@onready var _zone_selection_button: OptionButton = $"%ZoneSelectionButton"
 
-onready var _run_options_panel_content: Container = $"%RunOptionsPanel/MarginContainer/VBoxContainer/VBoxContainer"
-onready var _coop_join_panel1: Container = $"%CoopJoinPanel1"
-onready var _coop_join_panel2: Container = $"%CoopJoinPanel2"
-onready var _coop_join_panel3: Container = $"%CoopJoinPanel3"
-onready var _coop_join_panel4: Container = $"%CoopJoinPanel4"
-onready var _locked_panel1: Container = $"%LockedPanel1"
-onready var _locked_panel2: Container = $"%LockedPanel2"
-onready var _locked_panel3: Container = $"%LockedPanel3"
-onready var _locked_panel4: Container = $"%LockedPanel4"
-onready var _legend_tier: Container = $"%legend_tier"
-onready var _unlockall_icon: TextureRect = $"%unlockall_icon"
-onready var _popup_manager: PopupManager = $PopupManager
-onready var _ui_random_zone_background: TextureRect = $"%ui_random_zone_background"
+@onready var _run_options_panel_content: Container = $"%RunOptionsPanel/MarginContainer/VBoxContainer/VBoxContainer"
+@onready var _coop_join_panel1: Container = $"%CoopJoinPanel1"
+@onready var _coop_join_panel2: Container = $"%CoopJoinPanel2"
+@onready var _coop_join_panel3: Container = $"%CoopJoinPanel3"
+@onready var _coop_join_panel4: Container = $"%CoopJoinPanel4"
+@onready var _locked_panel1: Container = $"%LockedPanel1"
+@onready var _locked_panel2: Container = $"%LockedPanel2"
+@onready var _locked_panel3: Container = $"%LockedPanel3"
+@onready var _locked_panel4: Container = $"%LockedPanel4"
+@onready var _legend_tier: Container = $"%legend_tier"
+@onready var _unlockall_icon: TextureRect = $"%unlockall_icon"
+@onready var _popup_manager: PopupManager = $PopupManager
+@onready var _ui_random_zone_background: TextureRect = $"%ui_random_zone_background"
 
 var __need_controller_applet_timer = - 1
 var _mode_selection_button: OptionButton
 
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	var selected_zone = ProgressData.settings.zone_selected
 
 	if selected_zone >= ZoneService.zones.size():
@@ -51,10 +52,10 @@ func _ready() -> void :
 		selected_zone = ZoneService.zones.size()
 		_zone_selection_button.selected = ZoneService.zones.size()
 
-	for margin in [MARGIN_LEFT, MARGIN_TOP]:
-		_back_button.set_focus_neighbour(margin, _back_button.get_path_to(_back_button))
-	for margin in [MARGIN_RIGHT, MARGIN_BOTTOM]:
-		_back_button.set_focus_neighbour(margin, _back_button.get_path_to(first_run_option))
+	for margin in [SIDE_LEFT, SIDE_TOP]:
+		_back_button.set_focus_neighbor(margin, _back_button.get_path_to(_back_button))
+	for margin in [SIDE_RIGHT, SIDE_BOTTOM]:
+		_back_button.set_focus_neighbor(margin, _back_button.get_path_to(first_run_option))
 
 	_on_ZoneSelectionButton_item_selected(selected_zone)
 
@@ -70,13 +71,13 @@ func _ready() -> void :
 		_legend_tier.queue_free()
 	else:
 		for indx in _legend_tier.get_child_count():
-			var stylebox_color = _legend_tier.get_child(indx).get_stylebox("panel").duplicate()
+			var stylebox_color = _legend_tier.get_child(indx).get_theme_stylebox("panel").duplicate()
 			if indx == 0:
 				stylebox_color.bg_color = Color(ProgressData.settings.tier_0_color)
 				stylebox_color.bg_color.a = 0.3
 			else:
 				ItemService.change_inventory_element_stylebox_from_tier(stylebox_color, indx, 0.3)
-			_legend_tier.get_child(indx).add_stylebox_override("panel", stylebox_color)
+			_legend_tier.get_child(indx).add_theme_stylebox_override("panel", stylebox_color)
 
 	_unlockall_icon.visible = ProgressData.is_unlock_all_save()
 
@@ -87,9 +88,9 @@ func init_coop_service() -> void :
 
 	_init_play_mode_ui()
 
-	var _e = _coop_button.connect("coop_initialized", self, "_on_coop_initialized", [false])
-	_e = CoopService.connect("connected_players_updated", self, "_on_connected_players_updated", [false])
-	_e = CoopService.connect("connection_progress_updated", self, "_on_connection_progress_updated")
+	var _e = _coop_button.connect("coop_initialized", Callable(self, "_on_coop_initialized").bind(false))
+	_e = CoopService.connect("connected_players_updated", Callable(self, "_on_connected_players_updated").bind(false))
+	_e = CoopService.connect("connection_progress_updated", Callable(self, "_on_connection_progress_updated"))
 
 	
 	
@@ -120,7 +121,7 @@ func _init_play_mode_ui() -> void :
 		if _mode_selection_button == null:
 			_mode_selection_button = OptionButton.new()
 			_run_options_panel_content.add_child(_mode_selection_button);
-			_mode_selection_button.connect("item_selected", self, "_on_ModeSelectionButton_item_selected")
+			_mode_selection_button.connect("item_selected", Callable(self, "_on_ModeSelectionButton_item_selected"))
 		_mode_selection_button.visible = true
 		_mode_selection_button.clear()
 		_mode_selection_button.add_item(tr("SOLO"), RunData.PlayMode.SOLO)
@@ -137,15 +138,16 @@ func _exit_tree() -> void :
 
 
 func _input(event: InputEvent) -> void :
-	var focus_owner = get_focus_owner()
+	var focus_owner = get_viewport().gui_get_focus_owner()
 	if RunData.is_coop_run and RunData.get_player_count() == 0 and focus_owner == null and event.is_action_pressed("ui_up"):
-		
+
 		_coop_button.call_deferred("grab_focus")
+	super._input(event) # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 
 
 func _init_players() -> void :
 	if not RunData.is_coop_run:
-		._init_players()
+		super._init_players()
 		return
 	
 	_on_connected_players_updated(CoopService.connected_players, true)
@@ -153,7 +155,7 @@ func _init_players() -> void :
 
 func _go_back() -> void :
 	RunData.reload_music = false
-	var _error = get_tree().change_scene(MenuData.title_screen_scene)
+	var _error = get_tree().change_scene_to_file(MenuData.title_screen_scene)
 	ProgressData.end_activity(false)
 
 
@@ -193,9 +195,9 @@ func _on_element_pressed(element: InventoryElement, _inventory_player_index: int
 	if element.is_random:
 		var available_elements: = []
 		
-		for element in displayed_elements[0]:
-			if not element.is_locked:
-				available_elements.push_back(element)
+		for displayed_element in displayed_elements[0]:
+			if not displayed_element.is_locked:
+				available_elements.push_back(displayed_element)
 		var character = Utils.get_rand_element(available_elements)
 		_player_characters[inventory_player_index] = character
 	elif element.is_special:
@@ -215,14 +217,14 @@ func _on_selections_completed() -> void :
 		var character = _player_characters[player_index]
 		RunData.add_character(character, player_index)
 	if Utils.on_nintendo_nx_or_ounce and RunData.is_coop_run:
-		OS.set_max_controller_count(RunData.get_player_count())
+		OS_Seaven.set_max_controller_count(RunData.get_player_count())
 	if RunData.some_player_has_weapon_slots():
 		_change_scene(MenuData.weapon_selection_scene)
 	else:
 		RunData.add_starting_items_and_weapons()
 		_change_scene(MenuData.difficulty_selection_scene)
 
-export (Array, int) var ps_device_colors: = [
+@export var ps_device_colors: = [ # (Array, int)
 	4278767051, 
 	4290910731, 
 	4281319940, 
@@ -236,7 +238,7 @@ func set_controller_colors() -> void :
 			if device == CoopService.GAMEPAD_REMAPPED_DEVICE_ID:
 				device = 0
 			if device >= 0 and device < 4:
-				OS.set_controller_color(device, ps_device_colors[player_index])
+				OS_Seaven.set_controller_color(device, ps_device_colors[player_index])
 
 var last_mode: int = - 1
 var current_mode: int = - 1
@@ -270,7 +272,7 @@ func _play_mode_init(mode: int, initialize: bool) -> void :
 		if _mode_selection_button != null:
 			_mode_selection_button.selected = current_mode
 	else:
-		_coop_button.pressed = RunData.is_coop_run
+		_coop_button.button_pressed = RunData.is_coop_run
 
 	if not RunData.is_streamplay_run and (last_mode == RunData.PlayMode.STREAMPLAY_LOCAL or last_mode == RunData.PlayMode.STREAMPLAY_INTERNET):
 		Streamplay.stop()
@@ -290,7 +292,7 @@ func _play_mode_init(mode: int, initialize: bool) -> void :
 
 		if RunData.is_coop_run:
 			
-			var focus_owner = get_focus_owner()
+			var focus_owner = get_viewport().gui_get_focus_owner()
 			if focus_owner != null:
 				focus_owner.release_focus()
 		else:
@@ -302,12 +304,12 @@ func _play_mode_init(mode: int, initialize: bool) -> void :
 			if not RunData.is_streamplay_run:
 				print("[CharacterSelection] Coop")
 				print("[CharacterSelection] max controller ", CoopService.get_max_players())
-				OS.set_min_controller_count(2)
-				OS.set_max_controller_count(CoopService.get_max_players())
-				OS.set_controller_color(0, 4293786785)
-				OS.set_controller_color(1, 4287081970)
-				OS.set_controller_color(2, 4288806057)
-				OS.set_controller_color(3, 4287623420)
+				OS_Seaven.set_min_controller_count(2)
+				OS_Seaven.set_max_controller_count(CoopService.get_max_players())
+				OS_Seaven.set_controller_color(0, 4293786785)
+				OS_Seaven.set_controller_color(1, 4287081970)
+				OS_Seaven.set_controller_color(2, 4288806057)
+				OS_Seaven.set_controller_color(3, 4287623420)
 				set_process(true)
 				__need_controller_applet_timer = 2
 			else:
@@ -336,10 +338,10 @@ func _play_mode_init(mode: int, initialize: bool) -> void :
 					_play_mode_init(RunData.PlayMode.SOLO, false);
 
 		else:
-			if OS.get_max_controller_count() != 1:
+			if OS_Seaven.get_max_controller_count() != 1:
 				print("[CharacterSelection] max controller 1")
-				OS.set_max_controller_count(1)
-				OS.show_controller_applet(1, 1)
+				OS_Seaven.set_max_controller_count(1)
+				OS_Seaven.show_controller_applet(1, 1)
 				set_process(false)
 
 	if RunData.is_coop_run:
@@ -355,7 +357,7 @@ func _play_mode_init(mode: int, initialize: bool) -> void :
 
 
 func _on_ModeSelectionButton_item_selected(index: int) -> void :
-	yield(get_tree().create_timer(0.1), "timeout")
+	await get_tree().create_timer(0.1).timeout
 	_play_mode_init(index, false)
 
 
@@ -435,7 +437,7 @@ func _on_element_focused(element: InventoryElement, inventory_player_index: int,
 	if character != null:
 		RunData.add_item(character, player_index)
 
-	._on_element_focused(element, inventory_player_index, _player_characters[player_index] == null)
+	super._on_element_focused(element, inventory_player_index, _player_characters[player_index] == null)
 
 	if player_index >= 0:
 		if _player_characters[player_index] == null:
@@ -458,7 +460,7 @@ func _on_element_focused(element: InventoryElement, inventory_player_index: int,
 
 
 func _clear_selected_element(player_index: int) -> void :
-	._clear_selected_element(player_index)
+	super._clear_selected_element(player_index)
 	_player_characters[player_index] = null
 
 
@@ -487,9 +489,9 @@ func update_info_panel(item_info: ItemParentData) -> void :
 	else:
 		_info_panel.set_element(item_info.my_id_hash)
 
-	var stylebox_color = _info_panel.get_stylebox("panel").duplicate()
+	var stylebox_color = _info_panel.get_theme_stylebox("panel").duplicate()
 	ItemService.change_panel_stylebox_from_tier(stylebox_color, item_info.tier, false, get_node_or_null("%frame_infopanel"))
-	_info_panel.add_stylebox_override("panel", stylebox_color)
+	_info_panel.add_theme_stylebox_override("panel", stylebox_color)
 
 
 func _on_ZoneSelectionButton_item_selected(index: int) -> void :
@@ -498,7 +500,7 @@ func _on_ZoneSelectionButton_item_selected(index: int) -> void :
 		ProgressData.settings.zone_is_random = true
 		RunData.reset_background()
 		_background.texture = _ui_random_zone_background.texture
-		ProgressData.settings.zone_selected = rand_range(0, zonesCount)
+		ProgressData.settings.zone_selected = randf_range(0, zonesCount)
 		_inventory1.update_elements_color( - 1)
 		reload_info_panel()
 		_panel1._update_bg()
@@ -549,7 +551,7 @@ func _process(_delta: float) -> void :
 				
 				
 				if __need_controller_applet_timer == - 1:
-					if OS.get_controller_count() <= 1:
+					if OS_Seaven.get_controller_count() <= 1:
 						_play_mode_init(RunData.PlayMode.SOLO, false)
 						
 						
@@ -557,19 +559,19 @@ func _process(_delta: float) -> void :
 						
 						return
 				var num_connected_players: = len(CoopService.connected_players)
-				if OS.get_controller_count() != num_connected_players:
+				if OS_Seaven.get_controller_count() != num_connected_players:
 					if __need_controller_applet_timer >= 0:
 						__need_controller_applet_timer -= 1
 						if __need_controller_applet_timer < 0:
 							__need_controller_applet_timer = - 1
 							print("[CharacterSelection] show controller applet in process")
-							OS.show_controller_applet(2, CoopService.get_max_players())
+							OS_Seaven.show_controller_applet(2, CoopService.get_max_players())
 							
 							
 						return
-					print("[CharacterSelection] Controller count different from player count, add auto players " + str(OS.get_controller_count()) + " " + str(len(CoopService.connected_players)))
-					if OS.get_controller_count() > num_connected_players:
-						for i in OS.get_controller_count():
+					print("[CharacterSelection] Controller count different from player count, add auto players " + str(OS_Seaven.get_controller_count()) + " " + str(len(CoopService.connected_players)))
+					if OS_Seaven.get_controller_count() > num_connected_players:
+						for i in OS_Seaven.get_controller_count():
 							var remapped = i
 							if remapped == 0:
 								remapped = CoopService.GAMEPAD_REMAPPED_DEVICE_ID
@@ -577,7 +579,7 @@ func _process(_delta: float) -> void :
 							
 							
 					else:
-						for i in range(OS.get_controller_count(), num_connected_players):
+						for i in range(OS_Seaven.get_controller_count(), num_connected_players):
 							var remapped = i
 							if remapped == 0:
 								remapped = CoopService.GAMEPAD_REMAPPED_DEVICE_ID

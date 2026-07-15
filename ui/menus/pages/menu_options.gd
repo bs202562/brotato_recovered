@@ -14,81 +14,81 @@ signal pet_highlighting_changed(value)
 signal pet_transparency_changed(value)
 signal lock_coop_camera_changed(value)
 
-export (bool) var is_in_a_run: = false
+@export var is_in_a_run := false
 
-onready var focus_before_created: Control = null
+@onready var focus_before_created: Control = null
 
-onready var gameplayVBoxContainer = $"%GameplayVBoxContainer" as VBoxContainer
-onready var accessibility_container = $"%Accessibility_Container" as ScrollContainer
-onready var accessibility_slider_container = $"%accessibility_slider_container" as VBoxContainer
-onready var video_container = $"%VideoContainer"
-onready var audio_container = $"%AudioContainer"
+@onready var gameplayVBoxContainer = $"%GameplayVBoxContainer" as VBoxContainer
+@onready var accessibility_container = $"%Accessibility_Container" as ScrollContainer
+@onready var accessibility_slider_container = $"%accessibility_slider_container" as VBoxContainer
+@onready var video_container = $"%VideoContainer"
+@onready var audio_container = $"%AudioContainer"
 
 
-onready var master_slider = $"%MasterSlider"
-onready var sound_slider = $"%SoundSlider"
-onready var music_slider = $"%MusicSlider"
-onready var old_tracks_warning_label = $"%OldTracksWarningLabel" as Label
+@onready var master_slider = $"%MasterSlider"
+@onready var sound_slider = $"%SoundSlider"
+@onready var music_slider = $"%MusicSlider"
+@onready var old_tracks_warning_label = $"%OldTracksWarningLabel" as Label
 
-onready var main_screen_keyart = $"%MainScreenArt" as OptionButton
-onready var language_button = $"%LanguageButton" as OptionButton
-onready var screenshake_button = $"%ScreenshakeButton" as CheckButton
-onready var fullscreen_button = $"%FullScreenButton" as CheckButton
-onready var visual_effects_button = $"%VisualEffectsButton" as CheckButton
-onready var background_button = $"%BackgroundButton" as OptionButton
-onready var damage_display_button = $"%DamageDisplayButton" as CheckButton
-onready var optimize_end_waves_button = $"%OptimizeEndWavesButton" as CheckButton
-onready var limit_fps_button = $"%LimitFPSButton" as CheckButton
+@onready var main_screen_keyart = $"%MainScreenArt" as OptionButton
+@onready var language_button = $"%LanguageButton" as OptionButton
+@onready var screenshake_button = $"%ScreenshakeButton" as CheckButton
+@onready var fullscreen_button = $"%FullScreenButton" as CheckButton
+@onready var visual_effects_button = $"%VisualEffectsButton" as CheckButton
+@onready var background_button = $"%BackgroundButton" as OptionButton
+@onready var damage_display_button = $"%DamageDisplayButton" as CheckButton
+@onready var optimize_end_waves_button = $"%OptimizeEndWavesButton" as CheckButton
+@onready var limit_fps_button = $"%LimitFPSButton" as CheckButton
 
-onready var mute_on_focus_lost_button = $"%MuteOnFocusLostButton" as CheckButton
-onready var on_lost_focus_button = $"%OnLostFocusButton" as OptionButton
-onready var new_tracks_button = $"%NewTracksButton" as CheckButton
-onready var old_tracks_button = $"%OldTracksButton" as CheckButton
-onready var abyssal_terrors_tracks_button = $"%AbyssalTerrorsTracksButton" as CheckButton
+@onready var mute_on_focus_lost_button = $"%MuteOnFocusLostButton" as CheckButton
+@onready var on_lost_focus_button = $"%OnLostFocusButton" as OptionButton
+@onready var new_tracks_button = $"%NewTracksButton" as CheckButton
+@onready var old_tracks_button = $"%OldTracksButton" as CheckButton
+@onready var abyssal_terrors_tracks_button = $"%AbyssalTerrorsTracksButton" as CheckButton
 
-onready var mouse_only_button = $"%MouseOnlyButton" as CheckButton
-onready var manual_aim_button = $"%ManualAimButton" as CheckButton
-onready var manual_aim_on_mouse_press_button = $"%ManualAimOnMousePressButton" as CheckButton
-onready var movement_with_gamepad: CheckButton = $"%MovementWithGamepad"
-onready var hp_bar_button = $"%HPbarOnCharacterButton" as CheckButton
-onready var boss_hp_bar_button = $"%BossHPBarButton" as CheckButton
-onready var keep_lock_button = $"%KeepLockButton" as CheckButton
-onready var lock_coop_camera_button = $"%LockCoopCameraButton" as CheckButton
-onready var score_storing_button = $"%ScoreStoringButton" as OptionButton
-onready var share_coop_loot_button = $"%ShareCoopLootButton" as CheckButton
-onready var abyssal_terrors_dlc_button = $"%AbyssalTerrorsDLCButton" as CheckButton
+@onready var mouse_only_button = $"%MouseOnlyButton" as CheckButton
+@onready var manual_aim_button = $"%ManualAimButton" as CheckButton
+@onready var manual_aim_on_mouse_press_button = $"%ManualAimOnMousePressButton" as CheckButton
+@onready var movement_with_gamepad: CheckButton = $"%MovementWithGamepad"
+@onready var hp_bar_button = $"%HPbarOnCharacterButton" as CheckButton
+@onready var boss_hp_bar_button = $"%BossHPBarButton" as CheckButton
+@onready var keep_lock_button = $"%KeepLockButton" as CheckButton
+@onready var lock_coop_camera_button = $"%LockCoopCameraButton" as CheckButton
+@onready var score_storing_button = $"%ScoreStoringButton" as OptionButton
+@onready var share_coop_loot_button = $"%ShareCoopLootButton" as CheckButton
+@onready var abyssal_terrors_dlc_button = $"%AbyssalTerrorsDLCButton" as CheckButton
 
-onready var enemy_health_slider = $"%EnemyHealthSlider"
-onready var enemy_damage_slider = $"%EnemyDamageSlider"
-onready var enemy_speed_slider = $"%EnemySpeedSlider"
-onready var constant_projectile_button = $"%ConstantProjectileButton" as OptionButton
-onready var explosion_opacity_slider = $"%ExplosionOpacitySlider"
-onready var projectile_opacity_slider = $"%ProjectileOpacitySlider"
-onready var pet_opacity_slider = $"%PetOpacitySlider"
-onready var effects_icons_description_button = $"%EffectsIconsInDescriptionButton"
-onready var font_size_slider = $"%FontSizeSlider"
-onready var color_positive: ColorOption = $"%ColorPositiveText"
-onready var color_negative: ColorOption = $"%ColorNegativeText"
-onready var color_tier0: ColorOption = $"%Color_tier0"
-onready var color_tier1: ColorOption = $"%Color_tier1"
-onready var color_tier2: ColorOption = $"%Color_tier2"
-onready var color_tier3: ColorOption = $"%Color_tier3"
-onready var color_tier4: ColorOption = $"%Color_tier4"
-onready var color_tier5: ColorOption = $"%Color_tier5"
-onready var character_highlighting_button = $"%CharacterHighlightingButton" as CheckButton
-onready var weapon_highlighting_button = $"%WeaponHighlightingButton" as CheckButton
-onready var projectile_highlighting_button = $"%ProjectileHighlightingButton" as CheckButton
-onready var pet_highlighting_button = $"%PetHighlightingButton" as CheckButton
-onready var turret_highlighting_button = $"%TurretHighlightingButton" as CheckButton
-onready var gold_sounds_button = $"%GoldSoundsButton" as CheckButton
-onready var darken_screen_button = $"%DarkenScreenButton" as CheckButton
-onready var retry_wave_button = $"%RetryWaveButton" as CheckButton
-onready var green_skins_button: CheckButton = $"%GreenSkinsButton"
-onready var no_item_appearance: CheckButton = $"%NoItemAppearanceButton" as CheckButton
-onready var holding_button: CheckButton = $"%NoHoldingButton" as CheckButton
+@onready var enemy_health_slider = $"%EnemyHealthSlider"
+@onready var enemy_damage_slider = $"%EnemyDamageSlider"
+@onready var enemy_speed_slider = $"%EnemySpeedSlider"
+@onready var constant_projectile_button = $"%ConstantProjectileButton" as OptionButton
+@onready var explosion_opacity_slider = $"%ExplosionOpacitySlider"
+@onready var projectile_opacity_slider = $"%ProjectileOpacitySlider"
+@onready var pet_opacity_slider = $"%PetOpacitySlider"
+@onready var effects_icons_description_button = $"%EffectsIconsInDescriptionButton"
+@onready var font_size_slider = $"%FontSizeSlider"
+@onready var color_positive: ColorOption = $"%ColorPositiveText"
+@onready var color_negative: ColorOption = $"%ColorNegativeText"
+@onready var color_tier0: ColorOption = $"%Color_tier0"
+@onready var color_tier1: ColorOption = $"%Color_tier1"
+@onready var color_tier2: ColorOption = $"%Color_tier2"
+@onready var color_tier3: ColorOption = $"%Color_tier3"
+@onready var color_tier4: ColorOption = $"%Color_tier4"
+@onready var color_tier5: ColorOption = $"%Color_tier5"
+@onready var character_highlighting_button = $"%CharacterHighlightingButton" as CheckButton
+@onready var weapon_highlighting_button = $"%WeaponHighlightingButton" as CheckButton
+@onready var projectile_highlighting_button = $"%ProjectileHighlightingButton" as CheckButton
+@onready var pet_highlighting_button = $"%PetHighlightingButton" as CheckButton
+@onready var turret_highlighting_button = $"%TurretHighlightingButton" as CheckButton
+@onready var gold_sounds_button = $"%GoldSoundsButton" as CheckButton
+@onready var darken_screen_button = $"%DarkenScreenButton" as CheckButton
+@onready var retry_wave_button = $"%RetryWaveButton" as CheckButton
+@onready var green_skins_button: CheckButton = $"%GreenSkinsButton"
+@onready var no_item_appearance: CheckButton = $"%NoItemAppearanceButton" as CheckButton
+@onready var holding_button: CheckButton = $"%NoHoldingButton" as CheckButton
 
-onready var lb_texture: InputIcon = $"%lb_texture"
-onready var rb_texture: InputIcon = $"%rb_texture"
+@onready var lb_texture: InputIcon = $"%lb_texture"
+@onready var rb_texture: InputIcon = $"%rb_texture"
 
 var all_check_buttons = []
 var small_font = preload("res://resources/fonts/actual/base/font_32_outline.tres")
@@ -102,7 +102,7 @@ var normal_slider_font = preload("res://resources/fonts/actual/base/font_menus.t
 func _input(event):
 	if self.visible and event.is_action_released("ui_cancel"):
 		_on_BackButton_pressed()
-		get_tree().set_input_as_handled()
+		get_viewport().set_input_as_handled()
 
 
 func init() -> void :
@@ -111,7 +111,7 @@ func init() -> void :
 		if focus_emulator != null:
 			focus_before_created = focus_emulator.focused_control
 		else:
-			focus_before_created = get_focus_owner()
+			focus_before_created = get_viewport().gui_get_focus_owner()
 	$"%Audio_but".grab_focus()
 
 	if RunData.is_coop_run:
@@ -146,17 +146,17 @@ func init() -> void :
 	background_button.select(selected_background)
 	background_button._on_BackgroundButton_item_selected(selected_background)
 
-	if not ItemService.is_connected("backgrounds_updated", background_button, "on_backgrounds_updated"):
-		var _e = ItemService.connect("backgrounds_updated", background_button, "on_backgrounds_updated")
+	if not ItemService.is_connected("backgrounds_updated", Callable(background_button, "on_backgrounds_updated")):
+		var _e = ItemService.connect("backgrounds_updated", Callable(background_button, "on_backgrounds_updated"))
 
-	visual_effects_button.pressed = ProgressData.settings.visual_effects
-	screenshake_button.pressed = ProgressData.settings.screenshake
-	fullscreen_button.pressed = ProgressData.settings.fullscreen
-	damage_display_button.pressed = ProgressData.settings.damage_display
-	optimize_end_waves_button.pressed = ProgressData.settings.optimize_end_waves
-	limit_fps_button.pressed = ProgressData.settings.limit_fps
+	visual_effects_button.button_pressed = ProgressData.settings.visual_effects
+	screenshake_button.button_pressed = ProgressData.settings.screenshake
+	fullscreen_button.button_pressed = ProgressData.settings.fullscreen
+	damage_display_button.button_pressed = ProgressData.settings.damage_display
+	optimize_end_waves_button.button_pressed = ProgressData.settings.optimize_end_waves
+	limit_fps_button.button_pressed = ProgressData.settings.limit_fps
 
-	mute_on_focus_lost_button.pressed = ProgressData.settings.mute_on_focus_lost
+	mute_on_focus_lost_button.button_pressed = ProgressData.settings.mute_on_focus_lost
 	on_lost_focus_button.select(ProgressData.settings.on_lost_focus)
 	new_tracks_button.set_pressed_no_signal(ProgressData.settings.streamer_mode_tracks)
 	old_tracks_button.set_pressed_no_signal(ProgressData.settings.legacy_tracks)
@@ -205,9 +205,9 @@ func adjust_buttons_font_size() -> void :
 
 	for check_button in all_check_buttons:
 		if tr(check_button.text).length() > 30:
-			check_button.add_font_override("font", small_font)
+			check_button.add_theme_font_override("font", small_font)
 		else:
-			check_button.add_font_override("font", normal_font)
+			check_button.add_theme_font_override("font", normal_font)
 
 	var slider_children = accessibility_slider_container.get_children()
 
@@ -216,20 +216,20 @@ func adjust_buttons_font_size() -> void :
 			continue
 
 		if tr(child._label.text).length() > 18:
-			child._label.add_font_override("font", small_slider_font)
+			child._label.add_theme_font_override("font", small_slider_font)
 		else:
-			child._label.add_font_override("font", normal_slider_font)
+			child._label.add_theme_font_override("font", normal_slider_font)
 
 
 func init_values_from_progress_data() -> void :
-	mouse_only_button.pressed = ProgressData.settings.mouse_only
-	manual_aim_button.pressed = ProgressData.settings.manual_aim
-	manual_aim_on_mouse_press_button.pressed = ProgressData.settings.manual_aim_on_mouse_press
-	movement_with_gamepad.pressed = ProgressData.settings.movement_with_gamepad
-	hp_bar_button.pressed = ProgressData.settings.hp_bar_on_character
-	boss_hp_bar_button.pressed = ProgressData.settings.hp_bar_on_bosses
-	keep_lock_button.pressed = ProgressData.settings.keep_lock
-	lock_coop_camera_button.pressed = ProgressData.settings.lock_coop_camera
+	mouse_only_button.button_pressed = ProgressData.settings.mouse_only
+	manual_aim_button.button_pressed = ProgressData.settings.manual_aim
+	manual_aim_on_mouse_press_button.button_pressed = ProgressData.settings.manual_aim_on_mouse_press
+	movement_with_gamepad.button_pressed = ProgressData.settings.movement_with_gamepad
+	hp_bar_button.button_pressed = ProgressData.settings.hp_bar_on_character
+	boss_hp_bar_button.button_pressed = ProgressData.settings.hp_bar_on_bosses
+	keep_lock_button.button_pressed = ProgressData.settings.keep_lock
+	lock_coop_camera_button.button_pressed = ProgressData.settings.lock_coop_camera
 	score_storing_button.select(ProgressData.settings.endless_score_storing)
 	enemy_health_slider.set_value(ProgressData.settings.enemy_scaling.health)
 	enemy_damage_slider.set_value(ProgressData.settings.enemy_scaling.damage)
@@ -238,7 +238,7 @@ func init_values_from_progress_data() -> void :
 	explosion_opacity_slider.set_value(ProgressData.settings.explosion_opacity)
 	projectile_opacity_slider.set_value(ProgressData.settings.projectile_opacity)
 	pet_opacity_slider.set_value(ProgressData.settings.pet_opacity)
-	effects_icons_description_button.pressed = ProgressData.settings.effects_icons_in_description
+	effects_icons_description_button.button_pressed = ProgressData.settings.effects_icons_in_description
 	font_size_slider.set_value(ProgressData.settings.font_size)
 	color_positive._init_color(Color(ProgressData.settings.color_positive))
 	color_negative._init_color(Color(ProgressData.settings.color_negative))
@@ -248,17 +248,17 @@ func init_values_from_progress_data() -> void :
 	color_tier3._init_color(Color(ProgressData.settings.tier_3_color))
 	color_tier4._init_color(Color(ProgressData.settings.tier_4_color))
 	color_tier5._init_color(Color(ProgressData.settings.tier_5_color))
-	character_highlighting_button.pressed = ProgressData.settings.character_highlighting
-	weapon_highlighting_button.pressed = ProgressData.settings.weapon_highlighting
-	projectile_highlighting_button.pressed = ProgressData.settings.projectile_highlighting
-	turret_highlighting_button.pressed = ProgressData.settings.turret_highlighting
-	pet_highlighting_button.pressed = ProgressData.settings.pet_highlighting
-	gold_sounds_button.pressed = ProgressData.settings.alt_gold_sounds
-	darken_screen_button.pressed = ProgressData.settings.darken_screen
-	retry_wave_button.pressed = ProgressData.settings.retry_wave
-	share_coop_loot_button.pressed = ProgressData.settings.share_coop_loot
-	no_item_appearance.pressed = ProgressData.settings.no_item_appearance
-	holding_button.pressed = ProgressData.settings.holding_button
+	character_highlighting_button.button_pressed = ProgressData.settings.character_highlighting
+	weapon_highlighting_button.button_pressed = ProgressData.settings.weapon_highlighting
+	projectile_highlighting_button.button_pressed = ProgressData.settings.projectile_highlighting
+	turret_highlighting_button.button_pressed = ProgressData.settings.turret_highlighting
+	pet_highlighting_button.button_pressed = ProgressData.settings.pet_highlighting
+	gold_sounds_button.button_pressed = ProgressData.settings.alt_gold_sounds
+	darken_screen_button.button_pressed = ProgressData.settings.darken_screen
+	retry_wave_button.button_pressed = ProgressData.settings.retry_wave
+	share_coop_loot_button.button_pressed = ProgressData.settings.share_coop_loot
+	no_item_appearance.button_pressed = ProgressData.settings.no_item_appearance
+	holding_button.button_pressed = ProgressData.settings.holding_button
 
 	if not ProgressData.is_dlc_available("abyssal_terrors"):
 		abyssal_terrors_dlc_button.hide()
@@ -285,7 +285,7 @@ func _on_MusicSlider_value_changed(value: float) -> void :
 
 
 func set_volume(value: float, bus: String) -> void :
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), linear2db(value))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), linear_to_db(value))
 
 
 func _on_LanguageButton_item_selected(index: int) -> void :
@@ -300,7 +300,7 @@ func _on_ScreenshakeButton_toggled(button_pressed: bool) -> void :
 
 func _on_FullScreenButton_toggled(button_pressed: bool) -> void :
 	ProgressData.settings.fullscreen = button_pressed
-	OS.window_fullscreen = button_pressed
+	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (button_pressed) else Window.MODE_WINDOWED
 
 
 func _on_BackgroundButton_item_selected(index: int) -> void :
@@ -559,11 +559,11 @@ func _on_MainScreenArt_item_selected(index):
 
 
 func _on_ColorPositiveText_color_reset():
-	ProgressData.settings.color_positive = Color.green.to_html()
+	ProgressData.settings.color_positive = Color.GREEN.to_html()
 	color_positive._init_color(Color(ProgressData.settings.color_positive))
 
 func _on_ColorNegativeText_color_reset():
-	ProgressData.settings.color_negative = Color.red.to_html()
+	ProgressData.settings.color_negative = Color.RED.to_html()
 	color_negative._init_color(Color(ProgressData.settings.color_negative))
 
 func _on_Color_tier0_color_reset():

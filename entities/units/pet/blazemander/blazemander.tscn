@@ -2,20 +2,20 @@
 
 [ext_resource path="res://entities/units/pet/pet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/units/pet/blazemander/blazemander_stats.tres" type="Resource" id=2]
-[ext_resource path="res://entities/units/pet/blazemander/blazemander_body.png" type="Texture" id=3]
+[ext_resource path="res://entities/units/pet/blazemander/blazemander_body.png" type="Texture2D" id=3]
 [ext_resource path="res://entities/units/target_behavior/closest_non_burning_enemy_target_behavior.gd" type="Script" id=4]
 [ext_resource path="res://overlap/hitbox.gd" type="Script" id=5]
 [ext_resource path="res://entities/units/pet/blazemander/blazemander.gd" type="Script" id=6]
-[ext_resource path="res://entities/units/pet/blazemander/blazemander_tail_0.png" type="Texture" id=9]
-[ext_resource path="res://entities/units/pet/blazemander/blazemander_head_0.png" type="Texture" id=10]
-[ext_resource path="res://entities/units/pet/blazemander/blazemander_tail_1.png" type="Texture" id=11]
-[ext_resource path="res://entities/units/pet/blazemander/blazemander_shadow.png" type="Texture" id=12]
+[ext_resource path="res://entities/units/pet/blazemander/blazemander_tail_0.png" type="Texture2D" id=9]
+[ext_resource path="res://entities/units/pet/blazemander/blazemander_head_0.png" type="Texture2D" id=10]
+[ext_resource path="res://entities/units/pet/blazemander/blazemander_tail_1.png" type="Texture2D" id=11]
+[ext_resource path="res://entities/units/pet/blazemander/blazemander_shadow.png" type="Texture2D" id=12]
 [ext_resource path="res://resources/shaders/outline.gdshader" type="Shader" id=13]
-[ext_resource path="res://entities/units/pet/blazemander/blazemander_head_2.png" type="Texture" id=14]
-[ext_resource path="res://entities/units/pet/blazemander/blazemander_head_1.png" type="Texture" id=15]
+[ext_resource path="res://entities/units/pet/blazemander/blazemander_head_2.png" type="Texture2D" id=14]
+[ext_resource path="res://entities/units/pet/blazemander/blazemander_head_1.png" type="Texture2D" id=15]
 [ext_resource path="res://overlap/hurtbox.gd" type="Script" id=16]
 [ext_resource path="res://resources/shaders/flash.gdshader" type="Shader" id=18]
-[ext_resource path="res://entities/units/pet/hand_pet.png" type="Texture" id=20]
+[ext_resource path="res://entities/units/pet/hand_pet.png" type="Texture2D" id=20]
 
 [sub_resource type="PhysicsMaterial" id=6]
 friction = 0.0
@@ -38,7 +38,7 @@ shader_param/flash_modifier = 1.0
 
 [sub_resource type="ViewportTexture" id=22]
 flags = 4
-viewport_path = NodePath("Animation/Viewport")
+viewport_path = NodePath("Animation/SubViewport")
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 40.0
@@ -46,38 +46,38 @@ radius = 40.0
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Animation/Sprite:modulate")
+tracks/0/path = NodePath("Animation/Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Animation/Sprite:scale")
+tracks/1/path = NodePath("Animation/Sprite2D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Animation/Sprite:rotation_degrees")
+tracks/2/path = NodePath("Animation/Sprite2D:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
@@ -88,92 +88,92 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Animation/Sprite:self_modulate")
+tracks/4/path = NodePath("Animation/Sprite2D:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Animation/Sprite/Sprite:visible")
+tracks/5/path = NodePath("Animation/Sprite2D/Sprite2D:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Animation/Sprite/Sprite:position")
+tracks/6/path = NodePath("Animation/Sprite2D/Sprite2D:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 27, -61 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Animation/Sprite/Sprite:scale")
+tracks/7/path = NodePath("Animation/Sprite2D/Sprite2D:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0.645, 1.652 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Animation/Sprite/Sprite:rotation_degrees")
+tracks/8/path = NodePath("Animation/Sprite2D/Sprite2D:rotation_degrees")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:texture")
+tracks/9/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:texture")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 14 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:position")
+tracks/10/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 8, -45.744 ) ]
 }
@@ -189,8 +189,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
@@ -201,152 +201,152 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -24 ), Vector2( 0, -24 ), Vector2( 0, -24 ), Vector2( 0, -24 ), Vector2( 0, -24 ), Vector2( 0, -24 ), Vector2( 0, -24 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Animation/Viewport/offset/sp_body:scale")
+tracks/2/path = NodePath("Animation/SubViewport/offset/sp_body:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:scale")
+tracks/3/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.957, 1.145 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.091, 0.99 ), Vector2( 1.261, 0.99 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:position")
+tracks/4/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 6.619, -49.367 ), Vector2( 6.619, -49.367 ), Vector2( 6.619, -49.367 ), Vector2( 30.3302, -46.5859 ), Vector2( 36.0957, -44.0392 ), Vector2( 25.0576, -45.0597 ), Vector2( 8, -51.0661 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0:rotation_degrees")
+tracks/5/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0:rotation_degrees")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.1, 0.15, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.15, 0.2, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 17.5, 14.3, 2.8, -21.7, 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0/sp_tail_1:rotation_degrees")
+tracks/6/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0/sp_tail_1:rotation_degrees")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.1, 0.15, 0.2, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 28.5, 35.1, 0.0, -2.55831, 0.0 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:rotation_degrees")
+tracks/7/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:rotation_degrees")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -14.7, -3.2, -3.2, -14.7, -14.7, -3.4, 0.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:texture")
+tracks/8/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:texture")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 10 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0:position")
+tracks/9/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.1, 0.15, 0.2, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -15.4839, -13.5959 ), Vector2( -12.912, -12.79 ), Vector2( -14.4131, -13.5305 ), Vector2( -14, -13.9166 ), Vector2( -14, -13.9166 ), Vector2( -14, -13.9166 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Animation/Viewport/offset/sp_body:rotation_degrees")
+tracks/10/path = NodePath("Animation/SubViewport/offset/sp_body:rotation_degrees")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 2.0, -6.6, -6.6, 13.0, 13.0, 9.28572, 0.0 ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0/sp_tail_1:position")
+tracks/11/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0/sp_tail_1:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.1, 0.15, 0.2, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -16.0079, -8.59809 ), Vector2( -15.4816, -10.016 ), Vector2( -18.7165, -10.521 ), Vector2( -14, -7 ), Vector2( -14, -7 ), Vector2( -14, -7 ) ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("Animation/Viewport/offset/sp_body:position")
+tracks/12/path = NodePath("Animation/SubViewport/offset/sp_body:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 39.128 ), Vector2( 0, 39.128 ), Vector2( 0, 39.128 ), Vector2( 0, 42.426 ), Vector2( 0, 42.426 ), Vector2( 0, 42.426 ), Vector2( 0, 42.426 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("Animation/Sprite/Sprite:visible")
+tracks/13/path = NodePath("Animation/Sprite2D/Sprite2D:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -355,38 +355,38 @@ tracks/13/keys = {
 length = 1.05
 step = 0.25
 tracks/0/type = "value"
-tracks/0/path = NodePath("Animation/Sprite:modulate")
+tracks/0/path = NodePath("Animation/Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 0.297302 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 0.297302 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.34902, 0.34902, 0.34902, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Animation/Sprite:scale")
+tracks/1/path = NodePath("Animation/Sprite2D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 0.34151 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 0.34151 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Animation/Sprite:rotation_degrees")
+tracks/2/path = NodePath("Animation/Sprite2D:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 360.0 ]
 }
@@ -397,8 +397,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.25, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0.25, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "stop_burning"
@@ -408,14 +408,14 @@ tracks/3/keys = {
 } ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Animation/Sprite/Sprite:visible")
+tracks/4/path = NodePath("Animation/Sprite2D/Sprite2D:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -430,8 +430,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1 )
+"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.5, 1 )
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("Animation:position:y")
@@ -440,8 +440,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( -24, -0.25, 0, 0.25, 0, -19, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1 )
+"points": PackedFloat32Array( -24, -0.25, 0, 0.25, 0, -19, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.5, 1 )
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("Animation:scale:x")
@@ -450,8 +450,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.15, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1.15, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.5, 1 )
 }
 tracks/3/type = "bezier"
 tracks/3/path = NodePath("Animation:scale:y")
@@ -460,8 +460,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.85, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 0.85, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.5, 1 )
 }
 
 [sub_resource type="Animation" id=15]
@@ -476,8 +476,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.05, 0.95 ), Vector2( 1, 1 ), Vector2( 1.05, 0.95 ), Vector2( 1, 1 ) ]
 }
@@ -488,140 +488,140 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -24 ), Vector2( 0, -19.116 ), Vector2( 0, -24 ), Vector2( 0, -19.116 ), Vector2( 0, -24 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Animation/Viewport/offset/sp_body:scale")
+tracks/2/path = NodePath("Animation/SubViewport/offset/sp_body:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.955, 1.045 ), Vector2( 0.95, 1.05 ), Vector2( 0.955, 1.045 ), Vector2( 0.995, 1.005 ), Vector2( 1, 1 ), Vector2( 0.995, 1.005 ), Vector2( 0.955, 1.045 ), Vector2( 0.95, 1.05 ), Vector2( 0.955, 1.045 ), Vector2( 0.995, 1.005 ), Vector2( 1, 1 ), Vector2( 0.995, 1.005 ), Vector2( 0.955, 1.045 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:scale")
+tracks/3/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.6, 0.7, 0.8, 1, 1.1, 1.2, 1.3, 1.6, 1.7, 1.8, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.6, 0.7, 0.8, 1, 1.1, 1.2, 1.3, 1.6, 1.7, 1.8, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.01833, 0.981667 ), Vector2( 1.005, 0.995 ), Vector2( 1, 1 ), Vector2( 1.005, 0.995 ), Vector2( 1.045, 0.955 ), Vector2( 1.05, 0.95 ), Vector2( 1.045, 0.955 ), Vector2( 1.01833, 0.981667 ), Vector2( 1.005, 0.995 ), Vector2( 1, 1 ), Vector2( 1.005, 0.995 ), Vector2( 1.045, 0.955 ), Vector2( 1.05, 0.95 ), Vector2( 1.045, 0.955 ), Vector2( 1.01833, 0.981667 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:position")
+tracks/4/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.6, 0.7, 0.8, 1, 1.1, 1.2, 1.3, 1.6, 1.7, 1.8, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.6, 0.7, 0.8, 1, 1.1, 1.2, 1.3, 1.6, 1.7, 1.8, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 8, -51.0661 ), Vector2( 8, -51.7453 ), Vector2( 8, -52 ), Vector2( 8, -51.7453 ), Vector2( 8, -49.7077 ), Vector2( 8, -49.453 ), Vector2( 8, -49.7077 ), Vector2( 8, -51.0661 ), Vector2( 8, -51.7453 ), Vector2( 8, -52 ), Vector2( 8, -51.7453 ), Vector2( 8, -49.7077 ), Vector2( 8, -49.453 ), Vector2( 8, -49.7077 ), Vector2( 8, -51.0661 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0:rotation_degrees")
+tracks/5/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0:rotation_degrees")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 12.8, 0.0, 12.8, 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0/sp_tail_1:rotation_degrees")
+tracks/6/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0/sp_tail_1:rotation_degrees")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -29.3, 0.0, -29.3, 0.0 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:rotation_degrees")
+tracks/7/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:rotation_degrees")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 5.0, -5.0, 5.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:texture")
+tracks/8/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:texture")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 1.8, 1.85 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1.8, 1.85 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 10 ), ExtResource( 10 ), ExtResource( 14 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0:position")
+tracks/9/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( -10.2943, -11.8013 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Animation/Viewport/offset/sp_body:rotation_degrees")
+tracks/10/path = NodePath("Animation/SubViewport/offset/sp_body:rotation_degrees")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0/sp_tail_1:position")
+tracks/11/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0/sp_tail_1:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( -14, -7 ) ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("Animation/Sprite/Sprite:visible")
+tracks/12/path = NodePath("Animation/Sprite2D/Sprite2D:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -637,8 +637,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.05, 0.95 ), Vector2( 1, 1 ), Vector2( 1.05, 0.95 ), Vector2( 1, 1 ) ]
 }
@@ -649,140 +649,140 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -24 ), Vector2( 0, -19.116 ), Vector2( 0, -24 ), Vector2( 0, -19.116 ), Vector2( 0, -24 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Animation/Viewport/offset/sp_body:scale")
+tracks/2/path = NodePath("Animation/SubViewport/offset/sp_body:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.955, 1.045 ), Vector2( 0.95, 1.05 ), Vector2( 0.955, 1.045 ), Vector2( 0.995, 1.005 ), Vector2( 1, 1 ), Vector2( 0.995, 1.005 ), Vector2( 0.955, 1.045 ), Vector2( 0.95, 1.05 ), Vector2( 0.955, 1.045 ), Vector2( 0.995, 1.005 ), Vector2( 1, 1 ), Vector2( 0.995, 1.005 ), Vector2( 0.955, 1.045 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:scale")
+tracks/3/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.3, 0.35, 0.4, 0.5, 0.55, 0.6, 0.65, 0.8, 0.85, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.3, 0.35, 0.4, 0.5, 0.55, 0.6, 0.65, 0.8, 0.85, 0.9, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.01833, 0.981667 ), Vector2( 1.005, 0.995 ), Vector2( 1, 1 ), Vector2( 1.005, 0.995 ), Vector2( 1.045, 0.955 ), Vector2( 1.05, 0.95 ), Vector2( 1.045, 0.955 ), Vector2( 1.01833, 0.981667 ), Vector2( 1.005, 0.995 ), Vector2( 1, 1 ), Vector2( 1.005, 0.995 ), Vector2( 1.045, 0.955 ), Vector2( 1.05, 0.95 ), Vector2( 1.045, 0.955 ), Vector2( 1.01833, 0.981667 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:position")
+tracks/4/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.3, 0.35, 0.4, 0.5, 0.55, 0.6, 0.65, 0.8, 0.85, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.3, 0.35, 0.4, 0.5, 0.55, 0.6, 0.65, 0.8, 0.85, 0.9, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 8, -51.0661 ), Vector2( 8, -51.7453 ), Vector2( 8, -52 ), Vector2( 8, -51.7453 ), Vector2( 8, -49.7077 ), Vector2( 8, -49.453 ), Vector2( 8, -49.7077 ), Vector2( 8, -51.0661 ), Vector2( 8, -51.7453 ), Vector2( 8, -52 ), Vector2( 8, -51.7453 ), Vector2( 8, -49.7077 ), Vector2( 8, -49.453 ), Vector2( 8, -49.7077 ), Vector2( 8, -51.0661 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0:rotation_degrees")
+tracks/5/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0:rotation_degrees")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 12.8, 0.0, 12.8, 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0/sp_tail_1:rotation_degrees")
+tracks/6/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0/sp_tail_1:rotation_degrees")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -29.3, 0.0, -29.3, 0.0 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:rotation_degrees")
+tracks/7/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:rotation_degrees")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 5.0, -5.0, 5.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:texture")
+tracks/8/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:texture")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.85, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.85, 0.9 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 10 ), ExtResource( 10 ), ExtResource( 14 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0:position")
+tracks/9/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.25, 0.35, 0.45, 0.5, 0.6, 0.7, 0.75, 0.85, 0.95, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.25, 0.35, 0.45, 0.5, 0.6, 0.7, 0.75, 0.85, 0.95, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -13.7166, -13.4003 ), Vector2( -15, -14 ), Vector2( -13.7166, -13.4003 ), Vector2( -10.2943, -11.8013 ), Vector2( -8.58314, -11.0017 ), Vector2( -9.86652, -11.6014 ), Vector2( -13.7166, -13.4003 ), Vector2( -15, -14 ), Vector2( -13.7166, -13.4003 ), Vector2( -10.2943, -11.8013 ), Vector2( -8.58314, -11.0017 ), Vector2( -9.86652, -11.6014 ), Vector2( -13.7166, -13.4003 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0/sp_tail_1:position")
+tracks/10/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0/sp_tail_1:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.05, 0.15, 0.25, 0.3, 0.4, 0.5, 0.55, 0.65, 0.75, 0.8, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.15, 0.25, 0.3, 0.4, 0.5, 0.55, 0.65, 0.75, 0.8, 0.9, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -5.9061, -8.81419 ), Vector2( -11.9765, -7.45355 ), Vector2( -14, -7 ), Vector2( -11.9765, -7.45355 ), Vector2( -5.9061, -8.81419 ), Vector2( -3.88263, -9.26774 ), Vector2( -5.9061, -8.81419 ), Vector2( -11.9765, -7.45355 ), Vector2( -14, -7 ), Vector2( -11.9765, -7.45355 ), Vector2( -5.9061, -8.81419 ), Vector2( -3.88263, -9.26774 ), Vector2( -5.9061, -8.81419 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Animation/Viewport/offset/sp_body:rotation_degrees")
+tracks/11/path = NodePath("Animation/SubViewport/offset/sp_body:rotation_degrees")
 tracks/11/interp = 2
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ -3.0, 3.0, -3.0 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("Animation/Sprite/Sprite:visible")
+tracks/12/path = NodePath("Animation/Sprite2D/Sprite2D:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -797,8 +797,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.05, 0.95 ), Vector2( 1, 1 ) ]
 }
@@ -809,176 +809,176 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -24 ), Vector2( 0, -19.116 ), Vector2( 0, -24 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Animation/Viewport/offset/sp_body:scale")
+tracks/2/path = NodePath("Animation/SubViewport/offset/sp_body:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.955, 1.045 ), Vector2( 0.95, 1.05 ), Vector2( 0.955, 1.045 ), Vector2( 0.995, 1.005 ), Vector2( 1, 1 ), Vector2( 0.995, 1.005 ), Vector2( 0.955, 1.045 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:scale")
+tracks/3/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.6, 0.7, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.6, 0.7, 0.8, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.01833, 0.981667 ), Vector2( 1.005, 0.995 ), Vector2( 1, 1 ), Vector2( 1.005, 0.995 ), Vector2( 1.045, 0.955 ), Vector2( 1.05, 0.95 ), Vector2( 1.045, 0.955 ), Vector2( 1.01833, 0.981667 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:position")
+tracks/4/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.05, 0.95, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.95, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 8, -51.0661 ), Vector2( 8, -45.744 ), Vector2( 8, -48.28 ), Vector2( 8, -51.0661 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0:rotation_degrees")
+tracks/5/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0:rotation_degrees")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 12.8, 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0/sp_tail_1:rotation_degrees")
+tracks/6/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0/sp_tail_1:rotation_degrees")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -29.3, 0.0 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:rotation_degrees")
+tracks/7/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:rotation_degrees")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ 5.0, -5.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:texture")
+tracks/8/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:texture")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.05, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.95 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 10 ), ExtResource( 14 ), ExtResource( 10 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0:position")
+tracks/9/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( -10.2943, -11.8013 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Animation/Viewport/offset/sp_body:rotation_degrees")
+tracks/10/path = NodePath("Animation/SubViewport/offset/sp_body:rotation_degrees")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail_0/sp_tail_1:position")
+tracks/11/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail_0/sp_tail_1:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( -14, -7 ) ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("Animation/Sprite/Sprite:visible")
+tracks/12/path = NodePath("Animation/Sprite2D/Sprite2D:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("Animation/Sprite/Sprite:position")
+tracks/13/path = NodePath("Animation/Sprite2D/Sprite2D:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 0.05, 0.45, 0.5, 0.55, 0.95, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.45, 0.5, 0.55, 0.95, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 29, -70 ), Vector2( 24.9147, -40.4732 ), Vector2( 37.9469, -34.1846 ), Vector2( 25.5155, -47.3246 ), Vector2( 24.9147, -40.4732 ), Vector2( 37.9469, -34.1846 ), Vector2( 29, -70 ) ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("Animation/Sprite/Sprite:rotation_degrees")
+tracks/14/path = NodePath("Animation/Sprite2D/Sprite2D:rotation_degrees")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 0.05, 0.45, 0.5, 0.55, 0.95, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.45, 0.5, 0.55, 0.95, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 22.0, -21.0, 0.0, 22.0, 0.0 ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("Animation/Sprite/Sprite:scale")
+tracks/15/path = NodePath("Animation/Sprite2D/Sprite2D:scale")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 0.05, 0.45, 0.55, 0.95, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.45, 0.55, 0.95, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.645, 1.652 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.645, 1.652 ) ]
 }
@@ -1003,7 +1003,7 @@ shoot_projectiles = false
 [node name="Animation" parent="." index="0"]
 position = Vector2( 0, -21.1526 )
 
-[node name="Viewport" type="Viewport" parent="Animation" index="0"]
+[node name="SubViewport" type="SubViewport" parent="Animation" index="0"]
 size = Vector2( 200, 200 )
 transparent_bg = true
 hdr = false
@@ -1012,43 +1012,43 @@ usage = 0
 render_target_v_flip = true
 render_target_update_mode = 3
 
-[node name="offset" type="Node2D" parent="Animation/Viewport" index="0"]
+[node name="offset" type="Node2D" parent="Animation/SubViewport" index="0"]
 position = Vector2( 100, 100 )
 
-[node name="Shadow" type="Sprite" parent="Animation/Viewport/offset" index="0"]
+[node name="Shadow" type="Sprite2D" parent="Animation/SubViewport/offset" index="0"]
 texture = ExtResource( 12 )
 
-[node name="sp_body" type="Sprite" parent="Animation/Viewport/offset" index="1"]
+[node name="sp_body" type="Sprite2D" parent="Animation/SubViewport/offset" index="1"]
 position = Vector2( 0, 42.426 )
 scale = Vector2( 0.965371, 1.03463 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -44.9166 )
 
-[node name="sp_head" type="Sprite" parent="Animation/Viewport/offset/sp_body" index="0"]
+[node name="sp_head" type="Sprite2D" parent="Animation/SubViewport/offset/sp_body" index="0"]
 position = Vector2( 8, -45.744 )
 rotation = -0.0592097
 scale = Vector2( 1.00389, 0.996111 )
 texture = ExtResource( 14 )
 offset = Vector2( -8, 7.0834 )
 
-[node name="sp_tail_0" type="Sprite" parent="Animation/Viewport/offset/sp_body" index="1"]
+[node name="sp_tail_0" type="Sprite2D" parent="Animation/SubViewport/offset/sp_body" index="1"]
 show_behind_parent = true
 position = Vector2( -10.2943, -11.8013 )
 rotation = 0.130243
 texture = ExtResource( 9 )
 offset = Vector2( 15, -30.9166 )
 
-[node name="sp_tail_1" type="Sprite" parent="Animation/Viewport/offset/sp_body/sp_tail_0" index="0"]
+[node name="sp_tail_1" type="Sprite2D" parent="Animation/SubViewport/offset/sp_body/sp_tail_0" index="0"]
 show_behind_parent = true
 position = Vector2( -14, -7 )
 rotation = -0.298134
 texture = ExtResource( 11 )
 offset = Vector2( 29, -23.9166 )
 
-[node name="Sprite" parent="Animation" index="1"]
+[node name="Sprite2D" parent="Animation" index="1"]
 texture = SubResource( 22 )
 
-[node name="Sprite" type="Sprite" parent="Animation/Sprite" index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="Animation/Sprite2D" index="0"]
 position = Vector2( 27, -61 )
 scale = Vector2( 0.645, 1.652 )
 texture = ExtResource( 20 )

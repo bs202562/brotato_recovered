@@ -1,20 +1,20 @@
 class_name TitleScreenBackgroundData
 extends Resource
 
-export (String) var my_id = ""
-export (int) var index_priority = 0
+@export var my_id: String = ""
+@export var index_priority: int = 0
 var my_id_hash: int = Keys.empty_hash
-export (PackedScene) var scene
-export (PackedScene) var logo_scene
-export (bool) var last_update = false
+@export var scene: PackedScene
+@export var logo_scene: PackedScene
+@export var last_update: bool = false
 
-export (Dictionary) var start_date = {
+@export var start_date: Dictionary = {
 	"year": 2026, 
 	"month": 5, 
 	"day": 1
 }
 
-export (Dictionary) var end_date = {
+@export var end_date: Dictionary = {
 	"year": 2026, 
 	"month": 5, 
 	"day": 25
@@ -33,7 +33,7 @@ func _generate_hashes() -> void :
 
 
 func duplicate(subresources: = false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 
 	if my_id_hash == Keys.empty_hash:
 		my_id_hash = Keys.generate_hash(my_id)
@@ -42,7 +42,7 @@ func duplicate(subresources: = false) -> Resource:
 	return duplication
 
 func is_available() -> bool:
-	var current = OS.get_date()
+	var current = Time.get_date_dict_from_system()
 	var currentValue = _date_to_int(current)
 	var startValue = _date_to_int(start_date)
 	var endValue = _date_to_int(end_date)

@@ -1,8 +1,8 @@
 class_name ChanceStatDamageEffect
 extends Effect
 
-export(int) var chance := 3
-export(String) var tracking_text
+@export var chance := 3
+@export var tracking_text: String
 var tracking_key: int = Keys.empty_hash
 
 
@@ -11,7 +11,7 @@ static func get_id() -> String:
 
 
 func _generate_hashes() -> void:
-	._generate_hashes()
+	super._generate_hashes()
 	tracking_key = Keys.generate_hash(tracking_text)
 
 
@@ -43,7 +43,7 @@ func get_args(player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.chance = chance
 	serialized.tracking_text = tracking_text
@@ -52,7 +52,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	chance = serialized.chance as int
 	tracking_text = serialized.tracking_text
@@ -60,6 +60,6 @@ func deserialize_and_merge(serialized: Dictionary) -> void:
 
 
 func duplicate(subresources := false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 	duplication.tracking_key = tracking_key
 	return duplication

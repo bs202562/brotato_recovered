@@ -1,10 +1,10 @@
 class_name WeaponStackEffect
 extends NullEffect
 
-export (String) var weapon_stacked_name
-export (String) var weapon_stacked_id
-export (String) var stat_displayed_name = "stat_damage"
-export (String) var stat_name = "damage"
+@export var weapon_stacked_name: String
+@export var weapon_stacked_id: String
+@export var stat_displayed_name: String = "stat_damage"
+@export var stat_name: String = "damage"
 var weapon_stacked_id_hash = Keys.generate_hash(weapon_stacked_id)
 
 
@@ -12,11 +12,11 @@ static func get_id() -> String:
 	return "weapon_stack"
 
 func _generate_hashes() -> void :
-	._generate_hashes()
+	super._generate_hashes()
 	weapon_stacked_id_hash = Keys.generate_hash(weapon_stacked_id)
 
 func duplicate(subresources: = false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 	duplication.weapon_stacked_id_hash = weapon_stacked_id_hash
 	return duplication
 
@@ -30,7 +30,7 @@ func get_args(player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.weapon_stacked_name = weapon_stacked_name
 	serialized.weapon_stacked_id = weapon_stacked_id
@@ -41,7 +41,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void :
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	weapon_stacked_name = serialized.weapon_stacked_name
 	weapon_stacked_id = serialized.weapon_stacked_id

@@ -1,13 +1,13 @@
 class_name TakeDamageArgs
-extends Reference
+extends RefCounted
 
-var from_player_index: int setget _set_from_player_index, _get_from_player_index
+var from_player_index: int: get = _get_from_player_index, set = _set_from_player_index
 func _get_from_player_index() -> int:
 	return from_player_index
 func _set_from_player_index(_v: int) -> void :
 	printerr("from_player_index is readonly")
 
-var hitbox: Hitbox setget _set_hitbox, _get_hitbox
+var hitbox: Hitbox: get = _get_hitbox, set = _set_hitbox
 func _get_hitbox() -> Hitbox:
 	return hitbox
 func _set_hitbox(_v: Hitbox) -> void :

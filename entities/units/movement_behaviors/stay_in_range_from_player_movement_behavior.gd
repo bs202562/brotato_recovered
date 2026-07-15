@@ -1,14 +1,14 @@
 class_name StayInRangeFromPlayerMovementBehavior
 extends MovementBehavior
 
-export (int) var target_range = 300
-export (int) var target_range_randomization = 100
+@export var target_range: int = 300
+@export var target_range_randomization: int = 100
 
 var _actual_target_range: float
 
 
 func _ready() -> void :
-	_actual_target_range = target_range + rand_range( - target_range_randomization, target_range_randomization)
+	_actual_target_range = target_range + randf_range( - target_range_randomization, target_range_randomization)
 
 
 func get_movement() -> Vector2:

@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-onready var _input_container: BugReporterInput = $"%InputContainer"
-onready var _response_container: BugReporterResponse = $"%ResponseContainer"
-onready var _tooltip: Control = $"%Tooltip"
+@onready var _input_container: BugReporterInput = $"%InputContainer"
+@onready var _response_container: BugReporterResponse = $"%ResponseContainer"
+@onready var _tooltip: Control = $"%Tooltip"
 
 var _restore_focus_control = null
 var _restore_paused_value: = false
@@ -28,7 +28,7 @@ func _process(_delta: float) -> void :
 			_open()
 
 	if visible and _tooltip.visible:
-		_tooltip.rect_global_position = (
+		_tooltip.global_position = (
 			get_viewport().get_mouse_position()
 			+ _get_tooltip_offset()
 		)
@@ -40,7 +40,7 @@ func _get_tooltip_offset() -> Vector2:
 
 func _open() -> void :
 	set_process_input(true)
-	_restore_focus_control = _input_container.get_focus_owner()
+	_restore_focus_control = _input_container.get_viewport().gui_get_focus_owner()
 	_input_container.open()
 	_response_container.visible = false
 	_tooltip.visible = false

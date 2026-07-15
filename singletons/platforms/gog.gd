@@ -20,7 +20,7 @@ func _ready():
 
 	gog = load("res://addons/gog_bindings/gog_bindings.gdns").new()
 	add_child(gog)
-	var _e = gog.connect("init_finished", self, "_on_init_finished")
+	var _e = gog.connect("init_finished", Callable(self, "_on_init_finished"))
 	gog.client_id = "59334299015044628"
 	gog.client_secret = "2a927e31396fd0790a4552419a1c9728226387146428570f8c667822411e3f0f"
 
@@ -42,7 +42,7 @@ func get_user_id() -> String:
 
 func is_challenge_completed(chal_id: String) -> bool:
 	if not initialized:
-		yield(gog, "init_finished")
+		await gog.init_finished
 	if init_success:
 		return gog.is_achievement_unlocked(chal_id)
 	return false
@@ -50,7 +50,7 @@ func is_challenge_completed(chal_id: String) -> bool:
 
 func complete_challenge(chal_id: int) -> void :
 	if not initialized:
-		yield(gog, "init_finished")
+		await gog.init_finished
 	if init_success and not gog.is_achievement_unlocked(Keys.hash_to_string[chal_id]):
 		gog.unlock_achievement(Keys.hash_to_string[chal_id])
 
@@ -65,7 +65,7 @@ func get_language() -> String:
 
 func reinitialize_store_data() -> void :
 	if not initialized:
-		yield(gog, "init_finished")
+		await gog.init_finished
 	if init_success:
 		gog.reset_stats_and_achievements()
 

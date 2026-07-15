@@ -87,7 +87,7 @@ func _find_min_max_stat_keys(player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.stats_swapped = stats_swapped
 	serialized.has_been_applied = has_been_applied
@@ -96,7 +96,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	stats_swapped = serialized.stats_swapped if "stats_swapped" in serialized else []
 

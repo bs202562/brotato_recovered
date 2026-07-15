@@ -1,7 +1,7 @@
 class_name CoopShopStealHint
 extends CoopShopHint
 
-onready var _label3 = $"%Label3"
+@onready var _label3 = $"%Label3"
 
 
 func set_steal_percentage(percentage: int) -> void :

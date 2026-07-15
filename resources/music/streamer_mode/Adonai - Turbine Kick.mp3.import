@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Adonai - Turbine Kick.mp3-0ede1551ea89c36c8e18101266be0b6a.mp3str"
+uid="uid://1yh4tt1xluig"
+path="res://.godot/imported/Adonai - Turbine Kick.mp3-0ede1551ea89c36c8e18101266be0b6a.mp3str"
 
 [deps]
 
 source_file="res://resources/music/streamer_mode/Adonai - Turbine Kick.mp3"
-dest_files=[ "res://.import/Adonai - Turbine Kick.mp3-0ede1551ea89c36c8e18101266be0b6a.mp3str" ]
+dest_files=["res://.godot/imported/Adonai - Turbine Kick.mp3-0ede1551ea89c36c8e18101266be0b6a.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

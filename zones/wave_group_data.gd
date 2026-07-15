@@ -2,61 +2,61 @@ class_name WaveGroupData
 extends Resource
 
 
-export (float) var spawn_chance = 1.0
+@export var spawn_chance: float = 1.0
 
 
-export (int) var spawn_timing = 1
+@export var spawn_timing: int = 1
 
 
-export (int) var repeating = 999
+@export var repeating: int = 999
 
 
-export (int) var repeating_interval = 3
+@export var repeating_interval: int = 3
 
 
-export (int) var reduce_repeating_interval = 0
+@export var reduce_repeating_interval: int = 0
 
 
-export (int) var min_repeating_interval = 1
+@export var min_repeating_interval: int = 1
 
 
-export (int) var area = - 1
+@export var area: int = - 1
 
 
-export (int) var spawn_dist_away_from_edges = 0
+@export var spawn_dist_away_from_edges: int = 0
 
 
-export (bool) var spawn_edge_of_map = false
+@export var spawn_edge_of_map: bool = false
 
 
-export (Array, Resource) var wave_units_data
+@export var wave_units_data: Array = [] # (Array, Resource)
 
 
-export (bool) var is_neutral = false
+@export var is_neutral: bool = false
 
 
-export (bool) var is_boss = false
+@export var is_boss: bool = false
 
 
-export (bool) var is_horde = false
+@export var is_horde: bool = false
 
 
-export (bool) var is_loot = false
+@export var is_loot: bool = false
 
 
-export (bool) var prevent_if_elite = false
+@export var prevent_if_elite: bool = false
 
 
-export (bool) var prevent_if_horde = false
+@export var prevent_if_horde: bool = false
 
 
-export (int) var min_difficulty = 0
+@export var min_difficulty: int = 0
 
 
-export (int) var max_difficulty = 9999
+@export var max_difficulty: int = 9999
 
 
-export (int) var min_wave = 0
+@export var min_wave: int = 0
 
 
-export (int) var max_wave = 9999
+@export var max_wave: int = 9999

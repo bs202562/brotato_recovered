@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/bonk_dog_bark_1.wav-952239e7f25ea0e646f65014f0c40cfc.sample"
+type="AudioStreamWAV"
+uid="uid://c783c3x1bi26u"
+path="res://.godot/imported/bonk_dog_bark_1.wav-952239e7f25ea0e646f65014f0c40cfc.sample"
 
 [deps]
 
 source_file="res://entities/units/pet/bonk_dog/bonk_dog_bark_1.wav"
-dest_files=[ "res://.import/bonk_dog_bark_1.wav-952239e7f25ea0e646f65014f0c40cfc.sample" ]
+dest_files=["res://.godot/imported/bonk_dog_bark_1.wav-952239e7f25ea0e646f65014f0c40cfc.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

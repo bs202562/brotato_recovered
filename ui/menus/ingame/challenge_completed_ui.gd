@@ -4,19 +4,19 @@ extends Control
 signal started
 signal finished
 
-export (Resource) var sound_popup
-export (Resource) var sound_popout
+@export var sound_popup: Resource
+@export var sound_popout: Resource
 
 var challenge: ChallengeData
 var chal_queue: = []
 
-onready var _chal_ui = $VBoxContainer / ChallengeUI
-onready var _animation_player = $AnimationPlayer
-onready var _hide_timer = $HideTimer
+@onready var _chal_ui = $VBoxContainer / ChallengeUI
+@onready var _animation_player = $AnimationPlayer
+@onready var _hide_timer = $HideTimer
 
 
 func _ready() -> void :
-	var _error = ChallengeService.connect("challenge_completed", self, "on_challenge_completed")
+	var _error = ChallengeService.connect("challenge_completed", Callable(self, "on_challenge_completed"))
 
 
 func on_challenge_completed(p_challenge: ChallengeData) -> void :

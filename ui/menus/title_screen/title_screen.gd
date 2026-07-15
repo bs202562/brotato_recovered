@@ -13,22 +13,22 @@ class_name TitleScreen
 extends Control
 
 # ---------- 场景节点引用 ----------
-onready var _menus: Control = $"%Menus"  # 菜单页面管理器（主菜单/选角等页面切换）
-onready var _main_menu: VBoxContainer = $"%MainMenu"  # 主菜单按钮列（开始/继续/设置/退出…）
-onready var _animated_background_container: Control = $"%AnimatedBackgroundContainer"  # 动态背景容器
-onready var _attenuate_background: ColorRect = $"%AttenuateBackground"  # 进入子页面时压暗背景的遮罩
-onready var _pop_up_mods_update_warning: PopupAnouncement = $"%popup_mods_update_warning"  # Mod 更新警告弹窗
-onready var _pop_up_beta_save_warning: PopupAnouncement = $"%popup_beta_save_warning"  # 测试版存档警告弹窗
+@onready var _menus: Control = $"%Menus"  # 菜单页面管理器（主菜单/选角等页面切换）
+@onready var _main_menu: VBoxContainer = $"%MainMenu"  # 主菜单按钮列（开始/继续/设置/退出…）
+@onready var _animated_background_container: Control = $"%AnimatedBackgroundContainer"  # 动态背景容器
+@onready var _attenuate_background: ColorRect = $"%AttenuateBackground"  # 进入子页面时压暗背景的遮罩
+@onready var _pop_up_mods_update_warning: PopupAnouncement = $"%popup_mods_update_warning"  # Mod 更新警告弹窗
+@onready var _pop_up_beta_save_warning: PopupAnouncement = $"%popup_beta_save_warning"  # 测试版存档警告弹窗
 
 var current_keyart: TitleScreenBackgroundData  # 当前使用的主视觉背景数据
 
 func _ready() -> void :
 
 	# DLC 启用/停用时刷新背景（不同 DLC 有不同主视觉）
-	var _e = ProgressData.connect("dlc_activated", self, "on_dlc_changed")
-	_e = ProgressData.connect("dlc_deactivated", self, "on_dlc_changed")
+	var _e = ProgressData.connect("dlc_activated", Callable(self, "on_dlc_changed"))
+	_e = ProgressData.connect("dlc_deactivated", Callable(self, "on_dlc_changed"))
 
-	ProgressData.connect("change_keyart", self, "reload_background")
+	ProgressData.connect("change_keyart", Callable(self, "reload_background"))
 
 	reload_background()
 	update_continue_button()
@@ -52,7 +52,7 @@ func _ready() -> void :
 	else:
 		RunData.reload_music = true
 
-	var _switched_result: = _menus.connect("menu_page_switched", self, "on_menu_page_switched")
+	var _switched_result: = _menus.connect("menu_page_switched", Callable(self, "on_menu_page_switched"))
 	_main_menu.init()
 	# Switch 平台：限制为单手柄并弹出手柄配对界面
 	if Utils.on_nintendo_nx_or_ounce and OS_Seaven.get_max_controller_count() > 1:
@@ -61,10 +61,10 @@ func _ready() -> void :
 
 	# 需要时弹出 Mod 更新 / 测试版存档警告
 	if ProgressData.should_show_mod_warning_popup():
-		_pop_up_mods_update_warning.popup()
+		_pop_up_mods_update_warning.popup_announcement()
 
 	if ProgressData.show_main_title_beta_save_warning_popup:
-		_pop_up_beta_save_warning.popup()
+		_pop_up_beta_save_warning.popup_announcement()
 
 
 func on_dlc_changed(_dlc_id: String) -> void :
@@ -100,7 +100,7 @@ func reload_background() -> void :
 
 	match key_art_mode:
 		0:
-			ItemService.title_screen_backgrounds.sort_custom(self, "sort_by_priority")
+			ItemService.title_screen_backgrounds.sort_custom(Callable(self, "sort_by_priority"))
 			for i in range(ItemService.title_screen_backgrounds.size() - 1, - 1, - 1):
 				var screen = ItemService.title_screen_backgrounds[i]
 				if screen.is_available():
@@ -111,7 +111,7 @@ func reload_background() -> void :
 		_:
 			current_keyart = ItemService.title_screen_backgrounds[key_art_mode - 2]
 
-	var instance = current_keyart.scene.instance()
+	var instance = current_keyart.scene.instantiate()
 	_animated_background_container.add_child(instance)
 	_main_menu.reload_logo(current_keyart)
 

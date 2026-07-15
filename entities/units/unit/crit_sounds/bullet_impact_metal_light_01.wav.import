@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/bullet_impact_metal_light_01.wav-0dba91563cbe4714f40d0d2240d26502.sample"
+type="AudioStreamWAV"
+uid="uid://ducvbd55wxt7w"
+path="res://.godot/imported/bullet_impact_metal_light_01.wav-0dba91563cbe4714f40d0d2240d26502.sample"
 
 [deps]
 
 source_file="res://entities/units/unit/crit_sounds/bullet_impact_metal_light_01.wav"
-dest_files=[ "res://.import/bullet_impact_metal_light_01.wav-0dba91563cbe4714f40d0d2240d26502.sample" ]
+dest_files=["res://.godot/imported/bullet_impact_metal_light_01.wav-0dba91563cbe4714f40d0d2240d26502.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

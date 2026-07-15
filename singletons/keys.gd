@@ -439,10 +439,10 @@ var item_builder_turret_n_hash: = []
 
 func _init() -> void :
 	for i in range(12):
-		item_builder_turret_n_hash.append(generate_hash("item_builder_turret_" + String(i)))
+		item_builder_turret_n_hash.append(generate_hash("item_builder_turret_" + str(i)))
 
-func generate_hash( var text: String) -> int:
-	assert ( not text.is_valid_integer())
+func generate_hash(text: String) -> int:
+	assert ( not text.is_valid_int())
 	if text == "":
 		return empty_hash
 

@@ -3,12 +3,12 @@ extends Control
 
 signal back_button_pressed
 
-onready var _back_button = $"%BackButton"
-onready var _names: RichTextLabel = $"%Names"
-onready var focus_before_created: Control = get_focus_owner()
+@onready var _back_button = $"%BackButton"
+@onready var _names: RichTextLabel = $"%Names"
+@onready var focus_before_created: Control = get_viewport().gui_get_focus_owner()
 
 func init() -> void :
-	focus_before_created = get_focus_owner()
+	focus_before_created = get_viewport().gui_get_focus_owner()
 	_back_button.grab_focus()
 
 func _input(event):

@@ -1,21 +1,22 @@
 class_name Bloated_Pufferfish
 extends Enemy
 
-export (ShaderMaterial) var projectile_shader: = preload("res://resources/shaders/hue_shift_shadermat.tres")
+@export var projectile_shader := preload("res://resources/shaders/hue_shift_shadermat.tres")
 
-export (Resource) var pop_single_sound
-onready var _death_shoot_projectiles_behavior = $DeathShootProjectilesBehavior
+@export var pop_single_sound: Resource
+@onready var _death_shoot_projectiles_behavior = $DeathShootProjectilesBehavior
 
 var shoot_projs_on_death = true
 var shoot_cross_projs_on_death = true
 const PENDING_BEFORE_DIE_DURATION = 0.5
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	_death_shoot_projectiles_behavior.init(self)
 	_all_attack_behaviors.push_back(_death_shoot_projectiles_behavior)
 
 func respawn() -> void :
-	.respawn()
+	super.respawn()
 	shoot_projs_on_death = true
 	shoot_cross_projs_on_death = true
 
@@ -32,10 +33,10 @@ func _on_Hurtbox_area_entered(hitbox: Area2D) -> void :
 		elif hitbox.from is Pet:
 			shoot_projs_on_death = hitbox.from.shoot_projectiles
 
-	._on_Hurtbox_area_entered(hitbox)
+	super._on_Hurtbox_area_entered(hitbox)
 
 
-func die(args: = Utils.default_die_args) -> void :
+func die(args = Utils.default_die_args) -> void :
 	if Utils.get_scene_node()._wave_timer.time_left > PENDING_BEFORE_DIE_DURATION:
 		cleaning_up = args.cleaning_up
 		if not cleaning_up:
@@ -54,12 +55,12 @@ func die(args: = Utils.default_die_args) -> void :
 
 		var charmed_by_player_index = get_charmed_by_player_index()
 
-		.die(args)
+		super.die(args)
 
 		if shoot_cross_projs_on_death:
 			return
 
-		yield(get_tree().create_timer(PENDING_BEFORE_DIE_DURATION), "timeout")
+		await get_tree().create_timer(PENDING_BEFORE_DIE_DURATION).timeout
 
 		if not _entity_spawner_ref._main._cleaning_up:
 			if shoot_projs_on_death:
@@ -70,7 +71,7 @@ func die(args: = Utils.default_die_args) -> void :
 				if charmed_by_player_index != - 1:
 					_death_shoot_projectiles_behavior.custom_collision_layer = Utils.PET_PROJECTILES_BIT
 					var new_shader: = projectile_shader.duplicate()
-					new_shader.set_shader_param("hue", Utils.CHARM_COLOR.h)
+					new_shader.set_shader_parameter("hue", Utils.CHARM_COLOR.h)
 					_death_shoot_projectiles_behavior.custom_sprite_material = new_shader
 
 				SoundManager2D.play(pop_single_sound, global_position, 5, 0.3, true)
@@ -84,5 +85,5 @@ func die(args: = Utils.default_die_args) -> void :
 
 
 	else:
-		.die(args)
+		super.die(args)
 

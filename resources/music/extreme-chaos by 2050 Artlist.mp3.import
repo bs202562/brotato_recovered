@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/extreme-chaos by 2050 Artlist.mp3-06c59bbabf4e3eb4307f95d8d2a9d6a1.mp3str"
+uid="uid://dwar4d1nkpw4t"
+path="res://.godot/imported/extreme-chaos by 2050 Artlist.mp3-06c59bbabf4e3eb4307f95d8d2a9d6a1.mp3str"
 
 [deps]
 
 source_file="res://resources/music/extreme-chaos by 2050 Artlist.mp3"
-dest_files=[ "res://.import/extreme-chaos by 2050 Artlist.mp3-06c59bbabf4e3eb4307f95d8d2a9d6a1.mp3str" ]
+dest_files=["res://.godot/imported/extreme-chaos by 2050 Artlist.mp3-06c59bbabf4e3eb4307f95d8d2a9d6a1.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,24 +1,24 @@
 class_name Corrupted_Buffer
 extends Enemy
 
-export (Resource) var boost_sound
-export (int) var nb_entities_boosted_at_once = 1
-export (float) var boost_cooldown = 4.0
-export (int) var hp_boost = 150
-export (int) var damage_boost = 25
-export (int) var speed_boost = 50
-export (int) var player_hp_boost = 20
-export (int) var player_speed_boost = 20
-export (int) var player_attack_speed_boost = 20
-export (int) var structure_range_boost = 20
-export (int) var structure_damage_boost = 20
-export (int) var structure_attack_speed_boost = 20
+@export var boost_sound: Resource
+@export var nb_entities_boosted_at_once: int = 1
+@export var boost_cooldown: float = 4.0
+@export var hp_boost: int = 150
+@export var damage_boost: int = 25
+@export var speed_boost: int = 50
+@export var player_hp_boost: int = 20
+@export var player_speed_boost: int = 20
+@export var player_attack_speed_boost: int = 20
+@export var structure_range_boost: int = 20
+@export var structure_damage_boost: int = 20
+@export var structure_attack_speed_boost: int = 20
 
 var entities_in_zone: = []
 
-onready var _boost_zone: Area2D = $"%BoostZone"
-onready var _boost_collision: CollisionShape2D = $"%BoostCollision"
-onready var _boost_timer: Timer = $"%BoostTimer"
+@onready var _boost_zone: Area2D = $"%BoostZone"
+@onready var _boost_collision: CollisionShape2D = $"%BoostCollision"
+@onready var _boost_timer: Timer = $"%BoostTimer"
 
 var _boost_args: = BoostArgs.new()
 
@@ -29,12 +29,12 @@ func _on_BoostZone_body_entered(body: Node) -> void :
 
 
 func respawn() -> void :
-	.respawn()
+	super.respawn()
 	_boost_collision.set_deferred("disabled", false)
 
 
-func die(args: = Utils.default_die_args) -> void :
-	.die(args)
+func die(args = Utils.default_die_args) -> void :
+	super.die(args)
 	_boost_collision.set_deferred("disabled", true)
 	entities_in_zone.clear()
 

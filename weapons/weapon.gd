@@ -13,11 +13,11 @@ const DETECTION_RANGE: = 200
 
 const MAX_ATTACK_COUNT_HISTORY: = 20
 
-export (Resource) var curse_particles
-export (Array, Resource) var custom_hit_sounds = []
-export (Resource) var outline_shader_mat
+@export var curse_particles: Resource
+@export var custom_hit_sounds = [] # (Array, Resource)
+@export var outline_shader_mat: Resource
 
-onready var outline_sprite: Sprite = get_node_or_null("%outline_sprite")
+@onready var outline_sprite: Sprite2D = get_node_or_null("%outline_sprite")
 
 var weapon_pos: = - 1
 var stats: Resource
@@ -31,7 +31,7 @@ var weapon_sets: Array = []
 var tier: int = 0
 var is_cursed: bool = false
 
-var player_index: int setget _set_player_index, _get_player_index
+var player_index: int: get = _get_player_index, set = _set_player_index
 func _get_player_index() -> int:
 	return player_index
 func _set_player_index(_v: int) -> void :
@@ -59,15 +59,14 @@ var _enemies_killed_this_wave_count: = 0
 var _manual_aim: bool = false
 var _explosion_args: = WeaponServiceExplodeArgs.new()
 
-onready var muzzle: Position2D = $Sprite / Muzzle
-onready var tween: Tween = $Tween
-onready var tween_animation: Tween = $Tween_animations
-onready var sprite: Sprite = $Sprite
-onready var _hitbox: Area2D = $Sprite / Hitbox
-onready var _attach: Position2D = $Sprite / Attach
-onready var _range: Area2D = $Range
-onready var _range_shape: CollisionShape2D = $Range / CollisionShape2D
-onready var _shooting_behavior: WeaponShootingBehavior = $ShootingBehavior
+@onready var muzzle: Marker2D = $Sprite2D / Muzzle
+# 4.x 移植: Tween 节点已从引擎移除，改为在用到处 create_tween() 动态创建
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var _hitbox: Area2D = $Sprite2D / Hitbox
+@onready var _attach: Marker2D = $Sprite2D / Attach
+@onready var _range: Area2D = $Range
+@onready var _range_shape: CollisionShape2D = $Range / CollisionShape2D
+@onready var _shooting_behavior: WeaponShootingBehavior = $ShootingBehavior
 
 
 func _ready() -> void :
@@ -84,10 +83,10 @@ func _ready() -> void :
 	update_highlighting()
 	connect_effects()
 
-	_hitbox.connect("critically_hit_something", self, "_on_weapon_critically_hit_something")
+	_hitbox.connect("critically_hit_something", Callable(self, "_on_weapon_critically_hit_something"))
 
 	if is_cursed:
-		var instance = curse_particles.instance()
+		var instance = curse_particles.instantiate()
 		for child in muzzle.get_children():
 			child.queue_free()
 		muzzle.add_child(instance)
@@ -98,25 +97,25 @@ func _ready() -> void :
 func connect_effects() -> void :
 	for effect in effects:
 		if effect is OneShotOnHitEffect:
-			var _one_shot_something = _hitbox.connect("one_shot_something", self, "on_one_shot_something")
+			var _one_shot_something = _hitbox.connect("one_shot_something", Callable(self, "on_one_shot_something"))
 
 	if effects.size() > 0 or RunData.get_player_effect(Keys.gain_stat_when_attack_killed_enemies_hash, player_index).size() > 0:
-		var _killed_something = _hitbox.connect("killed_something", self, "on_killed_something", [_hitbox])
+		var _killed_something = _hitbox.connect("killed_something", Callable(self, "on_killed_something").bind(_hitbox))
 
 	if effects.size() > 0:
-		var _added_gold_on_crit_kill = _hitbox.connect("added_gold_on_crit", self, "on_added_gold_on_crit")
+		var _added_gold_on_crit_kill = _hitbox.connect("added_gold_on_crit", Callable(self, "on_added_gold_on_crit"))
 
 
 func update_highlighting() -> void :
 	var value = ProgressData.settings.weapon_highlighting
 	if tier > 0 and value:
-		outline_shader_mat.set_shader_param("outline_color_0", ItemService.get_color_from_tier(tier))
-		outline_shader_mat.set_shader_param("outline_color_1", Color.transparent)
-		outline_shader_mat.set_shader_param("outline_color_2", Color.transparent)
-		outline_shader_mat.set_shader_param("outline_color_3", Color.transparent)
-		outline_shader_mat.set_shader_param("texture_size", sprite.texture.get_size())
-		outline_shader_mat.set_shader_param("alpha", 1.0)
-		outline_shader_mat.set_shader_param("desaturation", 0.0)
+		outline_shader_mat.set_shader_parameter("outline_color_0", ItemService.get_color_from_tier(tier))
+		outline_shader_mat.set_shader_parameter("outline_color_1", Color.TRANSPARENT)
+		outline_shader_mat.set_shader_parameter("outline_color_2", Color.TRANSPARENT)
+		outline_shader_mat.set_shader_parameter("outline_color_3", Color.TRANSPARENT)
+		outline_shader_mat.set_shader_parameter("texture_size", sprite.texture.get_size())
+		outline_shader_mat.set_shader_parameter("alpha", 1.0)
+		outline_shader_mat.set_shader_parameter("desaturation", 0.0)
 		sprite.material = outline_shader_mat
 		if is_instance_valid(outline_sprite):
 			if tier <= 0:
@@ -150,7 +149,7 @@ func init_stats(at_wave_begin: bool = true) -> void :
 
 	current_stats.burning_data.from = self
 
-	var hitbox_args: = Hitbox.HitboxArgs.new().set_from_weapon_stats(current_stats)
+	var hitbox_args = Hitbox.HitboxArgs.new().set_from_weapon_stats(current_stats)
 
 	_hitbox.effect_scale = current_stats.effect_scale
 	_hitbox.set_damage(current_stats.damage, hitbox_args)
@@ -234,7 +233,7 @@ func on_killed_something(_thing_killed: Node, hitbox: Hitbox) -> void :
 func on_one_shot_something(_thing_killed: Node) -> void :
 	emit_signal("tracked_value_updated")
 
-func update_sprite(new_sprite: Texture) -> void :
+func update_sprite(new_sprite: Texture2D) -> void :
 	sprite.texture = SkinManager.get_skin(new_sprite)
 
 
@@ -346,7 +345,7 @@ func get_next_cooldown(at_wave_begin: bool = false) -> float:
 
 	var max_rand = get_max_rand_cooldown(cooldown_basis)
 
-	return rand_range(max(1, cooldown_basis - max_rand), cooldown_basis + max_rand)
+	return randf_range(max(1, cooldown_basis - max_rand), cooldown_basis + max_rand)
 
 
 func get_max_rand_cooldown(cooldown_basis: int) -> float:
@@ -359,7 +358,7 @@ func is_big_reload_active(at_wave_begin: bool = false) -> bool:
 
 
 func update_current_spread() -> void :
-	_current_shoot_spread = rand_range( - 1 + current_stats.accuracy, 1 - current_stats.accuracy)
+	_current_shoot_spread = randf_range( - 1 + current_stats.accuracy, 1 - current_stats.accuracy)
 	rotation += _current_shoot_spread
 
 
@@ -400,14 +399,14 @@ func update_idle_angle() -> void :
 
 func _on_Range_body_entered(body: Node) -> void :
 	_targets_in_range.push_back(body)
-	var _error = body.connect("died", self, "on_target_died")
+	var _error = body.connect("died", Callable(self, "on_target_died"))
 
 
 func _on_Range_body_exited(body: Node) -> void :
 	_targets_in_range.erase(body)
 	if _current_target.size() > 0 and body == _current_target[0]:
 		_current_target.clear()
-	body.disconnect("died", self, "on_target_died")
+	body.disconnect("died", Callable(self, "on_target_died"))
 
 
 func on_target_died(target: Node, _args: Entity.DieArgs) -> void :
@@ -481,9 +480,9 @@ func is_manual_aim() -> bool:
 
 
 func _on_weapon_critically_hit_something(_thing_hit, _damage_dealt) -> void :
-	tween_animation.interpolate_property(sprite, "self_modulate", 
-	Color(1.6, 1.6, 1), Color(1, 1, 1), 0.16, 
-	Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	tween_animation.start()
+	# 4.x 移植: 原 Tween 节点 interpolate_property 改为 create_tween()
+	var tween_animation := create_tween()
+	tween_animation.tween_property(sprite, "self_modulate", Color(1, 1, 1), 0.16)\
+		.from(Color(1.6, 1.6, 1)).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 

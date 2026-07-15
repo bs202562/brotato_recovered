@@ -3,18 +3,18 @@ class_name BulletHell
 
 var player_index = - 1
 
-export (PackedScene) var projectile_scene = preload("res://projectiles/bullet_enemy/enemy_projectile.tscn")
-export (int) var projectile_damage: int = 1
-export (float) var projectile_damage_increase_each_wave: float = 0.0
-export (float, 0, 1000) var projectile_speed: float = 300
-export (float) var spawn_rate: float = 1
-export (float) var start_cool_down: float = 0
-export (Texture) var icon
+@export var projectile_scene: PackedScene = preload("res://projectiles/bullet_enemy/enemy_projectile.tscn")
+@export var projectile_damage: int = 1
+@export var projectile_damage_increase_each_wave: float = 0.0
+@export var projectile_speed: float = 300 # (float, 0, 1000)
+@export var spawn_rate: float = 1
+@export var start_cool_down: float = 0
+@export var icon: Texture2D
 
-export (Array) var bullet_generator_groups: Array
+@export var bullet_generator_groups: Array
 
-onready var bullets_generator = get_children()
-onready var tick_progression: float = - start_cool_down
+@onready var bullets_generator = get_children()
+@onready var tick_progression: float = - start_cool_down
 
 func _update_bullet_hell_parameters(_wave, _isElite, _isHorde):
 	if (_isElite or _isHorde):

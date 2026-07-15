@@ -1,13 +1,13 @@
 class_name Lootworm
 extends Pet
 
-export (float) var double_chance = 0.05
-export (String) var material_gained_tracking_id
-export (Resource) var weapon_stats
-export (float) var tree_damage_ratio = 5
-export (AudioStream) var pet_audio
+@export var double_chance: float = 0.05
+@export var material_gained_tracking_id: String
+@export var weapon_stats: Resource
+@export var tree_damage_ratio: float = 5
+@export var pet_audio: AudioStream
 
-onready var _hitbox: = $Hitbox as Hitbox
+@onready var _hitbox: = $Hitbox as Hitbox
 var _is_shooting = false
 var _current_weapon_stats = null
 var _current_cooldown: = 0
@@ -16,7 +16,7 @@ var _closed_trees = []
 var _material_gained_tracking_id_hash: int = Keys.empty_hash
 
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void :
-	.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
+	super.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
 
 	_hitbox.from = self
 	init_stats()
@@ -39,7 +39,7 @@ func init_stats(at_wave_begin: bool = true) -> void :
 	_current_cooldown = _current_weapon_stats.cooldown
 
 func update_data(effect: PetEffect) -> void :
-	.update_data(effect)
+	super.update_data(effect)
 	double_chance = effect.double_chance
 
 func _physics_process(delta: float) -> void :
@@ -55,6 +55,8 @@ func _physics_process(delta: float) -> void :
 		_hitbox.disable()
 		_current_cooldown = _current_weapon_stats.cooldown
 		_is_shooting = false
+
+	super._physics_process(delta) # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_physics_process 为子类优先）
 
 func _on_ItemAttractArea_area_entered(item: Item) -> void :
 	var should_attract_item: = item is Gold
@@ -74,12 +76,12 @@ func _on_ItemPickUpArea_area_entered(area: Area2D) -> void :
 		gold.pickup(player_index)
 		_animation_player.play("eat")
 
-		yield(_animation_player, "animation_finished")
+		await _animation_player.animation_finished
 		_animation_player.current_animation = "idle"
 
 
 func update_animation(movement: Vector2) -> void :
-	.update_animation(movement)
+	super.update_animation(movement)
 	if movement.length() > 0.1:
 		if not (_animation_player.current_animation == "move" or _animation_player.current_animation == "eat" or _animation_player.current_animation == "pet"):
 			_animation_player.play("move")
@@ -110,8 +112,8 @@ func _on_Hitbox_hit_something(thing_hit, damage_dealt):
 
 func _can_pet():
 	if _check_can_be_pet():
-		yield(get_tree().create_timer(0.1), "timeout")
+		await get_tree().create_timer(0.1).timeout
 		_animation_player.play("pet")
 		SoundManager.play(pet_audio, 1, 0)
-		yield(get_tree().create_timer(1.4), "timeout")
+		await get_tree().create_timer(1.4).timeout
 		_animation_player.play("idle")

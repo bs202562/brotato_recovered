@@ -4,21 +4,19 @@ var bus = "Music"
 var player: AudioStreamPlayer
 var _tween: Tween
 
-export (Array, Resource) var old_tracks
-export (Array, Resource) var new_tracks
+@export var old_tracks: Array = [] # (Array, Resource)
+@export var new_tracks: Array = [] # (Array, Resource)
 
 var shuffled_tracks: = []
 
 
 func _ready() -> void :
-	pause_mode = PAUSE_MODE_PROCESS
+	process_mode = PROCESS_MODE_ALWAYS
 	player = AudioStreamPlayer.new()
-	_tween = Tween.new()
-	add_child(_tween)
 	add_child(player)
 	player.bus = bus
 
-	var _error = player.connect("finished", self, "on_track_finished")
+	var _error = player.connect("finished", Callable(self, "on_track_finished"))
 
 
 func on_track_finished() -> void :
@@ -69,16 +67,8 @@ func has_tracks_to_add() -> bool:
 
 
 func tween(to: float, from: float = player.volume_db, duration: float = 1) -> void :
-	if _tween.is_active():
-		yield(_tween, "tween_all_completed")
+	if _tween and _tween.is_running():
+		await _tween.finished
 
-	var _error_interpolate = _tween.interpolate_property(
-		player, 
-		"volume_db", 
-		from, 
-		to, 
-		duration, 
-		Tween.TRANS_LINEAR
-	)
-
-	var _error = _tween.start()
+	_tween = create_tween()
+	_tween.tween_property(player, "volume_db", to, duration).from(from).set_trans(Tween.TRANS_LINEAR)

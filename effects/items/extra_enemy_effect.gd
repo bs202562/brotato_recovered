@@ -1,7 +1,7 @@
 class_name ExtraEnemyEffect
 extends Effect
 
-export(Resource) var extra_group_data
+@export var extra_group_data: Resource
 
 
 static func get_id() -> String:
@@ -30,16 +30,16 @@ func unapply(player_index: int) -> void:
 		if effect_item[0] == extra_group_data.resource_path:
 			effect_item[1] -= value
 			if effect_item[1] == 0:
-				effect_items.remove(i)
+				effect_items.remove_at(i)
 			return
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 	serialized.extra_group_data = extra_group_data.resource_path
 	return serialized
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 	extra_group_data = load(serialized.extra_group_data)

@@ -11,9 +11,9 @@ signal shop_item_focused(shop_item)
 signal shop_item_unfocused(shop_item)
 signal shop_item_banned(shop_item)
 
-export (Array, NodePath) var _shop_items_node_paths: Array
+@export var _shop_items_node_paths: Array # (Array, NodePath)
 
-export var player_index: = 0 setget _set_player_index
+@export var player_index: = 0: set = _set_player_index
 func _set_player_index(value: int) -> void :
 	player_index = value
 	for shop_item in _shop_items:
@@ -31,7 +31,7 @@ func _ready() -> void :
 	_buy_delay_timer.wait_time = 0.05
 	_buy_delay_timer.one_shot = true
 
-	var _delay = _buy_delay_timer.connect("timeout", self, "_on_BuyDelayTimer_timeout")
+	var _delay = _buy_delay_timer.connect("timeout", Callable(self, "_on_BuyDelayTimer_timeout"))
 	add_child(_buy_delay_timer)
 
 	for node_path in _shop_items_node_paths:
@@ -42,15 +42,15 @@ func _ready() -> void :
 
 func connect_shop_items() -> void :
 	for shop_item in _shop_items:
-		var _error_buy = shop_item.connect("buy_button_pressed", self, "on_shop_item_buy_button_pressed")
-		var _error_steal = shop_item.connect("steal_button_pressed", self, "on_shop_item_steal_button_pressed")
-		var _error_deactivate = shop_item.connect("shop_item_deactivated", self, "on_shop_item_deactivated")
-		var _error_focused = shop_item.connect("shop_item_focused", self, "on_shop_item_focused")
-		var _error_unfocused = shop_item.connect("shop_item_unfocused", self, "on_shop_item_unfocused")
-		var _error_category_hovered = shop_item.connect("mouse_hovered_category", self, "on_mouse_hovered_category")
-		var _error_category_exited = shop_item.connect("mouse_exited_category", self, "on_mouse_exited_category")
-		var _error_ban = shop_item.connect("ban_item_pressed", self, "on_shop_item_ban_button_pressed")
-		var _error_ban_update = shop_item.connect("ban_update_remaining_token", self, "on_ban_update_remaining_token")
+		var _error_buy = shop_item.connect("buy_button_pressed", Callable(self, "on_shop_item_buy_button_pressed"))
+		var _error_steal = shop_item.connect("steal_button_pressed", Callable(self, "on_shop_item_steal_button_pressed"))
+		var _error_deactivate = shop_item.connect("shop_item_deactivated", Callable(self, "on_shop_item_deactivated"))
+		var _error_focused = shop_item.connect("shop_item_focused", Callable(self, "on_shop_item_focused"))
+		var _error_unfocused = shop_item.connect("shop_item_unfocused", Callable(self, "on_shop_item_unfocused"))
+		var _error_category_hovered = shop_item.connect("mouse_hovered_category", Callable(self, "on_mouse_hovered_category"))
+		var _error_category_exited = shop_item.connect("mouse_exited_category", Callable(self, "on_mouse_exited_category"))
+		var _error_ban = shop_item.connect("ban_item_pressed", Callable(self, "on_shop_item_ban_button_pressed"))
+		var _error_ban_update = shop_item.connect("ban_update_remaining_token", Callable(self, "on_ban_update_remaining_token"))
 
 
 func on_shop_item_buy_button_pressed(shop_item: ShopItem) -> void :

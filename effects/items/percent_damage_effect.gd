@@ -1,11 +1,11 @@
 class_name PercentDamageEffect
 extends Effect
 
-export(String) var source_id = ""
-export(int) var duration_secs = 3
-export(int) var max_stacks = 1
-export(int) var max_procs = -1
-export(Color) var outline_color = Color("bfebff")
+@export var source_id: String = ""
+@export var duration_secs: int = 3
+@export var max_stacks: int = 1
+@export var max_procs: int = -1
+@export var outline_color: Color = Color("bfebff")
 var source_id_hash: int = Keys.empty_hash
 
 
@@ -13,12 +13,12 @@ static func get_id() -> String:
 	return "percent_damage"
 
 func duplicate(subresources := false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 	duplication.source_id_hash = source_id_hash
 	return duplication
 
 func _generate_hashes() -> void:
-	._generate_hashes()
+	super._generate_hashes()
 	source_id_hash = Keys.generate_hash(source_id)
 
 
@@ -45,7 +45,7 @@ func get_args(_player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.source_id = source_id
 	serialized.duration_secs = duration_secs
@@ -57,7 +57,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	source_id = serialized.source_id
 	source_id_hash = Keys.generate_hash(serialized.source_id)

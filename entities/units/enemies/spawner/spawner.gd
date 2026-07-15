@@ -1,10 +1,10 @@
 extends Enemy
 
-export (PackedScene) var enemy_to_spawn
+@export var enemy_to_spawn: PackedScene
 
 
-func die(args: = Utils.default_die_args) -> void :
-	.die(args)
+func die(args = Utils.default_die_args) -> void :
+	super.die(args)
 
 	if args.cleaning_up:
 		return

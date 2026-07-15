@@ -1,5 +1,5 @@
 class_name ProgressDataLoaderV2
-extends Reference
+extends RefCounted
 
 
 const LOG_PREFIX: = "ProgressDataLoaderV2: "
@@ -36,8 +36,7 @@ var _tmp_path: = ""
 
 
 func _init(save_dir: = "") -> void :
-	var dir: = Directory.new()
-	var directory_exists: = not save_dir.empty() and dir.dir_exists(save_dir)
+	var directory_exists: = not save_dir.is_empty() and DirAccess.dir_exists_absolute(save_dir)
 	if not directory_exists:
 		return
 	save_path = save_dir + "/save_v2.json"
@@ -47,35 +46,36 @@ func _init(save_dir: = "") -> void :
 
 
 func load_game_file(path: = "") -> void :
-	if path.empty():
+	if path.is_empty():
 		path = save_path
-	if path.empty():
+	if path.is_empty():
 		printerr(LOG_PREFIX + "Loading failed - missing save path")
 		return
 
 	print(LOG_PREFIX + "Loading %s" % path)
 
-	var save_file: = File.new()
-	if not save_file.file_exists(path):
+	if not FileAccess.file_exists(path):
 		print(LOG_PREFIX + "No v2 save found")
 		load_status = LoadStatus.SAVE_MISSING
 		return
 
-	var error = save_file.open(path, File.READ)
+	var save_file: = FileAccess.open(path, FileAccess.READ)
+	var error = OK if save_file != null else FileAccess.get_open_error()
 	if error != OK:
 		printerr(LOG_PREFIX + "Could not open %s. Error code: %s" % [path, error])
 		_close_file_and_load_backups(save_file, path)
 		return
 
-	var parse_result: = JSON.parse(save_file.get_as_text())
-	if parse_result.error != OK:
-		var error_line: = parse_result.error_line
-		var error_string: = parse_result.error_string
-		printerr(LOG_PREFIX + "Error parsing save file (%s): %s at line %s" % [parse_result.error, error_string, error_line])
+	var test_json_conv = JSON.new()
+	var parse_error = test_json_conv.parse(save_file.get_as_text())
+	if parse_error != OK:
+		var error_line = test_json_conv.get_error_line()
+		var error_string = test_json_conv.get_error_message()
+		printerr(LOG_PREFIX + "Error parsing save file (%s): %s at line %s" % [parse_error, error_string, error_line])
 		_close_file_and_load_backups(save_file, path)
 		return
 
-	var save_object = parse_result.result
+	var save_object = test_json_conv.get_data()
 	if typeof(save_object) != TYPE_DICTIONARY:
 		printerr(LOG_PREFIX + "Save file is not a dictionary")
 		_close_file_and_load_backups(save_file, path)
@@ -192,8 +192,9 @@ func deserialize_run_state(state: Dictionary) -> Dictionary:
 	return result
 
 
-func _close_file_and_load_backups(save_file: File, load_path: String) -> void :
-	save_file.close()
+func _close_file_and_load_backups(save_file: FileAccess, load_path: String) -> void :
+	if save_file != null:
+		save_file.close()
 	_load_backups(load_path)
 
 
@@ -212,14 +213,14 @@ func _load_backups(previous_path: String) -> void :
 
 
 func save() -> void :
-	if save_path.empty() or _tmp_path.empty():
+	if save_path.is_empty() or _tmp_path.is_empty():
 		printerr(LOG_PREFIX + "Saving failed - missing save path")
 		return
 
-	var save_file: = File.new()
+	var save_file: = FileAccess.open(_tmp_path, FileAccess.WRITE)
 
-	
-	var error = save_file.open(_tmp_path, File.WRITE)
+
+	var error = OK if save_file != null else FileAccess.get_open_error()
 	if error != OK:
 		printerr(LOG_PREFIX + "Could not create %s. Aborting save operation. Error code: %s" % [_tmp_path, error])
 		return
@@ -229,23 +230,17 @@ func save() -> void :
 	var indent = ""
 	if OS.has_feature("editor"):
 		indent = "  "
-	var save_json: = JSON.print(save_object, indent, sort_keys)
+	var save_json: = JSON.stringify(save_object, indent, sort_keys)
 	save_file.store_string(save_json)
 	save_file.close()
 
-	var dir: = Directory.new()
-
-	
-	var _res = dir.open("user://");
-
-	
 	var do_backup: = true
 
 	if OS.get_name() == "Windows":
 		var latest_backup_path: = save_path.replace("save_v2", "save_v2_01") + ".bak"
-		if dir.file_exists(latest_backup_path):
-			var latest_backup_file: = File.new()
-			error = latest_backup_file.open(latest_backup_path, File.READ)
+		if FileAccess.file_exists(latest_backup_path):
+			var latest_backup_file: = FileAccess.open(latest_backup_path, FileAccess.READ)
+			error = OK if latest_backup_file != null else FileAccess.get_open_error()
 			if error != OK:
 				printerr(LOG_PREFIX + "Could not open %s. Error code: %s" % [latest_backup_path, error])
 				return
@@ -257,34 +252,34 @@ func save() -> void :
 		if do_backup:
 			var backup_path = save_path.replace("save_v2", "save_v2_00") + ".bak"
 			print(LOG_PREFIX + "Writing save to backup path %s" % backup_path)
-			error = dir.copy(_tmp_path, backup_path)
+			error = DirAccess.copy_absolute(_tmp_path, backup_path)
 			if error != OK:
 				printerr(LOG_PREFIX + "Could not copy save to %s. Error code: %s" % [backup_path, error])
 				return
 
 	
 	print(LOG_PREFIX + "Writing save to main save path %s" % save_path)
-	error = dir.copy(_tmp_path, save_path)
+	error = DirAccess.copy_absolute(_tmp_path, save_path)
 	if error != OK:
 		printerr(LOG_PREFIX + "Could not copy save to %s. Error code: %s" % [save_path, error])
 		return
 
 	
-	error = dir.remove(_tmp_path)
+	error = DirAccess.remove_absolute(_tmp_path)
 	if error != OK:
 		printerr(LOG_PREFIX + "Could not delete %s. Error code: %s" % [_tmp_path, error])
 		return
 
 	if OS.get_name() == "Windows":
 		var backup_paths: = _collect_backup_paths()
-		if backup_paths.empty():
+		if backup_paths.is_empty():
 			printerr(LOG_PREFIX + "Could not find backup files")
 			return
 
 		
 		while backup_paths.size() > MAX_BACKUP_FILES:
 			var remove_path = backup_paths.pop_back()
-			error = dir.remove(remove_path)
+			error = DirAccess.remove_absolute(remove_path)
 			if error != OK:
 				printerr(LOG_PREFIX + "Could not remove %s. Error code: %s" % [remove_path, error])
 				return
@@ -298,7 +293,7 @@ func save() -> void :
 				if path == new_path:
 					printerr(LOG_PREFIX + "Could not increment backup file number: %s" % path)
 					return
-				error = dir.rename(path, new_path)
+				error = DirAccess.rename_absolute(path, new_path)
 				if error != OK:
 					printerr(LOG_PREFIX + "Could not rename %s to %s. Error code: %s" % [path, new_path, error])
 					return
@@ -361,10 +356,10 @@ func serialize_run_state(state: Dictionary) -> Dictionary:
 
 
 func _collect_backup_paths() -> Array:
-	var dir: = Directory.new()
 	var paths: = []
 	var save_dir_path: = save_path.get_base_dir()
-	var error = dir.open(save_dir_path)
+	var dir: = DirAccess.open(save_dir_path)
+	var error = OK if dir != null else DirAccess.get_open_error()
 	if error != OK:
 		printerr(LOG_PREFIX + "Could not open directory %s. Error code: %s" % [save_dir_path, error])
 		return []
@@ -384,7 +379,7 @@ func _collect_backup_paths() -> Array:
 			return []
 	if paths.size() <= 1:
 		return paths
-	paths.sort_custom(BackupFilenameSorter, "sort_ascending")
+	paths.sort_custom(Callable(BackupFilenameSorter, "sort_ascending"))
 	if BackupFilenameSorter.parse_backup_number(paths.front()) > BackupFilenameSorter.parse_backup_number(paths.back()):
 		printerr(LOG_PREFIX + "Backup paths not sorted correctly")
 		return []

@@ -1,5 +1,5 @@
 class_name ShootingData
-extends Reference
+extends RefCounted
 
 var atk_spd: float
 var atk_duration: float

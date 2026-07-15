@@ -5,7 +5,7 @@
 [ext_resource path="res://entities/units/enemies/spawner/spawner_stats.tres" type="Resource" id=3]
 [ext_resource path="res://entities/units/enemies/spawner/spawner.gd" type="Script" id=4]
 [ext_resource path="res://entities/units/enemies/junkie/junkie.tscn" type="PackedScene" id=5]
-[ext_resource path="res://entities/units/enemies/spawner/spawner.png" type="Texture" id=6]
+[ext_resource path="res://entities/units/enemies/spawner/spawner.png" type="Texture2D" id=6]
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 32.3883
@@ -22,7 +22,7 @@ stats = ExtResource( 3 )
 enemy_id = "spawner"
 enemy_to_spawn = ExtResource( 5 )
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 texture = ExtResource( 6 )
 
 [node name="Collision" parent="." index="1"]

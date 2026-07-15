@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Shield 4.mp3-5f780846a0cb0c350ecadcb7fdc2ddae.mp3str"
+uid="uid://dtr2labn52sq8"
+path="res://.godot/imported/Shield 4.mp3-5f780846a0cb0c350ecadcb7fdc2ddae.mp3str"
 
 [deps]
 
 source_file="res://ui/sounds/Shield 4.mp3"
-dest_files=[ "res://.import/Shield 4.mp3-5f780846a0cb0c350ecadcb7fdc2ddae.mp3str" ]
+dest_files=["res://.godot/imported/Shield 4.mp3-5f780846a0cb0c350ecadcb7fdc2ddae.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

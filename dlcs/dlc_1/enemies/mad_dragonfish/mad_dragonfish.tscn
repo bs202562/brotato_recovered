@@ -2,7 +2,7 @@
 
 [ext_resource path="res://dlcs/dlc_1/enemies/mad_dragonfish/mad_dragonfish_stats.tres" type="Resource" id=1]
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://dlcs/dlc_1/enemies/mad_dragonfish/mad_dragonfish.png" type="Texture" id=3]
+[ext_resource path="res://dlcs/dlc_1/enemies/mad_dragonfish/mad_dragonfish.png" type="Texture2D" id=3]
 [ext_resource path="res://projectiles/bullet_enemy/enemy_projectile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/units/enemies/attack_behaviors/shooting_attack_behavior.gd" type="Script" id=5]
 [ext_resource path="res://entities/units/movement_behaviors/target_rand_pos_movement_behavior.gd" type="Script" id=6]
@@ -20,7 +20,7 @@ radius = 41.0488
 stats = ExtResource( 1 )
 enemy_id = "mad_dragonfish"
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -35 )
 texture = ExtResource( 3 )
 

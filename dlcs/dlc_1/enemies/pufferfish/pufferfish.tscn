@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://dlcs/dlc_1/enemies/pufferfish/pufferfish.png" type="Texture" id=1]
+[ext_resource path="res://dlcs/dlc_1/enemies/pufferfish/pufferfish.png" type="Texture2D" id=1]
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://dlcs/dlc_1/enemies/pufferfish/pufferfish.gd" type="Script" id=3]
 [ext_resource path="res://entities/units/movement_behaviors/patrol_edges_of_map_movement_behavior.gd" type="Script" id=4]
@@ -23,7 +23,7 @@ stats = ExtResource( 6 )
 enemy_id = "pufferfish"
 pop_single_sound = ExtResource( 7 )
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -8 )
 texture = ExtResource( 1 )
 

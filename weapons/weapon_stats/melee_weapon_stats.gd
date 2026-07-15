@@ -3,9 +3,9 @@ extends WeaponStats
 
 enum AttackType { THRUST, SWEEP }
 
-export(bool) var deal_dmg_on_return := false
-export(AttackType) var attack_type = AttackType.THRUST
-export(bool) var alternate_attack_type = false
+@export var deal_dmg_on_return := false
+@export var attack_type: AttackType = AttackType.THRUST
+@export var alternate_attack_type: bool = false
 
 
 func get_alternate_attack_type_text() -> String:
@@ -32,7 +32,7 @@ func get_type_text() -> String:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.type = "melee"
 	serialized.deal_dmg_on_return = deal_dmg_on_return
@@ -43,7 +43,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary):
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	deal_dmg_on_return = serialized.deal_dmg_on_return
 	attack_type = serialized.attack_type as int

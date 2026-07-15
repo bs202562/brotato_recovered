@@ -1,12 +1,12 @@
 class_name BaseEndRun
 extends Control
 
-onready var _title = $"%Title"
-onready var _run_info = $"%RunInfo"
-onready var _restart_button = $"%RestartButton"
-onready var _new_run_button = $"%NewRunButton"
-onready var _exit_button = $"%ExitButton"
-onready var _popup_manager: PopupManager = $PopupManager
+@onready var _title = $"%Title"
+@onready var _run_info = $"%RunInfo"
+@onready var _restart_button = $"%RestartButton"
+@onready var _new_run_button = $"%NewRunButton"
+@onready var _exit_button = $"%ExitButton"
+@onready var _popup_manager: PopupManager = $PopupManager
 
 var _button_pressed: = false
 
@@ -42,7 +42,7 @@ func _on_RestartButton_pressed() -> void :
 	RunData.reset(true)
 	MusicManager.play(0)
 	ProgressData.increment_stat("run_started")
-	var _error = get_tree().change_scene(MenuData.game_scene)
+	var _error = get_tree().change_scene_to_file(MenuData.game_scene)
 	ProgressData.start_activity()
 
 
@@ -54,7 +54,7 @@ func _on_NewRunButton_pressed() -> void :
 		Utils.last_elt_selected[player_index] = RunData.get_player_character(player_index)
 	RunData.reset()
 	MusicManager.tween( - 5)
-	var _error = get_tree().change_scene(MenuData.character_selection_scene)
+	var _error = get_tree().change_scene_to_file(MenuData.character_selection_scene)
 	ProgressData.start_activity()
 
 
@@ -63,6 +63,6 @@ func _on_ExitButton_pressed() -> void :
 		return
 	_button_pressed = true
 	RunData.reset()
-	var _error = get_tree().change_scene(MenuData.title_screen_scene)
+	var _error = get_tree().change_scene_to_file(MenuData.title_screen_scene)
 	
 

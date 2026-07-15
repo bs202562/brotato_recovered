@@ -1,20 +1,20 @@
 class_name ClassBonusEffect
 extends Effect
 
-export(String) var set_id = ""
-export(String) var stat_displayed_name = "stat_damage"
-export(String) var stat_name = "damage"
+@export var set_id: String = ""
+@export var stat_displayed_name: String = "stat_damage"
+@export var stat_name: String = "damage"
 var stat_hash: int = Keys.empty_hash
 var set_id_hash: int = Keys.empty_hash
 
 func duplicate(subresources := false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 	duplication.stat_hash = stat_hash
 	duplication.set_id_hash = set_id_hash
 	return duplication
 
 func _generate_hashes() -> void:
-	._generate_hashes()
+	super._generate_hashes()
 	stat_hash = Keys.generate_hash(stat_name)
 	set_id_hash = Keys.generate_hash(set_id)
 
@@ -39,7 +39,7 @@ func get_args(_player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.set_id = set_id
 	serialized.stat_displayed_name = stat_displayed_name
@@ -49,7 +49,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	set_id = serialized.set_id if "set_id" in serialized else ""
 	set_id_hash = Keys.generate_hash(set_id)

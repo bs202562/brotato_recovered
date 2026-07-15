@@ -11,7 +11,7 @@
 [ext_resource path="res://entities/units/enemies/boss/boss_state.gd" type="Script" id=9]
 [ext_resource path="res://entities/units/enemies/boss/boss_state.tscn" type="PackedScene" id=10]
 [ext_resource path="res://entities/units/enemies/monk/monk_stats.tres" type="Resource" id=11]
-[ext_resource path="res://entities/units/enemies/monk/monk.png" type="Texture" id=12]
+[ext_resource path="res://entities/units/enemies/monk/monk.png" type="Texture2D" id=12]
 [ext_resource path="res://entities/units/movement_behaviors/target_rand_pos_movement_behavior.gd" type="Script" id=13]
 
 [sub_resource type="CircleShape2D" id=4]
@@ -30,7 +30,7 @@ stats = ExtResource( 11 )
 enemy_id = "monk"
 is_elite = true
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -64 )
 texture = ExtResource( 12 )
 
@@ -122,8 +122,8 @@ rotate_projectile = false
 delete_projectile_on_death = true
 
 [node name="LifeBar" parent="." index="12"]
-margin_top = -152.0
-margin_bottom = -136.0
+offset_top = -152.0
+offset_bottom = -136.0
 
 [connection signal="wanted_to_spawn_an_enemy" from="AttackBehavior" to="." method="_on_AttackBehavior_wanted_to_spawn_an_enemy"]
 [connection signal="wanted_to_spawn_an_enemy" from="States/State1/AttackBehavior" to="." method="_on_AttackBehavior_wanted_to_spawn_an_enemy"]

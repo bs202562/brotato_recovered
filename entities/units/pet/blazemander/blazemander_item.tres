@@ -2,9 +2,9 @@
 
 [ext_resource path="res://entities/units/pet/blazemander/blazemander_stats.tres" type="Resource" id=1]
 [ext_resource path="res://items/all/blazemander/blazemander.tres" type="Resource" id=2]
-[ext_resource path="res://entities/units/pet/blazemander/blazemander_icon.png" type="Texture" id=3]
+[ext_resource path="res://entities/units/pet/blazemander/blazemander_icon.png" type="Texture2D" id=3]
 [ext_resource path="res://entities/units/pet/ItemPet.gd" type="Script" id=4]
-[ext_resource path="res://entities/units/pet/blazemander/blazemander_screen.png" type="Texture" id=5]
+[ext_resource path="res://entities/units/pet/blazemander/blazemander_screen.png" type="Texture2D" id=5]
 
 [resource]
 script = ExtResource( 4 )

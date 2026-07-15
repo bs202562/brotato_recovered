@@ -12,8 +12,8 @@ signal structure_spawned(structure)
 signal structure_respawned(structure)
 signal pet_spawned(pet)
 
-export (PackedScene) var player_scene
-export (PackedScene) var entity_birth_scene
+@export var player_scene: PackedScene
+@export var entity_birth_scene: PackedScene
 
 const MAX_STRUCTURES = 100
 const INITIAL_MIN_DIST_FROM_PLAYER = 300
@@ -63,7 +63,7 @@ var _player_pool_id: int = Keys.empty_hash
 
 var _spawn_entity_args: SpawnEntityArgs = SpawnEntityArgs.new(Vector2.ZERO, EntityType.PLAYER)
 
-onready var _structure_timer = $StructureTimer
+@onready var _structure_timer = $StructureTimer
 
 func _ready() -> void :
 	if entity_birth_scene != null:
@@ -109,7 +109,7 @@ func init(
 
 	for player in _players:
 		for weapon in player.current_weapons:
-			weapon.connect("wanted_to_reset_turrets_cooldown", self, "on_weapon_wanted_to_reset_turrets_cooldown")
+			weapon.connect("wanted_to_reset_turrets_cooldown", Callable(self, "on_weapon_wanted_to_reset_turrets_cooldown"))
 
 	emit_signal("players_spawned", _players)
 	PetService.reset()
@@ -295,9 +295,9 @@ func spawn_entity_birth(
 
 	if entity_birth == null:
 		
-		entity_birth = entity_birth_scene.instance()
+		entity_birth = entity_birth_scene.instantiate()
 		_main.add_birth(entity_birth)
-		entity_birth.connect("birth_timeout", self, "on_entity_birth_timeout")
+		entity_birth.connect("birth_timeout", Callable(self, "on_entity_birth_timeout"))
 
 	if type == EntityType.STRUCTURE and structures.size() > MAX_STRUCTURES:
 		var nb_to_remove = structures.size() - MAX_STRUCTURES
@@ -343,7 +343,7 @@ class SpawnEntityArgs:
 		type = p_type
 
 
-func spawn_entity(scene: PackedScene, args: SpawnEntityArgs, data: Resource = null, source = null, charmed_by: int = - 1) -> KinematicBody2D:
+func spawn_entity(scene: PackedScene, args: SpawnEntityArgs, data: Resource = null, source = null, charmed_by: int = - 1) -> CharacterBody2D:
 	var type = args.type
 	if type == EntityType.PLAYER:
 		DebugService.handle_player_spawn_debug_options(args.player_index)
@@ -353,14 +353,14 @@ func spawn_entity(scene: PackedScene, args: SpawnEntityArgs, data: Resource = nu
 	if entity != null:
 		if type == EntityType.ENEMY:
 			entity.entity_signal_node = self
-			entity.connect("died", self, "_on_enemy_died")
-			entity.connect("wanted_to_spawn_an_enemy", self, "on_enemy_wanted_to_spawn_an_enemy")
-			entity.connect("charmed", self, "on_enemy_charmed")
+			entity.connect("died", Callable(self, "_on_enemy_died"))
+			entity.connect("wanted_to_spawn_an_enemy", Callable(self, "on_enemy_wanted_to_spawn_an_enemy"))
+			entity.connect("charmed", Callable(self, "on_enemy_charmed"))
 		else:
 			entity.entity_signal_node = null
 		entity.respawn()
 	else:
-		entity = scene.instance()
+		entity = scene.instantiate()
 		entity.pool_id = scene.get_instance_id()
 
 		if type == EntityType.PLAYER or type == EntityType.PET or type == EntityType.STRUCTURE:
@@ -375,19 +375,19 @@ func spawn_entity(scene: PackedScene, args: SpawnEntityArgs, data: Resource = nu
 
 		if type == EntityType.ENEMY:
 			entity.entity_signal_node = self
-			entity.connect("died", self, "_on_enemy_died")
-			entity.connect("wanted_to_spawn_an_enemy", self, "on_enemy_wanted_to_spawn_an_enemy")
-			entity.connect("charmed", self, "on_enemy_charmed")
+			entity.connect("died", Callable(self, "_on_enemy_died"))
+			entity.connect("wanted_to_spawn_an_enemy", Callable(self, "on_enemy_wanted_to_spawn_an_enemy"))
+			entity.connect("charmed", Callable(self, "on_enemy_charmed"))
 			emit_signal("enemy_spawned", entity)
 		elif type == EntityType.BOSS:
-			entity.connect("died", self, "_on_boss_died")
-			entity.connect("wanted_to_spawn_an_enemy", self, "on_enemy_wanted_to_spawn_an_enemy")
+			entity.connect("died", Callable(self, "_on_boss_died"))
+			entity.connect("wanted_to_spawn_an_enemy", Callable(self, "on_enemy_wanted_to_spawn_an_enemy"))
 			emit_signal("enemy_spawned", entity)
 		elif type == EntityType.NEUTRAL:
-			entity.connect("died", self, "_on_neutral_died")
+			entity.connect("died", Callable(self, "_on_neutral_died"))
 			emit_signal("neutral_spawned", entity)
 		elif type == EntityType.STRUCTURE:
-			entity.connect("died", self, "_on_structure_died")
+			entity.connect("died", Callable(self, "_on_structure_died"))
 			emit_signal("structure_spawned", entity)
 		elif type == EntityType.PET:
 			emit_signal("pet_spawned", entity)
@@ -477,7 +477,7 @@ func get_spawn_pos_in_area(base_pos: Vector2, area: int, spawn_dist_from_edges: 
 		var spawn_direction = _possible_edge_spawns[Utils.randi() % _possible_edge_spawns.size()]
 		return Utils.get_rand_pos_from_direction_at_distance(spawn_direction, _zone_min_pos, _zone_max_pos, Utils.EDGE_MAP_DIST)
 	elif area == - 1:
-		return Vector2(rand_range(_zone_min_pos.x + d, _zone_max_pos.x - d), rand_range(_zone_min_pos.y + d, _zone_max_pos.y - d))
+		return Vector2(randf_range(_zone_min_pos.x + d, _zone_max_pos.x - d), randf_range(_zone_min_pos.y + d, _zone_max_pos.y - d))
 	else:
 		return ZoneService.get_rand_pos_in_area(base_pos, area)
 
@@ -519,7 +519,7 @@ func _restrict_turret_count(player_index: int) -> void :
 			turrets.append(structure)
 		else:
 			new_player_structures.append(structure)
-	turrets.sort_custom(EntityService, "sort_turrets_by_strength")
+	turrets.sort_custom(Callable(EntityService, "sort_turrets_by_strength"))
 
 	var max_turret_count: int = RunData.get_player_effect(Keys.max_turret_count_hash, player_index)
 	new_player_structures.append_array(turrets.slice(0, max_turret_count - 1))

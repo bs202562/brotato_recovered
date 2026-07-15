@@ -1,9 +1,9 @@
 class_name BlazemanderEffect
 extends PetEffect
 
-export (Resource) var weapon_stats
-export (Resource) var ranged_weapon_stats
-export (Resource) var burning_data = null
+@export var weapon_stats: Resource
+@export var ranged_weapon_stats: Resource
+@export var burning_data: Resource = null
 
 static func get_id() -> String:
 	return "blazemander"
@@ -22,12 +22,12 @@ func get_args(player_index: int) -> Array:
 	str(current_burning_data.duration), 
 	str(current_burning_data.damage), 
 	burning_scaling_stats, 
-	str(stepify(_current_ranged_weapon_stats.cooldown / 60.0, 0.1)), 
+	str(snapped(_current_ranged_weapon_stats.cooldown / 60.0, 0.1)), 
 	str(_current_ranged_weapon_stats.damage), 
 	WeaponService.get_scaling_stats_icon_text(_current_ranged_weapon_stats.scaling_stats)]
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.weapon_stats = weapon_stats.serialize()
 	serialized.ranged_weapon_stats = ranged_weapon_stats.serialize()
@@ -36,7 +36,7 @@ func serialize() -> Dictionary:
 	return serialized
 
 func deserialize_and_merge(serialized: Dictionary) -> void :
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	var stats = MeleeWeaponStats.new()
 	stats.deserialize_and_merge(serialized.weapon_stats)

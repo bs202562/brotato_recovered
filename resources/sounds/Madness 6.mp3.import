@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Madness 6.mp3-c7beccab19a550e0a8b7e998c5549182.mp3str"
+uid="uid://bj437nsfywdcu"
+path="res://.godot/imported/Madness 6.mp3-c7beccab19a550e0a8b7e998c5549182.mp3str"
 
 [deps]
 
 source_file="res://resources/sounds/Madness 6.mp3"
-dest_files=[ "res://.import/Madness 6.mp3-c7beccab19a550e0a8b7e998c5549182.mp3str" ]
+dest_files=["res://.godot/imported/Madness 6.mp3-c7beccab19a550e0a8b7e998c5549182.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

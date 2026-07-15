@@ -3,9 +3,9 @@ extends Effect
 
 enum Type { MELEE, RANGED }
 
-export(Type) var weapon_type
-export(String) var stat_displayed_name
-export(String) var stat_name
+@export var weapon_type: Type
+@export var stat_displayed_name: String
+@export var stat_name: String
 var stat_hash: int = Keys.empty_hash
 
 
@@ -14,7 +14,7 @@ static func get_id() -> String:
 
 
 func _generate_hashes() -> void:
-	._generate_hashes()
+	super._generate_hashes()
 	stat_hash = Keys.generate_hash(stat_name)
 
 
@@ -32,7 +32,7 @@ func get_args(_player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.weapon_type = weapon_type
 	serialized.stat_displayed_name = stat_displayed_name
@@ -42,7 +42,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	weapon_type = serialized.weapon_type if "weapon_type" in serialized else Type.MELEE
 	stat_displayed_name = serialized.stat_displayed_name if "stat_displayed_name" in serialized else ""
@@ -51,7 +51,7 @@ func deserialize_and_merge(serialized: Dictionary) -> void:
 
 
 func duplicate(subresources := false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 
 	if stat_hash == Keys.empty_hash and stat_name != "":
 		stat_hash = Keys.generate_hash(stat_name)

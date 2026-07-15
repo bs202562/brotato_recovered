@@ -1,17 +1,17 @@
 class_name ItemExplodingEffect
 extends ExplodingEffect
 
-export (Resource) var stats
-export (String) var tracking_key
+@export var stats: Resource
+@export var tracking_key: String
 var tracking_key_hash: int = Keys.empty_hash
-export var scale_with_missing_health: = false
+@export var scale_with_missing_health: = false
 
 var _init_stats_args_exploding: = WeaponServiceInitStatsArgs.new()
 var _default_exploding_effects: = [ExplodingEffect.new()]
 
 
 func _generate_hashes() -> void :
-	._generate_hashes()
+	super._generate_hashes()
 	tracking_key_hash = Keys.generate_hash(tracking_key)
 
 
@@ -52,7 +52,7 @@ func get_additional_scaling_damage(player_index) -> int:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 	serialized.scale_with_missing_health = scale_with_missing_health
 	serialized.tracking_key = tracking_key
 
@@ -63,7 +63,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void :
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	scale_with_missing_health = serialized.get("scale_with_missing_health", false)
 	tracking_key = serialized.get("tracking_key", "")

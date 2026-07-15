@@ -1,5 +1,5 @@
 class_name WeaponServiceSpawnProjectileArgs
-extends Reference
+extends RefCounted
 
 var knockback_direction: Vector2 = Vector2.ZERO
 var deferred: bool = false

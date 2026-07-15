@@ -17,8 +17,8 @@ func get_target_position():
 
 func get_new_target() -> Vector2:
 	var new_target = Vector2(
-		rand_range(_parent._min_pos.x, _parent._max_pos.x), 
-		rand_range(_parent._min_pos.y, _parent._max_pos.y)
+		randf_range(_parent._min_pos.x, _parent._max_pos.x), 
+		randf_range(_parent._min_pos.y, _parent._max_pos.y)
 	)
 
 	return new_target

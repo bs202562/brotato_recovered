@@ -1,7 +1,7 @@
 class_name CatlingGunEffect
 extends PetEffect
 
-export (Resource) var weapon_stats
+@export var weapon_stats: Resource
 
 static func get_id() -> String:
 	return "catling_gun"
@@ -14,14 +14,14 @@ func get_args(player_index: int) -> Array:
 	return [str(_current_weapon_stats.damage), scaling_stats_text]
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.weapon_stats = weapon_stats.serialize()
 
 	return serialized
 
 func deserialize_and_merge(serialized: Dictionary) -> void :
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	var stats = RangedWeaponStats.new()
 	stats.deserialize_and_merge(serialized.weapon_stats)

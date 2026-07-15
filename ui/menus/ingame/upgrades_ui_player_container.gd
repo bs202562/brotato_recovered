@@ -1,34 +1,34 @@
 class_name UpgradesUIPlayerContainer
 extends Container
 
-export (int) var player_index: = 0
+@export var player_index := 0
 
 signal choose_button_pressed(upgrade)
 signal item_take_button_pressed(item_data)
 signal item_discard_button_pressed(item_data)
 signal item_ban_button_pressed(item_data)
 
-onready var _button_delay_timer = $ButtonDelayTimer
-onready var _upgrade_ui_1 = $"%UpgradeUI"
-onready var _upgrade_ui_2 = $"%UpgradeUI2"
-onready var _upgrade_ui_3 = $"%UpgradeUI3"
-onready var _upgrade_ui_4 = $"%UpgradeUI4"
-onready var _reroll_button = $"%RerollButton"
+@onready var _button_delay_timer = $ButtonDelayTimer
+@onready var _upgrade_ui_1 = $"%UpgradeUI"
+@onready var _upgrade_ui_2 = $"%UpgradeUI2"
+@onready var _upgrade_ui_3 = $"%UpgradeUI3"
+@onready var _upgrade_ui_4 = $"%UpgradeUI4"
+@onready var _reroll_button = $"%RerollButton"
 
-onready var _item_panel_container = $"%ItemPanelContainer"
-onready var _item_description = $"%ItemDescription"
-onready var _take_button = $"%TakeButton"
-onready var _discard_button = $"%DiscardButton"
-onready var _ban_button = $"%BanButton"
-onready var _ban_button_label = $"%label_banitem"
-onready var _progress_ban = $"%progress_ban"
-onready var _icon_ban = $"%icon_ban"
+@onready var _item_panel_container = $"%ItemPanelContainer"
+@onready var _item_description = $"%ItemDescription"
+@onready var _take_button = $"%TakeButton"
+@onready var _discard_button = $"%DiscardButton"
+@onready var _ban_button = $"%BanButton"
+@onready var _ban_button_label = $"%label_banitem"
+@onready var _progress_ban = $"%progress_ban"
+@onready var _icon_ban = $"%icon_ban"
 
-onready var _items_container = $"%ItemsContainer"
-onready var _upgrades_container = $"%UpgradesContainer"
+@onready var _items_container = $"%ItemsContainer"
+@onready var _upgrades_container = $"%UpgradesContainer"
 
 
-onready var _things_to_process_container = get_node_or_null("%UIThingsToProcessPlayerContainer")
+@onready var _things_to_process_container = get_node_or_null("%UIThingsToProcessPlayerContainer")
 
 var _level: = 0
 var _reroll_price: = 0
@@ -43,7 +43,7 @@ var is_pressing_b: = false
 
 func _ready() -> void :
 	for upgrade_ui in _get_upgrade_uis():
-		upgrade_ui.connect("choose_button_pressed", self, "_on_choose_button_pressed")
+		upgrade_ui.connect("choose_button_pressed", Callable(self, "_on_choose_button_pressed"))
 	_items_container.hide()
 	_upgrades_container.hide()
 	if not ChallengeService.is_challenge_completed(ChallengeService.chal_banned_items_hash) or not RunData.is_ban_active_in_current_run():
@@ -90,8 +90,8 @@ func _input(event):
 				if Utils.is_player_ui_coop_ban_pressed(event, player_index):
 					_on_BanButton_pressed()
 					while is_pressing_b:
-						yield(get_tree(), "physics_frame")
-						_ban_button.pressed = true
+						await get_tree().physics_frame
+						_ban_button.button_pressed = true
 				elif Utils.is_player_ui_coop_ban_released(event, player_index):
 					_on_BanButton_button_up()
 
@@ -126,9 +126,9 @@ func show_item(item_data: ItemParentData) -> void :
 	else:
 		_take_button.icon = null
 
-	var stylebox_color = _item_panel_container.get_stylebox("panel").duplicate()
+	var stylebox_color = _item_panel_container.get_theme_stylebox("panel").duplicate()
 	ItemService.change_panel_stylebox_from_tier(stylebox_color, item_data.tier, false, get_node_or_null("%frame"))
-	_item_panel_container.add_stylebox_override("panel", stylebox_color)
+	_item_panel_container.add_theme_stylebox_override("panel", stylebox_color)
 
 	_update_gold_label()
 	_items_container.show()
@@ -233,7 +233,7 @@ func _on_BanButton_pressed():
 
 		while true:
 			_progress_ban.value += 0.025
-			yield(get_tree(), "physics_frame")
+			await get_tree().physics_frame
 			if _button_pressed: return
 			if _progress_ban.value >= 1:
 				_ban_button_label.modulate = Color(1, 1, 1, 1)
@@ -244,7 +244,7 @@ func _on_BanButton_pressed():
 				return
 		_progress_ban.value = 0
 
-		yield(UIService._ban_item_control(_item_panel_container), "completed")
+		await UIService._ban_item_control(_item_panel_container)
 
 	_button_pressed = true
 	_button_delay_timer.start()

@@ -1,10 +1,10 @@
 class_name EnemyData
 extends Resource
 
-export (String) var my_id = ""
+@export var my_id: String = ""
 var my_id_hash: int = Keys.empty_hash
-export (int) var zone_id = 0
-export (PackedScene) var scene = null
+@export var zone_id: int = 0
+@export var scene: PackedScene = null
 
 
 func _init() -> void :
@@ -19,7 +19,7 @@ func _generate_hashes() -> void :
 
 
 func duplicate(subresources: = false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 
 	if my_id_hash == Keys.empty_hash:
 		my_id_hash = Keys.generate_hash(my_id)

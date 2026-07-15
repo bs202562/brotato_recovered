@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Adonai - Phase Break.mp3-09b735a457a2ca14174c2a8391dbbd22.mp3str"
+uid="uid://vyuugq5npues"
+path="res://.godot/imported/Adonai - Phase Break.mp3-09b735a457a2ca14174c2a8391dbbd22.mp3str"
 
 [deps]
 
 source_file="res://resources/music/streamer_mode/Adonai - Phase Break.mp3"
-dest_files=[ "res://.import/Adonai - Phase Break.mp3-09b735a457a2ca14174c2a8391dbbd22.mp3str" ]
+dest_files=["res://.godot/imported/Adonai - Phase Break.mp3-09b735a457a2ca14174c2a8391dbbd22.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

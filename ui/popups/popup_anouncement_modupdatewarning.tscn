@@ -19,34 +19,34 @@ corner_radius_bottom_left = 25
 
 [node name="PanelContainer" parent="." index="1"]
 material = ExtResource( 2 )
-custom_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource( 1 )
 
 [node name="title_label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
-custom_colors/font_color = Color( 1, 0.509804, 0.509804, 1 )
+theme_override_colors/font_color = Color( 1, 0.509804, 0.509804, 1 )
 text = "POPUP-MODSUPDATE"
 
 [node name="image_text" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" index="0"]
-rect_scale = Vector2( 1.02, 0.98 )
+scale = Vector2( 1.02, 0.98 )
 
 [node name="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
-focus_neighbour_left = NodePath(".")
-focus_neighbour_top = NodePath(".")
-focus_neighbour_right = NodePath(".")
-focus_neighbour_bottom = NodePath("../../../../../validation_button")
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../../../validation_button")
 focus_next = NodePath("../../../../../validation_button")
 focus_previous = NodePath(".")
 
 [node name="rich_text_description" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" index="0"]
-margin_top = 274.0
-margin_bottom = 312.0
-bbcode_text = "POPUP-MODSUPDATE-DESCRIPTION"
+offset_top = 274.0
+offset_bottom = 312.0
+text = "POPUP-MODSUPDATE-DESCRIPTION"
 text = "POPUP-MODSUPDATE-DESCRIPTION"
 
 [node name="validation_button" parent="." index="2"]
-focus_neighbour_left = NodePath(".")
-focus_neighbour_top = NodePath("../PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer")
-focus_neighbour_right = NodePath(".")
-focus_neighbour_bottom = NodePath(".")
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath(".")
 focus_previous = NodePath("../PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer")
 text = "OK_BUTTON"

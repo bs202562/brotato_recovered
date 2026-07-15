@@ -4,23 +4,23 @@ extends Resource
 enum Sign { POSITIVE, NEGATIVE, NEUTRAL, FROM_VALUE, FROM_ARG, OVERRIDE }
 enum StorageMethod { SUM, KEY_VALUE, REPLACE , APPEND_KEY, APPEND_KEY_VALUE }
 
-export(String) var key := ""
+@export var key := ""
 var key_hash: int = Keys.empty_hash
 
-export(String) var text_key := ""
+@export var text_key := ""
 
-export(int) var value := 0
+@export var value := 0
 
 
-export(String) var custom_key := ""
+@export var custom_key := ""
 var custom_key_hash: int = Keys.empty_hash
 
 
-export(StorageMethod) var storage_method = StorageMethod.SUM
+@export var storage_method: int = StorageMethod.SUM # 4.x 移植: 原为 StorageMethod 枚举，存档存 int，统一用 int 避免与全局 StorageMethod 类冲突
 
-export(Sign) var effect_sign := Sign.FROM_VALUE
+@export var effect_sign: int = Sign.FROM_VALUE # 4.x 移植: 同上，原为 Sign 枚举
 
-export(Array, Resource) var custom_args
+@export var custom_args: Array = [] # (Array, Resource)
 
 var curse_factor: float = 0.0
 var base_value = 0
@@ -28,7 +28,7 @@ var _custom_args_added := false
 
 
 func duplicate(subresources := false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 
 	if key_hash == Keys.empty_hash and key != "":
 		key_hash = Keys.generate_hash(key)
@@ -95,7 +95,7 @@ func unapply(player_index: int) -> void:
 			if effect_item[0] == key_hash:
 				effect_item[1] -= value
 				if effect_item[1] == 0:
-					effect_items.remove(i)
+					effect_items.remove_at(i)
 				return
 	elif storage_method == StorageMethod.APPEND_KEY:
 		effects[custom_key_hash].erase(key_hash)
@@ -104,7 +104,7 @@ func unapply(player_index: int) -> void:
 		for i in effect_items.size():
 			var effect_item = effect_items[i]
 			if effect_item[0] == key_hash and int(effect_item[1]) == value:
-				effect_items.remove(i)
+				effect_items.remove_at(i)
 				return
 	elif storage_method == StorageMethod.REPLACE:
 		effects[key_hash] = base_value
@@ -145,8 +145,8 @@ func get_text(player_index: int, colored: bool = true) -> String:
 	return text
 
 
-func get_icon(_player_index: int) -> Texture:
-	var icon : Texture
+func get_icon(_player_index: int) -> Texture2D:
+	var icon : Texture2D
 
 	var stat_icon : int
 	match key_hash :
@@ -186,7 +186,7 @@ func get_arg_value(custom_arg: CustomArg, p_base_value: String, player_index: in
 				if RunData.current_difficulty < int(from_arg_key) :
 					final_value = "no_display"
 			ArgValue.KEY:
-				var arg_key = key if from_arg_key.empty() else from_arg_key
+				var arg_key = key if from_arg_key.is_empty() else from_arg_key
 				final_value = str(tr(arg_key.to_upper()))
 			ArgValue.UNIQUE_WEAPONS:
 				var nb = RunData.get_unique_weapon_ids(player_index).size()

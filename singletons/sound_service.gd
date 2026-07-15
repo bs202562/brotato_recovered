@@ -14,7 +14,7 @@ func play_sound_with_limit(sound_id: String, audio: AudioStream, max_play: int, 
 		player.stream = audio
 		player.play()
 
-	yield(get_tree().create_timer(audio.get_length()), "timeout")
+	await get_tree().create_timer(audio.get_length()).timeout
 
 	list_of_limitated_sounds_playing[sound_id] -= 1
 
@@ -26,7 +26,7 @@ func play_sound2d_with_limit(sound_id: String, audio: AudioStream, max_play: int
 
 	SoundManager2D.play(audio, position, volume_mod, pitch_rand, always_play)
 
-	yield(get_tree().create_timer(audio.get_length()), "timeout")
+	await get_tree().create_timer(audio.get_length()).timeout
 
 	list_of_limitated_sounds_playing[sound_id] -= 1
 

@@ -1,9 +1,9 @@
 class_name Stargazer
 extends Enemy
 
-export (Resource) var angry_sound
+@export var angry_sound: Resource
 
-onready var _on_triggered_movement_behavior = $OnTriggeredMovementBehavior
+@onready var _on_triggered_movement_behavior = $OnTriggeredMovementBehavior
 
 var boost_args: BoostArgs = BoostArgs.new()
 
@@ -12,9 +12,9 @@ var _signals_connected: = false
 
 
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void :
-	.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
+	super.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
 
-	var _e = entity_spawner_ref.connect("enemy_respawned", self, "on_enemy_respawned")
+	var _e = entity_spawner_ref.connect("enemy_respawned", Callable(self, "on_enemy_respawned"))
 	_on_triggered_movement_behavior.init(self)
 	boost_args.hp_boost = 150
 	boost_args.damage_boost = 25
@@ -22,7 +22,7 @@ func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [
 
 
 func respawn() -> void :
-	.respawn()
+	super.respawn()
 	can_be_boosted = true
 	_target_lung = null
 	_movement_behavior.lung = null
@@ -32,14 +32,14 @@ func respawn() -> void :
 
 func _clean_up_signals() -> void :
 	if _signals_connected and _target_lung:
-		_target_lung.disconnect("became_full", self, "on_target_lung_became_full")
-		_target_lung.disconnect("died", self, "on_target_lung_died")
-		disconnect("died", _target_lung, "on_stargazer_died")
+		_target_lung.disconnect("became_full", Callable(self, "on_target_lung_became_full"))
+		_target_lung.disconnect("died", Callable(self, "on_target_lung_died"))
+		disconnect("died", Callable(_target_lung, "on_stargazer_died"))
 		_signals_connected = false
 
 
-func die(args: = Utils.default_die_args) -> void :
-	.die(args)
+func die(args = Utils.default_die_args) -> void :
+	super.die(args)
 	_clean_up_signals()
 
 
@@ -48,9 +48,9 @@ func on_enemy_respawned(enemy: Entity) -> void :
 		_target_lung = enemy
 		_movement_behavior.add_lung(enemy)
 
-		var _e = enemy.connect("became_full", self, "on_target_lung_became_full")
-		_e = enemy.connect("died", self, "on_target_lung_died")
-		_e = connect("died", enemy, "on_stargazer_died")
+		var _e = enemy.connect("became_full", Callable(self, "on_target_lung_became_full"))
+		_e = enemy.connect("died", Callable(self, "on_target_lung_died"))
+		_e = connect("died", Callable(enemy, "on_stargazer_died"))
 		_signals_connected = true
 
 

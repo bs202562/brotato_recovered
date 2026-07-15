@@ -1,7 +1,7 @@
 class_name BurnChanceEffect
 extends Effect
 
-export(Resource) var burning_data = null
+@export var burning_data: Resource = null
 
 
 static func get_id() -> String:
@@ -15,7 +15,7 @@ func apply(player_index: int) -> void:
 
 func unapply(player_index: int) -> void:
 	var effects = RunData.get_player_effects(player_index)
-	effects[Keys.burn_chance_hash].remove(burning_data)
+	effects[Keys.burn_chance_hash].erase(burning_data)
 
 
 func get_args(player_index: int) -> Array:
@@ -25,7 +25,7 @@ func get_args(player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	if burning_data != null:
 		serialized.burning_data = burning_data.serialize()
@@ -34,7 +34,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	if serialized.has("burning_data"):
 		var data = BurningData.new()

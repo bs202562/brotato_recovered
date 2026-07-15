@@ -1,9 +1,9 @@
 extends Node
 
-onready var sound_error: AudioStreamSample = preload("res://ui/sounds/cant_buy.wav")
-onready var sound_ban: AudioStreamSample = preload("res://ui/menus/ban_item.wav")
-onready var empty_stat: Texture = preload("res://items/stats/empty.png")
-onready var replace_color_positive: Material = preload("res://ui/icons/icon_replace_with_positive_color.tres")
+@onready var sound_error: AudioStreamWAV = preload("res://ui/sounds/cant_buy.wav")
+@onready var sound_ban: AudioStreamWAV = preload("res://ui/menus/ban_item.wav")
+@onready var empty_stat: Texture2D = preload("res://items/stats/empty.png")
+@onready var replace_color_positive: Material = preload("res://ui/icons/icon_replace_with_positive_color.tres")
 
 var projectile_material = preload("res://resources/shaders/projectile_material.tres")
 
@@ -39,7 +39,7 @@ func _check_input(event: InputEvent) -> int:
 	var new_device: int
 	if event is InputEventMouse:
 		
-		if event is InputEventMouseMotion and event.speed.length() < 1000: return current_device
+		if event is InputEventMouseMotion and event.velocity.length() < 1000: return current_device # 4.x 移植: speed 改名 velocity
 		new_device = CoopService.PlayerType.KEYBOARD_AND_MOUSE
 		return new_device
 	
@@ -76,32 +76,29 @@ func _reached_max_shake(control: Control, duration: int = 5) -> void :
 		return
 	_is_in_animation.append(control)
 
-	var original_scale: = control.rect_scale
-	var original_rotation: = control.rect_rotation
+	var original_scale: = control.scale
+	var original_rotation: = control.rotation
 	var original_modulate: = control.modulate
-	var original_pivot: = control.rect_pivot_offset
+	var original_pivot: = control.pivot_offset
 
 	SoundManager.play(sound_error, 0, 0.1)
 
-	control.rect_pivot_offset = control.rect_size / 2
-	control.rect_scale = original_scale * Vector2(1.1, 1.1)
+	control.pivot_offset = control.size / 2
+	control.scale = original_scale * Vector2(1.1, 1.1)
 	control.modulate = Color(ProgressData.settings.color_negative)
-	var tween = Tween.new()
-	add_child(tween)
+	# 4.x 移植: Tween 节点已移除，改用 create_tween()
 	for i in duration:
 		var _range: float = float((duration * 10) - (i * 10))
-		var rand_rotation: float = rand_range( - _range, _range)
-		tween.interpolate_property(control, "rect_rotation", 
-			original_rotation + rand_rotation, original_rotation, 0.03, 
-			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
-		yield(tween, "tween_completed")
-	tween.queue_free()
+		var rand_rotation: float = randf_range( - _range, _range)
+		var tween = create_tween()
+		tween.tween_property(control, "rotation", original_rotation, 0.03)\
+			.from(original_rotation + rand_rotation).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		await tween.finished
 
-	control.rect_scale = original_scale
+	control.scale = original_scale
 	control.modulate = original_modulate
-	control.rect_rotation = original_rotation
-	control.rect_pivot_offset = original_pivot
+	control.rotation = original_rotation
+	control.pivot_offset = original_pivot
 
 	_is_in_animation.erase(control)
 
@@ -111,22 +108,19 @@ func _entrance_animation(control: Control) -> void :
 		return
 	_is_in_animation.append(control)
 
-	var original_scale: = control.rect_scale
-	var original_pivot: = control.rect_pivot_offset
+	var original_scale: = control.scale
+	var original_pivot: = control.pivot_offset
 
-	control.rect_pivot_offset = control.rect_size / 2
+	control.pivot_offset = control.size / 2
 
-	var tween = Tween.new()
-	add_child(tween)
-	tween.interpolate_property(control, "rect_scale", 
-		Vector2(0, 0), original_scale, 0.1, 
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
-	yield(tween, "tween_completed")
-	tween.queue_free()
+	# 4.x 移植: Tween 节点已移除，改用 create_tween()
+	var tween = create_tween()
+	tween.tween_property(control, "scale", original_scale, 0.1)\
+		.from(Vector2(0, 0)).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
 
-	control.rect_scale = original_scale
-	control.rect_pivot_offset = original_pivot
+	control.scale = original_scale
+	control.pivot_offset = original_pivot
 
 	_is_in_animation.erase(control)
 
@@ -138,46 +132,30 @@ func _ban_item_control(control: Control) -> void :
 
 	SoundManager.play(sound_ban, 0, 0.1)
 
-	var original_scale: = control.rect_scale
-	var original_rotation: = control.rect_rotation
+	var original_scale: = control.scale
+	var original_rotation: = control.rotation
 	var original_modulate: = control.modulate
-	var original_pivot: = control.rect_pivot_offset
+	var original_pivot: = control.pivot_offset
 
-	control.rect_pivot_offset = control.rect_size / 2
+	control.pivot_offset = control.size / 2
 	control.modulate = Color(ProgressData.settings.color_negative)
 
-	var tween_scale = Tween.new()
-	add_child(tween_scale)
-	tween_scale.interpolate_property(control, "rect_scale", 
-		control.rect_scale, Vector2(0.5, 0.5), 0.2, 
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween_scale.start()
+	# 4.x 移植: 三个并行 Tween 节点合并为一个 create_tween() 的并行动画
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(control, "scale", Vector2(0.5, 0.5), 0.2)\
+		.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(control, "rotation", 0.5, 0.2)\
+		.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(control, "modulate", Color(0, 0, 0, 0), 0.2)\
+		.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 
-	var tween_rot = Tween.new()
-	add_child(tween_rot)
-	tween_rot.interpolate_property(control, "rect_rotation", 
-		control.rect_rotation, 0.5, 0.2, 
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween_rot.start()
+	await tween.finished
 
-	var tween_color = Tween.new()
-	add_child(tween_color)
-	tween_color.interpolate_property(control, "modulate", 
-		control.modulate, Color(0, 0, 0, 0), 0.2, 
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween_color.start()
-
-
-	yield(tween_color, "tween_completed")
-	tween_scale.queue_free()
-	tween_rot.queue_free()
-	tween_color.queue_free()
-
-	yield(get_tree(), "idle_frame")
-	control.rect_scale = original_scale
+	await get_tree().process_frame
+	control.scale = original_scale
 	control.modulate = original_modulate
-	control.rect_rotation = original_rotation
-	control.rect_pivot_offset = original_pivot
+	control.rotation = original_rotation
+	control.pivot_offset = original_pivot
 
 	_is_in_animation.erase(control)
 
@@ -189,4 +167,4 @@ func _on_update_color_positive():
 
 
 func _on_update_color_negative():
-	Utils.projectile_outline_shadermat.set_shader_param("color_A", Color(ProgressData.settings.color_negative))
+	Utils.projectile_outline_shadermat.set_shader_parameter("color_A", Color(ProgressData.settings.color_negative))

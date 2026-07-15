@@ -8,14 +8,14 @@ signal stat_unfocused(player_index)
 signal stat_hovered(stat_button, stat_title, stat_value, player_index)
 signal stat_unhovered(player_index)
 
-export (bool) var enable_stat_focus_on_button_focus: = false
-export (bool) var show_buttons: = true
-export (bool) var show_title: = true
-export (Tab) var focused_tab: = Tab.PRIMARY
-export var title: = "STATS"
-export var min_height: = 780
-export (bool) var loop_focus_top: = false
-export (bool) var loop_focus_bottom: = false
+@export var enable_stat_focus_on_button_focus := false
+@export var show_buttons := true
+@export var show_title := true
+@export var focused_tab := Tab.PRIMARY
+@export var title: = "STATS"
+@export var min_height: = 780
+@export var loop_focus_top := false
+@export var loop_focus_bottom := false
 
 var general_stats: Array
 var primary_stats: Array
@@ -23,20 +23,20 @@ var secondary_stats: Array
 var first_primary_stat: StatContainer
 var last_primary_stat: StatContainer
 
-onready var title_label = $"%StatsLabel"
-onready var _buttons_container = $MarginContainer / VBoxContainer2 / HBoxContainer
-onready var _primary_tab = $"%Primary" as Button
-onready var _secondary_tab = $"%Secondary" as Button
-onready var _general_stats = $"%GeneralStats"
-onready var _primary_stats = $"%PrimaryStats"
-onready var _secondary_stats = $"%SecondaryStats"
+@onready var title_label = $"%StatsLabel"
+@onready var _buttons_container = $MarginContainer / VBoxContainer2 / HBoxContainer
+@onready var _primary_tab = $"%Primary" as Button
+@onready var _secondary_tab = $"%Secondary" as Button
+@onready var _general_stats = $"%GeneralStats"
+@onready var _primary_stats = $"%PrimaryStats"
+@onready var _secondary_stats = $"%SecondaryStats"
 
 
 func _ready() -> void :
 	title_label.text = title
 	title_label.visible = show_title
 	_buttons_container.visible = show_buttons
-	rect_min_size.y = min_height
+	custom_minimum_size.y = min_height
 
 	for stat in ItemService.stats:
 		if stat.is_dlc_stat:
@@ -63,10 +63,10 @@ func _ready() -> void :
 	update_tab(focused_tab)
 
 	for stat in primary_stats:
-		stat.connect("focused", self, "on_stat_focused")
-		stat.connect("unfocused", self, "on_stat_unfocused")
-		stat.connect("hovered", self, "on_stat_hovered")
-		stat.connect("unhovered", self, "on_stat_unhovered")
+		stat.connect("focused", Callable(self, "on_stat_focused"))
+		stat.connect("unfocused", Callable(self, "on_stat_unfocused"))
+		stat.connect("hovered", Callable(self, "on_stat_hovered"))
+		stat.connect("unhovered", Callable(self, "on_stat_unhovered"))
 		stat.enable_focus()
 
 	set_process_input(false)
@@ -150,7 +150,7 @@ func update_tab(tab: int) -> void :
 		_secondary_stats.hide()
 
 	else:
-		if get_focus_owner() != null and get_focus_owner().get_parent() == _primary_stats:
+		if get_viewport().gui_get_focus_owner() != null and get_viewport().gui_get_focus_owner().get_parent() == _primary_stats:
 			_secondary_tab.grab_focus()
 
 		_set_flat(_primary_tab, false)
@@ -175,49 +175,49 @@ func set_focus_neighbours() -> void :
 	if focused_tab == Tab.PRIMARY:
 		if loop_focus_top:
 			if show_buttons:
-				_primary_tab.focus_neighbour_top = _primary_tab.get_path_to(last_primary_stat)
-				_secondary_tab.focus_neighbour_top = _secondary_tab.get_path_to(last_primary_stat)
+				_primary_tab.focus_neighbor_top = _primary_tab.get_path_to(last_primary_stat)
+				_secondary_tab.focus_neighbor_top = _secondary_tab.get_path_to(last_primary_stat)
 			else:
-				first_primary_stat.focus_neighbour_top = first_primary_stat.get_path_to(last_primary_stat)
+				first_primary_stat.focus_neighbor_top = first_primary_stat.get_path_to(last_primary_stat)
 
 		if loop_focus_bottom:
 			if show_buttons:
-				last_primary_stat.focus_neighbour_bottom = last_primary_stat.get_path_to(_primary_tab)
+				last_primary_stat.focus_neighbor_bottom = last_primary_stat.get_path_to(_primary_tab)
 			else:
-				last_primary_stat.focus_neighbour_bottom = last_primary_stat.get_path_to(first_primary_stat)
+				last_primary_stat.focus_neighbor_bottom = last_primary_stat.get_path_to(first_primary_stat)
 
 	
-	if focus_neighbour_top:
+	if focus_neighbor_top:
 		if show_buttons:
-			_primary_tab.focus_neighbour_top = _primary_tab.get_path_to(get_node(focus_neighbour_top))
-			_secondary_tab.focus_neighbour_top = _secondary_tab.get_path_to(get_node(focus_neighbour_top))
+			_primary_tab.focus_neighbor_top = _primary_tab.get_path_to(get_node(focus_neighbor_top))
+			_secondary_tab.focus_neighbor_top = _secondary_tab.get_path_to(get_node(focus_neighbor_top))
 		else:
-			first_primary_stat.focus_neighbour_top = first_primary_stat.get_path_to(get_node(focus_neighbour_top))
-	if focus_neighbour_bottom:
-		last_primary_stat.focus_neighbour_bottom = last_primary_stat.get_path_to(get_node(focus_neighbour_bottom))
-	if focus_neighbour_left:
-		_primary_tab.focus_neighbour_left = _primary_tab.get_path_to(get_node(focus_neighbour_left))
-	if focus_neighbour_right:
-		_secondary_tab.focus_neighbour_right = _secondary_tab.get_path_to(get_node(focus_neighbour_right))
+			first_primary_stat.focus_neighbor_top = first_primary_stat.get_path_to(get_node(focus_neighbor_top))
+	if focus_neighbor_bottom:
+		last_primary_stat.focus_neighbor_bottom = last_primary_stat.get_path_to(get_node(focus_neighbor_bottom))
+	if focus_neighbor_left:
+		_primary_tab.focus_neighbor_left = _primary_tab.get_path_to(get_node(focus_neighbor_left))
+	if focus_neighbor_right:
+		_secondary_tab.focus_neighbor_right = _secondary_tab.get_path_to(get_node(focus_neighbor_right))
 
 	for stat in primary_stats:
-		if focus_neighbour_left:
-			stat.focus_neighbour_left = stat.get_path_to(get_node(focus_neighbour_left))
-		if focus_neighbour_right:
-			stat.focus_neighbour_right = stat.get_path_to(get_node(focus_neighbour_right))
+		if focus_neighbor_left:
+			stat.focus_neighbor_left = stat.get_path_to(get_node(focus_neighbor_left))
+		if focus_neighbor_right:
+			stat.focus_neighbor_right = stat.get_path_to(get_node(focus_neighbor_right))
 
 
 func _reset_focus_neighbours() -> void :
-	for margin in [MARGIN_TOP, MARGIN_TOP, MARGIN_LEFT, MARGIN_RIGHT]:
+	for margin in [SIDE_TOP, SIDE_TOP, SIDE_LEFT, SIDE_RIGHT]:
 
-		if margin == MARGIN_TOP and focus_neighbour_top != NodePath(""):
+		if margin == SIDE_TOP and focus_neighbor_top != NodePath(""):
 			continue
 
-		_primary_tab.set_focus_neighbour(margin, NodePath(""))
-		_secondary_tab.set_focus_neighbour(margin, NodePath(""))
+		_primary_tab.set_focus_neighbor(margin, NodePath(""))
+		_secondary_tab.set_focus_neighbor(margin, NodePath(""))
 
 	for stat in primary_stats:
-		stat.focus_neighbour_top = NodePath("")
-		stat.focus_neighbour_bottom = NodePath("")
-		stat.focus_neighbour_left = NodePath("")
-		stat.focus_neighbour_right = NodePath("")
+		stat.focus_neighbor_top = NodePath("")
+		stat.focus_neighbor_bottom = NodePath("")
+		stat.focus_neighbor_left = NodePath("")
+		stat.focus_neighbor_right = NodePath("")

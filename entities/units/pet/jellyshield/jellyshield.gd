@@ -1,8 +1,8 @@
 class_name Jellyshield
 extends Entity
 
-export (float) var radius: = 100
-export (float) var rotation_speed: = 1
+@export var radius := 100
+@export var rotation_speed := 1
 
 var player_index: = - 1
 var _owner_player: Player
@@ -11,8 +11,8 @@ var _phase = 0
 
 
 func _ready():
-	get_tree().current_scene._pause_menu._menu_options.connect("pet_highlighting_changed", self, "update_highlight")
-	get_tree().current_scene._pause_menu._menu_options.connect("pet_transparency_changed", self, "_update_transparency")
+	get_tree().current_scene._pause_menu._menu_options.connect("pet_highlighting_changed", Callable(self, "update_highlight"))
+	get_tree().current_scene._pause_menu._menu_options.connect("pet_transparency_changed", Callable(self, "_update_transparency"))
 	update_highlight()
 	_update_transparency(ProgressData.settings.pet_opacity)
 
@@ -33,9 +33,9 @@ func _on_Hurtbox_area_entered(hitbox: Area2D) -> void :
 		return
 
 	RunData.add_tracked_value(player_index, Keys.item_jellyshield_hash, 1)
-	hitbox.hit_something(self, 0)
+	hitbox.notify_hit_something(self, 0)
 	_animation_player.play("hit")
-	yield(_animation_player, "animation_finished")
+	await _animation_player.animation_finished
 	_animation_player.play("idle")
 
 

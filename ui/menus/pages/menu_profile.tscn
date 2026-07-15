@@ -3,41 +3,41 @@
 [ext_resource path="res://ui/menus/pages/menu_profile.gd" type="Script" id=1]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=2]
 [ext_resource path="res://ui/menus/global/my_menu_button.gd" type="Script" id=3]
-[ext_resource path="res://ui/menus/global/arrow_left_border.png" type="Texture" id=4]
-[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_base.png" type="Texture" id=5]
+[ext_resource path="res://ui/menus/global/arrow_left_border.png" type="Texture2D" id=4]
+[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_base.png" type="Texture2D" id=5]
 [ext_resource path="res://resources/themes/tab_buttons_physic.tres" type="Theme" id=6]
 [ext_resource path="res://ui/menus/pages/menu_codex/cathode_filterr.tres" type="Shader" id=7]
 [ext_resource path="res://resources/themes/buttons_physic.tres" type="Theme" id=8]
-[ext_resource path="res://ui/menus/pages/menu_profil/profil_unlockall_icon.png" type="Texture" id=9]
-[ext_resource path="res://ui/menus/pages/menu_profil/profil_copy_icon.png" type="Texture" id=10]
-[ext_resource path="res://ui/menus/pages/menu_profil/profil_delete_icon.png" type="Texture" id=11]
-[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_on0000.png" type="Texture" id=12]
-[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_nosave0000.png" type="Texture" id=13]
-[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_on0006.png" type="Texture" id=14]
-[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_on0008.png" type="Texture" id=15]
-[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_nosave0002.png" type="Texture" id=16]
-[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_on0010.png" type="Texture" id=17]
-[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_on0004.png" type="Texture" id=18]
-[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_off0001.png" type="Texture" id=19]
-[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_nosave0003.png" type="Texture" id=20]
-[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_nosave0001.png" type="Texture" id=21]
-[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_on0002.png" type="Texture" id=22]
-[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_off0000.png" type="Texture" id=23]
-[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_support.png" type="Texture" id=24]
+[ext_resource path="res://ui/menus/pages/menu_profil/profil_unlockall_icon.png" type="Texture2D" id=9]
+[ext_resource path="res://ui/menus/pages/menu_profil/profil_copy_icon.png" type="Texture2D" id=10]
+[ext_resource path="res://ui/menus/pages/menu_profil/profil_delete_icon.png" type="Texture2D" id=11]
+[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_on0000.png" type="Texture2D" id=12]
+[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_nosave0000.png" type="Texture2D" id=13]
+[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_on0006.png" type="Texture2D" id=14]
+[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_on0008.png" type="Texture2D" id=15]
+[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_nosave0002.png" type="Texture2D" id=16]
+[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_on0010.png" type="Texture2D" id=17]
+[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_on0004.png" type="Texture2D" id=18]
+[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_off0001.png" type="Texture2D" id=19]
+[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_nosave0003.png" type="Texture2D" id=20]
+[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_nosave0001.png" type="Texture2D" id=21]
+[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_on0002.png" type="Texture2D" id=22]
+[ext_resource path="res://ui/menus/pages/menu_profil/menu_profil_run_off0000.png" type="Texture2D" id=23]
+[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_support.png" type="Texture2D" id=24]
 [ext_resource path="res://ui/menus/pages/menu_profil/floppy_disk.tres" type="Theme" id=25]
-[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_back.png" type="Texture" id=26]
-[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_electric_wire_0_front.png" type="Texture" id=27]
-[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_electric_wire_0_back.png" type="Texture" id=28]
-[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_electric_wire_1_front.png" type="Texture" id=29]
-[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_electric_wire_1_back.png" type="Texture" id=30]
+[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_back.png" type="Texture2D" id=26]
+[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_electric_wire_0_front.png" type="Texture2D" id=27]
+[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_electric_wire_0_back.png" type="Texture2D" id=28]
+[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_electric_wire_1_front.png" type="Texture2D" id=29]
+[ext_resource path="res://ui/menus/pages/menu_profil/profil_menu_electric_wire_1_back.png" type="Texture2D" id=30]
 [ext_resource path="res://ui/menus/pages/menu_profil/snd_open_profil_menu.wav" type="AudioStream" id=31]
 [ext_resource path="res://ui/menus/pages/menu_profil/snd_switch_save.wav" type="AudioStream" id=32]
 [ext_resource path="res://ui/menus/pages/menu_profil/snd_close_profil_menu.wav" type="AudioStream" id=33]
 [ext_resource path="res://ui/menus/pages/menu_profil/snd_switch_save_display.wav" type="AudioStream" id=34]
-[ext_resource path="res://ui/menus/pages/menu_profil/profil_selected.png" type="Texture" id=35]
-[ext_resource path="res://ui/menus/global/key_xbox_rb.png" type="Texture" id=36]
-[ext_resource path="res://ui/menus/global/key_xbox_lb.png" type="Texture" id=37]
-[ext_resource path="res://ui/icons/misc/buffer_unlockall.png" type="Texture" id=38]
+[ext_resource path="res://ui/menus/pages/menu_profil/profil_selected.png" type="Texture2D" id=35]
+[ext_resource path="res://ui/menus/global/key_xbox_rb.png" type="Texture2D" id=36]
+[ext_resource path="res://ui/menus/global/key_xbox_lb.png" type="Texture2D" id=37]
+[ext_resource path="res://ui/icons/misc/buffer_unlockall.png" type="Texture2D" id=38]
 [ext_resource path="res://ui/hud/ui_input_icon.gd" type="Script" id=39]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -52,8 +52,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ) ]
 }
@@ -69,8 +69,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2, 0.4, 0.6 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 13 ), ExtResource( 21 ), ExtResource( 16 ), ExtResource( 20 ) ]
 }
@@ -86,8 +86,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 23 ), ExtResource( 19 ) ]
 }
@@ -104,8 +104,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 17 ) ]
 }
@@ -119,134 +119,134 @@ shader_param/speed = 3.0
 [sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("MainPanel:rect_position")
+tracks/0/path = NodePath("MainPanel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 70 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MainPanel:rect_scale")
+tracks/1/path = NodePath("MainPanel:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("support_texture:rect_scale")
+tracks/2/path = NodePath("support_texture:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("support_texture:rect_position")
+tracks/3/path = NodePath("support_texture:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("MainPanel:rect_rotation")
+tracks/4/path = NodePath("MainPanel:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("MainPanel/electric_wire_1_back:rect_rotation")
+tracks/5/path = NodePath("MainPanel/electric_wire_1_back:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("MainPanel/electric_wire_1:rect_rotation")
+tracks/6/path = NodePath("MainPanel/electric_wire_1:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ -5.10426 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("MainPanel/electric_wire_0:rect_rotation")
+tracks/7/path = NodePath("MainPanel/electric_wire_0:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ -5.10426 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("MainPanel/electric_wire_0_back:rect_rotation")
+tracks/8/path = NodePath("MainPanel/electric_wire_0_back:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ -5.10426 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("MainPanel/HBoxContainer:rect_size")
+tracks/9/path = NodePath("MainPanel/HBoxContainer:size")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 882, 372 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("MainPanel/HBoxContainer:rect_position")
+tracks/10/path = NodePath("MainPanel/HBoxContainer:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 519, -29 ) ]
 }
@@ -257,8 +257,8 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -269,8 +269,8 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -280,122 +280,122 @@ resource_name = "end"
 length = 0.32
 step = 0.005
 tracks/0/type = "value"
-tracks/0/path = NodePath("MainPanel:rect_position")
+tracks/0/path = NodePath("MainPanel:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.04, 0.06, 0.12, 0.16, 0.26 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0.04, 0.06, 0.12, 0.16, 0.26 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 70 ), Vector2( -23, 109 ), Vector2( -80, 154 ), Vector2( -89, 254 ), Vector2( 0, 1085 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MainPanel:rect_scale")
+tracks/1/path = NodePath("MainPanel:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = false
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.04, 0.06, 0.16, 0.26 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0.04, 0.06, 0.16, 0.26 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.015, 0.915 ), Vector2( 0.978, 1.075 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("support_texture:rect_scale")
+tracks/2/path = NodePath("support_texture:scale")
 tracks/2/interp = 2
 tracks/2/loop_wrap = false
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.2, 0.32 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0.2, 0.32 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("support_texture:rect_position")
+tracks/3/path = NodePath("support_texture:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = false
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.04, 0.06, 0.12, 0.16, 0.2, 0.32 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0.04, 0.06, 0.12, 0.16, 0.2, 0.32 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 70 ), Vector2( 0, 2 ), Vector2( 0, -1 ), Vector2( 0, 25.8101 ), Vector2( 0, 0 ), Vector2( 0, 1085 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("MainPanel:rect_rotation")
+tracks/4/path = NodePath("MainPanel:rotation")
 tracks/4/interp = 2
 tracks/4/loop_wrap = false
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.04, 0.16, 0.32 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0.04, 0.16, 0.32 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -9.6, 3.7 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("MainPanel/HBoxContainer:rect_position")
+tracks/5/path = NodePath("MainPanel/HBoxContainer:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.06, 0.1, 0.16, 0.32 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.06, 0.1, 0.16, 0.32 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 519, -29 ), Vector2( 519, -29 ), Vector2( 519, -100 ), Vector2( 519, -500 ), Vector2( 519, -29 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("MainPanel/electric_wire_0_back:rect_rotation")
+tracks/6/path = NodePath("MainPanel/electric_wire_0_back:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.08, 0.32 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.08, 0.32 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.531933, 10.4, 10.4 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("MainPanel/electric_wire_0:rect_rotation")
+tracks/7/path = NodePath("MainPanel/electric_wire_0:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ -0.857515 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("MainPanel/electric_wire_1_back:rect_rotation")
+tracks/8/path = NodePath("MainPanel/electric_wire_1_back:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.08, 0.32 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.08, 0.32 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ -1.89946, 10.4, 10.4 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("MainPanel/electric_wire_1:rect_rotation")
+tracks/9/path = NodePath("MainPanel/electric_wire_1:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.08 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.08 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ -5.10426, 10.4 ]
 }
@@ -406,8 +406,8 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0.2, 0.32 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0.2, 0.32 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -423,7 +423,7 @@ tracks/11/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 33 )
 } ],
-"times": PoolRealArray( 0 )
+"times": PackedFloat32Array( 0 )
 }
 
 [sub_resource type="Animation" id=10]
@@ -431,110 +431,110 @@ resource_name = "idle"
 loop = true
 step = 0.25
 tracks/0/type = "value"
-tracks/0/path = NodePath("MainPanel:rect_position")
+tracks/0/path = NodePath("MainPanel:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 70 ), Vector2( 0, 70 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MainPanel:rect_scale")
+tracks/1/path = NodePath("MainPanel:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = false
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("support_texture:rect_scale")
+tracks/2/path = NodePath("support_texture:scale")
 tracks/2/interp = 2
 tracks/2/loop_wrap = false
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("support_texture:rect_position")
+tracks/3/path = NodePath("support_texture:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = false
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 70 ), Vector2( 0, 70 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("MainPanel:rect_rotation")
+tracks/4/path = NodePath("MainPanel:rotation")
 tracks/4/interp = 2
 tracks/4/loop_wrap = false
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("MainPanel/electric_wire_0_back:rect_rotation")
+tracks/5/path = NodePath("MainPanel/electric_wire_0_back:rotation")
 tracks/5/interp = 2
 tracks/5/loop_wrap = false
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 3.16627, 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("MainPanel/electric_wire_0:rect_rotation")
+tracks/6/path = NodePath("MainPanel/electric_wire_0:rotation")
 tracks/6/interp = 2
 tracks/6/loop_wrap = false
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -5.10426, 0.0 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("MainPanel/electric_wire_1_back:rect_rotation")
+tracks/7/path = NodePath("MainPanel/electric_wire_1_back:rotation")
 tracks/7/interp = 2
 tracks/7/loop_wrap = false
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.6, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -1.73231, -1.89946, 0.0, -1.58035 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("MainPanel/electric_wire_1:rect_rotation")
+tracks/8/path = NodePath("MainPanel/electric_wire_1:rotation")
 tracks/8/interp = 2
 tracks/8/loop_wrap = false
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.6, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -4.65508, -5.10426, 0.0, -4.24674 ]
 }
@@ -545,8 +545,8 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -557,8 +557,8 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -568,122 +568,122 @@ resource_name = "start"
 length = 0.4
 step = 0.005
 tracks/0/type = "value"
-tracks/0/path = NodePath("MainPanel:rect_position")
+tracks/0/path = NodePath("MainPanel:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.04, 0.16, 0.22, 0.32, 0.34 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0.04, 0.16, 0.22, 0.32, 0.34 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 1085 ), Vector2( -89, 254 ), Vector2( -80, 154 ), Vector2( -23, 109 ), Vector2( 0, 70 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MainPanel:rect_scale")
+tracks/1/path = NodePath("MainPanel:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = false
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.04, 0.16, 0.32, 0.34 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0.04, 0.16, 0.32, 0.34 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0.978, 1.075 ), Vector2( 1.015, 0.915 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("support_texture:rect_scale")
+tracks/2/path = NodePath("support_texture:scale")
 tracks/2/interp = 2
 tracks/2/loop_wrap = false
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.12 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("support_texture:rect_position")
+tracks/3/path = NodePath("support_texture:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = false
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.12, 0.16, 0.22, 0.32, 0.34 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.12, 0.16, 0.22, 0.32, 0.34 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 1085 ), Vector2( 0, 0 ), Vector2( 0, 25.8101 ), Vector2( 0, -1 ), Vector2( 0, 2 ), Vector2( 0, 70 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("MainPanel:rect_rotation")
+tracks/4/path = NodePath("MainPanel:rotation")
 tracks/4/interp = 2
 tracks/4/loop_wrap = false
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.16, 0.34 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.16, 0.34 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 3.7, -9.6, 0.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("MainPanel/HBoxContainer:rect_position")
+tracks/5/path = NodePath("MainPanel/HBoxContainer:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0.16, 0.32, 0.38 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0.16, 0.32, 0.38 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 519, -29 ), Vector2( 519, -100 ), Vector2( 519, -29 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("MainPanel/electric_wire_0_back:rect_rotation")
+tracks/6/path = NodePath("MainPanel/electric_wire_0_back:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.24, 0.38 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.24, 0.38 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 10.4, 10.4, 0.531933 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("MainPanel/electric_wire_0:rect_rotation")
+tracks/7/path = NodePath("MainPanel/electric_wire_0:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0.38 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.38 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ -0.857515 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("MainPanel/electric_wire_1_back:rect_rotation")
+tracks/8/path = NodePath("MainPanel/electric_wire_1_back:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.24, 0.38 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.24, 0.38 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 10.4, 10.4, -1.89946 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("MainPanel/electric_wire_1:rect_rotation")
+tracks/9/path = NodePath("MainPanel/electric_wire_1:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0.24, 0.38 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0.24, 0.38 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ 10.4, -5.10426 ]
 }
@@ -694,8 +694,8 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -711,7 +711,7 @@ tracks/11/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 31 )
 } ],
-"times": PoolRealArray( 0 )
+"times": PackedFloat32Array( 0 )
 }
 
 [sub_resource type="AnimationNodeAnimation" id=11]
@@ -754,15 +754,15 @@ snd_switch_save_display = ExtResource( 34 )
 [node name="Cache" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource( 1 )
 
 [node name="Back_Button" type="Button" parent="."]
 unique_name_in_owner = true
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 334.0
-margin_bottom = 97.0
-focus_neighbour_right = NodePath("../MainPanel/Button_VBox/Select")
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 334.0
+offset_bottom = 97.0
+focus_neighbor_right = NodePath("../MainPanel/Button_VBox/Select")
 text = "MENU_BACK"
 icon = ExtResource( 4 )
 script = ExtResource( 3 )
@@ -772,9 +772,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -960.0
-margin_top = -1080.0
-margin_right = 960.0
+offset_left = -960.0
+offset_top = -1080.0
+offset_right = 960.0
 mouse_filter = 2
 texture = ExtResource( 24 )
 
@@ -784,10 +784,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -960.0
-margin_top = -1010.0
-margin_right = 960.0
-margin_bottom = 70.0
+offset_left = -960.0
+offset_top = -1010.0
+offset_right = 960.0
+offset_bottom = 70.0
 mouse_filter = 2
 texture = ExtResource( 5 )
 
@@ -797,10 +797,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -478.0
-margin_top = -386.0
-margin_right = 478.0
-margin_bottom = -300.0
+offset_left = -478.0
+offset_top = -386.0
+offset_right = 478.0
+offset_bottom = -300.0
 mouse_filter = 2
 texture = ExtResource( 26 )
 
@@ -810,27 +810,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -441.0
-margin_top = -569.0
-margin_right = 441.0
-margin_bottom = -197.0
+offset_left = -441.0
+offset_top = -569.0
+offset_right = 441.0
+offset_bottom = -197.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
 theme = ExtResource( 6 )
-custom_constants/separation = 12
+theme_override_constants/separation = 12
 alignment = 1
 
 [node name="margin_save1" type="MarginContainer" parent="MainPanel/HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 286.0
-margin_bottom = 372.0
+offset_right = 286.0
+offset_bottom = 372.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ProfileButton1" type="Button" parent="MainPanel/HBoxContainer/margin_save1"]
 unique_name_in_owner = true
-margin_right = 286.0
-margin_bottom = 372.0
+offset_right = 286.0
+offset_bottom = 372.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -840,32 +840,28 @@ script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="MainPanel/HBoxContainer/margin_save1/ProfileButton1"]
 anchor_right = 1.0
-margin_left = 27.0
-margin_top = 25.0
-margin_right = -29.0
-margin_bottom = 145.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+offset_left = 27.0
+offset_top = 25.0
+offset_right = -29.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
 text = "PROFILE_1"
 align = 1
 valign = 1
 autowrap = true
 
-[node name="Tween" type="Tween" parent="MainPanel/HBoxContainer/margin_save1"]
-
-[node name="Tween2" type="Tween" parent="MainPanel/HBoxContainer/margin_save1"]
-
 [node name="margin_save2" type="MarginContainer" parent="MainPanel/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 298.0
-margin_right = 584.0
-margin_bottom = 372.0
+offset_left = 298.0
+offset_right = 584.0
+offset_bottom = 372.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ProfileButton2" type="Button" parent="MainPanel/HBoxContainer/margin_save2"]
 unique_name_in_owner = true
-margin_right = 286.0
-margin_bottom = 372.0
+offset_right = 286.0
+offset_bottom = 372.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -875,33 +871,29 @@ script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="MainPanel/HBoxContainer/margin_save2/ProfileButton2"]
 anchor_right = 1.0
-margin_left = 27.0
-margin_top = 25.0
-margin_right = -29.0
-margin_bottom = 145.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+offset_left = 27.0
+offset_top = 25.0
+offset_right = -29.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
 text = "PROFILE_2"
 align = 1
 valign = 1
 autowrap = true
 
-[node name="Tween" type="Tween" parent="MainPanel/HBoxContainer/margin_save2"]
-
-[node name="Tween2" type="Tween" parent="MainPanel/HBoxContainer/margin_save2"]
-
 [node name="margin_save3" type="MarginContainer" parent="MainPanel/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 596.0
-margin_right = 882.0
-margin_bottom = 372.0
+offset_left = 596.0
+offset_right = 882.0
+offset_bottom = 372.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 25 )
 
 [node name="ProfileButton3" type="Button" parent="MainPanel/HBoxContainer/margin_save3"]
 unique_name_in_owner = true
-margin_right = 286.0
-margin_bottom = 372.0
+offset_right = 286.0
+offset_bottom = 372.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -910,19 +902,15 @@ script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="MainPanel/HBoxContainer/margin_save3/ProfileButton3"]
 anchor_right = 1.0
-margin_left = 27.0
-margin_top = 25.0
-margin_right = -30.0
-margin_bottom = 145.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+offset_left = 27.0
+offset_top = 25.0
+offset_right = -30.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
 text = "PROFILE_3"
 align = 1
 valign = 1
 autowrap = true
-
-[node name="Tween" type="Tween" parent="MainPanel/HBoxContainer/margin_save3"]
-
-[node name="Tween2" type="Tween" parent="MainPanel/HBoxContainer/margin_save3"]
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MainPanel"]
 show_behind_parent = true
@@ -930,47 +918,47 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -454.0
-margin_top = -311.0
-margin_right = 450.0
-margin_bottom = -238.0
+offset_left = -454.0
+offset_top = -311.0
+offset_right = 450.0
+offset_bottom = -238.0
 
 [node name="profil_0_selected" type="ColorRect" parent="MainPanel/HBoxContainer2"]
 unique_name_in_owner = true
-margin_right = 298.0
-margin_bottom = 73.0
+offset_right = 298.0
+offset_bottom = 73.0
 size_flags_horizontal = 3
 color = Color( 0.341176, 0.72549, 0.447059, 1 )
 
 [node name="profil_1_selected" type="ColorRect" parent="MainPanel/HBoxContainer2"]
 unique_name_in_owner = true
-margin_left = 302.0
-margin_right = 601.0
-margin_bottom = 73.0
+offset_left = 302.0
+offset_right = 601.0
+offset_bottom = 73.0
 size_flags_horizontal = 3
 color = Color( 0.113725, 0.113725, 0.113725, 1 )
 
 [node name="profil_2_selected" type="ColorRect" parent="MainPanel/HBoxContainer2"]
 unique_name_in_owner = true
-margin_left = 605.0
-margin_right = 904.0
-margin_bottom = 73.0
+offset_left = 605.0
+offset_right = 904.0
+offset_bottom = 73.0
 size_flags_horizontal = 3
 color = Color( 0.113725, 0.113725, 0.113725, 1 )
 
 [node name="Stats_VBox" type="VBoxContainer" parent="MainPanel"]
 modulate = Color( 0.74902, 1, 0.752941, 1 )
-margin_left = 436.0
-margin_top = 366.0
-margin_right = 1009.0
-margin_bottom = 803.0
+offset_left = 436.0
+offset_top = 366.0
+offset_right = 1009.0
+offset_bottom = 803.0
 alignment = 1
 
 [node name="label_profil_id" type="Label" parent="MainPanel/Stats_VBox"]
 unique_name_in_owner = true
-margin_top = 21.0
-margin_right = 573.0
-margin_bottom = 66.0
+offset_top = 21.0
+offset_right = 573.0
+offset_bottom = 66.0
 size_flags_horizontal = 3
 text = "PROFIL"
 align = 1
@@ -981,100 +969,100 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -56.0
-margin_top = -21.5
-margin_right = -11.0
-margin_bottom = 23.5
+offset_left = -56.0
+offset_top = -21.5
+offset_right = -11.0
+offset_bottom = 23.5
 texture = ExtResource( 35 )
 expand = true
 stretch_mode = 5
 
 [node name="HSeparator" type="HSeparator" parent="MainPanel/Stats_VBox"]
-margin_top = 70.0
-margin_right = 573.0
-margin_bottom = 88.0
-custom_constants/separation = 18
+offset_top = 70.0
+offset_right = 573.0
+offset_bottom = 88.0
+theme_override_constants/separation = 18
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/Stats_VBox"]
-margin_top = 92.0
-margin_right = 573.0
-margin_bottom = 137.0
+offset_top = 92.0
+offset_right = 573.0
+offset_bottom = 137.0
 
 [node name="Stats" type="Label" parent="MainPanel/Stats_VBox/HBoxContainer"]
-margin_right = 505.0
-margin_bottom = 45.0
+offset_right = 505.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
 text = "RUN_WON"
 
 [node name="RunWonCount" type="Label" parent="MainPanel/Stats_VBox/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 509.0
-margin_right = 573.0
-margin_bottom = 45.0
+offset_left = 509.0
+offset_right = 573.0
+offset_bottom = 45.0
 text = "150"
 align = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MainPanel/Stats_VBox"]
-margin_top = 141.0
-margin_right = 573.0
-margin_bottom = 186.0
+offset_top = 141.0
+offset_right = 573.0
+offset_bottom = 186.0
 
 [node name="Stats" type="Label" parent="MainPanel/Stats_VBox/HBoxContainer2"]
-margin_right = 505.0
-margin_bottom = 45.0
+offset_right = 505.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
 text = "CHAR_STATS"
 
 [node name="CharactersUnlockedCount" type="Label" parent="MainPanel/Stats_VBox/HBoxContainer2"]
 unique_name_in_owner = true
-margin_left = 509.0
-margin_right = 573.0
-margin_bottom = 45.0
+offset_left = 509.0
+offset_right = 573.0
+offset_bottom = 45.0
 text = "150"
 align = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MainPanel/Stats_VBox"]
-margin_top = 190.0
-margin_right = 573.0
-margin_bottom = 235.0
+offset_top = 190.0
+offset_right = 573.0
+offset_bottom = 235.0
 
 [node name="Stats" type="Label" parent="MainPanel/Stats_VBox/HBoxContainer3"]
-margin_right = 505.0
-margin_bottom = 45.0
+offset_right = 505.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
 text = "PROG_STATS"
 
 [node name="ChallengesUnlockedCount" type="Label" parent="MainPanel/Stats_VBox/HBoxContainer3"]
 unique_name_in_owner = true
-margin_left = 509.0
-margin_right = 573.0
-margin_bottom = 45.0
+offset_left = 509.0
+offset_right = 573.0
+offset_bottom = 45.0
 text = "150"
 align = 2
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="MainPanel/Stats_VBox"]
-margin_top = 239.0
-margin_right = 573.0
-margin_bottom = 284.0
+offset_top = 239.0
+offset_right = 573.0
+offset_bottom = 284.0
 
 [node name="Stats" type="Label" parent="MainPanel/Stats_VBox/HBoxContainer4"]
-margin_right = 496.0
-margin_bottom = 45.0
+offset_right = 496.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
 text = "HAS_RUN"
 
 [node name="HasRunValue" type="Label" parent="MainPanel/Stats_VBox/HBoxContainer4"]
 unique_name_in_owner = true
-margin_left = 500.0
-margin_right = 573.0
-margin_bottom = 45.0
+offset_left = 500.0
+offset_right = 573.0
+offset_bottom = 45.0
 text = "YES"
 align = 2
 
 [node name="HasRunAnimation" type="TextureRect" parent="MainPanel/Stats_VBox"]
-margin_top = 288.0
-margin_right = 573.0
-margin_bottom = 416.0
+offset_top = 288.0
+offset_right = 573.0
+offset_bottom = 416.0
 texture = ExtResource( 12 )
 stretch_mode = 4
 
@@ -1084,12 +1072,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 159.5
-margin_top = -30.0
-margin_right = 259.5
-margin_bottom = 70.0
-rect_rotation = 13.2
-rect_pivot_offset = Vector2( 50, 50 )
+offset_left = 159.5
+offset_top = -30.0
+offset_right = 259.5
+offset_bottom = 70.0
+rotation = 13.2
+pivot_offset = Vector2( 50, 50 )
 mouse_filter = 2
 texture = ExtResource( 38 )
 expand = true
@@ -1107,10 +1095,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -562.0
-margin_top = -243.0
-margin_right = 87.0
-margin_bottom = 306.0
+offset_left = -562.0
+offset_top = -243.0
+offset_right = 87.0
+offset_bottom = 306.0
 mouse_filter = 2
 color = Color( 0.137255, 0.188235, 0.121569, 1 )
 __meta__ = {
@@ -1125,17 +1113,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -562.0
-margin_top = -243.0
-margin_right = 87.0
-margin_bottom = 306.0
+offset_left = -562.0
+offset_top = -243.0
+offset_right = 87.0
+offset_bottom = 306.0
 mouse_filter = 2
 color = Color( 0.74902, 1, 0.752941, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="Tween" type="Tween" parent="MainPanel/Flash"]
 
 [node name="CathodicFilter" type="ColorRect" parent="MainPanel"]
 modulate = Color( 0.458824, 1, 0.517647, 1 )
@@ -1144,42 +1130,42 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -559.0
-margin_top = -244.0
-margin_right = 88.0
-margin_bottom = 306.0
+offset_left = -559.0
+offset_top = -244.0
+offset_right = 88.0
+offset_bottom = 306.0
 mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Button_VBox" type="VBoxContainer" parent="MainPanel"]
-margin_left = 1080.0
-margin_top = 330.0
-margin_right = 1546.0
-margin_bottom = 791.0
+offset_left = 1080.0
+offset_top = 330.0
+offset_right = 1546.0
+offset_bottom = 791.0
 theme = ExtResource( 8 )
 alignment = 1
 
 [node name="Select" type="Button" parent="MainPanel/Button_VBox"]
 unique_name_in_owner = true
-margin_right = 466.0
-margin_bottom = 149.0
-focus_neighbour_left = NodePath("../../../Back_Button")
+offset_right = 466.0
+offset_bottom = 149.0
+focus_neighbor_left = NodePath("../../../Back_Button")
 size_flags_vertical = 3
 text = "PROFILE_SELECT"
 script = ExtResource( 3 )
 
 [node name="HSeparator" type="HSeparator" parent="MainPanel/Button_VBox"]
-margin_top = 153.0
-margin_right = 466.0
-margin_bottom = 194.0
+offset_top = 153.0
+offset_right = 466.0
+offset_bottom = 194.0
 
 [node name="UnlockAll" type="Button" parent="MainPanel/Button_VBox"]
 unique_name_in_owner = true
-margin_top = 198.0
-margin_right = 466.0
-margin_bottom = 283.0
+offset_top = 198.0
+offset_right = 466.0
+offset_bottom = 283.0
 text = "PROFILE_UNLOCK_ALL"
 icon = ExtResource( 9 )
 expand_icon = true
@@ -1188,25 +1174,25 @@ script = ExtResource( 3 )
 [node name="Reset" type="Button" parent="MainPanel/Button_VBox"]
 unique_name_in_owner = true
 modulate = Color( 1, 0.643137, 0.643137, 1 )
-margin_top = 287.0
-margin_right = 466.0
-margin_bottom = 372.0
+offset_top = 287.0
+offset_right = 466.0
+offset_bottom = 372.0
 text = "PROFILE_RESET"
 icon = ExtResource( 11 )
 expand_icon = true
 script = ExtResource( 3 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/Button_VBox"]
-margin_top = 376.0
-margin_right = 466.0
-margin_bottom = 461.0
+offset_top = 376.0
+offset_right = 466.0
+offset_bottom = 461.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Copy1" type="Button" parent="MainPanel/Button_VBox/HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 231.0
-margin_bottom = 85.0
+offset_right = 231.0
+offset_bottom = 85.0
 size_flags_horizontal = 3
 text = "COPY1"
 icon = ExtResource( 10 )
@@ -1215,9 +1201,9 @@ script = ExtResource( 3 )
 
 [node name="Copy2" type="Button" parent="MainPanel/Button_VBox/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 235.0
-margin_right = 466.0
-margin_bottom = 85.0
+offset_left = 235.0
+offset_right = 466.0
+offset_bottom = 85.0
 size_flags_horizontal = 3
 text = "COPY2"
 icon = ExtResource( 10 )
@@ -1230,12 +1216,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 472.0
-margin_top = 10.9999
-margin_right = 769.0
-margin_bottom = 453.0
-rect_rotation = -5.10426
-rect_pivot_offset = Vector2( 97, 281 )
+offset_left = 472.0
+offset_top = 10.9999
+offset_right = 769.0
+offset_bottom = 453.0
+rotation = -5.10426
+pivot_offset = Vector2( 97, 281 )
 mouse_filter = 2
 texture = ExtResource( 28 )
 
@@ -1244,12 +1230,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 472.0
-margin_top = 10.9999
-margin_right = 769.0
-margin_bottom = 453.0
-rect_rotation = -5.10426
-rect_pivot_offset = Vector2( 97, 281 )
+offset_left = 472.0
+offset_top = 10.9999
+offset_right = 769.0
+offset_bottom = 453.0
+rotation = -5.10426
+pivot_offset = Vector2( 97, 281 )
 mouse_filter = 2
 texture = ExtResource( 27 )
 
@@ -1259,11 +1245,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 472.0
-margin_top = 10.9999
-margin_right = 769.0
-margin_bottom = 453.0
-rect_pivot_offset = Vector2( 21, 276 )
+offset_left = 472.0
+offset_top = 10.9999
+offset_right = 769.0
+offset_bottom = 453.0
+pivot_offset = Vector2( 21, 276 )
 mouse_filter = 2
 texture = ExtResource( 30 )
 
@@ -1272,12 +1258,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 472.0
-margin_top = 10.9999
-margin_right = 769.0
-margin_bottom = 453.0
-rect_rotation = -5.10426
-rect_pivot_offset = Vector2( 21, 276 )
+offset_left = 472.0
+offset_top = 10.9999
+offset_right = 769.0
+offset_bottom = 453.0
+rotation = -5.10426
+pivot_offset = Vector2( 21, 276 )
 mouse_filter = 2
 texture = ExtResource( 29 )
 
@@ -1288,10 +1274,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -549.0
-margin_top = -475.0
-margin_right = -459.0
-margin_bottom = -412.0
+offset_left = -549.0
+offset_top = -475.0
+offset_right = -459.0
+offset_bottom = -412.0
 texture = ExtResource( 37 )
 script = ExtResource( 39 )
 input_string = "ltrigger"
@@ -1303,10 +1289,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 460.0
-margin_top = -474.0
-margin_right = 550.0
-margin_bottom = -411.0
+offset_left = 460.0
+offset_top = -474.0
+offset_right = 550.0
+offset_bottom = -411.0
 texture = ExtResource( 36 )
 script = ExtResource( 39 )
 input_string = "rtrigger"
@@ -1319,7 +1305,7 @@ anchor_bottom = 1.0
 [node name="ResetPopUpPanel" type="Panel" parent="ResetPopUpPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource( 1 )
 
 [node name="ResetPopUpPanel" type="PanelContainer" parent="ResetPopUpPanel/ResetPopUpPanel"]
 anchor_left = 0.3
@@ -1329,21 +1315,21 @@ anchor_bottom = 0.6
 theme = ExtResource( 8 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ResetPopUpPanel/ResetPopUpPanel/ResetPopUpPanel"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 748.0
-margin_bottom = 304.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 748.0
+offset_bottom = 304.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ResetPopUpPanel/ResetPopUpPanel/ResetPopUpPanel/VBoxContainer"]
-margin_right = 728.0
-margin_bottom = 195.0
+offset_right = 728.0
+offset_bottom = 195.0
 size_flags_vertical = 3
-custom_constants/margin_top = 0
-custom_constants/margin_bottom = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="Label" type="Label" parent="ResetPopUpPanel/ResetPopUpPanel/ResetPopUpPanel/VBoxContainer/MarginContainer"]
-margin_right = 728.0
-margin_bottom = 195.0
+offset_right = 728.0
+offset_bottom = 195.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "PROFILE_RESET_QUOTE"
@@ -1352,27 +1338,27 @@ valign = 1
 autowrap = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="ResetPopUpPanel/ResetPopUpPanel/ResetPopUpPanel/VBoxContainer"]
-margin_top = 199.0
-margin_right = 728.0
-margin_bottom = 284.0
+offset_top = 199.0
+offset_right = 728.0
+offset_bottom = 284.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ResetPopUpPanel/ResetPopUpPanel/ResetPopUpPanel/VBoxContainer/MarginContainer3"]
-margin_right = 728.0
-margin_bottom = 85.0
+offset_right = 728.0
+offset_bottom = 85.0
 alignment = 1
 
 [node name="ResetConfirmButton" type="Button" parent="ResetPopUpPanel/ResetPopUpPanel/ResetPopUpPanel/VBoxContainer/MarginContainer3/HBoxContainer"]
-margin_left = 161.0
-margin_right = 372.0
-margin_bottom = 85.0
+offset_left = 161.0
+offset_right = 372.0
+offset_bottom = 85.0
 text = "CONFIRM"
 script = ExtResource( 3 )
 
 [node name="ResetCancelButton" type="Button" parent="ResetPopUpPanel/ResetPopUpPanel/ResetPopUpPanel/VBoxContainer/MarginContainer3/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 376.0
-margin_right = 566.0
-margin_bottom = 85.0
+offset_left = 376.0
+offset_right = 566.0
+offset_bottom = 85.0
 text = "CANCEL"
 script = ExtResource( 3 )
 
@@ -1384,7 +1370,7 @@ anchor_bottom = 1.0
 [node name="UnlockAllPopUpPanel" type="Panel" parent="UnlockAllPopUpPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource( 1 )
 
 [node name="UnlockAllPopUpPanel" type="PanelContainer" parent="UnlockAllPopUpPanel/UnlockAllPopUpPanel"]
 anchor_left = 0.3
@@ -1394,21 +1380,21 @@ anchor_bottom = 0.6
 theme = ExtResource( 8 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UnlockAllPopUpPanel/UnlockAllPopUpPanel/UnlockAllPopUpPanel"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 748.0
-margin_bottom = 304.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 748.0
+offset_bottom = 304.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UnlockAllPopUpPanel/UnlockAllPopUpPanel/UnlockAllPopUpPanel/VBoxContainer"]
-margin_right = 728.0
-margin_bottom = 195.0
+offset_right = 728.0
+offset_bottom = 195.0
 size_flags_vertical = 3
-custom_constants/margin_top = 0
-custom_constants/margin_bottom = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="Label" type="Label" parent="UnlockAllPopUpPanel/UnlockAllPopUpPanel/UnlockAllPopUpPanel/VBoxContainer/MarginContainer"]
-margin_right = 728.0
-margin_bottom = 195.0
+offset_right = 728.0
+offset_bottom = 195.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "PROFILE_UNLOCK_QUOTE"
@@ -1417,27 +1403,27 @@ valign = 1
 autowrap = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="UnlockAllPopUpPanel/UnlockAllPopUpPanel/UnlockAllPopUpPanel/VBoxContainer"]
-margin_top = 199.0
-margin_right = 728.0
-margin_bottom = 284.0
+offset_top = 199.0
+offset_right = 728.0
+offset_bottom = 284.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UnlockAllPopUpPanel/UnlockAllPopUpPanel/UnlockAllPopUpPanel/VBoxContainer/MarginContainer3"]
-margin_right = 728.0
-margin_bottom = 85.0
+offset_right = 728.0
+offset_bottom = 85.0
 alignment = 1
 
 [node name="UnlockConfirmButton" type="Button" parent="UnlockAllPopUpPanel/UnlockAllPopUpPanel/UnlockAllPopUpPanel/VBoxContainer/MarginContainer3/HBoxContainer"]
-margin_left = 161.0
-margin_right = 372.0
-margin_bottom = 85.0
+offset_left = 161.0
+offset_right = 372.0
+offset_bottom = 85.0
 text = "CONFIRM"
 script = ExtResource( 3 )
 
 [node name="UnlockCancelButton" type="Button" parent="UnlockAllPopUpPanel/UnlockAllPopUpPanel/UnlockAllPopUpPanel/VBoxContainer/MarginContainer3/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 376.0
-margin_right = 566.0
-margin_bottom = 85.0
+offset_left = 376.0
+offset_right = 566.0
+offset_bottom = 85.0
 text = "CANCEL"
 script = ExtResource( 3 )
 
@@ -1449,7 +1435,7 @@ anchor_bottom = 1.0
 [node name="UnlockAllPopUpPanel" type="Panel" parent="CopyPopUpPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource( 1 )
 
 [node name="CopyPopUpPanel" type="PanelContainer" parent="CopyPopUpPanel/UnlockAllPopUpPanel"]
 anchor_left = 0.3
@@ -1459,22 +1445,22 @@ anchor_bottom = 0.6
 theme = ExtResource( 8 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CopyPopUpPanel/UnlockAllPopUpPanel/CopyPopUpPanel"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 748.0
-margin_bottom = 304.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 748.0
+offset_bottom = 304.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CopyPopUpPanel/UnlockAllPopUpPanel/CopyPopUpPanel/VBoxContainer"]
-margin_right = 728.0
-margin_bottom = 195.0
+offset_right = 728.0
+offset_bottom = 195.0
 size_flags_vertical = 3
-custom_constants/margin_top = 0
-custom_constants/margin_bottom = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="CopyLabel" type="Label" parent="CopyPopUpPanel/UnlockAllPopUpPanel/CopyPopUpPanel/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
-margin_right = 728.0
-margin_bottom = 195.0
+offset_right = 728.0
+offset_bottom = 195.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "PROFILE_COPY_QUOTE"
@@ -1483,27 +1469,27 @@ valign = 1
 autowrap = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="CopyPopUpPanel/UnlockAllPopUpPanel/CopyPopUpPanel/VBoxContainer"]
-margin_top = 199.0
-margin_right = 728.0
-margin_bottom = 284.0
+offset_top = 199.0
+offset_right = 728.0
+offset_bottom = 284.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CopyPopUpPanel/UnlockAllPopUpPanel/CopyPopUpPanel/VBoxContainer/MarginContainer3"]
-margin_right = 728.0
-margin_bottom = 85.0
+offset_right = 728.0
+offset_bottom = 85.0
 alignment = 1
 
 [node name="CopyConfirmButton" type="Button" parent="CopyPopUpPanel/UnlockAllPopUpPanel/CopyPopUpPanel/VBoxContainer/MarginContainer3/HBoxContainer"]
-margin_left = 161.0
-margin_right = 372.0
-margin_bottom = 85.0
+offset_left = 161.0
+offset_right = 372.0
+offset_bottom = 85.0
 text = "CONFIRM"
 script = ExtResource( 3 )
 
 [node name="CopyCancelButton" type="Button" parent="CopyPopUpPanel/UnlockAllPopUpPanel/CopyPopUpPanel/VBoxContainer/MarginContainer3/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 376.0
-margin_right = 566.0
-margin_bottom = 85.0
+offset_left = 376.0
+offset_right = 566.0
+offset_bottom = 85.0
 text = "CANCEL"
 script = ExtResource( 3 )
 

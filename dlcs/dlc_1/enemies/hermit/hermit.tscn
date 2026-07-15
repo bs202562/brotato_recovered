@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://dlcs/dlc_1/enemies/hermit/hermit.png" type="Texture" id=1]
+[ext_resource path="res://dlcs/dlc_1/enemies/hermit/hermit.png" type="Texture2D" id=1]
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/units/enemies/healer/healer.gd" type="Script" id=3]
 [ext_resource path="res://entities/units/movement_behaviors/target_rand_pos_movement_behavior.gd" type="Script" id=4]
@@ -29,7 +29,7 @@ heal_increase_each_wave = 10.0
 player_heal = 1.0
 player_heal_increase_each_wave = 0.5
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -8 )
 texture = ExtResource( 1 )
 

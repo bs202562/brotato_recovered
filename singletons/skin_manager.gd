@@ -31,9 +31,8 @@ func get_skin_set(my_id: String) -> SkinSetData:
 func load_skin_pcks() -> void :
 	var skin_pck_names: = ["GreenSkins.pck"]
 	for skin_name in skin_pck_names:
-		var file = File.new()
 		var skin_path: String = Utils.get_game_dir() + "/" + skin_name
-		if file.file_exists(skin_path):
+		if FileAccess.file_exists(skin_path):
 			var success = ProjectSettings.load_resource_pack(skin_path)
 			if success:
 				DebugService.log_data("Loaded Skin package: " + skin_name)
@@ -45,18 +44,19 @@ func add_all_skins() -> void :
 	if DebugService.no_skin:
 		return
 
-	var dir = Directory.new()
 	var dir_path = "res://skins/"
 
-	DebugService.log_data(dir_path + " exists: " + str(dir.dir_exists(dir_path)))
+	DebugService.log_data(dir_path + " exists: " + str(DirAccess.dir_exists_absolute(dir_path)))
 
-	if not dir.dir_exists(dir_path):
+	if not DirAccess.dir_exists_absolute(dir_path):
 		return
 
 	DebugService.log_data("Open " + dir_path)
 
-	dir.open(dir_path)
-	dir.list_dir_begin(true)
+	var dir = DirAccess.open(dir_path)
+	if dir == null:
+		return
+	dir.list_dir_begin()
 
 	var skin_dirs: Array = []
 
@@ -67,8 +67,10 @@ func add_all_skins() -> void :
 		dir_name = dir.get_next()
 
 	for path in skin_dirs:
-		dir.open(path)
-		dir.list_dir_begin(true)
+		dir = DirAccess.open(path)
+		if dir == null:
+			continue
+		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if file_name == "skin_set_data.tres":
@@ -126,7 +128,7 @@ func _handle_skin_data(skin_data: SkinData, remove: = false) -> void :
 		_handle_skin_data(appearance_skin_data, remove)
 
 
-func get_skin(original_texture: Texture) -> Texture:
+func get_skin(original_texture: Texture2D) -> Texture2D:
 	if Utils.on_console:
 		return original_texture
 		

@@ -2,34 +2,34 @@
 
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=1]
 [ext_resource path="res://ui/menus/global/my_h_slider.gd" type="Script" id=2]
-[ext_resource path="res://resources/themes/panel/outline_panel_simple.png" type="Texture" id=3]
-[ext_resource path="res://ui/hud/ui_grabber_focus.png" type="Texture" id=4]
-[ext_resource path="res://ui/hud/ui_grabber_disabled.png" type="Texture" id=5]
-[ext_resource path="res://ui/hud/ui_panel_transparent.png" type="Texture" id=6]
-[ext_resource path="res://ui/menus/global/triangle_up_icon.png" type="Texture" id=7]
-[ext_resource path="res://ui/hud/ui_grabber_normal.png" type="Texture" id=8]
+[ext_resource path="res://resources/themes/panel/outline_panel_simple.png" type="Texture2D" id=3]
+[ext_resource path="res://ui/hud/ui_grabber_focus.png" type="Texture2D" id=4]
+[ext_resource path="res://ui/hud/ui_grabber_disabled.png" type="Texture2D" id=5]
+[ext_resource path="res://ui/hud/ui_panel_transparent.png" type="Texture2D" id=6]
+[ext_resource path="res://ui/menus/global/triangle_up_icon.png" type="Texture2D" id=7]
+[ext_resource path="res://ui/hud/ui_grabber_normal.png" type="Texture2D" id=8]
 [ext_resource path="res://ui/menus/global/color_option.gd" type="Script" id=9]
-[ext_resource path="res://ui/menus/global/triangle_down_icon.png" type="Texture" id=10]
+[ext_resource path="res://ui/menus/global/triangle_down_icon.png" type="Texture2D" id=10]
 [ext_resource path="res://ui/button_expand.gd" type="Script" id=11]
-[ext_resource path="res://ui/menus/global/reset_icon.png" type="Texture" id=12]
+[ext_resource path="res://ui/menus/global/reset_icon.png" type="Texture2D" id=12]
 [ext_resource path="res://ui/menus/global/my_menu_button.gd" type="Script" id=13]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 128, 128 )
-margin_left = 20.0
-margin_right = 20.0
-margin_top = 20.0
-margin_bottom = 20.0
+offset_left = 20.0
+offset_right = 20.0
+offset_top = 20.0
+offset_bottom = 20.0
 modulate_color = Color( 0.45098, 0.45098, 0.45098, 1 )
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 64, 64 )
-margin_left = 20.0
-margin_right = 20.0
-margin_top = 20.0
-margin_bottom = 20.0
+offset_left = 20.0
+offset_right = 20.0
+offset_top = 20.0
+offset_bottom = 20.0
 
 [sub_resource type="StyleBoxEmpty" id=12]
 
@@ -37,10 +37,10 @@ margin_bottom = 20.0
 
 [sub_resource type="Gradient" id=4]
 resource_local_to_scene = true
-offsets = PoolRealArray( 0, 0.121, 0.187328, 0.25, 0.374656, 0.5, 0.61708, 0.75, 0.870523, 1 )
-colors = PoolColorArray( 1, 0, 0, 1, 1, 0.726697, 0, 1, 0.945312, 1, 0, 1, 0.265625, 1, 0, 1, 0, 1, 0.421591, 1, 0, 1, 1, 1, 0, 0.465146, 1, 1, 0.265625, 0, 1, 1, 1, 0, 0.835788, 1, 1, 0, 0, 1 )
+offsets = PackedFloat32Array( 0, 0.121, 0.187328, 0.25, 0.374656, 0.5, 0.61708, 0.75, 0.870523, 1 )
+colors = PackedColorArray( 1, 0, 0, 1, 1, 0.726697, 0, 1, 0.945312, 1, 0, 1, 0.265625, 1, 0, 1, 0, 1, 0.421591, 1, 0, 1, 1, 1, 0, 0.465146, 1, 1, 0.265625, 0, 1, 1, 1, 0, 0.835788, 1, 1, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=5]
+[sub_resource type="GradientTexture2D" id=5]
 resource_local_to_scene = true
 gradient = SubResource( 4 )
 
@@ -48,9 +48,9 @@ gradient = SubResource( 4 )
 
 [sub_resource type="Gradient" id=7]
 resource_local_to_scene = true
-colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
+colors = PackedColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=8]
+[sub_resource type="GradientTexture2D" id=8]
 resource_local_to_scene = true
 gradient = SubResource( 7 )
 
@@ -58,34 +58,34 @@ gradient = SubResource( 7 )
 
 [sub_resource type="Gradient" id=10]
 resource_local_to_scene = true
-colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1 )
+colors = PackedColorArray( 0, 0, 0, 1, 1, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=11]
+[sub_resource type="GradientTexture2D" id=11]
 resource_local_to_scene = true
 gradient = SubResource( 10 )
 
 [node name="ColorPositiveText" type="HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 990.0
-margin_bottom = 65.0
+offset_right = 990.0
+offset_bottom = 65.0
 theme = ExtResource( 1 )
 script = ExtResource( 9 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 921.0
-margin_bottom = 65.0
+offset_right = 921.0
+offset_bottom = 65.0
 size_flags_horizontal = 3
 
 [node name="button_expand" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
-margin_right = 921.0
-margin_bottom = 65.0
+offset_right = 921.0
+offset_bottom = 65.0
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Color_Option"
 icon = ExtResource( 10 )
 align = 0
-icon_align = 2
+icon_alignment = 2
 script = ExtResource( 11 )
 group_visible = NodePath("../Setup_Color")
 icon_up = ExtResource( 7 )
@@ -95,49 +95,49 @@ icon_down = ExtResource( 10 )
 unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 531.0
-margin_top = 8.0
-margin_right = -73.0
-margin_bottom = -16.0
+offset_left = 531.0
+offset_top = 8.0
+offset_right = -73.0
+offset_bottom = -16.0
 mouse_filter = 2
 color = Color( 0, 1, 0.4, 1 )
 
 [node name="Setup_Color" type="MarginContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
 visible = false
-margin_top = 69.0
-margin_right = 921.0
-margin_bottom = 324.0
-custom_constants/margin_right = 10
-custom_constants/margin_top = 5
-custom_constants/margin_left = 25
-custom_constants/margin_bottom = 10
+offset_top = 69.0
+offset_right = 921.0
+offset_bottom = 324.0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_bottom = 10
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Setup_Color"]
-margin_left = 25.0
-margin_top = 5.0
-margin_right = 911.0
-margin_bottom = 245.0
-custom_styles/panel = SubResource( 1 )
+offset_left = 25.0
+offset_top = 5.0
+offset_right = 911.0
+offset_bottom = 245.0
+theme_override_styles/panel = SubResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Setup_Color/PanelContainer"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 866.0
-margin_bottom = 220.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 866.0
+offset_bottom = 220.0
 
 [node name="Slider_Hue" type="HSlider" parent="VBoxContainer/Setup_Color/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_right = 846.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 200, 38 )
+offset_right = 846.0
+offset_bottom = 64.0
+custom_minimum_size = Vector2( 200, 38 )
 size_flags_vertical = 1
-custom_icons/grabber_disabled = ExtResource( 5 )
-custom_icons/grabber_highlight = ExtResource( 4 )
-custom_icons/grabber = ExtResource( 8 )
-custom_styles/slider = SubResource( 2 )
-custom_styles/grabber_area_highlight = SubResource( 12 )
-custom_styles/grabber_area = SubResource( 3 )
+theme_override_icons/grabber_disabled = ExtResource( 5 )
+theme_override_icons/grabber_highlight = ExtResource( 4 )
+theme_override_icons/grabber = ExtResource( 8 )
+theme_override_styles/slider = SubResource( 2 )
+theme_override_styles/grabber_area_highlight = SubResource( 12 )
+theme_override_styles/grabber_area = SubResource( 3 )
 max_value = 1.0
 step = 0.02
 value = 0.4
@@ -148,10 +148,10 @@ value_change_sound = null
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 9.0
-margin_top = 10.0
-margin_right = -9.0
-margin_bottom = -8.0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = -9.0
+offset_bottom = -8.0
 mouse_filter = 2
 texture = SubResource( 5 )
 expand = true
@@ -161,17 +161,17 @@ __meta__ = {
 
 [node name="Slider_Saturation" type="HSlider" parent="VBoxContainer/Setup_Color/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 68.0
-margin_right = 846.0
-margin_bottom = 132.0
-rect_min_size = Vector2( 200, 38 )
+offset_top = 68.0
+offset_right = 846.0
+offset_bottom = 132.0
+custom_minimum_size = Vector2( 200, 38 )
 size_flags_vertical = 1
-custom_icons/grabber_disabled = ExtResource( 5 )
-custom_icons/grabber_highlight = ExtResource( 4 )
-custom_icons/grabber = ExtResource( 8 )
-custom_styles/slider = SubResource( 2 )
-custom_styles/grabber_area_highlight = SubResource( 13 )
-custom_styles/grabber_area = SubResource( 3 )
+theme_override_icons/grabber_disabled = ExtResource( 5 )
+theme_override_icons/grabber_highlight = ExtResource( 4 )
+theme_override_icons/grabber = ExtResource( 8 )
+theme_override_styles/slider = SubResource( 2 )
+theme_override_styles/grabber_area_highlight = SubResource( 13 )
+theme_override_styles/grabber_area = SubResource( 3 )
 max_value = 1.0
 step = 0.02
 value = 1.0
@@ -183,10 +183,10 @@ unique_name_in_owner = true
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 9.0
-margin_top = 10.0
-margin_right = -9.0
-margin_bottom = -8.0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = -9.0
+offset_bottom = -8.0
 mouse_filter = 2
 texture = SubResource( 8 )
 expand = true
@@ -196,17 +196,17 @@ __meta__ = {
 
 [node name="Slider_Value" type="HSlider" parent="VBoxContainer/Setup_Color/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 136.0
-margin_right = 846.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 200, 38 )
+offset_top = 136.0
+offset_right = 846.0
+offset_bottom = 200.0
+custom_minimum_size = Vector2( 200, 38 )
 size_flags_vertical = 1
-custom_icons/grabber_disabled = ExtResource( 5 )
-custom_icons/grabber_highlight = ExtResource( 4 )
-custom_icons/grabber = ExtResource( 8 )
-custom_styles/slider = SubResource( 2 )
-custom_styles/grabber_area_highlight = SubResource( 14 )
-custom_styles/grabber_area = SubResource( 3 )
+theme_override_icons/grabber_disabled = ExtResource( 5 )
+theme_override_icons/grabber_highlight = ExtResource( 4 )
+theme_override_icons/grabber = ExtResource( 8 )
+theme_override_styles/slider = SubResource( 2 )
+theme_override_styles/grabber_area_highlight = SubResource( 14 )
+theme_override_styles/grabber_area = SubResource( 3 )
 max_value = 1.0
 step = 0.02
 value = 1.0
@@ -218,10 +218,10 @@ unique_name_in_owner = true
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 9.0
-margin_top = 10.0
-margin_right = -9.0
-margin_bottom = -8.0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = -9.0
+offset_bottom = -8.0
 mouse_filter = 2
 texture = SubResource( 11 )
 expand = true
@@ -231,10 +231,10 @@ __meta__ = {
 
 [node name="reset_but" type="Button" parent="."]
 unique_name_in_owner = true
-margin_left = 925.0
-margin_right = 990.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 65, 0 )
+offset_left = 925.0
+offset_right = 990.0
+offset_bottom = 65.0
+custom_minimum_size = Vector2( 65, 0 )
 icon = ExtResource( 12 )
 expand_icon = true
 script = ExtResource( 13 )

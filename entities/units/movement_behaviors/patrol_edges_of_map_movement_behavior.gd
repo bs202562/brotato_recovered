@@ -1,17 +1,17 @@
 class_name PatrolEdgesOfMapMovementBehavior
 extends MovementBehavior
 
-export (int) var edge_distance = 300
-export (int) var edge_randomization = 100
-export (int) var max_target_distance = 300
+@export var edge_distance: int = 300
+@export var edge_randomization: int = 100
+@export var max_target_distance: int = 300
 
 var _actual: int
 var _current_target: Vector2 = Vector2.ZERO
 
 
 func init(parent: Node) -> Node:
-	var _init = .init(parent)
-	_actual = edge_distance + rand_range( - edge_randomization, edge_randomization)
+	var _init = super.init(parent)
+	_actual = edge_distance + randf_range( - edge_randomization, edge_randomization)
 	return self
 
 

@@ -26,10 +26,10 @@ func update_from_hp(hp: int = - 1, max_hp: int = - 1) -> void :
 	if max_hp != - 1:
 		max_val = max_hp as float
 
-	if not ProgressData.settings.darken_screen and material.get_shader_param("multiplier") != 0.8:
-		material.set_shader_param("multiplier", 0.8)
+	if not ProgressData.settings.darken_screen and material.get_shader_parameter("multiplier") != 0.8:
+		material.set_shader_parameter("multiplier", 0.8)
 	elif ProgressData.settings.darken_screen:
-		material.set_shader_param("multiplier", get_val())
+		material.set_shader_parameter("multiplier", get_val())
 
 
 func get_val() -> float:

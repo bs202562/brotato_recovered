@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Adonai - Shipwrecked.mp3-3122353eca4e606e779aa37eb92d56eb.mp3str"
+uid="uid://damgoj6jw27qp"
+path="res://.godot/imported/Adonai - Shipwrecked.mp3-3122353eca4e606e779aa37eb92d56eb.mp3str"
 
 [deps]
 
 source_file="res://dlcs/dlc_1/resources/music/Adonai - Shipwrecked.mp3"
-dest_files=[ "res://.import/Adonai - Shipwrecked.mp3-3122353eca4e606e779aa37eb92d56eb.mp3str" ]
+dest_files=["res://.godot/imported/Adonai - Shipwrecked.mp3-3122353eca4e606e779aa37eb92d56eb.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

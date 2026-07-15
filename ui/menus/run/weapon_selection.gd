@@ -4,11 +4,12 @@ extends BaseSelection
 
 var _player_weapons: = []
 
-onready var _back_button: Button = $"%BackButton"
-onready var _character_panel: ItemPanelUI = $"%CharacterPanelUI"
+@onready var _back_button: Button = $"%BackButton"
+@onready var _character_panel: ItemPanelUI = $"%CharacterPanelUI"
 
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	RunData.menu_selection_back = false;
 	_player_weapons.resize(RunData.get_player_count())
 
@@ -29,8 +30,8 @@ func _ready() -> void :
 		inventory.columns = columns
 		inventory.queue_set_focus_neighbours()
 
-	for margin in [MARGIN_LEFT, MARGIN_TOP]:
-		_back_button.set_focus_neighbour(margin, _back_button.get_path_to(_back_button))
+	for margin in [SIDE_LEFT, SIDE_TOP]:
+		_back_button.set_focus_neighbor(margin, _back_button.get_path_to(_back_button))
 
 	for player_index in RunData.get_player_count():
 		if not RunData.player_has_weapon_slots(player_index) and not RunData.player_has_starting_items(player_index):
@@ -42,14 +43,14 @@ func _ready() -> void :
 			panel.show()
 			
 			var inventory_container = _get_inventory_containers()[player_index]
-			inventory_container.rect_min_size = Vector2(panel.rect_size.x, 0)
+			inventory_container.custom_minimum_size = Vector2(panel.size.x, 0)
 
 	_background.texture = ZoneService.get_zone_data(RunData.current_zone).ui_background
 
 	if RunData.is_coop_run and Utils.on_nintendo_nx_or_ounce:
 		
 		
-		if OS.get_controller_count() <= 1 and OS.get_controller_style(0) == 0:
+		if OS_Seaven.get_controller_count() <= 1 and OS_Seaven.get_controller_style(0) == 0:
 			_manage_back()
 			return
 
@@ -62,12 +63,17 @@ func _process(_delta: float) -> void :
 	if RunData.is_coop_run and Utils.on_nintendo_nx_or_ounce:
 		
 		
-		if OS.get_controller_count() <= 1 and OS.get_controller_style(0) == 0:
+		if OS_Seaven.get_controller_count() <= 1 and OS_Seaven.get_controller_style(0) == 0:
 			_manage_back()
 			return
 
 
 func _input(event: InputEvent) -> void :
+	_input_self(event)
+	super._input(event) # 4.x 移植: Godot 3 会自动调用父类，且子类的 return 不影响父类执行
+
+
+func _input_self(event: InputEvent) -> void :
 	if not RunData.is_coop_run:
 		return
 
@@ -129,9 +135,9 @@ func _get_reward_type() -> int:
 func _on_element_pressed(element: InventoryElement, inventory_player_index: int) -> void :
 	if element.is_random:
 		var available_elements: = []
-		for element in displayed_elements[inventory_player_index]:
-			if not element.is_locked:
-				available_elements.push_back(element)
+		for displayed_element in displayed_elements[inventory_player_index]:
+			if not displayed_element.is_locked:
+				available_elements.push_back(displayed_element)
 		var weapon = Utils.get_rand_element(available_elements)
 		_player_weapons[inventory_player_index] = weapon
 	elif element.is_special:
@@ -157,7 +163,7 @@ func _on_selections_completed() -> void :
 
 
 func _on_element_focused(element: InventoryElement, inventory_player_index: int, displayPanelData: bool = true) -> void :
-	._on_element_focused(element, inventory_player_index, displayPanelData)
+	super._on_element_focused(element, inventory_player_index, displayPanelData)
 
 	var player_index = FocusEmulatorSignal.get_player_index(element)
 	if player_index >= 0:

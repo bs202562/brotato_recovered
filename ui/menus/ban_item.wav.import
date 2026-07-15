@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/ban_item.wav-b3243acf30a0d4e57e56dd0a9d2b3323.sample"
+type="AudioStreamWAV"
+uid="uid://cty6v3i12wh4f"
+path="res://.godot/imported/ban_item.wav-b3243acf30a0d4e57e56dd0a9d2b3323.sample"
 
 [deps]
 
 source_file="res://ui/menus/ban_item.wav"
-dest_files=[ "res://.import/ban_item.wav-b3243acf30a0d4e57e56dd0a9d2b3323.sample" ]
+dest_files=["res://.godot/imported/ban_item.wav-b3243acf30a0d4e57e56dd0a9d2b3323.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

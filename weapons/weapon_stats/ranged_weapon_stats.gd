@@ -1,16 +1,16 @@
 class_name RangedWeaponStats
 extends WeaponStats
 
-export(int) var nb_projectiles := 1
-export(float) var projectile_spread := 0.0
-export(int) var piercing := 0
-export(float, 0, 1, 0.05) var piercing_dmg_reduction := 0.5
-export(int) var bounce := 0
-export(float, 0, 1, 0.05) var bounce_dmg_reduction := 0.5
-export(bool) var can_bounce = true
-export(int) var projectile_speed := 3000
-export(bool) var increase_projectile_speed_with_range := false
-export(PackedScene) var projectile_scene = null # can't preload here, makes script bug at project launch
+@export var nb_projectiles := 1
+@export var projectile_spread := 0.0
+@export var piercing := 0
+@export var piercing_dmg_reduction := 0.5 # (float, 0, 1, 0.05)
+@export var bounce := 0
+@export var bounce_dmg_reduction := 0.5 # (float, 0, 1, 0.05)
+@export var can_bounce: bool = true
+@export var projectile_speed := 3000
+@export var increase_projectile_speed_with_range := false
+@export var projectile_scene: PackedScene = null # can't preload here, makes script bug at project launch
 var projectile_pool_id: int = Keys.empty_hash
 
 
@@ -57,7 +57,7 @@ func get_type_text() -> String:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.type = "ranged"
 	serialized.nb_projectiles = nb_projectiles
@@ -77,7 +77,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary):
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	nb_projectiles = serialized.nb_projectiles as int
 	projectile_spread = serialized.projectile_spread

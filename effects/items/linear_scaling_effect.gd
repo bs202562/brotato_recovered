@@ -1,10 +1,10 @@
 class_name LinearScalingEffect
 extends Effect
 
-export var min_value: int
-export var max_range: int
-export var buffer: int
-export var invert_scaling: bool
+@export var min_value: int
+@export var max_range: int
+@export var buffer: int
+@export var invert_scaling: bool
 
 static func get_id() -> String:
 	return "linear_scaling_effect"
@@ -45,7 +45,7 @@ func get_scaling_value(input: int) -> int:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 	serialized.min_value = min_value
 	serialized.max_range = max_range
 	serialized.buffer = buffer
@@ -53,7 +53,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 	min_value = serialized.min_value
 	max_range = serialized.max_range
 	buffer = serialized.buffer

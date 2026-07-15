@@ -1,8 +1,8 @@
 class_name FollowTargetMovementBehavior
 extends MovementBehavior
 
-export (bool) var stop_close_to_target: = false
-export (float) var distance_to_target: = 30
+@export var stop_close_to_target := false
+@export var distance_to_target := 30
 
 var _target_player: = false
 

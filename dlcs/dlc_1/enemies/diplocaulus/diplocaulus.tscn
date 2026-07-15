@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://dlcs/dlc_1/enemies/diplocaulus/diplocaulus.png" type="Texture" id=1]
+[ext_resource path="res://dlcs/dlc_1/enemies/diplocaulus/diplocaulus.png" type="Texture2D" id=1]
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://dlcs/dlc_1/enemies/diplocaulus/diplocaulus_stats.tres" type="Resource" id=3]
 [ext_resource path="res://entities/units/enemies/attack_behaviors/spawning_attack_behavior.gd" type="Script" id=4]
@@ -20,7 +20,7 @@ radius = 37.0135
 stats = ExtResource( 3 )
 enemy_id = "diplocaulus"
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( -8, -17 )
 texture = ExtResource( 1 )
 

@@ -304,7 +304,7 @@ static func _update_mod_list(mod_list: Dictionary, mod_data: = ModLoaderStore.mo
 
 		
 		
-		if mod_list_entry.has("current_config") and _ModLoaderPath.get_path_to_mod_config_file(mod_id, mod_list_entry.current_config).empty():
+		if mod_list_entry.has("current_config") and _ModLoaderPath.get_path_to_mod_config_file(mod_id, mod_list_entry.current_config).is_empty():
 			
 			mod_list_entry.current_config = ModLoaderConfig.DEFAULT_CONFIG_NAME
 
@@ -314,7 +314,7 @@ static func _update_mod_list(mod_list: Dictionary, mod_data: = ModLoaderStore.mo
 			
 			mod_list_entry.has("zip_path") and 
 			
-			not mod_list_entry.zip_path.empty() and 
+			not mod_list_entry.zip_path.is_empty() and 
 			
 			not _ModLoaderFile.file_exists(mod_list_entry.zip_path)
 		):
@@ -363,7 +363,7 @@ static func _generate_mod_list_entry(mod_id: String, is_active: bool) -> Diction
 		mod_list_entry.zip_path = ModLoaderStore.mod_data[mod_id].zip_path
 
 	
-	if is_active and not ModLoaderConfig.get_config_schema(mod_id).empty():
+	if is_active and not ModLoaderConfig.get_config_schema(mod_id).is_empty():
 		var current_config: ModConfig = ModLoaderStore.mod_data[mod_id].current_config
 		if current_config and current_config.is_valid:
 			
@@ -452,7 +452,7 @@ static func _load() -> bool:
 	var data: = _ModLoaderFile.get_json_as_dict(FILE_PATH_USER_PROFILES)
 
 	
-	if data.empty():
+	if data.is_empty():
 		ModLoaderLog.error("No profile file found at \"%s\"" % FILE_PATH_USER_PROFILES, LOG_NAME)
 		return false
 

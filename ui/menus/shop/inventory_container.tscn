@@ -4,49 +4,49 @@
 [ext_resource path="res://resources/themes/verysmall_option_button_theme.tres" type="Theme" id=2]
 [ext_resource path="res://ui/menus/shop/inventory.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/menus/pages/sort_inventory_button.gd" type="Script" id=4]
-[ext_resource path="res://resources/themes/separator/separator_horizontal_white_small.png" type="Texture" id=5]
-[ext_resource path="res://ui/menus/global/inverse_order_icon.png" type="Texture" id=6]
+[ext_resource path="res://resources/themes/separator/separator_horizontal_white_small.png" type="Texture2D" id=5]
+[ext_resource path="res://ui/menus/global/inverse_order_icon.png" type="Texture2D" id=6]
 [ext_resource path="res://ui/menus/global/my_menu_button.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxTexture" id=55]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 128, 8 )
-margin_left = 10.0
-margin_right = 10.0
-margin_top = 5.0
-margin_bottom = 5.0
+offset_left = 10.0
+offset_right = 10.0
+offset_top = 5.0
+offset_bottom = 5.0
 modulate_color = Color( 1, 1, 1, 0.0313726 )
 
 [node name="InventoryContainer" type="VBoxContainer"]
-margin_right = 116.0
-margin_bottom = 261.0
-custom_constants/separation = 25
+offset_right = 116.0
+offset_bottom = 261.0
+theme_override_constants/separation = 25
 script = ExtResource( 1 )
 display_locked_icon = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 318.0
-margin_bottom = 45.0
+offset_right = 318.0
+offset_bottom = 45.0
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_top = 15.0
-margin_right = 39.0
-margin_bottom = 29.0
+offset_top = 15.0
+offset_right = 39.0
+offset_bottom = 29.0
 text = "LABEL"
 
 [node name="HSeparator" type="HSeparator" parent="HBoxContainer"]
-margin_left = 43.0
-margin_right = 46.0
-margin_bottom = 45.0
+offset_left = 43.0
+offset_right = 46.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_styles/separator = SubResource( 55 )
+theme_override_styles/separator = SubResource( 55 )
 
 [node name="Sort_Inventory_button" type="OptionButton" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 50.0
-margin_right = 269.0
-margin_bottom = 45.0
+offset_left = 50.0
+offset_right = 269.0
+offset_bottom = 45.0
 theme = ExtResource( 2 )
 text = "sort_by_name"
 items = [ "sort_by_name", null, false, 1, null, "sort_by_tier", null, false, 0, null, "sort_by_name", null, false, 1, null ]
@@ -61,30 +61,30 @@ sort_by_when_got_it = true
 
 [node name="button_reverse_order" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 273.0
-margin_right = 318.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 45, 45 )
+offset_left = 273.0
+offset_right = 318.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 45, 45 )
 theme = ExtResource( 2 )
 toggle_mode = true
 icon = ExtResource( 6 )
-icon_align = 1
+icon_alignment = 1
 expand_icon = true
 script = ExtResource( 7 )
 
 [node name="ScrollSizeContainer" type="Control" parent="."]
 unique_name_in_owner = true
-margin_top = 70.0
-margin_right = 318.0
-margin_bottom = 281.0
-rect_min_size = Vector2( 116, 211 )
-rect_clip_content = true
+offset_top = 70.0
+offset_right = 318.0
+offset_bottom = 281.0
+custom_minimum_size = Vector2( 116, 211 )
+clip_contents = true
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ScrollSizeContainer"]
 unique_name_in_owner = true
 anchor_right = 1.0
-rect_min_size = Vector2( 0, 211 )
+custom_minimum_size = Vector2( 0, 211 )
 follow_focus = true
 
 [node name="Elements" parent="ScrollSizeContainer/ScrollContainer" instance=ExtResource( 3 )]
@@ -93,10 +93,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 columns = 1
 
 [connection signal="elements_changed" from="ScrollSizeContainer/ScrollContainer/Elements" to="." method="_on_Elements_elements_changed"]

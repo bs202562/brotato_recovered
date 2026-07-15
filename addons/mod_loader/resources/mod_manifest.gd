@@ -10,30 +10,30 @@ const LOG_NAME: = "ModLoader:ModManifest"
 var name: = ""
 
 
-var namespace: = ""
+var namespace_: = ""
 
 
 var version_number: = "0.0.0"
 var description: = ""
 var website_url: = ""
 
-var dependencies: PoolStringArray = []
+var dependencies: PackedStringArray = []
 
-var optional_dependencies: PoolStringArray = []
+var optional_dependencies: PackedStringArray = []
 
-var authors: PoolStringArray = []
+var authors: PackedStringArray = []
 
-var compatible_game_version: PoolStringArray = []
+var compatible_game_version: PackedStringArray = []
 
 
-var compatible_mod_loader_version: PoolStringArray = []
+var compatible_mod_loader_version: PackedStringArray = []
 
-var incompatibilities: PoolStringArray = []
-var load_before: PoolStringArray = []
-var tags: PoolStringArray = []
+var incompatibilities: PackedStringArray = []
+var load_before: PackedStringArray = []
+var tags: PackedStringArray = []
 var config_schema: = {}
 var description_rich: = ""
-var image: StreamTexture
+var image: CompressedTexture2D
 
 
 
@@ -66,12 +66,12 @@ func _init(manifest: Dictionary) -> void :
 		return
 
 	name = manifest.name
-	namespace = manifest.namespace
+	namespace_ = manifest.namespace
 	version_number = manifest.version_number
 
 	if (
-		not is_name_or_namespace_valid(name) or 
-		not is_name_or_namespace_valid(namespace)
+		not is_name_or_namespace_valid(name) or
+		not is_name_or_namespace_valid(namespace_)
 	):
 		return
 
@@ -148,20 +148,20 @@ func _init(manifest: Dictionary) -> void :
 
 
 func get_mod_id() -> String:
-	return "%s-%s" % [namespace, name]
+	return "%s-%s" % [namespace_, name]
 
 
 
 
 func get_package_id() -> String:
-	return "%s-%s-%s" % [namespace, name, version_number]
+	return "%s-%s-%s" % [namespace_, name, version_number]
 
 
 
 func get_as_dict() -> Dictionary:
 	return {
-		"name": name, 
-		"namespace": namespace, 
+		"name": name,
+		"namespace": namespace_,
 		"version_number": version_number, 
 		"description": description, 
 		"website_url": website_url, 
@@ -181,9 +181,9 @@ func get_as_dict() -> Dictionary:
 
 
 func to_json() -> String:
-	return JSON.print({
-		"name": name, 
-		"namespace": namespace, 
+	return JSON.stringify({
+		"name": name,
+		"namespace": namespace_,
 		"version_number": version_number, 
 		"description": description, 
 		"website_url": website_url, 
@@ -227,7 +227,7 @@ func load_mod_config_defaults() -> ModConfig:
 		var cache_schema_md5: String = cache_schema_md5s[config.mod_id] if cache_schema_md5s.has(config.mod_id) else ""
 
 		
-		if not current_schema_md5 == cache_schema_md5 or not cache_schema_md5.empty():
+		if not current_schema_md5 == cache_schema_md5 or not cache_schema_md5.is_empty():
 			config.data = _generate_default_config_from_schema(config.schema.properties)
 
 		
@@ -235,7 +235,7 @@ func load_mod_config_defaults() -> ModConfig:
 			config.data = _ModLoaderFile.get_json_as_dict(config.save_path)
 
 	
-	if config.is_valid():
+	if config.is_config_valid():
 		
 		config.save_to_file()
 
@@ -245,14 +245,14 @@ func load_mod_config_defaults() -> ModConfig:
 		
 		return config
 
-	ModLoaderLog.fatal("The default config values for %s-%s are invalid. Configs will not be loaded." % [namespace, name], LOG_NAME)
+	ModLoaderLog.fatal("The default config values for %s-%s are invalid. Configs will not be loaded." % [namespace_, name], LOG_NAME)
 	return null
 
 
 
 func _generate_default_config_from_schema(property: Dictionary, current_prop: = {}) -> Dictionary:
 	
-	if property.empty():
+	if property.is_empty():
 		return current_prop
 
 	for property_key in property.keys():
@@ -334,7 +334,7 @@ static func is_name_or_namespace_valid(check_name: String, is_silent: = false) -
 	return true
 
 
-static func is_semver_version_array_valid(mod_id: String, version_array: PoolStringArray, version_array_descripton: String, is_silent: = false) -> bool:
+static func is_semver_version_array_valid(mod_id: String, version_array: PackedStringArray, version_array_descripton: String, is_silent: = false) -> bool:
 	var is_valid: = true
 
 	for version in version_array:
@@ -380,19 +380,19 @@ static func is_semver_valid(mod_id: String, check_version_number: String, field_
 
 static func validate_distinct_mod_ids_in_arrays(
 	mod_id: String, 
-	array_one: PoolStringArray, 
-	array_two: PoolStringArray, 
-	array_description: PoolStringArray, 
+	array_one: PackedStringArray, 
+	array_two: PackedStringArray, 
+	array_description: PackedStringArray, 
 	additional_info: = "", 
 	is_silent: = false
 ) -> bool:
 	
-	var overlaps: PoolStringArray = []
+	var overlaps: PackedStringArray = []
 
 	
-	for mod_id in array_one:
-		if array_two.has(mod_id):
-			overlaps.push_back(mod_id)
+	for checked_mod_id in array_one:
+		if array_two.has(checked_mod_id):
+			overlaps.push_back(checked_mod_id)
 
 	
 	if overlaps.size() == 0:
@@ -413,7 +413,7 @@ static func validate_distinct_mod_ids_in_arrays(
 	return false
 
 
-static func is_mod_id_array_valid(own_mod_id: String, mod_id_array: PoolStringArray, mod_id_array_description: String, is_silent: = false) -> bool:
+static func is_mod_id_array_valid(own_mod_id: String, mod_id_array: PackedStringArray, mod_id_array_description: String, is_silent: = false) -> bool:
 	var is_valid: = true
 
 	

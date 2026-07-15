@@ -11,7 +11,7 @@ signal mouse_exited_category(shop_item)
 signal ban_item_pressed(shop_item)
 signal ban_update_remaining_token()
 
-export var player_index: = 0
+@export var player_index: = 0
 
 var item_data: ItemParentData
 var active: = true
@@ -22,20 +22,20 @@ var ban_button_presed: bool = false
 
 var wave_value: = 1
 
-onready var _panel = $PanelContainer
-onready var _button = $"%BuyButton"
-onready var _item_description = $"%ItemDescription"
-onready var _steal_button = $"%StealButton"
-onready var _lock_button = $"%LockButton"
-onready var _ban_button = $"%BanButton" as Button
-onready var _progress_ban = $"%progress_ban"
-onready var _lock_icon = $"%LockIcon"
+@onready var _panel = $PanelContainer
+@onready var _button = $"%BuyButton"
+@onready var _item_description = $"%ItemDescription"
+@onready var _steal_button = $"%StealButton"
+@onready var _lock_button = $"%LockButton"
+@onready var _ban_button = $"%BanButton" as Button
+@onready var _progress_ban = $"%progress_ban"
+@onready var _lock_icon = $"%LockIcon"
 
 
 func _ready():
-	yield(get_tree(), "idle_frame")
+	await get_tree().process_frame
 	_progress_ban.modulate = Color(ProgressData.settings.color_negative)
-	_ban_button.connect("button_up", self, "_release_BanButton")
+	_ban_button.connect("button_up", Callable(self, "_release_BanButton"))
 
 
 func disable_focus() -> void :
@@ -60,12 +60,12 @@ func deactivate() -> void :
 	modulate = Color(1, 1, 1, 0)
 	_button.disable()
 	_steal_button.disable()
-	_steal_button.pressed = false
+	_steal_button.button_pressed = false
 	_lock_button.disable()
-	_lock_button.pressed = false
+	_lock_button.button_pressed = false
 	_lock_icon.hide()
 	_ban_button.disable()
-	_ban_button.pressed = false
+	_ban_button.button_pressed = false
 	_ban_button.hide()
 	locked = false
 	active = false
@@ -180,9 +180,9 @@ func set_shop_item(p_item_data: ItemParentData, p_wave_value: int = RunData.curr
 	var displayed_steal_chance = steal_chance * 100.0
 
 	if displayed_steal_chance < 1.0:
-		displayed_steal_chance = stepify(displayed_steal_chance, 0.1)
+		displayed_steal_chance = snapped(displayed_steal_chance, 0.1)
 	else:
-		displayed_steal_chance = stepify(displayed_steal_chance, 1.0)
+		displayed_steal_chance = snapped(displayed_steal_chance, 1.0)
 
 	if not RunData.is_coop_run:
 		_steal_button.text = tr("MENU_STEAL") + "  " + str(displayed_steal_chance) + "%"
@@ -248,12 +248,12 @@ func change_lock_status(button_pressed: bool) -> void :
 
 
 func get_category_text_pos() -> Vector2:
-	return _item_description._category.rect_global_position
+	return _item_description._category.global_position
 
 
 func _set_panel_lock_style() -> void :
 	var panel = _item_description.icon_panel if RunData.is_coop_run else _panel
-	var stylebox = panel.get_stylebox("panel").duplicate()
+	var stylebox = panel.get_theme_stylebox("panel").duplicate()
 	if RunData.is_coop_run:
 		var tier_color = ItemService.get_color_from_tier(item_data.tier)
 		tier_color.a = stylebox.bg_color.a
@@ -263,8 +263,8 @@ func _set_panel_lock_style() -> void :
 	else:
 		ItemService.change_panel_stylebox_from_tier(stylebox, item_data.tier)
 	if locked:
-		stylebox.border_color = Color.white
-	panel.add_stylebox_override("panel", stylebox)
+		stylebox.border_color = Color.WHITE
+	panel.add_theme_stylebox_override("panel", stylebox)
 
 
 func _on_BuyButton_focus_entered() -> void :
@@ -309,7 +309,7 @@ func _on_BanButton_button_down():
 	ban_button_presed = true
 	while true:
 		_progress_ban.value += 0.025
-		yield(get_tree(), "physics_frame")
+		await get_tree().physics_frame
 		if _progress_ban.value >= 1:
 			break
 		elif not ban_button_presed:
@@ -317,7 +317,7 @@ func _on_BanButton_button_down():
 			return
 	_progress_ban.value = 0
 
-	yield(UIService._ban_item_control(_panel), "completed")
+	await UIService._ban_item_control(_panel)
 	emit_signal("ban_item_pressed", self)
 
 

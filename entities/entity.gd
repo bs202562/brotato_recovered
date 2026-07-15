@@ -4,9 +4,9 @@ extends RigidBody2D
 signal died(entity, die_args)
 signal stats_boosted(entity)
 
-export (bool) var can_be_boosted: = false
-export (ShaderMaterial) var outline_material
-export (bool) var get_entity_spawner_ref_on_spawn: = false
+@export var can_be_boosted := false
+@export var outline_material: ShaderMaterial
+@export var get_entity_spawner_ref_on_spawn := false
 
 var entity_spawner
 var entity_signal_node: Node = null
@@ -23,10 +23,10 @@ var _current_material_desaturation = 0.0
 var _min_pos: Vector2
 var _max_pos: Vector2
 
-onready var sprite: = $Animation / Sprite as Sprite
-onready var _animation_player: = $AnimationPlayer as AnimationPlayer
-onready var _animation: = $Animation as Node2D
-onready var _collision: = $Collision as CollisionShape2D
+@onready var sprite: = $Animation / Sprite2D as Sprite2D
+@onready var _animation_player: = $AnimationPlayer as AnimationPlayer
+@onready var _animation: = $Animation as Node2D
+@onready var _collision: = $Collision as CollisionShape2D
 
 var pool_id: int = Keys.empty_hash
 
@@ -66,12 +66,12 @@ class DieArgs:
 
 
 
-func die(args: = Utils.default_die_args) -> void :
+func die(args = Utils.default_die_args) -> void :
 	assert ( not dead)
 	_collision.disabled = true
 
 	cleaning_up = args.cleaning_up
-	_animation_player.playback_speed = 1
+	_animation_player.speed_scale = 1
 	dead = true
 	_animation_player.play("death")
 	emit_signal("died", self, args)
@@ -83,9 +83,9 @@ func death_animation_finished() -> void :
 
 	
 	if entity_signal_node:
-		disconnect("died", entity_signal_node, "_on_enemy_died")
-		disconnect("wanted_to_spawn_an_enemy", entity_signal_node, "on_enemy_wanted_to_spawn_an_enemy")
-		disconnect("charmed", entity_signal_node, "on_enemy_charmed")
+		disconnect("died", Callable(entity_signal_node, "_on_enemy_died"))
+		disconnect("wanted_to_spawn_an_enemy", Callable(entity_signal_node, "on_enemy_wanted_to_spawn_an_enemy"))
+		disconnect("charmed", Callable(entity_signal_node, "on_enemy_charmed"))
 
 	free_entity()
 
@@ -144,24 +144,24 @@ func _set_outlines(alpha: float = 1.0, desaturation: float = 0.0) -> void :
 		return
 
 	sprite.material = ShaderMaterial.new()
-	sprite.material.shader = outline_material.shader
+	sprite.material.gdshader = outline_material.gdshader
 
-	sprite.material.set_shader_param("texture_size", sprite.texture.get_size())
+	sprite.material.set_shader_parameter("texture_size", sprite.texture.get_size())
 
 	if alpha < 1.0:
 		_current_material_alpha = alpha
-		sprite.material.set_shader_param("alpha", alpha)
+		sprite.material.set_shader_parameter("alpha", alpha)
 	else:
-		sprite.material.set_shader_param("alpha", _current_material_alpha)
+		sprite.material.set_shader_parameter("alpha", _current_material_alpha)
 
 	if desaturation > 0.0:
 		_current_material_desaturation = desaturation
-		sprite.material.set_shader_param("desaturation", desaturation)
+		sprite.material.set_shader_parameter("desaturation", desaturation)
 	else:
-		sprite.material.set_shader_param("desaturation", _current_material_desaturation)
+		sprite.material.set_shader_parameter("desaturation", _current_material_desaturation)
 
 	for i in range(_outline_colors.size()):
-		sprite.material.set_shader_param("outline_color_%s" % i, _outline_colors[i])
+		sprite.material.set_shader_parameter("outline_color_%s" % i, _outline_colors[i])
 
 
 func _set_color_modulation(color: Color) -> void :
@@ -174,4 +174,4 @@ func remove_color_modulation(color: Color) -> void :
 	if _modulation_colors.size() > 0:
 		_animation.modulate = _modulation_colors[_modulation_colors.size() - 1]
 	else:
-		_animation.modulate = Color.white
+		_animation.modulate = Color.WHITE

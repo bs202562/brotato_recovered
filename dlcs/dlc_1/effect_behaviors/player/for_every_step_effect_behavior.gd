@@ -28,7 +28,7 @@ func on_moved(delta_position: Vector2) -> void :
 		return
 
 	
-	var seconds_per_animation: = _move_animation_duration_secs / _parent._animation_player.playback_speed
+	var seconds_per_animation = _move_animation_duration_secs / _parent._animation_player.speed_scale
 	var steps_taken_before: = _steps_taken
 	_steps_taken += (float(STEPS_PER_MOVE_ANIMATION) / seconds_per_animation) * (delta_position.length() / px_per_second)
 

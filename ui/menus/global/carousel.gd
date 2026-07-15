@@ -5,14 +5,14 @@ const ARROW_ALPHA: = 0.9
 
 signal index_changed(index)
 
-export var enable_trigger_buttons: = true setget _set_enable_trigger_buttons
+@export var enable_trigger_buttons: = true: set = _set_enable_trigger_buttons
 func _set_enable_trigger_buttons(value):
 	enable_trigger_buttons = value
 	if not is_inside_tree():
 		return
 	_try_activate_trigger_buttons()
 
-var index: = 0 setget _set_index
+var index: = 0: set = _set_index
 func _set_index(value):
 	value = int(clamp(value, 0, _get_max_index()))
 	index = value
@@ -34,18 +34,18 @@ func _set_index(value):
 	arrow_right.modulate.a = 0.0 if value == _get_max_index() else ARROW_ALPHA
 	_try_activate_trigger_buttons()
 
-var player_index: = - 1 setget _set_player_index
+var player_index: = - 1: set = _set_player_index
 func _set_player_index(value):
 	player_index = value
 	if value < 0: return
 	_try_activate_trigger_buttons()
 
-onready var arrow_left: TextureButton = $"%ArrowLeft"
-onready var arrow_right: TextureButton = $"%ArrowRight"
-onready var _headings = $"%Headings"
-onready var _content = $"%Content"
+@onready var arrow_left: TextureButton = $"%ArrowLeft"
+@onready var arrow_right: TextureButton = $"%ArrowRight"
+@onready var _headings = $"%Headings"
+@onready var _content = $"%Content"
 
-var active: = true setget _set_active
+var active: = true: set = _set_active
 func _set_active(value):
 	active = value
 	$MarginContainer.visible = value
@@ -89,7 +89,7 @@ func are_trigger_buttons_active() -> bool:
 	return CoopService.is_player_using_gamepad(player_index) and enable_trigger_buttons
 
 
-func _set_arrow_texture(arrow: TextureButton, texture: Texture) -> void :
+func _set_arrow_texture(arrow: TextureButton, texture: Texture2D) -> void :
 	arrow.texture_normal = texture
 	arrow.texture_pressed = texture
 	arrow.texture_hover = texture

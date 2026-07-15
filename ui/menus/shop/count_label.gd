@@ -1,15 +1,15 @@
 extends Label
 
 
-func add_color_override(name: String, color: Color) -> void :
+func add_theme_color_override(name: StringName, color: Color) -> void :
 	if name == "font_color":
-		
+
 		return
-	.add_color_override(name, color)
+	super.add_theme_color_override(name, color)
 
 
-func add_font_override(name: String, font: Font) -> void :
+func add_theme_font_override(name: StringName, font: Font) -> void :
 	if name == "font":
-		
+
 		return
-	.add_font_override(name, font)
+	super.add_theme_font_override(name, font)

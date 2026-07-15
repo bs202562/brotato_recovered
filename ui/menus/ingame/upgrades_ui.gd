@@ -8,18 +8,18 @@ signal item_take_button_pressed(item_data, consumable)
 signal item_discard_button_pressed(item_data, consumable)
 signal item_ban_button_pressed(item_data, consumable)
 
-export var is_coop_ui: = false
+@export var is_coop_ui: = false
 
-onready var _popup_manager: PopupManager = $PopupManager
-onready var _stats_container = get_node_or_null("%StatsContainer")
-onready var _stat_popup1 = $"%StatPopup1"
-onready var _stat_popup2 = get_node_or_null("%StatPopup2")
-onready var _stat_popup3 = get_node_or_null("%StatPopup3")
-onready var _stat_popup4 = get_node_or_null("%StatPopup4")
-onready var _player_container1 = $"%UpgradesUIPlayerContainer1"
-onready var _player_container2 = get_node_or_null("%UpgradesUIPlayerContainer2")
-onready var _player_container3 = get_node_or_null("%UpgradesUIPlayerContainer3")
-onready var _player_container4 = get_node_or_null("%UpgradesUIPlayerContainer4")
+@onready var _popup_manager: PopupManager = $PopupManager
+@onready var _stats_container = get_node_or_null("%StatsContainer")
+@onready var _stat_popup1 = $"%StatPopup1"
+@onready var _stat_popup2 = get_node_or_null("%StatPopup2")
+@onready var _stat_popup3 = get_node_or_null("%StatPopup3")
+@onready var _stat_popup4 = get_node_or_null("%StatPopup4")
+@onready var _player_container1 = $"%UpgradesUIPlayerContainer1"
+@onready var _player_container2 = get_node_or_null("%UpgradesUIPlayerContainer2")
+@onready var _player_container3 = get_node_or_null("%UpgradesUIPlayerContainer3")
+@onready var _player_container4 = get_node_or_null("%UpgradesUIPlayerContainer4")
 
 class ConsumableToProcess:
 	var consumable_data: ConsumableData
@@ -50,10 +50,10 @@ func _ready() -> void :
 	var stat_popups = [_stat_popup1, _stat_popup2, _stat_popup3, _stat_popup4]
 	for player_index in player_count:
 		var player_container: = _get_player_container(player_index)
-		var _error_connect = player_container.connect("choose_button_pressed", self, "_on_choose_button_pressed", [player_index])
-		_error_connect = player_container.connect("item_take_button_pressed", self, "_on_take_button_pressed", [player_index])
-		_error_connect = player_container.connect("item_discard_button_pressed", self, "_on_discard_button_pressed", [player_index])
-		_error_connect = player_container.connect("item_ban_button_pressed", self, "_on_ban_button_pressed", [player_index])
+		var _error_connect = player_container.connect("choose_button_pressed", Callable(self, "_on_choose_button_pressed").bind(player_index))
+		_error_connect = player_container.connect("item_take_button_pressed", Callable(self, "_on_take_button_pressed").bind(player_index))
+		_error_connect = player_container.connect("item_discard_button_pressed", Callable(self, "_on_discard_button_pressed").bind(player_index))
+		_error_connect = player_container.connect("item_ban_button_pressed", Callable(self, "_on_ban_button_pressed").bind(player_index))
 
 		var stat_popup = stat_popups[player_index]
 		if RunData.is_coop_run:
@@ -103,9 +103,9 @@ func _show_next_player_options() -> bool:
 			_player_is_choosing[player_index] = true
 			continue
 
-		var do_process_consumables: bool = not _consumables_to_process[player_index].empty()
+		var do_process_consumables: bool = not _consumables_to_process[player_index].is_empty()
 		var player_options_to_process = _consumables_to_process[player_index] if do_process_consumables else _upgrades_to_process[player_index]
-		if player_options_to_process.empty():
+		if player_options_to_process.is_empty():
 			player_container.finish()
 			continue
 

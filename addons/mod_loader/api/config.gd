@@ -43,7 +43,7 @@ static func create_config(mod_id: String, config_name: String, config_data: Dict
 		return null
 
 	
-	var config_file_path: = _ModLoaderPath.get_path_to_mod_configs_dir(mod_id).plus_file("%s.json" % config_name)
+	var config_file_path: = _ModLoaderPath.get_path_to_mod_configs_dir(mod_id).path_join("%s.json" % config_name)
 
 	
 	var mod_config: = ModConfig.new(
@@ -150,7 +150,7 @@ static func get_config_schema(mod_id: String) -> Dictionary:
 	var mod_configs: = get_configs(mod_id)
 
 	
-	if mod_configs.empty():
+	if mod_configs.is_empty():
 		return {}
 
 	
@@ -171,14 +171,14 @@ static func get_schema_for_prop(config: ModConfig, prop: String) -> Dictionary:
 	var prop_array: = prop.split(".")
 
 	
-	if prop_array.empty():
+	if prop_array.is_empty():
 		return config.schema.properties[prop]
 
 	
 	var schema_for_prop: = _traverse_schema(config.schema.properties, prop_array)
 
 	
-	if schema_for_prop.empty():
+	if schema_for_prop.is_empty():
 		ModLoaderLog.error("No Schema found for property \"%s\" in config \"%s\" for mod \"%s\"" % [prop, config.name, config.mod_id], LOG_NAME)
 		return {}
 
@@ -197,7 +197,7 @@ static func get_schema_for_prop(config: ModConfig, prop: String) -> Dictionary:
 
 static func _traverse_schema(schema_prop: Dictionary, prop_key_array: Array) -> Dictionary:
 	
-	if prop_key_array.empty():
+	if prop_key_array.is_empty():
 		return schema_prop
 
 	
@@ -210,7 +210,7 @@ static func _traverse_schema(schema_prop: Dictionary, prop_key_array: Array) -> 
 	schema_prop = schema_prop[prop_key]
 
 	
-	if schema_prop.has("type") and schema_prop.type == "object" and not prop_key_array.empty():
+	if schema_prop.has("type") and schema_prop.type == "object" and not prop_key_array.is_empty():
 		
 		schema_prop = schema_prop.properties
 
@@ -234,7 +234,7 @@ static func get_mods_with_config() -> Array:
 		var mod_data = ModLoaderStore.mod_data[mod_id]
 
 		
-		if not mod_data.configs.empty():
+		if not mod_data.configs.is_empty():
 			mods_with_config.push_back(mod_data)
 
 	
@@ -258,7 +258,7 @@ static func get_configs(mod_id: String) -> Dictionary:
 	var config_dictionary: Dictionary = ModLoaderStore.mod_data[mod_id].configs
 
 	
-	if config_dictionary.empty():
+	if config_dictionary.is_empty():
 		ModLoaderLog.debug("No config for mod id \"%s\"" % mod_id, LOG_NAME, true)
 		return {}
 

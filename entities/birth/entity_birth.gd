@@ -5,14 +5,14 @@ signal birth_timeout(birth)
 
 const FLICKER_TRANSPARENCY = 0.25
 
-export (float) var time_before_spawn: = 60.0
-export (Resource) var birth_begin_sound
-export (Resource) var birth_end_sound
-export (Texture) var entity_sprite
-export (Texture) var structure_sprite
+@export var time_before_spawn := 60.0
+@export var birth_begin_sound: Resource
+@export var birth_end_sound: Resource
+@export var entity_sprite: Texture2D
+@export var structure_sprite: Texture2D
 
-onready var _collision_shape: CollisionShape2D = $"%CollisionShape2D"
-onready var _sprite: Sprite = $"%Sprite"
+@onready var _collision_shape: CollisionShape2D = $"%CollisionShape2D"
+@onready var _sprite: Sprite2D = $"%Sprite2D"
 
 var type: int
 var _flicker_cd: float = 0
@@ -44,7 +44,7 @@ func start(p_type: int, p_scene: PackedScene, pos: Vector2, p_data: Resource = n
 	set_physics_process(true)
 	_collision_shape.call_deferred("set_disabled", false)
 
-	rotation_degrees = rand_range(0, 360)
+	rotation_degrees = randf_range(0, 360)
 	_flicker_cd = get_flicker_cd()
 	_sprite.modulate = _color
 	SoundManager2D.play(birth_begin_sound, global_position, 0, 0.2)
@@ -60,7 +60,7 @@ func set_color() -> void :
 		_color = Color(min(1, _color.r + 0.22), min(1, _color.g + 0.22), min(1, _color.b + 0.22), 1.0)
 		_sprite.texture = entity_sprite
 	elif type == EntityType.STRUCTURE or type == EntityType.PET:
-		_color = Color.cornflower
+		_color = Color.CORNFLOWER_BLUE
 		_sprite.texture = structure_sprite
 	elif type == EntityType.ENEMY:
 		_color = Color(ProgressData.settings.color_negative)

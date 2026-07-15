@@ -5,7 +5,7 @@
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/units/enemies/infected_slasher_egg/infected_slasher_egg.tscn" type="PackedScene" id=4]
 [ext_resource path="res://dlcs/dlc_1/enemies/shielded_diplocaulus/shielded_diplocaulus_stats.tres" type="Resource" id=5]
-[ext_resource path="res://dlcs/dlc_1/enemies/shielded_diplocaulus/shielded_diplocaulus.png" type="Texture" id=6]
+[ext_resource path="res://dlcs/dlc_1/enemies/shielded_diplocaulus/shielded_diplocaulus.png" type="Texture2D" id=6]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 35.0
@@ -20,7 +20,7 @@ radius = 37.0135
 stats = ExtResource( 5 )
 enemy_id = "shielded_diplocaulus"
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( -8, -17 )
 texture = ExtResource( 6 )
 

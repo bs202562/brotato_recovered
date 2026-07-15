@@ -1,14 +1,14 @@
 class_name ColorOption
 extends Container
 
-onready var button_expand: Button = $"%button_expand"
-onready var setup_color: Control = $"%Setup_Color"
-onready var rect_color: ColorRect = $"%Rect_color"
-onready var slider_hue: Slider = $"%Slider_Hue"
-onready var slider_saturation: Slider = $"%Slider_Saturation"
-onready var slider_value: Slider = $"%Slider_Value"
-onready var ramp_saturation: Gradient = $"%ramp_saturation".texture.gradient
-onready var ramp_value: Gradient = $"%ramp_value".texture.gradient
+@onready var button_expand: Button = $"%button_expand"
+@onready var setup_color: Control = $"%Setup_Color"
+@onready var rect_color: ColorRect = $"%Rect_color"
+@onready var slider_hue: Slider = $"%Slider_Hue"
+@onready var slider_saturation: Slider = $"%Slider_Saturation"
+@onready var slider_value: Slider = $"%Slider_Value"
+@onready var ramp_saturation: Gradient = $"%ramp_saturation".texture.gradient
+@onready var ramp_value: Gradient = $"%ramp_value".texture.gradient
 
 signal color_changed(color)
 signal color_reset()

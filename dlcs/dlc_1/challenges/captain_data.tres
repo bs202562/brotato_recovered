@@ -2,7 +2,7 @@
 
 [ext_resource path="res://dlcs/dlc_1/weapons/melee/captains_sword/3/captains_sword_3_data.tres" type="Resource" id=1]
 [ext_resource path="res://challenges/global/challenge_data.gd" type="Script" id=2]
-[ext_resource path="res://dlcs/dlc_1/characters/captain/captain_icon.png" type="Texture" id=3]
+[ext_resource path="res://dlcs/dlc_1/characters/captain/captain_icon.png" type="Texture2D" id=3]
 
 [resource]
 script = ExtResource( 2 )

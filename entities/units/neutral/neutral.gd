@@ -1,24 +1,24 @@
 class_name Neutral
 extends Unit
 
-export (int) var number_of_hits_before_dying = 8
+@export var number_of_hits_before_dying: int = 8
 
 var current_number_of_hits = 0
 
 
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, players_ref: Array = [], entity_spawner_ref = null) -> void :
-	.init(zone_min_pos, zone_max_pos, players_ref, entity_spawner_ref)
+	super.init(zone_min_pos, zone_max_pos, players_ref, entity_spawner_ref)
 	init_current_stats()
 
 
 func respawn() -> void :
-	.respawn()
+	super.respawn()
 	init_current_stats()
 	current_number_of_hits = 0
 
 
 func take_damage(value: int, args: TakeDamageArgs) -> Array:
-	var result = .take_damage(value, args)
+	var result = super.take_damage(value, args)
 
 	current_number_of_hits += 1
 
@@ -35,8 +35,8 @@ func take_damage(value: int, args: TakeDamageArgs) -> Array:
 	return result
 
 
-func die(_args: = Utils.default_die_args) -> void :
-	.die()
+func die(_args = Utils.default_die_args) -> void :
+	super.die()
 	ProgressData.increment_stat("trees_killed")
 	
 	

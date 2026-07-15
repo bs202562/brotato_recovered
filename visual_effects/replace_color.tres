@@ -1,29 +1,29 @@
 [gd_resource type="VisualShader" load_steps=21 format=2]
 
-[sub_resource type="VisualShaderNodeScalarOp" id=1]
+[sub_resource type="VisualShaderNodeFloatOp" id=1]
 default_input_values = [ 0, 0.0, 1, 0.5 ]
 operator = 2
 
-[sub_resource type="VisualShaderNodeScalarOp" id=2]
+[sub_resource type="VisualShaderNodeFloatOp" id=2]
 default_input_values = [ 0, 0.0, 1, 0.5 ]
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=3]
+[sub_resource type="VisualShaderNodeFloatParameter" id=3]
 uniform_name = "detection_strenght"
 hint = 1
 max = 25.0
 default_value_enabled = true
 default_value = 1.0
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=4]
+[sub_resource type="VisualShaderNodeFloatParameter" id=4]
 uniform_name = "detection_offset"
 hint = 1
 min = -1.0
 default_value_enabled = true
 default_value = 0.88
 
-[sub_resource type="VisualShaderNodeScalarClamp" id=5]
+[sub_resource type="VisualShaderNodeClamp" id=5]
 
-[sub_resource type="VisualShaderNodeColorUniform" id=6]
+[sub_resource type="VisualShaderNodeColorParameter" id=6]
 uniform_name = "new_color"
 default_value_enabled = true
 default_value = Color( 0.105882, 1, 0.176471, 1 )
@@ -31,7 +31,7 @@ default_value = Color( 0.105882, 1, 0.176471, 1 )
 [sub_resource type="VisualShaderNodeVectorOp" id=7]
 operator = 2
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=8]
+[sub_resource type="VisualShaderNodeFloatFunc" id=8]
 function = 31
 
 [sub_resource type="VisualShaderNodeVectorOp" id=9]
@@ -56,7 +56,7 @@ input_name = "modulate_color"
 [sub_resource type="VisualShaderNodeVectorOp" id=20]
 operator = 2
 
-[sub_resource type="VisualShaderNodeScalarOp" id=21]
+[sub_resource type="VisualShaderNodeFloatOp" id=21]
 operator = 2
 
 [sub_resource type="VisualShaderNodeInput" id=22]
@@ -64,17 +64,17 @@ input_name = "modulate_alpha"
 
 [sub_resource type="VisualShaderNodeVectorDistance" id=23]
 
-[sub_resource type="VisualShaderNodeColorUniform" id=24]
+[sub_resource type="VisualShaderNodeColorParameter" id=24]
 uniform_name = "color_to_replace"
 default_value_enabled = true
 default_value = Color( 0.105882, 1, 0.176471, 1 )
 
 [resource]
 code = "shader_type canvas_item;
-uniform vec4 new_color : hint_color = vec4(0.105882, 1.000000, 0.176471, 1.000000);
+uniform vec4 new_color : source_color = vec4(0.105882, 1.000000, 0.176471, 1.000000);
 uniform float detection_offset : hint_range(-1, 1) = 0.88;
 uniform float detection_strenght : hint_range(0, 25) = 1;
-uniform vec4 color_to_replace : hint_color = vec4(0.105882, 1.000000, 0.176471, 1.000000);
+uniform vec4 color_to_replace : source_color = vec4(0.105882, 1.000000, 0.176471, 1.000000);
 
 
 
@@ -84,8 +84,9 @@ void vertex() {
 }
 
 void fragment() {
+	vec4 in_modulate = COLOR; // 4.x 移植: 顶点色即 modulate
 // Input:4
-	vec3 n_out4p0 = MODULATE.rgb;
+	vec3 n_out4p0 = in_modulate.rgb;
 
 // ColorUniform:15
 	vec3 n_out15p0 = new_color.rgb;
@@ -154,7 +155,7 @@ void fragment() {
 	vec3 n_out5p0 = n_out4p0 * n_out19p0;
 
 // Input:7
-	float n_out7p0 = MODULATE.a;
+	float n_out7p0 = in_modulate.a;
 
 // ScalarOp:6
 	float n_out6p0 = n_out3p1 * n_out7p0;
@@ -214,4 +215,4 @@ nodes/fragment/21/node = SubResource( 12 )
 nodes/fragment/21/position = Vector2( -300, 60 )
 nodes/fragment/22/node = SubResource( 13 )
 nodes/fragment/22/position = Vector2( 1240, 20 )
-nodes/fragment/connections = PoolIntArray( 2, 0, 3, 2, 4, 0, 5, 0, 3, 1, 6, 0, 7, 0, 6, 1, 6, 0, 0, 1, 3, 0, 8, 1, 9, 0, 8, 0, 12, 0, 10, 0, 8, 0, 10, 1, 13, 0, 11, 0, 10, 0, 11, 1, 3, 0, 16, 1, 15, 0, 18, 0, 18, 0, 19, 0, 16, 0, 19, 1, 19, 0, 5, 1, 3, 0, 21, 0, 17, 0, 22, 0, 21, 0, 22, 1, 5, 0, 0, 0, 14, 0, 17, 0, 14, 0, 16, 0, 22, 0, 18, 1, 11, 0, 14, 0 )
+nodes/fragment/connections = PackedInt32Array( 2, 0, 3, 2, 4, 0, 5, 0, 3, 1, 6, 0, 7, 0, 6, 1, 6, 0, 0, 1, 3, 0, 8, 1, 9, 0, 8, 0, 12, 0, 10, 0, 8, 0, 10, 1, 13, 0, 11, 0, 10, 0, 11, 1, 3, 0, 16, 1, 15, 0, 18, 0, 18, 0, 19, 0, 16, 0, 19, 1, 19, 0, 5, 1, 3, 0, 21, 0, 17, 0, 22, 0, 21, 0, 22, 1, 5, 0, 0, 0, 14, 0, 17, 0, 14, 0, 16, 0, 22, 0, 18, 1, 11, 0, 14, 0 )

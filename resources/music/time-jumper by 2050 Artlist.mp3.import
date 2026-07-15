@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/time-jumper by 2050 Artlist.mp3-eb333d15663f6c63aeebec2aef29818f.mp3str"
+uid="uid://ru8836431mw0"
+path="res://.godot/imported/time-jumper by 2050 Artlist.mp3-eb333d15663f6c63aeebec2aef29818f.mp3str"
 
 [deps]
 
 source_file="res://resources/music/time-jumper by 2050 Artlist.mp3"
-dest_files=[ "res://.import/time-jumper by 2050 Artlist.mp3-eb333d15663f6c63aeebec2aef29818f.mp3str" ]
+dest_files=["res://.godot/imported/time-jumper by 2050 Artlist.mp3-eb333d15663f6c63aeebec2aef29818f.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

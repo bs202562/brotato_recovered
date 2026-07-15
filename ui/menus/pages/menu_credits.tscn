@@ -2,20 +2,20 @@
 
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=1]
 [ext_resource path="res://ui/menus/pages/menu_credits.gd" type="Script" id=2]
-[ext_resource path="res://resources/fonts/actual/base/font_26_outline.tres" type="DynamicFont" id=3]
-[ext_resource path="res://ui/blobfish_games_logo.png" type="Texture" id=4]
-[ext_resource path="res://resources/fonts/actual/base/font_26.tres" type="DynamicFont" id=5]
-[ext_resource path="res://ui/splash/splash_anim_evilboy_0008.png" type="Texture" id=6]
-[ext_resource path="res://ui/splash/splash_anim_eetitle_0006.png" type="Texture" id=7]
-[ext_resource path="res://resources/fonts/actual/base/font_60_outline.tres" type="DynamicFont" id=8]
-[ext_resource path="res://ui/menus/global/arrow_left_border.png" type="Texture" id=9]
-[ext_resource path="res://ui/seaven_logo.png" type="Texture" id=10]
+[ext_resource path="res://resources/fonts/actual/base/font_26_outline.tres" type="FontFile" id=3]
+[ext_resource path="res://ui/blobfish_games_logo.png" type="Texture2D" id=4]
+[ext_resource path="res://resources/fonts/actual/base/font_26.tres" type="FontFile" id=5]
+[ext_resource path="res://ui/splash/splash_anim_evilboy_0008.png" type="Texture2D" id=6]
+[ext_resource path="res://ui/splash/splash_anim_eetitle_0006.png" type="Texture2D" id=7]
+[ext_resource path="res://resources/fonts/actual/base/font_60_outline.tres" type="FontFile" id=8]
+[ext_resource path="res://ui/menus/global/arrow_left_border.png" type="Texture2D" id=9]
+[ext_resource path="res://ui/seaven_logo.png" type="Texture2D" id=10]
 
 [node name="MenuCredits" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.0
-margin_right = 1.0
+offset_left = 1.0
+offset_right = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
@@ -25,36 +25,36 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.572549 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_top = 75.0
-margin_right = 1920.0
-margin_bottom = 1008.0
-custom_constants/separation = 79
+offset_top = 75.0
+offset_right = 1920.0
+offset_bottom = 1008.0
+theme_override_constants/separation = 79
 
 [node name="Control" type="Control" parent="VBoxContainer"]
-margin_right = 1920.0
-margin_bottom = 800.0
+offset_right = 1920.0
+offset_bottom = 800.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control"]
-margin_right = 640.0
-margin_bottom = 1000.0
+offset_right = 640.0
+offset_bottom = 1000.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/Control/VBoxContainer"]
-margin_right = 640.0
-margin_bottom = 73.0
+offset_right = 640.0
+offset_bottom = 73.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 8 )
+theme_override_fonts/font = ExtResource( 8 )
 text = "A game by"
 align = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/VBoxContainer"]
-margin_left = 195.0
-margin_top = 77.0
-margin_right = 445.0
-margin_bottom = 327.0
-rect_min_size = Vector2( 250, 250 )
+offset_left = 195.0
+offset_top = 77.0
+offset_right = 445.0
+offset_bottom = 327.0
+custom_minimum_size = Vector2( 250, 250 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 4 )
@@ -63,13 +63,13 @@ stretch_mode = 6
 
 [node name="Names" type="RichTextLabel" parent="VBoxContainer/Control/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 331.0
-margin_right = 640.0
-margin_bottom = 663.0
+offset_top = 331.0
+offset_right = 640.0
+offset_bottom = 663.0
 size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 3 )
+theme_override_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
-bbcode_text = "[center]Thomas Gervraud - [color=#ffee8b]lots of stuff[/color]
+text = "[center]Thomas Gervraud - [color=#ffee8b]lots of stuff[/color]
 Kilian Diener - [color=#ffee8b]programming[/color]
 Gian Jenal - [color=#ffee8b]game design, art, sfx[/color]
 Marco Conrad - [color=#ffee8b]marketing[/color]
@@ -85,13 +85,13 @@ Maxime Gervraud - playtesting, video editing
 Adrien Gervraud - playtesting"
 
 [node name="Label3" type="RichTextLabel" parent="VBoxContainer/Control/VBoxContainer"]
-margin_top = 667.0
-margin_right = 640.0
-margin_bottom = 1000.0
+offset_top = 667.0
+offset_right = 640.0
+offset_bottom = 1000.0
 size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 3 )
+theme_override_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
-bbcode_text = "
+text = "
 [center][color=#ffee8b]New music tracks produced by Adonai
 
 Made with the Godot Engine
@@ -107,28 +107,28 @@ Old music licensed through Artlist
 (2050, Luke Melville, Aviad Zinemanas, Evgeny Bardyuzha)"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Control"]
-margin_left = 640.0
-margin_right = 1280.0
-margin_bottom = 800.0
+offset_left = 640.0
+offset_right = 1280.0
+offset_bottom = 800.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/Control/VBoxContainer2"]
-margin_right = 640.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 0, 120 )
+offset_right = 640.0
+offset_bottom = 120.0
+custom_minimum_size = Vector2( 0, 120 )
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 3 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "...and supported since September 2025 by"
 align = 1
 valign = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/VBoxContainer2"]
-margin_left = 220.0
-margin_top = 124.0
-margin_right = 420.0
-margin_bottom = 324.0
-rect_min_size = Vector2( 200, 200 )
-rect_pivot_offset = Vector2( 122, 150 )
+offset_left = 220.0
+offset_top = 124.0
+offset_right = 420.0
+offset_bottom = 324.0
+custom_minimum_size = Vector2( 200, 200 )
+pivot_offset = Vector2( 122, 150 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 6 )
@@ -145,14 +145,14 @@ expand = true
 stretch_mode = 6
 
 [node name="Names" type="RichTextLabel" parent="VBoxContainer/Control/VBoxContainer2"]
-margin_top = 328.0
-margin_right = 640.0
-margin_bottom = 800.0
+offset_top = 328.0
+offset_right = 640.0
+offset_bottom = 800.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 3 )
+theme_override_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
-bbcode_text = "[center]Dev Team
+text = "[center]Dev Team
 Adrien Chaumont - [color=#ffee8b]marketing, producing[/color]
 Damien Clergeaud - [color=#ffee8b]game design, programming[/color]
 Jérémie Klemke - [color=#ffee8b]game design, programming[/color]
@@ -185,27 +185,27 @@ Thomas Pfeiffer - studio directing
 scroll_active = false
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Control"]
-margin_left = 1280.0
-margin_right = 1920.0
-margin_bottom = 1000.0
+offset_left = 1280.0
+offset_right = 1920.0
+offset_bottom = 1000.0
 
 [node name="Label" type="Label" parent="VBoxContainer/Control/VBoxContainer3"]
-margin_right = 640.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 0, 120 )
+offset_right = 640.0
+offset_bottom = 120.0
+custom_minimum_size = Vector2( 0, 120 )
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 3 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "...and consoles ports by"
 align = 1
 valign = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/VBoxContainer3"]
-margin_left = 230.0
-margin_top = 124.0
-margin_right = 410.0
-margin_bottom = 304.0
-rect_min_size = Vector2( 180, 180 )
-rect_pivot_offset = Vector2( 122, 150 )
+offset_left = 230.0
+offset_top = 124.0
+offset_right = 410.0
+offset_bottom = 304.0
+custom_minimum_size = Vector2( 180, 180 )
+pivot_offset = Vector2( 122, 150 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource( 10 )
@@ -213,14 +213,14 @@ expand = true
 stretch_mode = 6
 
 [node name="Names" type="RichTextLabel" parent="VBoxContainer/Control/VBoxContainer3"]
-margin_top = 308.0
-margin_right = 640.0
-margin_bottom = 1000.0
+offset_top = 308.0
+offset_right = 640.0
+offset_bottom = 1000.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 3 )
+theme_override_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
-bbcode_text = "[center][color=#ffee8b]Console ports - Seaven Studio[/color]
+text = "[center][color=#ffee8b]Console ports - Seaven Studio[/color]
 Pierre Chabiland
 Sylvain Dupont
 Pascal Féard
@@ -252,21 +252,21 @@ scroll_active = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 visible = false
-margin_top = 79.0
-margin_right = 1920.0
-margin_bottom = 879.0
-rect_min_size = Vector2( 0, 800 )
+offset_top = 79.0
+offset_right = 1920.0
+offset_bottom = 879.0
+custom_minimum_size = Vector2( 0, 800 )
 size_flags_horizontal = 3
-custom_constants/separation = -420
+theme_override_constants/separation = -420
 
 [node name="Buttons" type="VBoxContainer" parent="VBoxContainer"]
-margin_left = 660.0
-margin_top = 879.0
-margin_right = 1260.0
-margin_bottom = 933.0
-rect_min_size = Vector2( 600, 0 )
+offset_left = 660.0
+offset_top = 879.0
+offset_right = 1260.0
+offset_bottom = 933.0
+custom_minimum_size = Vector2( 600, 0 )
 size_flags_horizontal = 4
-custom_constants/separation = 25
+theme_override_constants/separation = 25
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -274,12 +274,12 @@ __meta__ = {
 
 [node name="BackButton" type="Button" parent="VBoxContainer/Buttons"]
 unique_name_in_owner = true
-margin_left = 175.0
-margin_right = 425.0
-margin_bottom = 54.0
-rect_min_size = Vector2( 250, 0 )
+offset_left = 175.0
+offset_right = 425.0
+offset_bottom = 54.0
+custom_minimum_size = Vector2( 250, 0 )
 size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 5 )
+theme_override_fonts/font = ExtResource( 5 )
 text = "MENU_BACK"
 icon = ExtResource( 9 )
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://entities/units/enemies/healer/healer.png" type="Texture" id=1]
+[ext_resource path="res://entities/units/enemies/healer/healer.png" type="Texture2D" id=1]
 [ext_resource path="res://entities/units/enemies/healer/healer_stats.tres" type="Resource" id=2]
 [ext_resource path="res://entities/units/enemies/healer/healer.gd" type="Script" id=3]
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=4]
@@ -26,7 +26,7 @@ heal_increase_each_wave = 10.0
 player_heal = 1.0
 player_heal_increase_each_wave = 0.5
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 texture = ExtResource( 1 )
 
 [node name="Collision" parent="." index="1"]

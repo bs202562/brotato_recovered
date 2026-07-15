@@ -31,8 +31,8 @@ enum SavePresset{
 	CODEXENTITY
 }
 
-export (NodePath) var inventory_to_sort_path
-export (NodePath) var reverse_order_button_path
+@export var inventory_to_sort_path: NodePath
+@export var reverse_order_button_path: NodePath
 
 var inventory_to_sort
 var reverse_order_button: Button
@@ -40,46 +40,38 @@ var reverse_order_button: Button
 var reverse_order: bool = false
 var change_order: bool = false
 
-export (SortingType) var by_default
-export (SavePresset) var save_presset
+@export var by_default: SortingType
+@export var save_presset: SavePresset
 
-export (bool) var sort_by_tier = false
-export (bool) var sort_by_name = false
-export (bool) var sort_by_time_got_it = false
-export (bool) var sort_by_killed_time = false
-export (bool) var sort_by_strenght = false
-export (bool) var sort_by_hp = false
-export (bool) var sort_by_category = false
-export (bool) var sort_by_when_got_it = false
-export (bool) var sort_by_weapon_damage = false
-export (bool) var sort_by_weapon_reload_time = false
-export (bool) var sort_by_weapon_range = false
-export (bool) var sort_by_type_of_entity = false
+@export var sort_by_tier: bool = false
+@export var sort_by_name: bool = false
+@export var sort_by_time_got_it: bool = false
+@export var sort_by_killed_time: bool = false
+@export var sort_by_strenght: bool = false
+@export var sort_by_hp: bool = false
+@export var sort_by_category: bool = false
+@export var sort_by_when_got_it: bool = false
+@export var sort_by_weapon_damage: bool = false
+@export var sort_by_weapon_reload_time: bool = false
+@export var sort_by_weapon_range: bool = false
+@export var sort_by_type_of_entity: bool = false
 
 
 func _ready():
 
-	connect("item_selected", self, "_sort_inventory_button")
+	connect("item_selected", Callable(self, "_sort_inventory_button"))
 
 	if not inventory_to_sort_path.is_empty():
 		inventory_to_sort = get_node(inventory_to_sort_path)
 
 		if is_instance_valid(inventory_to_sort):
-			inventory_to_sort.connect(
-				"need_to_sort_inventory", 
-				self, 
-				"_sort_inventory"
-			)
+			inventory_to_sort.connect("need_to_sort_inventory", Callable(self, "_sort_inventory"))
 
 	if not reverse_order_button_path.is_empty():
 		reverse_order_button = get_node(reverse_order_button_path)
 
 		if is_instance_valid(reverse_order_button):
-			reverse_order_button.connect(
-				"toggled", 
-				self, 
-				"_reverse_order_button_toggled"
-			)
+			reverse_order_button.connect("toggled", Callable(self, "_reverse_order_button_toggled"))
 
 	clear()
 
@@ -119,12 +111,12 @@ func _ready():
 	if sort_by_type_of_entity:
 		add_item(Text.text("SORT_BY_ENTITY_TYPE") + " ", SortingType.BYENTITYTYPE)
 
-	yield(get_tree(), "idle_frame")
+	await get_tree().process_frame
 
 	_apply_saved_sort()
 
-	if not is_connected("visibility_changed", self, "_apply_saved_sort"):
-		connect("visibility_changed", self, "_apply_saved_sort")
+	if not is_connected("visibility_changed", Callable(self, "_apply_saved_sort")):
+		connect("visibility_changed", Callable(self, "_apply_saved_sort"))
 
 
 func _apply_saved_sort():
@@ -154,16 +146,16 @@ func _apply_saved_sort():
 	else:
 		select(get_item_index(by_default))
 
-	yield(get_tree(), "idle_frame")
+	await get_tree().process_frame
 
 	if save_presset != SavePresset.NONE:
 		var reverse_button_saved = ProgressData.settings.sort_inventory_presset_reverse[save_presset]
 		if (reverse_button_saved == null):
-			reverse_order_button.pressed = false
+			reverse_order_button.button_pressed = false
 		else:
-			reverse_order_button.pressed = reverse_button_saved
+			reverse_order_button.button_pressed = reverse_button_saved
 	else:
-		reverse_order_button.pressed = false
+		reverse_order_button.button_pressed = false
 
 
 func _sort_inventory_button(index: int = - 10, _inventory: Inventory = null):
@@ -231,10 +223,10 @@ func _sort_inventory(index: int = - 10, _inventory: Inventory = null):
 			sortingType = "sort_by_entity_type"
 
 	if not other_type_of_sorting:
-		elements.sort_custom(SortInventory, sortingType)
+		elements.sort_custom(Callable(SortInventory, sortingType))
 
 	if reverse_order:
-		elements.invert()
+		elements.reverse()
 
 	for slot in inventory_to_sort.get_children():
 		inventory_to_sort.remove_child(slot)

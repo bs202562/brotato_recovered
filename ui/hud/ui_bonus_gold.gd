@@ -2,8 +2,8 @@ class_name UIBonusGold
 extends HBoxContainer
 
 
-onready var _gold_label = $GoldLabel
-onready var _icon = $Icon
+@onready var _gold_label = $GoldLabel
+@onready var _icon = $Icon
 
 
 func _ready() -> void :

@@ -9,6 +9,6 @@ var value: = INITIAL_VALUE
 
 
 func reset() -> void :
-	.reset()
+	super.reset()
 	value = INITIAL_VALUE
 	boosted = 1

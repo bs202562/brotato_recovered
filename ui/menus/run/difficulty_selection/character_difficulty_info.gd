@@ -1,5 +1,5 @@
 class_name CharacterDifficultyInfo
-extends Reference
+extends RefCounted
 
 var character_id: = ""
 var character_id_hash: = 0

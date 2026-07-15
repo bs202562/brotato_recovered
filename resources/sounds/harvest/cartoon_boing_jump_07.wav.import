@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/cartoon_boing_jump_07.wav-dc15f2468b19f0e53eaa184752e38380.sample"
+type="AudioStreamWAV"
+uid="uid://cdxseq8a54paj"
+path="res://.godot/imported/cartoon_boing_jump_07.wav-dc15f2468b19f0e53eaa184752e38380.sample"
 
 [deps]
 
 source_file="res://resources/sounds/harvest/cartoon_boing_jump_07.wav"
-dest_files=[ "res://.import/cartoon_boing_jump_07.wav-dc15f2468b19f0e53eaa184752e38380.sample" ]
+dest_files=["res://.godot/imported/cartoon_boing_jump_07.wav-dc15f2468b19f0e53eaa184752e38380.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

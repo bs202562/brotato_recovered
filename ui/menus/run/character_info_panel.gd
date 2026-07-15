@@ -1,10 +1,10 @@
 class_name CharacterInfoPanel
 extends PanelContainer
 
-onready var _max_diff_title = $MarginContainer / VBoxContainer / VBoxContainer / VBoxContainer / MaxDifficutlyBeatenTitle
-onready var _max_diff_value = $MarginContainer / VBoxContainer / VBoxContainer / VBoxContainer / MaxDifficultyBeatenValue
-onready var _max_endless_title = $MarginContainer / VBoxContainer / VBoxContainer / VBoxContainer2 / MaxEndlessWaveTitle
-onready var _max_endless_value = $MarginContainer / VBoxContainer / VBoxContainer / VBoxContainer2 / MaxEndlessWaveValue
+@onready var _max_diff_title = $MarginContainer / VBoxContainer / VBoxContainer / VBoxContainer / MaxDifficutlyBeatenTitle
+@onready var _max_diff_value = $MarginContainer / VBoxContainer / VBoxContainer / VBoxContainer / MaxDifficultyBeatenValue
+@onready var _max_endless_title = $MarginContainer / VBoxContainer / VBoxContainer / VBoxContainer2 / MaxEndlessWaveTitle
+@onready var _max_endless_value = $MarginContainer / VBoxContainer / VBoxContainer / VBoxContainer2 / MaxEndlessWaveValue
 
 var character_currently_displayed: String = ""
 

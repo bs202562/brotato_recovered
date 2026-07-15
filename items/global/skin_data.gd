@@ -1,6 +1,6 @@
 class_name SkinData
 extends Resource
 
-export (Texture) var original: Texture
-export (Texture) var skin: Texture
-export (Array, Resource) var appearances: Array
+@export var original: Texture2D
+@export var skin: Texture2D
+@export var appearances: Array # (Array, Resource)

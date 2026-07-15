@@ -47,25 +47,25 @@ var _tiers_data: Array
 var _item_id_lookup: Dictionary
 var _weapon_id_lookup: Dictionary
 
-export (Array, Resource) var elites
-export (Array, Resource) var bosses
-export (Array, Resource) var effects
-export (Array, Resource) var stats
-export (Array, Resource) var characters
-export (Array, Resource) var items
-export (Array, Resource) var weapons
-export (Array, Resource) var consumables
-export (Array, Resource) var upgrades
-export (Array, Resource) var sets
-export (Array, Resource) var difficulties
-export (Array, Resource) var icons
-export (Array, Resource) var title_screen_backgrounds
-export (Array, Resource) var backgrounds
-export (Array, Color) var background_colors
-export (Array, Resource) var entities
-export (Array, StyleBox) var frames_element_level
+@export var elites: Array = [] # (Array, Resource)
+@export var bosses: Array = [] # (Array, Resource)
+@export var effects: Array = [] # (Array, Resource)
+@export var stats: Array = [] # (Array, Resource)
+@export var characters: Array = [] # (Array, Resource)
+@export var items: Array = [] # (Array, Resource)
+@export var weapons: Array = [] # (Array, Resource)
+@export var consumables: Array = [] # (Array, Resource)
+@export var upgrades: Array = [] # (Array, Resource)
+@export var sets: Array = [] # (Array, Resource)
+@export var difficulties: Array = [] # (Array, Resource)
+@export var icons: Array = [] # (Array, Resource)
+@export var title_screen_backgrounds: Array = [] # (Array, Resource)
+@export var backgrounds: Array = [] # (Array, Resource)
+@export var background_colors: Array = [] # (Array, Color)
+@export var entities: Array = [] # (Array, Resource)
+@export var frames_element_level: Array = [] # (Array, StyleBox)
 
-export (Resource) var weapon_slot_upgrade_data = null
+@export var weapon_slot_upgrade_data: Resource = null
 
 
 var item_groups: Dictionary = {
@@ -162,7 +162,7 @@ func get_consumable_to_drop(unit: Unit, item_chance: float) -> ConsumableData:
 	for player_index in RunData.get_player_count():
 		luck += Utils.get_stat(Keys.stat_luck_hash, player_index) / 100.0
 
-	var consumable_drop_chance: = min(1.0, unit.stats.base_drop_chance * (1.0 + luck))
+	var consumable_drop_chance = min(1.0, unit.stats.base_drop_chance * (1.0 + luck))
 	if RunData.current_wave > RunData.nb_of_waves:
 		consumable_drop_chance /= (1.0 + RunData.get_endless_factor())
 
@@ -215,7 +215,7 @@ func process_item_box(consumable_data: ConsumableData, wave: int, player_index: 
 	args.owned_and_shop_items = owned_items
 	if consumable_data.my_id_hash == Keys.consumable_legendary_item_box_hash:
 		args.fixed_tier = Tier.LEGENDARY
-	var item: = _get_rand_item_for_wave(wave, player_index, TierData.ITEMS, args)
+	var item = _get_rand_item_for_wave(wave, player_index, TierData.ITEMS, args)
 	return item
 
 
@@ -499,7 +499,7 @@ func remove_element_by_id(from: Array, my_id_hash: int) -> Array:
 
 	for i in from.size():
 		if from[i].my_id_hash == my_id_hash:
-			from_copy.remove(i)
+			from_copy.remove_at(i)
 			break
 
 	return from_copy
@@ -519,7 +519,7 @@ func apply_item_effect_modifications(item: ItemParentData, player_index: int) ->
 
 
 func get_tier_from_wave(wave: int, player_index: int, increase_tier: = 0) -> int:
-	var rand = rand_range(0.0, 1.0)
+	var rand = randf_range(0.0, 1.0)
 	var luck = Utils.get_stat(Keys.stat_luck_hash, player_index) / 100.0
 
 	var tier: int = Tier.COMMON
@@ -625,16 +625,16 @@ func get_color_from_tier(tier: int, dark_version: bool = false) -> Color:
 		Tier.DANGER_5, Tier.NIGHTMARE:
 			return Color(ProgressData.settings.tier_5_color_dark) if dark_version else Color(ProgressData.settings.tier_5_color)
 		_:
-			return Color.white
+			return Color.WHITE
 
 
 func get_color_from_entity_type(item: ItemEntity) -> Color:
-	var color: Color = Color.white
+	var color: Color = Color.WHITE
 	if item is ItemPet:
-		color = Color.cornflower
+		color = Color.CORNFLOWER_BLUE
 	elif item is ItemEnemy:
 		if item.is_elite:
-			color = Color(ProgressData.settings.color_negative).linear_interpolate(Color.white, 0.5)
+			color = Color(ProgressData.settings.color_negative).lerp(Color.WHITE, 0.5)
 		elif item.is_boss:
 			color = Color(ProgressData.settings.color_negative)
 	return color
@@ -674,11 +674,11 @@ func change_panel_stylebox_from_tier(stylebox: StyleBox, tier: int, is_popup: = 
 	var tier_color: Color = get_color_from_tier(tier)
 	var dark_tier_color: Color = get_color_from_tier(tier, true)
 
-	if tier_color == Color.white:
-		tier_color = Color(0.3, 0.3, 0.3) if is_popup else Color.black
+	if tier_color == Color.WHITE:
+		tier_color = Color(0.3, 0.3, 0.3) if is_popup else Color.BLACK
 
-	if dark_tier_color == Color.white:
-		dark_tier_color = Color.black
+	if dark_tier_color == Color.WHITE:
+		dark_tier_color = Color.BLACK
 
 	if stylebox is StyleBoxFlat:
 		stylebox.border_color = tier_color
@@ -695,8 +695,8 @@ func change_panel_stylebox_from_tier(stylebox: StyleBox, tier: int, is_popup: = 
 func change_inventory_element_stylebox_from_tier(stylebox: StyleBox, tier: int, alpha: float = 1, frame: Panel = null) -> void :
 	var tier_color: Color = get_color_from_tier(tier)
 
-	if tier_color == Color.white:
-		tier_color = Color.black
+	if tier_color == Color.WHITE:
+		tier_color = Color.BLACK
 		tier_color.a = 0.39
 	else:
 		tier_color.a = alpha
@@ -713,13 +713,13 @@ func change_panel_from_tier(frame: Panel, tier: int) -> void :
 		frame.hide()
 	else:
 		frame.show()
-		frame.add_stylebox_override("panel", frames_element_level[level_frame - 1])
+		frame.add_theme_stylebox_override("panel", frames_element_level[level_frame - 1])
 
 
 func change_inventory_element_stylebox_from_entity_type(stylebox: StyleBox, item_entity: ItemEntity, alpha: float = 1) -> void :
 	var color: Color = get_color_from_entity_type(item_entity)
-	if color == Color.white:
-		color = Color.black
+	if color == Color.WHITE:
+		color = Color.BLACK
 	color.a = alpha
 	stylebox.bg_color = color
 
@@ -842,7 +842,7 @@ func get_stat_description_text(stat_hash: int, value: int, player_index: int) ->
 		var val = RunData.get_hp_regeneration_timer(value)
 		var amount = 1
 		var amount_per_sec = 1 / val
-		return Text.text(key, [str(amount), str(stepify(val, 0.01)), str(stepify(amount_per_sec, 0.01))])
+		return Text.text(key, [str(amount), str(snapped(val, 0.01)), str(snapped(amount_per_sec, 0.01))])
 	elif stat_hash == Keys.stat_dodge_hash:
 		return Text.text(key, [str(abs(value)), str(RunData.get_player_effect(Keys.dodge_cap_hash, player_index)) + "%"])
 	elif stat_hash == Keys.stat_crit_chance_hash:
@@ -854,8 +854,8 @@ func get_stat_description_text(stat_hash: int, value: int, player_index: int) ->
 				chance = dlc_data.max_curse_item_chance
 				break
 
-		var enemy_curse_chance = stepify(abs(Utils.get_curse_factor(value) / 2.0), 0.1)
-		var item_curse_chance = stepify(abs(Utils.get_curse_factor(value, chance * 100.0)), 0.1)
+		var enemy_curse_chance = snapped(abs(Utils.get_curse_factor(value) / 2.0), 0.1)
+		var item_curse_chance = snapped(abs(Utils.get_curse_factor(value, chance * 100.0)), 0.1)
 
 		return Text.text(key, [str(enemy_curse_chance), str(item_curse_chance)])
 	return Text.text(key, [str(abs(value))])
@@ -928,7 +928,7 @@ func get_icon(icon_id: int) -> Resource:
 	return get_element(icons, icon_id).icon
 
 
-func get_icon_for_duplicate_shop_item(character: CharacterData, player_items: Array, player_weapons: Array, shop_item: ItemParentData, player_index: int) -> Texture:
+func get_icon_for_duplicate_shop_item(character: CharacterData, player_items: Array, player_weapons: Array, shop_item: ItemParentData, player_index: int) -> Texture2D:
 
 	if character == null or shop_item == null:
 		return null
@@ -1055,5 +1055,5 @@ func get_ordered_starting_weapons(starting_weapons: Array) -> Array:
 
 func get_ordered_starting_items(starting_items: Array) -> Array:
 	var new_starting_items = starting_items.duplicate()
-	new_starting_items.sort_custom(Sorter, "sort_item_by_tier")
+	new_starting_items.sort_custom(Callable(Sorter, "sort_item_by_tier"))
 	return new_starting_items

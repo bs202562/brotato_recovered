@@ -44,21 +44,21 @@ expand_margin_bottom = 3.0
 [sub_resource type="StyleBoxEmpty" id=4]
 
 [node name="CoopUpgradeUI" type="PanelContainer"]
-margin_right = 290.0
-margin_bottom = 160.0
+offset_right = 290.0
+offset_bottom = 160.0
 size_flags_horizontal = 4
 theme = ExtResource( 1 )
-custom_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_right = 325.0
-margin_bottom = 160.0
-rect_clip_content = true
-custom_constants/margin_right = 20
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
+offset_right = 325.0
+offset_bottom = 160.0
+clip_contents = true
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="UpgradeDescription" parent="MarginContainer" instance=ExtResource( 2 )]
 unique_name_in_owner = true
@@ -66,31 +66,31 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 305.0
-margin_bottom = 140.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 305.0
+offset_bottom = 140.0
 
 [node name="HBoxContainer" parent="MarginContainer/UpgradeDescription" index="0"]
-margin_right = 285.0
-margin_bottom = 60.0
+offset_right = 285.0
+offset_bottom = 60.0
 
 [node name="IconPanel" parent="MarginContainer/UpgradeDescription/HBoxContainer" index="0"]
-margin_right = 60.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
+offset_right = 60.0
+offset_bottom = 60.0
+custom_minimum_size = Vector2( 60, 60 )
 
 [node name="ScrollContainer" parent="MarginContainer/UpgradeDescription/HBoxContainer" index="1"]
-margin_left = 75.0
-margin_right = 285.0
-margin_bottom = 60.0
+offset_left = 75.0
+offset_right = 285.0
+offset_bottom = 60.0
 
 [node name="ChooseButton" type="Button" parent="."]
 unique_name_in_owner = true
-margin_right = 325.0
-margin_bottom = 160.0
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+offset_right = 325.0
+offset_bottom = 160.0
+theme_override_styles/focus = SubResource( 3 )
+theme_override_styles/normal = SubResource( 4 )
 script = ExtResource( 4 )
 
 [connection signal="pressed" from="ChooseButton" to="." method="_on_ChooseButton_pressed"]

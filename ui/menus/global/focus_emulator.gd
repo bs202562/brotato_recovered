@@ -1,9 +1,9 @@
 class_name FocusEmulator
 extends Node2D
 
-export (Array, Resource) var focus_base_data
+@export var focus_base_data: Array = [] # (Array, Resource)
 
-export (int) var player_index: int = - 1 setget _set_player_index
+@export var player_index: int = - 1: set = _set_player_index
 func _set_player_index(value: int) -> void :
 	if value == player_index:
 		return
@@ -20,7 +20,7 @@ func _set_player_index(value: int) -> void :
 		_set_focused_control_with_style(control, false)
 		FocusEmulatorSignal.emit(control, "focus_entered", player_index)
 
-var focused_control: Control = null setget _set_focused_control
+var focused_control: Control = null: set = _set_focused_control
 func _set_focused_control(control: Control) -> void :
 	if control == null:
 		var existing_focused_control = focused_control
@@ -40,7 +40,7 @@ var _focused_parent: Control = null
 
 func _ready() -> void :
 	_on_connected_players_updated(CoopService.connected_players)
-	var _e = CoopService.connect("connected_players_updated", self, "_on_connected_players_updated")
+	var _e = CoopService.connect("connected_players_updated", Callable(self, "_on_connected_players_updated"))
 
 	for base in focus_base_data:
 		var node = get_node(base.path)
@@ -49,11 +49,11 @@ func _ready() -> void :
 			continue
 		_focus_base_nodes.append(node)
 
-	var _ee = get_viewport().connect("gui_focus_changed", self, "_on_focus_changed")
+	var _ee = get_viewport().connect("gui_focus_changed", Callable(self, "_on_focus_changed"))
 
 
 func _input(event: InputEvent) -> void :
-	if _device < 0 or _focus_base_nodes.empty() or focused_control == null:
+	if _device < 0 or _focus_base_nodes.is_empty() or focused_control == null:
 		return
 
 	
@@ -82,7 +82,7 @@ func _input(event: InputEvent) -> void :
 	
 	
 	if _handle_input(event) or ( not _is_coop_ui_action(event) and not CoopService.listening_for_inputs):
-		get_tree().set_input_as_handled()
+		get_viewport().set_input_as_handled()
 		return
 
 
@@ -100,10 +100,10 @@ func _draw() -> void :
 	
 	if scroll_container != null and (scroll_container.scroll_horizontal != 0 or scroll_container.scroll_vertical != 0):
 		var scroll_rect = scroll_container.get_global_rect()
-		VisualServer.canvas_item_set_custom_rect(get_canvas_item(), true, scroll_rect)
-		VisualServer.canvas_item_set_clip(get_canvas_item(), true)
+		RenderingServer.canvas_item_set_custom_rect(get_canvas_item(), true, scroll_rect)
+		RenderingServer.canvas_item_set_clip(get_canvas_item(), true)
 
-	var focus_style_box = focused_control.get_stylebox("focus")
+	var focus_style_box = focused_control.get_theme_stylebox("focus")
 	if not focus_style_box is StyleBoxTexture:
 		
 		for focus_order in range(player_indices.size() - 1, 0, - 1):
@@ -119,12 +119,12 @@ func _draw() -> void :
 		
 		for _focus_order in range(player_indices.size() - 1, 0, - 1):
 			
-			var stylebox = focused_control.get_stylebox("focus").duplicate()
+			var stylebox = focused_control.get_theme_stylebox("focus").duplicate()
 			draw_style_box(stylebox, focused_control.get_global_rect())
 
 
 func _process(_delta: float) -> void :
-	update()
+	queue_redraw()
 	set_process(false)
 
 
@@ -151,7 +151,7 @@ func _handle_input(event: InputEvent) -> bool:
 			if focused_control is OptionButton:
 				_open_option_button(focused_control)
 			elif focused_control.toggle_mode:
-				var toggled = not focused_control.pressed
+				var toggled = not focused_control.button_pressed
 				focused_control.set_pressed_no_signal(toggled)
 				
 				
@@ -180,15 +180,15 @@ func _press_button(button: BaseButton) -> void :
 	if button.group != null:
 		for but in button.group.get_buttons():
 			if but != button:
-				but.pressed = false
+				but.button_pressed = false
 
 
 func _open_option_button(button: OptionButton) -> void :
 	
 	var popup = button.get_popup()
-	var size = button.rect_size
-	popup.rect_global_position = button.rect_global_position + Vector2(0, size.y)
-	popup.rect_size = Vector2(size.x, 0)
+	var size = button.size
+	popup.global_position = button.global_position + Vector2(0, size.y)
+	popup.size = Vector2(size.x, 0)
 	if button.selected > - 1 and not popup.is_item_disabled(button.selected):
 		popup.set_current_index(button.selected)
 	else:
@@ -215,8 +215,10 @@ func _handle_popup_menu_input(event: InputEvent, popup: PopupMenu) -> bool:
 		return true
 	elif event.is_action_pressed("ui_accept_%s" % _device):
 		var id = popup.get_item_id(popup.get_current_index())
-		FocusEmulatorSignal.emit(popup, "id_pressed", player_index, id)
-		FocusEmulatorSignal.emit(popup, "index_pressed", player_index, popup.get_current_index())
+
+		var popup_variant: Variant = popup
+		FocusEmulatorSignal.emit(popup_variant, "id_pressed", player_index, id)
+		FocusEmulatorSignal.emit(popup_variant, "index_pressed", player_index, popup.get_current_index())
 		popup.hide()
 		return true
 
@@ -250,7 +252,7 @@ func _set_focused_control_with_style(control: Control, emit_signals: bool) -> vo
 	
 	_set_focus_style(control)
 	
-	var focus_owner = control.get_focus_owner()
+	var focus_owner = control.get_viewport().gui_get_focus_owner()
 	if focus_owner:
 		FocusEmulatorSignal.set_expected_control(control, player_index)
 		focus_owner.release_focus()
@@ -267,27 +269,27 @@ func _set_focus_style(control: Control) -> void :
 	if not control.has_meta("original_stylebox_overrides"):
 		var stylebox_overrides = {}
 		for name in _stylebox_theme_names():
-			if control.has_stylebox_override(name):
-				stylebox_overrides[name] = control.get_stylebox(name)
+			if control.has_theme_stylebox_override(name):
+				stylebox_overrides[name] = control.get_theme_stylebox(name)
 		control.set_meta("original_stylebox_overrides", stylebox_overrides)
 
 	if not control.has_meta("original_focus_stylebox"):
-		if control.has_stylebox("focus"):
-			control.set_meta("original_focus_stylebox", control.get_stylebox("focus"))
-		elif control.has_stylebox("grabber_area_highlight"):
-			control.set_meta("original_focus_stylebox", control.get_stylebox("grabber_area_highlight"))
+		if control.has_theme_stylebox("focus"):
+			control.set_meta("original_focus_stylebox", control.get_theme_stylebox("focus"))
+		elif control.has_theme_stylebox("grabber_area_highlight"):
+			control.set_meta("original_focus_stylebox", control.get_theme_stylebox("grabber_area_highlight"))
 
 	if not control.has_meta("original_normal_stylebox"):
-		if control.has_stylebox("normal"):
-			control.set_meta("original_normal_stylebox", control.get_stylebox("normal"))
-		elif control.has_stylebox("grabber_area_normal"):
-			control.set_meta("original_normal_stylebox", control.get_stylebox("grabber_area_normal"))
+		if control.has_theme_stylebox("normal"):
+			control.set_meta("original_normal_stylebox", control.get_theme_stylebox("normal"))
+		elif control.has_theme_stylebox("grabber_area_normal"):
+			control.set_meta("original_normal_stylebox", control.get_theme_stylebox("grabber_area_normal"))
 
 	if not control.has_meta("original_color_overrides"):
 		var color_overrides = {}
 		for name in _color_theme_names():
-			if control.has_color_override(name):
-				color_overrides[name] = control.get_color(name)
+			if control.has_theme_color_override(name):
+				color_overrides[name] = control.get_theme_color(name)
 		control.set_meta("original_color_overrides", color_overrides)
 
 	if control is Button and not control.has_meta("original_flat"):
@@ -329,16 +331,16 @@ func _clear_focus_style(control: Control) -> void :
 	control.remove_meta("original_color_overrides")
 
 	for name in _stylebox_theme_names():
-		control.remove_stylebox_override(name)
+		control.remove_theme_stylebox_override(name)
 		if stylebox_overrides != null:
 			if stylebox_overrides.has(name):
-				control.add_stylebox_override(name, stylebox_overrides[name])
+				control.add_theme_stylebox_override(name, stylebox_overrides[name])
 
 	for name in _color_theme_names():
-		control.remove_color_override(name)
+		control.remove_theme_color_override(name)
 		if color_overrides != null:
 			if color_overrides.has(name):
-				control.add_color_override(name, color_overrides[name])
+				control.add_theme_color_override(name, color_overrides[name])
 
 	if control.has_meta("original_flat"):
 		control.flat = control.get_meta("original_flat")
@@ -368,7 +370,7 @@ func _update_focus_style_for_players(control: Control) -> bool:
 			child.set_process(true)
 
 	var player_indices = control.get_meta("focus_player_indices", [])
-	if player_indices.empty():
+	if player_indices.is_empty():
 		return false
 
 	
@@ -385,16 +387,16 @@ func _update_focus_style_for_players(control: Control) -> bool:
 		if base_data.apply_player_color:
 			CoopService.change_stylebox_for_player(focus_stylebox, focus_player_index)
 		for name in _stylebox_theme_names():
-			control.add_stylebox_override(name, focus_stylebox)
+			control.add_theme_stylebox_override(name, focus_stylebox)
 
 
-	var focus_color = control.get_color("font_color_focus")
+	var focus_color = control.get_theme_color("font_color_focus")
 	for name in _color_theme_names():
-		control.add_color_override(name, focus_color)
+		control.add_theme_color_override(name, focus_color)
 
 	if control is TextureButton and base_data.apply_player_color:
 		var player_color = CoopService.get_player_color(focus_player_index)
-		control.self_modulate = Color.white.linear_interpolate(player_color, 0.7)
+		control.self_modulate = Color.WHITE.lerp(player_color, 0.7)
 
 	return true
 
@@ -456,19 +458,19 @@ func _clear_focused_control() -> void :
 func _find_control_base_data(control: Control) -> FocusEmulatorBaseData:
 	for i in _focus_base_nodes.size():
 		var base = _focus_base_nodes[i]
-		if base == control or base.is_a_parent_of(control):
+		if base == control or base.is_ancestor_of(control):
 			return focus_base_data[i]
 	return null
 
 
 
 func _connect_focused_control(control: Control) -> void :
-	var _error = control.connect("item_rect_changed", self, "update")
+	var _error = control.connect("item_rect_changed", Callable(self, "queue_redraw"))
 
 
 func _disconnect_focused_control(control: Control) -> void :
-	if control.is_connected("item_rect_changed", self, "update"):
-		control.disconnect("item_rect_changed", self, "update")
+	if control.is_connected("item_rect_changed", Callable(self, "queue_redraw")):
+		control.disconnect("item_rect_changed", Callable(self, "queue_redraw"))
 
 
 class GetFocusNeighbourForEventResult:
@@ -489,43 +491,43 @@ func _get_focus_neighbour_for_event(event: InputEvent, target: Control) -> GetFo
 		var margin
 		match action_name:
 			"ui_left":
-				margin = MARGIN_LEFT
+				margin = SIDE_LEFT
 			"ui_right":
-				margin = MARGIN_RIGHT
+				margin = SIDE_RIGHT
 			"ui_up":
-				margin = MARGIN_TOP
+				margin = SIDE_TOP
 			"ui_down":
-				margin = MARGIN_BOTTOM
+				margin = SIDE_BOTTOM
 
 		var base_nodes = _focus_base_nodes.duplicate()
 		
 		
 		for i in _focus_base_nodes.size():
 			var base = _focus_base_nodes[i]
-			if not base.is_a_parent_of(target):
+			if not base.is_ancestor_of(target):
 				continue
-			if focus_base_data[i].contain_horizontal_focus and (margin == MARGIN_LEFT or margin == MARGIN_RIGHT):
+			if focus_base_data[i].contain_horizontal_focus and (margin == SIDE_LEFT or margin == SIDE_RIGHT):
 				base_nodes = [base]
 				
 				for path in focus_base_data[i].contain_horizontal_focus_exception_paths:
 					base_nodes.append(get_node(path))
 				break
-			elif focus_base_data[i].contain_vertical_focus and (margin == MARGIN_TOP or margin == MARGIN_BOTTOM):
+			elif focus_base_data[i].contain_vertical_focus and (margin == SIDE_TOP or margin == SIDE_BOTTOM):
 				base_nodes = [base]
 				break
 
 		
 		for i in _focus_base_nodes.size():
 			var base = _focus_base_nodes[i]
-			if base.is_a_parent_of(target):
+			if base.is_ancestor_of(target):
 				continue
 			var require_entry_from_control_paths = focus_base_data[i].require_entry_from_control_paths
-			if require_entry_from_control_paths.empty():
+			if require_entry_from_control_paths.is_empty():
 				continue
 			var entering_from_required_control: = false
 			for path in require_entry_from_control_paths:
 				var required_control = get_node(path)
-				if target == required_control or required_control.is_a_parent_of(target):
+				if target == required_control or required_control.is_ancestor_of(target):
 					entering_from_required_control = true
 					break
 			if not entering_from_required_control:
@@ -548,13 +550,13 @@ func _get_focus_neighbour_for_control(target: Control, bases: Array, margin: int
 		
 		if Utils._popup != null:
 			bases.append(Utils._popup)
-			if not Utils._popup.is_a_parent_of(base):
+			if not Utils._popup.is_ancestor_of(base):
 				bases.erase(base)
 
 	var neighbours: = []
 
 	
-	var focus_neighbour_path: = target.get_focus_neighbour(margin)
+	var focus_neighbour_path: = target.get_focus_neighbor(margin)
 	if focus_neighbour_path and not focus_neighbour_path.is_empty():
 		var neighbour: = target.get_node_or_null(focus_neighbour_path)
 		if neighbour != null and neighbour is Control:
@@ -578,14 +580,14 @@ func _get_focus_neighbour_for_control(target: Control, bases: Array, margin: int
 	if neighbours.size() == 1:
 		return _get_focus_neighbour_for_control(neighbours[0], bases, margin, count + 1)
 
-	var points: PoolVector2Array = PoolVector2Array()
+	var points: PackedVector2Array = PackedVector2Array()
 	points.resize(4)
 
 	var xform = target.get_global_transform()
-	points[0] = xform.xform(Vector2(0, 0))
-	points[1] = xform.xform(Vector2(target.rect_size.x, 0))
-	points[2] = xform.xform(target.rect_size)
-	points[3] = xform.xform(Vector2(0, target.rect_size.y))
+	points[0] = xform * (Vector2(0, 0))
+	points[1] = xform * (Vector2(target.size.x, 0))
+	points[2] = xform * (target.size)
+	points[3] = xform * (Vector2(0, target.size.y))
 
 	var dir = [
 		Vector2( - 1, 0), 
@@ -602,11 +604,11 @@ func _get_focus_neighbour_for_control(target: Control, bases: Array, margin: int
 		if d > max_d:
 			max_d = d
 
-	if bases.empty():
+	if bases.is_empty():
 		var base = target
 		while true:
 			var parent = base.get_parent()
-			if parent == null or parent is Viewport:
+			if parent == null or parent is SubViewport:
 				break
 			base = parent
 		bases = [base]
@@ -624,19 +626,19 @@ class FindFocusNeighbourResult:
 
 
 func _window_find_focus_neighbour(target: Control, base: Node, dir: Vector2, p_points: Array, p_min: float, result: FindFocusNeighbourResult):
-	if base is Viewport:
+	if base is SubViewport:
 		return
 
 	var c: = base as Control
 	if c != null and c != target and _filter_control(c, null):
-		var points = PoolVector2Array()
+		var points = PackedVector2Array()
 		points.resize(4)
 
 		var xform = c.get_global_transform()
-		points[0] = xform.xform(Vector2(0, 0))
-		points[1] = xform.xform(Vector2(c.rect_size.x, 0))
-		points[2] = xform.xform(c.rect_size)
-		points[3] = xform.xform(Vector2(0, c.rect_size.y))
+		points[0] = xform * (Vector2(0, 0))
+		points[1] = xform * (Vector2(c.size.x, 0))
+		points[2] = xform * (c.size)
+		points[3] = xform * (Vector2(0, c.size.y))
 
 		var min_d = 10000000.0
 
@@ -654,7 +656,7 @@ func _window_find_focus_neighbour(target: Control, base: Node, dir: Vector2, p_p
 					var fa = points[j]
 					var fb = points[(j + 1) % 4]
 
-					var closest_points = Geometry.get_closest_points_between_segments_2d(la, lb, fa, fb)
+					var closest_points = Geometry2D.get_closest_points_between_segments(la, lb, fa, fb)
 					var pa = closest_points[0]
 					var pb = closest_points[1]
 					var d = pa.distance_to(pb)
@@ -670,7 +672,7 @@ func _filter_control(control: Control, bases) -> bool:
 	if bases:
 		var has_parent = false
 		for base in bases:
-			if base == control or base.is_a_parent_of(control):
+			if base == control or base.is_ancestor_of(control):
 				has_parent = true
 				break
 		if not has_parent:

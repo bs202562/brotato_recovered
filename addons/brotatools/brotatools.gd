@@ -1,11 +1,11 @@
-tool
+@tool
 extends EditorPlugin
 
 var brotatools_ui: BrotatoolsUI
 
 
 func _enter_tree() -> void :
-	brotatools_ui = preload("res://addons/brotatools/brotatools_ui.tscn").instance()
+	brotatools_ui = preload("res://addons/brotatools/brotatools_ui.tscn").instantiate()
 	add_control_to_bottom_panel(brotatools_ui, "Brotatools")
 
 

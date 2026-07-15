@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Adonai - Liquid Glass.mp3-c5f9bf92a266cf565cf89b40aa3df2d1.mp3str"
+uid="uid://b3mom68yp8rf3"
+path="res://.godot/imported/Adonai - Liquid Glass.mp3-c5f9bf92a266cf565cf89b40aa3df2d1.mp3str"
 
 [deps]
 
 source_file="res://resources/music/streamer_mode/Adonai - Liquid Glass.mp3"
-dest_files=[ "res://.import/Adonai - Liquid Glass.mp3-c5f9bf92a266cf565cf89b40aa3df2d1.mp3str" ]
+dest_files=["res://.godot/imported/Adonai - Liquid Glass.mp3-c5f9bf92a266cf565cf89b40aa3df2d1.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -5,10 +5,10 @@ signal coop_initialized(active)
 
 
 func init() -> void :
-	pressed = RunData.play_mode != RunData.PlayMode.SOLO
+	button_pressed = RunData.play_mode != RunData.PlayMode.SOLO
 	
 	
-	var _e = connect("toggled", self, "_on_toggled")
+	var _e = connect("toggled", Callable(self, "_on_toggled"))
 
 
 func _on_toggled(button_pressed: bool) -> void :

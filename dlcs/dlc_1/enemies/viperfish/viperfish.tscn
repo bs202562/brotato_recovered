@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://dlcs/dlc_1/enemies/viperfish/viperfish.png" type="Texture" id=1]
+[ext_resource path="res://dlcs/dlc_1/enemies/viperfish/viperfish.png" type="Texture2D" id=1]
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://dlcs/dlc_1/enemies/viperfish/viperfish_stats.tres" type="Resource" id=3]
 [ext_resource path="res://entities/units/enemies/pursuer/pursuer.gd" type="Script" id=4]
@@ -31,7 +31,7 @@ change_movement_behavior_after_x_boosts = 3
 bonus_speed_on_change_movement_behavior = 200
 reset_nb_times_boosted_on_hit = false
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -4 )
 texture = ExtResource( 1 )
 

@@ -1,9 +1,9 @@
 class_name SkinSetData
 extends Resource
 
-export (String) var my_id: = ""
+@export var my_id := ""
 var my_id_hash: int = Keys.empty_hash
-export (Array, Resource) var skins: Array
+@export var skins: Array # (Array, Resource)
 
 
 func _init() -> void :
@@ -18,7 +18,7 @@ func _generate_hashes() -> void :
 
 
 func duplicate(subresources: = false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 
 	if my_id_hash == Keys.empty_hash:
 		my_id_hash = Keys.generate_hash(my_id)

@@ -5,11 +5,12 @@ var next_attack_type: int
 
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_ready 为基类优先）
 	next_attack_type = stats.attack_type
 
 
 func shoot() -> void :
-	.shoot()
+	super.shoot()
 
 	if stats.alternate_attack_type:
 		next_attack_type = MeleeAttackType.THRUST if next_attack_type == MeleeAttackType.SWEEP else MeleeAttackType.SWEEP
@@ -18,7 +19,7 @@ func shoot() -> void :
 func get_max_range() -> int:
 
 	if next_attack_type == MeleeAttackType.THRUST:
-		return .get_max_range()
+		return super.get_max_range()
 	else:
 		return get_sweep_range(current_stats.max_range)
 

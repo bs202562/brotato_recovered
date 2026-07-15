@@ -1,7 +1,7 @@
 class_name BurningEffect
 extends NullEffect
 
-export (Resource) var burning_data = null
+@export var burning_data: Resource = null
 
 
 static func get_id() -> String:
@@ -20,7 +20,7 @@ func get_args(player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	if burning_data != null:
 		serialized.burning_data = burning_data.serialize()
@@ -29,7 +29,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void :
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	if serialized.has("burning_data"):
 		var data = BurningData.new()

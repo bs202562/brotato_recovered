@@ -14,13 +14,13 @@ var sounds_to_play = []
 
 func _ready() -> void :
 
-	pause_mode = PAUSE_MODE_PROCESS
+	process_mode = PROCESS_MODE_ALWAYS
 
 	for i in num_players:
 		var p = instance_player()
 		add_child(p)
 		players_available.append(p)
-		p.connect("finished", self, "_on_stream_finished", [p])
+		p.connect("finished", Callable(self, "_on_stream_finished").bind(p))
 		p.bus = bus
 
 
@@ -37,12 +37,12 @@ func _on_stream_finished(stream: Object) -> void :
 
 
 func _process(_delta) -> void :
-	if not sounds_to_play.empty() and not players_available.empty():
+	if not sounds_to_play.is_empty() and not players_available.is_empty():
 		var sound_to_play = sounds_to_play.pop_front()
 		set_additional_properties_if_needed(sound_to_play)
 		players_available[0].stream = sound_to_play[SOUND]
 		players_available[0].volume_db = sound_to_play[VOLUME]
-		players_available[0].pitch_scale = 1.0 + rand_range( - sound_to_play[PITCH_RAND], sound_to_play[PITCH_RAND])
+		players_available[0].pitch_scale = 1.0 + randf_range( - sound_to_play[PITCH_RAND], sound_to_play[PITCH_RAND])
 
 		players_available[0].play()
 		players_available.pop_front()

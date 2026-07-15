@@ -1,13 +1,13 @@
 class_name GainStatEveryKilledEnemiesEffect
 extends NullEffect
 
-export (String) var stat = ""
-export (int) var stat_nb = 1
+@export var stat: String = ""
+@export var stat_nb: int = 1
 var stat_hash: int = Keys.empty_hash
 
 
 func _generate_hashes() -> void :
-	._generate_hashes()
+	super._generate_hashes()
 	stat_hash = Keys.generate_hash(stat)
 
 
@@ -20,7 +20,7 @@ func get_args(_player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.stat = stat
 	serialized.stat_nb = stat_nb
@@ -29,7 +29,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void :
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	stat = serialized.stat
 	stat_hash = Keys.generate_hash(stat)

@@ -11,7 +11,7 @@ func _ready() -> void :
 	_confirm_button = get_node("Container/Content/ConfirmButton")
 	_description = get_node("Container/Content/Description")
 	_focus_emulator = get_node("FocusEmulator")
-	_confirm_button.connect("pressed", self, "_on_ConfirmButton_pressed")
+	_confirm_button.connect("pressed", Callable(self, "_on_ConfirmButton_pressed"))
 
 func _on_ConfirmButton_pressed() -> void :
 	emit_signal("confirm")

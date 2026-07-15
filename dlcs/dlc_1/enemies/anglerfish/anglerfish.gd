@@ -22,6 +22,7 @@ var deciding_timer: Timer
 
 
 func _ready():
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	initial_max_range = _attack_behavior.max_range
 	initial_charge_duration = _attack_behavior.charge_duration
 	initial_charge_speed = _attack_behavior.charge_speed
@@ -29,16 +30,16 @@ func _ready():
 	recovering_timer = create_timer(_attack_behavior.long_cooldown / 60.0, "on_recovering_timer_timeout")
 	deciding_timer = create_timer(2.0, "on_deciding_timer_timeout")
 
-	var _e = _attack_behavior.connect("move_unlocked", self, "on_finished_charging")
-	_e = _attack_behavior.connect("entered_long_cooldown", self, "on_entered_long_cooldown")
-	_e = _movement_behavior.connect("detected_player", self, "on_detected_player")
-	_e = _attack_behavior.connect("started_shooting", self, "on_started_charging")
+	var _e = _attack_behavior.connect("move_unlocked", Callable(self, "on_finished_charging"))
+	_e = _attack_behavior.connect("entered_long_cooldown", Callable(self, "on_entered_long_cooldown"))
+	_e = _movement_behavior.connect("detected_player", Callable(self, "on_detected_player"))
+	_e = _attack_behavior.connect("started_shooting", Callable(self, "on_started_charging"))
 
 	self_boost_timer = BOOST_CD
 
 
 func respawn() -> void :
-	.respawn()
+	super.respawn()
 	state = State.CHILLING
 	self_boost_timer = BOOST_CD
 	recovering_timer.stop()
@@ -48,6 +49,11 @@ func respawn() -> void :
 
 
 func _physics_process(delta):
+	_anglerfish_physics_process_self(delta)
+	super._physics_process(delta) # 4.x 移植: Godot 3 会自动调用父类，且子类的 return 不影响父类执行
+
+
+func _anglerfish_physics_process_self(delta):
 	if state != State.CHASING:
 		return
 
@@ -125,7 +131,7 @@ func reset_boost_timers() -> void :
 
 
 func _on_hit_something(thing_hit: Node, damage_dealt: int) -> void :
-	._on_hit_something(thing_hit, damage_dealt)
+	super._on_hit_something(thing_hit, damage_dealt)
 	nb_times_boosted = 0
 	_attack_behavior._current_cd = 120
 	is_in_long_cooldown = false
@@ -147,7 +153,7 @@ func reset_attack_data() -> void :
 func boost_self() -> void :
 	if not _movement_behavior._detected_player:
 		return
-	.boost_self()
+	super.boost_self()
 	_attack_behavior.charge_speed += speed_on_boost * 5
 	_attack_behavior.charge_duration += speed_on_boost / 300.0
 	_attack_behavior.max_range += speed_on_boost * 2
@@ -160,7 +166,7 @@ func create_timer(wait_time: float, func_connect_name: String) -> Timer:
 	timer.autostart = false
 	timer.wait_time = wait_time
 	timer.one_shot = true
-	var _e = timer.connect("timeout", self, func_connect_name)
+	var _e = timer.connect("timeout", Callable(self, func_connect_name))
 	add_child(timer)
 	return timer
 

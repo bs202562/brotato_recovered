@@ -1,19 +1,19 @@
 [gd_scene load_steps=39 format=2]
 
-[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_mantis.PNG" type="Texture" id=1]
-[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_horned_bruiser.PNG" type="Texture" id=2]
-[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_colossus.PNG" type="Texture" id=3]
-[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_tentacle.PNG" type="Texture" id=4]
-[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_fin_alien.PNG" type="Texture" id=5]
-[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_baby_alien.PNG" type="Texture" id=6]
-[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_slasher.PNG" type="Texture" id=7]
-[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_ramp.PNG" type="Texture" id=8]
-[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_brotato.PNG" type="Texture" id=9]
-[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_gate.PNG" type="Texture" id=10]
-[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_background.PNG" type="Texture" id=11]
-[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_gate_light.PNG" type="Texture" id=12]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_mantis.PNG" type="Texture2D" id=1]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_horned_bruiser.PNG" type="Texture2D" id=2]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_colossus.PNG" type="Texture2D" id=3]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_tentacle.PNG" type="Texture2D" id=4]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_fin_alien.PNG" type="Texture2D" id=5]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_baby_alien.PNG" type="Texture2D" id=6]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_slasher.PNG" type="Texture2D" id=7]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_ramp.PNG" type="Texture2D" id=8]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_brotato.PNG" type="Texture2D" id=9]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_gate.PNG" type="Texture2D" id=10]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_background.PNG" type="Texture2D" id=11]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u33_allPainNoGain/keyart_u33_gate_light.PNG" type="Texture2D" id=12]
 [ext_resource path="res://visual_effects/shader_noise_displacement.tres" type="Shader" id=13]
-[ext_resource path="res://particles/sprites/particle_28.png" type="Texture" id=14]
+[ext_resource path="res://particles/sprites/particle_28.png" type="Texture2D" id=14]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 13 )
@@ -27,14 +27,14 @@ resource_name = "New Anim"
 length = 3.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("offset/horned_bruiser:rect_scale")
+tracks/0/path = NodePath("offset/horned_bruiser:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.9, 3.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1.9, 3.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ), Vector2( 1.02, 0.98 ) ]
 }
@@ -42,14 +42,14 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("horned_bruiser:rect_scale")
+tracks/0/path = NodePath("horned_bruiser:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -66,26 +66,26 @@ resource_name = "New Anim"
 length = 4.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("offset/tentacle:rect_rotation")
+tracks/0/path = NodePath("offset/tentacle:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.2, 4.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.2, 4.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ -7.6, 0.6, -7.6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("offset/tentacle:rect_scale")
+tracks/1/path = NodePath("offset/tentacle:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.1, 2.2, 3.2, 4.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1.1, 2.2, 3.2, 4.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0.97, 1.03 ), Vector2( 1, 1 ), Vector2( 0.97, 1.03 ), Vector2( 1, 1 ) ]
 }
@@ -93,26 +93,26 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("offset/tentacle:rect_rotation")
+tracks/0/path = NodePath("offset/tentacle:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("offset/tentacle:rect_scale")
+tracks/1/path = NodePath("offset/tentacle:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -122,26 +122,26 @@ resource_name = "New Anim"
 length = 4.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("offset/fin_alien:rect_rotation")
+tracks/0/path = NodePath("offset/fin_alien:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.1, 4.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.1, 4.2 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -5.4, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("offset/fin_alien:rect_scale")
+tracks/1/path = NodePath("offset/fin_alien:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2.1, 4.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.1, 4.2 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.01, 0.99 ), Vector2( 0.99, 1.01 ), Vector2( 1.01, 0.99 ) ]
 }
@@ -149,26 +149,26 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=9]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("offset/fin_alien:rect_rotation")
+tracks/0/path = NodePath("offset/fin_alien:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("offset/fin_alien:rect_scale")
+tracks/1/path = NodePath("offset/fin_alien:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -178,14 +178,14 @@ resource_name = "New Anim"
 length = 2.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("offset/baby_alien:rect_scale")
+tracks/0/path = NodePath("offset/baby_alien:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.4, 2.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1.4, 2.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.03, 0.97 ), Vector2( 0.97, 1.03 ), Vector2( 1.03, 0.97 ) ]
 }
@@ -193,14 +193,14 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("offset/baby_alien:rect_scale")
+tracks/0/path = NodePath("offset/baby_alien:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -210,38 +210,38 @@ resource_name = "New Anim"
 length = 6.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("slasher:rect_rotation")
+tracks/0/path = NodePath("slasher:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3.4, 6.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 3.4, 6.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -3.9, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("slasher:rect_position")
+tracks/1/path = NodePath("slasher:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 3.4, 6.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 3.4, 6.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1286, 194 ), Vector2( 1256.18, 194 ), Vector2( 1286, 194 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("slasher:rect_scale")
+tracks/2/path = NodePath("slasher:scale")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.7, 3.4, 5.2, 6.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1.7, 3.4, 5.2, 6.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.99, 1.01 ), Vector2( 1.01, 0.99 ), Vector2( 0.99, 1.01 ), Vector2( 1.01, 0.99 ), Vector2( 0.99, 1.01 ) ]
 }
@@ -249,38 +249,38 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=13]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("slasher:rect_rotation")
+tracks/0/path = NodePath("slasher:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("slasher:rect_position")
+tracks/1/path = NodePath("slasher:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1286, 194 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("slasher:rect_scale")
+tracks/2/path = NodePath("slasher:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -290,26 +290,26 @@ resource_name = "New Anim"
 length = 3.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../mantis/mantis:rect_rotation")
+tracks/0/path = NodePath("../mantis/mantis:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.7, 3.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1.7, 3.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 5.4, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../mantis/mantis:rect_scale")
+tracks/1/path = NodePath("../mantis/mantis:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.7, 3.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1.7, 3.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ), Vector2( 1.02, 0.98 ) ]
 }
@@ -317,26 +317,26 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=15]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("../mantis/mantis:rect_rotation")
+tracks/0/path = NodePath("../mantis/mantis:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../mantis/mantis:rect_scale")
+tracks/1/path = NodePath("../mantis/mantis:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -345,25 +345,25 @@ tracks/1/keys = {
 blend_mode = 1
 
 [sub_resource type="Gradient" id=23]
-offsets = PoolRealArray( 0, 0.535294, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+offsets = PackedFloat32Array( 0, 0.535294, 1 )
+colors = PackedColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
 
 [sub_resource type="Gradient" id=24]
-colors = PoolColorArray( 0.414063, 0.414063, 0.414063, 1, 0.785156, 0.785156, 0.785156, 1 )
+colors = PackedColorArray( 0.414063, 0.414063, 0.414063, 1, 0.785156, 0.785156, 0.785156, 1 )
 
 [sub_resource type="Animation" id=16]
 resource_name = "New Anim"
 length = 2.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("brotato:rect_scale")
+tracks/0/path = NodePath("brotato:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.1, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1.1, 2.2 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.04, 0.96 ), Vector2( 0.96, 1.04 ), Vector2( 1.04, 0.96 ) ]
 }
@@ -371,14 +371,14 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=17]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("brotato:rect_scale")
+tracks/0/path = NodePath("brotato:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -398,8 +398,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.333, 0.666 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.333, 0.666 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.619608 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.619608 ) ]
 }
@@ -413,8 +413,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.388235 ) ]
 }
@@ -424,134 +424,134 @@ resource_name = "New Anim"
 length = 6.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("..:rect_position")
+tracks/0/path = NodePath("..:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 3, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 15, 0 ), Vector2( -23, 0 ), Vector2( 15, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../../brotato:rect_position")
+tracks/1/path = NodePath("../../brotato:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 3, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 3, 0 ), Vector2( -3, 0 ), Vector2( 3, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../../ramp:rect_position")
+tracks/2/path = NodePath("../../ramp:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 3, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 8, 0 ), Vector2( -8, 0 ), Vector2( 8, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../../mantis:rect_position")
+tracks/3/path = NodePath("../../mantis:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 3, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -8, 0 ), Vector2( 8, 0 ), Vector2( -8, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../../slasher:rect_position")
+tracks/4/path = NodePath("../../slasher:position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 3, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -10, 0 ), Vector2( 10, 0 ), Vector2( -10, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../../baby_alien:rect_position")
+tracks/5/path = NodePath("../../baby_alien:position")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 3, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -14, 0 ), Vector2( 14, 0 ), Vector2( -14, 0 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("../../fin_alien:rect_position")
+tracks/6/path = NodePath("../../fin_alien:position")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 3, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -18, 0 ), Vector2( 18, 0 ), Vector2( -18, 0 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("../../tentacle:rect_position")
+tracks/7/path = NodePath("../../tentacle:position")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 3, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -16, 0 ), Vector2( 16, 0 ), Vector2( -16, 0 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("../../colossus:rect_position")
+tracks/8/path = NodePath("../../colossus:position")
 tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 3, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -19, 0 ), Vector2( 19, 0 ), Vector2( -19, 0 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("../../horned_bruiser:rect_position")
+tracks/9/path = NodePath("../../horned_bruiser:position")
 tracks/9/interp = 2
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 3, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -22, 0 ), Vector2( 22, 0 ), Vector2( -22, 0 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("../../Background:rect_position")
+tracks/10/path = NodePath("../../Background:position")
 tracks/10/interp = 2
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -30, 0 ), Vector2( 30, 0 ) ]
 }
@@ -559,145 +559,145 @@ tracks/10/keys = {
 [sub_resource type="Animation" id=21]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("..:rect_position")
+tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../../brotato:rect_position")
+tracks/1/path = NodePath("../../brotato:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../../ramp:rect_position")
+tracks/2/path = NodePath("../../ramp:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../../mantis:rect_position")
+tracks/3/path = NodePath("../../mantis:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../../slasher:rect_position")
+tracks/4/path = NodePath("../../slasher:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../../baby_alien:rect_position")
+tracks/5/path = NodePath("../../baby_alien:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("../../fin_alien:rect_position")
+tracks/6/path = NodePath("../../fin_alien:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("../../tentacle:rect_position")
+tracks/7/path = NodePath("../../tentacle:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("../../colossus:rect_position")
+tracks/8/path = NodePath("../../colossus:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("../../horned_bruiser:rect_position")
+tracks/9/path = NodePath("../../horned_bruiser:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("../../Background:rect_position")
+tracks/10/path = NodePath("../../Background:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 
 [node name="BaseTitleScreenBackground" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Background" type="Control" parent="."]
-margin_right = 39.9994
-margin_bottom = 40.0
+offset_right = 39.9994
+offset_bottom = 40.0
 
 [node name="Background" type="TextureRect" parent="Background"]
 material = SubResource( 2 )
@@ -705,34 +705,34 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 1900.0
-margin_bottom = 1060.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1900.0
+offset_bottom = 1060.0
 texture = ExtResource( 11 )
 
 [node name="horned_bruiser" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="offset" type="Control" parent="horned_bruiser"]
-margin_left = 1790.03
-margin_top = 31.0
-margin_right = 1830.03
-margin_bottom = 71.0
-rect_scale = Vector2( -1, 1 )
+offset_left = 1790.03
+offset_top = 31.0
+offset_right = 1830.03
+offset_bottom = 71.0
+scale = Vector2( -1, 1 )
 
 [node name="horned_bruiser" type="TextureRect" parent="horned_bruiser/offset"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1007.0
-margin_top = -103.0
-margin_right = 1713.0
-margin_bottom = 625.0
-rect_scale = Vector2( 1.00049, 0.999513 )
-rect_pivot_offset = Vector2( 435.061, 645.585 )
+offset_left = 1007.0
+offset_top = -103.0
+offset_right = 1713.0
+offset_bottom = 625.0
+scale = Vector2( 1.00049, 0.999513 )
+pivot_offset = Vector2( 435.061, 645.585 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="horned_bruiser/offset"]
@@ -742,14 +742,14 @@ autoplay = "New Anim"
 anims/RESET = SubResource( 4 )
 
 [node name="colossus" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="offset" type="Control" parent="colossus"]
-margin_left = -23.0
-margin_top = 52.0
-margin_right = 17.0
-margin_bottom = 92.0
+offset_left = -23.0
+offset_top = 52.0
+offset_right = 17.0
+offset_bottom = 92.0
 
 [node name="colossus" type="TextureRect" parent="colossus/offset"]
 material = SubResource( 5 )
@@ -757,34 +757,34 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 366.0
-margin_top = 142.0
-margin_right = 904.0
-margin_bottom = 743.0
-rect_pivot_offset = Vector2( 246, 469 )
+offset_left = 366.0
+offset_top = 142.0
+offset_right = 904.0
+offset_bottom = 743.0
+pivot_offset = Vector2( 246, 469 )
 texture = ExtResource( 3 )
 
 [node name="tentacle" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="offset" type="Control" parent="tentacle"]
-margin_left = 1890.0
-margin_top = 64.0
-margin_right = 1930.0
-margin_bottom = 104.0
-rect_scale = Vector2( -1, 1 )
+offset_left = 1890.0
+offset_top = 64.0
+offset_right = 1930.0
+offset_bottom = 104.0
+scale = Vector2( -1, 1 )
 
 [node name="tentacle" type="TextureRect" parent="tentacle/offset"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 91.761
-margin_top = -30.1759
-margin_right = 730.761
-margin_bottom = 723.824
-rect_pivot_offset = Vector2( 160.782, 519.764 )
+offset_left = 91.761
+offset_top = -30.1759
+offset_right = 730.761
+offset_bottom = 723.824
+pivot_offset = Vector2( 160.782, 519.764 )
 texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="tentacle"]
@@ -793,25 +793,25 @@ autoplay = "New Anim"
 anims/RESET = SubResource( 7 )
 
 [node name="fin_alien" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="offset" type="Control" parent="fin_alien"]
-margin_left = 78.0
-margin_top = 96.0
-margin_right = 118.0
-margin_bottom = 136.0
+offset_left = 78.0
+offset_top = 96.0
+offset_right = 118.0
+offset_bottom = 136.0
 
 [node name="fin_alien" type="TextureRect" parent="fin_alien/offset"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1057.0
-margin_top = 176.0
-margin_right = 1457.0
-margin_bottom = 593.0
-rect_pivot_offset = Vector2( 246, 351 )
+offset_left = 1057.0
+offset_top = 176.0
+offset_right = 1457.0
+offset_bottom = 593.0
+pivot_offset = Vector2( 246, 351 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="fin_alien"]
@@ -820,8 +820,8 @@ autoplay = "New Anim"
 anims/RESET = SubResource( 9 )
 
 [node name="baby_alien" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="baby_alien"]
 autoplay = "New Anim"
@@ -829,37 +829,37 @@ autoplay = "New Anim"
 anims/RESET = SubResource( 11 )
 
 [node name="offset" type="Control" parent="baby_alien"]
-margin_left = -45.0
-margin_top = 57.0
-margin_right = -5.0
-margin_bottom = 97.0
+offset_left = -45.0
+offset_top = 57.0
+offset_right = -5.0
+offset_bottom = 97.0
 
 [node name="baby_alien" type="TextureRect" parent="baby_alien/offset"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1277.0
-margin_top = 445.0
-margin_right = 1705.0
-margin_bottom = 965.0
-rect_pivot_offset = Vector2( 207, 465 )
+offset_left = 1277.0
+offset_top = 445.0
+offset_right = 1705.0
+offset_bottom = 965.0
+pivot_offset = Vector2( 207, 465 )
 texture = ExtResource( 6 )
 
 [node name="slasher" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="slasher" type="TextureRect" parent="slasher"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1266.0
-margin_top = 174.0
-margin_right = 1900.0
-margin_bottom = 1060.0
-rect_pivot_offset = Vector2( 528, 878 )
+offset_left = 1266.0
+offset_top = 174.0
+offset_right = 1900.0
+offset_bottom = 1060.0
+pivot_offset = Vector2( 528, 878 )
 texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="slasher"]
@@ -868,19 +868,19 @@ autoplay = "New Anim"
 anims/RESET = SubResource( 13 )
 
 [node name="mantis" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="mantis" type="TextureRect" parent="mantis"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 8.0
-margin_top = 191.0
-margin_right = 689.0
-margin_bottom = 1017.0
-rect_pivot_offset = Vector2( 447, 789 )
+offset_left = 8.0
+offset_top = 191.0
+offset_right = 689.0
+offset_bottom = 1017.0
+pivot_offset = Vector2( 447, 789 )
 texture = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="mantis"]
@@ -890,19 +890,19 @@ autoplay = "New Anim"
 anims/RESET = SubResource( 15 )
 
 [node name="ramp" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="ramp" type="TextureRect" parent="ramp"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = 867.0
-margin_right = 1900.0
-margin_bottom = 1060.0
-rect_pivot_offset = Vector2( 948, 193 )
+offset_left = -20.0
+offset_top = 867.0
+offset_right = 1900.0
+offset_bottom = 1060.0
+pivot_offset = Vector2( 948, 193 )
 texture = ExtResource( 8 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ramp"]
@@ -929,19 +929,19 @@ color_ramp = SubResource( 23 )
 color_initial_ramp = SubResource( 24 )
 
 [node name="brotato" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="brotato" type="TextureRect" parent="brotato"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 535.0
-margin_top = 526.0
-margin_right = 1306.0
-margin_bottom = 1021.0
-rect_pivot_offset = Vector2( 368, 466 )
+offset_left = 535.0
+offset_top = 526.0
+offset_right = 1306.0
+offset_bottom = 1021.0
+pivot_offset = Vector2( 368, 466 )
 texture = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="brotato"]
@@ -950,20 +950,20 @@ autoplay = "New Anim"
 anims/RESET = SubResource( 17 )
 
 [node name="gates" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="gates" type="TextureRect" parent="gates"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -27.36
-margin_top = -29.32
-margin_right = 1892.64
-margin_bottom = 1050.68
-rect_scale = Vector2( 1.02, 1.02 )
-rect_pivot_offset = Vector2( 368, 466 )
+offset_left = -27.36
+offset_top = -29.32
+offset_right = 1892.64
+offset_bottom = 1050.68
+scale = Vector2( 1.02, 1.02 )
+pivot_offset = Vector2( 368, 466 )
 texture = ExtResource( 10 )
 
 [node name="gate_lights" type="TextureRect" parent="gates/gates"]
@@ -973,11 +973,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -960.0
-margin_top = -540.0
-margin_right = 960.0
-margin_bottom = 540.0
-rect_pivot_offset = Vector2( 2265, 682 )
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+pivot_offset = Vector2( 2265, 682 )
 texture = ExtResource( 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="gates/gates/gate_lights"]

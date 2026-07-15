@@ -9,7 +9,7 @@
 [ext_resource path="res://entities/units/enemies/boss/boss_state.tscn" type="PackedScene" id=7]
 [ext_resource path="res://entities/units/enemies/attack_behaviors/charging_attack_behavior.gd" type="Script" id=8]
 [ext_resource path="res://entities/units/movement_behaviors/stay_in_range_from_player_movement_behavior.gd" type="Script" id=9]
-[ext_resource path="res://entities/units/enemies/croc/croc.png" type="Texture" id=10]
+[ext_resource path="res://entities/units/enemies/croc/croc.png" type="Texture2D" id=10]
 [ext_resource path="res://entities/units/enemies/croc/croc_stats.tres" type="Resource" id=11]
 
 [sub_resource type="CircleShape2D" id=4]
@@ -28,7 +28,7 @@ stats = ExtResource( 11 )
 enemy_id = "croc"
 is_elite = true
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -64 )
 texture = ExtResource( 10 )
 
@@ -113,8 +113,8 @@ only_positions_in_target_direction = false
 scale_charge_duration_with_range = false
 
 [node name="LifeBar" parent="." index="14"]
-margin_top = -136.0
-margin_bottom = -120.0
+offset_top = -136.0
+offset_bottom = -120.0
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]

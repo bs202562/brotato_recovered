@@ -2,9 +2,9 @@ extends Panel
 class_name IconPanel
 
 
-onready var _coop_count: Label = $"%CoopCount"
-onready var _count: Label = $"%Count"
-onready var _curse: TextureRect = $"%Curse"
+@onready var _coop_count: Label = $"%CoopCount"
+@onready var _count: Label = $"%Count"
+@onready var _curse: TextureRect = $"%Curse"
 
 
 func _ready() -> void :
@@ -23,13 +23,13 @@ func set_count(count: int) -> void :
 
 
 func _update_stylebox(is_cursed: bool = false, tier: int = 0) -> void :
-	var stylebox = get_stylebox("panel").duplicate()
+	var stylebox = get_theme_stylebox("panel").duplicate()
 	_curse.visible = is_cursed
 	ItemService.change_panel_stylebox_from_tier(stylebox, tier)
 	
 	if stylebox is StyleBoxFlat:
-		stylebox.bg_color = lerp(stylebox.bg_color, Color("50c8c8c8"), 0.5)
-	add_stylebox_override("panel", stylebox)
+		stylebox.bg_color = lerp(stylebox.bg_color, Color("#c8c8c850"), 0.5)
+	add_theme_stylebox_override("panel", stylebox)
 
 
 func _replace_with_positive_color():

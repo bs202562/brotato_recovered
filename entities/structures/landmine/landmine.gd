@@ -1,18 +1,18 @@
 class_name Landmine
 extends Structure
 
-export (Resource) var pressed_sprite = null
-export (Array, Resource) var pressed_sounds
+@export var pressed_sprite: Resource = null
+@export var pressed_sounds: Array = [] # (Array, Resource)
 
-onready var _sprite = $Animation / Sprite
-onready var _original_texture = _sprite.texture
+@onready var _sprite = $Animation / Sprite2D
+@onready var _original_texture = _sprite.texture
 
 var _original_effects: Array
 var _explode_args_landmine: = WeaponServiceExplodeArgs.new()
 
 
 func respawn() -> void :
-	.respawn()
+	super.respawn()
 	_sprite.texture = _original_texture
 
 
@@ -46,7 +46,7 @@ func explode() -> void :
 	var _inst = WeaponService.explode(explosion_effect, _explode_args_landmine)
 	die()
 
-func die(args: = Utils.default_die_args) -> void :
+func die(args = Utils.default_die_args) -> void :
 	assert ( not dead)
 	if is_instance_valid(curse_particle_instance):
 		curse_particle_instance.queue_free()
@@ -54,14 +54,14 @@ func die(args: = Utils.default_die_args) -> void :
 	_collision.disabled = true
 
 	cleaning_up = args.cleaning_up
-	_animation_player.playback_speed = 1
+	_animation_player.speed_scale = 1
 	dead = true
 	_animation_player.play("death")
 	emit_signal("died", self, args)
 
 func boost(boost_args: BoostArgs) -> void :
 	if can_be_boosted:
-		.boost(boost_args)
+		super.boost(boost_args)
 		stats.damage *= 1.0 + boost_args.damage_boost / 100.0
 
 		_original_effects = effects
@@ -71,12 +71,12 @@ func boost(boost_args: BoostArgs) -> void :
 
 
 func boost_ended() -> void :
-	.boost_ended()
+	super.boost_ended()
 	effects = _original_effects
 
 
 func set_data(data: Resource) -> void :
-	.set_data(data)
+	super.set_data(data)
 
 	if data.is_cursed:
 		curse_particle_instance = curse_particles.instance()

@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Swim 1.mp3-e4cfd81042027c49154d8c3c0c6c437f.mp3str"
+uid="uid://cvsoxg68uwbdv"
+path="res://.godot/imported/Swim 1.mp3-e4cfd81042027c49154d8c3c0c6c437f.mp3str"
 
 [deps]
 
 source_file="res://entities/units/player/step_sounds/Swim 1.mp3"
-dest_files=[ "res://.import/Swim 1.mp3-e4cfd81042027c49154d8c3c0c6c437f.mp3str" ]
+dest_files=["res://.godot/imported/Swim 1.mp3-e4cfd81042027c49154d8c3c0c6c437f.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

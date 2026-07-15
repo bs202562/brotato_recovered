@@ -2,7 +2,7 @@ class_name DifficultyLabel
 extends Label
 
 func _on_ui_timeline_run_title_move_right():
-	align = Label.ALIGN_CENTER
+	horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 
 func _on_ui_timeline_run_title_move_left():
-	align = Label.ALIGN_LEFT
+	horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT

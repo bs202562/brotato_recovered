@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Adonai - Currents.mp3-8083405d292efbf1288f714d3533b92f.mp3str"
+uid="uid://dpejm1rg4t5v"
+path="res://.godot/imported/Adonai - Currents.mp3-8083405d292efbf1288f714d3533b92f.mp3str"
 
 [deps]
 
 source_file="res://dlcs/dlc_1/resources/music/Adonai - Currents.mp3"
-dest_files=[ "res://.import/Adonai - Currents.mp3-8083405d292efbf1288f714d3533b92f.mp3str" ]
+dest_files=["res://.godot/imported/Adonai - Currents.mp3-8083405d292efbf1288f714d3533b92f.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

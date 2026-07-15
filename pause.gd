@@ -27,7 +27,7 @@ func _init() -> void :
 	if Utils.on_nintendo_nx_or_ounce:
 		OS_Seaven.set_joycon_support(true)
 	# 监听存档数据加载完成信号（ProgressData 是自动加载的全局单例）
-	var _ready_error = ProgressData.connect("ready", self, "_on_progress_data_ready")
+	var _ready_error = ProgressData.connect("ready", Callable(self, "_on_progress_data_ready"))
 
 func _process(_delta: float):
 	# 每帧根据状态机推进启动流程
@@ -44,12 +44,12 @@ func _process(_delta: float):
 			ProgressData._apply_sounds_settings()
 
 			$AnimationPlayer.play("start")
-			yield($AnimationPlayer, "animation_finished")
+			await $AnimationPlayer.animation_finished
 			state = State.CHANGE_SCENE
 		State.CHANGE_SCENE:
 			# 应用全部设置（分辨率/语言等），然后进入标题界面
 			ProgressData.apply_settings()
-			var _error = get_tree().change_scene("res://ui/menus/title_screen/title_screen.tscn")
+			var _error = get_tree().change_scene_to_file("res://ui/menus/title_screen/title_screen.tscn")
 
 
 func _draw():

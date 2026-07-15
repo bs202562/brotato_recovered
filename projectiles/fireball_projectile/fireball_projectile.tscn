@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://projectiles/player_projectile.tscn" type="PackedScene" id=1]
-[ext_resource path="res://projectiles/fireball_projectile/fireball_projectile.png" type="Texture" id=2]
+[ext_resource path="res://projectiles/fireball_projectile/fireball_projectile.png" type="Texture2D" id=2]
 [ext_resource path="res://particles/burning/torch_burning_particles.tscn" type="PackedScene" id=3]
 [ext_resource path="res://projectiles/fireball_projectile/fireball_projectile.gd" type="Script" id=4]
 
@@ -9,7 +9,7 @@
 script = ExtResource( 4 )
 stop_delay = 20.0
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 position = Vector2( 1, 0 )
 texture = ExtResource( 2 )
 

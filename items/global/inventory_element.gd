@@ -7,8 +7,8 @@ signal element_focused(element)
 signal element_unfocused(element)
 signal element_pressed(element)
 
-export (Resource) var sound_on_focus
-export (Resource) var sound_on_pressed
+@export var sound_on_focus: Resource
+@export var sound_on_pressed: Resource
 
 var item: Resource
 var is_random: = false
@@ -19,11 +19,11 @@ var background_transparency: = float(0.25)
 var background_modulate: = Color(1, 1, 1, 0)
 var player_index: = 0
 
-onready var _number_label = $Label
-onready var _icon = $"%Icon"
-onready var _curse = $"%Curse"
-onready var _baned = $"%Baned"
-onready var _frame_panel: Panel = $frame
+@onready var _number_label = $Label
+@onready var _icon = $"%Icon"
+@onready var _curse = $"%Curse"
+@onready var _baned = $"%Baned"
+@onready var _frame_panel: Panel = $frame
 
 
 func set_element(item_data: Resource) -> void :
@@ -67,16 +67,16 @@ func set_number(p_number: int) -> void :
 
 
 func set_font(font: Resource) -> void :
-	_number_label.add_font_override("font", font)
+	_number_label.add_theme_font_override("font", font)
 
 
-func get_inventory_icon() -> Texture:
+func get_inventory_icon() -> Texture2D:
 	return _icon.texture
 
 
 func set_element_size(p_size: Vector2) -> void :
-	rect_min_size = p_size
-	rect_size = p_size
+	custom_minimum_size = p_size
+	size = p_size
 
 
 func silouhette_if_hidden_in_codex() -> void :
@@ -106,14 +106,14 @@ func update_banned_item() -> void :
 func update_background_color(p_color: int = - 1) -> void :
 	if item == null:
 		return
-	var stylebox_color = get_stylebox("normal").duplicate()
+	var stylebox_color = get_theme_stylebox("normal").duplicate()
 	if item is ItemEntity:
 		ItemService.change_inventory_element_stylebox_from_entity_type(stylebox_color, item, 0.25)
 	else:
 		ItemService.change_inventory_element_stylebox_from_tier(stylebox_color, p_color if p_color != - 1 else item.tier, 0.25, _frame_panel)
 	stylebox_color.bg_color = lerp(stylebox_color.bg_color, Color(background_modulate.r, background_modulate.g, background_modulate.b), background_modulate.a)
 	stylebox_color.bg_color.a = background_transparency
-	add_stylebox_override("normal", stylebox_color)
+	add_theme_stylebox_override("normal", stylebox_color)
 
 
 func _on_InventoryElement_mouse_entered() -> void :

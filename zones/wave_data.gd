@@ -1,7 +1,7 @@
 class_name WaveData
 extends Resource
 
-export (int) var wave_duration = 60
-export (int) var max_enemies = 100
-export (Array, Resource) var groups_data
-export (Array, Array) var conditional_groups_data
+@export var wave_duration: int = 60
+@export var max_enemies: int = 100
+@export var groups_data: Array = [] # (Array, Resource)
+@export var conditional_groups_data: Array = [] # (Array, Array)

@@ -2,10 +2,10 @@
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
-uniform vec4 new_color : hint_color = vec4(0.105882, 1.000000, 0.176471, 1.000000);
+uniform vec4 new_color : source_color = vec4(0.105882, 1.000000, 0.176471, 1.000000);
 uniform float detection_offset : hint_range(-1, 1) = 0.88;
 uniform float detection_strenght : hint_range(0, 25) = 1;
-uniform vec4 color_to_replace : hint_color = vec4(0.105882, 1.000000, 0.176471, 1.000000);
+uniform vec4 color_to_replace : source_color = vec4(0.105882, 1.000000, 0.176471, 1.000000);
 
 
 
@@ -15,6 +15,7 @@ void vertex() {
 }
 
 void fragment() {
+	vec4 in_modulate = COLOR; // 4.x 移植: 顶点色即 modulate
 	vec3 texture_rgb;
 	float texture_alpha;
 	{
@@ -38,8 +39,8 @@ void fragment() {
 	vec3 texture_with_new_color_part = new_color.rgb * vec3(1.0 - mask_color) * texture_grayscale;
 
 	vec3 texture_with_old_color_part = vec3(mask_color) * texture_rgb;
-	COLOR.rgb = MODULATE.rgb * (texture_with_new_color_part + texture_with_old_color_part) ;
-	COLOR.a = texture_alpha * MODULATE.a;
+	COLOR.rgb = in_modulate.rgb * (texture_with_new_color_part + texture_with_old_color_part) ;
+	COLOR.a = texture_alpha * in_modulate.a;
 
 }
 "

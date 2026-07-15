@@ -5,8 +5,8 @@
 [ext_resource path="res://ui/menus/shop/button_with_icon.gd" type="Script" id=3]
 
 [node name="ButtonWithIcon" type="Button"]
-margin_right = 30.0
-margin_bottom = 82.0
+offset_right = 30.0
+offset_bottom = 82.0
 theme = ExtResource( 2 )
 align = 0
 script = ExtResource( 3 )
@@ -17,34 +17,34 @@ anchor_bottom = 1.0
 alignment = 1
 
 [node name="Margin" type="ColorRect" parent="HBoxContainer"]
-margin_right = 12.0
-margin_bottom = 82.0
-rect_min_size = Vector2( 12, 0 )
+offset_right = 12.0
+offset_bottom = 82.0
+custom_minimum_size = Vector2( 12, 0 )
 mouse_filter = 2
 color = Color( 1, 1, 1, 0 )
 
 [node name="Label" type="Label" parent="HBoxContainer"]
-margin_left = 16.0
-margin_top = 18.0
-margin_right = 81.0
-margin_bottom = 63.0
+offset_left = 16.0
+offset_top = 18.0
+offset_right = 81.0
+offset_bottom = 63.0
 text = "123"
 valign = 1
 
 [node name="GoldIcon" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 85.0
-margin_right = 149.0
-margin_bottom = 82.0
-rect_min_size = Vector2( 64, 0 )
+offset_left = 85.0
+offset_right = 149.0
+offset_bottom = 82.0
+custom_minimum_size = Vector2( 64, 0 )
 mouse_filter = 2
 expand = true
 stretch_mode = 6
 
 [node name="AdditionalIcon" type="TextureRect" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 153.0
-margin_right = 153.0
-margin_bottom = 82.0
+offset_left = 153.0
+offset_right = 153.0
+offset_bottom = 82.0
 expand = true
 stretch_mode = 6
 

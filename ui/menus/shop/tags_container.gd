@@ -11,7 +11,7 @@ func _ready() -> void :
 
 
 func set_tags_text(item_data: ItemParentData, player_index: int) -> void :
-	rect_size = Vector2.ZERO
+	size = Vector2.ZERO
 
 	var was_visible = visible
 	if was_visible:
@@ -36,5 +36,5 @@ func set_tags_text(item_data: ItemParentData, player_index: int) -> void :
 
 
 func set_pos_from(elt: Control) -> void :
-	rect_global_position.x = elt.rect_global_position.x + elt.rect_size.x + DIST
-	rect_global_position.y = elt.rect_global_position.y
+	global_position.x = elt.global_position.x + elt.size.x + DIST
+	global_position.y = elt.global_position.y

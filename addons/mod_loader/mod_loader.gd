@@ -29,11 +29,11 @@ const LOG_NAME: = "ModLoader:Loader"
 
 
 
-var UNPACKED_DIR: = "res://mods-unpacked/" setget , deprecated_direct_access_UNPACKED_DIR
+var UNPACKED_DIR: = "res://mods-unpacked/": get = deprecated_direct_access_UNPACKED_DIR
 
 
 
-var mod_data: = {} setget , deprecated_direct_access_mod_data
+var mod_data: = {}: get = deprecated_direct_access_mod_data
 
 
 
@@ -88,7 +88,7 @@ func _load_mods() -> void :
 	
 	var zip_data: = _load_mod_zips()
 
-	if zip_data.empty():
+	if zip_data.is_empty():
 		ModLoaderLog.info("No zipped mods found", LOG_NAME)
 	else:
 		ModLoaderLog.success("DONE: Loaded %s mod files into the virtual filesystem" % zip_data.size(), LOG_NAME)
@@ -119,7 +119,7 @@ func _load_mods() -> void :
 	for dir_name in ModLoaderStore.mod_data:
 		var mod: ModData = ModLoaderStore.mod_data[dir_name]
 		mod.load_manifest()
-		if mod.manifest.get("config_schema") and not mod.manifest.config_schema.empty():
+		if mod.manifest.get("config_schema") and not mod.manifest.config_schema.is_empty():
 			mod.load_configs()
 
 	ModLoaderLog.success("DONE: Loaded all meta data", LOG_NAME)
@@ -252,11 +252,11 @@ func _setup_mods() -> int:
 	
 	var unpacked_mods_path: = _ModLoaderPath.get_unpacked_mods_dir_path()
 
-	var dir: = Directory.new()
-	if not dir.open(unpacked_mods_path) == OK:
+	var dir := DirAccess.open(unpacked_mods_path)
+	if dir == null:
 		ModLoaderLog.warning("Can't open unpacked mods folder %s." % unpacked_mods_path, LOG_NAME)
 		return - 1
-	if not dir.list_dir_begin() == OK:
+	if not dir.list_dir_begin()  == OK:
 		ModLoaderLog.error("Can't read unpacked mods folder %s." % unpacked_mods_path, LOG_NAME)
 		return - 1
 
@@ -298,10 +298,10 @@ func _setup_mods() -> int:
 
 func _init_mod_data(mod_id: String, zip_path: = "") -> void :
 		
-	var local_mod_path: = _ModLoaderPath.get_unpacked_mods_dir_path().plus_file(mod_id)
+	var local_mod_path: = _ModLoaderPath.get_unpacked_mods_dir_path().path_join(mod_id)
 
 	var mod: = ModData.new()
-	if not zip_path.empty():
+	if not zip_path.is_empty():
 		mod.zip_name = _ModLoaderPath.get_file_name_from_path(zip_path)
 		mod.zip_path = zip_path
 	mod.dir_path = local_mod_path

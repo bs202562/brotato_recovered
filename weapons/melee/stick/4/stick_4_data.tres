@@ -2,7 +2,7 @@
 
 [ext_resource path="res://weapons/melee/stick/4/stick_4_stats.tres" type="Resource" id=1]
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=2]
-[ext_resource path="res://weapons/melee/stick/stick_icon.png" type="Texture" id=3]
+[ext_resource path="res://weapons/melee/stick/stick_icon.png" type="Texture2D" id=3]
 [ext_resource path="res://weapons/melee/stick/stick.tscn" type="PackedScene" id=4]
 [ext_resource path="res://weapons/melee/stick/4/stick_4_effect_1.tres" type="Resource" id=5]
 [ext_resource path="res://items/sets/primitive/primitive_set_data.tres" type="Resource" id=6]

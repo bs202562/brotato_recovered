@@ -1,20 +1,20 @@
 class_name BugReporterInput
 extends CanvasItem
 
-signal cancelled
+signal canceled
 signal submitted(issue_id)
 
-export (NodePath) var tooltip_path
+@export var tooltip_path: NodePath
 
 var _screen_image: Image
 
-onready var _feedback_input = $FeedbackInput as TextEdit
-onready var _status_label = $StatusLabel as Label
-onready var _send_button = $"%SendButton" as Button
-onready var _cancel_button = $"%CancelButton" as Button
-onready var _tooltip = get_node(tooltip_path)
+@onready var _feedback_input = $FeedbackInput as TextEdit
+@onready var _status_label = $StatusLabel as Label
+@onready var _send_button = $"%SendButton" as Button
+@onready var _cancel_button = $"%CancelButton" as Button
+@onready var _tooltip = get_node(tooltip_path)
 
-onready var _http_request: HTTPRequest = $HTTPRequest
+@onready var _http_request: HTTPRequest = $HTTPRequest
 
 const SUBMIT_URL: = "https://bug-reports.blobfishgames.com/api/submit"
 
@@ -33,13 +33,13 @@ func _set_visible(v: bool) -> void :
 	visible = v
 	if v:
 		_feedback_input.call_deferred("grab_focus")
-		if not CrashReporter.previous_crash_message.empty() and CrashReporter.previous_crashed_mod.empty():
+		if not CrashReporter.previous_crash_message.is_empty() and CrashReporter.previous_crashed_mod.is_empty():
 			_feedback_input.text = "My game crashed with this error:\n\n" + CrashReporter.previous_crash_message
 			CrashReporter.previous_crash_message = ""
 
 
 func _capture_screen() -> Image:
-	var image: = get_tree().get_root().get_texture().get_data()
+	var image: = get_tree().get_root().get_texture().get_image()
 	image.flip_y()
 	return image
 
@@ -59,22 +59,22 @@ func _show_status_label(text: String) -> void :
 func _send_report() -> void :
 	var salt: = "salt-%s-%s" % [Time.get_unix_time_from_system(), Time.get_ticks_usec()]
 
-	var boundary: = "--------------------------" + str(OS.get_unix_time())
-	var form_data: = PoolByteArray()
+	var boundary: = "--------------------------" + str(Time.get_unix_time_from_system())
+	var form_data: = PackedByteArray()
 
 	form_data.append_array(_add_multipart_field("text", _feedback_input.text, boundary))
 	form_data.append_array(_add_multipart_field("user_agent", _get_user_agent(), boundary))
 	form_data.append_array(_add_multipart_field("app", _get_application_name(), boundary))
 	form_data.append_array(_add_multipart_field("version", ProgressData.VERSION, boundary))
 
-	var log_path: String = ProjectSettings.get_setting("logging/file_logging/log_path")
+	var log_path: String = ProjectSettings.get_setting("debug/file_logging/log_path")
 	var log_directory_path: = ProjectSettings.globalize_path(log_path).get_base_dir()
 	var log_file_directory_paths = CrashReporter.get_directory_file_paths(log_directory_path)
 	var log_file_paths: = []
 	for path in log_file_directory_paths:
 		if path.get_extension() == "log":
 			log_file_paths.append(path)
-	if log_file_paths.empty():
+	if log_file_paths.is_empty():
 		_print_error("Failed to collect logs in " + log_directory_path)
 	for path in log_file_paths:
 		form_data.append_array(_add_multipart_file("log", path, "text/plain", boundary, salt))
@@ -85,30 +85,29 @@ func _send_report() -> void :
 	for path in save_directory_file_paths:
 		if path.get_extension() == "json" or path.ends_with(".json.bak") or path.ends_with(".txt"):
 			save_file_paths.append(path)
-	if save_file_paths.empty():
+	if save_file_paths.is_empty():
 		_print_error("Failed to collect save files in " + log_directory_path)
 	for path in save_file_paths:
 		form_data.append_array(
 			_add_multipart_file("file", path, "application/json", boundary, salt)
 		)
 
-	var current_progress_data = to_json(ProgressData.get_current_save_object()).to_utf8()
+	var current_progress_data = JSON.new().stringify(ProgressData.get_current_save_object()).to_utf8_buffer()
 	form_data.append_array(
 		_add_multipart_file_data("file", "current_progress_data.json", current_progress_data, "application/json", boundary)
 	)
 
-	var screen_image_png: = _screen_image.save_png_to_buffer() if _screen_image else PoolByteArray()
+	var screen_image_png: = _screen_image.save_png_to_buffer() if _screen_image else PackedByteArray()
 	form_data.append_array(
 		_add_multipart_file_data("file", "screenshot.png", screen_image_png, "image/png", boundary)
 	)
 
 	
-	form_data.append_array(("--" + boundary + "--\r\n").to_utf8())
+	form_data.append_array(("--" + boundary + "--\r\n").to_utf8_buffer())
 
 	var custom_headers: = ["Content-Type: multipart/form-data; boundary=" + boundary]
-	var ssl_validate_domain: = true
 	var error = _http_request.request_raw(
-		SUBMIT_URL, custom_headers, ssl_validate_domain, HTTPClient.METHOD_POST, form_data
+		SUBMIT_URL, custom_headers, HTTPClient.METHOD_POST, form_data
 	)
 
 	if error != OK:
@@ -117,25 +116,25 @@ func _send_report() -> void :
 		_show_status_label(msg)
 
 
-func _add_multipart_field(name: String, data: String, boundary: String) -> PoolByteArray:
-	var field_data: = PoolByteArray()
-	field_data.append_array(("--" + boundary + "\r\n").to_utf8())
+func _add_multipart_field(name: String, data: String, boundary: String) -> PackedByteArray:
+	var field_data: = PackedByteArray()
+	field_data.append_array(("--" + boundary + "\r\n").to_utf8_buffer())
 	field_data.append_array(
-		("Content-Disposition: form-data; name=\"" + name + "\"\r\n\r\n").to_utf8()
+		("Content-Disposition: form-data; name=\"" + name + "\"\r\n\r\n").to_utf8_buffer()
 	)
-	field_data.append_array((data + "\r\n").to_utf8())
+	field_data.append_array((data + "\r\n").to_utf8_buffer())
 	return field_data
 
 
 func _add_multipart_file(
 	name: String, file_path: String, content_type: String, boundary: String, salt: String
-) -> PoolByteArray:
-	var file: = File.new()
-	if file.open(file_path, File.READ) != OK:
+) -> PackedByteArray:
+	var file: = FileAccess.open(file_path, FileAccess.READ)
+	if file == null:
 		_print_error("Failed to read file %s" % file_path)
-		return PoolByteArray()
+		return PackedByteArray()
 
-	var file_content: = anonymize_text(file.get_as_text(), salt, false).to_utf8()
+	var file_content: = anonymize_text(file.get_as_text(), salt, false).to_utf8_buffer()
 	file.close()
 
 	
@@ -146,8 +145,8 @@ func _add_multipart_file(
 
 
 func _add_multipart_file_data(
-	name: String, filename: String, file_data: PoolByteArray, content_type: String, boundary: String
-) -> PoolByteArray:
+	name: String, filename: String, file_data: PackedByteArray, content_type: String, boundary: String
+) -> PackedByteArray:
 	var content_disposition: = (
 		"Content-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\n"
 		%[name, filename]
@@ -157,10 +156,10 @@ func _add_multipart_file_data(
 		%[boundary, content_disposition, content_type]
 	)
 
-	var multipart_data: = PoolByteArray()
-	multipart_data.append_array(header.to_utf8())
+	var multipart_data: = PackedByteArray()
+	multipart_data.append_array(header.to_utf8_buffer())
 	multipart_data.append_array(file_data)
-	multipart_data.append_array("\r\n".to_utf8())
+	multipart_data.append_array("\r\n".to_utf8_buffer())
 
 	return multipart_data
 
@@ -198,8 +197,8 @@ func _hash_user_ids(text: String, salt: String) -> String:
 func _hash_user_id(user_id: String, salt: String) -> String:
 	var ctx: = HashingContext.new()
 	var _e = ctx.start(HashingContext.HASH_SHA1)
-	_e = ctx.update(salt.to_utf8())
-	_e = ctx.update(user_id.to_utf8())
+	_e = ctx.update(salt.to_utf8_buffer())
+	_e = ctx.update(user_id.to_utf8_buffer())
 	var hash_result: = ctx.finish()
 	return hash_result.hex_encode()
 
@@ -231,7 +230,7 @@ func _print_error(msg: String) -> void :
 
 func _on_CancelButton_pressed() -> void :
 	_feedback_input.text = ""
-	emit_signal("cancelled")
+	emit_signal("canceled")
 
 
 func _on_DataButton_mouse_exited() -> void :
@@ -245,7 +244,7 @@ func _on_DataButton_mouse_entered() -> void :
 
 func _on_DataButton_pressed() -> void :
 	var path: = ProjectSettings.globalize_path(ProgressData.SAVE_DIR)
-	if path and not path.empty():
+	if path and not path.is_empty():
 		var _error = OS.shell_open(path)
 
 
@@ -255,18 +254,19 @@ func _on_SendButton_pressed() -> void :
 
 
 func _on_HTTPRequest_request_completed(
-	_result: int, response_code: int, _headers: PoolStringArray, body: PoolByteArray
+	_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray
 ) -> void :
 	_set_buttons_disabled(false)
 	var error_msg: = ""
 	if response_code != 200:
 		error_msg = "Error submitting report (%s)" % response_code
 	else:
-		var parsed = JSON.parse(body.get_string_from_utf8())
-		if parsed.error != OK:
-			error_msg = "Error parsing json (%s)" % parsed.error_string
+		var test_json_conv = JSON.new()
+		var parse_error = test_json_conv.parse(body.get_string_from_utf8())
+		if parse_error != OK:
+			error_msg = "Error parsing json (%s)" % test_json_conv.get_error_message()
 		else:
-			var issue_id = parsed.result["prefix"]
+			var issue_id = test_json_conv.get_data()["prefix"]
 			_feedback_input.text = ""
 			emit_signal("submitted", issue_id)
 			return

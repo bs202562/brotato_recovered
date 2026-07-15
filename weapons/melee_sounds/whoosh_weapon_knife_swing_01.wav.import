@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/whoosh_weapon_knife_swing_01.wav-6623366404df615b98e5973c179ba6e5.sample"
+type="AudioStreamWAV"
+uid="uid://c75314vqhticb"
+path="res://.godot/imported/whoosh_weapon_knife_swing_01.wav-6623366404df615b98e5973c179ba6e5.sample"
 
 [deps]
 
 source_file="res://weapons/melee_sounds/whoosh_weapon_knife_swing_01.wav"
-dest_files=[ "res://.import/whoosh_weapon_knife_swing_01.wav-6623366404df615b98e5973c179ba6e5.sample" ]
+dest_files=["res://.godot/imported/whoosh_weapon_knife_swing_01.wav-6623366404df615b98e5973c179ba6e5.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

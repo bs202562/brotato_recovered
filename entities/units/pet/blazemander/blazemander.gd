@@ -1,7 +1,7 @@
 class_name Blazemander
 extends Pet
 
-onready var _hitbox: = $Hitbox as Hitbox
+@onready var _hitbox: = $Hitbox as Hitbox
 var _current_cooldown: float = 0
 var _current_ranged_cooldown: float = 0
 var _base_weapon_stats: = WeaponStats.new()
@@ -15,12 +15,12 @@ var _is_firing = false
 var _enemies_inside_zone = 0
 
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void :
-	.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
+	super.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
 
 	_hitbox.from = self
 
 func update_data(effect: PetEffect) -> void :
-	.update_data(effect)
+	super.update_data(effect)
 	_base_weapon_stats = effect.weapon_stats
 	_base_ranged_weapon_stats = effect.ranged_weapon_stats
 	_base_burning_data = effect.burning_data
@@ -28,7 +28,7 @@ func update_data(effect: PetEffect) -> void :
 	reload_data()
 
 	_current_cooldown = _current_weapon_stats.cooldown
-	_current_ranged_cooldown = rand_range(_current_ranged_weapon_stats.cooldown / 4, _current_ranged_weapon_stats.cooldown)
+	_current_ranged_cooldown = randf_range(_current_ranged_weapon_stats.cooldown / 4, _current_ranged_weapon_stats.cooldown)
 
 func should_data_be_reload() -> bool:
 	return true
@@ -133,12 +133,14 @@ func _physics_process(delta: float) -> void :
 		_current_cooldown = _current_weapon_stats.cooldown
 		_is_attacking = false
 
+	super._physics_process(delta) # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_physics_process 为子类优先）
+
 func shot_circle_of_fire(n: int) -> void :
 	for i in range(n):
 		_spawn_projectile(global_position, (2 * PI / n) * i)
 
 func _spawn_projectile(position: Vector2, proj_rotation: float) -> Node:
-	var next_proj_rotation = rand_range(proj_rotation - _current_ranged_weapon_stats.projectile_spread, proj_rotation + _current_ranged_weapon_stats.projectile_spread)
+	var next_proj_rotation = randf_range(proj_rotation - _current_ranged_weapon_stats.projectile_spread, proj_rotation + _current_ranged_weapon_stats.projectile_spread)
 	var args: = WeaponServiceSpawnProjectileArgs.new()
 	args.knockback_direction = Vector2(cos(proj_rotation), sin(proj_rotation))
 	args.from_player_index = player_index
@@ -148,12 +150,12 @@ func _spawn_projectile(position: Vector2, proj_rotation: float) -> Node:
 func attack() -> void :
 	_animation_player.play("attack")
 	_is_attacking = true
-	yield(get_tree().create_timer(0.15), "timeout")
+	await get_tree().create_timer(0.15).timeout
 	_hitbox.enable()
 
 
 func update_animation(movement: Vector2) -> void :
-	.update_animation(movement)
+	super.update_animation(movement)
 	if movement.length() > 0.1:
 		if not (_animation_player.current_animation == "move" or _animation_player.current_animation == "attack" or _animation_player.current_animation == "pet"):
 			_animation_player.play("move")
@@ -181,7 +183,7 @@ func _on_Enemy_detection_body_exited(_body):
 
 func _can_pet():
 	if _check_can_be_pet():
-		yield(get_tree().create_timer(0.1), "timeout")
+		await get_tree().create_timer(0.1).timeout
 		_animation_player.play("pet")
-		yield(get_tree().create_timer(1), "timeout")
+		await get_tree().create_timer(1).timeout
 		_animation_player.play("idle_pet")

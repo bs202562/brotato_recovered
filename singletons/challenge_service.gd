@@ -2,7 +2,7 @@ extends Node
 
 signal challenge_completed(challenge)
 
-export (Array, Resource) var challenges
+@export var challenges: Array = [] # (Array, Resource)
 
 var stat_challenges: = []
 var hash_to_id: = {}
@@ -515,7 +515,7 @@ func complete_challenge(chal_id: int, also_complete_platform_challenge: bool = t
 		if achievement_mapping.has(chal_id):
 			OS_Seaven.unlock_achievement(achievement_mapping[chal_id])
 		else:
-			print("missing challenge/achievement [id: ", (hash_to_id.get(chal_id)), ", hash: " + String(chal_id) + "] in mapping !")
+			print("missing challenge/achievement [id: ", (hash_to_id.get(chal_id)), ", hash: " + str(chal_id) + "] in mapping !")
 
 	var chal_data = get_chal(chal_id)
 	if chal_data == null:

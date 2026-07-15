@@ -1,21 +1,21 @@
 class_name Pursuer
 extends Enemy
 
-export (Resource) var boost_sound
-export (float) var boost_cooldown = 1.0
-export (int) var max_boosts = 10
-export (int) var speed_on_boost = 0
-export (int) var damage_on_boost = 0
-export (float) var size_on_boost = 0.0
-export (int) var change_movement_behavior_after_x_boosts = - 1
-export (int) var bonus_speed_on_change_movement_behavior = 0
-export (bool) var reset_nb_times_boosted_on_hit = true
+@export var boost_sound: Resource
+@export var boost_cooldown: float = 1.0
+@export var max_boosts: int = 10
+@export var speed_on_boost: int = 0
+@export var damage_on_boost: int = 0
+@export var size_on_boost: float = 0.0
+@export var change_movement_behavior_after_x_boosts: int = - 1
+@export var bonus_speed_on_change_movement_behavior: int = 0
+@export var reset_nb_times_boosted_on_hit: bool = true
 
 var nb_times_boosted = 0
 var movement_behavior_on_boost: Node2D
 var movement_behavior_changed = false
 
-onready var _boost_timer: Timer = $BoostTimer
+@onready var _boost_timer: Timer = $BoostTimer
 
 var initial_data: Dictionary = {
 	"sprite_scale": Vector2.ZERO, 
@@ -26,6 +26,7 @@ var initial_data: Dictionary = {
 }
 
 func _ready():
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	_boost_timer.wait_time = boost_cooldown
 
 	if change_movement_behavior_after_x_boosts != - 1:
@@ -40,7 +41,7 @@ func _ready():
 
 
 func respawn() -> void :
-	.respawn()
+	super.respawn()
 
 	nb_times_boosted = 0
 	movement_behavior_changed = false
@@ -92,7 +93,7 @@ func reset_size() -> void :
 
 
 func _on_hit_something(thing_hit: Node, damage_dealt: int) -> void :
-	._on_hit_something(thing_hit, damage_dealt)
+	super._on_hit_something(thing_hit, damage_dealt)
 	if reset_nb_times_boosted_on_hit:
 		nb_times_boosted = 0
 		bonus_speed = 0

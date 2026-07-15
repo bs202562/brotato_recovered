@@ -1,11 +1,11 @@
 class_name BaseSelection
 extends Control
 
-export (Texture) var random_icon
-export (bool) var add_random_element = true
+@export var random_icon: Texture2D
+@export var add_random_element: bool = true
 
 
-export (bool) var enable_coop_panels = true
+@export var enable_coop_panels: bool = true
 
 var displayed_elements: = [[], [], [], []]
 var _has_player_selected: = [false, false, false, false]
@@ -17,15 +17,15 @@ var __going_back: = false
 var _selections_completed_timer: Timer
 var _selections_completed_delay: = 0.8
 
-onready var _inventory1: Container = $"%Inventory1"
-onready var _inventory2: Container = get_node_or_null("%Inventory2")
-onready var _inventory3: Container = get_node_or_null("%Inventory3")
-onready var _inventory4: Container = get_node_or_null("%Inventory4")
-onready var _panel1: Control = $"%Panel1"
-onready var _panel2: Control = $"%Panel2"
-onready var _panel3: Control = $"%Panel3"
-onready var _panel4: Control = $"%Panel4"
-onready var _background: TextureRect = $"%Background"
+@onready var _inventory1: Container = $"%Inventory1"
+@onready var _inventory2: Container = get_node_or_null("%Inventory2")
+@onready var _inventory3: Container = get_node_or_null("%Inventory3")
+@onready var _inventory4: Container = get_node_or_null("%Inventory4")
+@onready var _panel1: Control = $"%Panel1"
+@onready var _panel2: Control = $"%Panel2"
+@onready var _panel3: Control = $"%Panel3"
+@onready var _panel4: Control = $"%Panel4"
+@onready var _background: TextureRect = $"%Background"
 
 
 func _ready() -> void :
@@ -34,16 +34,16 @@ func _ready() -> void :
 	_selections_completed_timer.one_shot = true
 	_selections_completed_timer.autostart = false
 	add_child(_selections_completed_timer)
-	var _error_timeout = _selections_completed_timer.connect("timeout", self, "_on_selections_completed_timer_timeout")
+	var _error_timeout = _selections_completed_timer.connect("timeout", Callable(self, "_on_selections_completed_timer_timeout"))
 
 	_init_players()
 
 	var inventories = _get_inventories()
 	for i in inventories.size():
 		var inventory = inventories[i]
-		inventory.connect("element_pressed", self, "_on_element_pressed", [i])
-		inventory.connect("element_hovered", self, "_on_element_hovered", [i])
-		inventory.connect("element_focused", self, "_on_element_focused", [i])
+		inventory.connect("element_pressed", Callable(self, "_on_element_pressed").bind(i))
+		inventory.connect("element_hovered", Callable(self, "_on_element_hovered").bind(i))
+		inventory.connect("element_focused", Callable(self, "_on_element_focused").bind(i))
 
 	var did_set_focus: = [false, false, false, false]
 	for player_index in RunData.get_player_count():
@@ -286,4 +286,4 @@ func _find_inventory_element_by_id(my_id: int, player_index: int) -> InventoryEl
 
 
 func _change_scene(path: String) -> void :
-	var _error = get_tree().change_scene(path)
+	var _error = get_tree().change_scene_to_file(path)

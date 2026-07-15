@@ -34,10 +34,10 @@ unique_name_in_owner = true
 autostart = true
 
 [node name="LifeBar" parent="." index="12" instance=ExtResource( 4 )]
-margin_left = -32.0
-margin_top = -72.0
-margin_right = 32.0
-margin_bottom = -56.0
+offset_left = -32.0
+offset_top = -72.0
+offset_right = 32.0
+offset_bottom = -56.0
 nine_patch_stretch = true
 progress_color = Color( 0.721569, 0, 0, 1 )
 

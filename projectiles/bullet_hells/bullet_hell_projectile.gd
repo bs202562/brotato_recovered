@@ -21,3 +21,5 @@ func _physics_process(delta):
 			stop()
 	else:
 		printerr("BulletHellProjectile direction not managed")
+
+	super._physics_process(delta) # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_physics_process 为子类优先）

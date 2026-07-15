@@ -2,7 +2,7 @@
 extends CPUParticles2D
 class_name RunningSmoke
 
-export (bool) var take_background_color = true
+@export var take_background_color: bool = true
 
 
 func _ready() -> void :

@@ -1,14 +1,14 @@
 class_name StructureEffect
 extends Effect
 
-export(int) var spawn_cooldown = -1
-export(PackedScene) var scene = null
-export(Resource) var stats = null
-export(Array, Resource) var effects
-export(int) var spawn_in_center = -1
-export(int) var spawn_around_player = -1
-export(bool) var can_be_grouped = true
-export(bool) var is_pet = false
+@export var spawn_cooldown: int = -1
+@export var scene: PackedScene = null
+@export var stats: Resource = null
+@export var effects: Array = [] # (Array, Resource)
+@export var spawn_in_center: int = -1
+@export var spawn_around_player: int = -1
+@export var can_be_grouped: bool = true
+@export var is_pet: bool = false
 
 var is_cursed: bool = false
 var _init_stats_args_structure :=  WeaponServiceInitStatsArgs.new()
@@ -44,7 +44,7 @@ func get_args(player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.spawn_cooldown = spawn_cooldown
 	serialized.scene = scene.resource_path if scene else null
@@ -64,7 +64,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	spawn_cooldown = serialized.spawn_cooldown as int
 

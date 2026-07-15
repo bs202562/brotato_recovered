@@ -1,10 +1,10 @@
 class_name BackgroundData
 extends Resource
 
-export (String) var name = ""
-export (Resource) var icon = null
-export (Color) var outline_color = Color.white
-export (Resource) var tiles_sprite = null
+@export var name: String = ""
+@export var icon: Resource = null
+@export var outline_color: Color = Color.WHITE
+@export var tiles_sprite: Resource = null
 
 
 func get_tiles_sprite() -> Resource:

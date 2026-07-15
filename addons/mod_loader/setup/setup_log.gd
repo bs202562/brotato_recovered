@@ -84,7 +84,7 @@ static func debug(message: String, mod_name: String) -> void :
 
 
 static func debug_json_print(message: String, json_printable, mod_name: String) -> void :
-	message = "%s\n%s" % [message, JSON.print(json_printable, "  ")]
+	message = "%s\n%s" % [message, JSON.stringify(json_printable, "  ")]
 	_log(message, mod_name, "debug")
 
 
@@ -99,7 +99,7 @@ static func _log(message: String, mod_name: String, log_type: String = "info") -
 		"fatal-error":
 			push_error(message)
 			_write_to_log_file(log_entry.get_entry())
-			_write_to_log_file(JSON.print(get_stack(), "  "))
+			_write_to_log_file(JSON.stringify(get_stack(), "  "))
 			assert (false, message)
 		"error":
 			printerr(message)
@@ -141,12 +141,11 @@ static func _get_date_time_string() -> String:
 
 
 static func _write_to_log_file(string_to_write: String) -> void :
-	var log_file: = File.new()
-
-	if not log_file.file_exists(MOD_LOG_PATH):
+	if not FileAccess.file_exists(MOD_LOG_PATH):
 		_rotate_log_file()
 
-	var error: = log_file.open(MOD_LOG_PATH, File.READ_WRITE)
+	var log_file := FileAccess.open(MOD_LOG_PATH, FileAccess.READ_WRITE)
+	var error: int = OK if log_file != null else FileAccess.get_open_error()
 	if not error == OK:
 		assert (false, "Could not open log file, error code: %s" % error)
 		return
@@ -159,39 +158,42 @@ static func _write_to_log_file(string_to_write: String) -> void :
 
 
 static func _rotate_log_file() -> void :
-	var MAX_LOGS: = int(ProjectSettings.get_setting("logging/file_logging/max_log_files"))
-	var log_file: = File.new()
+	var MAX_LOGS: = int(ProjectSettings.get_setting("debug/file_logging/max_log_files"))
 
-	if log_file.file_exists(MOD_LOG_PATH):
+	if FileAccess.file_exists(MOD_LOG_PATH):
 		if MAX_LOGS > 1:
 			var datetime: = _get_date_time_string().replace(":", ".")
 			var backup_name: String = MOD_LOG_PATH.get_basename() + "_" + datetime
 			if MOD_LOG_PATH.get_extension().length() > 0:
 				backup_name += "." + MOD_LOG_PATH.get_extension()
 
-			var dir: = Directory.new()
-			if dir.dir_exists(MOD_LOG_PATH.get_base_dir()):
-				dir.copy(MOD_LOG_PATH, backup_name)
+			if DirAccess.dir_exists_absolute(MOD_LOG_PATH.get_base_dir()):
+				DirAccess.copy_absolute(MOD_LOG_PATH, backup_name)
 			_clear_old_log_backups()
 
-	
-	var error: = log_file.open(MOD_LOG_PATH, File.WRITE)
+	# 4.x 移植: 全新用户目录下 user://logs 尚不存在，WRITE 模式不会自动建目录
+	if not DirAccess.dir_exists_absolute(MOD_LOG_PATH.get_base_dir()):
+		DirAccess.make_dir_recursive_absolute(MOD_LOG_PATH.get_base_dir())
+
+	var log_file := FileAccess.open(MOD_LOG_PATH, FileAccess.WRITE)
+	var error: int = OK if log_file != null else FileAccess.get_open_error()
 	if not error == OK:
 		assert (false, "Could not open log file, error code: %s" % error)
-	log_file.store_string("%s Created log" % _get_date_string())
-	log_file.close()
+	if log_file != null:
+		log_file.store_string("%s Created log" % _get_date_string())
+		log_file.close()
 
 
 static func _clear_old_log_backups() -> void :
-	var MAX_LOGS: = int(ProjectSettings.get_setting("logging/file_logging/max_log_files"))
+	var MAX_LOGS: = int(ProjectSettings.get_setting("debug/file_logging/max_log_files"))
 	var MAX_BACKUPS: = MAX_LOGS - 1
 	var basename: = MOD_LOG_PATH.get_file().get_basename() as String
 	var extension: = MOD_LOG_PATH.get_extension() as String
 
-	var dir: = Directory.new()
-	if not dir.dir_exists(MOD_LOG_PATH.get_base_dir()):
+	if not DirAccess.dir_exists_absolute(MOD_LOG_PATH.get_base_dir()):
 		return
-	if not dir.open(MOD_LOG_PATH.get_base_dir()) == OK:
+	var dir := DirAccess.open(MOD_LOG_PATH.get_base_dir())
+	if dir == null:
 		return
 
 	dir.list_dir_begin()

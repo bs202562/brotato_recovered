@@ -1,18 +1,19 @@
 class_name EvilMob
 extends Enemy
 
-export (Array, StreamTexture) var textures_evolution
-export (Array, int) var quantity_to_evolve
-export (int) var decrease_speed_by_evolve
+@export var textures_evolution: Array = [] # (Array, CompressedTexture2D)
+@export var quantity_to_evolve: Array = [] # (Array, int)
+@export var decrease_speed_by_evolve: int
 
-onready var life_bar = $"%LifeBar" as UIProgressBar
+@onready var life_bar = $"%LifeBar" as UIProgressBar
 var life_bar_y_positions = [ - 60, - 60, - 100]
 
 var gold_count: = 0
 var evolution: = 0
 
 func _ready():
-	var _error_hp_lifebar = connect("health_updated", self, "on_health_updated")
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
+	var _error_hp_lifebar = connect("health_updated", Callable(self, "on_health_updated"))
 
 func _on_ItemAttractArea_area_entered(item: Item) -> void :
 	if dead:
@@ -44,7 +45,7 @@ func evolve(newEvolution: int) -> void :
 		if ProgressData.settings.hp_bar_on_bosses:
 			if not life_bar.visible:
 				life_bar.show()
-	life_bar.rect_position.y = life_bar_y_positions[newEvolution]
+	life_bar.position.y = life_bar_y_positions[newEvolution]
 	evolution = newEvolution
 	sprite.texture = textures_evolution[evolution]
 	bonus_speed = - (decrease_speed_by_evolve * evolution)
@@ -61,7 +62,7 @@ func get_stats_value() -> int:
 	return int(gold_count * (evolution + 1))
 
 func die(args: = Entity.DieArgs.new()) -> void :
-	.die(args)
+	super.die(args)
 	life_bar.hide()
 
 

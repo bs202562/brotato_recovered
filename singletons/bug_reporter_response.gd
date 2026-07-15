@@ -3,10 +3,10 @@ extends CanvasItem
 
 signal done
 
-export (NodePath) var tooltip_path
+@export var tooltip_path: NodePath
 
-onready var _id_button = $IDButton as Button
-onready var _tooltip = get_node(tooltip_path)
+@onready var _id_button = $IDButton as Button
+@onready var _tooltip = get_node(tooltip_path)
 
 var _issue_id: String
 
@@ -18,7 +18,7 @@ func open(issue_id: String) -> void :
 
 
 func _on_IDButton_pressed():
-	OS.clipboard = _issue_id
+	DisplayServer.clipboard_set(_issue_id)
 
 
 func _on_ReturnButton_pressed():

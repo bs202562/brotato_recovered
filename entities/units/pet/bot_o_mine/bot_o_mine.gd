@@ -1,10 +1,10 @@
 class_name BotOMine
 extends Pet
 
-export (String) var damage_tracking_id
-export (AudioStream) var pet_sound
+@export var damage_tracking_id: String
+@export var pet_sound: AudioStream
 
-onready var _muzzle = $"%Muzzle"
+@onready var _muzzle = $"%Muzzle"
 
 var _targets_in_range: = []
 var _current_target: = []
@@ -18,16 +18,16 @@ var _landmines_cooldown: float = 0.0
 var _is_shooting: bool = false
 var _next_proj_rotation = 0
 
-onready var _range_shape = $TargetTriggerZone / CollisionShape2D
+@onready var _range_shape = $TargetTriggerZone / CollisionShape2D
 
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void :
-	.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
+	super.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
 
 	_movement_behavior._target_player = true
 	_damage_tracking_id_hash = Keys.generate_hash(damage_tracking_id)
 
 func update_data(effect: PetEffect) -> void :
-	.update_data(effect)
+	super.update_data(effect)
 	_landmine_effect = effect.landmine_effect_stat
 	_base_weapon_stats = effect.weapon_stats
 
@@ -66,6 +66,8 @@ func _physics_process(delta) -> void :
 	if should_spawn_landmines():
 		spawn_landmines()
 
+	super._physics_process(delta) # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_physics_process 为子类优先）
+
 func should_shoot() -> bool:
 	return (_cooldown == 0 and 
 		not _is_shooting and 
@@ -82,7 +84,7 @@ func shoot() -> void :
 		_cooldown = _current_weapon_stats.cooldown
 	else:
 		var target_dir = (_current_target[0].global_position - global_position).angle()
-		var accuracy_factor = rand_range( - 1 + _current_weapon_stats.accuracy, 1 - _current_weapon_stats.accuracy)
+		var accuracy_factor = randf_range( - 1 + _current_weapon_stats.accuracy, 1 - _current_weapon_stats.accuracy)
 		_next_proj_rotation = target_dir + accuracy_factor
 
 	var _projectile = _spawn_projectile(_animation.global_position + _muzzle.global_position - Vector2(100, 100))
@@ -92,7 +94,7 @@ func shoot() -> void :
 func _spawn_projectile(position: Vector2) -> Array:
 	var list_projectile: Array
 	for i in _current_weapon_stats.nb_projectiles:
-		var proj_rotation = rand_range(_next_proj_rotation - _current_weapon_stats.projectile_spread, _next_proj_rotation + _current_weapon_stats.projectile_spread)
+		var proj_rotation = randf_range(_next_proj_rotation - _current_weapon_stats.projectile_spread, _next_proj_rotation + _current_weapon_stats.projectile_spread)
 		var args: = WeaponServiceSpawnProjectileArgs.new()
 		args.knockback_direction = Vector2(cos(proj_rotation), sin(proj_rotation))
 		args.from_player_index = player_index
@@ -112,18 +114,18 @@ func spawn_landmines() -> void :
 
 func _on_TargetTriggerZone_body_entered(body):
 	_targets_in_range.push_back(body)
-	var _error = body.connect("died", self, "on_target_died")
+	var _error = body.connect("died", Callable(self, "on_target_died"))
 
 func _on_TargetTriggerZone_body_exited(body):
 	_targets_in_range.erase(body)
-	body.disconnect("died", self, "on_target_died")
+	body.disconnect("died", Callable(self, "on_target_died"))
 
 func on_target_died(target: Node2D, _args: Entity.DieArgs) -> void :
 	_targets_in_range.erase(target)
 
 
 func update_animation(movement: Vector2) -> void :
-	.update_animation(movement)
+	super.update_animation(movement)
 	if movement.length() > 0.1:
 		if not (_animation_player.current_animation == "move" or _animation_player.current_animation == "pet"):
 			_animation_player.play("move")
@@ -134,8 +136,8 @@ func update_animation(movement: Vector2) -> void :
 
 func _can_pet():
 	if _check_can_be_pet():
-		yield(get_tree().create_timer(0.1), "timeout")
+		await get_tree().create_timer(0.1).timeout
 		_animation_player.play("pet")
 		SoundManager.play(pet_sound, 1, 0)
-		yield(get_tree().create_timer(1.4), "timeout")
+		await get_tree().create_timer(1.4).timeout
 		_animation_player.play("idle_pet")

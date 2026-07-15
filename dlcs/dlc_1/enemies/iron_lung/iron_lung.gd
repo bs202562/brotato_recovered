@@ -5,27 +5,28 @@ signal became_full
 
 var is_full: bool = false
 
-onready var detection_zone = $DetectionZone
+@onready var detection_zone = $DetectionZone
 var sprite_full = preload("res://dlcs/dlc_1/enemies/iron_lung/iron_lung_full.png")
 
-var _original_texture: Texture
+var _original_texture: Texture2D
 
 func _ready():
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	_original_texture = sprite.texture
 	sprite.scale.x = Utils.get_rand_element([sprite.scale.x, - sprite.scale.x])
 
 
 func respawn() -> void :
-	.respawn()
+	super.respawn()
 	is_full = false
 	sprite.texture = _original_texture
-	_animation_player.playback_speed = 1
+	_animation_player.speed_scale = 1
 	_attack_behavior.cooldown = Utils.LARGE_NUMBER
 	_attack_behavior._current_cd = _attack_behavior.cooldown
 
 
 func _on_AttackBehavior_wanted_to_spawn_an_enemy(enemy_scene: PackedScene, at_position: Vector2) -> void :
-	._on_AttackBehavior_wanted_to_spawn_an_enemy(enemy_scene, at_position)
+	super._on_AttackBehavior_wanted_to_spawn_an_enemy(enemy_scene, at_position)
 	if not dead:
 		die()
 
@@ -34,7 +35,7 @@ func _on_DetectionZone_body_entered(body):
 	if not is_full and not dead and body is Enemy and is_instance_valid(body) and not body.dead and body.enemy_id == "stargazer":
 		is_full = true
 		sprite.texture = sprite_full
-		_animation_player.playback_speed *= 2
+		_animation_player.speed_scale *= 2
 		_attack_behavior.cooldown = 300
 		_attack_behavior._current_cd = _attack_behavior.cooldown
 		reset_health_stat(200)

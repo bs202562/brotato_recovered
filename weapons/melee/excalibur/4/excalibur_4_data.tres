@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=1]
-[ext_resource path="res://weapons/melee/excalibur/excalibur_icon.png" type="Texture" id=2]
+[ext_resource path="res://weapons/melee/excalibur/excalibur_icon.png" type="Texture2D" id=2]
 [ext_resource path="res://weapons/melee/excalibur/excalibur.tscn" type="PackedScene" id=3]
 [ext_resource path="res://weapons/melee/excalibur/4/excalibur_4_stats.tres" type="Resource" id=4]
 [ext_resource path="res://items/sets/blade/blade_set_data.tres" type="Resource" id=5]

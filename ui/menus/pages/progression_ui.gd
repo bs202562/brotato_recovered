@@ -1,20 +1,20 @@
 class_name ProgressionUI
 extends Node
 
-export (Resource) var locked_icon
+@export var locked_icon: Resource
 
 signal back_button_pressed
 
-onready var _challenges = $VBoxContainer / HBoxContainer / ScrollContainer / MarginContainer / Inventory
-onready var _challenge_and_rewards_ui = $VBoxContainer / HBoxContainer / ChallengeAndRewardUI
+@onready var _challenges = $VBoxContainer / HBoxContainer / ScrollContainer / MarginContainer / Inventory
+@onready var _challenge_and_rewards_ui = $VBoxContainer / HBoxContainer / ChallengeAndRewardUI
 
 
 func _ready() -> void :
 	set_elements()
-	var _error_focused = _challenges.connect("element_focused", self, "on_element_focused")
-	var _error_hovered = _challenges.connect("element_hovered", self, "on_element_focused")
-	var _error_dlc_activated = ProgressData.connect("dlc_activated", self, "on_dlc_update")
-	var _error_dlc_deactivated = ProgressData.connect("dlc_deactivated", self, "on_dlc_update")
+	var _error_focused = _challenges.connect("element_focused", Callable(self, "on_element_focused"))
+	var _error_hovered = _challenges.connect("element_hovered", Callable(self, "on_element_focused"))
+	var _error_dlc_activated = ProgressData.connect("dlc_activated", Callable(self, "on_dlc_update"))
+	var _error_dlc_deactivated = ProgressData.connect("dlc_deactivated", Callable(self, "on_dlc_update"))
 
 
 func set_elements(replace: bool = false) -> void :

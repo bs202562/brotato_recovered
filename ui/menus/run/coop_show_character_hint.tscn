@@ -1,35 +1,35 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://ui/menus/global/key_xbox_y.png" type="Texture" id=1]
-[ext_resource path="res://resources/fonts/actual/base/font_22.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/menus/global/key_xbox_y.png" type="Texture2D" id=1]
+[ext_resource path="res://resources/fonts/actual/base/font_22.tres" type="FontFile" id=2]
 [ext_resource path="res://ui/menus/run/coop_show_character_hint.gd" type="Script" id=3]
-[ext_resource path="res://ui/menus/global/key_ps_triangle.png" type="Texture" id=4]
-[ext_resource path="res://ui/menus/global/key_switch_x.png" type="Texture" id=5]
-[ext_resource path="res://ui/menus/global/key_e.png" type="Texture" id=6]
+[ext_resource path="res://ui/menus/global/key_ps_triangle.png" type="Texture2D" id=4]
+[ext_resource path="res://ui/menus/global/key_switch_x.png" type="Texture2D" id=5]
+[ext_resource path="res://ui/menus/global/key_e.png" type="Texture2D" id=6]
 
 [node name="CoopShowCharacterHint" type="HBoxContainer"]
-margin_right = 308.0
-margin_bottom = 40.0
-custom_constants/separation = 5
+offset_right = 308.0
+offset_bottom = 40.0
+theme_override_constants/separation = 5
 alignment = 1
 script = ExtResource( 3 )
 
 [node name="Label1" type="Label" parent="."]
 unique_name_in_owner = true
-margin_top = 8.0
-margin_right = 46.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
+offset_top = 8.0
+offset_right = 46.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource( 2 )
 text = "Hold"
 align = 2
 valign = 1
 
 [node name="KeyboardIcon" type="TextureRect" parent="."]
 unique_name_in_owner = true
-margin_left = 51.0
-margin_right = 91.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+offset_left = 51.0
+offset_right = 91.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 40 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 6 )
@@ -37,21 +37,21 @@ expand = true
 
 [node name="LabelSlash" type="Label" parent="."]
 unique_name_in_owner = true
-margin_left = 96.0
-margin_top = 8.0
-margin_right = 105.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
+offset_left = 96.0
+offset_top = 8.0
+offset_right = 105.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource( 2 )
 text = "/"
 align = 2
 valign = 1
 
 [node name="XboxIcon" type="TextureRect" parent="."]
 unique_name_in_owner = true
-margin_left = 110.0
-margin_right = 150.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+offset_left = 110.0
+offset_right = 150.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 40 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 1 )
@@ -59,10 +59,10 @@ expand = true
 
 [node name="PlaystationIcon" type="TextureRect" parent="."]
 unique_name_in_owner = true
-margin_left = 155.0
-margin_right = 195.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+offset_left = 155.0
+offset_right = 195.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 40 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 4 )
@@ -70,10 +70,10 @@ expand = true
 
 [node name="SwitchIcon" type="TextureRect" parent="."]
 unique_name_in_owner = true
-margin_left = 200.0
-margin_right = 240.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+offset_left = 200.0
+offset_right = 240.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 40 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 5 )
@@ -81,10 +81,10 @@ expand = true
 
 [node name="Label2" type="Label" parent="."]
 unique_name_in_owner = true
-margin_left = 245.0
-margin_top = 8.0
-margin_right = 457.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
+offset_left = 245.0
+offset_top = 8.0
+offset_right = 457.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource( 2 )
 text = "to show character"
 valign = 1

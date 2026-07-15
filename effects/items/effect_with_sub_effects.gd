@@ -1,7 +1,7 @@
 class_name EffectWithSubEffects
 extends Effect
 
-export(Array, Resource) var sub_effects
+@export var sub_effects: Array = [] # (Array, Resource)
 
 
 static func get_id() -> String:
@@ -18,7 +18,7 @@ func unapply(player_index: int) -> void:
 
 
 func get_args(player_index: int) -> Array:
-	var args = .get_args(player_index)
+	var args = super.get_args(player_index)
 
 	for sub_effect in sub_effects:
 		args.append_array(sub_effect.get_args(player_index))
@@ -27,7 +27,7 @@ func get_args(player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	var serialized_sub_effects := []
 	for sub_effect in sub_effects:
@@ -37,7 +37,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	for serialized_sub_effect in serialized.sub_effects:
 		var sub_effect := Effect.new()

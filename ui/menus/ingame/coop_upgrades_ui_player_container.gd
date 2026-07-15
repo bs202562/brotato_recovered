@@ -1,17 +1,17 @@
 class_name CoopUpgradesUIPlayerContainer
 extends UpgradesUIPlayerContainer
 
-onready var carousel = $"%Carousel"
-onready var primary_stats_container = $"%PrimaryStatsContainer"
-onready var secondary_stats_container = $"%SecondaryStatsContainer"
-onready var item_popup = $"%ItemPopup"
-onready var player_gear_container = $"%PlayerGearContainer"
-onready var _toggle_popup_hint = $"%TogglePopupHint"
-onready var _margin_container = $"MarginContainer"
-onready var _checkmark_group = $"%CheckmarkGroup"
-onready var _coop_player_label = $"%CoopPlayerLabel"
-onready var _gold_icon = $"%GoldIcon"
-onready var _gold_label = $"%GoldLabel"
+@onready var carousel = $"%Carousel"
+@onready var primary_stats_container = $"%PrimaryStatsContainer"
+@onready var secondary_stats_container = $"%SecondaryStatsContainer"
+@onready var item_popup = $"%ItemPopup"
+@onready var player_gear_container = $"%PlayerGearContainer"
+@onready var _toggle_popup_hint = $"%TogglePopupHint"
+@onready var _margin_container = $"MarginContainer"
+@onready var _checkmark_group = $"%CheckmarkGroup"
+@onready var _coop_player_label = $"%CoopPlayerLabel"
+@onready var _gold_icon = $"%GoldIcon"
+@onready var _gold_label = $"%GoldLabel"
 
 var focus_emulator: FocusEmulator
 
@@ -21,6 +21,7 @@ var _resume_inventory_control_focus = null
 
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	if player_index >= RunData.get_player_count():
 		return
 	carousel.player_index = player_index
@@ -29,19 +30,19 @@ func _ready() -> void :
 	_coop_player_label.player_index = player_index
 	var player_color = CoopService.get_player_color(player_index)
 	_gold_icon.modulate = player_color
-	_gold_label.add_color_override("font_color", player_color)
+	_gold_label.add_theme_color_override("font_color", player_color)
 	_reroll_button.gold_icon.modulate = player_color
 	_update_stylebox()
 
 	player_gear_container.player_index = player_index
 	item_popup.player_index = player_index
 	_toggle_popup_hint.player_index = player_index
-	item_popup.connect("popup_toggled", self, "_on_popup_toggled")
+	item_popup.connect("popup_toggled", Callable(self, "_on_popup_toggled"))
 
 	
 	if RunData.get_player_count() == 2:
-		_margin_container.add_constant_override("margin_left", 75)
-		_margin_container.add_constant_override("margin_right", 75)
+		_margin_container.add_theme_constant_override("offset_left", 75)
+		_margin_container.add_theme_constant_override("offset_right", 75)
 
 
 func update_inventory() -> void :
@@ -98,19 +99,19 @@ func _update_gold_label() -> void :
 
 
 func _update_stylebox() -> void :
-	var stylebox = get_stylebox("panel").duplicate()
+	var stylebox = get_theme_stylebox("panel").duplicate()
 	CoopService.change_stylebox_for_player(stylebox, player_index)
-	add_stylebox_override("panel", stylebox)
+	add_theme_stylebox_override("panel", stylebox)
 
 
 func _set_focus_neighbours() -> void :
 	if carousel.index == 0:
 		if carousel.are_trigger_buttons_active():
-			_upgrade_ui_1.button.focus_neighbour_top = _upgrade_ui_1.button.get_path_to(_reroll_button)
-			_reroll_button.focus_neighbour_bottom = _reroll_button.get_path_to(_upgrade_ui_1.button)
+			_upgrade_ui_1.button.focus_neighbor_top = _upgrade_ui_1.button.get_path_to(_reroll_button)
+			_reroll_button.focus_neighbor_bottom = _reroll_button.get_path_to(_upgrade_ui_1.button)
 		else:
-			_reroll_button.focus_neighbour_bottom = _reroll_button.get_path_to(carousel.arrow_right)
-			carousel.arrow_right.focus_neighbour_top = carousel.arrow_right.get_path_to(_reroll_button)
+			_reroll_button.focus_neighbor_bottom = _reroll_button.get_path_to(carousel.arrow_right)
+			carousel.arrow_right.focus_neighbor_top = carousel.arrow_right.get_path_to(_reroll_button)
 
 	elif carousel.index == 1:
 		var weapons_container = player_gear_container.weapons_container
@@ -119,13 +120,13 @@ func _set_focus_neighbours() -> void :
 		var first_item = first_weapon if first_weapon != null else items_container.get_element(0)
 		var last_item = items_container.get_element(items_container.get_element_count() - 1)
 		if carousel.are_trigger_buttons_active():
-			weapons_container.focus_neighbour_top = weapons_container.get_path_to(last_item)
-			items_container.focus_neighbour_bottom = items_container.get_path_to(first_item)
+			weapons_container.focus_neighbor_top = weapons_container.get_path_to(last_item)
+			items_container.focus_neighbor_bottom = items_container.get_path_to(first_item)
 		else:
-			carousel.arrow_left.focus_neighbour_top = carousel.arrow_left.get_path_to(last_item)
-			carousel.arrow_right.focus_neighbour_top = carousel.arrow_right.get_path_to(last_item)
-			weapons_container.focus_neighbour_top = weapons_container.get_path_to(carousel.arrow_left)
-			items_container.focus_neighbour_bottom = items_container.get_path_to(carousel.arrow_left)
+			carousel.arrow_left.focus_neighbor_top = carousel.arrow_left.get_path_to(last_item)
+			carousel.arrow_right.focus_neighbor_top = carousel.arrow_right.get_path_to(last_item)
+			weapons_container.focus_neighbor_top = weapons_container.get_path_to(carousel.arrow_left)
+			items_container.focus_neighbor_bottom = items_container.get_path_to(carousel.arrow_left)
 		weapons_container.forward_focus_settings_to_inventory()
 		items_container.forward_focus_settings_to_inventory()
 
@@ -136,13 +137,13 @@ func _set_focus_neighbours() -> void :
 		if loop_focus:
 			primary_stats_container.set_focus_neighbours()
 		else:
-			carousel.arrow_left.focus_neighbour_top = carousel.arrow_left.get_path_to(primary_stats_container.last_primary_stat)
-			carousel.arrow_right.focus_neighbour_top = carousel.arrow_right.get_path_to(primary_stats_container.last_primary_stat)
-			primary_stats_container.last_primary_stat.focus_neighbour_bottom = primary_stats_container.last_primary_stat.get_path_to(carousel.arrow_left)
+			carousel.arrow_left.focus_neighbor_top = carousel.arrow_left.get_path_to(primary_stats_container.last_primary_stat)
+			carousel.arrow_right.focus_neighbor_top = carousel.arrow_right.get_path_to(primary_stats_container.last_primary_stat)
+			primary_stats_container.last_primary_stat.focus_neighbor_bottom = primary_stats_container.last_primary_stat.get_path_to(carousel.arrow_left)
 
 	else:
-		for side in [MARGIN_TOP, MARGIN_TOP, MARGIN_LEFT, MARGIN_RIGHT]:
-			carousel.arrow_left.set_focus_neighbour(side, NodePath(""))
+		for side in [SIDE_TOP, SIDE_TOP, SIDE_LEFT, SIDE_RIGHT]:
+			carousel.arrow_left.set_focus_neighbor(side, NodePath(""))
 
 
 func _on_Carousel_index_changed(index: int) -> void :
@@ -152,9 +153,9 @@ func _on_Carousel_index_changed(index: int) -> void :
 		return
 	var focused_control = focus_emulator.focused_control
 	if focused_control != null:
-		if carousel.get_content_element(0).is_a_parent_of(focused_control):
+		if carousel.get_content_element(0).is_ancestor_of(focused_control):
 			_resume_upgrade_control_focus = focused_control
-		elif carousel.get_content_element(1).is_a_parent_of(focused_control):
+		elif carousel.get_content_element(1).is_ancestor_of(focused_control):
 			_resume_inventory_control_focus = focused_control
 	focus()
 	if index == 0:

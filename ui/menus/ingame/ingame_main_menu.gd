@@ -24,8 +24,8 @@ func _set_player_index(p_player_index: int) -> void :
 
 	_switch_to_ban_items(false)
 
-	if not _button_banned_items.is_connected("toggled", self, "_switch_to_ban_items"):
-		_button_banned_items.connect("toggled", self, "_switch_to_ban_items")
+	if not _button_banned_items.is_connected("toggled", Callable(self, "_switch_to_ban_items")):
+		_button_banned_items.connect("toggled", Callable(self, "_switch_to_ban_items"))
 
 	if RunData.get_player_banned_items(player_index).size() <= 0:
 		_button_banned_items.visible = false
@@ -35,18 +35,18 @@ func _set_player_index(p_player_index: int) -> void :
 
 var _popup_manager_initialized: = false
 
-onready var _resume_button = $"%ResumeButton"
-onready var _buttons_array = [$"%ResumeButton", $"%CodexButton", $"%RestartButton", $"%EndRunButton", $"%OptionsButton", $"%QuitButton"]
-onready var _weapons_container = $"%WeaponsContainer"
-onready var _items_container = $"%ItemsContainer"
-onready var _button_banned_items: Button = $"%button_banned_items"
-onready var _stats_container = $"%StatsContainer"
-onready var _popup_manager = $"%PopupManager"
-onready var _item_popup = $ItemPopup
-onready var _stat_popup = $StatPopup
-onready var _timeline: UITimeline = $"%ui_timeline" as UITimeline
-onready var _difficulty_label = $"%DifficultyLabel"
-onready var _coop_player_selector = $"%CoopPlayerSelector"
+@onready var _resume_button = $"%ResumeButton"
+@onready var _buttons_array = [$"%ResumeButton", $"%CodexButton", $"%RestartButton", $"%EndRunButton", $"%OptionsButton", $"%QuitButton"]
+@onready var _weapons_container = $"%WeaponsContainer"
+@onready var _items_container = $"%ItemsContainer"
+@onready var _button_banned_items: Button = $"%button_banned_items"
+@onready var _stats_container = $"%StatsContainer"
+@onready var _popup_manager = $"%PopupManager"
+@onready var _item_popup = $ItemPopup
+@onready var _stat_popup = $StatPopup
+@onready var _timeline: UITimeline = $"%ui_timeline" as UITimeline
+@onready var _difficulty_label = $"%DifficultyLabel"
+@onready var _coop_player_selector = $"%CoopPlayerSelector"
 
 
 func init(p_player_index: = 0) -> void :
@@ -59,7 +59,7 @@ func init(p_player_index: = 0) -> void :
 
 	if not _popup_manager_initialized:
 		_popup_manager_initialized = true
-		_popup_manager.connect("element_focused", self, "_on_inventory_element_focused")
+		_popup_manager.connect("element_focused", Callable(self, "_on_inventory_element_focused"))
 		_popup_manager.connect_inventory_container(_weapons_container)
 		_popup_manager.connect_inventory_container(_items_container)
 		_popup_manager.connect_stats_container(_stats_container)
@@ -92,7 +92,7 @@ func _update_color() -> void :
 
 
 func is_focus_already_own_by_buttons() -> bool:
-	var focus_owner = get_focus_owner()
+	var focus_owner = get_viewport().gui_get_focus_owner()
 	if focus_owner == null:
 		return false
 	else:

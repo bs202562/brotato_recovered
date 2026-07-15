@@ -33,13 +33,13 @@ focus_base_data = [ SubResource( 1 ) ]
 player_index = 0
 
 [node name="Menu" type="VBoxContainer" parent="."]
-margin_left = 660.0
-margin_top = 201.0
-margin_right = 1260.0
-margin_bottom = 879.0
-rect_min_size = Vector2( 600, 0 )
+offset_left = 660.0
+offset_top = 201.0
+offset_right = 1260.0
+offset_bottom = 879.0
+custom_minimum_size = Vector2( 600, 0 )
 size_flags_horizontal = 4
-custom_constants/separation = 25
+theme_override_constants/separation = 25
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -49,45 +49,45 @@ __meta__ = {
 
 [node name="Retry_WaveContainer" type="VBoxContainer" parent="Menu"]
 unique_name_in_owner = true
-margin_top = 293.0
-margin_right = 600.0
-margin_bottom = 588.0
-custom_constants/separation = 25
+offset_top = 293.0
+offset_right = 600.0
+offset_bottom = 588.0
+theme_override_constants/separation = 25
 
 [node name="Label" type="Label" parent="Menu/Retry_WaveContainer"]
-margin_right = 600.0
-margin_bottom = 45.0
+offset_right = 600.0
+offset_bottom = 45.0
 text = "RETRY_WAVE_QUESTION"
 align = 1
 
 [node name="ConfirmButton" type="Button" parent="Menu/Retry_WaveContainer"]
 unique_name_in_owner = true
-margin_top = 70.0
-margin_right = 600.0
-margin_bottom = 135.0
+offset_top = 70.0
+offset_right = 600.0
+offset_bottom = 135.0
 text = "MENU_YES"
 script = ExtResource( 2 )
 
 [node name="CancelButton" type="Button" parent="Menu/Retry_WaveContainer"]
-margin_top = 160.0
-margin_right = 600.0
-margin_bottom = 225.0
+offset_top = 160.0
+offset_right = 600.0
+offset_bottom = 225.0
 text = "MENU_NO"
 script = ExtResource( 2 )
 
 [node name="Label_number_retry" type="Label" parent="Menu/Retry_WaveContainer"]
 unique_name_in_owner = true
-margin_top = 250.0
-margin_right = 600.0
-margin_bottom = 295.0
+offset_top = 250.0
+offset_right = 600.0
+offset_bottom = 295.0
 text = "RETRY_WAVE_NUMBER"
 align = 1
 
 [node name="OkButton" type="Button" parent="Menu"]
 unique_name_in_owner = true
-margin_top = 613.0
-margin_right = 600.0
-margin_bottom = 678.0
+offset_top = 613.0
+offset_right = 600.0
+offset_bottom = 678.0
 text = "OK_BUTTON"
 script = ExtResource( 2 )
 

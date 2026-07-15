@@ -1,7 +1,7 @@
 class_name PatrolAroundTheMapMovementBehavior
 extends MovementBehavior
 
-export (float) var radius_factor: = 0.8
+@export var radius_factor := 0.8
 
 var _current_target: Vector2 = Vector2.ZERO
 var _center: Vector2 = Vector2.ZERO
@@ -10,10 +10,10 @@ var _angle: float = 0.0
 var _phase: float = 0.0
 
 func init(parent: Node) -> Node:
-	.init(parent)
+	super.init(parent)
 	_radius = (ZoneService.get_current_zone_rect().size.y / 2.0) * radius_factor
 	_center = ZoneService.get_map_center()
-	_phase = rand_range(0.0, 2 * PI)
+	_phase = randf_range(0.0, 2 * PI)
 	return self
 
 func get_movement() -> Vector2:

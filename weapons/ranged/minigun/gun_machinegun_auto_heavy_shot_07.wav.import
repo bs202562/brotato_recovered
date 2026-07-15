@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/gun_machinegun_auto_heavy_shot_07.wav-9d58b99b55602d5973d4e5ffb046f8e9.sample"
+type="AudioStreamWAV"
+uid="uid://bcyc1u16ujm10"
+path="res://.godot/imported/gun_machinegun_auto_heavy_shot_07.wav-9d58b99b55602d5973d4e5ffb046f8e9.sample"
 
 [deps]
 
 source_file="res://weapons/ranged/minigun/gun_machinegun_auto_heavy_shot_07.wav"
-dest_files=[ "res://.import/gun_machinegun_auto_heavy_shot_07.wav-9d58b99b55602d5973d4e5ffb046f8e9.sample" ]
+dest_files=["res://.godot/imported/gun_machinegun_auto_heavy_shot_07.wav-9d58b99b55602d5973d4e5ffb046f8e9.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

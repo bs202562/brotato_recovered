@@ -1,5 +1,5 @@
 class_name BoostArgs
-extends Reference
+extends RefCounted
 
 
 var hp_boost: int

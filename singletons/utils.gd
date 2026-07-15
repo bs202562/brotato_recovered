@@ -47,14 +47,14 @@ const empty_hash: = 5381
 
 var default_die_args = Entity.DieArgs.new()
 
-var physics_fps: int setget set_physics_fps, get_physics_fps
+var physics_fps: int: get = get_physics_fps, set = set_physics_fps
 func set_physics_fps(_value: int) -> void :
 	printerr("physics_fps is readonly")
 func get_physics_fps() -> int:
-	return Engine.iterations_per_second
+	return Engine.physics_ticks_per_second
 
-var project_width: int = ProjectSettings.get_setting("display/window/size/width")
-var project_height: int = ProjectSettings.get_setting("display/window/size/height")
+var project_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
+var project_height: int = ProjectSettings.get_setting("display/window/size/viewport_height")
 
 var projectile_outline_shadermat = preload("res://resources/shaders/projectile_outline_shadermat.tres")
 var last_elt_selected = [null, null, null, null]
@@ -143,7 +143,7 @@ func physics_one(delta: float) -> float:
 	return get_physics_fps() * delta
 
 
-func convert_to_hash_array( var input_array, var remove_duplicates: = false) -> Array:
+func convert_to_hash_array(input_array, remove_duplicates: = false) -> Array:
 	var output_array: = []
 
 	for i in range(input_array.size()):
@@ -159,7 +159,7 @@ func convert_to_hash_array( var input_array, var remove_duplicates: = false) -> 
 			output_array.push_back(val)
 		elif val is String and val.begins_with("res://"):
 			output_array.push_back(val)
-		elif val is String and val.is_valid_integer():
+		elif val is String and val.is_valid_int():
 			output_array.push_back(int(val))
 		elif val is Dictionary:
 			output_array.push_back(convert_dictionary_to_hash(val, true))
@@ -181,14 +181,14 @@ func convert_to_hash_array( var input_array, var remove_duplicates: = false) -> 
 	return output_array
 
 
-func convert_dictionary_to_hash( var input_dictionary: Dictionary, var recursive = false) -> Dictionary:
+func convert_dictionary_to_hash(input_dictionary: Dictionary, recursive = false) -> Dictionary:
 	var output_dictionary: = {}
 	var dictionary_keys = input_dictionary.keys()
 
 	
 	for i in range(dictionary_keys.size()):
 		var key = dictionary_keys[i]
-		if key is String and not key.is_valid_integer():
+		if key is String and not key.is_valid_int():
 			output_dictionary[Keys.generate_hash(key)] = input_dictionary[key]
 
 	for i in range(dictionary_keys.size()):
@@ -198,7 +198,7 @@ func convert_dictionary_to_hash( var input_dictionary: Dictionary, var recursive
 
 	for i in range(dictionary_keys.size()):
 		var key = dictionary_keys[i]
-		if key is String and key.is_valid_integer():
+		if key is String and key.is_valid_int():
 			output_dictionary[int(key)] = input_dictionary[key]
 
 	
@@ -223,13 +223,13 @@ func convert_dictionary_to_hash( var input_dictionary: Dictionary, var recursive
 
 func instance_scene_on_main(scene: PackedScene, position: Vector2) -> Node:
 	var main = get_scene_node()
-	var instance = scene.instance()
+	var instance = scene.instantiate()
 	main.add_child(instance)
 
 	if "global_position" in instance:
 		instance.global_position = position
-	elif "rect_position" in instance:
-		instance.rect_position = position
+	elif "position" in instance:
+		instance.position = position
 
 	return instance
 
@@ -239,7 +239,7 @@ func get_scene_node() -> Node:
 	if scene.name == "GutRunner":
 		
 		var scene_nodes: = get_tree().get_nodes_in_group(TEST_SCENE_GROUP)
-		assert ( not scene_nodes.empty(), "Scene was not added to test with add_scene_node")
+		assert ( not scene_nodes.is_empty(), "Scene was not added to test with add_scene_node")
 		return scene_nodes.front()
 	return scene
 
@@ -350,17 +350,17 @@ func get_rand_pos_from_direction_at_distance(direction: int, min_pos: Vector2, m
 	var pos: Vector2 = Vector2.ZERO
 
 	if direction == Direction.TOP:
-		pos.x = rand_range(min_pos.x + distance, max_pos.x - distance)
+		pos.x = randf_range(min_pos.x + distance, max_pos.x - distance)
 		pos.y = min_pos.y + distance
 	elif direction == Direction.BOTTOM:
-		pos.x = rand_range(min_pos.x + distance, max_pos.x - distance)
+		pos.x = randf_range(min_pos.x + distance, max_pos.x - distance)
 		pos.y = max_pos.y - distance
 	elif direction == Direction.RIGHT:
 		pos.x = max_pos.x - distance
-		pos.y = rand_range(min_pos.y + distance, max_pos.y - distance)
+		pos.y = randf_range(min_pos.y + distance, max_pos.y - distance)
 	elif direction == Direction.LEFT:
 		pos.x = min_pos.x + distance
-		pos.y = rand_range(min_pos.y + distance, max_pos.y - distance)
+		pos.y = randf_range(min_pos.y + distance, max_pos.y - distance)
 
 	return pos
 
@@ -373,23 +373,23 @@ func get_rand_pos_from_direction_within_distance(direction: int, min_pos: Vector
 		direction = get_rand_element([Direction.BOTTOM, Direction.RIGHT, Direction.LEFT, Direction.TOP])
 
 	if direction == Direction.TOP:
-		pos.x = rand_range(min_pos.x + min_distance, max_pos.x - min_distance)
-		pos.y = rand_range(min_pos.y + min_distance, min_pos.y + distance)
+		pos.x = randf_range(min_pos.x + min_distance, max_pos.x - min_distance)
+		pos.y = randf_range(min_pos.y + min_distance, min_pos.y + distance)
 	elif direction == Direction.BOTTOM:
-		pos.x = rand_range(min_pos.x + min_distance, max_pos.x - min_distance)
-		pos.y = rand_range(max_pos.y - min_distance, max_pos.y - distance)
+		pos.x = randf_range(min_pos.x + min_distance, max_pos.x - min_distance)
+		pos.y = randf_range(max_pos.y - min_distance, max_pos.y - distance)
 	elif direction == Direction.RIGHT:
-		pos.x = rand_range(max_pos.x - distance, max_pos.x - min_distance)
-		pos.y = rand_range(min_pos.y + min_distance, max_pos.y - min_distance)
+		pos.x = randf_range(max_pos.x - distance, max_pos.x - min_distance)
+		pos.y = randf_range(min_pos.y + min_distance, max_pos.y - min_distance)
 	elif direction == Direction.LEFT:
-		pos.x = rand_range(min_pos.x + min_distance, min_pos.x + distance)
-		pos.y = rand_range(min_pos.y + min_distance, max_pos.y - min_distance)
+		pos.x = randf_range(min_pos.x + min_distance, min_pos.x + distance)
+		pos.y = randf_range(min_pos.y + min_distance, max_pos.y - min_distance)
 
 	return pos
 
 
 func get_rand_element(array: Array):
-	if array.empty():
+	if array.is_empty():
 		return null
 	return array.pick_random()
 
@@ -579,13 +579,13 @@ func get_scaling_stat_icon_text(stat_hsh: int, scaling: float = 1.0, show_plus_p
 	var prefix = "+" if show_plus_prefix and scaling > 0.0 else ""
 	var color = "white" if scaling > 0.0 else "#f6617c"
 	var scaling_text = "[color=%s]%s%s%%[/color]" % [color, prefix, str(round(scaling * 100.0))]
-	var small_icon: Texture = ItemService.get_stat_small_icon(stat_hsh)
+	var small_icon: Texture2D = ItemService.get_stat_small_icon(stat_hsh)
 	return "%s[img=%sx%s]%s[/img]" % [scaling_text, w, w, small_icon.resource_path]
 
 
 
 func convert_stats(stats: Array, player_index: int, permanent: bool = true) -> void :
-	if stats.empty():
+	if stats.is_empty():
 		return
 	for stat_to_convert in stats:
 		var pct = stat_to_convert.pct_converted / 100.0
@@ -673,7 +673,7 @@ func get_player_focused_control(some_control: Control, player_index: int, focus_
 		focus_emulator = get_focus_emulator(player_index)
 	if RunData.is_coop_run:
 		return focus_emulator.focused_control
-	return some_control.get_focus_owner()
+	return some_control.get_viewport().gui_get_focus_owner()
 
 
 func is_player_cancel_pressed(event: InputEvent, player_index: int) -> bool:
@@ -793,12 +793,12 @@ func get_startup_arguments() -> Dictionary:
 func disconnect_all_signals(object: Object) -> void :
 	for object_signal in object.get_signal_list():
 		for connection in object.get_signal_connection_list(object_signal.name):
-			object.disconnect(connection.signal , connection.target, connection.method)
+			object.disconnect(connection.signal, Callable(connection.target, connection.method))
 
 
 func disconnect_all_signal_connections(object: Object, signal_name: String) -> void :
 	for connection in object.get_signal_connection_list(signal_name):
-		object.disconnect(connection.signal , connection.target, connection.method)
+		object.disconnect(connection.signal, Callable(connection.target, connection.method))
 
 
 func get_first_scaling_stat(scaling_stats: Array) -> int:
@@ -817,7 +817,7 @@ func is_manual_aim(player_index: int) -> bool:
 
 	if ProgressData.settings.manual_aim_on_mouse_press or (Utils.on_console and ProgressData.settings.manual_aim):
 		
-		var is_mouse_pressed = not RunData.is_coop_run and Input.is_mouse_button_pressed(BUTTON_LEFT)
+		var is_mouse_pressed = not RunData.is_coop_run and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 		var is_gamepad_pressed = is_player_using_gamepad(player_index) and get_player_rjoy_vector(player_index).length_squared() > 0.05
 		is_manual = is_mouse_pressed or is_gamepad_pressed
 	elif ProgressData.settings.manual_aim:

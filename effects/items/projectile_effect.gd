@@ -1,9 +1,9 @@
 class_name ProjectileEffect
 extends Effect
 
-export(Resource) var weapon_stats
-export(bool) var auto_target_enemy = false
-export(int) var cooldown = -1
+@export var weapon_stats: Resource
+@export var auto_target_enemy: bool = false
+@export var cooldown: int = -1
 
 
 static func get_id() -> String:
@@ -12,7 +12,7 @@ static func get_id() -> String:
 
 func apply(player_index: int) -> void:
 	var effect: Array = RunData.get_player_effect(key_hash, player_index)
-	if effect.empty():
+	if effect.is_empty():
 		effect.append_array([value, weapon_stats.duplicate(), auto_target_enemy, cooldown])
 	else:
 		var existing_proj_count = effect[0]
@@ -23,7 +23,7 @@ func apply(player_index: int) -> void:
 
 func unapply(player_index: int) -> void:
 	var effect: Array = RunData.get_player_effect(key_hash, player_index)
-	assert(not effect.empty(), "Can't unapply non existing effect")
+	assert(not effect.is_empty(), "Can't unapply non existing effect")
 
 	var existing_proj_count = effect[0]
 	var total_proj_count = existing_proj_count - value
@@ -58,7 +58,7 @@ func get_args(player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	if weapon_stats != null:
 		serialized.weapon_stats = weapon_stats.serialize()
@@ -70,7 +70,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	if serialized.has("weapon_stats"):
 		var data = RangedWeaponStats.new()

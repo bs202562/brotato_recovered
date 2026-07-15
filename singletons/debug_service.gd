@@ -1,54 +1,54 @@
 extends Node
 
-export (PackedScene) var debug_menu
+@export var debug_menu: PackedScene
 
-export (int, 1, 1000) var starting_wave: = 1
-export (int) var starting_gold = 30
-export (bool) var invulnerable = false
-export (bool) var invisible = false
-export (bool) var one_shot_enemies = false
-export (bool) var slow_motion = false
-export (bool) var instant_waves = false
-export (int) var custom_wave_duration = - 1
-export (bool) var no_fullscreen_on_launch = false
-export (Array, Resource) var debug_weapons
-export (Array, Resource) var debug_items
-export (bool) var remove_starting_weapons = false
-export (bool) var add_all_weapons = false
-export (bool) var add_all_items = false
-export (bool) var curse_debug_items_and_weapons = false
-export (bool) var unlock_all_chars = false
-export (bool) var unlock_all_challenges = false
-export (bool) var unlock_all_difficulties = false
-export (bool) var generate_full_unlocked_save_file = false
-export (bool) var reinitialize_save = false
-export (bool) var reinitialize_store_data = false
-export (bool) var disable_saving = false
-export (bool) var randomize_equipment = false
-export (bool) var randomize_waves = false
-export (bool) var hide_wave_timer = false
-export (bool) var hide_hud = false
-export (bool) var hide_floating_text = false
-export (bool) var nullify_enemy_speed = false
-export (bool) var always_drop_crates = false
-export (float, 0.0, 10.0, 0.1) var nb_enemies_mult = 1.0
-export (bool) var no_enemies = false
-export (bool) var no_entities = false
-export (bool) var spawn_debug_enemies = false
-export (Array, Resource) var debug_enemies
-export (String) var spawn_specific_elite = ""
-export (String) var spawn_specific_boss = ""
-export (String) var force_item_in_shop = ""
+@export var starting_wave: = 1 # (int, 1, 1000)
+@export var starting_gold: int = 30
+@export var invulnerable: bool = false
+@export var invisible: bool = false
+@export var one_shot_enemies: bool = false
+@export var slow_motion: bool = false
+@export var instant_waves: bool = false
+@export var custom_wave_duration: int = - 1
+@export var no_fullscreen_on_launch: bool = false
+@export var debug_weapons: Array = [] # (Array, Resource)
+@export var debug_items: Array = [] # (Array, Resource)
+@export var remove_starting_weapons: bool = false
+@export var add_all_weapons: bool = false
+@export var add_all_items: bool = false
+@export var curse_debug_items_and_weapons: bool = false
+@export var unlock_all_chars: bool = false
+@export var unlock_all_challenges: bool = false
+@export var unlock_all_difficulties: bool = false
+@export var generate_full_unlocked_save_file: bool = false
+@export var reinitialize_save: bool = false
+@export var reinitialize_store_data: bool = false
+@export var disable_saving: bool = false
+@export var randomize_equipment: bool = false
+@export var randomize_waves: bool = false
+@export var hide_wave_timer: bool = false
+@export var hide_hud: bool = false
+@export var hide_floating_text: bool = false
+@export var nullify_enemy_speed: bool = false
+@export var always_drop_crates: bool = false
+@export var nb_enemies_mult = 1.0 # (float, 0.0, 10.0, 0.1)
+@export var no_enemies: bool = false
+@export var no_entities: bool = false
+@export var spawn_debug_enemies: bool = false
+@export var debug_enemies: Array = [] # (Array, Resource)
+@export var spawn_specific_elite: String = ""
+@export var spawn_specific_boss: String = ""
+@export var force_item_in_shop: String = ""
 
-export (bool) var coop_multiple_keyboard_inputs = false
-export (bool) var has_dlc = true
-export (bool) var no_skin = false
+@export var coop_multiple_keyboard_inputs: bool = false
+@export var has_dlc: bool = true
+@export var no_skin: bool = false
 
-export (bool) var enable_time_scale_buttons = false
-export (bool) var always_curse = false
+@export var enable_time_scale_buttons: bool = false
+@export var always_curse: bool = false
 var curse_enemy_spawn = false
-export (bool) var spawn_horde = false
-export (bool) var display_fps = false
+@export var spawn_horde: bool = false
+@export var display_fps: bool = false
 
 var debug_items_added: = [false, false, false, false]
 var debug_weapons_added: = [false, false, false, false]
@@ -67,7 +67,7 @@ func reset_for_new_run() -> void :
 func _input(event):
 	if OS.is_debug_build() and event.is_action_pressed("open_debug_menu"):
 		if not is_instance_valid(current_debug_menu):
-			current_debug_menu = debug_menu.instance()
+			current_debug_menu = debug_menu.instantiate()
 			if get_tree().current_scene is Main:
 				get_tree().current_scene.get_node("UI").add_child(current_debug_menu)
 			else:
@@ -176,8 +176,8 @@ func log_run_info(upgrades: Array = [[], [], [], []], consumables: Array = [[], 
 	if OS.get_name().begins_with("Seaven"):
 		return
 
-	var log_file = File.new()
-	var error = log_file.open(ProgressData.LOG_PATH, File.READ_WRITE)
+	var log_file = FileAccess.open(ProgressData.LOG_PATH, FileAccess.READ_WRITE)
+	var error = OK if log_file != null else FileAccess.get_open_error()
 
 	if error != OK:
 		printerr("Could not open the file %s. Aborting save operation. Error code: %s" %
@@ -218,8 +218,8 @@ func log_data(text: String) -> void :
 	if OS.get_name().begins_with("Seaven"):
 		return
 
-	var log_file = File.new()
-	var error = log_file.open(ProgressData.LOG_PATH, File.READ_WRITE)
+	var log_file = FileAccess.open(ProgressData.LOG_PATH, FileAccess.READ_WRITE)
+	var error = OK if log_file != null else FileAccess.get_open_error()
 
 	if error != OK:
 		printerr("Could not open the file %s. Aborting save operation. Error code: %s" %

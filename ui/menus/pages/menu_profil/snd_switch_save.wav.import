@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/snd_switch_save.wav-c8c0ac00e98f817144a08a5ed7aec3f3.sample"
+type="AudioStreamWAV"
+uid="uid://twyvhoocgwb6"
+path="res://.godot/imported/snd_switch_save.wav-c8c0ac00e98f817144a08a5ed7aec3f3.sample"
 
 [deps]
 
 source_file="res://ui/menus/pages/menu_profil/snd_switch_save.wav"
-dest_files=[ "res://.import/snd_switch_save.wav-c8c0ac00e98f817144a08a5ed7aec3f3.sample" ]
+dest_files=["res://.godot/imported/snd_switch_save.wav-c8c0ac00e98f817144a08a5ed7aec3f3.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

@@ -3,17 +3,17 @@ extends ItemParentData
 
 enum Type { MELEE, RANGED }
 
-export(String) var weapon_id = ""
-onready var weapon_id_hash = Keys.empty_hash
-export(Type) var type := Type.MELEE
-export(Array, Resource) var sets
-export(PackedScene) var scene = null
-export(Resource) var stats = null
-export(Resource) var upgrades_into
+@export var weapon_id: String = ""
+var weapon_id_hash = Keys.empty_hash
+@export var type := Type.MELEE
+@export var sets: Array = [] # (Array, Resource)
+@export var scene: PackedScene = null
+@export var stats: Resource = null
+@export var upgrades_into: Resource
 
 var previous_upgrade : WeaponData
 
-export(Array, String) var add_to_chars_as_starting = []
+@export var add_to_chars_as_starting = [] # (Array, String)
 
 var dmg_dealt_last_wave := 0
 var tracked_value := 0
@@ -23,7 +23,7 @@ var _init_stats_args_data := WeaponServiceInitStatsArgs.new()
 
 
 func _generate_hashes() -> void:
-	._generate_hashes()
+	super._generate_hashes()
 	weapon_id_hash = Keys.generate_hash(weapon_id)
 
 
@@ -38,7 +38,7 @@ func get_weapon_id_hash():
 	return weapon_id_hash
 
 func duplicate(subresources := false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 	duplication.weapon_id_hash = weapon_id_hash
 	return duplication
 
@@ -56,7 +56,7 @@ func get_weapon_stats_text(player_index: int, hide_if_non_unlock_in_codex : bool
 
 
 func get_effects_text(player_index: int, with_tracking_text: bool = true) -> String:
-	var text = .get_effects_text(player_index)
+	var text = super.get_effects_text(player_index)
 
 	if with_tracking_text and tracking_text != "":
 		text += _get_tracking_text(player_index)
@@ -81,7 +81,7 @@ func get_name_text() -> String:
 
 
 func _is_locked_in_codex() -> bool:
-	return ._is_locked_in_codex()
+	return super._is_locked_in_codex()
 
 
 func _is_silhouette_in_codex() -> bool:
@@ -105,7 +105,7 @@ func _is_silhouette_in_codex() -> bool:
 
 func serialize() -> Dictionary:
 
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.weapon_id = weapon_id
 	serialized.type = str(type)
@@ -126,7 +126,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	weapon_id = serialized.weapon_id
 	weapon_id_hash = Keys.generate_hash(weapon_id)

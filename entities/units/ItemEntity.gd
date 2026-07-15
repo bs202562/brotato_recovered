@@ -1,14 +1,14 @@
 extends ItemParentData
 class_name ItemEntity
 
-export(Resource) var stats
-export(String) var behaviour_description = ""
-export(bool) var show_hp : bool = true
-export(bool) var show_dammage : bool = true
-export(bool) var show_speed : bool = true
-export(bool) var show_knoback_resistance : bool = true
-export(bool) var show_material_dropped : bool = true
-export(Texture) var screen_example : Texture
+@export var stats: Resource
+@export var behaviour_description: String = ""
+@export var show_hp: bool = true
+@export var show_dammage: bool = true
+@export var show_speed: bool = true
+@export var show_knoback_resistance: bool = true
+@export var show_material_dropped: bool = true
+@export var screen_example: Texture2D
 
 func _set_item_stat(new_enemy_stats : Stats, id : String) -> void:
 	my_id = id

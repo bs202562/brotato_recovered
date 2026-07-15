@@ -1,14 +1,14 @@
 extends PanelContainer
 
-onready var _label = $Label
+@onready var _label = $Label
 
-var text setget _set_text, _get_text
+var text : get = _get_text, set = _set_text
 
 
 func _set_text(value):
 	_label.text = value
 	
-	call_deferred("set", "rect_size", Vector2.ZERO)
+	call_deferred("set", "size", Vector2.ZERO)
 
 
 func _get_text():

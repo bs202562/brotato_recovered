@@ -1,10 +1,10 @@
 class_name RailGun
 extends RangedWeapon
 
-export (Gradient) var bullet_color_gradient
+@export var bullet_color_gradient: Gradient
 
-onready var _one_second_timer: Timer = $OneSecondTimer
-onready var _modulate_color_sprite: Sprite = $"%modulate_color_sprite"
+@onready var _one_second_timer: Timer = $OneSecondTimer
+@onready var _modulate_color_sprite: Sprite2D = $"%modulate_color_sprite"
 var _one_second_timeouts: = 0
 var duplicated_stats: RangedWeaponStats = null
 var args: = WeaponServiceInitStatsArgs.new()
@@ -15,9 +15,10 @@ var interval_count: float = 0
 var mat_bullet: Material
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_ready 为基类优先；_parent 由 Weapon._ready 初始化）
 	_one_second_timer.start()
 	_one_second_timeouts = 0
-	var error = _parent.connect("took_damage", self, "_player_took_damage")
+	var error = _parent.connect("took_damage", Callable(self, "_player_took_damage"))
 
 	base_damage = stats.damage
 	bonus_damage = 0
@@ -25,7 +26,7 @@ func _ready() -> void :
 
 	emit_signal("tracked_value_set", 0)
 
-	_modulate_color_sprite.modulate = bullet_color_gradient.interpolate(0.0)
+	_modulate_color_sprite.modulate = bullet_color_gradient.sample(0.0)
 
 
 func init_stats(at_wave_begin: bool = true) -> void :
@@ -96,13 +97,13 @@ func _on_OneSecondTimer_timeout():
 
 			break
 
-	_modulate_color_sprite.modulate = bullet_color_gradient.interpolate(interval_count / 8.0)
+	_modulate_color_sprite.modulate = bullet_color_gradient.sample(interval_count / 8.0)
 
 func on_projectile_shot(projectile: Node2D) -> void :
-	.on_projectile_shot(projectile)
+	super.on_projectile_shot(projectile)
 	if not is_instance_valid(projectile):
 		return
 
-	var col: Color = bullet_color_gradient.interpolate(interval_count / 8.0)
+	var col: Color = bullet_color_gradient.sample(interval_count / 8.0)
 	projectile._sprite.material.set("shader_param/color_A", col)
 	projectile.get_node("%CPUParticles2D").modulate = col

@@ -1,16 +1,17 @@
 extends BaseEndRun
 
-onready var _weapons_container = $"%WeaponsContainer"
-onready var _items_container = $"%ItemsContainer"
-onready var _progress_container = $"%ProgressContainer"
-onready var _stats_container = $"%StatsContainer"
-onready var _background = $"%Background"
-onready var _stat_popup = $StatPopup
-onready var _item_popup = $ItemPopup
-onready var _unlockall_icon: TextureRect = $"%unlockall_icon"
+@onready var _weapons_container = $"%WeaponsContainer"
+@onready var _items_container = $"%ItemsContainer"
+@onready var _progress_container = $"%ProgressContainer"
+@onready var _stats_container = $"%StatsContainer"
+@onready var _background = $"%Background"
+@onready var _stat_popup = $StatPopup
+@onready var _item_popup = $ItemPopup
+@onready var _unlockall_icon: TextureRect = $"%unlockall_icon"
 
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	TempStats.reset()
 	LinkedStats.reset()
 
@@ -54,7 +55,7 @@ func _ready() -> void :
 
 	_unlockall_icon.visible = ProgressData.is_unlock_all_save()
 
-	yield(get_tree(), "idle_frame")
+	await get_tree().process_frame
 	_items_container._elements.emit_signal("need_to_sort_inventory")
 	_weapons_container._elements.emit_signal("need_to_sort_inventory")
 

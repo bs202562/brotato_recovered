@@ -2,7 +2,7 @@
 
 [ext_resource path="res://weapons/weapon_stats/ranged_weapon_stats.gd" type="Script" id=1]
 [ext_resource path="res://weapons/ranged/fireball/Fire 5 (DPS).mp3" type="AudioStream" id=2]
-[ext_resource path="res://weapons/ranged/fireball/fireball_reloading.png" type="Texture" id=7]
+[ext_resource path="res://weapons/ranged/fireball/fireball_reloading.png" type="Texture2D" id=7]
 [ext_resource path="res://projectiles/fireball_projectile/fireball_projectile.tscn" type="PackedScene" id=8]
 
 [resource]

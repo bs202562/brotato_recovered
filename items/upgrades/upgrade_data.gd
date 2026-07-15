@@ -1,16 +1,16 @@
 class_name UpgradeData
 extends ItemData
 
-export (String) var upgrade_id = ""
+@export var upgrade_id: String = ""
 var upgrade_id_hash: int = Keys.empty_hash
 
 func duplicate(subresources: = false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 	duplication.upgrade_id_hash = upgrade_id_hash
 	return duplication
 
 func _generate_hashes() -> void :
-	._generate_hashes()
+	super._generate_hashes()
 	upgrade_id_hash = Keys.generate_hash(upgrade_id)
 
 

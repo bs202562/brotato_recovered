@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://entities/units/enemies/boss/boss.tscn" type="PackedScene" id=1]
-[ext_resource path="res://dlcs/dlc_1/enemies/jellyfish/jellyfish.png" type="Texture" id=2]
+[ext_resource path="res://dlcs/dlc_1/enemies/jellyfish/jellyfish.png" type="Texture2D" id=2]
 [ext_resource path="res://dlcs/dlc_1/enemies/jellyfish/jellyfish_stats.tres" type="Resource" id=3]
 [ext_resource path="res://dlcs/dlc_1/enemies/jellyfish/jellyfish.gd" type="Script" id=4]
 [ext_resource path="res://entities/units/movement_behaviors/go_towards_map_center_movement_behavior.gd" type="Script" id=5]
@@ -28,7 +28,7 @@ stats = ExtResource( 3 )
 enemy_id = "jellyfish"
 is_elite = true
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -32 )
 texture = ExtResource( 2 )
 
@@ -115,8 +115,8 @@ shoot_towards_unit = true
 rotate_projectile = false
 
 [node name="LifeBar" parent="." index="13"]
-margin_top = -128.0
-margin_bottom = -112.0
+offset_top = -128.0
+offset_bottom = -112.0
 
 [node name="Pivot4" type="Node2D" parent="." index="15"]
 script = ExtResource( 10 )

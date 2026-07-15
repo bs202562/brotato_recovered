@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://dlcs/dlc_1/enemies/blobfish/blobfish.png" type="Texture" id=1]
+[ext_resource path="res://dlcs/dlc_1/enemies/blobfish/blobfish.png" type="Texture2D" id=1]
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://dlcs/dlc_1/enemies/blobfish/blobfish_stats.tres" type="Resource" id=3]
 [ext_resource path="res://entities/units/enemies/lamprey/lamprey.tscn" type="PackedScene" id=4]
@@ -24,7 +24,7 @@ enemy_id = "blobfish"
 enemy_to_spawn = ExtResource( 4 )
 enemy2_to_spawn = ExtResource( 5 )
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -15 )
 texture = ExtResource( 1 )
 

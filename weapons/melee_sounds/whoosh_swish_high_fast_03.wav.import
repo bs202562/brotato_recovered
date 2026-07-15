@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/whoosh_swish_high_fast_03.wav-a1b49cff8a524914e28b712da250e87b.sample"
+type="AudioStreamWAV"
+uid="uid://cqc6v27waj4hm"
+path="res://.godot/imported/whoosh_swish_high_fast_03.wav-a1b49cff8a524914e28b712da250e87b.sample"
 
 [deps]
 
 source_file="res://weapons/melee_sounds/whoosh_swish_high_fast_03.wav"
-dest_files=[ "res://.import/whoosh_swish_high_fast_03.wav-a1b49cff8a524914e28b712da250e87b.sample" ]
+dest_files=["res://.godot/imported/whoosh_swish_high_fast_03.wav-a1b49cff8a524914e28b712da250e87b.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/whistle_effect.wav-836dadca1f909a60a6c67c0db31fb891.sample"
+type="AudioStreamWAV"
+uid="uid://l1v10vmnc7xv"
+path="res://.godot/imported/whistle_effect.wav-836dadca1f909a60a6c67c0db31fb891.sample"
 
 [deps]
 
 source_file="res://dlcs/dlc_1/items/whistle/whistle_effect.wav"
-dest_files=[ "res://.import/whistle_effect.wav-836dadca1f909a60a6c67c0db31fb891.sample" ]
+dest_files=["res://.godot/imported/whistle_effect.wav-836dadca1f909a60a6c67c0db31fb891.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

@@ -5,7 +5,7 @@ var consumable_data: Resource = null
 
 
 func pickup(player_index: int) -> void :
-	.pickup(player_index)
+	super.pickup(player_index)
 	SoundManager.play(Utils.get_rand_element(consumable_data.pickup_sounds))
 
 

@@ -1,5 +1,5 @@
 class_name _ModLoaderCLI
-extends Reference
+extends RefCounted
 
 
 
@@ -40,19 +40,19 @@ static func get_cmd_line_arg_value(argument: String) -> String:
 	return ""
 
 
-static func _get_fixed_cmdline_args() -> PoolStringArray:
+static func _get_fixed_cmdline_args() -> PackedStringArray:
 	return fix_godot_cmdline_args_string_space_splitting(OS.get_cmdline_args())
 
 
 
 
-static func fix_godot_cmdline_args_string_space_splitting(args: PoolStringArray) -> PoolStringArray:
+static func fix_godot_cmdline_args_string_space_splitting(args: PackedStringArray) -> PackedStringArray:
 	if not OS.has_feature("editor"):
 		return args
 	if OS.has_feature("Windows"):
 		return args
 
-	var fixed_args: = PoolStringArray([])
+	var fixed_args: = PackedStringArray([])
 	var fixed_arg: = ""
 	
 	

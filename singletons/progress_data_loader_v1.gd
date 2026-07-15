@@ -1,5 +1,5 @@
 class_name ProgressDataLoaderV1
-extends Reference
+extends RefCounted
 
 
 const LOG_PREFIX: = "ProgressDataLoaderV1: "
@@ -45,8 +45,7 @@ func _init(save_dir: = "") -> void :
 	if save_dir.ends_with("user:/") or not save_dir.ends_with("/"):
 		save_dir = save_dir + "/"
 
-	var dir: = Directory.new()
-	var directory_exists: = not save_dir.empty() and dir.dir_exists(save_dir)
+	var directory_exists: = not save_dir.is_empty() and DirAccess.dir_exists_absolute(save_dir)
 	if not directory_exists:
 		print(LOG_PREFIX + "directory does not exist - " + save_dir)
 		return
@@ -57,34 +56,34 @@ func _init(save_dir: = "") -> void :
 
 
 func load_game_file(path: = "") -> void :
-	if path.empty():
+	if path.is_empty():
 		path = _save_path
-	if path.empty():
+	if path.is_empty():
 		printerr(LOG_PREFIX + "Loading failed - missing save path")
 		return
 
 	print(LOG_PREFIX + "Loading %s" % path)
 
-	var save_file: = File.new()
-	if not save_file.file_exists(path):
+	if not FileAccess.file_exists(path):
 		print(LOG_PREFIX + "No v1 save found")
 		load_status = LoadStatus.SAVE_MISSING
 		return
 
-	var error = save_file.open(path, File.READ)
+	var save_file: = FileAccess.open(path, FileAccess.READ)
+	var error = OK if save_file != null else FileAccess.get_open_error()
 	if error != OK:
 		printerr(LOG_PREFIX + "Could not open %s. Error code: %s" % [path, error])
 		_close_file_and_load_backups(save_file, path)
 		return
 
-	var parsed_zones = parse_json(save_file.get_line())
-	var parsed_characters = parse_json(save_file.get_line())
-	var parsed_upgrades = parse_json(save_file.get_line())
-	var parsed_consumables = parse_json(save_file.get_line())
-	var parsed_weapons = parse_json(save_file.get_line())
-	var parsed_items = parse_json(save_file.get_line())
-	var parsed_challenges = parse_json(save_file.get_line())
-	var parsed_difficulties = parse_json(save_file.get_line())
+	var parsed_zones = JSON.parse_string(save_file.get_line())
+	var parsed_characters = JSON.parse_string(save_file.get_line())
+	var parsed_upgrades = JSON.parse_string(save_file.get_line())
+	var parsed_consumables = JSON.parse_string(save_file.get_line())
+	var parsed_weapons = JSON.parse_string(save_file.get_line())
+	var parsed_items = JSON.parse_string(save_file.get_line())
+	var parsed_challenges = JSON.parse_string(save_file.get_line())
+	var parsed_difficulties = JSON.parse_string(save_file.get_line())
 
 	if (parsed_zones == null or parsed_characters == null or parsed_upgrades == null
 		or parsed_consumables == null or parsed_weapons == null or parsed_items == null
@@ -109,32 +108,33 @@ func load_game_file(path: = "") -> void :
 	difficulties_unlocked_serialized = parsed_difficulties
 
 	settings.clear()
-	var saved_settings = parse_json(save_file.get_line())
+	var saved_settings = JSON.parse_string(save_file.get_line())
 	if saved_settings != null and saved_settings is Dictionary:
 		settings = saved_settings
 
 	data.clear()
-	var saved_data = parse_json(save_file.get_line())
+	var saved_data = JSON.parse_string(save_file.get_line())
 	if saved_data != null and saved_data is Dictionary:
 		data = saved_data
 
 	run_state_deserialized.clear()
-	if save_file.get_position() < save_file.get_len():
-		var saved_run_state = parse_json(save_file.get_line())
+	if save_file.get_position() < save_file.get_length():
+		var saved_run_state = JSON.parse_string(save_file.get_line())
 		if saved_run_state != null and saved_run_state is Dictionary:
 			run_state_deserialized = deserialize_run_state(saved_run_state)
 
 	inactive_mods.clear()
-	if save_file.get_position() < save_file.get_len():
-		var saved_inactive_mods = parse_json(save_file.get_line())
+	if save_file.get_position() < save_file.get_length():
+		var saved_inactive_mods = JSON.parse_string(save_file.get_line())
 		if saved_inactive_mods != null and saved_inactive_mods is Array:
 			inactive_mods = saved_inactive_mods
 
 	save_file.close()
 
 
-func _close_file_and_load_backups(save_file: File, save_path: String) -> void :
-	save_file.close()
+func _close_file_and_load_backups(save_file: FileAccess, save_path: String) -> void :
+	if save_file != null:
+		save_file.close()
 	_load_backups(save_path)
 
 

@@ -12,14 +12,17 @@ func _init(p_console: TextEdit, p_clear_console_button: Button, p_timer: Timer) 
 	clear_console_button = p_clear_console_button
 	timer = p_timer
 
-	clear_console_button.connect("pressed", self, "clear")
+	clear_console_button.connect("pressed", Callable(self, "clear"))
 
 
 func find_sprites(content_name: String, path: String, is_weapon: bool = false) -> Dictionary:
 	var sprites = {}
-	var dir = Directory.new()
+	var dir = DirAccess.open(path)
 	print(path)
-	dir.open(path)
+
+	if dir == null:
+		print_console("Can't open dir %s" % path)
+		return sprites
 
 	dir.list_dir_begin()
 
@@ -34,7 +37,7 @@ func find_sprites(content_name: String, path: String, is_weapon: bool = false) -
 		if regex.search(file_name):
 			var is_appearance: bool = "_app_" in file_name if not is_weapon else not ("_icon" in file_name)
 			var image: Image = Image.new()
-			image.load(path.plus_file(file_name))
+			image.load(path.path_join(file_name))
 
 			sprites[file_name] = image
 
@@ -61,7 +64,7 @@ func refresh_filesystem() -> void :
 
 	while editor_interface.get_resource_filesystem().is_scanning():
 		timer.start()
-		yield(timer, "timeout")
+		await timer.timeout
 
 
 func print_console(msg, clear: bool = false) -> void :

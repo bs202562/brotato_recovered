@@ -1,7 +1,7 @@
 class_name PlayerHealthStatEffect
 extends NullEffect
 
-export (int) var for_every_health_percent: = 1
+@export var for_every_health_percent := 1
 
 
 static func get_id() -> String:
@@ -13,13 +13,13 @@ func get_args(player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 	serialized.for_every_health_percent = for_every_health_percent
 	return serialized
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void :
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 	for_every_health_percent = serialized.for_every_health_percent
 
 

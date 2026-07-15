@@ -1,4 +1,4 @@
 class_name MobProjectileStats
-extends Reference
+extends RefCounted
 
-export (int) var projectile_speed: = 3000
+@export var projectile_speed := 3000

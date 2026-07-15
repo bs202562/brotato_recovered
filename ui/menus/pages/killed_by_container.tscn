@@ -1,46 +1,46 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://resources/themes/panel/outline_panel_simple.png" type="Texture" id=1]
+[ext_resource path="res://resources/themes/panel/outline_panel_simple.png" type="Texture2D" id=1]
 [ext_resource path="res://ui/menus/pages/menu_codex/codex_icon_panel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=3]
 [ext_resource path="res://ui/menus/pages/killed_by_container.gd" type="Script" id=4]
-[ext_resource path="res://projectiles/bullet_hells/bullet_hell_icon.png" type="Texture" id=5]
+[ext_resource path="res://projectiles/bullet_hells/bullet_hell_icon.png" type="Texture2D" id=5]
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 128, 128 )
-margin_left = 23.0
-margin_right = 23.0
-margin_top = 23.0
-margin_bottom = 23.0
+offset_left = 23.0
+offset_right = 23.0
+offset_top = 23.0
+offset_bottom = 23.0
 modulate_color = Color( 0.290196, 0.290196, 0.290196, 1 )
 
 [node name="KilledByContainer" type="VBoxContainer"]
-margin_right = 600.0
-margin_bottom = 268.0
+offset_right = 600.0
+offset_bottom = 268.0
 theme = ExtResource( 3 )
 script = ExtResource( 4 )
 bulletIcon = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="."]
-margin_right = 600.0
-margin_bottom = 45.0
+offset_right = 600.0
+offset_bottom = 45.0
 text = "KILLED_BY"
 align = 1
 
 [node name="enemy_label" type="Label" parent="."]
-margin_top = 49.0
-margin_right = 600.0
-margin_bottom = 94.0
+offset_top = 49.0
+offset_right = 600.0
+offset_bottom = 94.0
 text = "ENEMY_NAME"
 align = 1
 
 [node name="IconPanel" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
-margin_left = 215.0
-margin_top = 98.0
-margin_right = 385.0
-margin_bottom = 268.0
-rect_pivot_offset = Vector2( -1182, -330 )
+offset_left = 215.0
+offset_top = 98.0
+offset_right = 385.0
+offset_bottom = 268.0
+pivot_offset = Vector2( -1182, -330 )
 size_flags_horizontal = 4
-custom_styles/panel = SubResource( 3 )
+theme_override_styles/panel = SubResource( 3 )

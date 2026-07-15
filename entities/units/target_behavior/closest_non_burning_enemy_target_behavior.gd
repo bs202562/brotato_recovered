@@ -4,14 +4,14 @@ extends TargetBehavior
 signal target_found()
 signal target_player()
 
-export (bool) var target_player_if_no_target: = false
-export (String) var pet_id: = ""
+@export var target_player_if_no_target := false
+@export var pet_id := ""
 
 var _targets_in_range: = []
 var _pet_id_hash: int = 0
 
 func init(parent: Node) -> Node:
-	.init(parent)
+	super.init(parent)
 
 	_pet_id_hash = pet_id.hash()
 	return self
@@ -32,8 +32,8 @@ func update_target():
 	var burning_min_dist_squared: int = Utils.LARGE_NUMBER
 
 	if _parent.current_target != null:
-		if _parent.current_target.is_connected("died", self, "on_current_target_died"):
-			_parent.current_target.disconnect("died", self, "on_current_target_died")
+		if _parent.current_target.is_connected("died", Callable(self, "on_current_target_died")):
+			_parent.current_target.disconnect("died", Callable(self, "on_current_target_died"))
 		PetService.remove_target_for_pet(_parent.current_target, _pet_id_hash)
 
 	_parent.current_target = null
@@ -56,14 +56,14 @@ func update_target():
 	if cache_target != null:
 		_parent.current_target = cache_target
 		PetService.add_target_for_pet(_parent.current_target, _pet_id_hash)
-		if not _parent.current_target.is_connected("died", self, "on_current_target_died"):
-			var _error = _parent.current_target.connect("died", self, "on_current_target_died")
+		if not _parent.current_target.is_connected("died", Callable(self, "on_current_target_died")):
+			var _error = _parent.current_target.connect("died", Callable(self, "on_current_target_died"))
 		emit_signal("target_found", self)
 	elif cache_burning_target != null:
 		_parent.current_target = cache_burning_target
 		PetService.add_target_for_pet(_parent.current_target, _pet_id_hash)
-		if not _parent.current_target.is_connected("died", self, "on_current_target_died"):
-			var _error = _parent.current_target.connect("died", self, "on_current_target_died")
+		if not _parent.current_target.is_connected("died", Callable(self, "on_current_target_died")):
+			var _error = _parent.current_target.connect("died", Callable(self, "on_current_target_died"))
 		emit_signal("target_found", self)
 	elif target_player_if_no_target:
 		_parent.current_target = _parent.players_ref[_parent.player_index]
@@ -78,25 +78,25 @@ func _on_Range_body_entered(body: Node2D):
 		_parent.current_target = null
 
 	_targets_in_range.push_back(body)
-	if not body.is_connected("died", self, "on_target_died"):
-		var _error = body.connect("died", self, "on_target_died")
+	if not body.is_connected("died", Callable(self, "on_target_died")):
+		var _error = body.connect("died", Callable(self, "on_target_died"))
 	if _parent.current_target == null:
 		update_target()
 
 
 func _on_Range_body_exited(body: Node2D):
 	_targets_in_range.erase(body)
-	if body.is_connected("died", self, "on_target_died"):
-		body.disconnect("died", self, "on_target_died")
+	if body.is_connected("died", Callable(self, "on_target_died")):
+		body.disconnect("died", Callable(self, "on_target_died"))
 
 func on_target_died(target: Node2D, _args: Entity.DieArgs) -> void :
 	_targets_in_range.erase(target)
-	if target.is_connected("died", self, "on_target_died"):
-		target.disconnect("died", self, "on_target_died")
+	if target.is_connected("died", Callable(self, "on_target_died")):
+		target.disconnect("died", Callable(self, "on_target_died"))
 
 func on_current_target_died(target: Node2D, _args: Entity.DieArgs) -> void :
 	if _parent.current_target != null:
-		if _parent.current_target.is_connected("died", self, "on_current_target_died"):
-			_parent.current_target.disconnect("died", self, "on_current_target_died")
+		if _parent.current_target.is_connected("died", Callable(self, "on_current_target_died")):
+			_parent.current_target.disconnect("died", Callable(self, "on_current_target_died"))
 		PetService.remove_target_for_pet(_parent.current_target, _pet_id_hash)
 		_parent.current_target = null

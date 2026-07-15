@@ -1,12 +1,12 @@
 class_name MyHSlider
 extends HSlider
 
-export (Resource) var focus_entered_sound = preload("res://ui/sounds/button_focus.wav")
-export (Resource) var value_change_sound = preload("res://ui/sounds/button_focus.wav")
+@export var focus_entered_sound: Resource = preload("res://ui/sounds/button_focus.wav")
+@export var value_change_sound: Resource = preload("res://ui/sounds/button_focus.wav")
 
 
 func _ready() -> void :
-	var _error_focus = connect("focus_entered", self, "on_focus_entered")
+	var _error_focus = connect("focus_entered", Callable(self, "on_focus_entered"))
 
 
 func on_focus_entered() -> void :

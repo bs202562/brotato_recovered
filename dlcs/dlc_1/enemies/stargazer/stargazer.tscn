@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://dlcs/dlc_1/enemies/stargazer/stargazer.png" type="Texture" id=1]
+[ext_resource path="res://dlcs/dlc_1/enemies/stargazer/stargazer.png" type="Texture2D" id=1]
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://dlcs/dlc_1/enemies/stargazer/stargazer_stats.tres" type="Resource" id=3]
 [ext_resource path="res://entities/units/enemies/attack_behaviors/spawning_attack_behavior.gd" type="Script" id=4]
@@ -27,7 +27,7 @@ stats = ExtResource( 3 )
 enemy_id = "stargazer"
 angry_sound = ExtResource( 10 )
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( -6, -12 )
 texture = ExtResource( 1 )
 

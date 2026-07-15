@@ -1,25 +1,25 @@
 class_name DocMoth
 extends Pet
 
-export (Array, Resource) var effects
-export (Color) var color_player_modulation = Color(0.6, 1.6, 1.1)
-export (String) var hp_gained_tracking_id
-export (AudioStreamSample) var sound_enter_zone
-export (AudioStreamSample) var sound_exit_zone
+@export var effects: Array = [] # (Array, Resource)
+@export var color_player_modulation: Color = Color(0.6, 1.6, 1.1)
+@export var hp_gained_tracking_id: String
+@export var sound_enter_zone: AudioStreamWAV
+@export var sound_exit_zone: AudioStreamWAV
 
-onready var _boost_zone: Area2D = $"BoostZone"
+@onready var _boost_zone: Area2D = $"BoostZone"
 
 var _hp_gained_tracking_id_hash: int = Keys.empty_hash
 
 var players_inside: int = 0
 
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void :
-	.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
+	super.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
 
 	_hp_gained_tracking_id_hash = Keys.generate_hash(hp_gained_tracking_id)
 
 func update_data(effect: PetEffect) -> void :
-	.update_data(effect)
+	super.update_data(effect)
 	_boost_zone.scale = Vector2(effect.boost_zone_scale, effect.boost_zone_scale)
 
 func _on_BoostZone_body_entered(body):
@@ -34,7 +34,7 @@ func _on_BoostZone_body_entered(body):
 		SoundService.play_sound2d_with_limit("doc_moth", sound_enter_zone, 2, global_position, 0, 0.1)
 		players_inside += 1
 		body.inside_doc_moth_area.push_back(self)
-		body.connect("healed", self, "_on_player_heal")
+		body.connect("healed", Callable(self, "_on_player_heal"))
 
 
 func _on_player_heal(value, player_index):
@@ -53,16 +53,16 @@ func _on_BoostZone_body_exited(body):
 		SoundService.play_sound2d_with_limit("doc_moth", sound_exit_zone, 2, global_position, 0, 0.1)
 		players_inside -= 1
 		body.inside_doc_moth_area.erase(self)
-		body.disconnect("healed", self, "_on_player_heal")
+		body.disconnect("healed", Callable(self, "_on_player_heal"))
 
 
 func update_animation(movement: Vector2) -> void :
-	.update_animation(movement)
+	super.update_animation(movement)
 	if not (_animation_player.current_animation == "idle_healbooster"):
 		_animation_player.play("idle_healbooster")
 
 
 func _update_transparency(value):
-	._update_transparency(value)
-	yield(get_tree(), "idle_frame")
+	super._update_transparency(value)
+	await get_tree().process_frame
 	_boost_zone.modulate.a = value

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/PufferFish_single_pop.wav-3d99d3a04db0285f820e5616c101d5e2.sample"
+type="AudioStreamWAV"
+uid="uid://d3hdlvqattnxl"
+path="res://.godot/imported/PufferFish_single_pop.wav-3d99d3a04db0285f820e5616c101d5e2.sample"
 
 [deps]
 
 source_file="res://dlcs/dlc_1/enemies/pufferfish/PufferFish_single_pop.wav"
-dest_files=[ "res://.import/PufferFish_single_pop.wav-3d99d3a04db0285f820e5616c101d5e2.sample" ]
+dest_files=["res://.godot/imported/PufferFish_single_pop.wav-3d99d3a04db0285f820e5616c101d5e2.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/jellyshield_hit.wav-26b202c6e7e5dbde507590cd75837179.sample"
+type="AudioStreamWAV"
+uid="uid://bm4fsaih81qe3"
+path="res://.godot/imported/jellyshield_hit.wav-26b202c6e7e5dbde507590cd75837179.sample"
 
 [deps]
 
 source_file="res://entities/units/pet/jellyshield/jellyshield_hit.wav"
-dest_files=[ "res://.import/jellyshield_hit.wav-26b202c6e7e5dbde507590cd75837179.sample" ]
+dest_files=["res://.godot/imported/jellyshield_hit.wav-26b202c6e7e5dbde507590cd75837179.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

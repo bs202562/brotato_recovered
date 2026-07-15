@@ -6,7 +6,7 @@ signal mod_unfocused(mod_data)
 
 var mod_data: ModData
 
-onready var _mod_name = $"%ModName" as Button
+@onready var _mod_name = $"%ModName" as Button
 
 
 func set_data(p_mod: ModData) -> void :

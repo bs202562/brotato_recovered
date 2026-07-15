@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/shaders/outline.gdshader" type="Shader" id=1]
 [ext_resource path="res://weapons/weapon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://weapons/ranged/ranged_weapon.gd" type="Script" id=3]
-[ext_resource path="res://weapons/ranged/icicle/icicle.png" type="Texture" id=4]
+[ext_resource path="res://weapons/ranged/icicle/icicle.png" type="Texture2D" id=4]
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
@@ -19,11 +19,11 @@ radius = 72.4431
 script = ExtResource( 3 )
 outline_shader_mat = SubResource( 2 )
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 position = Vector2( 24, 0 )
 texture = ExtResource( 4 )
 
-[node name="Muzzle" parent="Sprite" index="1"]
+[node name="Muzzle" parent="Sprite2D" index="1"]
 position = Vector2( -5, 0 )
 
 [node name="Attach" parent="." index="1"]
@@ -32,4 +32,4 @@ position = Vector2( 0, 4 )
 [node name="CollisionShape2D" parent="Range" index="0"]
 shape = SubResource( 1 )
 
-[editable path="Sprite/Hitbox"]
+[editable path="Sprite2D/Hitbox"]

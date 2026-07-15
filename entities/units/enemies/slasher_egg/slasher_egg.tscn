@@ -4,7 +4,7 @@
 [ext_resource path="res://entities/units/enemies/attack_behaviors/spawning_attack_behavior.gd" type="Script" id=2]
 [ext_resource path="res://entities/units/enemies/slasher_egg/slasher_egg.gd" type="Script" id=3]
 [ext_resource path="res://entities/units/enemies/slasher/slasher.tscn" type="PackedScene" id=4]
-[ext_resource path="res://entities/units/enemies/slasher_egg/slasher_egg.png" type="Texture" id=5]
+[ext_resource path="res://entities/units/enemies/slasher_egg/slasher_egg.png" type="Texture2D" id=5]
 [ext_resource path="res://entities/units/enemies/slasher_egg/slasher_egg_stats.tres" type="Resource" id=6]
 [ext_resource path="res://entities/units/movement_behaviors/stay_in_range_from_player_movement_behavior.gd" type="Script" id=7]
 
@@ -20,7 +20,7 @@ stats = ExtResource( 6 )
 mirror_sprite_with_movement = false
 enemy_id = "slasher_egg"
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 texture = ExtResource( 5 )
 
 [node name="Collision" parent="." index="1"]

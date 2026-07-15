@@ -6,26 +6,26 @@ signal item_cancel_button_pressed(item_data)
 signal item_combine_button_pressed(item_data)
 
 
-export (bool) var buttons_enabled = false setget _set_buttons_enabled
+@export var buttons_enabled: bool = false: set = _set_buttons_enabled
 func _set_buttons_enabled(value: bool) -> void :
 	buttons_enabled = value
 	if is_inside_tree():
 		_update_button_visibilities()
 
 
-var player_index: = 0 setget _set_player_index
+var player_index: = 0: set = _set_player_index
 func _set_player_index(value: int) -> void :
 	player_index = value
 
 var item_steals: = 0
 
-onready var _panel = $"%ItemPanelUI"
-onready var _combine_button = $"%CombineButton"
-onready var _discard_button = $"%DiscardButton"
-onready var _cancel_button = $"%CancelButton"
-onready var _synergy_container = $"%SynergyContainer"
-onready var _tags_container = $"%TagsContainer"
-onready var _last_wave_info_container = $"%LastWaveInfoContainer"
+@onready var _panel = $"%ItemPanelUI"
+@onready var _combine_button = $"%CombineButton"
+@onready var _discard_button = $"%DiscardButton"
+@onready var _cancel_button = $"%CancelButton"
+@onready var _synergy_container = $"%SynergyContainer"
+@onready var _tags_container = $"%TagsContainer"
+@onready var _last_wave_info_container = $"%LastWaveInfoContainer"
 
 var _item_data: ItemParentData = null
 var _focused: = false
@@ -35,12 +35,12 @@ var _is_inventory_element: = false
 func _ready() -> void :
 	_set_buttons_enabled(buttons_enabled)
 
-	var last_wave_dmg_stylebox = _last_wave_info_container._panel_container.get_stylebox("panel").duplicate()
+	var last_wave_dmg_stylebox = _last_wave_info_container._panel_container.get_theme_stylebox("panel").duplicate()
 	last_wave_dmg_stylebox.border_color = Color(0.3, 0.3, 0.3)
-	_last_wave_info_container._panel_container.add_stylebox_override("panel", last_wave_dmg_stylebox)
+	_last_wave_info_container._panel_container.add_theme_stylebox_override("panel", last_wave_dmg_stylebox)
 
 	for synergy_panel in _synergy_container.get_children():
-		synergy_panel.add_stylebox_override("panel", last_wave_dmg_stylebox)
+		synergy_panel.add_theme_stylebox_override("panel", last_wave_dmg_stylebox)
 
 	set_process_input(false)
 
@@ -75,9 +75,9 @@ func display_item_data(item_data: ItemParentData, attachment: Control, is_invent
 
 	_update_button_visibilities()
 
-	var stylebox_color = _panel.get_stylebox("panel").duplicate()
+	var stylebox_color = _panel.get_theme_stylebox("panel").duplicate()
 	ItemService.change_panel_stylebox_from_tier(stylebox_color, item_data.tier, true, get_node_or_null("%frame"))
-	_panel.add_stylebox_override("panel", stylebox_color)
+	_panel.add_theme_stylebox_override("panel", stylebox_color)
 
 	show()
 	set_pos_from(attachment, _panel)
@@ -120,7 +120,7 @@ func focus() -> void :
 
 
 func hide(_player_index: = - 1) -> void :
-	.hide(_player_index)
+	super.hide(_player_index)
 	_focused = false
 	
 	_update_button_visibilities()

@@ -1,20 +1,14 @@
 class_name UIDimScreen
 extends ColorRect
 
-onready var _tween: Tween = $Tween
+var _tween: Tween = null
 
 
 func dim() -> void :
-	var _error_interpolate = _tween.interpolate_property(
-		self, 
-		"color:a", 
-		0, 
-		0.5, 
-		1, 
-		Tween.TRANS_LINEAR
-	)
-
-	var _error = _tween.start()
+	if _tween:
+		_tween.kill()
+	_tween = create_tween()
+	_tween.tween_property(self, "color:a", 0.5, 1).from(0).set_trans(Tween.TRANS_LINEAR)
 
 
 func color_for_player(player_index: int) -> void :

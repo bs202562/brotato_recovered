@@ -1,7 +1,7 @@
 extends Projectile
 class_name GroupOfBullet
 
-export (Array, NodePath) var list_of_bullets_path: Array
+@export var list_of_bullets_path: Array # (Array, NodePath)
 
 var list_of_bullets: Array
 var dammage_value: int
@@ -13,7 +13,8 @@ func _init():
 
 
 func _ready():
-	yield(get_tree(), "idle_frame")
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_ready 为基类优先）
+	await get_tree().process_frame
 	var main: Main = get_tree().current_scene
 	for bullet_path in list_of_bullets_path:
 		var bullet = get_node(bullet_path)
@@ -38,6 +39,12 @@ func on_entity_died(_entity: Entity, _args: Entity.DieArgs) -> void :
 
 
 func _physics_process(delta: float) -> void :
+	_group_of_bullets_physics_process_self(delta)
+	super._physics_process(delta) # 4.x 移植: Godot 3 会自动调用父类，且子类的 return 不影响父类执行
+
+
+# 4.x 移植: 原函数体抽出为独立方法，避免其中的 return 跳过父类调用
+func _group_of_bullets_physics_process_self(delta: float) -> void :
 	if sinusoidal_motion.x != 0 or sinusoidal_motion.y != 0:
 		sinusoidal_time += Vector2(delta * sinusoidal_motion_speed.x, delta * sinusoidal_motion_speed.y)
 		sinusoidal_offset = Vector2(sin(sinusoidal_time.x), sin(sinusoidal_time.y)) * sinusoidal_motion * 0.5

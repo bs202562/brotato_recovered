@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/gas_med_flame_ignite_01.wav-17f38da0cf93afd49f359c93257230ae.sample"
+type="AudioStreamWAV"
+uid="uid://dpjaka3nm85oj"
+path="res://.godot/imported/gas_med_flame_ignite_01.wav-17f38da0cf93afd49f359c93257230ae.sample"
 
 [deps]
 
 source_file="res://weapons/ranged/flamethrower/gas_med_flame_ignite_01.wav"
-dest_files=[ "res://.import/gas_med_flame_ignite_01.wav-17f38da0cf93afd49f359c93257230ae.sample" ]
+dest_files=["res://.godot/imported/gas_med_flame_ignite_01.wav-17f38da0cf93afd49f359c93257230ae.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

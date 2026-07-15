@@ -1,39 +1,40 @@
 extends BaseEndRun
 
-export (Resource) var small_label_theme
+@export var small_label_theme: Resource
 
-onready var _margin_container = $MarginContainer
-onready var _progress_container = $"%ProgressContainer"
-onready var _progress_margin_container = $"%ProgressMarginContainer"
+@onready var _margin_container = $MarginContainer
+@onready var _progress_container = $"%ProgressContainer"
+@onready var _progress_margin_container = $"%ProgressMarginContainer"
 
-onready var _player_container1: EndRunPlayerContainer = $"%PlayerContainer1"
-onready var _player_container2: EndRunPlayerContainer = $"%PlayerContainer2"
-onready var _player_container3: EndRunPlayerContainer = $"%PlayerContainer3"
-onready var _player_container4: EndRunPlayerContainer = $"%PlayerContainer4"
+@onready var _player_container1: EndRunPlayerContainer = $"%PlayerContainer1"
+@onready var _player_container2: EndRunPlayerContainer = $"%PlayerContainer2"
+@onready var _player_container3: EndRunPlayerContainer = $"%PlayerContainer3"
+@onready var _player_container4: EndRunPlayerContainer = $"%PlayerContainer4"
 
-onready var _item_popup1: ItemPopup = $"%ItemPopup1"
-onready var _item_popup2: ItemPopup = $"%ItemPopup2"
-onready var _item_popup3: ItemPopup = $"%ItemPopup3"
-onready var _item_popup4: ItemPopup = $"%ItemPopup4"
+@onready var _item_popup1: ItemPopup = $"%ItemPopup1"
+@onready var _item_popup2: ItemPopup = $"%ItemPopup2"
+@onready var _item_popup3: ItemPopup = $"%ItemPopup3"
+@onready var _item_popup4: ItemPopup = $"%ItemPopup4"
 
-onready var _stat_popup1: StatPopup = $"%StatPopup1"
-onready var _stat_popup2: StatPopup = $"%StatPopup2"
-onready var _stat_popup3: StatPopup = $"%StatPopup3"
-onready var _stat_popup4: StatPopup = $"%StatPopup4"
+@onready var _stat_popup1: StatPopup = $"%StatPopup1"
+@onready var _stat_popup2: StatPopup = $"%StatPopup2"
+@onready var _stat_popup3: StatPopup = $"%StatPopup3"
+@onready var _stat_popup4: StatPopup = $"%StatPopup4"
 
-onready var player_containers: = [_player_container1, _player_container2, _player_container3, _player_container4]
-onready var item_popups: = [_item_popup1, _item_popup2, _item_popup3, _item_popup4]
-onready var stat_popups: = [_stat_popup1, _stat_popup2, _stat_popup3, _stat_popup4]
+@onready var player_containers: = [_player_container1, _player_container2, _player_container3, _player_container4]
+@onready var item_popups: = [_item_popup1, _item_popup2, _item_popup3, _item_popup4]
+@onready var stat_popups: = [_stat_popup1, _stat_popup2, _stat_popup3, _stat_popup4]
 
-onready var _unlockall_icon: TextureRect = $"%unlockall_icon"
+@onready var _unlockall_icon: TextureRect = $"%unlockall_icon"
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	var player_count: int = RunData.get_player_count()
 
 	
 	if RunData.get_player_count() == CoopService.UI_MAX_PLAYER_COUNT:
-		_margin_container.add_constant_override("margin_left", 0)
-		_margin_container.add_constant_override("margin_right", 0)
+		_margin_container.add_theme_constant_override("offset_left", 0)
+		_margin_container.add_theme_constant_override("offset_right", 0)
 
 	var rewards = []
 	if RunData.difficulty_unlocked != - 1:
@@ -46,7 +47,7 @@ func _ready() -> void :
 	for chal in RunData.challenges_completed_this_run:
 		rewards.push_back(chal.reward)
 
-	_progress_margin_container.visible = not rewards.empty()
+	_progress_margin_container.visible = not rewards.is_empty()
 	_progress_container.set_data("MENU_PROGRESS", Category.CHALLENGE, rewards)
 	_popup_manager.connect_inventory_container(_progress_container)
 
@@ -58,7 +59,7 @@ func _ready() -> void :
 
 		var weapons_container = player_container.weapons_container
 		var weapons = RunData.get_player_weapons(player_index)
-		weapons_container.visible = not weapons.empty()
+		weapons_container.visible = not weapons.is_empty()
 		weapons_container.set_data("WEAPONS", Category.WEAPON, weapons)
 
 		var items_container = player_container.items_container
@@ -66,7 +67,7 @@ func _ready() -> void :
 		items_container.set_data("ITEMS", Category.ITEM, items, true, true)
 
 		var item_popup = item_popups[player_index]
-		item_popup.connect("popup_toggled", self, "_on_popup_toggled")
+		item_popup.connect("popup_toggled", Callable(self, "_on_popup_toggled"))
 		item_popup.player_index = player_index
 		item_popup.parent_node_path = player_container.carousel.get_path()
 		_popup_manager.add_item_popup(item_popup, player_index)

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/blobfish_blink.wav-1fc025b21375313276f31b66a3a07d01.sample"
+type="AudioStreamWAV"
+uid="uid://dleuy2vqqrhxg"
+path="res://.godot/imported/blobfish_blink.wav-1fc025b21375313276f31b66a3a07d01.sample"
 
 [deps]
 
 source_file="res://ui/splash/blobfish_blink.wav"
-dest_files=[ "res://.import/blobfish_blink.wav-1fc025b21375313276f31b66a3a07d01.sample" ]
+dest_files=["res://.godot/imported/blobfish_blink.wav-1fc025b21375313276f31b66a3a07d01.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

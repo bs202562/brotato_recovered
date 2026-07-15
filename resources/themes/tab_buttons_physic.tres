@@ -1,9 +1,9 @@
 [gd_resource type="Theme" load_steps=10 format=2]
 
-[ext_resource path="res://resources/themes/panel/outline_panel_simple.png" type="Texture" id=1]
-[ext_resource path="res://ui/menus/pages/menu_codex/codex_menu_button_pressed.png" type="Texture" id=2]
-[ext_resource path="res://ui/menus/pages/menu_codex/codex_menu_button.png" type="Texture" id=3]
-[ext_resource path="res://resources/fonts/actual/base/font_35_outline.tres" type="DynamicFont" id=4]
+[ext_resource path="res://resources/themes/panel/outline_panel_simple.png" type="Texture2D" id=1]
+[ext_resource path="res://ui/menus/pages/menu_codex/codex_menu_button_pressed.png" type="Texture2D" id=2]
+[ext_resource path="res://ui/menus/pages/menu_codex/codex_menu_button.png" type="Texture2D" id=3]
+[ext_resource path="res://resources/fonts/actual/base/font_35_outline.tres" type="FontFile" id=4]
 
 [sub_resource type="StyleBoxTexture" id=8]
 content_margin_top = 38.0

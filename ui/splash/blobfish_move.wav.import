@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/blobfish_move.wav-7531dacd16d2778687f3dd5114029a2a.sample"
+type="AudioStreamWAV"
+uid="uid://bkud2n6qr3b2x"
+path="res://.godot/imported/blobfish_move.wav-7531dacd16d2778687f3dd5114029a2a.sample"
 
 [deps]
 
 source_file="res://ui/splash/blobfish_move.wav"
-dest_files=[ "res://.import/blobfish_move.wav-7531dacd16d2778687f3dd5114029a2a.sample" ]
+dest_files=["res://.godot/imported/blobfish_move.wav-7531dacd16d2778687f3dd5114029a2a.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

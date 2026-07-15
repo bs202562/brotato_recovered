@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/sci-fi_code_fail_13.wav-018370f69e27e99a98fc45bb45cabc5f.sample"
+type="AudioStreamWAV"
+uid="uid://vs81ycpfclxn"
+path="res://.godot/imported/sci-fi_code_fail_13.wav-018370f69e27e99a98fc45bb45cabc5f.sample"
 
 [deps]
 
 source_file="res://entities/units/enemies/pursuer/sci-fi_code_fail_13.wav"
-dest_files=[ "res://.import/sci-fi_code_fail_13.wav-018370f69e27e99a98fc45bb45cabc5f.sample" ]
+dest_files=["res://.godot/imported/sci-fi_code_fail_13.wav-018370f69e27e99a98fc45bb45cabc5f.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

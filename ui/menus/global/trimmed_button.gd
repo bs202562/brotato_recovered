@@ -33,25 +33,26 @@ func _set_translation_key(key: String) -> void :
 
 func _update_trimmed_text() -> void :
 	var untrimmed_text: = tr(_translation_key)
-	var font: = get_font("font")
-	var string_size: = font.get_string_size(untrimmed_text)
+	var font = get_theme_font("font")
+	var font_size = get_theme_font_size("font_size")
+	var string_size = font.get_string_size(untrimmed_text, HORIZONTAL_ALIGNMENT_LEFT, - 1, font_size)
 	var content_size: = _get_content_size()
 
 	_trimmed_text = untrimmed_text
 	if string_size.x > content_size.x:
-		var elipsis_size: = font.get_string_size(_elipsize(""))
+		var elipsis_size = font.get_string_size(_elipsize(""), HORIZONTAL_ALIGNMENT_LEFT, - 1, font_size)
 		while string_size.x > content_size.x:
 			_trimmed_text = _trimmed_text.left(_trimmed_text.length() - 1)
-			if _trimmed_text.empty():
+			if _trimmed_text.is_empty():
 				break
-			string_size = font.get_string_size(_trimmed_text) + elipsis_size
+			string_size = font.get_string_size(_trimmed_text, HORIZONTAL_ALIGNMENT_LEFT, - 1, font_size) + elipsis_size
 		_trimmed_text = _elipsize(_trimmed_text)
 	text = _trimmed_text
 
 
 func _get_content_size() -> Vector2:
-	var style: = get_stylebox("normal")
-	return rect_size - style.get_minimum_size()
+	var style = get_theme_stylebox("normal")
+	return size - style.get_minimum_size()
 
 
 func _elipsize(v: String) -> String:

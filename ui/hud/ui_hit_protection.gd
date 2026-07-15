@@ -2,8 +2,8 @@ class_name UIHitProtection
 extends HBoxContainer
 
 
-onready var hit_protection_label = $HitProtectionLabel
-onready var icon = $Icon
+@onready var hit_protection_label = $HitProtectionLabel
+@onready var icon = $Icon
 
 
 func _ready() -> void :

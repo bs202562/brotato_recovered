@@ -1,7 +1,7 @@
 extends ItemEntity
 class_name ItemPet
 
-export (Resource) var item_drop
+@export var item_drop: Resource
 
 
 func _get_entity_player_stats_description(side: int = 0) -> String:

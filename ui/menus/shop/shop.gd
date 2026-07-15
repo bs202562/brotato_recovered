@@ -2,17 +2,18 @@
 class_name Shop
 extends BaseShop
 
-onready var _title = $"%Title"
-onready var _endless_button = $"%EndlessButton"
-onready var _go_button = $"%GoButton"
-onready var _stat_popup: StatPopup = $"%StatPopup"
-onready var _stats_container: StatsContainer
-onready var _block_background = $Content / BlockBackground
+@onready var _title = $"%Title"
+@onready var _endless_button = $"%EndlessButton"
+@onready var _go_button = $"%GoButton"
+@onready var _stat_popup: StatPopup = $"%StatPopup"
+@onready var _stats_container: StatsContainer
+@onready var _block_background = $Content / BlockBackground
 
 var focus_before_pause: Control
 
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	_title.text = tr("MENU_SHOP") + " (" + Text.text("WAVE", [str(RunData.current_wave)]) + ")"
 
 	_stats_container.update_player_stats(0)
@@ -27,8 +28,8 @@ func _ready() -> void :
 
 	_endless_button.visible = RunData.should_show_endless_button()
 	if _endless_button.visible:
-		_go_button.focus_neighbour_top = _endless_button.get_path()
-		_stats_container.focus_neighbour_bottom = _endless_button.get_path()
+		_go_button.focus_neighbor_top = _endless_button.get_path()
+		_stats_container.focus_neighbor_bottom = _endless_button.get_path()
 		_stats_container.set_focus_neighbours()
 
 
@@ -38,11 +39,12 @@ func _input(event: InputEvent) -> void :
 	if event.is_action_released("ui_cancel"):
 		if _block_background.visible:
 			_block_background.hide()
+	super._input(event) # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 
 
 func on_paused() -> void :
-	focus_before_pause = get_focus_owner()
-	.on_paused()
+	focus_before_pause = get_viewport().gui_get_focus_owner()
+	super.on_paused()
 
 
 func on_unpaused() -> void :
@@ -51,7 +53,7 @@ func on_unpaused() -> void :
 	else:
 		_go_button.grab_focus()
 
-	.on_unpaused()
+	super.on_unpaused()
 
 
 func disable_shop_buttons_focus() -> void :
@@ -76,7 +78,7 @@ func _on_EndlessButton_pressed() -> void :
 
 
 func _on_element_focused(element: InventoryElement, player_index: int) -> void :
-	._on_element_focused(element, player_index)
+	super._on_element_focused(element, player_index)
 
 	
 	disable_shop_buttons_focus()
@@ -87,7 +89,7 @@ func _on_element_focused(element: InventoryElement, player_index: int) -> void :
 
 
 func _on_element_unfocused(element: InventoryElement, player_index: int) -> void :
-	._on_element_unfocused(element, player_index)
+	super._on_element_unfocused(element, player_index)
 
 	
 	enable_shop_buttons_focus()
@@ -98,7 +100,7 @@ func _on_element_pressed(element: InventoryElement, player_index: int, popup_foc
 	if _focused_shop_item[player_index] != null:
 		_focused_shop_item[player_index]._can_be_selected(false)
 
-	._on_element_pressed(element, player_index, popup_focused)
+	super._on_element_pressed(element, player_index, popup_focused)
 	if popup_focused:
 		_block_background.show()
 	else:
@@ -107,7 +109,7 @@ func _on_element_pressed(element: InventoryElement, player_index: int, popup_foc
 
 func _on_item_combine_button_pressed(weapon_data: WeaponData, player_index: int) -> void :
 	_block_background.hide()
-	._on_item_combine_button_pressed(weapon_data, player_index)
+	super._on_item_combine_button_pressed(weapon_data, player_index)
 
 	if _focused_shop_item[player_index] != null:
 		_focused_shop_item[player_index]._can_be_selected()
@@ -115,7 +117,7 @@ func _on_item_combine_button_pressed(weapon_data: WeaponData, player_index: int)
 
 func _on_item_discard_button_pressed(weapon_data: WeaponData, player_index: int) -> void :
 	_block_background.hide()
-	._on_item_discard_button_pressed(weapon_data, player_index)
+	super._on_item_discard_button_pressed(weapon_data, player_index)
 
 	if _focused_shop_item[player_index] != null:
 		_focused_shop_item[player_index]._can_be_selected()
@@ -123,14 +125,14 @@ func _on_item_discard_button_pressed(weapon_data: WeaponData, player_index: int)
 
 func _on_item_cancel_button_pressed(item_data: ItemParentData, player_index: int) -> void :
 	_block_background.hide()
-	._on_item_cancel_button_pressed(item_data, player_index)
+	super._on_item_cancel_button_pressed(item_data, player_index)
 
 	if _focused_shop_item[player_index] != null:
 		_focused_shop_item[player_index]._can_be_selected()
 
 
-func on_shop_item_focused(shop_item: ShopItem) -> void :
-	.on_shop_item_focused(shop_item)
+func on_shop_item_focused(_shop_item: ShopItem) -> void :
+	# 4.x 移植: 原 .on_shop_item_focused() 调用的父类方法在 BaseShop 中不存在(3.x 遗留死代码)，移除
 	_stats_container.disable_focus()
 
 

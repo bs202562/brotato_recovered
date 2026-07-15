@@ -1,7 +1,7 @@
 class_name GainStatForKilledEnemiesWhileBurning
 extends DoubleValueEffect
 
-export (int) var value3 = 0
+@export var value3: int = 0
 
 static func get_id() -> String:
 	return "gain_stat_for_kill_enemies_while_burning"
@@ -42,7 +42,7 @@ func get_args(_player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.value3 = value3
 
@@ -50,6 +50,6 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void :
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	value3 = serialized.value3

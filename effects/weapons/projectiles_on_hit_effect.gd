@@ -1,8 +1,8 @@
 class_name ProjectilesOnHitEffect
 extends NullEffect
 
-export (Resource) var weapon_stats
-export (bool) var auto_target_enemy = false
+@export var weapon_stats: Resource
+@export var auto_target_enemy: bool = false
 
 
 static func get_id() -> String:
@@ -16,7 +16,7 @@ func get_args(player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	if weapon_stats != null:
 		serialized.weapon_stats = weapon_stats.serialize()
@@ -27,7 +27,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void :
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	if serialized.has("weapon_stats"):
 		var data = RangedWeaponStats.new()

@@ -4,11 +4,11 @@ extends VBoxContainer
 var confirm_button_pressed = false
 var cancel_button_pressed = false
 
-onready var _focus_emulator = $FocusEmulator
-onready var _confirm_button = $"%ConfirmButton"
-onready var _label_number_retry = $"%Label_number_retry"
-onready var _retry_wave_container = $"%Retry_WaveContainer" as Container
-onready var _ok_button = $"%OkButton" as Button
+@onready var _focus_emulator = $FocusEmulator
+@onready var _confirm_button = $"%ConfirmButton"
+@onready var _label_number_retry = $"%Label_number_retry"
+@onready var _retry_wave_container = $"%Retry_WaveContainer" as Container
+@onready var _ok_button = $"%OkButton" as Button
 
 
 func _ready() -> void :
@@ -18,7 +18,7 @@ func _ready() -> void :
 
 
 func show() -> void :
-	.show()
+	super.show()
 	if ProgressData.settings.retry_wave:
 		_label_number_retry.text = Text.text("RETRY_NUMBER", [str(RunData.retries)])
 		_confirm_button.grab_focus()
@@ -47,4 +47,4 @@ func _on_ConfirmButton_pressed() -> void :
 
 
 func _change_scene(path: String) -> void :
-	var _error = get_tree().change_scene(path)
+	var _error = get_tree().change_scene_to_file(path)

@@ -1,5 +1,5 @@
 class_name ItemServiceGetShopItemsArgs
-extends Reference
+extends RefCounted
 
 var count: int
 var prev_items: = []
@@ -8,7 +8,7 @@ var player_index: = 0
 var increase_tier: = 0
 
 
-var owned_and_shop_items: = [] setget _set_owned_and_shop_items, _get_owned_and_shop_items
+var owned_and_shop_items: = []: get = _get_owned_and_shop_items, set = _set_owned_and_shop_items
 func _get_owned_and_shop_items() -> Array:
 	return owned_and_shop_items
 func _set_owned_and_shop_items(_v: Array) -> void :

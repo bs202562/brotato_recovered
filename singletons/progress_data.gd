@@ -391,8 +391,8 @@ func init_accessibilities_options() -> Dictionary:
 			"alt_gold_sounds": false, 
 			"darken_screen": true, 
 			"retry_wave": false, 
-			"color_positive": Color.green.to_html(), 
-			"color_negative": Color.red.to_html(), 
+			"color_positive": Color.GREEN.to_html(), 
+			"color_negative": Color.RED.to_html(), 
 			"tier_0_color": DEFAULT_TIER_COLOR_0.to_html(), 
 			"tier_1_color": DEFAULT_TIER_COLOR_1.to_html(), 
 			"tier_2_color": DEFAULT_TIER_COLOR_2.to_html(), 
@@ -427,8 +427,8 @@ func init_accessibilities_options() -> Dictionary:
 			"alt_gold_sounds": false, 
 			"darken_screen": true, 
 			"retry_wave": false, 
-			"color_positive": Color.green.to_html(), 
-			"color_negative": Color.red.to_html(), 
+			"color_positive": Color.GREEN.to_html(), 
+			"color_negative": Color.RED.to_html(), 
 			"tier_0_color": DEFAULT_TIER_COLOR_0.to_html(), 
 			"tier_1_color": DEFAULT_TIER_COLOR_1.to_html(), 
 			"tier_2_color": DEFAULT_TIER_COLOR_2.to_html(), 
@@ -447,9 +447,8 @@ func init_accessibilities_options() -> Dictionary:
 func load_dlc_pcks() -> void :
 	var dlc_pck_names: = ["BrotatoAbyssalTerrors.pck"]
 	for dlc_name in dlc_pck_names:
-		var file = File.new()
 		var dlc_path: String = Utils.get_game_dir() + "/" + dlc_name
-		if file.file_exists(dlc_path):
+		if FileAccess.file_exists(dlc_path):
 			var success = ProjectSettings.load_resource_pack(dlc_path)
 			if success:
 				DebugService.log_data("Loaded DLC package: " + dlc_name)
@@ -458,16 +457,15 @@ func load_dlc_pcks() -> void :
 
 
 func check_for_available_dlcs() -> void :
-	var dir = Directory.new()
 	var dir_path = "res://dlcs/"
 
-	DebugService.log_data(dir_path + " exists: " + str(dir.dir_exists(dir_path)))
+	DebugService.log_data(dir_path + " exists: " + str(DirAccess.dir_exists_absolute(dir_path)))
 
 	if not Utils.is_on_console() or Utils.on_editor:
-		if not dir.dir_exists(dir_path):
+		if not DirAccess.dir_exists_absolute(dir_path):
 			return
 	else:
-		if not SteamPlatform.steam.isDLCInstalled(DLC_1_APP_ID):
+		if not (SteamPlatform as Variant).steam.isDLCInstalled(DLC_1_APP_ID):
 			return
 
 		var dlc_data: = load(dir_path + "dlc_1/dlc_data.tres") as DLCData
@@ -479,8 +477,10 @@ func check_for_available_dlcs() -> void :
 
 	DebugService.log_data("Open " + dir_path)
 
-	dir.open(dir_path)
-	dir.list_dir_begin(true)
+	var dir = DirAccess.open(dir_path)
+	if dir == null:
+		return
+	dir.list_dir_begin()
 
 	var dlc_dirs: Array = []
 
@@ -491,12 +491,19 @@ func check_for_available_dlcs() -> void :
 		dir_name = dir.get_next()
 
 	for path in dlc_dirs:
-		dir.open(path)
-		dir.list_dir_begin(true)
+		dir = DirAccess.open(path)
+		if dir == null:
+			continue
+		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if file_name == "dlc_data.tres":
 				var dlc_data: = load(path + "/" + file_name) as DLCData
+				# 4.x 移植: DLC 数据若因资源不兼容加载失败，跳过而不是崩溃
+				if dlc_data == null:
+					DebugService.log_data("DLC data failed to load (4.x migration): " + path)
+					file_name = dir.get_next()
+					continue
 				if Platform.is_dlc_owned(dlc_data.my_id):
 					DebugService.log_data("Found dlc file for: " + str(dlc_data.my_id))
 					available_dlcs.push_back(dlc_data)
@@ -586,11 +593,10 @@ func get_run_state(
 
 
 func init_save_paths(user_dir_override: = "user://") -> void :
-	var dir = Directory.new()
 	var dir_path = user_dir_override + Platform.get_user_id()
-	var directory_exists = dir.dir_exists(dir_path)
+	var directory_exists = DirAccess.dir_exists_absolute(dir_path)
 	if not directory_exists:
-		var err = dir.make_dir(dir_path)
+		var err = DirAccess.make_dir_absolute(dir_path)
 		if err != OK:
 			printerr("Could not create the directory %s. Error code: %s" % [dir_path, err])
 			return
@@ -602,9 +608,9 @@ func init_save_paths(user_dir_override: = "user://") -> void :
 		SAVE_PATH = ProgressDataLoaderV3.new(SAVE_DIR, current_profile_id).save_path
 	LOG_PATH = dir_path + "/log.txt"
 	print("LOG_PATH: " + str(LOG_PATH))
-	var file = File.new()
-	file.open(LOG_PATH, File.WRITE)
-	file.close()
+	var file = FileAccess.open(LOG_PATH, FileAccess.WRITE)
+	if file != null:
+		file.close()
 
 	if not Utils.is_on_console() and not directory_exists:
 		_copy_files_from_fallback_dir(user_dir_override)
@@ -615,26 +621,28 @@ func set_current_profile_id(profile_id: int) -> void :
 	print("ProgressData: Set current profile id to %s." % [current_profile_id])
 
 func load_settings():
-	var file = File.new()
 	var file_path = SAVE_DIR + SETTINGS_FILE_NAME
-	var error_read = file.open(file_path, File.READ)
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	var error_read = OK if file != null else FileAccess.get_open_error()
 	if error_read != OK:
 		printerr("ProgressData: Could not read %s." % [file_path])
 		set_current_profile_id(0)
 		return
 
-	var parse_result: = JSON.parse(file.get_as_text())
-	if parse_result.error != OK:
-		
+	var test_json_conv = JSON.new()
+	var parse_error = test_json_conv.parse(file.get_as_text())
+	if parse_error != OK:
+
 		printerr("ProgressData: Settings are corrupted. Use default settings instead.")
 		set_current_profile_id(0)
 		return
 
-	if parse_result.result.has("current_profile_id"):
-		current_profile_id = parse_result.result.get("current_profile_id", 0)
+	var parse_result = test_json_conv.get_data()
+	if parse_result.has("current_profile_id"):
+		current_profile_id = parse_result.get("current_profile_id", 0)
 	else:
 		current_profile_id = 0
-	settings = Utils.merge_dictionaries(settings, parse_result.result.settings)
+	settings = Utils.merge_dictionaries(settings, parse_result.settings)
 	file.close()
 
 	set_current_profile_id(current_profile_id)
@@ -643,9 +651,9 @@ func load_settings():
 		set_current_profile_id(0)
 
 func save_settings() -> void :
-	var file = File.new()
 	var file_path = SAVE_DIR + SETTINGS_FILE_NAME
-	var error_write = file.open(file_path, File.WRITE)
+	var file = FileAccess.open(file_path, FileAccess.WRITE)
+	var error_write = OK if file != null else FileAccess.get_open_error()
 	if error_write != OK:
 		printerr("ProgressData: Could not write %s." % [file_path])
 		return
@@ -656,7 +664,7 @@ func save_settings() -> void :
 	var indent = ""
 	if OS.has_feature("editor"):
 		indent = "  "
-	var json_string: = JSON.print(json_data, indent, sort_keys)
+	var json_string: = JSON.stringify(json_data, indent, sort_keys)
 	file.store_string(json_string)
 	file.close()
 	print("ProgressData: Saved current profile id %s to %s." % [current_profile_id, file_path])
@@ -675,16 +683,16 @@ func load_profile_save(profile_id: int) -> void :
 	print("ProgressData: Loaded profile id %s." % [current_profile_id])
 
 func _copy_files_from_fallback_dir(user_dir_override: String) -> void :
-	var dir: Directory = Directory.new()
 	var dir_path: String = user_dir_override + fallback_dir_name
-	if dir.dir_exists(dir_path) and dir_path != SAVE_DIR:
+	if DirAccess.dir_exists_absolute(dir_path) and dir_path != SAVE_DIR:
 		print("fallback save dir found at %s. Copying files into %s" % [dir_path, SAVE_DIR])
-		var err: int = dir.open(dir_path)
+		var dir: DirAccess = DirAccess.open(dir_path)
+		var err: int = OK if dir != null else DirAccess.get_open_error()
 		if err != OK:
 			printerr("Could not change directory to %s. Error code: %s" % [dir_path, err])
 			return
 
-		err = dir.list_dir_begin(false)
+		err = dir.list_dir_begin()
 		if err != OK:
 			printerr("Could not list directory %s. Error code: %s" % [dir_path, err])
 			return
@@ -808,12 +816,12 @@ func load_with_generic_loader(loader, path: = "") -> void :
 	saved_run_state = Utils.merge_dictionaries(saved_run_state, loader.run_state_deserialized)
 	
 	for k in ["nb_of_waves", "current_wave", "current_difficulty", "bonus_gold", "retries"]:
-		if saved_run_state.has(k) and typeof(saved_run_state[k]) == TYPE_REAL:
+		if saved_run_state.has(k) and typeof(saved_run_state[k]) == TYPE_FLOAT:
 			saved_run_state[k] = int(saved_run_state[k])
 	for k in ["reroll_count", "paid_reroll_count", "initial_free_rerolls", "free_rerolls"]:
 		if saved_run_state.has(k) and typeof(saved_run_state[k]) == TYPE_ARRAY:
 			for i in saved_run_state[k].size():
-				if typeof(saved_run_state[k][i]) == TYPE_REAL:
+				if typeof(saved_run_state[k][i]) == TYPE_FLOAT:
 					saved_run_state[k][i] = int(saved_run_state[k][i])
 
 	if loader is ProgressDataLoaderV1 or loader is ProgressDataLoaderV2:
@@ -1059,23 +1067,23 @@ func apply_settings() -> void :
 	TranslationServer.set_locale(settings.language)
 
 	if not DebugService.no_fullscreen_on_launch:
-		OS.window_fullscreen = settings.fullscreen
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (settings.fullscreen) else Window.MODE_WINDOWED
 
 	if Utils.is_on_console() and not Utils.on_gdk_desktop:
 		
 		settings.font_size = 1.2
 
 
-	smallest_text_font.size = SMALLEST_FONT_BASE_SIZE * settings.font_size
+	smallest_text_font.fixed_size = SMALLEST_FONT_BASE_SIZE * settings.font_size
 	RunData.reset_background()
 	set_fps_limit(settings.limit_fps)
 
 
 func _apply_sounds_settings() -> void :
 	if settings.has("volume"):
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear2db(settings.volume.master ))
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sound"), linear2db(settings.volume.sound))
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear2db(settings.volume.music))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(settings.volume.master ))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sound"), linear_to_db(settings.volume.sound))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(settings.volume.music))
 
 
 func set_font_size(value: float) -> void :
@@ -1083,12 +1091,12 @@ func set_font_size(value: float) -> void :
 		
 		value = 1.2
 
-	smallest_text_font.size = SMALLEST_FONT_BASE_SIZE * value
+	smallest_text_font.fixed_size = SMALLEST_FONT_BASE_SIZE * value
 	settings.font_size = value
 
 
 func set_fps_limit(enabled: bool) -> void :
-	Engine.target_fps = FPS_LIMIT if enabled else 0
+	Engine.max_fps = FPS_LIMIT if enabled else 0
 	settings.limit_fps = enabled
 
 
@@ -1419,12 +1427,12 @@ func get_percent_enemies_unlocked() -> float:
 
 func show_store_dlc1() -> void :
 	if OS_Seaven.is_in_editor_mode():
-		if not SteamPlatform.steam.isDLCInstalled(DLC_1_APP_ID):
-			SteamPlatform.steam.debugAddDlc(DLC_1_APP_ID)
+		if not (SteamPlatform as Variant).steam.isDLCInstalled(DLC_1_APP_ID):
+			(SteamPlatform as Variant).steam.debugAddDlc(DLC_1_APP_ID)
 
 		return
 
-	if not SteamPlatform.steam.isDLCInstalled(DLC_1_APP_ID):
+	if not (SteamPlatform as Variant).steam.isDLCInstalled(DLC_1_APP_ID):
 		OS_Seaven.show_product_store(str(DLC_1_APP_ID))
 
 

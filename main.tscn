@@ -20,26 +20,26 @@
 [ext_resource path="res://items/consumables/consumable.tscn" type="PackedScene" id=18]
 [ext_resource path="res://entities/units/player/player.tscn" type="PackedScene" id=19]
 [ext_resource path="res://particles/hit_particles.tscn" type="PackedScene" id=20]
-[ext_resource path="res://resources/fonts/actual/base/font_26_outline.tres" type="DynamicFont" id=21]
-[ext_resource path="res://resources/fonts/actual/base/font_60_outline.tres" type="DynamicFont" id=22]
-[ext_resource path="res://resources/fonts/actual/base/font_100_outline.tres" type="DynamicFont" id=23]
+[ext_resource path="res://resources/fonts/actual/base/font_26_outline.tres" type="FontFile" id=21]
+[ext_resource path="res://resources/fonts/actual/base/font_60_outline.tres" type="FontFile" id=22]
+[ext_resource path="res://resources/fonts/actual/base/font_100_outline.tres" type="FontFile" id=23]
 [ext_resource path="res://global/effects_manager.gd" type="Script" id=24]
 [ext_resource path="res://ui/hud/ui_wave_timer.gd" type="Script" id=25]
-[ext_resource path="res://items/materials/material_0007.png" type="Texture" id=26]
-[ext_resource path="res://items/materials/material_0006.png" type="Texture" id=27]
-[ext_resource path="res://items/materials/material_0008.png" type="Texture" id=28]
-[ext_resource path="res://items/materials/material_0002.png" type="Texture" id=29]
-[ext_resource path="res://items/materials/material_0003.png" type="Texture" id=30]
-[ext_resource path="res://items/materials/material_0009.png" type="Texture" id=31]
-[ext_resource path="res://items/materials/material_0000.png" type="Texture" id=32]
-[ext_resource path="res://items/materials/material_0001.png" type="Texture" id=33]
-[ext_resource path="res://items/materials/material_0010.png" type="Texture" id=34]
-[ext_resource path="res://items/materials/material_0004.png" type="Texture" id=35]
-[ext_resource path="res://items/materials/material_0005.png" type="Texture" id=36]
+[ext_resource path="res://items/materials/material_0007.png" type="Texture2D" id=26]
+[ext_resource path="res://items/materials/material_0006.png" type="Texture2D" id=27]
+[ext_resource path="res://items/materials/material_0008.png" type="Texture2D" id=28]
+[ext_resource path="res://items/materials/material_0002.png" type="Texture2D" id=29]
+[ext_resource path="res://items/materials/material_0003.png" type="Texture2D" id=30]
+[ext_resource path="res://items/materials/material_0009.png" type="Texture2D" id=31]
+[ext_resource path="res://items/materials/material_0000.png" type="Texture2D" id=32]
+[ext_resource path="res://items/materials/material_0001.png" type="Texture2D" id=33]
+[ext_resource path="res://items/materials/material_0010.png" type="Texture2D" id=34]
+[ext_resource path="res://items/materials/material_0004.png" type="Texture2D" id=35]
+[ext_resource path="res://items/materials/material_0005.png" type="Texture2D" id=36]
 [ext_resource path="res://ui/menus/ingame/info_popup.tscn" type="PackedScene" id=37]
 [ext_resource path="res://zones/backgrounds/background_gradient.tres" type="Gradient" id=38]
 [ext_resource path="res://main.gd" type="Script" id=39]
-[ext_resource path="res://resources/fonts/actual/base/font_40_outline_thick.tres" type="DynamicFont" id=40]
+[ext_resource path="res://resources/fonts/actual/base/font_40_outline_thick.tres" type="FontFile" id=40]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=41]
 [ext_resource path="res://resources/sounds/level_up.wav" type="AudioStream" id=42]
 [ext_resource path="res://resources/sounds/Fear 10.mp3" type="AudioStream" id=43]
@@ -52,7 +52,7 @@
 [ext_resource path="res://resources/sounds/Madness 2.mp3" type="AudioStream" id=50]
 [ext_resource path="res://resources/sounds/Madness 6.mp3" type="AudioStream" id=51]
 [ext_resource path="res://ui/sounds/clock_tick_01.wav" type="AudioStream" id=52]
-[ext_resource path="res://resources/tiles/tiles_outline.png" type="Texture" id=53]
+[ext_resource path="res://resources/tiles/tiles_outline.png" type="Texture2D" id=53]
 [ext_resource path="res://resources/sounds/Madness 9.mp3" type="AudioStream" id=54]
 [ext_resource path="res://resources/sounds/Madness 4.mp3" type="AudioStream" id=55]
 [ext_resource path="res://resources/sounds/Madness 7.mp3" type="AudioStream" id=56]
@@ -74,7 +74,7 @@
 [ext_resource path="res://ui/menus/ingame/pause_menu.tscn" type="PackedScene" id=72]
 [ext_resource path="res://ui/menus/ingame/upgrades_ui.tscn" type="PackedScene" id=73]
 [ext_resource path="res://items/materials/gold_bag.tscn" type="PackedScene" id=74]
-[ext_resource path="res://ui/crosshair.png" type="Texture" id=75]
+[ext_resource path="res://ui/crosshair.png" type="Texture2D" id=75]
 [ext_resource path="res://resources/tiles/ground_tiles.tres" type="TileSet" id=76]
 [ext_resource path="res://ui/menus/ingame/coop_upgrades_ui.tscn" type="PackedScene" id=77]
 [ext_resource path="res://resources/sounds/harvest/cartoon_boing_jump_06.wav" type="AudioStream" id=78]
@@ -99,7 +99,7 @@
 [ext_resource path="res://items/all/turret/turret_effect_1.tres" type="Resource" id=99]
 [ext_resource path="res://particles/heal_particles.tscn" type="PackedScene" id=123]
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture2D" id=3]
 gradient = ExtResource( 38 )
 width = 1920
 
@@ -113,7 +113,7 @@ viewport_path = NodePath("fog_viewport")
 [sub_resource type="Shader" id=10]
 code = "shader_type canvas_item;
 
-uniform vec4 color: hint_color;
+uniform vec4 color: source_color;
 uniform float multiplier = 0.2;
 uniform float softness = 0.2;
 
@@ -149,15 +149,15 @@ layer = -10
 [node name="Background" type="TextureRect" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1920.0
-margin_right = 1080.0
-margin_bottom = 840.0
-rect_rotation = 89.9906
+offset_left = 1920.0
+offset_right = 1080.0
+offset_bottom = 840.0
+rotation = 89.9906
 texture = SubResource( 3 )
 expand = true
 
 [node name="StatsManager" type="Node2D" parent="."]
-pause_mode = 2
+process_mode = 3
 unique_name_in_owner = true
 script = ExtResource( 17 )
 
@@ -196,8 +196,8 @@ autostart = true
 
 [node name="EffectBehaviors" type="Node" parent="."]
 
-[node name="Camera" type="Camera2D" parent="."]
-pause_mode = 2
+[node name="Camera3D" type="Camera2D" parent="."]
+process_mode = 3
 unique_name_in_owner = true
 current = true
 script = ExtResource( 80 )
@@ -206,8 +206,8 @@ __meta__ = {
 }
 snap_duration_secs = 5.0
 
-[node name="Screenshaker" type="Node" parent="Camera"]
-pause_mode = 1
+[node name="Screenshaker" type="Node" parent="Camera3D"]
+process_mode = 1
 script = ExtResource( 6 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -216,16 +216,16 @@ cell_quadrant_size = 64
 collision_layer = 128
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 7, 0, 65538, 65536, 0, 65538, 65537, 0, 65538 )
+tile_data = PackedInt32Array( 7, 0, 65538, 65536, 0, 65538, 65537, 0, 65538 )
 script = ExtResource( 8 )
 
 [node name="Outline" type="NinePatchRect" parent="TileMap"]
 modulate = Color( 0.470588, 0.403922, 0.345098, 1 )
 show_behind_parent = true
-margin_left = -64.0
-margin_top = -64.0
-margin_right = 640.0
-margin_bottom = 392.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 640.0
+offset_bottom = 392.0
 texture = ExtResource( 53 )
 patch_margin_left = 64
 patch_margin_top = 64
@@ -254,7 +254,7 @@ unique_name_in_owner = true
 [node name="Births" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Entities" type="YSort" parent="."]
+[node name="Entities" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [node name="PlayerProjectiles" type="Node2D" parent="."]
@@ -266,7 +266,7 @@ unique_name_in_owner = true
 [node name="Effects" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="fog_viewport" type="Viewport" parent="."]
+[node name="fog_viewport" type="SubViewport" parent="."]
 unique_name_in_owner = true
 size = Vector2( 2, 2 )
 hdr = false
@@ -278,11 +278,11 @@ structure_and_pet_light_in_shadow_scene = ExtResource( 95 )
 fire_light_color = Color( 1, 1, 1, 1 )
 
 [node name="ColorRect" type="ColorRect" parent="fog_viewport"]
-margin_right = 3840.0
-margin_bottom = 2160.0
+offset_right = 3840.0
+offset_bottom = 2160.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="Fog" type="Sprite" parent="."]
+[node name="Fog" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
 material = SubResource( 12 )
@@ -296,13 +296,13 @@ unique_name_in_owner = true
 [node name="FloatingTexts" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Crosshair" type="Sprite" parent="."]
+[node name="Crosshair" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource( 75 )
 
 [node name="WorldUI" type="CanvasLayer" parent="."]
-follow_viewport_enable = true
+follow_viewport_enabled = true
 
 [node name="PlayerLifeBarContainerP1" type="Node2D" parent="WorldUI"]
 unique_name_in_owner = true
@@ -310,10 +310,10 @@ unique_name_in_owner = true
 [node name="PlayerLifeBarP1" parent="WorldUI/PlayerLifeBarContainerP1" instance=ExtResource( 71 )]
 unique_name_in_owner = true
 visible = false
-margin_left = -32.0
-margin_top = -72.0
-margin_right = 32.0
-margin_bottom = -56.0
+offset_left = -32.0
+offset_top = -72.0
+offset_right = 32.0
+offset_bottom = -56.0
 nine_patch_stretch = true
 progress_color = Color( 0.721569, 0, 0, 1 )
 effect_colors = {
@@ -326,10 +326,10 @@ unique_name_in_owner = true
 [node name="PlayerLifeBarP2" parent="WorldUI/PlayerLifeBarContainerP2" instance=ExtResource( 71 )]
 unique_name_in_owner = true
 visible = false
-margin_left = -32.0
-margin_top = -72.0
-margin_right = 32.0
-margin_bottom = -56.0
+offset_left = -32.0
+offset_top = -72.0
+offset_right = 32.0
+offset_bottom = -56.0
 nine_patch_stretch = true
 progress_color = Color( 0.721569, 0, 0, 1 )
 effect_colors = {
@@ -342,10 +342,10 @@ unique_name_in_owner = true
 [node name="PlayerLifeBarP3" parent="WorldUI/PlayerLifeBarContainerP3" instance=ExtResource( 71 )]
 unique_name_in_owner = true
 visible = false
-margin_left = -32.0
-margin_top = -72.0
-margin_right = 32.0
-margin_bottom = -56.0
+offset_left = -32.0
+offset_top = -72.0
+offset_right = 32.0
+offset_bottom = -56.0
 nine_patch_stretch = true
 progress_color = Color( 0.721569, 0, 0, 1 )
 effect_colors = {
@@ -358,10 +358,10 @@ unique_name_in_owner = true
 [node name="PlayerLifeBarP4" parent="WorldUI/PlayerLifeBarContainerP4" instance=ExtResource( 71 )]
 unique_name_in_owner = true
 visible = false
-margin_left = -32.0
-margin_top = -72.0
-margin_right = 32.0
-margin_bottom = -56.0
+offset_left = -32.0
+offset_top = -72.0
+offset_right = 32.0
+offset_bottom = -56.0
 nine_patch_stretch = true
 progress_color = Color( 0.721569, 0, 0, 1 )
 effect_colors = {
@@ -382,11 +382,11 @@ script = ExtResource( 4 )
 [node name="WaveClearedLabel" type="Label" parent="UI"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -960.0
-margin_right = 960.0
-margin_bottom = 400.0
+offset_left = -960.0
+offset_right = 960.0
+offset_bottom = 400.0
 theme = ExtResource( 41 )
-custom_fonts/font = ExtResource( 22 )
+theme_override_fonts/font = ExtResource( 22 )
 text = "WAVE_COMPLETED"
 align = 1
 valign = 1
@@ -406,17 +406,17 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-custom_constants/margin_right = 24
-custom_constants/margin_top = 24
-custom_constants/margin_left = 24
-custom_constants/margin_bottom = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_bottom = 24
 
 [node name="LifeContainerP2" type="VBoxContainer" parent="UI/HUD"]
 unique_name_in_owner = true
-margin_left = 1896.0
-margin_top = 24.0
-margin_right = 1896.0
-margin_bottom = 24.0
+offset_left = 1896.0
+offset_top = 24.0
+offset_right = 1896.0
+offset_bottom = 24.0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 __meta__ = {
@@ -426,7 +426,7 @@ __meta__ = {
 [node name="UILifeBarP2" parent="UI/HUD/LifeContainerP2" instance=ExtResource( 71 )]
 unique_name_in_owner = true
 visible = false
-margin_bottom = 48.0
+offset_bottom = 48.0
 size_flags_horizontal = 0
 tint_progress = Color( 0.721569, 0, 0, 1 )
 progress_color = Color( 0.721569, 0, 0, 1 )
@@ -437,21 +437,21 @@ effect_colors = {
 [node name="MarginContainer" type="MarginContainer" parent="UI/HUD/LifeContainerP2/UILifeBarP2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 12
-custom_constants/margin_top = 7
-custom_constants/margin_left = 12
-custom_constants/margin_bottom = 7
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LifeLabel" type="Label" parent="UI/HUD/LifeContainerP2/UILifeBarP2/MarginContainer"]
-margin_left = 12.0
-margin_top = 8.0
-margin_right = 308.0
-margin_bottom = 39.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 308.0
+offset_bottom = 39.0
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 21 )
+theme_override_fonts/font = ExtResource( 21 )
 text = "8 / 8"
 align = 1
 valign = 1
@@ -463,28 +463,28 @@ __meta__ = {
 [node name="UIXPBarP2" parent="UI/HUD/LifeContainerP2" instance=ExtResource( 71 )]
 unique_name_in_owner = true
 visible = false
-margin_bottom = 48.0
+offset_bottom = 48.0
 size_flags_horizontal = 0
 value = 50.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/HUD/LifeContainerP2/UIXPBarP2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 12
-custom_constants/margin_top = 7
-custom_constants/margin_left = 12
-custom_constants/margin_bottom = 7
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LevelLabel" type="Label" parent="UI/HUD/LifeContainerP2/UIXPBarP2/MarginContainer"]
-margin_left = 12.0
-margin_top = 8.0
-margin_right = 308.0
-margin_bottom = 39.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 308.0
+offset_bottom = 39.0
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 21 )
+theme_override_fonts/font = ExtResource( 21 )
 text = "LV. 1"
 align = 2
 valign = 1
@@ -498,27 +498,27 @@ unique_name_in_owner = true
 visible = false
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 95.0
-margin_bottom = 64.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 95.0
+offset_bottom = 64.0
 size_flags_horizontal = 3
 
 [node name="UIHitProtection" parent="UI/HUD/LifeContainerP2" instance=ExtResource( 90 )]
 visible = false
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 127.0
-margin_bottom = 96.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 127.0
+offset_bottom = 96.0
 
 [node name="LifeContainerP3" type="VBoxContainer" parent="UI/HUD"]
 unique_name_in_owner = true
-margin_left = 24.0
-margin_top = 1056.0
-margin_right = 24.0
-margin_bottom = 1056.0
+offset_left = 24.0
+offset_top = 1056.0
+offset_right = 24.0
+offset_bottom = 1056.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 __meta__ = {
@@ -528,7 +528,7 @@ __meta__ = {
 [node name="UILifeBarP3" parent="UI/HUD/LifeContainerP3" instance=ExtResource( 71 )]
 unique_name_in_owner = true
 visible = false
-margin_bottom = 48.0
+offset_bottom = 48.0
 size_flags_horizontal = 0
 tint_progress = Color( 0.721569, 0, 0, 1 )
 progress_color = Color( 0.721569, 0, 0, 1 )
@@ -539,21 +539,21 @@ effect_colors = {
 [node name="MarginContainer" type="MarginContainer" parent="UI/HUD/LifeContainerP3/UILifeBarP3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 12
-custom_constants/margin_top = 7
-custom_constants/margin_left = 12
-custom_constants/margin_bottom = 7
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LifeLabel" type="Label" parent="UI/HUD/LifeContainerP3/UILifeBarP3/MarginContainer"]
-margin_left = 12.0
-margin_top = 8.0
-margin_right = 308.0
-margin_bottom = 39.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 308.0
+offset_bottom = 39.0
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 21 )
+theme_override_fonts/font = ExtResource( 21 )
 text = "8 / 8"
 align = 1
 valign = 1
@@ -565,28 +565,28 @@ __meta__ = {
 [node name="UIXPBarP3" parent="UI/HUD/LifeContainerP3" instance=ExtResource( 71 )]
 unique_name_in_owner = true
 visible = false
-margin_bottom = 48.0
+offset_bottom = 48.0
 size_flags_horizontal = 0
 value = 50.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/HUD/LifeContainerP3/UIXPBarP3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 12
-custom_constants/margin_top = 7
-custom_constants/margin_left = 12
-custom_constants/margin_bottom = 7
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LevelLabel" type="Label" parent="UI/HUD/LifeContainerP3/UIXPBarP3/MarginContainer"]
-margin_left = 12.0
-margin_top = 8.0
-margin_right = 308.0
-margin_bottom = 39.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 308.0
+offset_bottom = 39.0
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 21 )
+theme_override_fonts/font = ExtResource( 21 )
 text = "LV. 1"
 align = 2
 valign = 1
@@ -600,27 +600,27 @@ unique_name_in_owner = true
 visible = false
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 95.0
-margin_bottom = 64.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 95.0
+offset_bottom = 64.0
 size_flags_horizontal = 3
 
 [node name="UIHitProtection" parent="UI/HUD/LifeContainerP3" instance=ExtResource( 90 )]
 visible = false
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 127.0
-margin_bottom = 96.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 127.0
+offset_bottom = 96.0
 
 [node name="LifeContainerP1" type="VBoxContainer" parent="UI/HUD"]
 unique_name_in_owner = true
-margin_left = 24.0
-margin_top = 24.0
-margin_right = 133.0
-margin_bottom = 224.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 133.0
+offset_bottom = 224.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 __meta__ = {
@@ -630,7 +630,7 @@ __meta__ = {
 [node name="UILifeBarP1" parent="UI/HUD/LifeContainerP1" instance=ExtResource( 71 )]
 unique_name_in_owner = true
 visible = false
-margin_bottom = 48.0
+offset_bottom = 48.0
 size_flags_horizontal = 0
 tint_progress = Color( 0.721569, 0, 0, 1 )
 progress_color = Color( 0.721569, 0, 0, 1 )
@@ -641,21 +641,21 @@ effect_colors = {
 [node name="MarginContainer" type="MarginContainer" parent="UI/HUD/LifeContainerP1/UILifeBarP1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 12
-custom_constants/margin_top = 7
-custom_constants/margin_left = 12
-custom_constants/margin_bottom = 7
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LifeLabel" type="Label" parent="UI/HUD/LifeContainerP1/UILifeBarP1/MarginContainer"]
-margin_left = 12.0
-margin_top = 8.0
-margin_right = 308.0
-margin_bottom = 39.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 308.0
+offset_bottom = 39.0
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 21 )
+theme_override_fonts/font = ExtResource( 21 )
 text = "8 / 8"
 align = 1
 valign = 1
@@ -667,28 +667,28 @@ __meta__ = {
 [node name="UIXPBarP1" parent="UI/HUD/LifeContainerP1" instance=ExtResource( 71 )]
 unique_name_in_owner = true
 visible = false
-margin_bottom = 48.0
+offset_bottom = 48.0
 size_flags_horizontal = 0
 value = 50.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/HUD/LifeContainerP1/UIXPBarP1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 12
-custom_constants/margin_top = 7
-custom_constants/margin_left = 12
-custom_constants/margin_bottom = 7
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LevelLabel" type="Label" parent="UI/HUD/LifeContainerP1/UIXPBarP1/MarginContainer"]
-margin_left = 12.0
-margin_top = 8.0
-margin_right = 308.0
-margin_bottom = 39.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 308.0
+offset_bottom = 39.0
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 21 )
+theme_override_fonts/font = ExtResource( 21 )
 text = "LV. 1"
 align = 2
 valign = 1
@@ -701,43 +701,43 @@ __meta__ = {
 unique_name_in_owner = true
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 109.0
-margin_bottom = 64.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 109.0
+offset_bottom = 64.0
 size_flags_horizontal = 3
 alignment = 0
 
 [node name="UIBonusGold" parent="UI/HUD/LifeContainerP1" instance=ExtResource( 67 )]
-margin_top = 68.0
-margin_bottom = 132.0
+offset_top = 68.0
+offset_bottom = 132.0
 size_flags_horizontal = 0
 
 [node name="FPSLabel" type="Label" parent="UI/HUD/LifeContainerP1"]
 unique_name_in_owner = true
 visible = false
-margin_top = 68.0
-margin_right = 95.0
-margin_bottom = 82.0
+offset_top = 68.0
+offset_right = 95.0
+offset_bottom = 82.0
 theme = ExtResource( 41 )
-custom_fonts/font = ExtResource( 40 )
+theme_override_fonts/font = ExtResource( 40 )
 script = ExtResource( 64 )
 
 [node name="UIHitProtection" parent="UI/HUD/LifeContainerP1" instance=ExtResource( 90 )]
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 0.0
-margin_top = 136.0
-margin_right = 109.0
-margin_bottom = 200.0
+offset_left = 0.0
+offset_top = 136.0
+offset_right = 109.0
+offset_bottom = 200.0
 alignment = 0
 
 [node name="LifeContainerP4" type="VBoxContainer" parent="UI/HUD"]
 unique_name_in_owner = true
-margin_left = 1896.0
-margin_top = 1056.0
-margin_right = 1896.0
-margin_bottom = 1056.0
+offset_left = 1896.0
+offset_top = 1056.0
+offset_right = 1896.0
+offset_bottom = 1056.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 __meta__ = {
@@ -747,7 +747,7 @@ __meta__ = {
 [node name="UILifeBarP4" parent="UI/HUD/LifeContainerP4" instance=ExtResource( 71 )]
 unique_name_in_owner = true
 visible = false
-margin_bottom = 48.0
+offset_bottom = 48.0
 size_flags_horizontal = 0
 tint_progress = Color( 0.721569, 0, 0, 1 )
 progress_color = Color( 0.721569, 0, 0, 1 )
@@ -758,21 +758,21 @@ effect_colors = {
 [node name="MarginContainer" type="MarginContainer" parent="UI/HUD/LifeContainerP4/UILifeBarP4"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 12
-custom_constants/margin_top = 7
-custom_constants/margin_left = 12
-custom_constants/margin_bottom = 7
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LifeLabel" type="Label" parent="UI/HUD/LifeContainerP4/UILifeBarP4/MarginContainer"]
-margin_left = 12.0
-margin_top = 8.0
-margin_right = 308.0
-margin_bottom = 39.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 308.0
+offset_bottom = 39.0
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 21 )
+theme_override_fonts/font = ExtResource( 21 )
 text = "8 / 8"
 align = 1
 valign = 1
@@ -784,29 +784,29 @@ __meta__ = {
 [node name="UIXPBarP4" parent="UI/HUD/LifeContainerP4" instance=ExtResource( 71 )]
 unique_name_in_owner = true
 visible = false
-margin_top = 52.0
-margin_bottom = 100.0
+offset_top = 52.0
+offset_bottom = 100.0
 size_flags_horizontal = 0
 value = 50.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/HUD/LifeContainerP4/UIXPBarP4"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 12
-custom_constants/margin_top = 7
-custom_constants/margin_left = 12
-custom_constants/margin_bottom = 7
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LevelLabel" type="Label" parent="UI/HUD/LifeContainerP4/UIXPBarP4/MarginContainer"]
-margin_left = 12.0
-margin_top = 8.0
-margin_right = 308.0
-margin_bottom = 39.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 308.0
+offset_bottom = 39.0
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 21 )
+theme_override_fonts/font = ExtResource( 21 )
 text = "LV. 1"
 align = 2
 valign = 1
@@ -820,10 +820,10 @@ unique_name_in_owner = true
 visible = false
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 0.0
-margin_top = 104.0
-margin_right = 320.0
-margin_bottom = 168.0
+offset_left = 0.0
+offset_top = 104.0
+offset_right = 320.0
+offset_bottom = 168.0
 size_flags_horizontal = 3
 alignment = 0
 
@@ -831,16 +831,16 @@ alignment = 0
 visible = false
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 127.0
-margin_bottom = 96.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 127.0
+offset_bottom = 96.0
 
 [node name="WaveContainer" type="VBoxContainer" parent="UI/HUD"]
-margin_left = 873.0
-margin_top = 24.0
-margin_right = 1046.0
-margin_bottom = 146.0
+offset_left = 873.0
+offset_top = 24.0
+offset_right = 1046.0
+offset_bottom = 146.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 __meta__ = {
@@ -848,10 +848,10 @@ __meta__ = {
 }
 
 [node name="CurrentWaveLabel" type="Label" parent="UI/HUD/WaveContainer"]
-margin_right = 173.0
-margin_bottom = 45.0
+offset_right = 173.0
+offset_bottom = 45.0
 theme = ExtResource( 41 )
-custom_fonts/font = ExtResource( 40 )
+theme_override_fonts/font = ExtResource( 40 )
 text = "WAVE {0}"
 align = 1
 __meta__ = {
@@ -859,11 +859,11 @@ __meta__ = {
 }
 
 [node name="WaveTimerLabel" type="Label" parent="UI/HUD/WaveContainer"]
-margin_top = 49.0
-margin_right = 173.0
-margin_bottom = 122.0
+offset_top = 49.0
+offset_right = 173.0
+offset_bottom = 122.0
 theme = ExtResource( 41 )
-custom_fonts/font = ExtResource( 22 )
+theme_override_fonts/font = ExtResource( 22 )
 text = "60"
 align = 1
 script = ExtResource( 25 )
@@ -873,23 +873,23 @@ __meta__ = {
 
 [node name="ThingsToProcessMarginContainer" type="MarginContainer" parent="UI/HUD"]
 unique_name_in_owner = true
-margin_left = 24.0
-margin_top = 24.0
-margin_right = 1896.0
-margin_bottom = 1056.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 1896.0
+offset_bottom = 1056.0
 mouse_filter = 2
-custom_constants/margin_right = 348
-custom_constants/margin_left = 348
+theme_override_constants/margin_right = 348
+theme_override_constants/margin_left = 348
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/ThingsToProcessMarginContainer"]
-margin_left = 348.0
-margin_right = 1524.0
-margin_bottom = 1032.0
+offset_left = 348.0
+offset_right = 1524.0
+offset_bottom = 1032.0
 mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/ThingsToProcessMarginContainer/VBoxContainer"]
-margin_right = 1176.0
-margin_bottom = 514.0
+offset_right = 1176.0
+offset_bottom = 514.0
 mouse_filter = 2
 size_flags_vertical = 3
 
@@ -899,15 +899,15 @@ size_flags_horizontal = 3
 
 [node name="UIThingsToProcessPlayerContainer2" parent="UI/HUD/ThingsToProcessMarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
 unique_name_in_owner = true
-margin_left = 590.0
-margin_right = 1176.0
+offset_left = 590.0
+offset_right = 1176.0
 size_flags_horizontal = 3
 horizontal_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UI/HUD/ThingsToProcessMarginContainer/VBoxContainer"]
-margin_top = 518.0
-margin_right = 1176.0
-margin_bottom = 1032.0
+offset_top = 518.0
+offset_right = 1176.0
+offset_bottom = 1032.0
 mouse_filter = 2
 size_flags_vertical = 3
 
@@ -918,8 +918,8 @@ vertical_alignment = 1
 
 [node name="UIThingsToProcessPlayerContainer4" parent="UI/HUD/ThingsToProcessMarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource( 5 )]
 unique_name_in_owner = true
-margin_left = 590.0
-margin_right = 1176.0
+offset_left = 590.0
+offset_right = 1176.0
 size_flags_horizontal = 3
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -928,7 +928,7 @@ vertical_alignment = 1
 visible = false
 
 [node name="PauseMenu" parent="UI" instance=ExtResource( 72 )]
-pause_mode = 2
+process_mode = 3
 visible = false
 
 [node name="ChallengeCompletedUI" parent="UI" instance=ExtResource( 66 )]

@@ -5,13 +5,14 @@ extends Boss
 var current_projectiles_cooldown = 0.0
 var current_charging_projectile_behavior = null
 
-onready var _charging_shoot_projectiles_behavior = $ChargingShootProjectilesBehavior
-onready var _charging_shoot_projectiles_behavior_2 = $ChargingShootProjectilesBehavior2
+@onready var _charging_shoot_projectiles_behavior = $ChargingShootProjectilesBehavior
+@onready var _charging_shoot_projectiles_behavior_2 = $ChargingShootProjectilesBehavior2
 
 var is_in_last_phase = false
 
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	_charging_shoot_projectiles_behavior_2.init(self)
 	_charging_shoot_projectiles_behavior.init(self)
 
@@ -28,9 +29,11 @@ func _physics_process(delta: float) -> void :
 		current_projectiles_cooldown = current_charging_projectile_behavior.cooldown
 		current_charging_projectile_behavior.shoot()
 
+	super._physics_process(delta)
+
 
 func on_state_changed(new_state: int) -> void :
-	.on_state_changed(new_state)
+	super.on_state_changed(new_state)
 
 	if new_state == 0:
 		current_projectiles_cooldown = 30.0

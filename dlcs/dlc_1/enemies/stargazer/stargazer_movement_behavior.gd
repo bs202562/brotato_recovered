@@ -11,6 +11,6 @@ func add_lung(p_lung: IronLung) -> void :
 
 func get_new_target() -> Vector2:
 	if not lung or not is_instance_valid(lung) or lung.dead or lung.is_full:
-		return .get_new_target()
+		return super.get_new_target()
 	else:
 		return lung.global_position

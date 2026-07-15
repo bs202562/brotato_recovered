@@ -15,35 +15,31 @@ func shoot(_distance: float) -> void :
 
 	var attack_id: = _get_next_attack_id()
 	for i in _parent.current_stats.nb_projectiles:
-		var proj_rotation = rand_range(_parent.rotation - _parent.current_stats.projectile_spread, _parent.rotation + _parent.current_stats.projectile_spread)
+		var proj_rotation = randf_range(_parent.rotation - _parent.current_stats.projectile_spread, _parent.rotation + _parent.current_stats.projectile_spread)
 		var projectile = shoot_projectile(proj_rotation, Vector2(cos(proj_rotation), sin(proj_rotation)))
 		projectile._hitbox.player_attack_id = attack_id
 
-	_parent.tween.interpolate_property(
-		_parent.sprite, 
-		"position", 
-		initial_position, 
-		Vector2(initial_position.x - _parent.current_stats.recoil, initial_position.y), 
-		_parent.current_stats.recoil_duration, 
-		Tween.TRANS_EXPO, 
-		Tween.EASE_OUT
-	)
+	# 4.x 移植: 原武器上共享的 Tween 节点已移除，改用 create_tween()；
+	# 后坐力(往后)与复位(回原位)两段依次播放，行为与原先一致
+	var recoil_tween: = create_tween()
+	recoil_tween.tween_property(
+		_parent.sprite,
+		"position",
+		Vector2(initial_position.x - _parent.current_stats.recoil, initial_position.y),
+		_parent.current_stats.recoil_duration
+	).from(initial_position).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
-	_parent.tween.start()
-	yield(_parent.tween, "tween_all_completed")
+	await recoil_tween.finished
 
-	_parent.tween.interpolate_property(
-		_parent.sprite, 
-		"position", 
-		_parent.sprite.position, 
-		initial_position, 
-		_parent.current_stats.recoil_duration, 
-		Tween.TRANS_EXPO, 
-		Tween.EASE_OUT
-	)
+	var return_tween: = create_tween()
+	return_tween.tween_property(
+		_parent.sprite,
+		"position",
+		initial_position,
+		_parent.current_stats.recoil_duration
+	).from(_parent.sprite.position).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
-	_parent.tween.start()
-	yield(_parent.tween, "tween_all_completed")
+	await return_tween.finished
 
 	_parent.set_shooting(false)
 

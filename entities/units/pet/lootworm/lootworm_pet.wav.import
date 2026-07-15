@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/lootworm_pet.wav-d9b8b438fe0bd73eb5052a2da699796b.sample"
+type="AudioStreamWAV"
+uid="uid://tjxcoyq43exd"
+path="res://.godot/imported/lootworm_pet.wav-d9b8b438fe0bd73eb5052a2da699796b.sample"
 
 [deps]
 
 source_file="res://entities/units/pet/lootworm/lootworm_pet.wav"
-dest_files=[ "res://.import/lootworm_pet.wav-d9b8b438fe0bd73eb5052a2da699796b.sample" ]
+dest_files=["res://.godot/imported/lootworm_pet.wav-d9b8b438fe0bd73eb5052a2da699796b.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

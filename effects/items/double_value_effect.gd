@@ -3,8 +3,8 @@ extends Effect
 
 enum SumStrategy { SUM_BOTH, SUM_VALUE_1, SUM_VALUE_2 }
 
-export(int) var value2 = 0
-export(SumStrategy) var sum_strategy
+@export var value2: int = 0
+@export var sum_strategy: SumStrategy
 
 
 static func get_id() -> String:
@@ -78,7 +78,7 @@ func get_args(_player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.value2 = value2
 	serialized.sum_strategy = sum_strategy
@@ -87,7 +87,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	value2 = serialized.value2
 	sum_strategy = serialized.get(sum_strategy, SumStrategy.SUM_VALUE_1)

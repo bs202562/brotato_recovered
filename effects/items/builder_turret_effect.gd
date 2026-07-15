@@ -30,13 +30,13 @@ func get_text(player_index: int, colored: bool = true) -> String:
 		if effects.size() > 0:
 			text += best_weapon.get_effects_text(player_index, false) + "\n"
 
-	text += .get_text(player_index, colored)
+	text += super.get_text(player_index, colored)
 
 	return text
 
 
 func get_args(player_index: int) -> Array:
-	var args = .get_args(player_index)
+	var args = super.get_args(player_index)
 
 	var best_weapon = BuilderTurret.get_best_ranged_weapon(player_index)
 

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/bullet_impact_water_02.wav-bab1f86b96fce3dfb21106b6a036b395.sample"
+type="AudioStreamWAV"
+uid="uid://jo5j018gm2gs"
+path="res://.godot/imported/bullet_impact_water_02.wav-bab1f86b96fce3dfb21106b6a036b395.sample"
 
 [deps]
 
 source_file="res://entities/units/unit/hurt_sounds/bullet_impact_water_02.wav"
-dest_files=[ "res://.import/bullet_impact_water_02.wav-bab1f86b96fce3dfb21106b6a036b395.sample" ]
+dest_files=["res://.godot/imported/bullet_impact_water_02.wav-bab1f86b96fce3dfb21106b6a036b395.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

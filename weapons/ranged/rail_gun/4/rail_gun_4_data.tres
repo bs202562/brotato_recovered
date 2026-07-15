@@ -5,7 +5,7 @@
 [ext_resource path="res://items/sets/heavy/heavy_set_data.tres" type="Resource" id=3]
 [ext_resource path="res://weapons/ranged/rail_gun/4/rail_gun_4_stats.tres" type="Resource" id=4]
 [ext_resource path="res://weapons/ranged/rail_gun/rail_gun.tscn" type="PackedScene" id=5]
-[ext_resource path="res://weapons/ranged/rail_gun/rail_gun_icon.png" type="Texture" id=6]
+[ext_resource path="res://weapons/ranged/rail_gun/rail_gun_icon.png" type="Texture2D" id=6]
 [ext_resource path="res://weapons/ranged/rail_gun/4/rail_gun_4_effect.tres" type="Resource" id=7]
 
 [resource]

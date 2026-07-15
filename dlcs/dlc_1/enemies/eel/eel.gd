@@ -1,20 +1,21 @@
 class_name Eel
 extends Boss
 
-export (PackedScene) var pivots_scene
+@export var pivots_scene: PackedScene
 
 var current_projectiles_cooldown = 0.0
 var shoot_on_change_phase_behavior_cd = 99999999
 var shoot_on_charge_last_phase_behavior_cd = 99999999
 
-onready var _charging_shoot_projectiles_behavior = $ChargingShootProjectilesBehavior
-onready var _shoot_on_change_phase_behavior = $ShootOnChangePhaseBehavior
-onready var _shoot_on_charge_last_phase_behavior = $ShootOnChargeLastPhaseBehavior
+@onready var _charging_shoot_projectiles_behavior = $ChargingShootProjectilesBehavior
+@onready var _shoot_on_change_phase_behavior = $ShootOnChangePhaseBehavior
+@onready var _shoot_on_charge_last_phase_behavior = $ShootOnChargeLastPhaseBehavior
 
 var pivots
 
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	_charging_shoot_projectiles_behavior.init(self)
 	_shoot_on_change_phase_behavior.init(self)
 	_shoot_on_charge_last_phase_behavior.init(self)
@@ -40,16 +41,18 @@ func _physics_process(delta: float) -> void :
 		_shoot_on_charge_last_phase_behavior.shoot()
 		shoot_on_charge_last_phase_behavior_cd = _shoot_on_charge_last_phase_behavior.cooldown
 
+	super._physics_process(delta)
+
 
 func on_state_changed(new_state: int) -> void :
-	.on_state_changed(new_state)
+	super.on_state_changed(new_state)
 
 	if new_state == 0:
 		reset_speed_stat(50)
 		shoot_on_change_phase_behavior_cd = 30.0
 	elif new_state == 1:
 		reset_speed_stat(0)
-		pivots = pivots_scene.instance()
+		pivots = pivots_scene.instantiate()
 		add_child(pivots)
 		for child in pivots.get_bullets():
 			register_additional_projectile(child)
@@ -57,8 +60,8 @@ func on_state_changed(new_state: int) -> void :
 		_current_attack_behavior._current_cd = 75.0
 
 
-func die(args: = Utils.default_die_args) -> void :
-	.die(args)
+func die(args = Utils.default_die_args) -> void :
+	super.die(args)
 
 	if pivots:
 		pivots.free_pivots()

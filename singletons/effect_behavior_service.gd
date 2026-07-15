@@ -1,8 +1,8 @@
 extends Node
 
-export (Array, Resource) var scene_effect_behaviors
-export (Array, Resource) var enemy_effect_behaviors
-export (Array, Resource) var player_effect_behaviors
+@export var scene_effect_behaviors: Array = [] # (Array, Resource)
+@export var enemy_effect_behaviors: Array = [] # (Array, Resource)
+@export var player_effect_behaviors: Array = [] # (Array, Resource)
 
 var active_enemy_effect_behavior_data: = []
 
@@ -18,7 +18,7 @@ func reset() -> void :
 func update_active_effect_behaviors():
 	active_enemy_effect_behavior_data.clear()
 	for behavior_data in enemy_effect_behaviors:
-		var instance = behavior_data.scene.instance()
+		var instance = behavior_data.scene.instantiate()
 		if instance.should_add_on_spawn():
 			active_enemy_effect_behavior_data.push_back(behavior_data)
 		instance.queue_free()

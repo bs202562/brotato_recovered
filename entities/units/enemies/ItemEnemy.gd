@@ -1,8 +1,8 @@
 extends ItemEntity
 class_name ItemEnemy
 
-export (bool) var is_boss = false
-export (bool) var is_elite = false
+@export var is_boss: bool = false
+@export var is_elite: bool = false
 
 func _get_entity_description(side: int = 0, hide_if_non_unlock_in_codex: bool = false) -> String:
 	if _is_locked_in_codex() and hide_if_non_unlock_in_codex:

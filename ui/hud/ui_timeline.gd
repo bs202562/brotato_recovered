@@ -4,10 +4,10 @@ class_name UITimeline
 signal run_title_move_right()
 signal run_title_move_left()
 
-export (PackedScene) var ui_timeline_slot
-onready var _timeline_slot_container: HBoxContainer = $"%timeline_slot_container"
-onready var _current_position: Control = $"%current_position"
-onready var _icon_current: TextureRect = $"%icon_current"
+@export var ui_timeline_slot: PackedScene
+@onready var _timeline_slot_container: HBoxContainer = $"%timeline_slot_container"
+@onready var _current_position: Control = $"%current_position"
+@onready var _icon_current: TextureRect = $"%icon_current"
 
 var current_position: int
 
@@ -35,9 +35,9 @@ func _set_timeline_custom(current_position_index: int, character: CharacterData,
 
 
 	for index in range(from_wave, to_wave + 1):
-		var new_slot: UITimelineSlot = ui_timeline_slot.instance()
+		var new_slot: UITimelineSlot = ui_timeline_slot.instantiate()
 		var icons = []
-		var icon: Texture = null
+		var icon: Texture2D = null
 		var color: Color = _check_color_point(index, index < current_position)
 		var shadow_icon: bool = false
 		if index < current_position:
@@ -80,26 +80,24 @@ func _set_timeline_custom(current_position_index: int, character: CharacterData,
 
 	_icon_current.texture = character.icon
 
-	yield(get_tree(), "physics_frame")
-	yield(get_tree(), "physics_frame")
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 	for child in _timeline_slot_container.get_children():
 		if child.value == current_position:
-			_current_position.rect_global_position.x = child.rect_global_position.x + (child.rect_size.x * 0.5)
+			_current_position.global_position.x = child.global_position.x + (child.size.x * 0.5)
 			break
 
 
 func _advance_player(offset: int = 1):
-	var start_position: Vector2 = _current_position.rect_global_position
+	var start_position: Vector2 = _current_position.global_position
 	var end_position: Vector2
 	for child in _timeline_slot_container.get_children():
 		if child.value == current_position + offset:
-			end_position = Vector2(child.rect_global_position.x + (child.rect_size.x * 0.5), _current_position.rect_global_position.y)
+			end_position = Vector2(child.global_position.x + (child.size.x * 0.5), _current_position.global_position.y)
 			break
 
-	var tween: = Tween.new()
-	add_child(tween)
-	tween.interpolate_property(_current_position, "rect_global_position", start_position, end_position, abs(float(offset)) * 1.5, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
-	tween.start()
+	var tween: = create_tween()
+	tween.tween_property(_current_position, "global_position", end_position, abs(float(offset)) * 1.5).from(start_position).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 
 	if offset > 0:
 		for child in _timeline_slot_container.get_children():
@@ -125,15 +123,15 @@ func _check_color_point(index: int, player_passed_on_it: bool) -> Color:
 					if not player_passed_on_it:
 						color = ProgressData.settings.color_negative
 					else:
-						color = Color(ProgressData.settings.color_negative).linear_interpolate(color, 0.5)
+						color = Color(ProgressData.settings.color_negative).lerp(color, 0.5)
 				EliteType.HORDE:
 					if not player_passed_on_it:
 						color = ProgressData.settings.color_negative
 					else:
-						color = Color(ProgressData.settings.color_negative).linear_interpolate(color, 0.5)
+						color = Color(ProgressData.settings.color_negative).lerp(color, 0.5)
 		if index == 20:
 			if index >= current_position:
 				color = ProgressData.settings.color_negative
 			else:
-				color = Color(ProgressData.settings.color_negative).linear_interpolate(color, 0.5)
+				color = Color(ProgressData.settings.color_negative).lerp(color, 0.5)
 	return color

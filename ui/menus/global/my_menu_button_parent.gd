@@ -1,10 +1,10 @@
 class_name MyMenuButtonParent
 extends Button
 
-export (Resource) var focus_entered_sound = preload("res://ui/sounds/button_focus.wav")
-export (Resource) var pressed_sound = preload("res://ui/sounds/button_press.wav")
-export (float) var pitch_variation = 0.2
-export (bool) var grab_focus_with_mouse = true
+@export var focus_entered_sound: Resource = preload("res://ui/sounds/button_focus.wav")
+@export var pressed_sound: Resource = preload("res://ui/sounds/button_press.wav")
+@export var pitch_variation: float = 0.2
+@export var grab_focus_with_mouse: bool = true
 
 var _delay_timer: Timer
 var _is_delay_active: = false
@@ -16,7 +16,7 @@ func _ready() -> void :
 	_delay_timer = Timer.new()
 	_delay_timer.wait_time = 0.05
 	_delay_timer.one_shot = true
-	var _delay = _delay_timer.connect("timeout", self, "_on_DelayTimer_timeout")
+	var _delay = _delay_timer.connect("timeout", Callable(self, "_on_DelayTimer_timeout"))
 	add_child(_delay_timer)
 
 

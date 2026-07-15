@@ -6,31 +6,31 @@ const SCROLL_SPEED: = 600.0
 signal mouse_hovered_category
 signal mouse_exited_category
 
-export (PackedScene) var effect_line
-export (bool) var expand_indefinitely = true
-export (bool) var show_details = true
-export (bool) var show_player_stats = false
-export (bool) var hide_description_if_locked_in_codex: = false
-export (bool) var silhouette_locked_items: = false
+@export var effect_line: PackedScene
+@export var expand_indefinitely: bool = true
+@export var show_details: bool = true
+@export var show_player_stats: bool = false
+@export var hide_description_if_locked_in_codex := false
+@export var silhouette_locked_items := false
 
 var item: ItemParentData
-onready var icon_panel: Panel = get_node_or_null("%IconPanel")
+@onready var icon_panel: Panel = get_node_or_null("%IconPanel")
 
-onready var _icon: TextureRect = get_node_or_null("HBoxContainer/IconPanel/Icon")
-onready var _name = get_node_or_null("%Name")
-onready var _category = get_node_or_null("%Category")
+@onready var _icon: TextureRect = get_node_or_null("HBoxContainer/IconPanel/Icon")
+@onready var _name = get_node_or_null("%Name")
+@onready var _category = get_node_or_null("%Category")
 
-onready var _vbox_container = $"%VBoxContainer" as VBoxContainer
-onready var _effects = $"%Effects" as VBoxContainer
-onready var _weapon_stats: RichTextLabel = get_node_or_null("%WeaponStats")
-onready var _player_stat_descr_l: RichTextLabel = get_node_or_null("%PlayerStatsDescr_left")
-onready var _player_stat_descr_r: RichTextLabel = get_node_or_null("%PlayerStatsDescr_right")
+@onready var _vbox_container = $"%VBoxContainer" as VBoxContainer
+@onready var _effects = $"%Effects" as VBoxContainer
+@onready var _weapon_stats: RichTextLabel = get_node_or_null("%WeaponStats")
+@onready var _player_stat_descr_l: RichTextLabel = get_node_or_null("%PlayerStatsDescr_left")
+@onready var _player_stat_descr_r: RichTextLabel = get_node_or_null("%PlayerStatsDescr_right")
 
-onready var _scroll_container = $"%ScrollContainer"
-onready var _effects_scrolled = $"%Effects_scrolled" as VBoxContainer
-onready var _weapon_stats_scrolled: RichTextLabel = get_node_or_null("%WeaponStats_scrolled")
-onready var _player_stat_descr_scrolled_l: RichTextLabel = get_node_or_null("%PlayerStatsDescr_scrolled_left")
-onready var _player_stat_descr_scrolled_r: RichTextLabel = get_node_or_null("%PlayerStatsDescr_scrolled_right")
+@onready var _scroll_container = $"%ScrollContainer"
+@onready var _effects_scrolled = $"%Effects_scrolled" as VBoxContainer
+@onready var _weapon_stats_scrolled: RichTextLabel = get_node_or_null("%WeaponStats_scrolled")
+@onready var _player_stat_descr_scrolled_l: RichTextLabel = get_node_or_null("%PlayerStatsDescr_scrolled_left")
+@onready var _player_stat_descr_scrolled_r: RichTextLabel = get_node_or_null("%PlayerStatsDescr_scrolled_right")
 
 var _player_index: = 0
 
@@ -66,12 +66,12 @@ func set_item(item_data: ItemParentData, player_index: int, item_count: = 1) -> 
 	get_player_stats(1).visible = show_player_stats
 
 	if show_player_stats:
-		get_player_stats( - 1).bbcode_text = item_data._get_item_player_stats_description( - 1)
-		get_player_stats(1).bbcode_text = item_data._get_item_player_stats_description(1)
+		get_player_stats( - 1).text = item_data._get_item_player_stats_description( - 1)
+		get_player_stats(1).text = item_data._get_item_player_stats_description(1)
 
 
 	if item_data is DifficultyData and item_data.effects.size() == 0:
-		get_effects().bbcode_text = item_data.description
+		get_effects().text = item_data.description
 	else:
 		if item_data._is_locked_in_codex() and hide_description_if_locked_in_codex:
 			var quantity_needed: int = item_data.unlock_codex_descr_after_get_it - item_data._get_bought_times()
@@ -83,8 +83,8 @@ func set_item(item_data: ItemParentData, player_index: int, item_count: = 1) -> 
 	if item_data is WeaponData:
 		if not (hide_description_if_locked_in_codex and item_data._is_locked_in_codex()):
 			get_weapon_stats().show()
-			get_weapon_stats().bbcode_text = item_data.get_weapon_stats_text(player_index)
-			if get_weapon_stats().bbcode_text == "":
+			get_weapon_stats().text = item_data.get_weapon_stats_text(player_index)
+			if get_weapon_stats().text == "":
 				get_weapon_stats().hide()
 			_category.text = tr(ItemService.get_weapon_sets_text(item_data.sets))
 		else:
@@ -146,31 +146,31 @@ func _generate_description_effects(player_index, effects: Array, colored: bool =
 		child.queue_free()
 
 	for effect in effects:
-		var line: EffectLine = effect_line.instance()
+		var line: EffectLine = effect_line.instantiate()
 		_effect.add_child(line)
 		line._display_effect(player_index, effect, colored, activate_tab)
 
 	if item.tracking_text != "[EMPTY]":
-		var line: EffectLine = effect_line.instance()
+		var line: EffectLine = effect_line.instantiate()
 		_effect.add_child(line)
 		line._display_special_text(item._get_tracking_text(player_index), null)
 
 
 
-func _generate_special_description_effects(text: String, icon: Texture = null, locked_item: bool = false):
+func _generate_special_description_effects(text: String, icon: Texture2D = null, locked_item: bool = false):
 	var _effect = get_effects()
 
 	for child in _effect.get_children():
 		child.queue_free()
 
-	var line: EffectLine = effect_line.instance()
+	var line: EffectLine = effect_line.instantiate()
 	_effect.add_child(line)
 	line._display_special_text(text, icon, locked_item)
 
 
 func set_custom_data(name: String, icon: Resource) -> void :
 	_name.text = name
-	_name.modulate = Color.white
+	_name.modulate = Color.WHITE
 	_icon.texture = icon
 	_category.hide()
 

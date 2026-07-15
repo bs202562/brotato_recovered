@@ -1,14 +1,14 @@
 class_name BurningParticles
 extends CPUParticles2D
 
-export (Gradient) var red_gradient
-export (Gradient) var red_gradient_secondary
-export (Gradient) var blue_gradient
-export (Gradient) var blue_gradient_secondary
+@export var red_gradient: Gradient
+@export var red_gradient_secondary: Gradient
+@export var blue_gradient: Gradient
+@export var blue_gradient_secondary: Gradient
 
-onready var secondary_particles: CPUParticles2D = $secondaryParticle
-onready var _collision = $SpreadArea / CollisionShape2D
-onready var main: Main = get_tree().current_scene
+@onready var secondary_particles: CPUParticles2D = $secondaryParticle
+@onready var _collision = $SpreadArea / CollisionShape2D
+@onready var main: Main = get_tree().current_scene
 
 var burning_data: BurningData
 var bodies = []
@@ -52,7 +52,7 @@ func start_emitting() -> void :
 	_update_color()
 
 
-func stop_emitting() -> void :
+func stop_emitting_particles() -> void :
 	emit_signal("stop_emitting", self)
 	emitting = false
 	deactivate_spread()

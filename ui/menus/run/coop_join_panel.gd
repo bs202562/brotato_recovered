@@ -2,16 +2,16 @@ extends PanelContainer
 
 const EMPTY_INNER_COLOR = Color(0.33, 0.33, 0.33)
 
-export var player_index: = 0
+@export var player_index: = 0
 
-var instructions_visible setget _set_instructions_visible, _get_instructions_visible
+var instructions_visible : get = _get_instructions_visible, set = _set_instructions_visible
 func _set_instructions_visible(value):
 	_coop_join_instructions.visible = value
 func _get_instructions_visible():
 	return _coop_join_instructions.visible
 
-onready var _coop_join_instructions: Control = $"%CoopJoinInstructions"
-onready var _coop_join_progress: CoopJoinProgress = $"%CoopJoinProgress"
+@onready var _coop_join_instructions: Control = $"%CoopJoinInstructions"
+@onready var _coop_join_progress: CoopJoinProgress = $"%CoopJoinProgress"
 
 
 func _ready():
@@ -22,7 +22,7 @@ func _ready():
 
 func update_indicators(connected_players: Array, connection_progress: Array) -> void :
 	
-	var are_main_join_instructions_showing: = connected_players.empty()
+	var are_main_join_instructions_showing: = connected_players.is_empty()
 	
 	var is_panel_for_next_player: = player_index == connected_players.size() + connection_progress.size()
 	_coop_join_instructions.visible = RunData.play_mode == RunData.PlayMode.COOP and not are_main_join_instructions_showing and is_panel_for_next_player

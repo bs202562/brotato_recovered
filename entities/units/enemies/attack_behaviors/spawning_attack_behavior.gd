@@ -3,14 +3,14 @@ extends AttackBehavior
 
 signal wanted_to_spawn_an_enemy(enemy_scene, position)
 
-export (PackedScene) var enemy_to_spawn = null
-export (float) var cooldown = 60.0
-export (int) var max_cd_randomization = 10
-export (float) var attack_anim_speed = 1.0
-export (int) var nb_to_spawn = 1
-export (bool) var spawn_at_random_pos = false
-export (int) var spawn_in_radius_around_unit = - 1
-export (int) var max_nb_of_spawns = - 1
+@export var enemy_to_spawn: PackedScene = null
+@export var cooldown: float = 60.0
+@export var max_cd_randomization: int = 10
+@export var attack_anim_speed: float = 1.0
+@export var nb_to_spawn: int = 1
+@export var spawn_at_random_pos: bool = false
+@export var spawn_in_radius_around_unit: int = - 1
+@export var max_nb_of_spawns: int = - 1
 
 var _current_nb_of_spawns: int = 0
 var _current_cd: float = cooldown
@@ -29,7 +29,7 @@ func physics_process(delta: float) -> void :
 	_current_cd = max(_current_cd - 60 * delta, 0)
 
 	if _current_cd <= 0 and (max_nb_of_spawns == - 1 or _current_nb_of_spawns < max_nb_of_spawns):
-		_parent._animation_player.playback_speed = attack_anim_speed
+		_parent._animation_player.speed_scale = attack_anim_speed
 		_parent._animation_player.play(_parent.shoot_animation_name)
 
 
@@ -61,4 +61,4 @@ func animation_finished(anim_name: String) -> void :
 
 
 func get_cd() -> float:
-	return rand_range(max(1, cooldown - max_cd_randomization), cooldown + max_cd_randomization)
+	return randf_range(max(1, cooldown - max_cd_randomization), cooldown + max_cd_randomization)

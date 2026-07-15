@@ -16,7 +16,7 @@ var _current_speed: = INITIAL_ATTRACT_SPEED
 
 var already_picked_up: = false
 
-onready var sprite = $Sprite as Sprite
+@onready var sprite = $Sprite2D as Sprite2D
 
 
 func _ready() -> void :
@@ -51,7 +51,7 @@ func set_texture(texture: Resource) -> void :
 
 func _physics_process(delta: float) -> void :
 	if push_back and global_position.distance_squared_to(push_back_destination) > 400:
-		global_position = global_position.linear_interpolate(push_back_destination, delta * _push_back_speed)
+		global_position = global_position.lerp(push_back_destination, delta * _push_back_speed)
 	elif idle_time_after_pushed_back > 0:
 		if not monitorable:
 			monitorable = true

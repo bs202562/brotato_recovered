@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Fire 5 (DPS).mp3-ca7da64db7887e27b6844d6ad3027dd6.mp3str"
+uid="uid://burliml5xuadd"
+path="res://.godot/imported/Fire 5 (DPS).mp3-ca7da64db7887e27b6844d6ad3027dd6.mp3str"
 
 [deps]
 
 source_file="res://weapons/ranged/fireball/Fire 5 (DPS).mp3"
-dest_files=[ "res://.import/Fire 5 (DPS).mp3-ca7da64db7887e27b6844d6ad3027dd6.mp3str" ]
+dest_files=["res://.godot/imported/Fire 5 (DPS).mp3-ca7da64db7887e27b6844d6ad3027dd6.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

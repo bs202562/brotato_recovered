@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/gun_pistol_shot_04.wav-f3a91c8a5fbc1f7a751b2ec72bc0407b.sample"
+type="AudioStreamWAV"
+uid="uid://1tvvr4ydnftv"
+path="res://.godot/imported/gun_pistol_shot_04.wav-f3a91c8a5fbc1f7a751b2ec72bc0407b.sample"
 
 [deps]
 
 source_file="res://weapons/ranged/pistol/gun_pistol_shot_04.wav"
-dest_files=[ "res://.import/gun_pistol_shot_04.wav-f3a91c8a5fbc1f7a751b2ec72bc0407b.sample" ]
+dest_files=["res://.godot/imported/gun_pistol_shot_04.wav-f3a91c8a5fbc1f7a751b2ec72bc0407b.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

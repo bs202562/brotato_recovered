@@ -1,14 +1,14 @@
 class_name StatData
 extends Resource
 
-export (String) var stat_name = ""
-export (Resource) var icon = null
-export (Resource) var small_icon = null
-export (bool) var is_primary_stat: = false
-export (bool) var is_dlc_stat: = false
-export (Color) var color_override: = Color.black
+@export var stat_name: String = ""
+@export var icon: Resource = null
+@export var small_icon: Resource = null
+@export var is_primary_stat := false
+@export var is_dlc_stat := false
+@export var color_override := Color.BLACK
 
-export (bool) var reverse: = false
+@export var reverse := false
 
 var stat_hash: int = Keys.empty_hash
 

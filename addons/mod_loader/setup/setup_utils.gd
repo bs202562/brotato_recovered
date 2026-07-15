@@ -20,7 +20,7 @@ static func get_local_folder_dir(subfolder: String = "") -> String:
 	if OS.has_feature("editor"):
 		game_install_directory = "res://"
 
-	return game_install_directory.plus_file(subfolder)
+	return game_install_directory.path_join(subfolder)
 
 
 
@@ -68,7 +68,7 @@ static func get_override_path() -> String:
 		
 		base_path = OS.get_executable_path().get_base_dir()
 
-	return base_path.plus_file("override.cfg")
+	return base_path.path_join("override.cfg")
 
 
 
@@ -104,8 +104,7 @@ static func _is_valid_global_class_dict(global_class_dict: Dictionary) -> bool:
 		ModLoaderSetupLog.fatal("Global class to be registered is missing one of %s" % required_fields, LOG_NAME)
 		return false
 
-	var file = File.new()
-	if not file.file_exists(global_class_dict.path):
+	if not FileAccess.file_exists(global_class_dict.path):
 		ModLoaderSetupLog.fatal("Class \"%s\" to be registered as global could not be found at given path \"%s\"" %
 		[global_class_dict. class , global_class_dict.path], LOG_NAME)
 		return false
@@ -145,19 +144,19 @@ static func get_cmd_line_arg_value(argument: String) -> String:
 	return ""
 
 
-static func _get_fixed_cmdline_args() -> PoolStringArray:
+static func _get_fixed_cmdline_args() -> PackedStringArray:
 	return fix_godot_cmdline_args_string_space_splitting(OS.get_cmdline_args())
 
 
 
 
-static func fix_godot_cmdline_args_string_space_splitting(args: PoolStringArray) -> PoolStringArray:
+static func fix_godot_cmdline_args_string_space_splitting(args: PackedStringArray) -> PackedStringArray:
 	if not OS.has_feature("editor"):
 		return args
 	if OS.has_feature("Windows"):
 		return args
 
-	var fixed_args: = PoolStringArray([])
+	var fixed_args: = PackedStringArray([])
 	var fixed_arg: = ""
 	
 	

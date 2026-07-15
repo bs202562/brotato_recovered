@@ -9,7 +9,7 @@
 [ext_resource path="res://entities/units/enemies/attack_behaviors/shooting_attack_behavior.gd" type="Script" id=7]
 [ext_resource path="res://entities/units/enemies/boss/boss_state.tscn" type="PackedScene" id=8]
 [ext_resource path="res://entities/units/movement_behaviors/stay_in_range_from_player_movement_behavior.gd" type="Script" id=9]
-[ext_resource path="res://entities/units/enemies/mom/mom.png" type="Texture" id=10]
+[ext_resource path="res://entities/units/enemies/mom/mom.png" type="Texture2D" id=10]
 [ext_resource path="res://entities/units/enemies/fin_alien/fin_alien.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CircleShape2D" id=4]
@@ -28,7 +28,7 @@ stats = ExtResource( 3 )
 enemy_id = "mom"
 is_elite = true
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -56 )
 texture = ExtResource( 10 )
 
@@ -115,8 +115,8 @@ spawn_in_radius_around_unit = 800
 max_nb_of_spawns = -1
 
 [node name="LifeBar" parent="." index="13"]
-margin_top = -192.0
-margin_bottom = -176.0
+offset_top = -192.0
+offset_bottom = -176.0
 
 [connection signal="wanted_to_spawn_an_enemy" from="States/State1/AttackBehavior" to="." method="_on_AttackBehavior_wanted_to_spawn_an_enemy"]
 

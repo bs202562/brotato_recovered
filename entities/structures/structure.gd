@@ -3,10 +3,10 @@ extends Entity
 
 signal wanted_to_spawn_fruit(pos)
 
-export (Resource) var curse_particles
-export (bool) var to_be_removed_in_priority = false
+@export var curse_particles: Resource
+@export var to_be_removed_in_priority: bool = false
 
-onready var _muzzle = $Animation / Muzzle
+@onready var _muzzle = $Animation / Muzzle
 
 var base_stats: Resource
 var stats: Resource
@@ -25,7 +25,7 @@ func _ready() -> void :
 
 
 func respawn() -> void :
-	.respawn()
+	super.respawn()
 	if is_cursed:
 		add_curse_particles()
 
@@ -56,7 +56,7 @@ func add_curse_particles() -> void :
 	_muzzle.add_child(curse_particle_instance)
 
 
-func die(args: = Utils.default_die_args) -> void :
+func die(args = Utils.default_die_args) -> void :
 	assert ( not dead)
 	if is_instance_valid(curse_particle_instance):
 		curse_particle_instance.queue_free()
@@ -64,17 +64,17 @@ func die(args: = Utils.default_die_args) -> void :
 	_collision.disabled = true
 
 	cleaning_up = args.cleaning_up
-	_animation_player.playback_speed = 1
+	_animation_player.speed_scale = 1
 	dead = true
 	_animation_player.play("death")
 
-func deferred_die(args: = Utils.default_die_args) -> void :
+func deferred_die(args = Utils.default_die_args) -> void :
 	_pending_die = true
 	emit_signal("died", self, args)
-	yield(get_tree().create_timer(PENDING_DIE_DURATION), "timeout")
+	await get_tree().create_timer(PENDING_DIE_DURATION).timeout
 	die()
 
 func death_animation_finished() -> void :
-	.death_animation_finished()
+	super.death_animation_finished()
 	player_index = - 1
 	is_cursed = false

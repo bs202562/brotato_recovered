@@ -1,9 +1,9 @@
 class_name ConvertStatEffect
 extends Effect
 
-export(float) var pct_converted = 1.0
-export(String) var to_stat = "stat_max_hp"
-export(int) var to_value = 1
+@export var pct_converted: float = 1.0
+@export var to_stat: String = "stat_max_hp"
+@export var to_value: int = 1
 
 var to_stat_hash: int = Keys.stat_max_hp_hash
 
@@ -12,7 +12,7 @@ static func get_id() -> String:
 
 
 func _generate_hashes() -> void:
-	._generate_hashes()
+	super._generate_hashes()
 	to_stat_hash = Keys.generate_hash(to_stat)
 
 
@@ -33,7 +33,7 @@ func get_args(_player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.pct_converted = pct_converted
 	serialized.to_stat = to_stat
@@ -43,7 +43,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	pct_converted = serialized.pct_converted
 	to_stat = serialized.to_stat
@@ -52,7 +52,7 @@ func deserialize_and_merge(serialized: Dictionary) -> void:
 
 
 func duplicate(subresources := false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 
 	if to_stat_hash == Keys.empty_hash and to_stat != "":
 		to_stat_hash = Keys.generate_hash(to_stat)

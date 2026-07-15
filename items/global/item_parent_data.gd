@@ -3,21 +3,21 @@ extends Resource
 
 enum Tier { COMMON, UNCOMMON, RARE, LEGENDARY, DANGER_4, DANGER_5, NIGHTMARE }
 
-export(String) var my_id = ""
-export(bool) var unlocked_by_default = false
-export(bool) var can_be_looted = true
-export(Texture) var icon
-export(String) var name = ""
-export(Tier) var tier = Tier.COMMON
-export(int) var value = 1
-export(Array, Resource) var effects
-export(String) var tracking_text = ""
+@export var my_id: String = ""
+@export var unlocked_by_default: bool = false
+@export var can_be_looted: bool = true
+@export var icon: Texture2D
+@export var name: String = ""
+@export var tier: int = Tier.COMMON # 4.x 移植: 原为 Tier 枚举，与全局 Tier 类同名冲突，统一用 int
+@export var value: int = 1
+@export var effects: Array = [] # (Array, Resource)
+@export var tracking_text: String = ""
 
-export(bool) var is_lockable := true
-export(int) var unlock_codex_descr_after_get_it : int = 1
+@export var is_lockable := true
+@export var unlock_codex_descr_after_get_it: int = 1
 
-export(bool) var is_cursed := false
-export(float) var curse_factor: float = 0.0
+@export var is_cursed := false
+@export var curse_factor: float = 0.0
 
 var my_id_hash: int = Keys.empty_hash
 
@@ -42,7 +42,7 @@ func get_my_id_hash():
 	return my_id_hash
 
 func duplicate(subresources := false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 
 	if my_id_hash == Keys.empty_hash:
 		my_id_hash = Keys.generate_hash(my_id)
@@ -69,7 +69,7 @@ func get_effects_text(player_index: int) -> String:
 		text += effect_text
 
 		if effect_text != "" and i < effects.size() - 1:
-			 text += "\n"
+			text += "\n"
 
 	text += _get_tracking_text(player_index)
 

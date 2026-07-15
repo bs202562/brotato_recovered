@@ -12,22 +12,22 @@ signal need_to_sort_inventory
 
 enum FocusNeighbourStrategy{SAME_LINE, SCROLL_THROUGH}
 
-export (PackedScene) var element_scene = null
-export (FocusNeighbourStrategy) var focus_neighbour_strategy = FocusNeighbourStrategy.SCROLL_THROUGH
-export (bool) var silhouette_locked_items: = false
-export (bool) var set_neighbour_top: = false
-export (bool) var set_neighbour_bottom: = false
-export (bool) var set_neighbour_left: = false
-export (bool) var set_neighbour_right: = false
-export (bool) var display_locked_icon: = true
-export (float, 0, 1) var display_banned: = 0.0
-export (float, 0, 1) var item_background_transparency: = 0.25
-export (Color) var item_background_modulate: = Color(1, 1, 1, 0)
+@export var element_scene: PackedScene = null
+@export var focus_neighbour_strategy: FocusNeighbourStrategy = FocusNeighbourStrategy.SCROLL_THROUGH
+@export var silhouette_locked_items := false
+@export var set_neighbour_top := false
+@export var set_neighbour_bottom := false
+@export var set_neighbour_left := false
+@export var set_neighbour_right := false
+@export var display_locked_icon := true
+@export var display_banned: = 0.0 # (float, 0, 1)
+@export var item_background_transparency: = 0.25 # (float, 0, 1)
+@export var item_background_modulate := Color(1, 1, 1, 0)
 
 
-export (Vector2) var element_size: = preload("res://singletons/utils.gd").BASE_INVENTORY_ELEMENT_SIZE
+@export var element_size := preload("res://singletons/utils.gd").BASE_INVENTORY_ELEMENT_SIZE
 
-var mouse_focus_enabled: = true setget _set_mouse_focus_enabled
+var mouse_focus_enabled: = true: set = _set_mouse_focus_enabled
 func _set_mouse_focus_enabled(v: bool) -> void :
 	mouse_focus_enabled = v
 	_update_mouse_focus_for_control(self)
@@ -48,12 +48,12 @@ var order_of_addition: Array
 
 func _ready():
 	if focus_mode == 2:
-		var _error = connect("focus_entered", self, "on_focus_entered")
-	yield(get_tree(), "idle_frame")
-	margin_top += 5
-	margin_left += 5
-	margin_right += 5
-	margin_bottom += 5
+		var _error = connect("focus_entered", Callable(self, "on_focus_entered"))
+	await get_tree().process_frame
+	offset_top += 5
+	offset_left += 5
+	offset_right += 5
+	offset_bottom += 5
 
 func set_elements(elements: Array, reverse_order: bool = false, replace: bool = true, prioritize_gameplay_elements: bool = false, animated_entrance: bool = false) -> void :
 	if replace:
@@ -181,7 +181,7 @@ func remove_element(element: ItemParentData, nb_to_remove: int = 1, deep_compari
 
 
 func _spawn_element(element: Resource, _display_banned: float = 0, animated_entrance = false) -> InventoryElement:
-	var instance: InventoryElement = element_scene.instance()
+	var instance: InventoryElement = element_scene.instantiate()
 	instance.call_deferred("set_font", element_font)
 	instance.player_index = player_index
 	instance.display_banned = _display_banned
@@ -215,15 +215,15 @@ func _spawn_element(element: Resource, _display_banned: float = 0, animated_entr
 
 
 func connect_signals(instance: InventoryElement) -> void :
-	var _error_hover = instance.connect("element_hovered", self, "on_element_hovered")
-	var _error_unhover = instance.connect("element_unhovered", self, "on_element_unhovered")
-	var _error_focus = instance.connect("element_focused", self, "on_element_focused")
-	var _error_unfocus = instance.connect("element_unfocused", self, "on_element_unfocused")
-	var _error_pressed = instance.connect("element_pressed", self, "on_element_pressed")
+	var _error_hover = instance.connect("element_hovered", Callable(self, "on_element_hovered"))
+	var _error_unhover = instance.connect("element_unhovered", Callable(self, "on_element_unhovered"))
+	var _error_focus = instance.connect("element_focused", Callable(self, "on_element_focused"))
+	var _error_unfocus = instance.connect("element_unfocused", Callable(self, "on_element_unfocused"))
+	var _error_pressed = instance.connect("element_pressed", Callable(self, "on_element_pressed"))
 
 
-func add_special_element(p_icon: Texture, p_is_random: bool = false, p_alpha: float = 1, p_item: Resource = null, sort_inventory: = true, animated_entrance = false) -> void :
-	var instance = element_scene.instance()
+func add_special_element(p_icon: Texture2D, p_is_random: bool = false, p_alpha: float = 1, p_item: Resource = null, sort_inventory: = true, animated_entrance = false) -> void :
+	var instance = element_scene.instantiate()
 	instance.display_banned = 0
 	instance.player_index = player_index
 	add_child(instance)
@@ -259,8 +259,8 @@ func __set_focus_neighbours() -> void :
 	var last_element_in_row: Control
 	for element_idx in elements.size():
 		element = elements[element_idx]
-		for margin in [MARGIN_LEFT, MARGIN_TOP, MARGIN_RIGHT, MARGIN_BOTTOM]:
-			element.set_focus_neighbour(margin, NodePath(""))
+		for margin in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]:
+			element.set_focus_neighbor(margin, NodePath(""))
 
 		if set_neighbour_top and element_idx < elements_per_row:
 			var top_neighbour_idx: int
@@ -269,18 +269,18 @@ func __set_focus_neighbours() -> void :
 				top_neighbour_idx = element_idx + last_row_start
 			else:
 				top_neighbour_idx = - 1
-			_inherit_or_set_neighbour(element, MARGIN_TOP, elements[top_neighbour_idx])
+			_inherit_or_set_neighbour(element, SIDE_TOP, elements[top_neighbour_idx])
 
 		if set_neighbour_bottom and element_idx >= last_row_start:
-			_inherit_or_set_neighbour(element, MARGIN_BOTTOM, elements[element_idx % elements_per_row])
+			_inherit_or_set_neighbour(element, SIDE_BOTTOM, elements[element_idx % elements_per_row])
 
 		if focus_neighbour_strategy == FocusNeighbourStrategy.SCROLL_THROUGH:
 			if set_neighbour_left and element_idx % elements_per_row == 0:
-				_inherit_or_set_neighbour(element, MARGIN_LEFT, elements[element_idx - 1])
+				_inherit_or_set_neighbour(element, SIDE_LEFT, elements[element_idx - 1])
 			if set_neighbour_right and element_idx == elements.size() - 1:
-				_inherit_or_set_neighbour(element, MARGIN_RIGHT, elements[0])
+				_inherit_or_set_neighbour(element, SIDE_RIGHT, elements[0])
 			elif set_neighbour_right and element_idx % elements_per_row == elements_per_row - 1:
-				_inherit_or_set_neighbour(element, MARGIN_RIGHT, elements[element_idx + 1])
+				_inherit_or_set_neighbour(element, SIDE_RIGHT, elements[element_idx + 1])
 
 		if focus_neighbour_strategy == FocusNeighbourStrategy.SAME_LINE:
 			if element_idx % elements_per_row == 0:
@@ -288,18 +288,18 @@ func __set_focus_neighbours() -> void :
 			if element_idx % elements_per_row == elements_per_row - 1 or element_idx == elements.size() - 1:
 				last_element_in_row = elements[element_idx]
 				if set_neighbour_left:
-					_inherit_or_set_neighbour(first_element_in_row, MARGIN_LEFT, last_element_in_row)
+					_inherit_or_set_neighbour(first_element_in_row, SIDE_LEFT, last_element_in_row)
 				if set_neighbour_right:
-					_inherit_or_set_neighbour(last_element_in_row, MARGIN_RIGHT, first_element_in_row)
+					_inherit_or_set_neighbour(last_element_in_row, SIDE_RIGHT, first_element_in_row)
 
 
 func _inherit_or_set_neighbour(element: Control, side: int, neighbour: Control) -> void :
-	var neighbour_to_inherit: = get_focus_neighbour(side)
+	var neighbour_to_inherit: = get_focus_neighbor(side)
 	if neighbour_to_inherit:
 		var neighbour_node: = get_node(neighbour_to_inherit)
-		element.set_focus_neighbour(side, element.get_path_to(neighbour_node))
+		element.set_focus_neighbor(side, element.get_path_to(neighbour_node))
 	else:
-		element.set_focus_neighbour(side, element.get_path_to(neighbour))
+		element.set_focus_neighbor(side, element.get_path_to(neighbour))
 
 
 func _update_mouse_focus_for_control(control: Control) -> void :

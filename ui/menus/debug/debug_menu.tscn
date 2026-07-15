@@ -1,44 +1,44 @@
 [gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=1]
-[ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="FontFile" id=2]
 [ext_resource path="res://ui/hud/ui_better_tab_container.gd" type="Script" id=3]
-[ext_resource path="res://items/all/plant/plant_icon.png" type="Texture" id=4]
-[ext_resource path="res://items/all/insanity/insanity_icon.png" type="Texture" id=5]
-[ext_resource path="res://weapons/melee/vorpal_sword/vorpal_sword_icon.png" type="Texture" id=6]
-[ext_resource path="res://items/all/weird_ghost/weird_ghost_icon.png" type="Texture" id=7]
-[ext_resource path="res://weapons/melee/scythe/scythe_icon.png" type="Texture" id=8]
-[ext_resource path="res://ui/icons/misc/weapon_icon.png" type="Texture" id=9]
-[ext_resource path="res://ui/icons/misc/item_icon.png" type="Texture" id=10]
-[ext_resource path="res://ui/menus/global/arrow_right.png" type="Texture" id=11]
-[ext_resource path="res://ui/icons/misc/enemy_icon.png" type="Texture" id=12]
-[ext_resource path="res://items/materials/material_0010.png" type="Texture" id=13]
-[ext_resource path="res://items/consumables/item_box/item_box.png" type="Texture" id=14]
-[ext_resource path="res://weapons/melee/hand/hand_icon.png" type="Texture" id=15]
-[ext_resource path="res://items/stats/luck.png" type="Texture" id=16]
-[ext_resource path="res://items/all/focus/focus_icon.png" type="Texture" id=17]
-[ext_resource path="res://items/all/hourglass/hourglass_icon.png" type="Texture" id=18]
+[ext_resource path="res://items/all/plant/plant_icon.png" type="Texture2D" id=4]
+[ext_resource path="res://items/all/insanity/insanity_icon.png" type="Texture2D" id=5]
+[ext_resource path="res://weapons/melee/vorpal_sword/vorpal_sword_icon.png" type="Texture2D" id=6]
+[ext_resource path="res://items/all/weird_ghost/weird_ghost_icon.png" type="Texture2D" id=7]
+[ext_resource path="res://weapons/melee/scythe/scythe_icon.png" type="Texture2D" id=8]
+[ext_resource path="res://ui/icons/misc/weapon_icon.png" type="Texture2D" id=9]
+[ext_resource path="res://ui/icons/misc/item_icon.png" type="Texture2D" id=10]
+[ext_resource path="res://ui/menus/global/arrow_right.png" type="Texture2D" id=11]
+[ext_resource path="res://ui/icons/misc/enemy_icon.png" type="Texture2D" id=12]
+[ext_resource path="res://items/materials/material_0010.png" type="Texture2D" id=13]
+[ext_resource path="res://items/consumables/item_box/item_box.png" type="Texture2D" id=14]
+[ext_resource path="res://weapons/melee/hand/hand_icon.png" type="Texture2D" id=15]
+[ext_resource path="res://items/stats/luck.png" type="Texture2D" id=16]
+[ext_resource path="res://items/all/focus/focus_icon.png" type="Texture2D" id=17]
+[ext_resource path="res://items/all/hourglass/hourglass_icon.png" type="Texture2D" id=18]
 [ext_resource path="res://ui/menus/debug/debug_menu.gd" type="Script" id=19]
-[ext_resource path="res://ui/menus/global/cross_icon..png" type="Texture" id=20]
+[ext_resource path="res://ui/menus/global/cross_icon..png" type="Texture2D" id=20]
 [ext_resource path="res://ui/menus/shop/inventory_container.tscn" type="PackedScene" id=21]
-[ext_resource path="res://ui/menus/global/plus_icon..png" type="Texture" id=22]
-[ext_resource path="res://ui/menus/pages/menu_profil/profil_delete_icon.png" type="Texture" id=23]
-[ext_resource path="res://ui/icons/misc/elite_icon.png" type="Texture" id=24]
-[ext_resource path="res://resources/fonts/actual/base/font_26_outline.tres" type="DynamicFont" id=25]
+[ext_resource path="res://ui/menus/global/plus_icon..png" type="Texture2D" id=22]
+[ext_resource path="res://ui/menus/pages/menu_profil/profil_delete_icon.png" type="Texture2D" id=23]
+[ext_resource path="res://ui/icons/misc/elite_icon.png" type="Texture2D" id=24]
+[ext_resource path="res://resources/fonts/actual/base/font_26_outline.tres" type="FontFile" id=25]
 [ext_resource path="res://resources/themes/panel_button_theme.tres" type="Theme" id=26]
-[ext_resource path="res://ui/menus/global/reset_icon.png" type="Texture" id=27]
-[ext_resource path="res://items/global/locked_icon.png" type="Texture" id=28]
-[ext_resource path="res://ui/icons/misc/dlc_abyssal_terrors_icon.png" type="Texture" id=29]
-[ext_resource path="res://ui/icons/misc/challenge_icon.png" type="Texture" id=30]
-[ext_resource path="res://items/characters/king/king_icon.png" type="Texture" id=31]
+[ext_resource path="res://ui/menus/global/reset_icon.png" type="Texture2D" id=27]
+[ext_resource path="res://items/global/locked_icon.png" type="Texture2D" id=28]
+[ext_resource path="res://ui/icons/misc/dlc_abyssal_terrors_icon.png" type="Texture2D" id=29]
+[ext_resource path="res://ui/icons/misc/challenge_icon.png" type="Texture2D" id=30]
+[ext_resource path="res://items/characters/king/king_icon.png" type="Texture2D" id=31]
 [ext_resource path="res://resources/themes/inventory_element_small_theme.tres" type="Theme" id=32]
-[ext_resource path="res://ui/menus/global/triangle_right_icon.png" type="Texture" id=33]
-[ext_resource path="res://items/all/coupon/coupon_icon.png" type="Texture" id=34]
-[ext_resource path="res://ui/menus/global/triangle_up_icon.png" type="Texture" id=35]
-[ext_resource path="res://ui/icons/misc/entity_icon.png" type="Texture" id=36]
-[ext_resource path="res://items/all/charcoal/charcoal_icon.png" type="Texture" id=37]
-[ext_resource path="res://ui/menus/run/difficulty_selection/difficulty_icons/4.png" type="Texture" id=38]
-[ext_resource path="res://items/stats/attack_speed.png" type="Texture" id=39]
+[ext_resource path="res://ui/menus/global/triangle_right_icon.png" type="Texture2D" id=33]
+[ext_resource path="res://items/all/coupon/coupon_icon.png" type="Texture2D" id=34]
+[ext_resource path="res://ui/menus/global/triangle_up_icon.png" type="Texture2D" id=35]
+[ext_resource path="res://ui/icons/misc/entity_icon.png" type="Texture2D" id=36]
+[ext_resource path="res://items/all/charcoal/charcoal_icon.png" type="Texture2D" id=37]
+[ext_resource path="res://ui/menus/run/difficulty_selection/difficulty_icons/4.png" type="Texture2D" id=38]
+[ext_resource path="res://items/stats/attack_speed.png" type="Texture2D" id=39]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.215686, 0.215686, 0.215686, 1 )
@@ -78,83 +78,83 @@ corner_radius_bottom_left = 20
 [sub_resource type="ButtonGroup" id=4]
 
 [node name="debug_menu" type="PanelContainer"]
-pause_mode = 2
+process_mode = 3
 modulate = Color( 1, 1, 1, 0.823529 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1395.0
+offset_right = -1395.0
 theme = ExtResource( 1 )
-custom_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource( 1 )
 script = ExtResource( 19 )
 enemies_directories = [ "res://entities/units/enemies", "res://dlcs/dlc_1/enemies" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 520.0
-margin_bottom = 1075.0
-custom_constants/separation = 23
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 520.0
+offset_bottom = 1075.0
+theme_override_constants/separation = 23
 script = ExtResource( 3 )
 buttons_tab_np = [ NodePath("HBoxContainer/tab_but_player"), NodePath("HBoxContainer/tab_but_entities"), NodePath("HBoxContainer/tab_but_waves") ]
 tab_container_np = NodePath("TabContainer")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 515.0
-margin_bottom = 45.0
+offset_right = 515.0
+offset_bottom = 45.0
 
 [node name="tab_but_player" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_right = 169.0
-margin_bottom = 45.0
+offset_right = 169.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Player"
 
 [node name="tab_but_entities" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 173.0
-margin_right = 342.0
-margin_bottom = 45.0
+offset_left = 173.0
+offset_right = 342.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Enemies"
 
 [node name="tab_but_waves" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 346.0
-margin_right = 515.0
-margin_bottom = 45.0
+offset_left = 346.0
+offset_right = 515.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Waves"
 
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
-margin_top = 68.0
-margin_right = 515.0
-margin_bottom = 982.0
+offset_top = 68.0
+offset_right = 515.0
+offset_bottom = 982.0
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 2 )
+theme_override_styles/panel = SubResource( 2 )
 tabs_visible = false
 
 [node name="Players_cont" type="ScrollContainer" parent="VBoxContainer/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Players_cont" type="VBoxContainer" parent="VBoxContainer/TabContainer/Players_cont"]
-margin_right = 495.0
-margin_bottom = 1025.0
+offset_right = 495.0
+offset_bottom = 1025.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="givemeitems_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
 modulate = Color( 0.278431, 1, 0.427451, 1 )
-margin_right = 495.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 0, 64 )
-custom_fonts/font = ExtResource( 2 )
+offset_right = 495.0
+offset_bottom = 64.0
+custom_minimum_size = Vector2( 0, 64 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Give/Remove items"
 icon = ExtResource( 10 )
 align = 0
@@ -162,11 +162,11 @@ expand_icon = true
 
 [node name="givemeweapons_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
 modulate = Color( 0.278431, 1, 0.427451, 1 )
-margin_top = 68.0
-margin_right = 495.0
-margin_bottom = 132.0
-rect_min_size = Vector2( 0, 64 )
-custom_fonts/font = ExtResource( 2 )
+offset_top = 68.0
+offset_right = 495.0
+offset_bottom = 132.0
+custom_minimum_size = Vector2( 0, 64 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Give/Remove weapons"
 icon = ExtResource( 9 )
 align = 0
@@ -174,25 +174,25 @@ expand_icon = true
 
 [node name="givemeupgrades_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
 modulate = Color( 0.278431, 1, 0.427451, 1 )
-margin_top = 136.0
-margin_right = 495.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 0, 64 )
-custom_fonts/font = ExtResource( 2 )
+offset_top = 136.0
+offset_right = 495.0
+offset_bottom = 200.0
+custom_minimum_size = Vector2( 0, 64 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Give/Remove upgrades"
 icon = ExtResource( 35 )
 align = 0
 expand_icon = true
 
 [node name="gold_cont" type="HBoxContainer" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
-margin_top = 204.0
-margin_right = 495.0
-margin_bottom = 258.0
+offset_top = 204.0
+offset_right = 495.0
+offset_bottom = 258.0
 
 [node name="gold_spinbox" type="SpinBox" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/gold_cont"]
 unique_name_in_owner = true
-margin_right = 437.0
-margin_bottom = 54.0
+offset_right = 437.0
+offset_bottom = 54.0
 size_flags_horizontal = 3
 max_value = 1000.0
 allow_greater = true
@@ -201,20 +201,20 @@ suffix = "materials"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/gold_cont"]
 modulate = Color( 0, 1, 0, 1 )
-margin_left = 441.0
-margin_right = 495.0
-margin_bottom = 54.0
-rect_min_size = Vector2( 54, 0 )
+offset_left = 441.0
+offset_right = 495.0
+offset_bottom = 54.0
+custom_minimum_size = Vector2( 54, 0 )
 texture = ExtResource( 13 )
 expand = true
 stretch_mode = 6
 
 [node name="randomize_equipment" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
-margin_top = 262.0
-margin_right = 495.0
-margin_bottom = 326.0
-rect_min_size = Vector2( 0, 64 )
-custom_fonts/font = ExtResource( 2 )
+offset_top = 262.0
+offset_right = 495.0
+offset_bottom = 326.0
+custom_minimum_size = Vector2( 0, 64 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Randomize Equipment"
 icon = ExtResource( 16 )
 align = 0
@@ -222,375 +222,375 @@ expand_icon = true
 
 [node name="invulnerable_but" type="CheckButton" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
 unique_name_in_owner = true
-margin_top = 330.0
-margin_right = 495.0
-margin_bottom = 400.0
+offset_top = 330.0
+offset_right = 495.0
+offset_bottom = 400.0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Invulnerable"
 icon = ExtResource( 5 )
 expand_icon = true
 
 [node name="invisible_but" type="CheckButton" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
 unique_name_in_owner = true
-margin_top = 404.0
-margin_right = 495.0
-margin_bottom = 474.0
+offset_top = 404.0
+offset_right = 495.0
+offset_bottom = 474.0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Invisible"
 icon = ExtResource( 7 )
 expand_icon = true
 
 [node name="oneshotenemies_but" type="CheckButton" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
 unique_name_in_owner = true
-margin_top = 478.0
-margin_right = 495.0
-margin_bottom = 548.0
+offset_top = 478.0
+offset_right = 495.0
+offset_bottom = 548.0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "OneShot Enemies"
 icon = ExtResource( 6 )
 expand_icon = true
 
 [node name="slowmotion_but" type="CheckButton" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
 unique_name_in_owner = true
-margin_top = 552.0
-margin_right = 495.0
-margin_bottom = 622.0
+offset_top = 552.0
+offset_right = 495.0
+offset_bottom = 622.0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Slow Motion"
 icon = ExtResource( 39 )
 expand_icon = true
 
 [node name="removestartingweapons_but" type="CheckButton" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
 unique_name_in_owner = true
-margin_top = 626.0
-margin_right = 495.0
-margin_bottom = 696.0
+offset_top = 626.0
+offset_right = 495.0
+offset_bottom = 696.0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Remove Starting Weapons"
 icon = ExtResource( 15 )
 expand_icon = true
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
-margin_top = 700.0
-margin_right = 495.0
-margin_bottom = 713.0
-custom_constants/separation = 13
+offset_top = 700.0
+offset_right = 495.0
+offset_bottom = 713.0
+theme_override_constants/separation = 13
 
 [node name="Progression_label" type="Label" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
-margin_top = 717.0
-margin_right = 495.0
-margin_bottom = 742.0
-custom_fonts/font = ExtResource( 2 )
+offset_top = 717.0
+offset_right = 495.0
+offset_bottom = 742.0
+theme_override_fonts/font = ExtResource( 2 )
 text = "PROGRESSION :"
 align = 1
 
 [node name="All" type="HBoxContainer" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
-margin_top = 746.0
-margin_right = 495.0
-margin_bottom = 791.0
-rect_min_size = Vector2( 0, 45 )
+offset_top = 746.0
+offset_right = 495.0
+offset_bottom = 791.0
+custom_minimum_size = Vector2( 0, 45 )
 
 [node name="unlockAll_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/All"]
 unique_name_in_owner = true
 modulate = Color( 0.556863, 1, 0.627451, 1 )
-margin_right = 245.0
-margin_bottom = 45.0
+offset_right = 245.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Unlock all"
 expand_icon = true
 
 [node name="lockAll_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/All"]
 unique_name_in_owner = true
 modulate = Color( 1, 0.482353, 0.482353, 1 )
-margin_left = 249.0
-margin_right = 495.0
-margin_bottom = 45.0
+offset_left = 249.0
+offset_right = 495.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Lock all"
 icon = ExtResource( 28 )
 expand_icon = true
 
 [node name="Characters_cont" type="HBoxContainer" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
-margin_top = 795.0
-margin_right = 495.0
-margin_bottom = 830.0
+offset_top = 795.0
+offset_right = 495.0
+offset_bottom = 830.0
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Characters_cont"]
-margin_right = 35.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 35, 0 )
+offset_right = 35.0
+offset_bottom = 35.0
+custom_minimum_size = Vector2( 35, 0 )
 texture = ExtResource( 31 )
 expand = true
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Characters_cont"]
-margin_left = 39.0
-margin_top = 5.0
-margin_right = 188.0
-margin_bottom = 30.0
+offset_left = 39.0
+offset_top = 5.0
+offset_right = 188.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Characters"
 
 [node name="unlockAllCharacters_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Characters_cont"]
 unique_name_in_owner = true
 modulate = Color( 0.556863, 1, 0.627451, 1 )
-margin_left = 192.0
-margin_right = 341.0
-margin_bottom = 35.0
+offset_left = 192.0
+offset_right = 341.0
+offset_bottom = 35.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Unlock all"
 expand_icon = true
 
 [node name="lockAllCharacters_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Characters_cont"]
 unique_name_in_owner = true
 modulate = Color( 1, 0.482353, 0.482353, 1 )
-margin_left = 345.0
-margin_right = 495.0
-margin_bottom = 35.0
+offset_left = 345.0
+offset_right = 495.0
+offset_bottom = 35.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Lock all"
 icon = ExtResource( 28 )
 expand_icon = true
 
 [node name="Difficulties_cont" type="HBoxContainer" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
-margin_top = 834.0
-margin_right = 495.0
-margin_bottom = 869.0
+offset_top = 834.0
+offset_right = 495.0
+offset_bottom = 869.0
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Difficulties_cont"]
-margin_right = 35.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 35, 0 )
+offset_right = 35.0
+offset_bottom = 35.0
+custom_minimum_size = Vector2( 35, 0 )
 texture = ExtResource( 24 )
 expand = true
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Difficulties_cont"]
-margin_left = 39.0
-margin_top = 5.0
-margin_right = 188.0
-margin_bottom = 30.0
+offset_left = 39.0
+offset_top = 5.0
+offset_right = 188.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Difficulties"
 
 [node name="unlockAllDifficulties_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Difficulties_cont"]
 unique_name_in_owner = true
 modulate = Color( 0.556863, 1, 0.627451, 1 )
-margin_left = 192.0
-margin_right = 341.0
-margin_bottom = 35.0
+offset_left = 192.0
+offset_right = 341.0
+offset_bottom = 35.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Unlock all"
 expand_icon = true
 
 [node name="lockAllDifficulties_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Difficulties_cont"]
 unique_name_in_owner = true
 modulate = Color( 1, 0.482353, 0.482353, 1 )
-margin_left = 345.0
-margin_right = 495.0
-margin_bottom = 35.0
+offset_left = 345.0
+offset_right = 495.0
+offset_bottom = 35.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Lock all"
 icon = ExtResource( 28 )
 expand_icon = true
 
 [node name="Challenges_cont" type="HBoxContainer" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
-margin_top = 873.0
-margin_right = 495.0
-margin_bottom = 908.0
+offset_top = 873.0
+offset_right = 495.0
+offset_bottom = 908.0
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Challenges_cont"]
-margin_right = 35.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 35, 0 )
+offset_right = 35.0
+offset_bottom = 35.0
+custom_minimum_size = Vector2( 35, 0 )
 texture = ExtResource( 30 )
 expand = true
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Challenges_cont"]
-margin_left = 39.0
-margin_top = 5.0
-margin_right = 188.0
-margin_bottom = 30.0
+offset_left = 39.0
+offset_top = 5.0
+offset_right = 188.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Challenges"
 
 [node name="unlockAllChallenges_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Challenges_cont"]
 unique_name_in_owner = true
 modulate = Color( 0.556863, 1, 0.627451, 1 )
-margin_left = 192.0
-margin_right = 341.0
-margin_bottom = 35.0
+offset_left = 192.0
+offset_right = 341.0
+offset_bottom = 35.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Unlock all"
 expand_icon = true
 
 [node name="lockAllChallenges_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Challenges_cont"]
 unique_name_in_owner = true
 modulate = Color( 1, 0.482353, 0.482353, 1 )
-margin_left = 345.0
-margin_right = 495.0
-margin_bottom = 35.0
+offset_left = 345.0
+offset_right = 495.0
+offset_bottom = 35.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Lock all"
 icon = ExtResource( 28 )
 expand_icon = true
 
 [node name="Items_cont" type="HBoxContainer" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
-margin_top = 912.0
-margin_right = 495.0
-margin_bottom = 947.0
+offset_top = 912.0
+offset_right = 495.0
+offset_bottom = 947.0
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Items_cont"]
-margin_right = 35.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 35, 0 )
+offset_right = 35.0
+offset_bottom = 35.0
+custom_minimum_size = Vector2( 35, 0 )
 texture = ExtResource( 10 )
 expand = true
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Items_cont"]
-margin_left = 39.0
-margin_top = 5.0
-margin_right = 188.0
-margin_bottom = 30.0
+offset_left = 39.0
+offset_top = 5.0
+offset_right = 188.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Items"
 
 [node name="unlockAllItems_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Items_cont"]
 unique_name_in_owner = true
 modulate = Color( 0.556863, 1, 0.627451, 1 )
-margin_left = 192.0
-margin_right = 341.0
-margin_bottom = 35.0
+offset_left = 192.0
+offset_right = 341.0
+offset_bottom = 35.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Unlock all"
 expand_icon = true
 
 [node name="lockAllItems_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Items_cont"]
 unique_name_in_owner = true
 modulate = Color( 1, 0.482353, 0.482353, 1 )
-margin_left = 345.0
-margin_right = 495.0
-margin_bottom = 35.0
+offset_left = 345.0
+offset_right = 495.0
+offset_bottom = 35.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Lock all"
 icon = ExtResource( 28 )
 expand_icon = true
 
 [node name="Weapons_cont" type="HBoxContainer" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
-margin_top = 951.0
-margin_right = 495.0
-margin_bottom = 986.0
+offset_top = 951.0
+offset_right = 495.0
+offset_bottom = 986.0
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Weapons_cont"]
-margin_right = 35.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 35, 0 )
+offset_right = 35.0
+offset_bottom = 35.0
+custom_minimum_size = Vector2( 35, 0 )
 texture = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Weapons_cont"]
-margin_left = 39.0
-margin_top = 5.0
-margin_right = 188.0
-margin_bottom = 30.0
+offset_left = 39.0
+offset_top = 5.0
+offset_right = 188.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Weapons"
 
 [node name="unlockAllWeapons_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Weapons_cont"]
 unique_name_in_owner = true
 modulate = Color( 0.556863, 1, 0.627451, 1 )
-margin_left = 192.0
-margin_right = 341.0
-margin_bottom = 35.0
+offset_left = 192.0
+offset_right = 341.0
+offset_bottom = 35.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Unlock all"
 expand_icon = true
 
 [node name="lockAllWeapons_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Weapons_cont"]
 unique_name_in_owner = true
 modulate = Color( 1, 0.482353, 0.482353, 1 )
-margin_left = 345.0
-margin_right = 495.0
-margin_bottom = 35.0
+offset_left = 345.0
+offset_right = 495.0
+offset_bottom = 35.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Lock all"
 icon = ExtResource( 28 )
 expand_icon = true
 
 [node name="Enemies_cont" type="HBoxContainer" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
-margin_top = 990.0
-margin_right = 495.0
-margin_bottom = 1025.0
+offset_top = 990.0
+offset_right = 495.0
+offset_bottom = 1025.0
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Enemies_cont"]
-margin_right = 35.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 35, 0 )
+offset_right = 35.0
+offset_bottom = 35.0
+custom_minimum_size = Vector2( 35, 0 )
 texture = ExtResource( 12 )
 expand = true
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Enemies_cont"]
-margin_left = 39.0
-margin_top = 5.0
-margin_right = 188.0
-margin_bottom = 30.0
+offset_left = 39.0
+offset_top = 5.0
+offset_right = 188.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Enemies"
 
 [node name="unlockAllEnemies_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Enemies_cont"]
 unique_name_in_owner = true
 modulate = Color( 0.556863, 1, 0.627451, 1 )
-margin_left = 192.0
-margin_right = 341.0
-margin_bottom = 35.0
+offset_left = 192.0
+offset_right = 341.0
+offset_bottom = 35.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Unlock all"
 expand_icon = true
 
 [node name="lockAllEnemies_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/Enemies_cont"]
 unique_name_in_owner = true
 modulate = Color( 1, 0.482353, 0.482353, 1 )
-margin_left = 345.0
-margin_right = 495.0
-margin_bottom = 35.0
+offset_left = 345.0
+offset_right = 495.0
+offset_bottom = 35.0
 size_flags_horizontal = 3
 theme = ExtResource( 32 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Lock all"
 icon = ExtResource( 28 )
 expand_icon = true
@@ -599,26 +599,26 @@ expand_icon = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Entities_cont" type="VBoxContainer" parent="VBoxContainer/TabContainer/Entities_cont"]
-margin_right = 505.0
-margin_bottom = 904.0
+offset_right = 505.0
+offset_bottom = 904.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="spawnEntities_but" type="Button" parent="VBoxContainer/TabContainer/Entities_cont/Entities_cont"]
 unique_name_in_owner = true
 modulate = Color( 0.278431, 1, 0.427451, 1 )
-margin_right = 505.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 0, 64 )
-custom_fonts/font = ExtResource( 2 )
+offset_right = 505.0
+offset_bottom = 64.0
+custom_minimum_size = Vector2( 0, 64 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Spawn Entities"
 icon = ExtResource( 36 )
 align = 0
@@ -626,11 +626,11 @@ expand_icon = true
 
 [node name="killall_but" type="Button" parent="VBoxContainer/TabContainer/Entities_cont/Entities_cont"]
 unique_name_in_owner = true
-margin_top = 68.0
-margin_right = 505.0
-margin_bottom = 132.0
-rect_min_size = Vector2( 0, 64 )
-custom_fonts/font = ExtResource( 2 )
+offset_top = 68.0
+offset_right = 505.0
+offset_bottom = 132.0
+custom_minimum_size = Vector2( 0, 64 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Kill All"
 icon = ExtResource( 8 )
 align = 0
@@ -638,33 +638,33 @@ expand_icon = true
 
 [node name="NoSpawningEnemies_but" type="CheckButton" parent="VBoxContainer/TabContainer/Entities_cont/Entities_cont"]
 unique_name_in_owner = true
-margin_top = 136.0
-margin_right = 505.0
-margin_bottom = 206.0
+offset_top = 136.0
+offset_right = 505.0
+offset_bottom = 206.0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "No spawning enemies"
 icon = ExtResource( 4 )
 expand_icon = true
 
 [node name="NoSpawningEntities_but" type="CheckButton" parent="VBoxContainer/TabContainer/Entities_cont/Entities_cont"]
 unique_name_in_owner = true
-margin_top = 210.0
-margin_right = 505.0
-margin_bottom = 280.0
+offset_top = 210.0
+offset_right = 505.0
+offset_bottom = 280.0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "No spawning entities"
 icon = ExtResource( 37 )
 expand_icon = true
 
 [node name="OnlycursedMob_but" type="CheckButton" parent="VBoxContainer/TabContainer/Entities_cont/Entities_cont"]
 unique_name_in_owner = true
-margin_top = 284.0
-margin_right = 505.0
-margin_bottom = 354.0
+offset_top = 284.0
+offset_right = 505.0
+offset_bottom = 354.0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Spawn only cursed mobs"
 icon = ExtResource( 29 )
 expand_icon = true
@@ -673,157 +673,157 @@ expand_icon = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Waves_cont" type="VBoxContainer" parent="VBoxContainer/TabContainer/Waves_cont"]
-margin_right = 505.0
-margin_bottom = 904.0
+offset_right = 505.0
+offset_bottom = 904.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 9
+theme_override_constants/separation = 9
 
 [node name="GoToWave" type="HBoxContainer" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont"]
-margin_right = 505.0
-margin_bottom = 54.0
+offset_right = 505.0
+offset_bottom = 54.0
 
 [node name="GotoWave_but" type="Button" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont/GoToWave"]
-margin_right = 250.0
-margin_bottom = 54.0
+offset_right = 250.0
+offset_bottom = 54.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Go to"
 icon = ExtResource( 11 )
-icon_align = 2
+icon_alignment = 2
 expand_icon = true
 
 [node name="GotoWave_spinbox" type="SpinBox" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont/GoToWave"]
 unique_name_in_owner = true
-margin_left = 254.0
-margin_right = 505.0
-margin_bottom = 54.0
+offset_left = 254.0
+offset_right = 505.0
+offset_bottom = 54.0
 size_flags_horizontal = 3
 allow_greater = true
 prefix = "wave"
 
 [node name="CustomWaveDuration" type="HBoxContainer" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont"]
-margin_top = 63.0
-margin_right = 505.0
-margin_bottom = 117.0
+offset_top = 63.0
+offset_right = 505.0
+offset_bottom = 117.0
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont/CustomWaveDuration"]
-margin_top = 14.0
-margin_right = 250.0
-margin_bottom = 39.0
+offset_top = 14.0
+offset_right = 250.0
+offset_bottom = 39.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Custom wave duration"
 
 [node name="CustomWaveDuration_SpinBox" type="SpinBox" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont/CustomWaveDuration"]
 unique_name_in_owner = true
-margin_left = 254.0
-margin_right = 505.0
-margin_bottom = 54.0
+offset_left = 254.0
+offset_right = 505.0
+offset_bottom = 54.0
 size_flags_horizontal = 3
 min_value = -1.0
 max_value = 999999.0
 suffix = "sec"
 
 [node name="StartingAtWave" type="HBoxContainer" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont"]
-margin_top = 126.0
-margin_right = 505.0
-margin_bottom = 180.0
+offset_top = 126.0
+offset_right = 505.0
+offset_bottom = 180.0
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont/StartingAtWave"]
-margin_top = 14.0
-margin_right = 250.0
-margin_bottom = 39.0
+offset_top = 14.0
+offset_right = 250.0
+offset_bottom = 39.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Starting run at"
 
 [node name="StartingAtWave_SpinBox" type="SpinBox" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont/StartingAtWave"]
 unique_name_in_owner = true
-margin_left = 254.0
-margin_right = 505.0
-margin_bottom = 54.0
+offset_left = 254.0
+offset_right = 505.0
+offset_bottom = 54.0
 size_flags_horizontal = 3
 allow_greater = true
 prefix = "wave"
 
 [node name="instantwave_but" type="CheckButton" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont"]
 unique_name_in_owner = true
-margin_top = 189.0
-margin_right = 505.0
-margin_bottom = 259.0
+offset_top = 189.0
+offset_right = 505.0
+offset_bottom = 259.0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Instant Waves"
 icon = ExtResource( 17 )
 expand_icon = true
 
 [node name="AlwaysDropCrates_but" type="CheckButton" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont"]
 unique_name_in_owner = true
-margin_top = 268.0
-margin_right = 505.0
-margin_bottom = 338.0
+offset_top = 268.0
+offset_right = 505.0
+offset_bottom = 338.0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Trees Always Drop Crates"
 icon = ExtResource( 14 )
 expand_icon = true
 
 [node name="HideTimer_but" type="CheckButton" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont"]
 unique_name_in_owner = true
-margin_top = 347.0
-margin_right = 505.0
-margin_bottom = 417.0
+offset_top = 347.0
+offset_right = 505.0
+offset_bottom = 417.0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Hide Timer"
 icon = ExtResource( 18 )
 expand_icon = true
 
 [node name="HideHUD_but" type="CheckButton" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont"]
 unique_name_in_owner = true
-margin_top = 426.0
-margin_right = 505.0
-margin_bottom = 496.0
+offset_top = 426.0
+offset_right = 505.0
+offset_bottom = 496.0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Hide HUD"
 icon = ExtResource( 34 )
 expand_icon = true
 
 [node name="HideFloatingText_but" type="CheckButton" parent="VBoxContainer/TabContainer/Waves_cont/Waves_cont"]
 unique_name_in_owner = true
-margin_top = 505.0
-margin_right = 505.0
-margin_bottom = 575.0
+offset_top = 505.0
+offset_right = 505.0
+offset_bottom = 575.0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
 text = " Hide Floating Text"
 icon = ExtResource( 38 )
 expand_icon = true
 
 [node name="reload_wave_but" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 1005.0
-margin_right = 515.0
-margin_bottom = 1070.0
+offset_top = 1005.0
+offset_right = 515.0
+offset_bottom = 1070.0
 text = "Reload wave"
 icon = ExtResource( 27 )
 expand_icon = true
 
 [node name="container_others" type="Control" parent="."]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 520.0
-margin_bottom = 1075.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 520.0
+offset_bottom = 1075.0
 mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
@@ -832,130 +832,130 @@ __meta__ = {
 [node name="hide_button" type="Button" parent="container_others"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = 90.0
-margin_right = 154.0
-margin_bottom = 65.0
-rect_pivot_offset = Vector2( 150, 136 )
+offset_left = 90.0
+offset_right = 154.0
+offset_bottom = 65.0
+pivot_offset = Vector2( 150, 136 )
 icon = ExtResource( 33 )
 expand_icon = true
 
 [node name="cross_button" type="Button" parent="container_others"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = 13.0
-margin_right = 77.0
-margin_bottom = 65.0
-rect_pivot_offset = Vector2( 150, 136 )
+offset_left = 13.0
+offset_right = 77.0
+offset_bottom = 65.0
+pivot_offset = Vector2( 150, 136 )
 icon = ExtResource( 20 )
 
 [node name="inventory_container" type="TabContainer" parent="container_others"]
 unique_name_in_owner = true
-margin_left = 539.0
-margin_top = 92.0
-margin_right = 1871.0
-margin_bottom = 1013.0
-custom_styles/panel = SubResource( 3 )
+offset_left = 539.0
+offset_top = 92.0
+offset_right = 1871.0
+offset_bottom = 1013.0
+theme_override_styles/panel = SubResource( 3 )
 tabs_visible = false
 
 [node name="Inventory_items" parent="container_others/inventory_container" instance=ExtResource( 21 )]
 unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
 authorize_sorting = true
 reserve_column_count = 12
 
 [node name="HBoxContainer" parent="container_others/inventory_container/Inventory_items" index="0"]
-margin_right = 1292.0
-margin_bottom = 51.0
+offset_right = 1292.0
+offset_bottom = 51.0
 
 [node name="Label" parent="container_others/inventory_container/Inventory_items/HBoxContainer" index="0"]
-margin_top = 3.0
-margin_right = 115.0
-margin_bottom = 48.0
+offset_top = 3.0
+offset_right = 115.0
+offset_bottom = 48.0
 text = "items"
 
 [node name="HSeparator" parent="container_others/inventory_container/Inventory_items/HBoxContainer" index="1"]
-margin_left = 119.0
-margin_right = 1020.0
-margin_bottom = 51.0
+offset_left = 119.0
+offset_right = 1020.0
+offset_bottom = 51.0
 
 [node name="Sort_Inventory_button" parent="container_others/inventory_container/Inventory_items/HBoxContainer" index="2"]
-margin_left = 1024.0
-margin_right = 1243.0
-margin_bottom = 51.0
+offset_left = 1024.0
+offset_right = 1243.0
+offset_bottom = 51.0
 items = [ "sort_by_name", null, false, 1, null, "sort_by_tier", null, false, 0, null, "sort_by_name", null, false, 1, null ]
 sort_by_when_got_it = false
 
 [node name="button_reverse_order" parent="container_others/inventory_container/Inventory_items/HBoxContainer" index="3"]
-margin_left = 1247.0
-margin_right = 1292.0
-margin_bottom = 51.0
+offset_left = 1247.0
+offset_right = 1292.0
+offset_bottom = 51.0
 
 [node name="ScrollSizeContainer" parent="container_others/inventory_container/Inventory_items" index="1"]
-margin_top = 76.0
-margin_right = 1292.0
-margin_bottom = 786.0
+offset_top = 76.0
+offset_right = 1292.0
+offset_bottom = 786.0
 
 [node name="ScrollContainer" parent="container_others/inventory_container/Inventory_items/ScrollSizeContainer" index="0"]
 anchor_bottom = 1.0
 
 [node name="inventory_tool_container" type="HBoxContainer" parent="container_others/inventory_container/Inventory_items"]
-margin_top = 811.0
-margin_right = 1292.0
-margin_bottom = 881.0
+offset_top = 811.0
+offset_right = 1292.0
+offset_bottom = 881.0
 
 [node name="add_items_but" type="Button" parent="container_others/inventory_container/Inventory_items/inventory_tool_container"]
 modulate = Color( 0.560784, 1, 0.545098, 1 )
-margin_right = 303.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 65, 0 )
+offset_right = 303.0
+offset_bottom = 70.0
+custom_minimum_size = Vector2( 65, 0 )
 size_flags_horizontal = 3
 theme = ExtResource( 26 )
 toggle_mode = true
 pressed = true
 group = SubResource( 4 )
 icon = ExtResource( 22 )
-icon_align = 1
+icon_alignment = 1
 expand_icon = true
 
 [node name="remove_items_but" type="Button" parent="container_others/inventory_container/Inventory_items/inventory_tool_container"]
 modulate = Color( 1, 0.545098, 0.545098, 1 )
-margin_left = 307.0
-margin_right = 610.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 65, 0 )
+offset_left = 307.0
+offset_right = 610.0
+offset_bottom = 70.0
+custom_minimum_size = Vector2( 65, 0 )
 size_flags_horizontal = 3
 theme = ExtResource( 26 )
 toggle_mode = true
 group = SubResource( 4 )
 icon = ExtResource( 23 )
-icon_align = 1
+icon_alignment = 1
 expand_icon = true
 
 [node name="cursed_items_checkbut" type="CheckButton" parent="container_others/inventory_container/Inventory_items/inventory_tool_container"]
-margin_left = 614.0
-margin_right = 922.0
-margin_bottom = 70.0
-custom_colors/font_color = Color( 0.881875, 0.671875, 1, 1 )
-custom_fonts/font = ExtResource( 25 )
+offset_left = 614.0
+offset_right = 922.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color( 0.881875, 0.671875, 1, 1 )
+theme_override_fonts/font = ExtResource( 25 )
 text = "cursed items"
 align = 1
-icon_align = 1
+icon_alignment = 1
 expand_icon = true
 
 [node name="forced_items_checkbut2" type="CheckButton" parent="container_others/inventory_container/Inventory_items/inventory_tool_container"]
-margin_left = 926.0
-margin_right = 1292.0
-margin_bottom = 70.0
-custom_colors/font_color = Color( 0.881875, 0.671875, 1, 1 )
-custom_fonts/font = ExtResource( 25 )
+offset_left = 926.0
+offset_right = 1292.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color( 0.881875, 0.671875, 1, 1 )
+theme_override_fonts/font = ExtResource( 25 )
 text = "forced shop  item"
 align = 1
-icon_align = 1
+icon_alignment = 1
 expand_icon = true
 
 [node name="Inventory_weapons" parent="container_others/inventory_container" instance=ExtResource( 21 )]
@@ -963,32 +963,32 @@ unique_name_in_owner = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
 authorize_sorting = true
 reserve_column_count = 12
 
 [node name="HBoxContainer" parent="container_others/inventory_container/Inventory_weapons" index="0"]
-margin_right = 1292.0
-margin_bottom = 51.0
+offset_right = 1292.0
+offset_bottom = 51.0
 
 [node name="Label" parent="container_others/inventory_container/Inventory_weapons/HBoxContainer" index="0"]
-margin_top = 3.0
-margin_right = 186.0
-margin_bottom = 48.0
+offset_top = 3.0
+offset_right = 186.0
+offset_bottom = 48.0
 text = "Weapons"
 
 [node name="HSeparator" parent="container_others/inventory_container/Inventory_weapons/HBoxContainer" index="1"]
-margin_left = 190.0
-margin_right = 1020.0
-margin_bottom = 51.0
+offset_left = 190.0
+offset_right = 1020.0
+offset_bottom = 51.0
 
 [node name="Sort_Inventory_button" parent="container_others/inventory_container/Inventory_weapons/HBoxContainer" index="2"]
-margin_left = 1024.0
-margin_right = 1243.0
-margin_bottom = 51.0
+offset_left = 1024.0
+offset_right = 1243.0
+offset_bottom = 51.0
 items = [ "sort_by_name", null, false, 1, null, "sort_by_tier", null, false, 0, null, "sort_by_name", null, false, 1, null ]
 sort_by_category = true
 sort_by_when_got_it = false
@@ -997,60 +997,60 @@ sort_by_weapon_reload_time = true
 sort_by_weapon_range = true
 
 [node name="button_reverse_order" parent="container_others/inventory_container/Inventory_weapons/HBoxContainer" index="3"]
-margin_left = 1247.0
-margin_right = 1292.0
-margin_bottom = 51.0
+offset_left = 1247.0
+offset_right = 1292.0
+offset_bottom = 51.0
 
 [node name="ScrollSizeContainer" parent="container_others/inventory_container/Inventory_weapons" index="1"]
-margin_top = 76.0
-margin_right = 1292.0
-margin_bottom = 786.0
+offset_top = 76.0
+offset_right = 1292.0
+offset_bottom = 786.0
 
 [node name="ScrollContainer" parent="container_others/inventory_container/Inventory_weapons/ScrollSizeContainer" index="0"]
 anchor_bottom = 1.0
 
 [node name="inventory_tool_container" type="HBoxContainer" parent="container_others/inventory_container/Inventory_weapons"]
-margin_top = 811.0
-margin_right = 1292.0
-margin_bottom = 881.0
+offset_top = 811.0
+offset_right = 1292.0
+offset_bottom = 881.0
 
 [node name="add_weapons_but" type="Button" parent="container_others/inventory_container/Inventory_weapons/inventory_tool_container"]
 modulate = Color( 0.560784, 1, 0.545098, 1 )
-margin_right = 488.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 65, 0 )
+offset_right = 488.0
+offset_bottom = 70.0
+custom_minimum_size = Vector2( 65, 0 )
 size_flags_horizontal = 3
 theme = ExtResource( 26 )
 toggle_mode = true
 pressed = true
 group = SubResource( 4 )
 icon = ExtResource( 22 )
-icon_align = 1
+icon_alignment = 1
 expand_icon = true
 
 [node name="remove_weapons_but" type="Button" parent="container_others/inventory_container/Inventory_weapons/inventory_tool_container"]
 modulate = Color( 1, 0.545098, 0.545098, 1 )
-margin_left = 492.0
-margin_right = 980.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 65, 0 )
+offset_left = 492.0
+offset_right = 980.0
+offset_bottom = 70.0
+custom_minimum_size = Vector2( 65, 0 )
 size_flags_horizontal = 3
 theme = ExtResource( 26 )
 toggle_mode = true
 group = SubResource( 4 )
 icon = ExtResource( 23 )
-icon_align = 1
+icon_alignment = 1
 expand_icon = true
 
 [node name="cursed_weapons_checkbut" type="CheckButton" parent="container_others/inventory_container/Inventory_weapons/inventory_tool_container"]
-margin_left = 984.0
-margin_right = 1292.0
-margin_bottom = 70.0
-custom_colors/font_color = Color( 0.881875, 0.671875, 1, 1 )
-custom_fonts/font = ExtResource( 25 )
+offset_left = 984.0
+offset_right = 1292.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color( 0.881875, 0.671875, 1, 1 )
+theme_override_fonts/font = ExtResource( 25 )
 text = "cursed items"
 align = 1
-icon_align = 1
+icon_alignment = 1
 expand_icon = true
 
 [node name="Inventory_enemies" parent="container_others/inventory_container" instance=ExtResource( 21 )]
@@ -1058,32 +1058,32 @@ unique_name_in_owner = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
 authorize_sorting = true
 reserve_column_count = 12
 
 [node name="HBoxContainer" parent="container_others/inventory_container/Inventory_enemies" index="0"]
-margin_right = 1292.0
-margin_bottom = 51.0
+offset_right = 1292.0
+offset_bottom = 51.0
 
 [node name="Label" parent="container_others/inventory_container/Inventory_enemies/HBoxContainer" index="0"]
-margin_top = 3.0
-margin_right = 166.0
-margin_bottom = 48.0
+offset_top = 3.0
+offset_right = 166.0
+offset_bottom = 48.0
 text = "Enemies"
 
 [node name="HSeparator" parent="container_others/inventory_container/Inventory_enemies/HBoxContainer" index="1"]
-margin_left = 170.0
-margin_right = 1020.0
-margin_bottom = 51.0
+offset_left = 170.0
+offset_right = 1020.0
+offset_bottom = 51.0
 
 [node name="Sort_Inventory_button" parent="container_others/inventory_container/Inventory_enemies/HBoxContainer" index="2"]
-margin_left = 1024.0
-margin_right = 1243.0
-margin_bottom = 51.0
+offset_left = 1024.0
+offset_right = 1243.0
+offset_bottom = 51.0
 items = [ "sort_by_name", null, false, 1, null, "sort_by_tier", null, false, 0, null, "sort_by_name", null, false, 1, null ]
 sort_by_category = true
 sort_by_when_got_it = false
@@ -1092,33 +1092,33 @@ sort_by_weapon_reload_time = true
 sort_by_weapon_range = true
 
 [node name="button_reverse_order" parent="container_others/inventory_container/Inventory_enemies/HBoxContainer" index="3"]
-margin_left = 1247.0
-margin_right = 1292.0
-margin_bottom = 51.0
+offset_left = 1247.0
+offset_right = 1292.0
+offset_bottom = 51.0
 
 [node name="ScrollSizeContainer" parent="container_others/inventory_container/Inventory_enemies" index="1"]
-margin_top = 76.0
-margin_right = 1292.0
-margin_bottom = 786.0
+offset_top = 76.0
+offset_right = 1292.0
+offset_bottom = 786.0
 
 [node name="ScrollContainer" parent="container_others/inventory_container/Inventory_enemies/ScrollSizeContainer" index="0"]
 anchor_bottom = 1.0
 
 [node name="inventory_tool_container" type="HBoxContainer" parent="container_others/inventory_container/Inventory_enemies"]
-margin_top = 811.0
-margin_right = 1292.0
-margin_bottom = 881.0
+offset_top = 811.0
+offset_right = 1292.0
+offset_bottom = 881.0
 alignment = 2
 
 [node name="cursed_enemies_checkbut" type="CheckButton" parent="container_others/inventory_container/Inventory_enemies/inventory_tool_container"]
-margin_left = 949.0
-margin_right = 1292.0
-margin_bottom = 70.0
-custom_colors/font_color = Color( 0.881875, 0.671875, 1, 1 )
-custom_fonts/font = ExtResource( 25 )
+offset_left = 949.0
+offset_right = 1292.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color( 0.881875, 0.671875, 1, 1 )
+theme_override_fonts/font = ExtResource( 25 )
 text = "cursed enemies"
 align = 1
-icon_align = 1
+icon_alignment = 1
 expand_icon = true
 
 [node name="Inventory_upgrades" parent="container_others/inventory_container" instance=ExtResource( 21 )]
@@ -1126,80 +1126,80 @@ unique_name_in_owner = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
 authorize_sorting = true
 reserve_column_count = 12
 
 [node name="HBoxContainer" parent="container_others/inventory_container/Inventory_upgrades" index="0"]
-margin_right = 1292.0
-margin_bottom = 51.0
+offset_right = 1292.0
+offset_bottom = 51.0
 
 [node name="Label" parent="container_others/inventory_container/Inventory_upgrades/HBoxContainer" index="0"]
-margin_top = 3.0
-margin_right = 199.0
-margin_bottom = 48.0
+offset_top = 3.0
+offset_right = 199.0
+offset_bottom = 48.0
 text = "Upgrades"
 
 [node name="HSeparator" parent="container_others/inventory_container/Inventory_upgrades/HBoxContainer" index="1"]
-margin_left = 203.0
-margin_right = 1020.0
-margin_bottom = 51.0
+offset_left = 203.0
+offset_right = 1020.0
+offset_bottom = 51.0
 
 [node name="Sort_Inventory_button" parent="container_others/inventory_container/Inventory_upgrades/HBoxContainer" index="2"]
-margin_left = 1024.0
-margin_right = 1243.0
-margin_bottom = 51.0
+offset_left = 1024.0
+offset_right = 1243.0
+offset_bottom = 51.0
 items = [ "sort_by_name", null, false, 1, null, "sort_by_tier", null, false, 0, null, "sort_by_name", null, false, 1, null ]
 by_default = 0
 sort_by_when_got_it = false
 
 [node name="button_reverse_order" parent="container_others/inventory_container/Inventory_upgrades/HBoxContainer" index="3"]
-margin_left = 1247.0
-margin_right = 1292.0
-margin_bottom = 51.0
+offset_left = 1247.0
+offset_right = 1292.0
+offset_bottom = 51.0
 
 [node name="ScrollSizeContainer" parent="container_others/inventory_container/Inventory_upgrades" index="1"]
-margin_top = 76.0
-margin_right = 1292.0
-margin_bottom = 788.0
+offset_top = 76.0
+offset_right = 1292.0
+offset_bottom = 788.0
 
 [node name="ScrollContainer" parent="container_others/inventory_container/Inventory_upgrades/ScrollSizeContainer" index="0"]
 anchor_bottom = 1.0
 
 [node name="inventory_tool_container" type="HBoxContainer" parent="container_others/inventory_container/Inventory_upgrades"]
-margin_top = 813.0
-margin_right = 1292.0
-margin_bottom = 881.0
+offset_top = 813.0
+offset_right = 1292.0
+offset_bottom = 881.0
 
 [node name="add_items_but" type="Button" parent="container_others/inventory_container/Inventory_upgrades/inventory_tool_container"]
 modulate = Color( 0.560784, 1, 0.545098, 1 )
-margin_right = 644.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 65, 0 )
+offset_right = 644.0
+offset_bottom = 68.0
+custom_minimum_size = Vector2( 65, 0 )
 size_flags_horizontal = 3
 theme = ExtResource( 26 )
 toggle_mode = true
 pressed = true
 group = SubResource( 4 )
 icon = ExtResource( 22 )
-icon_align = 1
+icon_alignment = 1
 expand_icon = true
 
 [node name="remove_items_but" type="Button" parent="container_others/inventory_container/Inventory_upgrades/inventory_tool_container"]
 modulate = Color( 1, 0.545098, 0.545098, 1 )
-margin_left = 648.0
-margin_right = 1292.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 65, 0 )
+offset_left = 648.0
+offset_right = 1292.0
+offset_bottom = 68.0
+custom_minimum_size = Vector2( 65, 0 )
 size_flags_horizontal = 3
 theme = ExtResource( 26 )
 toggle_mode = true
 group = SubResource( 4 )
 icon = ExtResource( 23 )
-icon_align = 1
+icon_alignment = 1
 expand_icon = true
 
 [connection signal="pressed" from="VBoxContainer/TabContainer/Players_cont/Players_cont/givemeitems_but" to="." method="_on_giveitems_but_pressed"]

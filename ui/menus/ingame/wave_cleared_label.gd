@@ -1,8 +1,8 @@
 class_name WaveClearedLabel
 extends Label
 
-export (Resource) var font_end_run
-export (Array, Resource) var character_appearing_sounds
+@export var font_end_run: Resource
+@export var character_appearing_sounds: Array = [] # (Array, Resource)
 
 
 func _ready() -> void :
@@ -20,7 +20,7 @@ func start(is_wave_failed: = false, is_run_lost: = false, is_run_won: = false) -
 	if is_run_lost:
 		text = "RUN_LOST"
 
-	add_font_override("font", font_end_run)
+	add_theme_font_override("font", font_end_run)
 
 	DebugService.log_data("start timer...")
 
@@ -30,5 +30,5 @@ func start(is_wave_failed: = false, is_run_lost: = false, is_run_won: = false) -
 func _on_Timer_timeout() -> void :
 	visible_characters += 1
 	SoundManager.play(Utils.get_rand_element(character_appearing_sounds), - 10, 0.2)
-	if percent_visible < 1.0:
+	if visible_ratio < 1.0:
 		$Timer.start()

@@ -3,7 +3,7 @@
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/units/movement_behaviors/follow_rand_pos_around_player_movement_behavior.gd" type="Script" id=2]
 [ext_resource path="res://entities/units/enemies/bloated_spawner/bloated_spawner_stats.tres" type="Resource" id=3]
-[ext_resource path="res://entities/units/enemies/bloated_spawner/bloated_spawner.png" type="Texture" id=4]
+[ext_resource path="res://entities/units/enemies/bloated_spawner/bloated_spawner.png" type="Texture2D" id=4]
 [ext_resource path="res://entities/units/enemies/dire_junkie/dire_junkie.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/units/enemies/bloated_spawner/bloated_spawner.gd" type="Script" id=6]
 
@@ -22,7 +22,7 @@ stats = ExtResource( 3 )
 enemy_id = "bloated_spawner"
 enemy_to_spawn = ExtResource( 5 )
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 texture = ExtResource( 4 )
 
 [node name="Collision" parent="." index="1"]

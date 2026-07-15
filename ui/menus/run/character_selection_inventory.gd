@@ -3,6 +3,7 @@ extends Inventory
 
 
 func _ready():
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	if ProgressData.is_dlc_available_and_active("abyssal_terrors"):
 		element_size = Vector2(75, 75)
 		columns = 18

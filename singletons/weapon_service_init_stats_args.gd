@@ -1,5 +1,5 @@
 class_name WeaponServiceInitStatsArgs
-extends Reference
+extends RefCounted
 
 var sets: = []
 var effects: = []

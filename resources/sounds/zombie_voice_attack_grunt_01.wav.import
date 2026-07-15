@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/zombie_voice_attack_grunt_01.wav-e14bf55511d77217bc679da826661f81.sample"
+type="AudioStreamWAV"
+uid="uid://c2qwcr022wcbv"
+path="res://.godot/imported/zombie_voice_attack_grunt_01.wav-e14bf55511d77217bc679da826661f81.sample"
 
 [deps]
 
 source_file="res://resources/sounds/zombie_voice_attack_grunt_01.wav"
-dest_files=[ "res://.import/zombie_voice_attack_grunt_01.wav-e14bf55511d77217bc679da826661f81.sample" ]
+dest_files=["res://.godot/imported/zombie_voice_attack_grunt_01.wav-e14bf55511d77217bc679da826661f81.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

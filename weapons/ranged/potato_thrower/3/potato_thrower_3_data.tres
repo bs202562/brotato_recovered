@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=1]
-[ext_resource path="res://weapons/ranged/potato_thrower/potato_thrower_icon.png" type="Texture" id=2]
+[ext_resource path="res://weapons/ranged/potato_thrower/potato_thrower_icon.png" type="Texture2D" id=2]
 [ext_resource path="res://weapons/ranged/potato_thrower/potato_thrower.tscn" type="PackedScene" id=3]
 [ext_resource path="res://weapons/ranged/potato_thrower/3/potato_thrower_3_stats.tres" type="Resource" id=4]
 [ext_resource path="res://weapons/ranged/potato_thrower/4/potato_thrower_4_data.tres" type="Resource" id=5]

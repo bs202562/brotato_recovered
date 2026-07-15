@@ -1,8 +1,8 @@
 class_name GoldBag
 extends Area2D
 
-export (Array, Resource) var gold_pickup_sounds: Array
-export (Array, Resource) var gold_alt_pickup_sounds: Array
+@export var gold_pickup_sounds: Array # (Array, Resource)
+@export var gold_alt_pickup_sounds: Array # (Array, Resource)
 
 func _on_GoldBag_area_entered(area: Area2D) -> void :
 	if area is Gold:

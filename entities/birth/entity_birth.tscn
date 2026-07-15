@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://entities/birth/entity_birth.gd" type="Script" id=1]
-[ext_resource path="res://entities/birth/entity_birth.png" type="Texture" id=2]
+[ext_resource path="res://entities/birth/entity_birth.png" type="Texture2D" id=2]
 [ext_resource path="res://entities/birth/birth_end_sound.wav" type="AudioStream" id=3]
 [ext_resource path="res://entities/birth/birth_begin_sound.wav" type="AudioStream" id=4]
-[ext_resource path="res://entities/birth/structure_birth.png" type="Texture" id=5]
+[ext_resource path="res://entities/birth/structure_birth.png" type="Texture2D" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 72.0
@@ -18,7 +18,7 @@ birth_end_sound = ExtResource( 3 )
 entity_sprite = ExtResource( 2 )
 structure_sprite = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 modulate = Color( 1, 0.215686, 0.215686, 1 )
 position = Vector2( -252, -131 )

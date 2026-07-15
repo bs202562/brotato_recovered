@@ -129,7 +129,7 @@ func on_active_effect_timer_timed_out(active_effect: ActiveEffect):
 
 	for i in _active_effects.size():
 		if _active_effects[i].source_id == active_effect.source_id:
-			_active_effects.remove(i)
+			_active_effects.remove_at(i)
 			break
 
 	var remove_outline = true

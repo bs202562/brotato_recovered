@@ -8,8 +8,9 @@ var _cleaning_up: = false
 var offset = Vector2(0, 30)
 
 func _ready() -> void :
-	var _stat_add_error = RunData.connect("stat_added", self, "on_stat_added")
-	var _stat_remove_error = RunData.connect("stat_removed", self, "on_stat_removed")
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_ready 为基类优先）
+	var _stat_add_error = RunData.connect("stat_added", Callable(self, "on_stat_added"))
+	var _stat_remove_error = RunData.connect("stat_removed", Callable(self, "on_stat_removed"))
 
 
 func on_enemy_state_changed(unit: Unit) -> void :
@@ -65,7 +66,7 @@ func _on_unit_took_damage(unit: Unit, value: int, _knockback_direction: Vector2,
 	if not ProgressData.settings.damage_display:
 			return
 
-	var color: Color = Color.white
+	var color: Color = Color.WHITE
 	var text = str(value)
 	var always_display = false
 	var need_translate = false
@@ -82,13 +83,13 @@ func _on_unit_took_damage(unit: Unit, value: int, _knockback_direction: Vector2,
 			text = "NULLIFIED"
 			need_translate = true
 	elif is_crit:
-		color = Color.yellow
+		color = Color.YELLOW
 	elif is_one_shot:
 		always_display = true
 		text = "ONE_SHOT"
 		need_translate = true
 	elif armor_did_something:
-		color = Color.gray
+		color = Color.GRAY
 
 
 	var icon = null if hit_type == HitType.NORMAL else get_special_hit_icon(hit_type)
@@ -122,12 +123,12 @@ func get_floating_text() -> FloatingText:
 
 
 func on_floating_text_available(instance: FloatingText) -> void :
-	.on_floating_text_available(instance)
+	super.on_floating_text_available(instance)
 
-	if instance.has_icon and instance.player_index > - 1:
+	if instance.has_theme_icon and instance.player_index > - 1:
 		players_add_stats_count[instance.player_index] -= 1
 
-	instance.has_icon = false
+	instance.has_theme_icon = false
 	instance.player_index = - 1
 	var main: Main = Utils.get_scene_node()
 	main.add_node_to_pool(instance, floating_text_pool_id)

@@ -5,13 +5,13 @@ signal hit_something(thing_hit, damage_dealt)
 signal killed_something(thing_killed)
 
 
-export (Array, Resource) var explosion_sounds
-export (float) var sound_db_mod = - 10.0
+@export var explosion_sounds: Array = [] # (Array, Resource)
+@export var sound_db_mod: float = - 10.0
 
-onready var _sprite: Sprite = $"%Sprite"
-onready var _hitbox: Area2D = $"%Hitbox"
-onready var _explosion_smoke: RunningSmoke = $"%ExplosionSmoke"
-onready var _animation_player: AnimationPlayer = $"%AnimationPlayer"
+@onready var _sprite: Sprite2D = $"%Sprite2D"
+@onready var _hitbox: Area2D = $"%Hitbox"
+@onready var _explosion_smoke: RunningSmoke = $"%ExplosionSmoke"
+@onready var _animation_player: AnimationPlayer = $"%AnimationPlayer"
 
 var player_index: int = - 1
 var sound_played = false
@@ -21,7 +21,7 @@ var pool_id = Keys.empty_hash
 
 
 func _ready() -> void :
-	var _error: = _animation_player.connect("animation_finished", self, "_on_animation_finished")
+	var _error: = _animation_player.connect("animation_finished", Callable(self, "_on_animation_finished"))
 
 
 func _physics_process(_delta: float) -> void :

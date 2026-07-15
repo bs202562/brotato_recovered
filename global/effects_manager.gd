@@ -2,14 +2,14 @@
 class_name EffectsManager
 extends Node2D
 
-export (PackedScene) var heal_particles
-export (PackedScene) var stats_boost_particles
-export (PackedScene) var speed_removed_particles
-export (PackedScene) var hit_particles
-export (PackedScene) var hit_effect
-export (PackedScene) var gold_pickup_particles
-export (PackedScene) var crit_particles
-export (PackedScene) var one_shot_particles
+@export var heal_particles: PackedScene
+@export var stats_boost_particles: PackedScene
+@export var speed_removed_particles: PackedScene
+@export var hit_particles: PackedScene
+@export var hit_effect: PackedScene
+@export var gold_pickup_particles: PackedScene
+@export var crit_particles: PackedScene
+@export var one_shot_particles: PackedScene
 
 const MAX_GRAPHICAL_EFFECTS = 100
 const MAX_PICK_UP_EFFECTS = 10
@@ -78,7 +78,7 @@ func play_gold_pickup_effect(effect_pos: Vector2) -> void :
 
 func play_hit_effect(effect_pos: Vector2, _direction: Vector2, effect_scale: float) -> void :
 	if hit_effect != null and randf() < effect_scale:
-		play(hit_effect, effect_pos, Vector2(rand_range( - 1, 1), rand_range( - 1, 1)), effect_scale)
+		play(hit_effect, effect_pos, Vector2(randf_range( - 1, 1), randf_range( - 1, 1)), effect_scale)
 
 
 func play(scene: PackedScene, effect_pos: Vector2, direction: Vector2, effect_scale: float = 1.0) -> void :
@@ -88,9 +88,9 @@ func play(scene: PackedScene, effect_pos: Vector2, direction: Vector2, effect_sc
 	
 	var instance = _main.get_node_from_pool(scene.get_instance_id(), _main._effects)
 	if instance == null:
-		instance = scene.instance()
+		instance = scene.instantiate()
 		_main.add_effect(instance)
-		var _destroyed_connect = instance.connect("finished", self, "on_graphical_effect_finished")
+		var _destroyed_connect = instance.connect("is_finished", Callable(self, "on_graphical_effect_finished")) # 4.x 移植: 自定义信号 finished 已重命名为 is_finished
 		instance.set_meta("pool_id", scene.get_instance_id())
 
 	current_graphical_effects += 1
@@ -99,7 +99,7 @@ func play(scene: PackedScene, effect_pos: Vector2, direction: Vector2, effect_sc
 		instance.amount = max(1, instance.amount * effect_scale)
 		instance.restart()
 
-	if instance is AnimatedSprite:
+	if instance is AnimatedSprite2D:
 		instance.play()
 
 	instance.global_position = effect_pos

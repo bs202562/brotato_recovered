@@ -6,14 +6,14 @@ signal unfocused(player_index)
 signal hovered(button, title, value, player_index)
 signal unhovered(player_index)
 
-export (String) var key
-onready var key_hash: int = Keys.generate_hash(key.to_lower())
+@export var key: String
+@onready var key_hash: int = Keys.generate_hash(key.to_lower())
 
-onready var _icon = $HBoxContainer / Icon
-onready var _label = $HBoxContainer / Label
-onready var _value = $HBoxContainer / Value
+@onready var _icon = $HBoxContainer / Icon
+@onready var _label = $HBoxContainer / Label
+@onready var _value = $HBoxContainer / Value
 
-var color_override: Color = Color.black
+var color_override: Color = Color.BLACK
 
 func enable_focus() -> void :
 	focus_mode = FOCUS_ALL
@@ -55,18 +55,18 @@ func update_player_stat(player_index: int) -> void :
 
 	_value.text = value_text
 
-	if color_override != Color.black:
-		_label.add_color_override("font_color", color_override)
-		_value.add_color_override("font_color", color_override)
+	if color_override != Color.BLACK:
+		_label.add_theme_color_override("font_color", color_override)
+		_value.add_theme_color_override("font_color", color_override)
 	elif stat_value > 0:
-		_label.add_color_override("font_color", ProgressData.settings.color_positive)
-		_value.add_color_override("font_color", ProgressData.settings.color_positive)
+		_label.add_theme_color_override("font_color", ProgressData.settings.color_positive)
+		_value.add_theme_color_override("font_color", ProgressData.settings.color_positive)
 	elif stat_value < 0:
-		_label.add_color_override("font_color", ProgressData.settings.color_negative)
-		_value.add_color_override("font_color", ProgressData.settings.color_negative)
+		_label.add_theme_color_override("font_color", ProgressData.settings.color_negative)
+		_value.add_theme_color_override("font_color", ProgressData.settings.color_negative)
 	else:
-		_label.add_color_override("font_color", Color.white)
-		_value.add_color_override("font_color", Color.white)
+		_label.add_theme_color_override("font_color", Color.WHITE)
+		_value.add_theme_color_override("font_color", Color.WHITE)
 
 
 func _on_StatContainer_focus_entered():
@@ -104,7 +104,7 @@ func _on_focused_or_hovered(signal_name: String, target: Control):
 
 
 func _on_unfocused_or_unhovered(signal_name: String, target: Control):
-	remove_stylebox_override("panel")
+	remove_theme_stylebox_override("panel")
 
 	var player_index = FocusEmulatorSignal.get_player_index(target)
 	if player_index < 0:
@@ -115,12 +115,12 @@ func _on_unfocused_or_unhovered(signal_name: String, target: Control):
 
 
 func _apply_focus_theme(player_index: int) -> void :
-	var stylebox_override: = get_stylebox("panel").duplicate()
+	var stylebox_override = get_theme_stylebox("panel").duplicate()
 
 	if RunData.is_coop_run:
 		stylebox_override.draw_center = true
 		CoopService.change_stylebox_for_player(stylebox_override, player_index)
 	else:
-		stylebox_override.border_color = _label.get_color("font_color")
+		stylebox_override.border_color = _label.get_theme_color("font_color")
 
-	add_stylebox_override("panel", stylebox_override)
+	add_theme_stylebox_override("panel", stylebox_override)

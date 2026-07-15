@@ -5,40 +5,40 @@ signal shot
 signal finished_shooting
 signal entered_long_cooldown
 
-export (PackedScene) var projectile_scene = preload("res://projectiles/bullet_enemy/enemy_projectile.tscn")
-export (int) var projectile_speed = 3000
-export (int) var projectile_speed_randomization = 0
-export (int) var speed_change_after_each_projectile = 0
-export (float) var cooldown = 60.0
-export (int) var initial_cooldown = 0
-export (int) var max_cd_randomization = 10
-export (int) var long_cooldown_every_x_shoots = 0
-export (int) var long_cooldown = 0
-export (int) var damage = 1
-export (float) var damage_increase_each_wave = 1.0
-export (int) var min_range = 0
-export (int) var max_range = 500
-export (float) var attack_anim_speed = 1.0
-export (float, 0, 3.14, 0.01) var base_direction_randomization = 0.0
-export (bool) var base_direction_constant_spread = false
-export (bool) var alternate_between_base_direction_spread = false
-export (bool) var random_direction = false
-export (int) var number_projectiles = 1
-export (float, 0, 3.14, 0.1) var projectile_spread = 0.0
-export (bool) var spawn_projectiles_on_target = false
-export (int) var projectile_spawn_spread = 0
-export (bool) var projectile_spawn_only_on_borders = false
-export (Array) var specific_degrees_spawns = []
-export (bool) var constant_spread = false
-export (float, 0, 3.14, 0.1) var constant_spread_rand_base_pos = 0.0
-export (bool) var atleast_one_projectile_on_target = false
-export (bool) var shoot_towards_unit = false
-export (bool) var shoot_in_unit_direction = false
-export (bool) var shoot_away_from_unit = false
-export (bool) var shoot_from_proj_pos_towards_player = false
-export (float, 0, 3.14, 0.1) var random_rotation = 0.0
-export (bool) var rotate_projectile = true
-export (bool) var delete_projectile_on_death = false
+@export var projectile_scene: PackedScene = preload("res://projectiles/bullet_enemy/enemy_projectile.tscn")
+@export var projectile_speed: int = 3000
+@export var projectile_speed_randomization: int = 0
+@export var speed_change_after_each_projectile: int = 0
+@export var cooldown: float = 60.0
+@export var initial_cooldown: int = 0
+@export var max_cd_randomization: int = 10
+@export var long_cooldown_every_x_shoots: int = 0
+@export var long_cooldown: int = 0
+@export var damage: int = 1
+@export var damage_increase_each_wave: float = 1.0
+@export var min_range: int = 0
+@export var max_range: int = 500
+@export var attack_anim_speed: float = 1.0
+@export var base_direction_randomization = 0.0 # (float, 0, 3.14, 0.01)
+@export var base_direction_constant_spread: bool = false
+@export var alternate_between_base_direction_spread: bool = false
+@export var random_direction: bool = false
+@export var number_projectiles: int = 1
+@export var projectile_spread = 0.0 # (float, 0, 3.14, 0.1)
+@export var spawn_projectiles_on_target: bool = false
+@export var projectile_spawn_spread: int = 0
+@export var projectile_spawn_only_on_borders: bool = false
+@export var specific_degrees_spawns: Array = []
+@export var constant_spread: bool = false
+@export var constant_spread_rand_base_pos = 0.0 # (float, 0, 3.14, 0.1)
+@export var atleast_one_projectile_on_target: bool = false
+@export var shoot_towards_unit: bool = false
+@export var shoot_in_unit_direction: bool = false
+@export var shoot_away_from_unit: bool = false
+@export var shoot_from_proj_pos_towards_player: bool = false
+@export var random_rotation = 0.0 # (float, 0, 3.14, 0.1)
+@export var rotate_projectile: bool = true
+@export var delete_projectile_on_death: bool = false
 
 var custom_collision_layer: int
 var custom_sprite_material: ShaderMaterial
@@ -76,14 +76,14 @@ func physics_process(delta: float) -> void :
 	_current_cd = max(_current_cd - 60 * delta, 0)
 
 	if not _parent.is_playing_shoot_animation() and _current_cd <= 0 and Utils.is_between(_parent.global_position.distance_to(_parent.current_target.global_position), min_range, max_range):
-		_parent._animation_player.playback_speed = attack_anim_speed
+		_parent._animation_player.speed_scale = attack_anim_speed
 		_parent._animation_player.play(_parent.shoot_animation_name)
 		emit_signal("shot")
 
 
 func shoot() -> void :
 	var target_pos = _parent.current_target.global_position
-	var base_randomization = rand_range( - base_direction_randomization, base_direction_randomization)
+	var base_randomization = randf_range( - base_direction_randomization, base_direction_randomization)
 
 	if base_direction_constant_spread:
 		if alternate_between_base_direction_spread:
@@ -101,9 +101,9 @@ func shoot() -> void :
 	var base_pos = 0.0
 
 	if constant_spread_rand_base_pos > 0.0:
-		base_pos = rand_range(0.0, constant_spread_rand_base_pos)
+		base_pos = randf_range(0.0, constant_spread_rand_base_pos)
 
-	var rand_rot = rand_range( - random_rotation, random_rotation)
+	var rand_rot = randf_range( - random_rotation, random_rotation)
 	var speed
 	var _projectile
 
@@ -112,12 +112,12 @@ func shoot() -> void :
 
 		var base_rot = (target_pos - _parent.global_position).angle() + base_randomization
 
-		var rot = rand_range(base_rot - projectile_spread, base_rot + projectile_spread)
+		var rot = randf_range(base_rot - projectile_spread, base_rot + projectile_spread)
 
 		speed = projectile_speed
 
 		if random_direction:
-			rot = rand_range( - PI, PI)
+			rot = randf_range( - PI, PI)
 
 		if constant_spread and number_projectiles > 1:
 			var chunk = (2 * projectile_spread) / (number_projectiles - 1)
@@ -145,7 +145,7 @@ func shoot() -> void :
 		if speed_change_after_each_projectile != 0:
 			speed += speed_change_after_each_projectile * i
 
-		_projectile = spawn_projectile(rot, pos, rand_range(speed - projectile_speed_randomization, speed + projectile_speed_randomization) as int)
+		_projectile = spawn_projectile(rot, pos, randf_range(speed - projectile_speed_randomization, speed + projectile_speed_randomization) as int)
 
 	_shots_taken += 1
 
@@ -163,20 +163,20 @@ func get_projectile_spawn_pos(target_pos: Vector2, projectile_index: int, base_p
 		pos = target_pos
 
 	if projectile_spawn_only_on_borders:
-		var rand = rand_range(0, 2 * PI)
+		var rand = randf_range(0, 2 * PI)
 
 		if constant_spread:
 			rand = base_pos + projectile_index * ((2 * PI) / number_projectiles)
 
 		if specific_degrees_spawns.size() > 0:
-			rand = deg2rad(specific_degrees_spawns[projectile_index])
+			rand = deg_to_rad(specific_degrees_spawns[projectile_index])
 			rand += _parent.global_position.direction_to(target_pos).angle()
 
 		pos = Vector2(pos.x + cos(rand) * (projectile_spawn_spread / 2), pos.y + sin(rand) * (projectile_spawn_spread / 2))
 	elif not atleast_one_projectile_on_target or projectile_index != 0:
 		pos = Vector2(
-			rand_range(pos.x - projectile_spawn_spread / 2, pos.x + projectile_spawn_spread / 2), 
-			rand_range(pos.y - projectile_spawn_spread / 2, pos.y + projectile_spawn_spread / 2)
+			randf_range(pos.x - projectile_spawn_spread / 2, pos.x + projectile_spawn_spread / 2), 
+			randf_range(pos.y - projectile_spawn_spread / 2, pos.y + projectile_spawn_spread / 2)
 		)
 
 	return pos
@@ -199,7 +199,7 @@ func spawn_projectile(rot: float, pos: Vector2, spd: int) -> Node:
 		
 		
 
-		projectile = projectile_scene.instance()
+		projectile = projectile_scene.instantiate()
 		main.add_enemy_projectile(projectile)
 		projectile.set_meta("pool_id", projectile_pool_id)
 
@@ -210,8 +210,8 @@ func spawn_projectile(rot: float, pos: Vector2, spd: int) -> Node:
 	if rotate_projectile:
 		projectile.rotation = rot
 
-	if delete_projectile_on_death and not _parent.is_connected("died", projectile, "on_entity_died"):
-		var _error_died = _parent.connect("died", projectile, "on_entity_died")
+	if delete_projectile_on_death and not _parent.is_connected("died", Callable(projectile, "on_entity_died")):
+		var _error_died = _parent.connect("died", Callable(projectile, "on_entity_died"))
 
 	projectile.set_damage(projectile_damage)
 
@@ -233,4 +233,4 @@ func get_cd() -> float:
 		emit_signal("entered_long_cooldown")
 		return long_cooldown
 
-	return rand_range(max(1, cooldown - max_cd_randomization), cooldown + max_cd_randomization)
+	return randf_range(max(1, cooldown - max_cd_randomization), cooldown + max_cd_randomization)

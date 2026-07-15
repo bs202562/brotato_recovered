@@ -21,11 +21,12 @@ enum ArgValue{
 enum Format{USUAL, PERCENT, ARG_VALUE_AS_NUMBER, REMOVE_OPERATOR}
 
 
-export (int) var arg_index = 0
-export (Sign) var arg_sign = Sign.FROM_ARG
-export (ArgValue) var arg_value = ArgValue.USUAL
-export (Format) var arg_format = Format.USUAL
-export (String) var arg_key: = ""
+@export var arg_index: int = 0
+# 4.x 移植: 以下三项原为枚举类型，反序列化时存的是 int，统一用 int 类型
+@export var arg_sign: int = Sign.FROM_ARG
+@export var arg_value: int = ArgValue.USUAL
+@export var arg_format: int = Format.USUAL
+@export var arg_key := ""
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void :

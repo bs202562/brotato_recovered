@@ -1,30 +1,30 @@
 class_name DLCData
 extends Resource
 
-export (String) var my_id
+@export var my_id: String
 var my_id_hash: int = Keys.empty_hash
-export (Array, Resource) var groups_in_all_zones
-export (Array, Resource) var backgrounds
-export (Array, Resource) var zones
-export (Array, Resource) var characters
-export (Array, Resource) var items
-export (Array, Resource) var weapons
-export (Array, Resource) var challenges
-export (Array, Resource) var elites
-export (Array, Resource) var bosses
-export (Array, Resource) var entities_items
-export (Array, Resource) var stats
-export (Array, Resource) var sets
-export (Array, Resource) var icons
-export (Array, Resource) var scene_effect_behaviors
-export (Array, Resource) var enemy_effect_behaviors
-export (Array, Resource) var player_effect_behaviors
-export (Array, Resource) var music_tracks
-export (Array, Resource) var title_screen_backgrounds
-export (Array, Translation) var translations
-export (Dictionary) var translation_keys_needing_operator
-export (Dictionary) var translation_keys_needing_percent
-export (Dictionary) var tracked_items
+@export var groups_in_all_zones: Array = [] # (Array, Resource)
+@export var backgrounds: Array = [] # (Array, Resource)
+@export var zones: Array = [] # (Array, Resource)
+@export var characters: Array = [] # (Array, Resource)
+@export var items: Array = [] # (Array, Resource)
+@export var weapons: Array = [] # (Array, Resource)
+@export var challenges: Array = [] # (Array, Resource)
+@export var elites: Array = [] # (Array, Resource)
+@export var bosses: Array = [] # (Array, Resource)
+@export var entities_items: Array = [] # (Array, Resource)
+@export var stats: Array = [] # (Array, Resource)
+@export var sets: Array = [] # (Array, Resource)
+@export var icons: Array = [] # (Array, Resource)
+@export var scene_effect_behaviors: Array = [] # (Array, Resource)
+@export var enemy_effect_behaviors: Array = [] # (Array, Resource)
+@export var player_effect_behaviors: Array = [] # (Array, Resource)
+@export var music_tracks: Array = [] # (Array, Resource)
+@export var title_screen_backgrounds: Array = [] # (Array, Resource)
+@export var translations: Array = [] # (Array, Translation)
+@export var translation_keys_needing_operator: Dictionary
+@export var translation_keys_needing_percent: Dictionary
+@export var tracked_items: Dictionary
 var tracked_items_hash: Dictionary
 
 
@@ -40,7 +40,7 @@ func _generate_hashes() -> void :
 
 
 func duplicate(subresources: = false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 
 	if my_id_hash == Keys.empty_hash:
 		my_id_hash = Keys.generate_hash(my_id)
@@ -53,8 +53,8 @@ func duplicate(subresources: = false) -> Resource:
 
 func add_resources():
 	_generate_hashes()
-	for translation in translations:
-		TranslationServer.add_translation(translation)
+	for position in translations:
+		TranslationServer.add_translation(position)
 	ItemService.add_backgrounds(backgrounds)
 	ZoneService.zones.append_array(zones)
 	ItemService.characters.append_array(characters)
@@ -103,8 +103,8 @@ func add_resources():
 
 
 func remove_resources():
-	for translation in translations:
-		TranslationServer.remove_translation(translation)
+	for position in translations:
+		TranslationServer.remove_translation(position)
 	ItemService.remove_backgrounds(backgrounds)
 
 	for weapon in weapons:

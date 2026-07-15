@@ -11,4 +11,4 @@ script = ExtResource( 2 )
 curse_particles = ExtResource( 3 )
 to_be_removed_in_priority = false
 
-[node name="Muzzle" type="Position2D" parent="Animation" index="1"]
+[node name="Muzzle" type="Marker2D" parent="Animation" index="1"]

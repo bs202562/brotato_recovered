@@ -3,10 +3,10 @@ extends Timer
 
 signal tick_started
 
-export (Array, Resource) var tick_sounds
+@export var tick_sounds: Array = [] # (Array, Resource)
 
-onready var half_wave_timer = $HalfWaveTimer
-onready var tick_timer = $TickTimer
+@onready var half_wave_timer = $HalfWaveTimer
+@onready var tick_timer = $TickTimer
 
 var signalled = false
 
@@ -17,7 +17,7 @@ func _physics_process(_delta: float) -> void :
 
 
 func start(time_sec: float = - 1) -> void :
-	.start(time_sec)
+	super.start(time_sec)
 	half_wave_timer.start(wait_time / 2.0)
 
 

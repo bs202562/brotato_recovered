@@ -1,7 +1,7 @@
 class_name Boss
 extends Enemy
 
-export (bool) var is_elite: = true
+@export var is_elite := true
 
 var change_state_sound = load("res://entities/units/enemies/boss/zombie_voice_general_emote_05.wav")
 
@@ -9,13 +9,13 @@ var _states: = []
 var _current_state: = - 1
 var elapsed_time = 0
 
-onready var _states_container = $States
-onready var life_bar: TextureProgress = $LifeBar
-onready var _check_state_timer: Timer = $"%CheckStateTimer"
+@onready var _states_container = $States
+@onready var life_bar: TextureProgressBar = $LifeBar
+@onready var _check_state_timer: Timer = $"%CheckStateTimer"
 
 
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, players_ref: Array = [], entity_spawner_ref = null) -> void :
-	.init(zone_min_pos, zone_max_pos, players_ref, entity_spawner_ref)
+	super.init(zone_min_pos, zone_max_pos, players_ref, entity_spawner_ref)
 
 	for state in _states_container.get_children():
 		state.movement_behavior.init(self)
@@ -26,7 +26,7 @@ func init(zone_min_pos: Vector2, zone_max_pos: Vector2, players_ref: Array = [],
 	if not ProgressData.settings.hp_bar_on_bosses:
 		life_bar.hide()
 
-	var _error_hp_lifebar = connect("health_updated", self, "on_health_updated")
+	var _error_hp_lifebar = connect("health_updated", Callable(self, "on_health_updated"))
 
 	var factor = RunData.sum_all_player_effects(Keys.stronger_elites_on_kill_hash)
 	if factor > 0:
@@ -58,15 +58,15 @@ func take_damage(value: int, args: TakeDamageArgs) -> Array:
 	if damage_against_bosses > 0:
 		dmg_value = int(value * (1.0 + (Utils.get_stat(Keys.damage_against_bosses_hash, from_player_index) / 100.0)))
 
-	return .take_damage(dmg_value, args)
+	return super.take_damage(dmg_value, args)
 
 
 func _get_health_effect_percent_factor() -> float:
 	return 1000.0
 
 
-func die(args: = Utils.default_die_args) -> void :
-	.die(args)
+func die(args = Utils.default_die_args) -> void :
+	super.die(args)
 	life_bar.hide()
 	_check_state_timer.stop()
 

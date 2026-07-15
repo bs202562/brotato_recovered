@@ -3,12 +3,12 @@ extends ItemPopup
 
 signal popup_toggled(hide_popup, player_index)
 
-onready var _replaceable_box_container: BoxContainer = $"%ReplaceableVBoxContainer"
-onready var _coop_inventory_hint = $"%CoopInventoryHint"
-onready var _coop_lock_hint = $"%CoopLockHint"
-onready var _coop_unlock_hint = $"%CoopUnlockHint"
-onready var _coop_steal_hint = $"%CoopStealHint"
-onready var _coop_ban_hint = $"%CoopBanHint"
+@onready var _replaceable_box_container: BoxContainer = $"%ReplaceableVBoxContainer"
+@onready var _coop_inventory_hint = $"%CoopInventoryHint"
+@onready var _coop_lock_hint = $"%CoopLockHint"
+@onready var _coop_unlock_hint = $"%CoopUnlockHint"
+@onready var _coop_steal_hint = $"%CoopStealHint"
+@onready var _coop_ban_hint = $"%CoopBanHint"
 
 var shop_item: ShopItem
 
@@ -18,12 +18,13 @@ var _hide_popup: = false
 var _active: = false
 
 func _set_player_index(value: int) -> void :
-	._set_player_index(value)
+	super._set_player_index(value)
 	for hint in [_coop_lock_hint, _coop_unlock_hint, _coop_inventory_hint, _coop_ban_hint]:
 		hint.player_index = value
 
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	if RunData.get_player_count() == 2:
 		var h_box_container: = HBoxContainer.new()
 		var old_container: = _replaceable_box_container
@@ -34,6 +35,11 @@ func _ready() -> void :
 
 
 func _input(event: InputEvent) -> void :
+	_input_self(event)
+	super._input(event) # 4.x 移植: Godot 3 会自动调用父类，且子类的 return 不影响父类执行
+
+
+func _input_self(event: InputEvent) -> void :
 	if not _active or _focused:
 		return
 	if Utils.is_player_info_pressed(event, player_index):
@@ -48,22 +54,23 @@ func _notification(what):
 			set_process_input(true)
 		else:
 			set_process_input(is_visible_in_tree())
+	super._notification(what) # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 
 
 func hide(player_index: = - 1) -> void :
-	.hide(player_index)
+	super.hide(player_index)
 	_active = false
 
 
 func show() -> void :
-	.show()
+	super.show()
 	_active = true
 	if _hide_popup:
 		visible = false
 
 
 func focus() -> void :
-	.focus()
+	super.focus()
 	visible = true
 
 
@@ -77,9 +84,9 @@ func show_shop_hints(p_shop_item: ShopItem) -> void :
 		var displayed_steal_chance = steal_chance * 100.0
 
 		if displayed_steal_chance < 1.0:
-			displayed_steal_chance = stepify(displayed_steal_chance, 0.1)
+			displayed_steal_chance = snapped(displayed_steal_chance, 0.1)
 		else:
-			displayed_steal_chance = stepify(displayed_steal_chance, 1.0)
+			displayed_steal_chance = snapped(displayed_steal_chance, 1.0)
 
 		_coop_steal_hint.set_steal_percentage(displayed_steal_chance)
 

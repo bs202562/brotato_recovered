@@ -1,7 +1,7 @@
 class_name NullDoubleValueEffect
 extends NullEffect
 
-export (float) var value2 = 0.0
+@export var value2: float = 0.0
 
 
 static func get_id() -> String:
@@ -13,7 +13,7 @@ func get_args(_player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.value2 = value2
 
@@ -21,6 +21,6 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void :
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	value2 = serialized.value2

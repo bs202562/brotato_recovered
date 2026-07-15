@@ -3,15 +3,15 @@ extends Container
 
 const UI_ACTION: String = "ui_info"
 
-export var text = "COOP_SHOW_CHARACTER_HINT"
+@export var text = "COOP_SHOW_CHARACTER_HINT"
 
-onready var _label1 = $"%Label1"
-onready var _label2 = $"%Label2"
-onready var _keyboard_icon = $"%KeyboardIcon"
-onready var _label_slash = $"%LabelSlash"
-onready var _xbox_icon = $"%XboxIcon"
-onready var _playstation_icon = $"%PlaystationIcon"
-onready var _switch_icon = $"%SwitchIcon"
+@onready var _label1 = $"%Label1"
+@onready var _label2 = $"%Label2"
+@onready var _keyboard_icon = $"%KeyboardIcon"
+@onready var _label_slash = $"%LabelSlash"
+@onready var _xbox_icon = $"%XboxIcon"
+@onready var _playstation_icon = $"%PlaystationIcon"
+@onready var _switch_icon = $"%SwitchIcon"
 
 
 func _ready() -> void :
@@ -56,7 +56,7 @@ func _ready() -> void :
 		var icon = displayed_icons[i]
 		var slash = _label_slash.duplicate()
 		slash.show()
-		icon.get_parent().add_child_below_node(icon, slash)
+		icon.get_parent().add_sibling(icon, slash)
 
 	var translated = tr(text)
 	var split = translated.split("{0}")

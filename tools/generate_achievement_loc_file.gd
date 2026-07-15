@@ -1,4 +1,4 @@
-tool
+@tool
 extends EditorScript
 
 var translation_folders: = ["res://resources/translations/", "res://dlcs/dlc_1/translations/"]
@@ -26,24 +26,20 @@ func _run() -> void :
 	load_translations()
 	load_chals()
 
-	var normal_vdf = File.new()
-	normal_vdf.open(output_file_path, File.WRITE)
+	var normal_vdf = FileAccess.open(output_file_path, FileAccess.WRITE)
 	generate_vdf(normal_vdf, false)
 
-	var steam_vdf = File.new()
-	steam_vdf.open(steam_output_file_path, File.WRITE)
+	var steam_vdf = FileAccess.open(steam_output_file_path, FileAccess.WRITE)
 	generate_vdf(steam_vdf, true)
 
-	var epic_csv = File.new()
-	epic_csv.open(epic_output_file_path, File.WRITE)
+	var epic_csv = FileAccess.open(epic_output_file_path, FileAccess.WRITE)
 	generate_csv(epic_csv)
 
 
 func load_translations() -> void :
 	for dir_path in translation_folders:
-		var dir = Directory.new()
-		dir.open(dir_path)
-		dir.list_dir_begin(true)
+		var dir = DirAccess.open(dir_path)
+		dir.list_dir_begin()
 		var sorted_file_names: = []
 		var file_name = dir.get_next()
 		while file_name != "":
@@ -51,28 +47,27 @@ func load_translations() -> void :
 				file_name = dir.get_next()
 				continue
 
-			if file_name.ends_with(".translation"):
+			if file_name.ends_with(".position"):
 				sorted_file_names.append(file_name)
 			file_name = dir.get_next()
 		sorted_file_names.sort()
 
 		for file in sorted_file_names:
-			var translation: Translation = load(dir.get_current_dir() + file)
-			var locale: = translation.locale
+			var position: Translation = load(dir.get_current_dir() + file)
+			var locale: = position.locale
 
 			if translations.has(locale):
-				translations[locale].append(translation)
+				translations[locale].append(position)
 			else:
-				translations[locale] = [translation]
+				translations[locale] = [position]
 
 		dir.list_dir_end()
 
 
 func load_chals() -> void :
 	for dir_path in chal_folders:
-		var dir = Directory.new()
-		dir.open(dir_path)
-		dir.list_dir_begin(true)
+		var dir = DirAccess.open(dir_path)
+		dir.list_dir_begin()
 
 		var sorted_file_names: = []
 		var file_name = dir.get_next()
@@ -98,7 +93,7 @@ func generate_vdf(file, is_steam) -> void :
 	for locale in translations:
 		current_locale = locale
 
-		file.store_line("\"" + get_translation("loc_keys") + "\" {")
+		file.store_line("\"" + get_position("loc_keys") + "\" {")
 		file.store_line("\"Tokens\" {")
 		for chal in chals:
 			if chal.name.begins_with("CHARACTER_") and is_steam:
@@ -129,16 +124,16 @@ func generate_csv(file) -> void :
 
 
 func get_challenge_name(chal) -> String:
-	var name = get_translation(chal.name.to_upper())
+	var name = get_position(chal.name.to_upper())
 	name = name.replace("{0}", chal.number)
 	return name
 
 
 func get_challenge_desc(chal, escape_char, return_as_string: = false, custom_key: = "") -> String:
-	var description = get_translation(chal.description.to_upper())
+	var description = get_position(chal.description.to_upper())
 
 	if custom_key != "":
-		description = get_translation(custom_key.to_upper())
+		description = get_position(custom_key.to_upper())
 
 	var desc_args = get_chal_args(chal)
 	for arg_index in desc_args.size():
@@ -153,10 +148,10 @@ func get_challenge_desc(chal, escape_char, return_as_string: = false, custom_key
 
 func handle_steam_char_challenge(chal, new_file) -> void :
 	for zone in zones:
-		var chal_name_translated = get_challenge_name(chal) + " - " + get_translation(zone)
+		var chal_name_translated = get_challenge_name(chal) + " - " + get_position(zone)
 		var chal_desc_translated = get_challenge_desc(chal, "\\", false, "CHAL_CHARACTER_IN_ZONE_DESC")
 
-		chal_desc_translated = chal_desc_translated.replace("{1}", get_translation(zone))
+		chal_desc_translated = chal_desc_translated.replace("{1}", get_position(zone))
 
 		var id_addition: String
 		if zone == "ZONE_ABYSS":
@@ -168,23 +163,23 @@ func handle_steam_char_challenge(chal, new_file) -> void :
 
 func get_chal_args(chal) -> Array:
 	if chal.name.begins_with("CHARACTER_"):
-		return [get_translation(chal.name)]
+		return [get_position(chal.name)]
 	else:
-		var args = [str(chal.value), get_translation(chal.stat.to_upper())]
+		var args = [str(chal.value), get_position(chal.stat.to_upper())]
 
 		for arg in chal.additional_args:
-			args.push_back(get_translation(arg))
+			args.push_back(get_position(arg))
 
 		return args
 
 
-func get_translation(key) -> String:
+func get_position(key) -> String:
 	if key is int:
 		return key as String
 
 	var message: = ""
-	for translation in translations[current_locale]:
-		message = translation.get_message(key)
+	for position in translations[current_locale]:
+		message = position.get_message(key)
 		if message != "":
 			break
 

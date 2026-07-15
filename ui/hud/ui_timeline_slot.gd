@@ -1,10 +1,10 @@
 extends VBoxContainer
 class_name UITimelineSlot
 
-onready var _label: Label = $"%label"
-onready var _point_text: TextureRect = $"%point_text"
-onready var _event_icon: TextureRect = $"%event_icon"
-onready var _second_event_icon: TextureRect = $"%second_event_icon"
+@onready var _label: Label = $"%label"
+@onready var _point_text: TextureRect = $"%point_text"
+@onready var _event_icon: TextureRect = $"%event_icon"
+@onready var _second_event_icon: TextureRect = $"%second_event_icon"
 
 var value: int
 
@@ -12,11 +12,11 @@ func _set_slot(_value: int, event_icons = null, color: Color = Color(1, 1, 1, 1)
 	value = _value
 	_set_color(color)
 	if value % 5 == 0 or event_icons.size() > 0:
-		_point_text.rect_min_size = Vector2(45, 45)
+		_point_text.custom_minimum_size = Vector2(45, 45)
 		_label.text = str(value)
 		_label.modulate.a = 1
 	else:
-		_point_text.rect_min_size = Vector2(32, 32)
+		_point_text.custom_minimum_size = Vector2(32, 32)
 		_label.modulate.a = 0
 
 	if (event_icons.size() > 0):
@@ -47,4 +47,4 @@ func _set_color(color: Color):
 
 
 func _up_icon():
-	_event_icon.rect_global_position.y -= 64
+	_event_icon.global_position.y -= 64

@@ -21,4 +21,4 @@ func unapply(player_index: int) -> void:
 
 func get_args(_player_index: int) -> Array:
 	var seconds = value / 60.0
-	return [str(stepify(seconds, 0.01))]
+	return [str(snapped(seconds, 0.01))]

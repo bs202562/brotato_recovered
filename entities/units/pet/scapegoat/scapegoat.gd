@@ -1,13 +1,13 @@
 class_name Scapegoat
 extends Pet
 
-export (AudioStream) var sound_dying
-export (AudioStream) var sound_rising
-export (AudioStream) var sound_pet
+@export var sound_dying: AudioStream
+@export var sound_rising: AudioStream
+@export var sound_pet: AudioStream
 var revive_duration = 3
-onready var audiostream = $"AudioStreamPlayer2D" as AudioStreamPlayer2D
-onready var life_bar = $"%LifeBar" as UIProgressBar
-onready var heal_particles = $"%heal_particles" as CPUParticles2D
+@onready var audiostream = $"AudioStreamPlayer2D" as AudioStreamPlayer2D
+@onready var life_bar = $"%LifeBar" as UIProgressBar
+@onready var heal_particles = $"%heal_particles" as CPUParticles2D
 
 var closed_player_list = []
 var _floating_health = 0
@@ -17,12 +17,13 @@ var _invulnerable_cooldown: float = 0.0
 var is_scapegoat: = true
 
 func _ready():
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_ready 为基类优先）
 	_animation_player.play("move")
 	heal_particles.modulate = ProgressData.settings.color_positive
-	var _error_hp_lifebar = connect("health_updated", self, "on_health_updated")
+	var _error_hp_lifebar = connect("health_updated", Callable(self, "on_health_updated"))
 
 func update_data(effect: PetEffect) -> void :
-	.update_data(effect)
+	super.update_data(effect)
 	revive_duration = effect.revive_duration
 	max_stats.health *= effect.health_boost
 	current_stats.health *= effect.health_boost
@@ -43,6 +44,12 @@ func on_health_updated(_unit: Unit, current_val: int, max_val: int) -> void :
 		life_bar.hide()
 
 func _physics_process(delta) -> void :
+	_scapegoat_physics_process_self(delta)
+	super._physics_process(delta) # 4.x 移植: Godot 3 会自动调用父类，且子类的 return 不影响父类执行
+
+
+# 4.x 移植: 原函数体抽出为独立方法，避免其中的 return 跳过父类调用
+func _scapegoat_physics_process_self(delta) -> void :
 	if _end_of_wave:
 		return
 
@@ -80,7 +87,7 @@ func _on_Hurtbox_area_entered(hitbox: Area2D) -> void :
 		args.from = from
 		dmg_taken = take_damage(1, args)
 
-	hitbox.hit_something(self, dmg_taken[1])
+	hitbox.notify_hit_something(self, dmg_taken[1])
 	_hurtbox.disable()
 	_invulnerable_cooldown = INVULNERABLE_COOLDOWN
 
@@ -134,11 +141,11 @@ func _can_pet():
 		_animation_player.play("dead")
 
 	if _check_can_be_pet():
-		yield(get_tree().create_timer(0.1), "timeout")
+		await get_tree().create_timer(0.1).timeout
 		_animation_player.play("pet")
 		SoundManager.play(sound_pet, 1, 0)
-		yield(get_tree().create_timer(1.45), "timeout")
+		await get_tree().create_timer(1.45).timeout
 		_animation_player.play("move")
 	elif not dead:
-		yield(get_tree().create_timer(0.1), "timeout")
+		await get_tree().create_timer(0.1).timeout
 		_animation_player.play("move")

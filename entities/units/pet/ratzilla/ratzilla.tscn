@@ -2,16 +2,16 @@
 
 [ext_resource path="res://entities/units/pet/pet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/units/pet/ratzilla/ratzilla.gd" type="Script" id=2]
-[ext_resource path="res://entities/units/pet/ratzilla/sp_eyes_blink.png" type="Texture" id=3]
+[ext_resource path="res://entities/units/pet/ratzilla/sp_eyes_blink.png" type="Texture2D" id=3]
 [ext_resource path="res://entities/units/target_behavior/closest_enemy_target_behavior.gd" type="Script" id=4]
 [ext_resource path="res://entities/units/pet/ratzilla/ratzilla_stats.tres" type="Resource" id=5]
 [ext_resource path="res://overlap/hitbox.gd" type="Script" id=6]
-[ext_resource path="res://entities/units/pet/ratzilla/sp_shadow.png" type="Texture" id=7]
-[ext_resource path="res://entities/units/pet/ratzilla/sp_body.png" type="Texture" id=8]
-[ext_resource path="res://entities/units/pet/ratzilla/sp_eyes.png" type="Texture" id=9]
+[ext_resource path="res://entities/units/pet/ratzilla/sp_shadow.png" type="Texture2D" id=7]
+[ext_resource path="res://entities/units/pet/ratzilla/sp_body.png" type="Texture2D" id=8]
+[ext_resource path="res://entities/units/pet/ratzilla/sp_eyes.png" type="Texture2D" id=9]
 [ext_resource path="res://visual_effects/shader_noise_displacement.tres" type="Shader" id=10]
-[ext_resource path="res://entities/units/pet/ratzilla/sp_tail.png" type="Texture" id=11]
-[ext_resource path="res://entities/units/pet/hand_pet.png" type="Texture" id=17]
+[ext_resource path="res://entities/units/pet/ratzilla/sp_tail.png" type="Texture2D" id=11]
+[ext_resource path="res://entities/units/pet/hand_pet.png" type="Texture2D" id=17]
 
 [sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 10 )
@@ -22,7 +22,7 @@ shader_param/TextureUniform = ExtResource( 11 )
 
 [sub_resource type="ViewportTexture" id=7]
 flags = 4
-viewport_path = NodePath("Animation/Viewport")
+viewport_path = NodePath("Animation/SubViewport")
 
 [sub_resource type="CircleShape2D" id=10]
 radius = 20.0
@@ -41,8 +41,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 )
+"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2 )
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("Animation:position:y")
@@ -51,8 +51,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( -24, -0.25, 0, 0.25, 0, -19, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -19, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 )
+"points": PackedFloat32Array( -24, -0.25, 0, 0.25, 0, -19, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -19, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2 )
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("Animation:scale:x")
@@ -61,8 +61,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2 )
 }
 tracks/3/type = "bezier"
 tracks/3/path = NodePath("Animation:scale:y")
@@ -71,18 +71,18 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2 )
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Animation/Viewport/offset/Node2D:rotation_degrees")
+tracks/4/path = NodePath("Animation/SubViewport/offset/Node2D:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
@@ -99,8 +99,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ) ]
 }
@@ -111,20 +111,20 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -23.0182 ), Vector2( 0, -12 ), Vector2( 0, -23.0182 ), Vector2( 0, -12 ), Vector2( 0, -23.0182 ), Vector2( 0, -12 ), Vector2( 0, -23.0182 ), Vector2( 0, -12 ), Vector2( 0, -23.0182 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Animation/Viewport/offset/Node2D:rotation_degrees")
+tracks/2/path = NodePath("Animation/SubViewport/offset/Node2D:rotation_degrees")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 53.3, 0.0, 33.4, 0.0 ]
 }
@@ -139,8 +139,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1, 2.5 )
+"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 1, 2.5 )
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("Animation:position:y")
@@ -149,8 +149,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( -24, -0.25, 0, 0.25, 0, -21.874, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1, 2.5 )
+"points": PackedFloat32Array( -24, -0.25, 0, 0.25, 0, -21.874, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 1, 2.5 )
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("Animation:scale:x")
@@ -159,8 +159,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1, 2.5 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 1, 2.5 )
 }
 tracks/3/type = "bezier"
 tracks/3/path = NodePath("Animation:scale:y")
@@ -169,8 +169,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1, 2.5 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 1, 2.5 )
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Animation/hand_pet:visible")
@@ -179,8 +179,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 2.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 2.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
 }
@@ -191,8 +191,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0.1, 0.2, 1, 1.1, 1.2, 2.2, 2.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0.1, 0.2, 1, 1.1, 1.2, 2.2, 2.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 29.9376, -13.1461 ), Vector2( 10.9246, -7.37766 ), Vector2( 37.5516, 0.322039 ), Vector2( 19.1806, -19.1367 ), Vector2( 10.4806, -6.6175 ), Vector2( 36.2758, 2.601 ), Vector2( 30, -45 ) ]
 }
@@ -203,20 +203,20 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.2, 1, 1.1, 1.2, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0.2, 1, 1.1, 1.2, 2.2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -8.4, 22.7, -16.4, -8.4, 22.7 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Animation/Viewport/offset/Node2D:rotation_degrees")
+tracks/7/path = NodePath("Animation/SubViewport/offset/Node2D:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.2, 2.2, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2, 2.2, 2.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 24.2, 24.2, 0.0 ]
 }
@@ -230,14 +230,14 @@ radius = 33.39
 [sub_resource type="Animation" id=8]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Animation/Viewport/offset/eyes:texture")
+tracks/0/path = NodePath("Animation/SubViewport/offset/eyes:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 3 ) ]
 }
@@ -247,14 +247,14 @@ resource_name = "blink_animation"
 length = 1.666
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Animation/Viewport/offset/eyes:texture")
+tracks/0/path = NodePath("Animation/SubViewport/offset/eyes:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 9 ), ExtResource( 3 ) ]
 }
@@ -267,7 +267,7 @@ shoot_projectiles = false
 [node name="Animation" parent="." index="0"]
 position = Vector2( 0, -12 )
 
-[node name="Viewport" type="Viewport" parent="Animation" index="0"]
+[node name="SubViewport" type="SubViewport" parent="Animation" index="0"]
 size = Vector2( 200, 200 )
 transparent_bg = true
 hdr = false
@@ -275,35 +275,35 @@ disable_3d = true
 render_target_v_flip = true
 render_target_update_mode = 3
 
-[node name="offset" type="Node2D" parent="Animation/Viewport" index="0"]
+[node name="offset" type="Node2D" parent="Animation/SubViewport" index="0"]
 position = Vector2( 100, 128.987 )
 
-[node name="shadow" type="Sprite" parent="Animation/Viewport/offset" index="0"]
+[node name="shadow" type="Sprite2D" parent="Animation/SubViewport/offset" index="0"]
 position = Vector2( 0, -33.778 )
 texture = ExtResource( 7 )
 
-[node name="Node2D" type="Node2D" parent="Animation/Viewport/offset" index="1"]
+[node name="Node2D" type="Node2D" parent="Animation/SubViewport/offset" index="1"]
 position = Vector2( -10, -1.987 )
 
-[node name="trail" type="Sprite" parent="Animation/Viewport/offset/Node2D" index="0"]
+[node name="trail" type="Sprite2D" parent="Animation/SubViewport/offset/Node2D" index="0"]
 material = SubResource( 12 )
 position = Vector2( 10, -31.791 )
 texture = ExtResource( 11 )
 
-[node name="body" type="Sprite" parent="Animation/Viewport/offset" index="2"]
+[node name="body" type="Sprite2D" parent="Animation/SubViewport/offset" index="2"]
 position = Vector2( 0, -33.778 )
 texture = ExtResource( 8 )
 
-[node name="eyes" type="Sprite" parent="Animation/Viewport/offset" index="3"]
+[node name="eyes" type="Sprite2D" parent="Animation/SubViewport/offset" index="3"]
 position = Vector2( -1.458, -33.778 )
 texture = ExtResource( 3 )
 
-[node name="Sprite" parent="Animation" index="1"]
+[node name="Sprite2D" parent="Animation" index="1"]
 position = Vector2( 1, 39.046 )
 texture = SubResource( 7 )
 offset = Vector2( -1, -39.046 )
 
-[node name="hand_pet" type="Sprite" parent="Animation" index="2"]
+[node name="hand_pet" type="Sprite2D" parent="Animation" index="2"]
 visible = false
 position = Vector2( 29.9376, -13.1461 )
 rotation = 0.39619
@@ -354,9 +354,6 @@ script = ExtResource( 6 )
 [node name="Collision" type="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, 10 )
 shape = SubResource( 2 )
-
-[node name="Tween" type="Tween" parent="." index="11"]
-unique_name_in_owner = true
 
 [node name="blink_animation" type="AnimationPlayer" parent="." index="12"]
 autoplay = "blink_animation"

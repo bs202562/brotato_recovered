@@ -6,11 +6,11 @@ signal healed(enemy)
 signal wanted_to_spawn_an_enemy(enemy_scene, at_position, source, charmed_by)
 signal state_changed(enemy)
 
-export (String) var enemy_id: = ""
-export (bool) var is_loot: = false
-export (bool) var can_be_cursed = true
-export (bool) var can_be_charmed = true
-export (bool) var to_be_removed_in_priority = false
+@export var enemy_id := ""
+@export var is_loot := false
+@export var can_be_cursed: bool = true
+@export var can_be_charmed: bool = true
+@export var to_be_removed_in_priority: bool = false
 
 var enemy_id_hash: = Keys.empty_hash;
 
@@ -22,31 +22,32 @@ var update_target_timer: float = 0.0
 var current_target = null
 
 var source_spawner = null
-var _idle_playback_speed = rand_range(1, 3)
+var _idle_playback_speed = randf_range(1, 3)
 var _current_attack_cd: float
 var _current_attack_behavior: AttackBehavior
 var _all_attack_behaviors: Array = []
 var _all_additional_projectiles: Array = []
 var shoot_animation_name: String = "shoot"
 
-onready var _attack_behavior = $AttackBehavior
-onready var _hitbox = $Hitbox
+@onready var _attack_behavior = $AttackBehavior
+@onready var _hitbox = $Hitbox
 
 var _take_damage_args: = TakeDamageArgs.new(0)
 
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	_current_attack_behavior = _attack_behavior
-	_animation_player.playback_speed = _idle_playback_speed
+	_animation_player.speed_scale = _idle_playback_speed
 	_hitbox.from = self
 	enemy_id_hash = Keys.generate_hash(enemy_id)
 	_all_attack_behaviors.push_back(_attack_behavior)
 
-	var _e = _animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+	var _e = _animation_player.connect("animation_finished", Callable(self, "_on_AnimationPlayer_animation_finished"))
 
 
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void :
-	.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
+	super.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
 
 	init_current_stats()
 	init_effect_behaviors()
@@ -60,7 +61,7 @@ func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [
 		stats.speed = - 1000
 		current_stats.speed = - 1000
 
-	_hitbox.connect("hit_something", self, "_on_hit_something")
+	_hitbox.connect("hit_something", Callable(self, "_on_hit_something"))
 	_hitbox.damage = current_stats.damage
 
 	_attack_behavior.init(self)
@@ -69,7 +70,7 @@ func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [
 
 
 func respawn() -> void :
-	.respawn()
+	super.respawn()
 
 	_attack_behavior.reset()
 	init_current_stats()
@@ -86,6 +87,11 @@ func respawn() -> void :
 
 
 func _physics_process(delta: float) -> void :
+	_enemy_physics_process_self(delta)
+	super._physics_process(delta) # 4.x 移植: Godot 3 会自动调用父类，且子类的 return 不影响父类执行
+
+
+func _enemy_physics_process_self(delta: float) -> void :
 	if dead:
 		return
 
@@ -111,7 +117,7 @@ func set_hitbox_damage_modifier() -> void :
 	_hitbox_damage_modifier = min(_hitbox.damage - 1, int(current_stats.damage * 0.9)) as int
 	_hitbox.damage = _hitbox.damage - _hitbox_damage_modifier
 	var timer: SceneTreeTimer = get_tree().create_timer(1.0, false)
-	var _e = timer.connect("timeout", self, "reset_hitbox_damage_modifier")
+	var _e = timer.connect("timeout", Callable(self, "reset_hitbox_damage_modifier"))
 
 
 func reset_hitbox_damage_modifier() -> void :
@@ -125,7 +131,7 @@ func reset_hitbox_damage_modifier() -> void :
 
 
 func reset_damage_stat(percent_modifier: int = 0) -> void :
-	.reset_damage_stat(percent_modifier)
+	super.reset_damage_stat(percent_modifier)
 	_hitbox.damage = current_stats.damage
 	_hitbox_damage_modifier = 0
 
@@ -165,7 +171,7 @@ func set_additional_projectile_damage(p_additional_projectile: EnemyProjectile, 
 func init_effect_behaviors() -> void :
 	assert (effect_behaviors.get_child_count() == 0, "init_effect_behaviors should only be called once")
 	for effect_behavior_data in EffectBehaviorService.active_enemy_effect_behavior_data:
-		effect_behaviors.add_child(effect_behavior_data.scene.instance().init(self))
+		effect_behaviors.add_child(effect_behavior_data.scene.instantiate().init(self))
 
 
 func update_target() -> void :
@@ -190,8 +196,8 @@ func update_target() -> void :
 	for effect_behavior in effect_behaviors.get_children():
 		effect_behavior.update_target()
 
-	if not current_target.is_connected("died", self, "_on_target_died"):
-		var _error_died = current_target.connect("died", self, "_on_target_died")
+	if not current_target.is_connected("died", Callable(self, "_on_target_died")):
+		var _error_died = current_target.connect("died", Callable(self, "_on_target_died"))
 
 
 func _on_target_died(_entity: Entity, _die_args: Entity.DieArgs) -> void :
@@ -204,13 +210,14 @@ func _on_enemy_charmed(enemy: Enemy):
 
 
 func update_stats(hp_coef: float, damage_coef: float, speed_coef: float) -> void :
-	.update_stats(hp_coef, damage_coef, speed_coef)
+	# 4.x 移植: 原 .update_stats() 调用的父类方法在 Unit 中并不存在(3.x 遗留死代码)，
+	# 4.x 会在解析期报错，故移除该调用；本函数从未被以 3 参形式调用过
 	_hitbox.damage = current_stats.damage
 
 
 func get_speed_effect_mods(player_index: int) -> int:
 	var speed_from_loot = RunData.get_player_effect(Keys.loot_alien_speed_hash, player_index) if is_loot else 0
-	return .get_speed_effect_mods(player_index) + speed_from_loot
+	return super.get_speed_effect_mods(player_index) + speed_from_loot
 
 
 func start_shoot() -> void :
@@ -221,8 +228,8 @@ func shoot() -> void :
 	_current_attack_behavior.shoot()
 
 
-func die(args: = Utils.default_die_args) -> void :
-	.die(args)
+func die(args = Utils.default_die_args) -> void :
+	super.die(args)
 	_hitbox.disable()
 	source_spawner = null
 	if args.cleaning_up:
@@ -261,7 +268,7 @@ func _on_hurt(hitbox: Hitbox) -> void :
 
 
 func take_damage(value: int, args: TakeDamageArgs) -> Array:
-	var damage_taken: = .take_damage(value, args)
+	var damage_taken: = super.take_damage(value, args)
 
 	
 	ChallengeService.try_complete_challenge(ChallengeService.chal_overkill_hash, damage_taken[0])
@@ -269,7 +276,7 @@ func take_damage(value: int, args: TakeDamageArgs) -> Array:
 
 
 func get_damage_value(dmg_value: int, from_player_index: int, armor_applied: = true, dodgeable: = true, is_crit: = false, hitbox: Hitbox = null, is_burning: = false) -> GetDamageValueResult:
-	var dmg_value_result = .get_damage_value(dmg_value, from_player_index, armor_applied, dodgeable, is_crit, hitbox)
+	var dmg_value_result = super.get_damage_value(dmg_value, from_player_index, armor_applied, dodgeable, is_crit, hitbox)
 
 	
 	var actual_dmg_value = dmg_value_result.value
@@ -312,7 +319,7 @@ func boost(boost_args: BoostArgs) -> void :
 	if not can_be_boosted:
 		return
 
-	.boost(boost_args)
+	super.boost(boost_args)
 	reset_health_stat(boost_args.hp_boost)
 	reset_damage_stat(boost_args.damage_boost)
 	reset_speed_stat(boost_args.speed_boost)
@@ -325,7 +332,7 @@ func _on_hit_something(_thing_hit: Node, _damage_dealt: int) -> void :
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void :
 	if anim_name != "idle" and anim_name != "death":
 		_animation_player.play("idle")
-		_animation_player.playback_speed = _idle_playback_speed
+		_animation_player.speed_scale = _idle_playback_speed
 
 	_current_attack_behavior.animation_finished(anim_name)
 

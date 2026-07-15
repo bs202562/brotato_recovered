@@ -8,10 +8,10 @@ input_name = "uv"
 
 [sub_resource type="VisualShaderNodeVectorOp" id=9]
 
-[sub_resource type="VisualShaderNodeScalarOp" id=10]
+[sub_resource type="VisualShaderNodeFloatOp" id=10]
 operator = 2
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=11]
+[sub_resource type="VisualShaderNodeFloatParameter" id=11]
 uniform_name = "wave_speed"
 default_value_enabled = true
 default_value = 1.0
@@ -22,7 +22,7 @@ operator = 2
 [sub_resource type="VisualShaderNodeInput" id=13]
 input_name = "modulate_color"
 
-[sub_resource type="VisualShaderNodeScalarOp" id=23]
+[sub_resource type="VisualShaderNodeFloatOp" id=23]
 operator = 2
 
 [sub_resource type="VisualShaderNodeInput" id=24]
@@ -35,21 +35,21 @@ operator = 2
 [sub_resource type="VisualShaderNodeInput" id=2]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=26]
+[sub_resource type="VisualShaderNodeFloatParameter" id=26]
 uniform_name = "wave_size"
 default_value_enabled = true
 default_value = 1.0
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=27]
+[sub_resource type="VisualShaderNodeFloatFunc" id=27]
 function = 31
 
-[sub_resource type="VisualShaderNodeScalarOp" id=28]
+[sub_resource type="VisualShaderNodeFloatOp" id=28]
 default_input_values = [ 0, 0.0, 1, 1.0 ]
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=14]
+[sub_resource type="VisualShaderNodeTexture2DParameter" id=14]
 uniform_name = "TextureUniform"
 
-[sub_resource type="OpenSimplexNoise" id=15]
+[sub_resource type="FastNoiseLite" id=15]
 period = 105.6
 persistence = 0.677
 
@@ -62,19 +62,19 @@ texture = SubResource( 16 )
 
 [sub_resource type="VisualShaderNodeVectorOp" id=18]
 
-[sub_resource type="VisualShaderNodeScalarOp" id=19]
+[sub_resource type="VisualShaderNodeFloatOp" id=19]
 default_input_values = [ 0, 0.0, 1, 0.1 ]
 operator = 2
 
-[sub_resource type="VisualShaderNodeScalarOp" id=20]
+[sub_resource type="VisualShaderNodeFloatOp" id=20]
 default_input_values = [ 0, 0.0, 1, -0.05 ]
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=21]
+[sub_resource type="VisualShaderNodeFloatParameter" id=21]
 uniform_name = "wave_strenght"
 default_value_enabled = true
 default_value = 0.1
 
-[sub_resource type="VisualShaderNodeScalarOp" id=22]
+[sub_resource type="VisualShaderNodeFloatOp" id=22]
 default_input_values = [ 0, 0.0, 1, -0.5 ]
 operator = 2
 
@@ -227,4 +227,4 @@ nodes/fragment/21/node = SubResource( 27 )
 nodes/fragment/21/position = Vector2( -1420, 360 )
 nodes/fragment/22/node = SubResource( 28 )
 nodes/fragment/22/position = Vector2( -1200, 220 )
-nodes/fragment/connections = PoolIntArray( 2, 0, 5, 0, 5, 0, 3, 0, 4, 0, 6, 0, 6, 0, 7, 0, 7, 0, 5, 1, 8, 0, 9, 0, 8, 0, 6, 1, 9, 0, 7, 1, 11, 0, 12, 0, 10, 0, 13, 0, 13, 0, 12, 1, 14, 0, 13, 1, 15, 0, 0, 0, 3, 0, 15, 1, 16, 0, 15, 0, 3, 1, 17, 0, 18, 0, 17, 1, 17, 0, 0, 1, 12, 0, 19, 0, 19, 0, 4, 0, 20, 0, 21, 0, 21, 0, 22, 0, 22, 0, 19, 1 )
+nodes/fragment/connections = PackedInt32Array( 2, 0, 5, 0, 5, 0, 3, 0, 4, 0, 6, 0, 6, 0, 7, 0, 7, 0, 5, 1, 8, 0, 9, 0, 8, 0, 6, 1, 9, 0, 7, 1, 11, 0, 12, 0, 10, 0, 13, 0, 13, 0, 12, 1, 14, 0, 13, 1, 15, 0, 0, 0, 3, 0, 15, 1, 16, 0, 15, 0, 3, 1, 17, 0, 18, 0, 17, 1, 17, 0, 0, 1, 12, 0, 19, 0, 19, 0, 4, 0, 20, 0, 21, 0, 21, 0, 22, 0, 22, 0, 19, 1 )

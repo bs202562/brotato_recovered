@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="DynamicFont" id=1]
+[ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="FontFile" id=1]
 [ext_resource path="res://ui/menus/shop/info_container.gd" type="Script" id=2]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=3]
 
@@ -19,36 +19,36 @@ corner_radius_bottom_left = 12
 
 [node name="LastWaveInfoContainer" type="VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 294.0
-margin_right = 300.0
-margin_bottom = 387.0
+offset_top = 294.0
+offset_right = 300.0
+offset_bottom = 387.0
 theme = ExtResource( 3 )
 script = ExtResource( 2 )
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-margin_right = 300.0
-margin_bottom = 92.0
-rect_min_size = Vector2( 300, 0 )
-custom_styles/panel = SubResource( 1 )
+offset_right = 300.0
+offset_bottom = 92.0
+custom_minimum_size = Vector2( 300, 0 )
+theme_override_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 295.0
-margin_bottom = 87.0
-custom_constants/margin_right = 15
-custom_constants/margin_top = 15
-custom_constants/margin_left = 15
-custom_constants/margin_bottom = 15
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 295.0
+offset_bottom = 87.0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_bottom = 15
 
 [node name="Description" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
-margin_left = 15.0
-margin_top = 15.0
-margin_right = 275.0
-margin_bottom = 67.0
-custom_fonts/normal_font = ExtResource( 1 )
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 275.0
+offset_bottom = 67.0
+theme_override_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
-bbcode_text = "DAMAGE_DEALT_LAST_WAVE"
+text = "DAMAGE_DEALT_LAST_WAVE"
 text = "DAMAGE_DEALT_LAST_WAVE"
 fit_content_height = true
 scroll_active = false

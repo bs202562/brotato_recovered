@@ -1,5 +1,5 @@
 class_name WeaponServiceExplodeArgs
-extends Reference
+extends RefCounted
 
 
 

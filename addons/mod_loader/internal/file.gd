@@ -1,5 +1,5 @@
 class_name _ModLoaderFile
-extends Reference
+extends RefCounted
 
 
 
@@ -14,15 +14,16 @@ const LOG_NAME: = "ModLoader:File"
 
 
 static func get_json_as_dict(path: String) -> Dictionary:
-	var file: = File.new()
-
-	if not file.file_exists(path):
-		file.close()
+	if not FileAccess.file_exists(path):
 		return {}
 
-	var error: = file.open(path, File.READ)
+	var file := FileAccess.open(path, FileAccess.READ)
+	var error: int = OK if file != null else FileAccess.get_open_error()
 	if not error == OK:
 		ModLoaderLog.error("Error opening file. Code: %s" % error, LOG_NAME)
+
+	if file == null:
+		return {}
 
 	var content: = file.get_as_text()
 	return _get_json_string_as_dict(content)
@@ -33,14 +34,16 @@ static func get_json_as_dict(path: String) -> Dictionary:
 static func _get_json_string_as_dict(string: String) -> Dictionary:
 	if string == "":
 		return {}
-	var parsed: = JSON.parse(string)
-	if parsed.error:
+	var test_json_conv = JSON.new()
+	var parse_error = test_json_conv.parse(string)
+	var parsed = test_json_conv.get_data()
+	if parse_error != OK:
 		ModLoaderLog.error("Error parsing JSON", LOG_NAME)
 		return {}
-	if not parsed.result is Dictionary:
+	if not parsed is Dictionary:
 		ModLoaderLog.error("JSON is not a dictionary", LOG_NAME)
 		return {}
-	return parsed.result
+	return parsed
 
 
 
@@ -48,8 +51,8 @@ static func load_zips_in_folder(folder_path: String) -> Dictionary:
 	var URL_MOD_STRUCTURE_DOCS: = "https://wiki.godotmodding.com/#/guides/modding/mod_structure"
 	var zip_data: = {}
 
-	var mod_dir: = Directory.new()
-	var mod_dir_open_error: = mod_dir.open(folder_path)
+	var mod_dir := DirAccess.open(folder_path)
+	var mod_dir_open_error: int = OK if mod_dir != null else DirAccess.get_open_error()
 	if not mod_dir_open_error == OK:
 		ModLoaderLog.info("Can't open mod folder %s (Error: %s)" % [folder_path, mod_dir_open_error], LOG_NAME)
 		return {}
@@ -77,7 +80,7 @@ static func load_zips_in_folder(folder_path: String) -> Dictionary:
 			
 			continue
 
-		var mod_zip_path: = folder_path.plus_file(mod_zip_file_name)
+		var mod_zip_path: = folder_path.path_join(mod_zip_file_name)
 		var mod_zip_global_path: = ProjectSettings.globalize_path(mod_zip_path)
 		var is_mod_loaded_successfully: = ProjectSettings.load_resource_pack(mod_zip_global_path, false)
 
@@ -93,7 +96,7 @@ static func load_zips_in_folder(folder_path: String) -> Dictionary:
 			current_mod_dirs.erase(previous_mod_dir)
 
 		
-		if current_mod_dirs.empty():
+		if current_mod_dirs.is_empty():
 			ModLoaderLog.fatal(
 				"The mod zip at path \"%s\" does not have the correct file structure. For more information, please visit \"%s\"."
 				%[mod_zip_global_path, URL_MOD_STRUCTURE_DOCS], 
@@ -147,23 +150,22 @@ static func _save_string_to_file(save_string: String, filepath: String) -> bool:
 
 	
 	var file_directory: = filepath.get_base_dir()
-	var dir: = Directory.new()
 
 	_code_note(str(
-		"View error codes here:", 
+		"View error codes here:",
 		"https://docs.godotengine.org/en/stable/classes/class_%40globalscope.html#enum-globalscope-error"
 	))
 
-	if not dir.dir_exists(file_directory):
-		var makedir_error: = dir.make_dir_recursive(file_directory)
+	if not DirAccess.dir_exists_absolute(file_directory):
+		var makedir_error: int = DirAccess.make_dir_recursive_absolute(file_directory)
 		if not makedir_error == OK:
 			ModLoaderLog.fatal("Encountered an error (%s) when attempting to create a directory, with the path: %s" % [makedir_error, file_directory], LOG_NAME)
 			return false
 
-	var file: = File.new()
+	var file := FileAccess.open(filepath, FileAccess.WRITE)
 
-	
-	var fileopen_error: = file.open(filepath, File.WRITE)
+
+	var fileopen_error: int = OK if file != null else FileAccess.get_open_error()
 
 	if not fileopen_error == OK:
 		ModLoaderLog.fatal("Encountered an error (%s) when attempting to write to a file, with the path: %s" % [fileopen_error, filepath], LOG_NAME)
@@ -177,7 +179,7 @@ static func _save_string_to_file(save_string: String, filepath: String) -> bool:
 
 
 static func save_dictionary_to_json_file(data: Dictionary, filepath: String) -> bool:
-	var json_string: = JSON.print(data, "\t")
+	var json_string: = JSON.stringify(data, "\t")
 	return _save_string_to_file(json_string, filepath)
 
 
@@ -186,13 +188,11 @@ static func save_dictionary_to_json_file(data: Dictionary, filepath: String) -> 
 
 
 static func remove_file(file_path: String) -> bool:
-	var dir: = Directory.new()
-
-	if not dir.file_exists(file_path):
+	if not FileAccess.file_exists(file_path):
 		ModLoaderLog.error("No file found at \"%s\"" % file_path, LOG_NAME)
 		return false
 
-	var error: = dir.remove(file_path)
+	var error: int = DirAccess.remove_absolute(file_path)
 
 	if error:
 		ModLoaderLog.error(
@@ -209,10 +209,9 @@ static func remove_file(file_path: String) -> bool:
 
 
 static func file_exists(path: String) -> bool:
-	var file: = File.new()
-	var exists: = file.file_exists(path)
+	var exists: bool = FileAccess.file_exists(path)
 
-	
+
 	if not exists:
 		exists = ResourceLoader.exists(path)
 
@@ -220,8 +219,7 @@ static func file_exists(path: String) -> bool:
 
 
 static func dir_exists(path: String) -> bool:
-	var dir: = Directory.new()
-	return dir.dir_exists(path)
+	return DirAccess.dir_exists_absolute(path)
 
 
 

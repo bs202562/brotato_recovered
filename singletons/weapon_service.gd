@@ -387,7 +387,7 @@ func spawn_projectile(
 	var projectile = main.get_node_from_pool(projectile_pool_id, main._player_projectiles)
 	if not is_instance_valid(projectile):
 		var projectile_scene = weapon_stats.projectile_scene if weapon_stats.projectile_scene != null else DEFAULT_PROJECTILE_SCENE
-		projectile = projectile_scene.instance()
+		projectile = projectile_scene.instantiate()
 		if args.deferred:
 			main.call_deferred("add_player_projectile", projectile)
 		else:
@@ -478,7 +478,7 @@ func sum_scaling_stat_values(p_scaling_stats: Array, player_index: int) -> float
 	return value
 
 
-func find_scaling_stat(stat_id: int, scaling_stats: Array):
+func find_scaling_stat(stat_id: int, scaling_stats: Array) -> Variant:
 	for scaling_stat in scaling_stats:
 		assert (scaling_stat[0] is int)
 		if scaling_stat[0] == stat_id:
@@ -504,7 +504,7 @@ func apply_structure_damage_bonus(value: int, player_index: int) -> int:
 func apply_inverted_health_bonus(value: int, per_health_percent_amount: int, current_health: int, max_health: int) -> int:
 	if max_health == 0:
 		return 0
-	var percent_missing_health: = max(0.0, 1.0 - float(current_health) / float(max_health)) * 100.0
+	var percent_missing_health = max(0.0, 1.0 - float(current_health) / float(max_health)) * 100.0
 	return round(value * (percent_missing_health / per_health_percent_amount)) as int
 
 
@@ -513,7 +513,7 @@ func explode(effect: ExplodingEffect, args: WeaponServiceExplodeArgs) -> Node:
 	var instance = main.get_node_from_pool(effect.explosion_scene.get_instance_id(), main._explosions)
 
 	if instance == null:
-		instance = effect.explosion_scene.instance()
+		instance = effect.explosion_scene.instantiate()
 		main.add_explosion(instance)
 
 	if main._is_fog_wave:
@@ -575,7 +575,7 @@ func apply_attack_speed_mod_to_cooldown(base_cooldown: int, attack_speed_mod: fl
 
 func _apply_min_cooldown_effect(stats: WeaponStats, player_index: int) -> void :
 	var min_cooldown_effects = RunData.get_player_effect(Keys.minimum_weapon_cooldowns_hash, player_index)
-	if min_cooldown_effects.empty():
+	if min_cooldown_effects.is_empty():
 		return
 	
 	var min_cooldown_effect_value: int = min_cooldown_effects.back()
@@ -603,7 +603,7 @@ func _apply_min_cooldown_effect(stats: WeaponStats, player_index: int) -> void :
 
 func _apply_max_cooldown_effect(stats: WeaponStats, player_index: int) -> void :
 	var max_cooldown_effects = RunData.get_player_effect(Keys.maximum_weapon_cooldowns_hash, player_index)
-	if max_cooldown_effects.empty():
+	if max_cooldown_effects.is_empty():
 		return
 
 	var max_cooldown_value: int = max_cooldown_effects[0]
@@ -619,7 +619,7 @@ func _apply_max_cooldown_effect(stats: WeaponStats, player_index: int) -> void :
 
 func _apply_weapon_scaling_stat_effects(scaling_stats: Array, player_index: int) -> Array:
 	var weapon_scaling_stat_effects = RunData.get_player_effect(Keys.weapon_scaling_stats_hash, player_index)
-	if weapon_scaling_stat_effects.empty():
+	if weapon_scaling_stat_effects.is_empty():
 		return scaling_stats
 	var new_scaling_stats = scaling_stats.duplicate(true)
 	for scaling_stat_effect in weapon_scaling_stat_effects:

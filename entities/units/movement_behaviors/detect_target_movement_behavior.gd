@@ -3,8 +3,8 @@ extends MovementBehavior
 
 signal detected_player
 
-export (int) var detection_range = 300
-export (int) var speed_bonus_on_target_detection = 300
+@export var detection_range: int = 300
+@export var speed_bonus_on_target_detection: int = 300
 
 var movement_behavior_before_target_detection: MovementBehavior
 var movement_behavior_after_target_detection: MovementBehavior
@@ -15,7 +15,7 @@ var _current_target: Vector2 = Vector2.ZERO
 
 
 func init(parent: Node) -> Node:
-	var _init = .init(parent)
+	var _init = super.init(parent)
 	movement_behavior_before_target_detection = $MovementBehaviorBeforeTargetDetection
 	var _e = movement_behavior_before_target_detection.init(parent)
 	movement_behavior_after_target_detection = $MovementBehaviorAfterTargetDetection

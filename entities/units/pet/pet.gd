@@ -1,9 +1,9 @@
 class_name Pet
 extends Unit
 
-export (bool) var can_be_targeted_by_enemies: = false
-export (Resource) var curse_particles
-export (bool) var shoot_projectiles: = false
+@export var can_be_targeted_by_enemies := false
+@export var curse_particles: Resource
+@export var shoot_projectiles := false
 
 var current_target = null
 var player_index = - 1
@@ -12,21 +12,22 @@ var curse_particle_instance
 var is_cursed: bool = false
 var _end_of_wave: bool = false
 
-onready var _target_behavior: = $TargetBehavior
+@onready var _target_behavior: = $TargetBehavior
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_ready 为基类优先）
 	_current_target_behavior = _target_behavior
-	get_tree().current_scene._pause_menu._menu_options.connect("pet_highlighting_changed", self, "update_highlight")
-	get_tree().current_scene._pause_menu._menu_options.connect("pet_transparency_changed", self, "_update_transparency")
+	get_tree().current_scene._pause_menu._menu_options.connect("pet_highlighting_changed", Callable(self, "update_highlight"))
+	get_tree().current_scene._pause_menu._menu_options.connect("pet_transparency_changed", Callable(self, "_update_transparency"))
 	update_highlight()
 	_update_transparency(ProgressData.settings.pet_opacity)
 
 	var main: Main = get_tree().current_scene
-	main.connect("end_of_the_wave", self, "end_of_wave_callback")
+	main.connect("end_of_the_wave", Callable(self, "end_of_wave_callback"))
 
 
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void :
-	.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
+	super.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
 
 	_target_behavior.init(self)
 	init_current_stats()
@@ -66,6 +67,13 @@ func update_target():
 	_current_target_behavior.update_target()
 
 func _physics_process(delta: float) -> void :
+	_pet_physics_process_self(delta)
+	super._physics_process(delta) # 4.x 移植: Godot 3 会自动调用父类，且子类的 return 不影响父类执行
+
+
+# 4.x 移植: 原函数体抽出为独立方法，避免其中的 return 跳过父类调用；
+# 名字带类名前缀，防止被子类的同类辅助函数覆盖
+func _pet_physics_process_self(_delta: float) -> void :
 	if _end_of_wave:
 		return
 
@@ -73,7 +81,7 @@ func _physics_process(delta: float) -> void :
 		update_target()
 
 func die(args: = DieArgs.new()) -> void :
-	.die(args)
+	super.die(args)
 
 func update_highlight(_value: bool = true):
 	if dead: return

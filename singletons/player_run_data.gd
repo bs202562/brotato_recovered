@@ -1,5 +1,5 @@
 class_name PlayerRunData
-extends Reference
+extends RefCounted
 
 const DEFAULT_MAX_HP: = 10
 
@@ -213,7 +213,7 @@ func deserialize(data: Dictionary) -> PlayerRunData:
 		active_sets[int(k)] = int(active_sets[k])
 
 	for active_set_effect in data.active_set_effects:
-		assert (active_set_effect[1].effect_id is String and not active_set_effect[1].effect_id.is_valid_integer())
+		assert (active_set_effect[1].effect_id is String and not active_set_effect[1].effect_id.is_valid_int())
 		for effect in ItemService.effects:
 			if effect.get_id() == active_set_effect[1].effect_id:
 				var deserialized_effect = effect.new()
@@ -294,13 +294,13 @@ func _deserialize_effects(p_effects: Dictionary, weapon_effect_hashes: Dictionar
 	var key_hash: int = Keys.empty_hash
 	for key in p_effects:
 		if key is String:
-			if key.is_valid_integer():
+			if key.is_valid_int():
 				key_hash = int(key)
 			else:
 				key_hash = Keys.generate_hash(key)
 
 		
-		if [Keys.projectiles_on_death_hash, Keys.alien_eyes_hash].has(key_hash) and not p_effects[key].empty() and p_effects[key][0] is Array:
+		if [Keys.projectiles_on_death_hash, Keys.alien_eyes_hash].has(key_hash) and not p_effects[key].is_empty() and p_effects[key][0] is Array:
 			var total_proj_count: = 0
 			for effect in p_effects[key]:
 				total_proj_count += effect[0]
@@ -391,7 +391,7 @@ func _unsorted_dictionary_hash(dictionary: Dictionary) -> int:
 	
 	
 	var sort_keys = true
-	return JSON.print(dictionary, "", sort_keys).hash()
+	return JSON.stringify(dictionary, "", sort_keys).hash()
 
 
 static func init_stats(all_null_values: bool = false) -> Dictionary:

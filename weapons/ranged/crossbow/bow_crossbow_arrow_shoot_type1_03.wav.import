@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/bow_crossbow_arrow_shoot_type1_03.wav-7d2f05a443d9dd1e511e4a1f0abec63d.sample"
+type="AudioStreamWAV"
+uid="uid://fujbr4ebv56t"
+path="res://.godot/imported/bow_crossbow_arrow_shoot_type1_03.wav-7d2f05a443d9dd1e511e4a1f0abec63d.sample"
 
 [deps]
 
 source_file="res://weapons/ranged/crossbow/bow_crossbow_arrow_shoot_type1_03.wav"
-dest_files=[ "res://.import/bow_crossbow_arrow_shoot_type1_03.wav-7d2f05a443d9dd1e511e4a1f0abec63d.sample" ]
+dest_files=["res://.godot/imported/bow_crossbow_arrow_shoot_type1_03.wav-7d2f05a443d9dd1e511e4a1f0abec63d.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

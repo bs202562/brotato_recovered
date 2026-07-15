@@ -13,7 +13,7 @@ func add_element(icon: Resource, level: int) -> void :
 		else:
 			similar_icons[count - 2].hide()
 
-	var node = element_scene.instance()
+	var node = element_scene.instantiate()
 	node.set_data(icon, level, true)
 	node.set_count(count)
 	_elements.push_back(level)

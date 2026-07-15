@@ -1,7 +1,7 @@
 
 
 class_name ModLoaderModManager
-extends Reference
+extends RefCounted
 
 
 const LOG_NAME: = "ModLoader:Manager"

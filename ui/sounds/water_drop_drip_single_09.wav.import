@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/water_drop_drip_single_09.wav-9ce1eeb86a121d9bc54f6cd6915595a5.sample"
+type="AudioStreamWAV"
+uid="uid://flgfr0va3d30"
+path="res://.godot/imported/water_drop_drip_single_09.wav-9ce1eeb86a121d9bc54f6cd6915595a5.sample"
 
 [deps]
 
 source_file="res://ui/sounds/water_drop_drip_single_09.wav"
-dest_files=[ "res://.import/water_drop_drip_single_09.wav-9ce1eeb86a121d9bc54f6cd6915595a5.sample" ]
+dest_files=["res://.godot/imported/water_drop_drip_single_09.wav-9ce1eeb86a121d9bc54f6cd6915595a5.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

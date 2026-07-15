@@ -10,7 +10,7 @@ func reset() -> void :
 
 
 func reset_player(player_index: int) -> void :
-	.reset_player(player_index)
+	super.reset_player(player_index)
 
 	update_for_player_every_half_sec[player_index] = false
 

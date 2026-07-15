@@ -1,8 +1,8 @@
 class_name ButtonWithIcon
 extends MyMenuButtonParent
 
-export var resize_x: = true
-export var resize_y: = true
+@export var resize_x: = true
+@export var resize_y: = true
 
 const MARGIN = 24.0
 
@@ -12,15 +12,16 @@ var _pressed: = false
 var _color_locked: = false
 var _value: = 0
 
-onready var _content = $HBoxContainer
-onready var _label = $HBoxContainer / Label
-onready var gold_icon = $HBoxContainer / GoldIcon
-onready var additional_icon: TextureRect = $"%AdditionalIcon"
+@onready var _content = $HBoxContainer
+@onready var _label = $HBoxContainer / Label
+@onready var gold_icon = $HBoxContainer / GoldIcon
+@onready var additional_icon: TextureRect = $"%AdditionalIcon"
 
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	on_content_resized()
-	_content.connect("resized", self, "on_content_resized")
+	_content.connect("resized", Callable(self, "on_content_resized"))
 
 
 func _process(_delta):
@@ -46,16 +47,16 @@ func set_color_from_currency(currency: int) -> void :
 
 
 func on_content_resized():
-	if resize_x and get_content_size_x() != self.rect_min_size.x:
-		self.rect_min_size.x = get_content_size_x() + MARGIN
-	if resize_y and (_content.rect_size.y > self.rect_size.y):
-		self.rect_min_size.y = _content.rect_size.y
+	if resize_x and get_content_size_x() != self.custom_minimum_size.x:
+		self.custom_minimum_size.x = get_content_size_x() + MARGIN
+	if resize_y and (_content.size.y > self.size.y):
+		self.custom_minimum_size.y = _content.size.y
 
 
 func get_content_size_x() -> int:
 	var size_x = 0
 	for child in _content.get_children():
-		size_x += child.rect_size.x
+		size_x += child.size.x
 	return size_x
 
 
@@ -101,19 +102,19 @@ func _on_ButtonWithIcon_mouse_exited() -> void :
 	_update_focus_colors()
 
 
-func set_material_icon(icon: Texture, color: Color = Color.white) -> void :
+func set_material_icon(icon: Texture2D, color: Color = Color.WHITE) -> void :
 	gold_icon.set_icon(icon, color)
 
 
-func set_additional_icon(icon: Texture) -> void :
+func set_additional_icon(icon: Texture2D) -> void :
 	additional_icon.texture = icon
-	additional_icon.rect_min_size.x = gold_icon.rect_min_size.x
+	additional_icon.custom_minimum_size.x = gold_icon.custom_minimum_size.x
 
 
 func remove_additional_icon() -> void :
 	additional_icon.texture = null
-	self.rect_min_size.x -= additional_icon.rect_min_size.x
-	additional_icon.rect_min_size.x = 0
+	self.custom_minimum_size.x -= additional_icon.custom_minimum_size.x
+	additional_icon.custom_minimum_size.x = 0
 
 
 const META_FONT_KEY: = "button_with_icon__original_font_override"
@@ -127,28 +128,28 @@ func _update_focus_colors() -> void :
 	else:
 		_clear_other_node_focus_colors()
 
-	var color = get_color("font_color")
+	var color = get_theme_color("font_color")
 	if _color_locked:
 		color = Color(ProgressData.settings.color_negative)
 	elif _focused:
-		color = get_color("font_color_focus")
+		color = get_theme_color("font_color_focus")
 	elif _hovered:
-		color = get_color("font_color_hover")
+		color = get_theme_color("font_color_hover")
 	elif _pressed:
-		color = get_color("font_color_pressed")
-	_label.add_color_override("font_color", color)
+		color = get_theme_color("font_color_pressed")
+	_label.add_theme_color_override("font_color", color)
 
 	if RunData.is_coop_run:
 		if _color_locked:
 			
-			_label.set_meta(META_FONT_KEY, _label.get_font("font"))
-			var font = _label.get_font("font").duplicate()
+			_label.set_meta(META_FONT_KEY, _label.get_theme_font("font"))
+			var font = _label.get_theme_font("font").duplicate()
 			font.outline_size = 1
 			font.outline_color = Color(ProgressData.settings.color_negative).darkened(0.7)
-			_label.add_font_override("font", font)
+			_label.add_theme_font_override("font", font)
 		else:
 			if _label.has_meta(META_FONT_KEY):
-				_label.add_font_override("font", _label.get_meta(META_FONT_KEY))
+				_label.add_theme_font_override("font", _label.get_meta(META_FONT_KEY))
 
 
 func _set_other_node_focus_colors() -> void :
@@ -156,15 +157,15 @@ func _set_other_node_focus_colors() -> void :
 		return
 	_are_other_node_focus_colors_set = true
 	for node in _get_other_stylable_nodes():
-		var original_font = node.get_font("font")
+		var original_font = node.get_theme_font("font")
 		node.set_meta(META_FONT_KEY, original_font)
 		var font = original_font.duplicate()
 		font.outline_size = 0
-		node.add_font_override("font", font)
+		node.add_theme_font_override("font", font)
 
-		var original_color = node.get_color("font_color")
+		var original_color = node.get_theme_color("font_color")
 		node.set_meta(META_FONT_COLOR_KEY, original_color)
-		node.add_color_override("font_color", original_color.inverted())
+		node.add_theme_color_override("font_color", original_color.inverted())
 
 
 func _clear_other_node_focus_colors() -> void :
@@ -172,8 +173,8 @@ func _clear_other_node_focus_colors() -> void :
 		return
 	_are_other_node_focus_colors_set = false
 	for node in _get_other_stylable_nodes():
-		node.add_font_override("font", node.get_meta(META_FONT_KEY))
-		node.add_color_override("font_color", node.get_meta(META_FONT_COLOR_KEY))
+		node.add_theme_font_override("font", node.get_meta(META_FONT_KEY))
+		node.add_theme_color_override("font_color", node.get_meta(META_FONT_COLOR_KEY))
 
 
 func _get_other_stylable_nodes(node: Node = self, result: = []) -> Array:

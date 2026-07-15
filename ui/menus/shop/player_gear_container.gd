@@ -4,8 +4,8 @@ extends Container
 
 var player_index: = 0
 
-onready var weapons_container: InventoryContainer = $WeaponsContainer
-onready var items_container: InventoryContainer = $ItemsContainer
+@onready var weapons_container: InventoryContainer = $WeaponsContainer
+@onready var items_container: InventoryContainer = $ItemsContainer
 
 var _default_weapon_columns: = [3, 10, 8, 6]
 
@@ -16,7 +16,7 @@ var _min_item_columns: = 6
 
 func _ready() -> void :
 	
-	var _error = weapons_container.connect("elements_changed", self, "_on_weapons_changed")
+	var _error = weapons_container.connect("elements_changed", Callable(self, "_on_weapons_changed"))
 
 
 func set_items_data(items: Array) -> void :

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://entities/units/enemies/looter/looter.gd" type="Script" id=1]
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://entities/units/enemies/looter/looter.png" type="Texture" id=3]
+[ext_resource path="res://entities/units/enemies/looter/looter.png" type="Texture2D" id=3]
 [ext_resource path="res://entities/units/movement_behaviors/target_rand_pos_movement_behavior.gd" type="Script" id=4]
 [ext_resource path="res://entities/units/enemies/looter/looter_stats.tres" type="Resource" id=5]
 
@@ -21,7 +21,7 @@ can_be_cursed = false
 animation_whistle = "res://dlcs/dlc_1/items/whistle/whistle_fx.tscn"
 effect_exclamation = "res://visual_effects/exclamation.tscn"
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 texture = ExtResource( 3 )
 
 [node name="Collision" parent="." index="1"]

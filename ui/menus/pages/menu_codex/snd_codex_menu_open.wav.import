@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/snd_codex_menu_open.wav-76784c86c02c8194c0c8105f9e48e546.sample"
+type="AudioStreamWAV"
+uid="uid://di7r67bmbrkth"
+path="res://.godot/imported/snd_codex_menu_open.wav-76784c86c02c8194c0c8105f9e48e546.sample"
 
 [deps]
 
 source_file="res://ui/menus/pages/menu_codex/snd_codex_menu_open.wav"
-dest_files=[ "res://.import/snd_codex_menu_open.wav-76784c86c02c8194c0c8105f9e48e546.sample" ]
+dest_files=["res://.godot/imported/snd_codex_menu_open.wav-76784c86c02c8194c0c8105f9e48e546.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

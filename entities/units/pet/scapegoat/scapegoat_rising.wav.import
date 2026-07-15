@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/scapegoat_rising.wav-3de48ab73c756873a35f6ab7f0e4a129.sample"
+type="AudioStreamWAV"
+uid="uid://f8g4kiq2dqa1"
+path="res://.godot/imported/scapegoat_rising.wav-3de48ab73c756873a35f6ab7f0e4a129.sample"
 
 [deps]
 
 source_file="res://entities/units/pet/scapegoat/scapegoat_rising.wav"
-dest_files=[ "res://.import/scapegoat_rising.wav-3de48ab73c756873a35f6ab7f0e4a129.sample" ]
+dest_files=["res://.godot/imported/scapegoat_rising.wav-3de48ab73c756873a35f6ab7f0e4a129.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

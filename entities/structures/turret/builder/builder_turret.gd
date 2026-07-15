@@ -1,7 +1,7 @@
 class_name BuilderTurret
 extends Turret
 
-export (Gradient) var bullet_color_gradient
+@export var bullet_color_gradient: Gradient
 
 const MIN_BASE_WEAPON_CD: float = 8.0
 const MAX_BASE_WEAPON_CD: float = 100.0
@@ -16,8 +16,8 @@ const XP_REQUIREMENT_PER_LEVEL = [
 
 signal stat_added(stat_name, value, db_mod, turret_position)
 
-export (Array, Resource) var turret_sprites = []
-export (Array, Resource) var upgrade_sounds = []
+@export var turret_sprites = [] # (Array, Resource)
+@export var upgrade_sounds = [] # (Array, Resource)
 
 var main_ref = null
 
@@ -42,7 +42,7 @@ var _init_stats_args_build: = WeaponServiceInitStatsArgs.new()
 var projectiles_on_hit: Array = []
 
 
-onready var _one_second_timer: Timer = $OneSecondTimer
+@onready var _one_second_timer: Timer = $OneSecondTimer
 var has_player_no_hit_effect: = false
 var _one_second_timeouts: = 0
 var base_damage: float = 0
@@ -162,7 +162,8 @@ static func switch_turret_item(old_level: int, new_level: int, p_player_index: i
 
 
 func _ready():
-	
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_ready 为基类优先）
+
 	max_turret_anim_speed = 5.0
 	_initial_position = sprite.position
 	_muzzle_initial_position = _muzzle.position
@@ -187,7 +188,7 @@ func set_data(data: Resource) -> void :
 
 	if player_weapons.size() == 0 or not has_ranged_weapon:
 		updated_data.stats = apply_scaling(data.stats, _current_level)
-		.set_data(updated_data)
+		super.set_data(updated_data)
 		return
 
 	var best_weapon = get_best_ranged_weapon(player_index)
@@ -200,12 +201,12 @@ func set_data(data: Resource) -> void :
 			has_player_no_hit_effect = true
 			_one_second_timer.start()
 			var player = entity_spawner._main._players[player_index]
-			var error = player.connect("took_damage", self, "_player_took_damage")
+			var error = player.connect("took_damage", Callable(self, "_player_took_damage"))
 			base_damage = updated_data.stats.damage
 
 	_current_weapon_ref = best_weapon
 
-	.set_data(updated_data)
+	super.set_data(updated_data)
 
 	
 	for item in RunData.get_player_items_ref(player_index):
@@ -254,14 +255,14 @@ func shoot() -> void :
 			original_stats = stats
 			stats = _stats_every_x_shots[projectile_count]
 
-	.shoot()
+	super.shoot()
 
 	if original_stats:
 		stats = original_stats
 
 
 
-func die(_args: = Utils.default_die_args) -> void :
+func die(_args = Utils.default_die_args) -> void :
 	pass
 
 
@@ -293,13 +294,13 @@ func display_stats_added():
 
 
 func _spawn_projectile(position: Vector2) -> Node:
-	var proj = ._spawn_projectile(position)
+	var proj = super._spawn_projectile(position)
 
 	if effects.size() > 0 and is_instance_valid(proj):
-		var _killed_sthing = proj._hitbox.connect("killed_something", self, "on_killed_something", [proj._hitbox])
+		var _killed_sthing = proj._hitbox.connect("killed_something", Callable(self, "on_killed_something").bind(proj._hitbox))
 
 	if has_player_no_hit_effect:
-		var col: Color = bullet_color_gradient.interpolate(interval_count / 8.0)
+		var col: Color = bullet_color_gradient.sample(interval_count / 8.0)
 		proj._sprite.material.set("shader_param/color_A", col)
 		proj.get_node("%CPUParticles2D").modulate = col
 

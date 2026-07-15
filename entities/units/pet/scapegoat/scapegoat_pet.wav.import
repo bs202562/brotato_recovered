@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/scapegoat_pet.wav-1cf404334ddb29887892f1cf6c6fdf4f.sample"
+type="AudioStreamWAV"
+uid="uid://iq32rkoskpsf"
+path="res://.godot/imported/scapegoat_pet.wav-1cf404334ddb29887892f1cf6c6fdf4f.sample"
 
 [deps]
 
 source_file="res://entities/units/pet/scapegoat/scapegoat_pet.wav"
-dest_files=[ "res://.import/scapegoat_pet.wav-1cf404334ddb29887892f1cf6c6fdf4f.sample" ]
+dest_files=["res://.godot/imported/scapegoat_pet.wav-1cf404334ddb29887892f1cf6c6fdf4f.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

@@ -7,7 +7,7 @@
 [ext_resource path="res://entities/units/enemies/boss/boss_state.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/units/movement_behaviors/target_rand_pos_movement_behavior.gd" type="Script" id=6]
 [ext_resource path="res://entities/units/enemies/invoker/invoker.gd" type="Script" id=7]
-[ext_resource path="res://entities/units/enemies/invoker/invoker.png" type="Texture" id=8]
+[ext_resource path="res://entities/units/enemies/invoker/invoker.png" type="Texture2D" id=8]
 [ext_resource path="res://entities/units/enemies/invoker/invoker_stats.tres" type="Resource" id=9]
 
 [sub_resource type="CircleShape2D" id=3]
@@ -23,7 +23,7 @@ stats = ExtResource( 9 )
 enemy_id = "invoker"
 is_elite = false
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -64 )
 texture = ExtResource( 8 )
 
@@ -113,8 +113,8 @@ constant_spread = true
 rotate_projectile = false
 
 [node name="LifeBar" parent="." index="12"]
-margin_top = -200.0
-margin_bottom = -184.0
+offset_top = -200.0
+offset_bottom = -184.0
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]

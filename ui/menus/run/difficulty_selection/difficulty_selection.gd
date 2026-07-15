@@ -2,15 +2,16 @@ class_name DifficultySelection
 extends BaseSelection
 
 var difficulty_selected: = false
-var cancelled = false
+var canceled = false
 
-onready var _back_button: Button = $"%BackButton"
-onready var _character_panel: ItemPanelUI = $MarginContainer / VBoxContainer / DescriptionContainer / CharacterPanel
-onready var _weapon_panel: ItemPanelUI = $MarginContainer / VBoxContainer / DescriptionContainer / WeaponPanel
-onready var _locked_panel1: Container = $"%LockedPanel1"
+@onready var _back_button: Button = $"%BackButton"
+@onready var _character_panel: ItemPanelUI = $MarginContainer / VBoxContainer / DescriptionContainer / CharacterPanel
+@onready var _weapon_panel: ItemPanelUI = $MarginContainer / VBoxContainer / DescriptionContainer / WeaponPanel
+@onready var _locked_panel1: Container = $"%LockedPanel1"
 
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	RunData.menu_selection_back = false
 	_character_panel.visible = not RunData.is_coop_run
 	if _character_panel.visible:
@@ -24,8 +25,8 @@ func _ready() -> void :
 	var diff_info = ProgressData.get_character_difficulty_info(RunData.players_data[0].current_character.my_id_hash, RunData.current_zone)
 	_inventory1.focus_element_index(diff_info.difficulty_selected_value)
 
-	for margin in [MARGIN_LEFT, MARGIN_TOP]:
-		_back_button.set_focus_neighbour(margin, _back_button.get_path_to(_back_button))
+	for margin in [SIDE_LEFT, SIDE_TOP]:
+		_back_button.set_focus_neighbor(margin, _back_button.get_path_to(_back_button))
 
 	_background.texture = ZoneService.get_zone_data(RunData.current_zone).ui_background
 
@@ -34,7 +35,7 @@ func _process(_delta: float) -> void :
 	if RunData.is_coop_run and Utils.on_nintendo_nx_or_ounce:
 		
 		
-		if OS.get_controller_count() <= 1 and OS.get_controller_style(0) == 0:
+		if OS_Seaven.get_controller_count() <= 1 and OS_Seaven.get_controller_style(0) == 0:
 			_manage_back()
 			return
 
@@ -121,7 +122,7 @@ func _on_element_pressed(element: InventoryElement, _inventory_player_index: int
 	ProgressData.load_status = LoadStatus.SAVE_OK
 	ProgressData.increment_stat("run_started")
 	ProgressData.data["chal_hourglass_quit_wave"] = false
-	var _error = get_tree().change_scene(MenuData.game_scene)
+	var _error = get_tree().change_scene_to_file(MenuData.game_scene)
 
 func _on_element_focused(element: InventoryElement, inventory_player_index: int, displayPanelData: bool = true) -> void :
 	var player_index = FocusEmulatorSignal.get_player_index(element)

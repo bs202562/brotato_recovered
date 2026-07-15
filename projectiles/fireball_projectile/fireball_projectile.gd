@@ -1,14 +1,14 @@
 class_name FireballProjectile
 extends PlayerProjectile
 
-onready var burning_particles = $BurningParticles
+@onready var burning_particles = $BurningParticles
 
 
 func shoot() -> void :
-	.shoot()
+	super.shoot()
 	burning_particles.restart()
 
 
 func stop() -> void :
-	.stop()
+	super.stop()
 	burning_particles.emitting = false

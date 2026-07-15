@@ -3,9 +3,9 @@ extends HBoxContainer
 
 signal value_changed(value)
 
-onready var _label = $Label
-onready var _slider = $HSlider
-onready var _value = $Value
+@onready var _label = $Label
+@onready var _slider = $HSlider
+@onready var _value = $Value
 
 
 func _ready() -> void :

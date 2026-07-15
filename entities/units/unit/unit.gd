@@ -7,13 +7,13 @@ signal took_damage(unit, value, knockback_direction, is_crit, is_dodge, is_prote
 signal crit_effect(weapon)
 signal one_shot_effect(unit)
 
-export (Array, Resource) var crit_sounds
-export (Array, Resource) var hurt_sounds
-export (Array, Resource) var burn_sounds
-export (Array, Resource) var dodge_sounds
-export (Resource) var stats
-export (bool) var mirror_sprite_with_movement = true
-export (Resource) var flash_mat
+@export var crit_sounds: Array = [] # (Array, Resource)
+@export var hurt_sounds: Array = [] # (Array, Resource)
+@export var burn_sounds: Array = [] # (Array, Resource)
+@export var dodge_sounds: Array = [] # (Array, Resource)
+@export var stats: Resource
+@export var mirror_sprite_with_movement: bool = true
+@export var flash_mat: Resource
 
 
 const THRESHOLD_DIST_TO_LOWER_DMG_ON_PULL: = 200
@@ -49,12 +49,12 @@ var _die_args_unit: = Entity.DieArgs.new()
 var _spawn_projectile_args = WeaponServiceSpawnProjectileArgs.new()
 var _take_damage_args_unit: = TakeDamageArgs.new(0)
 
-onready var effect_behaviors: = $EffectBehaviors
-onready var _flash_timer: = $FlashTimer as Timer
-onready var _hurtbox: = $Hurtbox as Area2D
-onready var _movement_behavior: = $MovementBehavior
-onready var _burning_timer: = $BurningTimer as Timer
-onready var _burning_particles: = $BurningParticles
+@onready var effect_behaviors: = $EffectBehaviors
+@onready var _flash_timer: = $FlashTimer as Timer
+@onready var _hurtbox: = $Hurtbox as Area2D
+@onready var _movement_behavior: = $MovementBehavior
+@onready var _burning_timer: = $BurningTimer as Timer
+@onready var _burning_particles: = $BurningParticles
 
 
 func _ready() -> void :
@@ -62,7 +62,7 @@ func _ready() -> void :
 
 
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void :
-	.init(zone_min_pos, zone_max_pos)
+	super.init(zone_min_pos, zone_max_pos)
 
 	var burning_cooldown_reduction = RunData.sum_all_player_effects(Keys.burning_cooldown_reduction_hash) / 100.0
 	var burning_cooldown_increase = RunData.sum_all_player_effects(Keys.burning_cooldown_increase_hash) / 100.0
@@ -74,18 +74,18 @@ func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [
 	_entity_spawner_ref = entity_spawner_ref
 
 	_movement_behavior.init(self)
-	_speed_rand_value = rand_range( - stats.speed_randomization * RunData.current_run_accessibility_settings.speed, stats.speed_randomization * RunData.current_run_accessibility_settings.speed) as int
+	_speed_rand_value = randf_range( - stats.speed_randomization * RunData.current_run_accessibility_settings.speed, stats.speed_randomization * RunData.current_run_accessibility_settings.speed) as int
 
 
 func respawn() -> void :
-	.respawn()
+	super.respawn()
 	knockback_vector = Vector2.ZERO
 	_can_move = true
 	can_drop_loot = true
 	bonus_speed = 0
 	_hurtbox.enable()
 	_current_movement_behavior = _movement_behavior
-	_speed_rand_value = rand_range( - stats.speed_randomization * RunData.current_run_accessibility_settings.speed, stats.speed_randomization * RunData.current_run_accessibility_settings.speed) as int
+	_speed_rand_value = randf_range( - stats.speed_randomization * RunData.current_run_accessibility_settings.speed, stats.speed_randomization * RunData.current_run_accessibility_settings.speed) as int
 
 
 func init_current_stats() -> void :
@@ -139,20 +139,27 @@ func _physics_process(delta: float) -> void :
 
 	var velocity = get_next_velocity()
 	_integrate_forces_velocity = velocity
-	if mode == MODE_KINEMATIC:
-		
-		var infinite_inertia = true
+	# 4.x 移植: 3.x 的 mode==MODE_KINEMATIC 对应 4.x 的 freeze + FREEZE_MODE_KINEMATIC；
+	# RigidBody2D.test_motion() 已移除，改用 PhysicsServer2D.body_test_motion()
+	if freeze and freeze_mode == FREEZE_MODE_KINEMATIC:
+
 		var margin = 0.08
 		var delta_position: = Vector2.ZERO
-		var result = Physics2DTestMotionResult.new()
-		var is_colliding = test_motion(velocity * delta, infinite_inertia, margin, result)
-		global_position += result.motion
-		delta_position += result.motion
+		var result = PhysicsTestMotionResult2D.new()
+		var params = PhysicsTestMotionParameters2D.new()
+		params.from = global_transform
+		params.motion = velocity * delta
+		params.margin = margin
+		var is_colliding = PhysicsServer2D.body_test_motion(get_rid(), params, result)
+		global_position += result.get_travel()
+		delta_position += result.get_travel()
 		if is_colliding:
-			var slide_velocity = velocity.slide(result.collision_normal)
-			var _is_colliding = test_motion(slide_velocity * delta, infinite_inertia, margin, result)
-			global_position += result.motion
-			delta_position += result.motion
+			var slide_velocity = velocity.slide(result.get_collision_normal())
+			params.from = global_transform
+			params.motion = slide_velocity * delta
+			var _is_colliding = PhysicsServer2D.body_test_motion(get_rid(), params, result)
+			global_position += result.get_travel()
+			delta_position += result.get_travel()
 		_on_moved(delta_position)
 
 	if decaying_bonus_speed > 0:
@@ -161,12 +168,12 @@ func _physics_process(delta: float) -> void :
 		decaying_bonus_speed = min(decaying_bonus_speed + 60 * delta * 5, 0.0)
 
 
-func _integrate_forces(state: Physics2DDirectBodyState) -> void :
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void :
 	if sleeping:
 		return
 
-	if mode == MODE_KINEMATIC:
-		
+	if freeze and freeze_mode == FREEZE_MODE_KINEMATIC: # 4.x 移植: 原 mode == MODE_KINEMATIC
+
 		state.transform.origin = global_position
 		return
 	
@@ -231,7 +238,7 @@ func get_next_knockback_value() -> Vector2:
 	if knockback_vector.length_squared() == 0:
 		return Vector2.ZERO
 
-	knockback_vector = knockback_vector.linear_interpolate(Vector2.ZERO, 0.1)
+	knockback_vector = knockback_vector.lerp(Vector2.ZERO, 0.1)
 	return get_knockback_value()
 
 
@@ -304,13 +311,13 @@ func take_damage(value: int, args: TakeDamageArgs) -> Array:
 	if is_one_shot:
 		dmg_value_result.value = max(current_stats.health, dmg_value_result.value)
 		if hitbox:
-			hitbox.one_shot_something(self)
+			hitbox.notify_one_shot_something(self)
 	var full_dmg_value = dmg_value_result.value
 	dmg_taken = clamp(full_dmg_value, 0, current_stats.health)
 	current_stats.health = max(0.0, current_stats.health - full_dmg_value) as int
 
 	if (is_crit or is_one_shot) and hitbox:
-		hitbox.critically_hit_something(self, dmg_taken)
+		hitbox.notify_critically_hit_something(self, dmg_taken)
 		if hitbox.from != null:
 			emit_signal("crit_effect", hitbox.from)
 
@@ -343,7 +350,7 @@ func take_damage(value: int, args: TakeDamageArgs) -> Array:
 
 	if current_stats.health <= 0:
 		if hitbox:
-			hitbox.killed_something(self)
+			hitbox.notify_killed_something(self)
 
 		_die_args_unit.knockback_vector = knockback_direction * max(knockback_amount, MIN_DEATH_KNOCKBACK_AMOUNT)
 		_die_args_unit.killed_by_player_index = from_player_index
@@ -376,7 +383,7 @@ func take_damage(value: int, args: TakeDamageArgs) -> Array:
 			for effect in hitbox.effects:
 				if effect.key_hash == Keys.gold_on_crit_kill_hash and randf() <= effect.value / 100.0:
 					gold_added += 1
-					hitbox.added_gold_on_crit(gold_added)
+					hitbox.notify_added_gold_on_crit(gold_added)
 
 			if gold_added > 0:
 				RunData.add_gold(gold_added, from_player_index)
@@ -517,10 +524,10 @@ func flash() -> void :
 	_flash_timer.start()
 
 
-func die(args: = Utils.default_die_args) -> void :
+func die(args = Utils.default_die_args) -> void :
 	if dead:
 		return
-	.die(args)
+	super.die(args)
 	knockback_vector = args.knockback_vector
 	_can_move = false
 	_hurtbox.disable()
@@ -566,9 +573,9 @@ func hurt_area_entered_deferred(hitbox: Area2D) -> void :
 
 					var explosion = WeaponService.explode(effect, _explode_args_unit)
 					if from != null and from is Weapon:
-						explosion.connect("hit_something", from, "on_weapon_hit_something", [explosion._hitbox])
-						if not explosion.is_connected("killed_something", from, "on_killed_something"):
-							explosion.connect("killed_something", from, "on_killed_something", [explosion._hitbox])
+						explosion.connect("hit_something", Callable(from, "on_weapon_hit_something").bind(explosion._hitbox))
+						if not explosion.is_connected("killed_something", Callable(from, "on_killed_something")):
+							explosion.connect("killed_something", Callable(from, "on_killed_something").bind(explosion._hitbox))
 
 					is_exploding = true
 			elif effect.key_hash == Keys.stat_damage_hash and effect is PlayerHealthStatEffect:
@@ -589,14 +596,14 @@ func hurt_area_entered_deferred(hitbox: Area2D) -> void :
 				var projectile = WeaponService.manage_special_spawn_projectile(
 					self, 
 					hitbox.projectiles_on_hit[1], 
-					rand_range( - PI, PI), 
+					randf_range( - PI, PI), 
 					hitbox.projectiles_on_hit[2], 
 					_entity_spawner_ref, 
 					from, 
 					_spawn_projectile_args
 				)
-				if from != null and from is Weapon and not projectile.is_connected("hit_something", from, "on_weapon_hit_something"):
-					projectile.connect("hit_something", from, "on_weapon_hit_something", [projectile._hitbox])
+				if from != null and from is Weapon and not projectile.is_connected("hit_something", Callable(from, "on_weapon_hit_something")):
+					projectile.connect("hit_something", Callable(from, "on_weapon_hit_something").bind(projectile._hitbox))
 				if projectile.is_node_ready():
 					projectile.set_ignored_objects([self])
 				else:
@@ -605,7 +612,7 @@ func hurt_area_entered_deferred(hitbox: Area2D) -> void :
 		if hitbox.speed_percent_modifier != 0:
 			add_decaying_speed((get_base_speed_value_for_pct_based_decrease() * hitbox.speed_percent_modifier / 100.0) as int)
 
-	hitbox.hit_something(self, dmg_taken[1])
+	hitbox.notify_hit_something(self, dmg_taken[1])
 
 func _on_Hurtbox_area_entered(hitbox: Area2D) -> void :
 	call_deferred("hurt_area_entered_deferred", hitbox)
@@ -708,7 +715,7 @@ func _on_BurningTimer_timeout() -> void :
 
 func stop_burning() -> void :
 	_burning_timer.stop()
-	_burning_particles.stop_emitting()
+	_burning_particles.stop_emitting_particles()
 	set_burning(false)
 	_burning = null
 

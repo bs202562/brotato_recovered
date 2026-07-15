@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/gas_small_flame_ignite_01.wav-dcdbe7f9e5b879dd3f3703f37ea662c4.sample"
+type="AudioStreamWAV"
+uid="uid://i5wkk7wa33rn"
+path="res://.godot/imported/gas_small_flame_ignite_01.wav-dcdbe7f9e5b879dd3f3703f37ea662c4.sample"
 
 [deps]
 
 source_file="res://weapons/ranged/flamethrower/gas_small_flame_ignite_01.wav"
-dest_files=[ "res://.import/gas_small_flame_ignite_01.wav-dcdbe7f9e5b879dd3f3703f37ea662c4.sample" ]
+dest_files=["res://.godot/imported/gas_small_flame_ignite_01.wav-dcdbe7f9e5b879dd3f3703f37ea662c4.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

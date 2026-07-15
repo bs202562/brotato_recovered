@@ -7,13 +7,13 @@ uniform float desaturation : hint_range(0.0, 1.0) = 0.0;
 uniform vec2 texture_size = vec2(0.0, 0.0);
 
 // uniform arrays are not supported in Godot 3. Shader needs to be adapted for additional outlines
-uniform vec4 outline_color_0 : hint_color = vec4(0.0);
-uniform vec4 outline_color_1 : hint_color = vec4(0.0);
-uniform vec4 outline_color_2 : hint_color = vec4(0.0);
-uniform vec4 outline_color_3 : hint_color = vec4(0.0);
+uniform vec4 outline_color_0 : source_color = vec4(0.0);
+uniform vec4 outline_color_1 : source_color = vec4(0.0);
+uniform vec4 outline_color_2 : source_color = vec4(0.0);
+uniform vec4 outline_color_3 : source_color = vec4(0.0);
 
-uniform vec4 color_A : hint_color = vec4(0.000000, 0.000000, 0.000000, 1.000000);
-uniform vec4 color_B : hint_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform vec4 color_A : source_color = vec4(0.000000, 0.000000, 0.000000, 1.000000);
+uniform vec4 color_B : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
 
 
 float get_neighboring_alpha(sampler2D texture, vec2 uv, vec2 size) {

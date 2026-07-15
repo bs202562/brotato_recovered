@@ -1,8 +1,7 @@
 class_name Ratzilla
 extends Pet
 
-onready var _hitbox: = $Hitbox as Hitbox
-onready var _tween: = $Tween as Tween
+@onready var _hitbox: = $Hitbox as Hitbox
 var _current_cooldown: float = 0
 var _is_shooting = false
 var _base_weapon_stats: = WeaponStats.new()
@@ -10,12 +9,12 @@ var _current_weapon_stats: = WeaponStats.new()
 
 
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void :
-	.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
+	super.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
 
 	_hitbox.from = self
 
 func update_data(effect: PetEffect) -> void :
-	.update_data(effect)
+	super.update_data(effect)
 	_base_weapon_stats = effect.weapon_stats
 
 	reload_data()
@@ -67,13 +66,15 @@ func _physics_process(delta: float) -> void :
 		_current_cooldown = _current_weapon_stats.cooldown
 		_is_shooting = false
 
+	super._physics_process(delta) # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_physics_process 为子类优先）
+
 func shoot() -> void :
 	_is_shooting = true
 	_hitbox.enable()
 
 
 func update_animation(movement: Vector2) -> void :
-	.update_animation(movement)
+	super.update_animation(movement)
 	if movement.length() > 0.1:
 		if not (_animation_player.current_animation == "move" or _animation_player.current_animation == "pet"):
 			_animation_player.play("move")
@@ -90,8 +91,8 @@ func _on_Hitbox_hit_something(thing_hit, damage_dealt):
 
 func _can_pet():
 	if _check_can_be_pet():
-		yield(get_tree().create_timer(0.1), "timeout")
+		await get_tree().create_timer(0.1).timeout
 		_animation_player.play("pet")
-		yield(get_tree().create_timer(2.5), "timeout")
+		await get_tree().create_timer(2.5).timeout
 		_animation_player.play("idle_pet")
 

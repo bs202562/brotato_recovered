@@ -7,7 +7,7 @@ signal killed_something(thing_killed)
 signal one_shot_something(thing_killed)
 signal added_gold_on_crit(gold_added)
 
-export var deals_damage: = true
+@export var deals_damage: = true
 
 var damage: = 1
 var knockback_direction: = Vector2.ZERO
@@ -34,7 +34,7 @@ var scaling_stats: Array = []
 var player_attack_id: = - 1
 var _hitbox_args: = HitboxArgs.new()
 
-onready var _collision: = $Collision as CollisionShape2D
+@onready var _collision: = $Collision as CollisionShape2D
 
 class HitboxArgs:
 	var scaling_stats: Array = []
@@ -50,7 +50,7 @@ class HitboxArgs:
 	func set_from_explode_args(explode_args: WeaponServiceExplodeArgs) -> Hitbox.HitboxArgs:
 		return _set_from(explode_args)
 
-	func _set_from(source: Reference) -> Hitbox.HitboxArgs:
+	func _set_from(source: RefCounted) -> Hitbox.HitboxArgs:
 		scaling_stats = source.scaling_stats
 		accuracy = source.accuracy
 		crit_chance = source.crit_chance
@@ -70,7 +70,7 @@ func set_damage(p_value: int, args: HitboxArgs = _hitbox_args) -> void :
 	is_healing = args.is_healing
 
 
-func hit_something(thing_hit: Node, damage_dealt: int) -> void :
+func notify_hit_something(thing_hit: Node, damage_dealt: int) -> void :
 	emit_signal("hit_something", thing_hit, damage_dealt)
 
 	if is_instance_valid(from) and damage_tracking_key_hash != Keys.empty_hash and from.player_index != - 1:
@@ -78,17 +78,17 @@ func hit_something(thing_hit: Node, damage_dealt: int) -> void :
 		RunData.add_tracked_value(from.player_index, damage_tracking_key_hash, damage_dealt)
 
 
-func killed_something(thing_killed: Node) -> void :
+func notify_killed_something(thing_killed: Node) -> void :
 	emit_signal("killed_something", thing_killed)
 
-func one_shot_something(thing_killed: Node) -> void :
+func notify_one_shot_something(thing_killed: Node) -> void :
 	emit_signal("one_shot_something", thing_killed)
 
-func critically_hit_something(thing_hit: Node, damage_dealt: int) -> void :
+func notify_critically_hit_something(thing_hit: Node, damage_dealt: int) -> void :
 	emit_signal("critically_hit_something", thing_hit, damage_dealt)
 
 
-func added_gold_on_crit(gold_added: int) -> void :
+func notify_added_gold_on_crit(gold_added: int) -> void :
 	emit_signal("added_gold_on_crit", gold_added)
 
 

@@ -1,12 +1,12 @@
 class_name CharacterData
 extends ItemData
 
-export (Array, String) var wanted_tags
-export (Array, String) var banned_item_groups
-export (Array, String) var banned_items
-export (Array, String) var banned_upgrades
-export (Array, Resource) var starting_weapons
-export (Array, Resource) var starting_items
+@export var wanted_tags: Array = [] # (Array, String)
+@export var banned_item_groups: Array = [] # (Array, String)
+@export var banned_items: Array = [] # (Array, String)
+@export var banned_upgrades: Array = [] # (Array, String)
+@export var starting_weapons: Array = [] # (Array, Resource)
+@export var starting_items: Array = [] # (Array, Resource)
 
 
 func get_category() -> int:

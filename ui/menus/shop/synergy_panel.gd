@@ -3,9 +3,9 @@ extends PanelContainer
 
 var _plain_text: = ""
 
-onready var _margin_container = $MarginContainer
-onready var _synergy_effects = $MarginContainer / VBoxContainer / SynergyEffects
-onready var _synergy_name = $MarginContainer / VBoxContainer / SynergyName
+@onready var _margin_container = $MarginContainer
+@onready var _synergy_effects = $MarginContainer / VBoxContainer / SynergyEffects
+@onready var _synergy_name = $MarginContainer / VBoxContainer / SynergyName
 
 var small_font = preload("res://resources/fonts/actual/base/font_very_smallest_text.tres")
 var normal_font = preload("res://resources/fonts/actual/base/font_smallest_text.tres")
@@ -17,7 +17,7 @@ func set_data(set: SetData, player_index: int) -> void :
 
 	_synergy_name.text = tr(set.name)
 
-	_synergy_effects.bbcode_text = ""
+	_synergy_effects.text = ""
 
 	var new_text = ""
 	_plain_text = ""
@@ -48,28 +48,28 @@ func set_data(set: SetData, player_index: int) -> void :
 
 		new_text += col_a + new_line + col_b
 
-	_synergy_effects.bbcode_text = new_text
+	_synergy_effects.text = new_text
 
 	if RunData.is_coop_run:
 		if new_text.length() >= 300:
-			_synergy_effects.add_font_override("normal_font", small_font)
+			_synergy_effects.add_theme_font_override("normal_font", small_font)
 		else:
-			_synergy_effects.add_font_override("normal_font", normal_font)
+			_synergy_effects.add_theme_font_override("normal_font", normal_font)
 
 	_resize_to_text()
 
 
 func _resize_to_text() -> void :
 	var lines = _plain_text.split("\n")
-	var font = _synergy_effects.get_font("normal_font")
+	var font = _synergy_effects.get_theme_font("normal_font")
 	var max_width = 0
 	for line in lines:
 		var text_size = font.get_string_size(line).x
 		if text_size > max_width:
 			max_width = text_size
-	var style: = get_stylebox("panel")
+	var style = get_theme_stylebox("panel")
 	
 	
 	var error: = 5
-	var margin = _margin_container.get_constant("margin_left") + _margin_container.get_constant("margin_right") + style.get_margin(MARGIN_LEFT) + style.get_margin(MARGIN_RIGHT) + error
-	rect_min_size.x = max_width + margin
+	var margin = _margin_container.get_theme_constant("offset_left") + _margin_container.get_theme_constant("offset_right") + style.get_margin(SIDE_LEFT) + style.get_margin(SIDE_RIGHT) + error
+	custom_minimum_size.x = max_width + margin

@@ -6,7 +6,7 @@
 [ext_resource path="res://entities/units/enemies/attack_behaviors/attack_behavior.gd" type="Script" id=4]
 [ext_resource path="res://entities/units/enemies/enemy.gd" type="Script" id=5]
 [ext_resource path="res://entities/units/movement_behaviors/follow_target_movement_behavior.gd" type="Script" id=6]
-[ext_resource path="res://entities/units/enemies/baby_alien/baby_alien.png" type="Texture" id=7]
+[ext_resource path="res://entities/units/enemies/baby_alien/baby_alien.png" type="Texture2D" id=7]
 [ext_resource path="res://entities/units/unit/unit.tscn" type="PackedScene" id=8]
 [ext_resource path="res://entities/units/enemies/attack_behaviors/shoot_charmed.tres" type="Animation" id=9]
 
@@ -53,7 +53,7 @@ can_be_cursed = true
 can_be_charmed = true
 to_be_removed_in_priority = false
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 texture = ExtResource( 7 )
 
 [node name="Collision" parent="." index="1"]

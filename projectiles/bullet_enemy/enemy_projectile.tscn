@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://projectiles/projectile.tscn" type="PackedScene" id=1]
-[ext_resource path="res://projectiles/bullet_enemy/bullet_enemy.png" type="Texture" id=2]
+[ext_resource path="res://projectiles/bullet_enemy/bullet_enemy.png" type="Texture2D" id=2]
 [ext_resource path="res://projectiles/bullet_enemy/enemy_projectile.gd" type="Script" id=3]
 [ext_resource path="res://resources/shaders/projectile_outline_shadermat.tres" type="Material" id=4]
 
@@ -11,7 +11,7 @@ radius = 17.0294
 [node name="EnemyProjectile" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 material = ExtResource( 4 )
 position = Vector2( 0, 0 )
 texture = ExtResource( 2 )

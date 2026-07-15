@@ -16,12 +16,12 @@ func _init() -> void :
 	if OS.get_name().begins_with("Seaven"):
 		return ;
 
-	var log_path: String = ProjectSettings.get_setting("logging/file_logging/log_path")
+	var log_path: String = ProjectSettings.get_setting("debug/file_logging/log_path")
 	log_path = ProjectSettings.globalize_path(log_path)
 
 	var log_directory_path: = log_path.get_base_dir()
 	var log_file_paths = get_directory_file_paths(log_directory_path)
-	if log_file_paths.empty():
+	if log_file_paths.is_empty():
 		_print_error("Failed to collect logs in %s" % log_directory_path)
 		return
 
@@ -35,14 +35,14 @@ func _init() -> void :
 			var result = regex.search(log_file_path)
 			if result != null:
 				engine_log_paths.push_back(log_file_path)
-	if engine_log_paths.empty():
+	if engine_log_paths.is_empty():
 		_print_error("Failed to find engine logs in %s" % log_directory_path)
 		return
 
 	engine_log_paths.sort()
 	var latest_log_file_path = engine_log_paths.back()
-	var file: = File.new()
-	if file.open(latest_log_file_path, File.READ) != OK:
+	var file: = FileAccess.open(latest_log_file_path, FileAccess.READ)
+	if file == null:
 		_print_error("Failed to read file %s" % latest_log_file_path)
 		return
 
@@ -101,13 +101,13 @@ func _init() -> void :
 func get_directory_file_paths(directory_path: String) -> Array:
 	var file_paths: = []
 
-	var directory: = Directory.new()
-	if directory.open(directory_path) == OK:
+	var directory: = DirAccess.open(directory_path)
+	if directory != null:
 		var _e = directory.list_dir_begin()
 		var file_name: = directory.get_next()
 		while file_name != "":
 			if not directory.current_is_dir():
-				file_paths.append(directory_path.plus_file(file_name))
+				file_paths.append(directory_path.path_join(file_name))
 			file_name = directory.get_next()
 		directory.list_dir_end()
 

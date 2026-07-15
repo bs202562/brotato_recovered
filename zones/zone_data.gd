@@ -1,28 +1,28 @@
 class_name ZoneData
 extends Resource
 
-export (int, 0, 9999) var my_id = 0
-export (bool) var unlocked_by_default = false
-export (String) var name = ""
-export (Resource) var icon = null
-export (int) var width = 32
-export (int) var height = 24
-export (Array, Resource) var waves_data
+@export var my_id = 0 # (int, 0, 9999)
+@export var unlocked_by_default: bool = false
+@export var name: String = ""
+@export var icon: Resource = null
+@export var width: int = 32
+@export var height: int = 24
+@export var waves_data: Array = [] # (Array, Resource)
 
-export (Array, Resource) var loot_alien_groups
-export (Array, Resource) var groups_data_in_all_waves
-export (Array, Resource) var horde_groups
-export (Array, Resource) var endless_enemy_scenes
-export (Array, Resource) var endless_nightmare_enemy_scenes
-export (Array, Resource) var default_backgrounds = []
-export (Resource) var fruit_sprite
-export (Resource) var item_box_sprite
-export (Resource) var legendary_box_sprite
-export (Resource) var ui_background
+@export var loot_alien_groups: Array = [] # (Array, Resource)
+@export var groups_data_in_all_waves: Array = [] # (Array, Resource)
+@export var horde_groups: Array = [] # (Array, Resource)
+@export var endless_enemy_scenes: Array = [] # (Array, Resource)
+@export var endless_nightmare_enemy_scenes: Array = [] # (Array, Resource)
+@export var default_backgrounds = [] # (Array, Resource)
+@export var fruit_sprite: Resource
+@export var item_box_sprite: Resource
+@export var legendary_box_sprite: Resource
+@export var ui_background: Resource
 
 
-func get_zone_consumable_sprite(consumable: ConsumableData) -> Texture:
-	var sprite: Texture
+func get_zone_consumable_sprite(consumable: ConsumableData) -> Texture2D:
+	var sprite: Texture2D
 
 	match consumable.my_id_hash:
 		Keys.consumable_fruit_hash:

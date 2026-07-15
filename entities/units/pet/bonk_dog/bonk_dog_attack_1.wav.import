@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/bonk_dog_attack_1.wav-5d2b9a25cd63669c47a38444e52ce189.sample"
+type="AudioStreamWAV"
+uid="uid://boh35j78304ph"
+path="res://.godot/imported/bonk_dog_attack_1.wav-5d2b9a25cd63669c47a38444e52ce189.sample"
 
 [deps]
 
 source_file="res://entities/units/pet/bonk_dog/bonk_dog_attack_1.wav"
-dest_files=[ "res://.import/bonk_dog_attack_1.wav-5d2b9a25cd63669c47a38444e52ce189.sample" ]
+dest_files=["res://.godot/imported/bonk_dog_attack_1.wav-5d2b9a25cd63669c47a38444e52ce189.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

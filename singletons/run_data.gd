@@ -437,7 +437,7 @@ func get_player_effect(key: int, player_index: int):
 
 
 func get_player_effect_bool(key: int, player_index: int) -> bool:
-	assert (player_index >= 0, key)
+	assert (player_index >= 0, str(key))
 	return get_player_effect(key, player_index) > 0
 
 
@@ -1059,7 +1059,7 @@ func remove_weapon_by_index(index: int, player_index: int) -> int:
 	var removed_weapon_tracked_value = 0
 	var weapon = players_data[player_index].weapons[index]
 	removed_weapon_tracked_value = weapon.tracked_value
-	players_data[player_index].weapons.remove(index)
+	players_data[player_index].weapons.remove_at(index)
 	after_weapon_removed(weapon, player_index)
 	return removed_weapon_tracked_value
 
@@ -1323,7 +1323,7 @@ func add_item_displayed(new_item: ItemData, player_index: int) -> void :
 		if display_appearance:
 			player_appearances.push_back(new_appearance)
 
-		player_appearances.sort_custom(Sorter, "sort_depth_ascending")
+		player_appearances.sort_custom(Callable(Sorter, "sort_depth_ascending"))
 
 
 func remove_item_displayed(removed_item: ItemData, player_index: int) -> void :
@@ -1406,7 +1406,7 @@ func can_combine(weapon_data: WeaponData, player_index: int) -> bool:
 
 func sort_appearances() -> void :
 	for player_data in players_data:
-		player_data.appearances.sort_custom(Sorter, "sort_depth_ascending")
+		player_data.appearances.sort_custom(Callable(Sorter, "sort_depth_ascending"))
 
 
 func init_remove_speed_data(player_index: int) -> Dictionary:
@@ -1808,7 +1808,7 @@ func resume_from_state(state: Dictionary) -> void :
 		match typeof(e[2]):
 			TYPE_STRING:
 				e[2] = Keys.generate_hash((e[2]))
-			TYPE_REAL:
+			TYPE_FLOAT:
 				e[2] = int(e[2])
 
 	bosses_spawn = state.bosses_spawn.duplicate()
@@ -1874,7 +1874,7 @@ func apply_end_run() -> void :
 		ProgressData.reset_and_save_new_run_state()
 
 	var scene = get_end_run_scene_path()
-	var _e = get_tree().change_scene(scene)
+	var _e = get_tree().change_scene_to_file(scene)
 	get_tree().paused = false
 
 
@@ -1923,7 +1923,7 @@ func apply_run_won() -> void :
 			var curse_stat = max(0, Utils.get_max_capped_stat(Keys.stat_curse_hash, player_index)) as int
 			ChallengeService.try_complete_challenge(ChallengeService.chal_uncorrupted_hash, curse_stat, true)
 
-	ChallengeService.complete_challenge(Keys.generate_hash("chal_difficulty_" + String(current_difficulty)))
+	ChallengeService.complete_challenge(Keys.generate_hash("chal_difficulty_" + str(current_difficulty)))
 	if current_difficulty >= ChallengeService.get_chal(ChallengeService.chal_banned_items_hash).value:
 		ChallengeService.complete_challenge(ChallengeService.chal_banned_items_hash)
 
@@ -1970,7 +1970,7 @@ func init_tracked_effects() -> Dictionary:
 
 
 func get_scaling_bonus(value: int, stat_scaled: String, nb_stat_scaled: int, perm_stats_only: bool, player_index: int) -> int:
-	assert ( not stat_scaled.is_valid_integer())
+	assert ( not stat_scaled.is_valid_int())
 	var stat_scaled_hash: int = Keys.generate_hash(stat_scaled)
 	var actual_nb_scaled: = 0.0
 	if stat_scaled_hash == Keys.materials_hash:

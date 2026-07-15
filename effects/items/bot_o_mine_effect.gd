@@ -1,8 +1,8 @@
 class_name BotOMineEffect
 extends PetEffect
 
-export (Resource) var weapon_stats
-export (Resource) var landmine_effect_stat
+@export var weapon_stats: Resource
+@export var landmine_effect_stat: Resource
 
 static func get_id() -> String:
 	return "bot_o_mine"
@@ -21,12 +21,12 @@ func get_args(player_index: int) -> Array:
 
 	return [str(_current_weapon_stats.damage), 
 	scaling_stats_text, 
-	str(stepify(spawn_cd / 60.0, 0.1)), 
+	str(snapped(spawn_cd / 60.0, 0.1)), 
 	str(landmine_stats.damage), 
 	landmine_scaling_stats_text]
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.weapon_stats = weapon_stats.serialize()
 	serialized.landmine_effect_stat = landmine_effect_stat.serialize()
@@ -34,7 +34,7 @@ func serialize() -> Dictionary:
 	return serialized
 
 func deserialize_and_merge(serialized: Dictionary) -> void :
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	var stats = RangedWeaponStats.new()
 	stats.deserialize_and_merge(serialized.weapon_stats)

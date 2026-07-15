@@ -2,15 +2,15 @@ class_name StatPopup
 extends BasePopup
 
 
-export var description_min_width: = 460
+@export var description_min_width: = 460
 
-onready var _icon = $MarginContainer / HBoxContainer / Icon
-onready var _title = $MarginContainer / HBoxContainer / VBoxContainer / Title
-onready var _description = $MarginContainer / HBoxContainer / VBoxContainer / Description
+@onready var _icon = $MarginContainer / HBoxContainer / Icon
+@onready var _title = $MarginContainer / HBoxContainer / VBoxContainer / Title
+@onready var _description = $MarginContainer / HBoxContainer / VBoxContainer / Description
 
 
 func _ready() -> void :
-	_description.rect_min_size.x = description_min_width
+	_description.custom_minimum_size.x = description_min_width
 
 
 func display_stat(button: Node, title: String, value: int, player_index: int) -> void :

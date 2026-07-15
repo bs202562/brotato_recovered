@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/wasteland-survivors by evgeny-bardyuzha Artlist.mp3-2cc484ff53236b5ff34f24ba73f0a9e9.mp3str"
+uid="uid://k7nyx3ur2qgm"
+path="res://.godot/imported/wasteland-survivors by evgeny-bardyuzha Artlist.mp3-2cc484ff53236b5ff34f24ba73f0a9e9.mp3str"
 
 [deps]
 
 source_file="res://resources/music/wasteland-survivors by evgeny-bardyuzha Artlist.mp3"
-dest_files=[ "res://.import/wasteland-survivors by evgeny-bardyuzha Artlist.mp3-2cc484ff53236b5ff34f24ba73f0a9e9.mp3str" ]
+dest_files=["res://.godot/imported/wasteland-survivors by evgeny-bardyuzha Artlist.mp3-2cc484ff53236b5ff34f24ba73f0a9e9.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

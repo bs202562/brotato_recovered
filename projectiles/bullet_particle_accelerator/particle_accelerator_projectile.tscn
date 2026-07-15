@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://projectiles/bullet_particle_accelerator/particle_accelerator_projectile.gd" type="Script" id=1]
-[ext_resource path="res://projectiles/bullet_particle_accelerator/particle_accelerator_projectile.png" type="Texture" id=2]
-[ext_resource path="res://projectiles/bullet_particle_accelerator/particle_accelerator_projectile_end.png" type="Texture" id=3]
+[ext_resource path="res://projectiles/bullet_particle_accelerator/particle_accelerator_projectile.png" type="Texture2D" id=2]
+[ext_resource path="res://projectiles/bullet_particle_accelerator/particle_accelerator_projectile_end.png" type="Texture2D" id=3]
 [ext_resource path="res://overlap/hitbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://projectiles/bullet_particle_accelerator/particle_accelerator_projectile_start.png" type="Texture" id=5]
+[ext_resource path="res://projectiles/bullet_particle_accelerator/particle_accelerator_projectile_start.png" type="Texture2D" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 22.5 )
@@ -18,8 +18,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -30,8 +30,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -42,8 +42,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -58,8 +58,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 0.1 ), Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
 }
@@ -70,8 +70,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.4 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "stop"
@@ -84,8 +84,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 0.1 ), Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
 }
@@ -96,8 +96,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 0.1 ), Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
 }
@@ -109,7 +109,7 @@ destroy_on_leaving_screen = false
 [node name="StartContainer" type="Node2D" parent="."]
 position = Vector2( -100, 0 )
 
-[node name="StartProjectile" type="Sprite" parent="StartContainer"]
+[node name="StartProjectile" type="Sprite2D" parent="StartContainer"]
 position = Vector2( 0, -16 )
 texture = ExtResource( 5 )
 centered = false
@@ -117,14 +117,14 @@ centered = false
 [node name="EndContainer" type="Node2D" parent="."]
 position = Vector2( 100, 0 )
 
-[node name="EndProjecitle" type="Sprite" parent="EndContainer"]
+[node name="EndProjecitle" type="Sprite2D" parent="EndContainer"]
 position = Vector2( 0, -16 )
 texture = ExtResource( 3 )
 centered = false
 
 [node name="Contents" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite" parent="Contents"]
+[node name="Sprite2D" type="Sprite2D" parent="Contents"]
 unique_name_in_owner = true
 position = Vector2( 0, -16 )
 texture = ExtResource( 2 )

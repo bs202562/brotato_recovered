@@ -1,11 +1,11 @@
 class_name ExplodingEffect
 extends NullEffect
 
-export (float, 0.0, 1.0, 0.01) var chance: = 1.0
-export (PackedScene) var explosion_scene
-export (float) var scale: = 1.0
-export (int) var base_smoke_amount: = 40
-export (int) var sound_db_mod: = - 10
+@export var chance: = 1.0 # (float, 0.0, 1.0, 0.01)
+@export var explosion_scene: PackedScene
+@export var scale := 1.0
+@export var base_smoke_amount := 40
+@export var sound_db_mod := - 10
 
 var explosion_pool_id: int = Keys.empty_hash
 
@@ -23,7 +23,7 @@ func get_args(_player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.chance = chance
 
@@ -38,7 +38,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void :
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	chance = serialized.chance
 	if serialized.has("explosion_scene"):

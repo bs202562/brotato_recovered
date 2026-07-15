@@ -60,7 +60,7 @@ func _init() -> void :
 
 func _enter_tree():
 	if quit_game:
-		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+		get_tree().notification(Node.NOTIFICATION_WM_CLOSE_REQUEST)
 
 
 func get_type() -> int:

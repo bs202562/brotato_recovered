@@ -6,7 +6,7 @@ const PROJECTILE_HALF_ADDITIONAL_DISTANCE = 50
 const INFINITE_RANGE = 10000
 const PHYSICS_FPS: float = 1.0 / 60.0
 
-export (int) var rotation_speed = 0
+@export var rotation_speed: int = 0
 
 var spawn_position: Vector2
 
@@ -32,6 +32,8 @@ func _physics_process(delta: float) -> void :
 	if _time_until_max_range <= 0:
 		stop()
 	_time_until_max_range -= delta
+
+	super._physics_process(delta) # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用（_physics_process 为子类优先）
 
 
 func shoot_ex(p_from: Node, 
@@ -65,7 +67,7 @@ func shoot_ex(p_from: Node,
 
 
 func shoot() -> void :
-	.shoot()
+	super.shoot()
 	global_position = spawn_position
 	_sprite.modulate.a = ProgressData.settings.projectile_opacity
 	_set_time_until_max_range()
@@ -119,7 +121,7 @@ func _on_Hitbox_hit_something(thing_hit: Node, damage_dealt: int) -> void :
 func bounce(thing_hit: Node) -> void :
 	_bounce -= 1
 	var target = thing_hit._entity_spawner_ref.get_rand_enemy(thing_hit)
-	var direction = (target.global_position - global_position).angle() if target != null else rand_range( - PI, PI)
+	var direction = (target.global_position - global_position).angle() if target != null else randf_range( - PI, PI)
 	velocity = Vector2.RIGHT.rotated(direction) * velocity.length()
 	rotation = velocity.angle()
 	_max_range = INFINITE_RANGE

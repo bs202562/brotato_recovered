@@ -3,12 +3,12 @@ extends PanelContainer
 
 var chal_data: ChallengeData
 
-onready var _icon = $MarginContainer / VBoxContainer / HBoxContainer / Icon
-onready var _name = $"%Name" as Label
-onready var _description = $"%Description"
+@onready var _icon = $MarginContainer / VBoxContainer / HBoxContainer / Icon
+@onready var _name = $"%Name" as Label
+@onready var _description = $"%Description"
 
 
-func set_data(p_chal_data: ChallengeData, locked: bool = false, locked_icon: Texture = null) -> void :
+func set_data(p_chal_data: ChallengeData, locked: bool = false, locked_icon: Texture2D = null) -> void :
 
 	_name.self_modulate = Utils.SECONDARY_FONT_COLOR
 	chal_data = p_chal_data

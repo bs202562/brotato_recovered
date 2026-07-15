@@ -1,171 +1,171 @@
 [gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://entities/units/pet/pet.tscn" type="PackedScene" id=1]
-[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_ear_r.png" type="Texture" id=2]
+[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_ear_r.png" type="Texture2D" id=2]
 [ext_resource path="res://entities/units/pet/catling_gun/catling_gun_stats.tres" type="Resource" id=3]
 [ext_resource path="res://entities/units/movement_behaviors/target_rand_pos_movement_behavior.gd" type="Script" id=4]
 [ext_resource path="res://entities/units/pet/catling_gun/catling_gun.gd" type="Script" id=5]
-[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_tail.png" type="Texture" id=7]
-[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_gun.png" type="Texture" id=8]
-[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_ear_l.png" type="Texture" id=9]
-[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_shadow.png" type="Texture" id=10]
-[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_body.png" type="Texture" id=11]
-[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_head_0.png" type="Texture" id=12]
-[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_head_1.png" type="Texture" id=13]
-[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_head_2.png" type="Texture" id=14]
+[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_tail.png" type="Texture2D" id=7]
+[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_gun.png" type="Texture2D" id=8]
+[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_ear_l.png" type="Texture2D" id=9]
+[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_shadow.png" type="Texture2D" id=10]
+[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_body.png" type="Texture2D" id=11]
+[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_head_0.png" type="Texture2D" id=12]
+[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_head_1.png" type="Texture2D" id=13]
+[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_head_2.png" type="Texture2D" id=14]
 [ext_resource path="res://entities/units/pet/catling_gun/angry_catling_gun.wav" type="AudioStream" id=15]
-[ext_resource path="res://entities/units/pet/hand_pet.png" type="Texture" id=16]
+[ext_resource path="res://entities/units/pet/hand_pet.png" type="Texture2D" id=16]
 [ext_resource path="res://entities/units/pet/catling_gun/catling_purring.wav" type="AudioStream" id=17]
 
 [sub_resource type="ViewportTexture" id=8]
 flags = 4
-viewport_path = NodePath("Animation/Viewport")
+viewport_path = NodePath("Animation/SubViewport")
 
 [sub_resource type="Animation" id=6]
 resource_name = "enter_in_mad_mode"
 length = 0.2
 step = 0.02
 tracks/0/type = "value"
-tracks/0/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:scale")
+tracks/0/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.101, 0.953 ), Vector2( 0.9911, 1.0169 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:position")
+tracks/1/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 2.8009, -13.9025 ), Vector2( 0, -31.3554 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:rotation_degrees")
+tracks/2/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ 0.87, 0.87 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:position")
+tracks/3/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 18, -19.9387 ), Vector2( 18, -19.9387 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:position")
+tracks/4/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -31.254, -3.992 ), Vector2( -31.254, -3.992 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:rotation_degrees")
+tracks/5/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ -16.4, 36.88 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:scale")
+tracks/6/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.21891, 0.90848 ), Vector2( 1.21891, 0.90848 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_l:rotation_degrees")
+tracks/7/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_l:rotation_degrees")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ -64.8, 20.1 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_r:rotation_degrees")
+tracks/8/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_r:rotation_degrees")
 tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ 71.0, -29.3 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_l:position")
+tracks/9/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_l:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -4.59076, -27.1612 ), Vector2( -13, -26 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_r:position")
+tracks/10/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_r:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 3.75076, -23.7397 ), Vector2( 11, -25 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:texture")
+tracks/11/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:texture")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.04 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.04 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 13 ), ExtResource( 14 ) ]
 }
@@ -176,8 +176,8 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 0.04, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.04, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -19.376 ), Vector2( 0, -59 ), Vector2( 0, -24 ) ]
 }
@@ -188,8 +188,8 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 0.04, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.04, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.157, 0.877 ), Vector2( 0.834, 1.57 ), Vector2( 1, 1 ) ]
 }
@@ -206,8 +206,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0 ),
-"times": PoolRealArray( 0, 0.25, 0.5 )
+"points": PackedFloat32Array( 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5 )
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("Animation:position:y")
@@ -216,8 +216,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.25, 0.5 )
+"points": PackedFloat32Array( -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5 )
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("Animation:scale:x")
@@ -226,8 +226,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.25, 0.5 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5 )
 }
 tracks/3/type = "bezier"
 tracks/3/path = NodePath("Animation:scale:y")
@@ -236,174 +236,174 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.25, 0.5 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5 )
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:scale")
+tracks/4/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.9911, 1.0169 ), Vector2( 0.988, 1.019 ), Vector2( 0.9911, 1.0169 ), Vector2( 1.0159, 1.0001 ), Vector2( 1.019, 0.998 ), Vector2( 1.0159, 1.0001 ), Vector2( 0.9911, 1.0169 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:position")
+tracks/5/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -31.3554 ), Vector2( 0, -31.606 ), Vector2( 0, -31.3554 ), Vector2( 0, -29.3506 ), Vector2( 0, -29.1 ), Vector2( 0, -29.3506 ), Vector2( 0, -31.3554 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:rotation_degrees")
+tracks/6/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.87, 0.0, 0.87, 7.83, 8.7, 7.83, 0.87 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:position")
+tracks/7/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.02, 0.05, 0.08, 0.1, 0.14, 0.18, 0.22, 0.25, 0.28, 0.3, 0.32, 0.35, 0.38, 0.42, 0.46, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.02, 0.05, 0.08, 0.1, 0.14, 0.18, 0.22, 0.25, 0.28, 0.3, 0.32, 0.35, 0.38, 0.42, 0.46, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 18, -19.9387 ), Vector2( 20.1782, -21.7534 ), Vector2( 18, -20.043 ), Vector2( 22.0858, -17.7942 ), Vector2( 18, -19.9387 ), Vector2( 14.5819, -24.9939 ), Vector2( 22.1372, -20.8449 ), Vector2( 19.2243, -22.0128 ), Vector2( 18, -19.1043 ), Vector2( 18.2257, -25.1633 ), Vector2( 18, -19 ), Vector2( 21.1573, -18.7564 ), Vector2( 18, -19.1043 ), Vector2( 13.0169, -23.1567 ), Vector2( 20.1565, -25.8303 ), Vector2( 22.1691, -21.747 ), Vector2( 18, -19.9387 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:position")
+tracks/8/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.05, 0.2, 0.25, 0.3, 0.45, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.2, 0.25, 0.3, 0.45, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -31.254, -3.992 ), Vector2( -31.3162, -3.39824 ), Vector2( -31.5963, -0.72632 ), Vector2( -31.643, -0.281 ), Vector2( -31.5963, -0.72632 ), Vector2( -31.3162, -3.39824 ), Vector2( -31.254, -3.992 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:rotation_degrees")
+tracks/9/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 36.88, 38.0, 36.88, 31.84, 31.0, 31.84, 36.88 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:scale")
+tracks/10/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.15, 0.2, 0.25, 0.4, 0.45, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.15, 0.2, 0.25, 0.4, 0.45, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.21891, 0.90848 ), Vector2( 1.04438, 0.98336 ), Vector2( 1.0056, 1 ), Vector2( 1.04438, 0.98336 ), Vector2( 1.21891, 0.90848 ), Vector2( 1.248, 0.896 ), Vector2( 1.21891, 0.90848 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_l:rotation_degrees")
+tracks/11/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_l:rotation_degrees")
 tracks/11/interp = 2
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.26, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.26, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 20.1, 28.3, 20.1 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_r:rotation_degrees")
+tracks/12/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_r:rotation_degrees")
 tracks/12/interp = 2
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 0.26, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.26, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ -29.3, -37.6, -29.3 ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_l:position")
+tracks/13/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_l:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
+"times": PackedFloat32Array(  ),
+"transitions": PackedFloat32Array(  ),
 "update": 0,
 "values": [  ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_r:position")
+tracks/14/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_r:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
+"times": PackedFloat32Array(  ),
+"transitions": PackedFloat32Array(  ),
 "update": 0,
 "values": [  ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:texture")
+tracks/15/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:texture")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 14 ) ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun:position")
+tracks/16/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0, 0.02, 0.04, 0.07, 0.08, 0.14, 0.19, 0.22, 0.25, 0.28, 0.29, 0.32, 0.33, 0.38, 0.42, 0.46, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.02, 0.04, 0.07, 0.08, 0.14, 0.19, 0.22, 0.25, 0.28, 0.29, 0.32, 0.33, 0.38, 0.42, 0.46, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 18, -19.6604 ), Vector2( 21.309, -21.815 ), Vector2( 18, -19.7388 ), Vector2( 14.734, -15.311 ), Vector2( 18, -19.6604 ), Vector2( 18.884, -26.737 ), Vector2( 20.878, -19.379 ), Vector2( 14.972, -25.073 ), Vector2( 18, -18.8374 ), Vector2( 21.933, -21.187 ), Vector2( 18, -18.759 ), Vector2( 15.836, -24.667 ), Vector2( 18, -18.8374 ), Vector2( 24.085, -21.514 ), Vector2( 17.05, -24.011 ), Vector2( 23, -19.299 ), Vector2( 18, -19.6604 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun:rotation_degrees")
+tracks/17/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"times": PoolRealArray( 0, 0.04, 0.08, 0.25, 0.29, 0.33, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.04, 0.08, 0.25, 0.29, 0.33, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.011961, 0.413001, 0.0119612, -4.19896, -4.6, -4.19896, 0.011961 ]
 }
@@ -420,8 +420,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0 ),
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3 )
+"points": PackedFloat32Array( 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2, 2.5, 3 )
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("Animation:position:y")
@@ -430,8 +430,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3 )
+"points": PackedFloat32Array( -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2, 2.5, 3 )
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("Animation:scale:x")
@@ -440,8 +440,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2, 2.5, 3 )
 }
 tracks/3/type = "bezier"
 tracks/3/path = NodePath("Animation:scale:y")
@@ -450,174 +450,174 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2, 2.5, 3 )
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:scale")
+tracks/4/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.9911, 1.0169 ), Vector2( 0.988, 1.019 ), Vector2( 0.9911, 1.0169 ), Vector2( 1.0159, 1.0001 ), Vector2( 1.019, 0.998 ), Vector2( 1.0159, 1.0001 ), Vector2( 0.9911, 1.0169 ), Vector2( 0.988, 1.019 ), Vector2( 0.9911, 1.0169 ), Vector2( 1.0159, 1.0001 ), Vector2( 1.019, 0.998 ), Vector2( 1.0159, 1.0001 ), Vector2( 0.9911, 1.0169 ), Vector2( 0.988, 1.019 ), Vector2( 0.9911, 1.0169 ), Vector2( 1.0159, 1.0001 ), Vector2( 1.019, 0.998 ), Vector2( 1.0159, 1.0001 ), Vector2( 0.9911, 1.0169 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:position")
+tracks/5/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -31.3554 ), Vector2( 0, -31.606 ), Vector2( 0, -31.3554 ), Vector2( 0, -29.3506 ), Vector2( 0, -29.1 ), Vector2( 0, -29.3506 ), Vector2( 0, -31.3554 ), Vector2( 0, -31.606 ), Vector2( 0, -31.3554 ), Vector2( 0, -29.3506 ), Vector2( 0, -29.1 ), Vector2( 0, -29.3506 ), Vector2( 0, -31.3554 ), Vector2( 0, -31.606 ), Vector2( 0, -31.3554 ), Vector2( 0, -29.3506 ), Vector2( 0, -29.1 ), Vector2( 0, -29.3506 ), Vector2( 0, -31.3554 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:rotation_degrees")
+tracks/6/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.87, 0.0, 0.87, 7.83, 8.7, 7.83, 0.87, 0.0, 0.87, 7.83, 8.7, 7.83, 0.87, 0.0, 0.87, 7.83, 8.7, 7.83, 0.87 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:position")
+tracks/7/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 18, -19.9387 ), Vector2( 18, -20.043 ), Vector2( 18, -19.9387 ), Vector2( 18, -19.1043 ), Vector2( 18, -19 ), Vector2( 18, -19.1043 ), Vector2( 18, -19.9387 ), Vector2( 18, -20.043 ), Vector2( 18, -19.9387 ), Vector2( 18, -19.1043 ), Vector2( 18, -19 ), Vector2( 18, -19.1043 ), Vector2( 18, -19.9387 ), Vector2( 18, -20.043 ), Vector2( 18, -19.9387 ), Vector2( 18, -19.1043 ), Vector2( 18, -19 ), Vector2( 18, -19.1043 ), Vector2( 18, -19.9387 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:position")
+tracks/8/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.8, 0.9, 1, 1.3, 1.4, 1.5, 1.8, 1.9, 2, 2.3, 2.4, 2.5, 2.8, 2.9, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3, 0.4, 0.5, 0.8, 0.9, 1, 1.3, 1.4, 1.5, 1.8, 1.9, 2, 2.3, 2.4, 2.5, 2.8, 2.9, 3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -26.7882, -3.992 ), Vector2( -25.0938, -3.928 ), Vector2( -24.882, -3.92 ), Vector2( -25.0938, -3.928 ), Vector2( -26.7882, -3.992 ), Vector2( -27, -4 ), Vector2( -26.7882, -3.992 ), Vector2( -25.0938, -3.928 ), Vector2( -24.882, -3.92 ), Vector2( -25.0938, -3.928 ), Vector2( -26.7882, -3.992 ), Vector2( -27, -4 ), Vector2( -26.7882, -3.992 ), Vector2( -25.0938, -3.928 ), Vector2( -24.882, -3.92 ), Vector2( -25.0938, -3.928 ), Vector2( -26.7882, -3.992 ), Vector2( -27, -4 ), Vector2( -26.7882, -3.992 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:rotation_degrees")
+tracks/9/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.9, 1, 1.1, 1.4, 1.5, 1.6, 1.9, 2, 2.1, 2.4, 2.5, 2.6, 2.9, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.4, 0.5, 0.6, 0.9, 1, 1.1, 1.4, 1.5, 1.6, 1.9, 2, 2.1, 2.4, 2.5, 2.6, 2.9, 3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -0.65, -5.85, -6.5, -5.85, -0.65, 0.0, -0.65, -5.85, -6.5, -5.85, -0.65, 0.0, -0.65, -5.85, -6.5, -5.85, -0.65, 0.0 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:scale")
+tracks/10/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.0056, 1 ), Vector2( 1, 1 ), Vector2( 1.0056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.0056, 1 ), Vector2( 1, 1 ), Vector2( 1.0056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.0056, 1 ), Vector2( 1, 1 ), Vector2( 1.0056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.0056, 1 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_l:rotation_degrees")
+tracks/11/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_l:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 2.5, 2.6, 2.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.5, 2.6, 2.7 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, -46.3, 0.0 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_r:rotation_degrees")
+tracks/12/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_r:rotation_degrees")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 2.6, 2.7, 2.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.6, 2.7, 2.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, -55.9, 0.0 ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_l:position")
+tracks/13/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_l:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 2.5, 2.6, 2.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.5, 2.6, 2.7 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -13, -26 ), Vector2( -13, -26 ), Vector2( -11.1267, -23.5878 ), Vector2( -13, -26 ) ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_r:position")
+tracks/14/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_r:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 2.6, 2.7, 2.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.6, 2.7, 2.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 11, -25 ), Vector2( 11, -25 ), Vector2( 10.3379, -22.5805 ), Vector2( 11, -25 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:texture")
+tracks/15/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:texture")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 2.25, 2.3, 2.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.25, 2.3, 2.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ) ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun:position")
+tracks/16/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 18, -19.7388 ), Vector2( 18, -19.9387 ), Vector2( 18, -19.7388 ), Vector2( 18, -18.1399 ), Vector2( 18, -17.94 ), Vector2( 18, -18.1399 ), Vector2( 18, -19.7388 ), Vector2( 18, -19.9387 ), Vector2( 18, -19.7388 ), Vector2( 18, -18.1399 ), Vector2( 18, -17.94 ), Vector2( 18, -18.1399 ), Vector2( 18, -19.7388 ), Vector2( 18, -19.9387 ), Vector2( 18, -19.7388 ), Vector2( 18, -18.1399 ), Vector2( 18, -17.94 ), Vector2( 18, -18.1399 ), Vector2( 18, -19.7388 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun:rotation_degrees")
+tracks/17/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.5, 2.6, 2.7, 3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.413001, 0.870002, 0.413002, -3.243, -3.7, -3.243, 0.413001, 0.870002, 0.413002, -3.243, -3.7, -3.243, 0.413001, 0.870002, 0.413002, -3.243, -3.7, -3.243, 0.413001 ]
 }
@@ -634,8 +634,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0 ),
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 )
+"points": PackedFloat32Array( 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 )
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("Animation:position:y")
@@ -644,8 +644,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 )
+"points": PackedFloat32Array( -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 )
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("Animation:scale:x")
@@ -654,8 +654,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 )
 }
 tracks/3/type = "bezier"
 tracks/3/path = NodePath("Animation:scale:y")
@@ -664,198 +664,198 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 )
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:scale")
+tracks/4/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.9911, 1.0169 ), Vector2( 0.988, 1.019 ), Vector2( 0.9911, 1.0169 ), Vector2( 1.0159, 1.0001 ), Vector2( 1.019, 0.998 ), Vector2( 1.0159, 1.0001 ), Vector2( 0.9911, 1.0169 ), Vector2( 0.988, 1.019 ), Vector2( 0.9911, 1.0169 ), Vector2( 1.0159, 1.0001 ), Vector2( 1.019, 0.998 ), Vector2( 1.0159, 1.0001 ), Vector2( 0.9911, 1.0169 ), Vector2( 0.988, 1.019 ), Vector2( 0.9911, 1.0169 ), Vector2( 1.0159, 1.0001 ), Vector2( 1.019, 0.998 ), Vector2( 1.0159, 1.0001 ), Vector2( 0.9911, 1.0169 ), Vector2( 0.988, 1.019 ), Vector2( 0.9911, 1.0169 ), Vector2( 1.0159, 1.0001 ), Vector2( 1.019, 0.998 ), Vector2( 1.0159, 1.0001 ), Vector2( 0.9911, 1.0169 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:position")
+tracks/5/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -31.3554 ), Vector2( 0, -31.606 ), Vector2( 0, -31.3554 ), Vector2( 0, -29.3506 ), Vector2( 0, -29.1 ), Vector2( 0, -29.3506 ), Vector2( 0, -31.3554 ), Vector2( 0, -31.606 ), Vector2( 0, -31.3554 ), Vector2( 0, -29.3506 ), Vector2( 0, -29.1 ), Vector2( 0, -29.3506 ), Vector2( 0, -31.3554 ), Vector2( 0, -31.606 ), Vector2( 0, -31.3554 ), Vector2( 0, -29.3506 ), Vector2( 0, -29.1 ), Vector2( 0, -29.3506 ), Vector2( 0, -31.3554 ), Vector2( 0, -31.606 ), Vector2( 0, -31.3554 ), Vector2( 0, -29.3506 ), Vector2( 0, -29.1 ), Vector2( 0, -29.3506 ), Vector2( 0, -31.3554 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:rotation_degrees")
+tracks/6/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.87, 0.0, 0.87, 7.83, 8.7, 7.83, 0.87, 0.0, 0.87, 7.83, 8.7, 7.83, 0.87, 0.0, 0.87, 7.83, 8.7, 7.83, 0.87, 0.0, 0.87, 7.83, 8.7, 7.83, 0.87 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:position")
+tracks/7/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 18, -19.9387 ), Vector2( 18, -20.043 ), Vector2( 18, -19.9387 ), Vector2( 18, -19.1043 ), Vector2( 18, -19 ), Vector2( 18, -19.1043 ), Vector2( 18, -19.9387 ), Vector2( 18, -20.043 ), Vector2( 18, -19.9387 ), Vector2( 18, -19.1043 ), Vector2( 18, -19 ), Vector2( 18, -19.1043 ), Vector2( 18, -19.9387 ), Vector2( 18, -20.043 ), Vector2( 18, -19.9387 ), Vector2( 18, -19.1043 ), Vector2( 18, -19 ), Vector2( 18, -19.1043 ), Vector2( 18, -19.9387 ), Vector2( 18, -20.043 ), Vector2( 18, -19.9387 ), Vector2( 18, -19.1043 ), Vector2( 18, -19 ), Vector2( 18, -19.1043 ), Vector2( 18, -19.9387 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:position")
+tracks/8/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.15, 0.2, 0.25, 0.4, 0.45, 0.5, 0.65, 0.7, 0.75, 0.9, 0.95, 1, 1.15, 1.2, 1.25, 1.4, 1.45, 1.5, 1.65, 1.7, 1.75, 1.9, 1.95, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.15, 0.2, 0.25, 0.4, 0.45, 0.5, 0.65, 0.7, 0.75, 0.9, 0.95, 1, 1.15, 1.2, 1.25, 1.4, 1.45, 1.5, 1.65, 1.7, 1.75, 1.9, 1.95, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -26.7882, -3.992 ), Vector2( -25.0938, -3.928 ), Vector2( -24.882, -3.92 ), Vector2( -25.0938, -3.928 ), Vector2( -26.7882, -3.992 ), Vector2( -27, -4 ), Vector2( -26.7882, -3.992 ), Vector2( -25.0938, -3.928 ), Vector2( -24.882, -3.92 ), Vector2( -25.0938, -3.928 ), Vector2( -26.7882, -3.992 ), Vector2( -27, -4 ), Vector2( -26.7882, -3.992 ), Vector2( -25.0938, -3.928 ), Vector2( -24.882, -3.92 ), Vector2( -25.0938, -3.928 ), Vector2( -26.7882, -3.992 ), Vector2( -27, -4 ), Vector2( -26.7882, -3.992 ), Vector2( -25.0938, -3.928 ), Vector2( -24.882, -3.92 ), Vector2( -25.0938, -3.928 ), Vector2( -26.7882, -3.992 ), Vector2( -27, -4 ), Vector2( -26.7882, -3.992 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:rotation_degrees")
+tracks/9/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.05, 0.2, 0.25, 0.3, 0.45, 0.5, 0.55, 0.7, 0.75, 0.8, 0.95, 1, 1.05, 1.2, 1.25, 1.3, 1.45, 1.5, 1.55, 1.7, 1.75, 1.8, 1.95, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.2, 0.25, 0.3, 0.45, 0.5, 0.55, 0.7, 0.75, 0.8, 0.95, 1, 1.05, 1.2, 1.25, 1.3, 1.45, 1.5, 1.55, 1.7, 1.75, 1.8, 1.95, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -0.65, -5.85, -6.5, -5.85, -0.65, 0.0, -0.65, -5.85, -6.5, -5.85, -0.65, 0.0, -0.65, -5.85, -6.5, -5.85, -0.65, 0.0, -0.65, -5.85, -6.5, -5.85, -0.65, 0.0 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:scale")
+tracks/10/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.0056, 1 ), Vector2( 1, 1 ), Vector2( 1.0056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.0056, 1 ), Vector2( 1, 1 ), Vector2( 1.0056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.0056, 1 ), Vector2( 1, 1 ), Vector2( 1.0056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.0056, 1 ), Vector2( 1, 1 ), Vector2( 1.0056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.0056, 1 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_l:rotation_degrees")
+tracks/11/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_l:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.6, 0.7, 0.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, -46.3, 0.0 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_r:rotation_degrees")
+tracks/12/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_r:rotation_degrees")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 0.7, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.7, 0.8, 0.9 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, -55.9, 0.0 ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_l:position")
+tracks/13/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_l:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.6, 0.7, 0.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -13, -26 ), Vector2( -13, -26 ), Vector2( -11.1267, -23.5878 ), Vector2( -13, -26 ) ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_r:position")
+tracks/14/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_r:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 0.7, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.7, 0.8, 0.9 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 11, -25 ), Vector2( 11, -25 ), Vector2( 10.3379, -22.5805 ), Vector2( 11, -25 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:texture")
+tracks/15/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:texture")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 0.4, 0.45, 0.55, 1.35, 1.4, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.4, 0.45, 0.55, 1.35, 1.4, 1.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ) ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:rotation_degrees")
+tracks/16/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:rotation_degrees")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.35, 0.5, 0.6, 0.7, 0.85, 1, 1.1, 1.2, 1.35, 1.5, 1.6, 1.7, 1.85, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.35, 0.5, 0.6, 0.7, 0.85, 1, 1.1, 1.2, 1.35, 1.5, 1.6, 1.7, 1.85, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 1.4, 0.0, -1.4, -7.0, -1.4, 0.0, 1.4, 7.0, 1.4, 0.0, -1.4, -7.0, -1.4, 0.0, 1.4, 7.0, 1.4 ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("Animation/Viewport/offset/sp_body:rotation_degrees")
+tracks/17/path = NodePath("Animation/SubViewport/offset/sp_body:rotation_degrees")
 tracks/17/interp = 2
 tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -1.8, 0.0, 1.8, 0.0, -1.8, 0.0, 1.8, 0.0 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun:position")
+tracks/18/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
 tracks/18/enabled = true
 tracks/18/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 18, -19.4788 ), Vector2( 18, -19.7388 ), Vector2( 18, -19.4788 ), Vector2( 18, -17.399 ), Vector2( 18, -17.139 ), Vector2( 18, -17.399 ), Vector2( 18, -19.4788 ), Vector2( 18, -19.7388 ), Vector2( 18, -19.4788 ), Vector2( 18, -17.399 ), Vector2( 18, -17.139 ), Vector2( 18, -17.399 ), Vector2( 18, -19.4788 ), Vector2( 18, -19.7388 ), Vector2( 18, -19.4788 ), Vector2( 18, -17.399 ), Vector2( 18, -17.139 ), Vector2( 18, -17.399 ), Vector2( 18, -19.4788 ), Vector2( 18, -19.7388 ), Vector2( 18, -19.4788 ), Vector2( 18, -17.399 ), Vector2( 18, -17.139 ), Vector2( 18, -17.399 ), Vector2( 18, -19.4788 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun:rotation_degrees")
+tracks/19/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun:rotation_degrees")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.25, 0.3, 0.35, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 1, 1.05, 1.1, 1.25, 1.3, 1.35, 1.5, 1.55, 1.6, 1.75, 1.8, 1.85, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -0.208299, 0.413001, -0.208299, -5.1787, -5.8, -5.1787, -0.208299, 0.413001, -0.208299, -5.1787, -5.8, -5.1787, -0.208299, 0.413001, -0.208299, -5.1787, -5.8, -5.1787, -0.208299, 0.413001, -0.208299, -5.1787, -5.8, -5.1787, -0.208299 ]
 }
@@ -871,8 +871,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.15, 0, 0.5, 0, 0, -0.25, 0, 0.25, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0 ),
-"times": PoolRealArray( 0, 0.1, 0.5, 1, 1.5, 2 )
+"points": PackedFloat32Array( 0, -0.15, 0, 0.5, 0, 0, -0.25, 0, 0.25, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0, 0, -0.15, 0, 0.5, 0 ),
+"times": PackedFloat32Array( 0, 0.1, 0.5, 1, 1.5, 2 )
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("Animation:position:y")
@@ -881,8 +881,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( -24, -0.25, 0, 0.25, 0, -20.934, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.1, 0.5, 1, 1.5, 2 )
+"points": PackedFloat32Array( -24, -0.25, 0, 0.25, 0, -20.934, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.1, 0.5, 1, 1.5, 2 )
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("Animation:scale:x")
@@ -891,8 +891,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.1, 0.5, 1, 1.5, 2 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.1, 0.5, 1, 1.5, 2 )
 }
 tracks/3/type = "bezier"
 tracks/3/path = NodePath("Animation:scale:y")
@@ -901,150 +901,150 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.1, 0.5, 1, 1.5, 2 )
+"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 0.1, 0.5, 1, 1.5, 2 )
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:scale")
+tracks/4/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.35, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.25, 1.35, 1.5, 1.6, 1.7, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.35, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.25, 1.35, 1.5, 1.6, 1.7, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.9911, 1.0169 ), Vector2( 0.988, 1.019 ), Vector2( 1.119, 0.866 ), Vector2( 1.0035, 1.0085 ), Vector2( 1.0159, 1.0001 ), Vector2( 1.019, 0.998 ), Vector2( 1.0159, 1.0001 ), Vector2( 0.9911, 1.0169 ), Vector2( 0.988, 1.019 ), Vector2( 0.9911, 1.0169 ), Vector2( 0.85, 1.15 ), Vector2( 0.999367, 1.0113 ), Vector2( 1.0159, 1.0001 ), Vector2( 1.019, 0.998 ), Vector2( 1.0159, 1.0001 ), Vector2( 0.9911, 1.0169 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:position")
+tracks/5/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.35, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.3, 1.5, 1.6, 1.7, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.35, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.3, 1.5, 1.6, 1.7, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -31.3554 ), Vector2( 0, -31.606 ), Vector2( 0, -29.985 ), Vector2( 0, -30.353 ), Vector2( 0, -29.3506 ), Vector2( 0, -29.1 ), Vector2( 0, -29.3506 ), Vector2( 0, -31.3554 ), Vector2( 0, -31.606 ), Vector2( 0, -31.3554 ), Vector2( 0, -30.6871 ), Vector2( 0, -29.3506 ), Vector2( 0, -29.1 ), Vector2( 0, -29.3506 ), Vector2( 0, -31.3554 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:rotation_degrees")
+tracks/6/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.87, 0.0, 0.87, 7.83, 8.7, 7.83, 0.87, 0.0, 0.87, 7.83, 8.7, 7.83, 0.87 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Animation/Viewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:position")
+tracks/7/path = NodePath("Animation/SubViewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 18, -19.9387 ), Vector2( 18, -20.043 ), Vector2( 18, -19.9387 ), Vector2( 18, -19.1043 ), Vector2( 18, -19 ), Vector2( 18, -19.1043 ), Vector2( 18, -19.9387 ), Vector2( 18, -20.043 ), Vector2( 18, -19.9387 ), Vector2( 18, -19.1043 ), Vector2( 18, -19 ), Vector2( 18, -19.1043 ), Vector2( 18, -19.9387 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:position")
+tracks/8/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.8, 0.9, 1, 1.3, 1.4, 1.5, 1.8, 1.9, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3, 0.4, 0.5, 0.8, 0.9, 1, 1.3, 1.4, 1.5, 1.8, 1.9, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -26.7882, -3.992 ), Vector2( -25.0938, -3.928 ), Vector2( -24.882, -3.92 ), Vector2( -25.0938, -3.928 ), Vector2( -26.7882, -3.992 ), Vector2( -27, -4 ), Vector2( -26.7882, -3.992 ), Vector2( -25.0938, -3.928 ), Vector2( -24.882, -3.92 ), Vector2( -25.0938, -3.928 ), Vector2( -26.7882, -3.992 ), Vector2( -27, -4 ), Vector2( -26.7882, -3.992 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:rotation_degrees")
+tracks/9/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.9, 1, 1.1, 1.4, 1.5, 1.6, 1.9, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.4, 0.5, 0.6, 0.9, 1, 1.1, 1.4, 1.5, 1.6, 1.9, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -0.65, -5.85, -6.5, -5.85, -0.65, 0.0, -0.65, -5.85, -6.5, -5.85, -0.65, 0.0 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Animation/Viewport/offset/sp_body/sp_tail:scale")
+tracks/10/path = NodePath("Animation/SubViewport/offset/sp_body/sp_tail:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.0056, 1 ), Vector2( 1, 1 ), Vector2( 1.0056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.0056, 1 ), Vector2( 1, 1 ), Vector2( 1.0056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.056, 1 ), Vector2( 1.0504, 1 ), Vector2( 1.0056, 1 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_l:rotation_degrees")
+tracks/11/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_l:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.1, 1.2, 1.35 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 1.2, 1.35 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -35.7, -35.7, 0.0 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_r:rotation_degrees")
+tracks/12/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_r:rotation_degrees")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 0.1, 1.2, 1.35 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 1.2, 1.35 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 37.7, 37.7, 0.0 ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_l:position")
+tracks/13/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_l:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( -13, -26 ) ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("Animation/Viewport/offset/sp_body/sp_head/sp_ear_r:position")
+tracks/14/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head/sp_ear_r:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 11, -25 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("Animation/Viewport/offset/sp_body/sp_head:texture")
+tracks/15/path = NodePath("Animation/SubViewport/offset/sp_body/sp_head:texture")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 0.1, 0.35, 1.55 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.35, 1.55 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 13 ), ExtResource( 12 ) ]
 }
@@ -1055,8 +1055,8 @@ tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0, 0.05, 1.25 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 1.25 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
 }
@@ -1067,8 +1067,8 @@ tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"times": PoolRealArray( 0.05, 0.1, 0.4, 0.584689, 0.65, 0.7, 1, 1.2, 1.25 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0.05, 0.1, 0.4, 0.584689, 0.65, 0.7, 1, 1.2, 1.25 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 25.981, -80.549 ), Vector2( 4.982, -52.217 ), Vector2( 15.309, -54.217 ), Vector2( 26.643, -51.225 ), Vector2( 10.776, -68.42 ), Vector2( 4.982, -52.217 ), Vector2( 15.309, -54.217 ), Vector2( 26.643, -51.225 ), Vector2( 25.981, -80.549 ) ]
 }
@@ -1079,8 +1079,8 @@ tracks/18/loop_wrap = true
 tracks/18/imported = false
 tracks/18/enabled = true
 tracks/18/keys = {
-"times": PoolRealArray( 0.05, 0.1, 0.7, 1.2, 1.25 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0.05, 0.1, 0.7, 1.2, 1.25 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.193, 0.676 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.193, 0.676 ) ]
 }
@@ -1091,8 +1091,8 @@ tracks/19/loop_wrap = true
 tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = {
-"times": PoolRealArray( 0.05, 0.1, 0.584689, 0.65, 0.7, 1.2, 1.25 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0.05, 0.1, 0.584689, 0.65, 0.7, 1.2, 1.25 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -31.6, -17.6, 2.2, -34.3, -17.6, 2.2, -31.6 ]
 }
@@ -1115,7 +1115,7 @@ purring_sound = ExtResource( 17 )
 [node name="Animation" parent="." index="0"]
 position = Vector2( 0, -22.0945 )
 
-[node name="Viewport" type="Viewport" parent="Animation" index="0"]
+[node name="SubViewport" type="SubViewport" parent="Animation" index="0"]
 size = Vector2( 250, 250 )
 transparent_bg = true
 hdr = false
@@ -1123,20 +1123,20 @@ disable_3d = true
 render_target_v_flip = true
 render_target_update_mode = 3
 
-[node name="offset" type="Node2D" parent="Animation/Viewport" index="0"]
+[node name="offset" type="Node2D" parent="Animation/SubViewport" index="0"]
 position = Vector2( 125, 125 )
 
-[node name="sp_shadow" type="Sprite" parent="Animation/Viewport/offset" index="0"]
+[node name="sp_shadow" type="Sprite2D" parent="Animation/SubViewport/offset" index="0"]
 position = Vector2( 0, -22.393 )
 texture = ExtResource( 10 )
 
-[node name="sp_body" type="Sprite" parent="Animation/Viewport/offset" index="1"]
+[node name="sp_body" type="Sprite2D" parent="Animation/SubViewport/offset" index="1"]
 position = Vector2( 0, 13.9166 )
 rotation = -0.00527788
 texture = ExtResource( 11 )
 offset = Vector2( 0, -36.9166 )
 
-[node name="sp_tail" type="Sprite" parent="Animation/Viewport/offset/sp_body" index="0"]
+[node name="sp_tail" type="Sprite2D" parent="Animation/SubViewport/offset/sp_body" index="0"]
 show_behind_parent = true
 position = Vector2( -24.9101, -3.92106 )
 rotation = -0.103608
@@ -1144,68 +1144,68 @@ scale = Vector2( 1.03745, 1 )
 texture = ExtResource( 7 )
 offset = Vector2( 27, -32.9166 )
 
-[node name="sp_head" type="Sprite" parent="Animation/Viewport/offset/sp_body" index="1"]
+[node name="sp_head" type="Sprite2D" parent="Animation/SubViewport/offset/sp_body" index="1"]
 position = Vector2( 0, -29.9301 )
 rotation = 0.0122173
 scale = Vector2( 1.00873, 1.00496 )
 texture = ExtResource( 12 )
 offset = Vector2( 0, -6.9166 )
 
-[node name="sp_ear_l" type="Sprite" parent="Animation/Viewport/offset/sp_body/sp_head" index="0"]
+[node name="sp_ear_l" type="Sprite2D" parent="Animation/SubViewport/offset/sp_body/sp_head" index="0"]
 show_behind_parent = true
 position = Vector2( -13, -26 )
 texture = ExtResource( 9 )
 offset = Vector2( 13, 19.0834 )
 
-[node name="sp_ear_r" type="Sprite" parent="Animation/Viewport/offset/sp_body/sp_head" index="1"]
+[node name="sp_ear_r" type="Sprite2D" parent="Animation/SubViewport/offset/sp_body/sp_head" index="1"]
 show_behind_parent = true
 position = Vector2( 11, -25 )
 texture = ExtResource( 2 )
 offset = Vector2( -11, 18.0834 )
 
-[node name="Gun_pivot_r" type="Node2D" parent="Animation/Viewport/offset/sp_body" index="2"]
+[node name="Gun_pivot_r" type="Node2D" parent="Animation/SubViewport/offset/sp_body" index="2"]
 unique_name_in_owner = true
 position = Vector2( 42.0834, -15.6947 )
 rotation = 6.28319
 
-[node name="gun_offset" type="Node2D" parent="Animation/Viewport/offset/sp_body/Gun_pivot_r" index="0"]
+[node name="gun_offset" type="Node2D" parent="Animation/SubViewport/offset/sp_body/Gun_pivot_r" index="0"]
 position = Vector2( -18.0209, 3.90495 )
 
-[node name="sp_gun" type="Sprite" parent="Animation/Viewport/offset/sp_body/Gun_pivot_r/gun_offset" index="0"]
+[node name="sp_gun" type="Sprite2D" parent="Animation/SubViewport/offset/sp_body/Gun_pivot_r/gun_offset" index="0"]
 show_behind_parent = true
 position = Vector2( 18, -19.3455 )
 rotation = 0.101544
 texture = ExtResource( 8 )
 offset = Vector2( -18, -17.9166 )
 
-[node name="RightMuzzle" type="Position2D" parent="Animation/Viewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun" index="0"]
+[node name="RightMuzzle" type="Marker2D" parent="Animation/SubViewport/offset/sp_body/Gun_pivot_r/gun_offset/sp_gun" index="0"]
 unique_name_in_owner = true
 position = Vector2( 35.543, 4.401 )
 rotation = -0.0151844
 
-[node name="Gun_pivot_l" type="Node2D" parent="Animation/Viewport/offset/sp_body" index="3"]
+[node name="Gun_pivot_l" type="Node2D" parent="Animation/SubViewport/offset/sp_body" index="3"]
 unique_name_in_owner = true
 position = Vector2( -33.8839, -22.0957 )
 
-[node name="gun_offset" type="Node2D" parent="Animation/Viewport/offset/sp_body/Gun_pivot_l" index="0"]
+[node name="gun_offset" type="Node2D" parent="Animation/SubViewport/offset/sp_body/Gun_pivot_l" index="0"]
 position = Vector2( -17.0103, 1.91024 )
 
-[node name="sp_gun" type="Sprite" parent="Animation/Viewport/offset/sp_body/Gun_pivot_l/gun_offset" index="0"]
+[node name="sp_gun" type="Sprite2D" parent="Animation/SubViewport/offset/sp_body/Gun_pivot_l/gun_offset" index="0"]
 show_behind_parent = true
 position = Vector2( 18, -18.6021 )
 rotation = -0.0381554
 texture = ExtResource( 8 )
 offset = Vector2( -18, -17.9166 )
 
-[node name="LeftMuzzle" type="Position2D" parent="Animation/Viewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun" index="0"]
+[node name="LeftMuzzle" type="Marker2D" parent="Animation/SubViewport/offset/sp_body/Gun_pivot_l/gun_offset/sp_gun" index="0"]
 unique_name_in_owner = true
 position = Vector2( 34.028, 2.506 )
 rotation = -0.0151844
 
-[node name="Sprite" parent="Animation" index="1"]
+[node name="Sprite2D" parent="Animation" index="1"]
 texture = SubResource( 8 )
 
-[node name="hand_pet" type="Sprite" parent="Animation" index="2"]
+[node name="hand_pet" type="Sprite2D" parent="Animation" index="2"]
 visible = false
 position = Vector2( 30, -67.645 )
 rotation = -0.551524

@@ -15,11 +15,12 @@ func init(value: int, player_index: int) -> void :
 
 
 func _ready():
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	if RunData.is_coop_run:
 		var icon: = get_node_or_null("AdditionalIcon")
 		if icon != null:
 			icon.hide()
-	connect("pressed", self, "_on_button_pressed")
+	connect("pressed", Callable(self, "_on_button_pressed"))
 
 
 func _on_button_pressed():
@@ -49,7 +50,7 @@ func _load_button():
 		if not _is_loading:
 			progressbar.value = 0
 			return
-		yield(get_tree(), "idle_frame")
+		await get_tree().process_frame
 
 	progressbar.value = 0
 	emit_signal("pressed")

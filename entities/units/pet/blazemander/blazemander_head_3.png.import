@@ -1,19 +1,40 @@
 [remap]
 
-importer="texture_atlas"
-type="Texture"
-path="res://.import/blazemander_head_3.png-c88db37394d4afe6dce2de8181db9828.res"
-group_file="res://entities/units/pet/blazemander/blazemander.png"
-valid=true
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bc761nj31mrtc"
+path="res://.godot/imported/blazemander_head_3.png-c88db37394d4afe6dce2de8181db9828.ctex"
+metadata={
+"vram_texture": false
+}
+
 [deps]
 
-
 source_file="res://entities/units/pet/blazemander/blazemander_head_3.png"
-dest_files=[ "res://.import/blazemander_head_3.png-c88db37394d4afe6dce2de8181db9828.res" ]
+dest_files=["res://.godot/imported/blazemander_head_3.png-c88db37394d4afe6dce2de8181db9828.ctex"]
 
 [params]
 
-atlas_file="res://entities/units/pet/blazemander/blazemander.png"
-import_mode=0
-crop_to_region=false
-trim_alpha_border_from_region=true
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

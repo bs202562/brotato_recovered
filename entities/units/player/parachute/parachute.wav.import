@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/parachute.wav-2d0adb7d6524b697eafca8c720de8f4d.sample"
+type="AudioStreamWAV"
+uid="uid://dbk843u8w102m"
+path="res://.godot/imported/parachute.wav-2d0adb7d6524b697eafca8c720de8f4d.sample"
 
 [deps]
 
 source_file="res://entities/units/player/parachute/parachute.wav"
-dest_files=[ "res://.import/parachute.wav-2d0adb7d6524b697eafca8c720de8f4d.sample" ]
+dest_files=["res://.godot/imported/parachute.wav-2d0adb7d6524b697eafca8c720de8f4d.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

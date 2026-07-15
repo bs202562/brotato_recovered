@@ -7,12 +7,12 @@
 [ext_resource path="res://ui/menus/upgrades/upgrade_ui.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/menus/shop/item_description.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=7]
-[ext_resource path="res://resources/fonts/actual/base/font_60_outline.tres" type="DynamicFont" id=8]
-[ext_resource path="res://ui/menus/global/key_xbox_b.png" type="Texture" id=9]
-[ext_resource path="res://items/global/baned_item.png" type="Texture" id=10]
+[ext_resource path="res://resources/fonts/actual/base/font_60_outline.tres" type="FontFile" id=8]
+[ext_resource path="res://ui/menus/global/key_xbox_b.png" type="Texture2D" id=9]
+[ext_resource path="res://items/global/baned_item.png" type="Texture2D" id=10]
 [ext_resource path="res://ui/menus/global/CustomButton.gd" type="Script" id=11]
 [ext_resource path="res://ui/hud/ui_input_icon.gd" type="Script" id=12]
-[ext_resource path="res://ui/menus/global/key_xbox_y.png" type="Texture" id=13]
+[ext_resource path="res://ui/menus/global/key_xbox_y.png" type="Texture2D" id=13]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 1 )
@@ -45,9 +45,9 @@ corner_radius_bottom_left = 15
 [node name="UpgradesUIPlayerContainer" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 0, 780 )
+custom_minimum_size = Vector2( 0, 780 )
 theme = ExtResource( 7 )
-custom_constants/separation = 50
+theme_override_constants/separation = 50
 alignment = 1
 script = ExtResource( 1 )
 
@@ -57,26 +57,26 @@ one_shot = true
 
 [node name="UpgradesContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
-margin_left = 226.0
-margin_right = 1694.0
-margin_bottom = 750.0
+offset_left = 226.0
+offset_right = 1694.0
+offset_bottom = 750.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_constants/separation = 50
+theme_override_constants/separation = 50
 
 [node name="Title" type="Label" parent="UpgradesContainer"]
-margin_right = 1468.0
-margin_bottom = 73.0
+offset_right = 1468.0
+offset_bottom = 73.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 8 )
+theme_override_fonts/font = ExtResource( 8 )
 text = "LEVEL_UP"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UpgradesContainer"]
-margin_top = 123.0
-margin_right = 1468.0
-margin_bottom = 635.0
-custom_constants/separation = 8
+offset_top = 123.0
+offset_right = 1468.0
+offset_bottom = 635.0
+theme_override_constants/separation = 8
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -88,28 +88,28 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 361.0
-margin_bottom = 512.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 361.0
+offset_bottom = 512.0
 
 [node name="MarginContainer" parent="UpgradesContainer/HBoxContainer/UpgradeUI" index="0"]
-margin_bottom = 507.0
+offset_bottom = 507.0
 
 [node name="VBoxContainer" parent="UpgradesContainer/HBoxContainer/UpgradeUI/MarginContainer" index="0"]
-margin_bottom = 487.0
+offset_bottom = 487.0
 
 [node name="UpgradeDescription" parent="UpgradesContainer/HBoxContainer/UpgradeUI/MarginContainer/VBoxContainer" index="0"]
-margin_bottom = 391.0
+offset_bottom = 391.0
 
 [node name="EmptySpace" parent="UpgradesContainer/HBoxContainer/UpgradeUI/MarginContainer/VBoxContainer" index="1"]
-margin_top = 406.0
-margin_bottom = 406.0
+offset_top = 406.0
+offset_bottom = 406.0
 
 [node name="ChooseButton" parent="UpgradesContainer/HBoxContainer/UpgradeUI/MarginContainer/VBoxContainer" index="2"]
-margin_top = 421.0
-margin_bottom = 472.0
-focus_neighbour_bottom = NodePath("../../../../../HBoxContainer2/RerollButton")
+offset_top = 421.0
+offset_bottom = 472.0
+focus_neighbor_bottom = NodePath("../../../../../HBoxContainer2/RerollButton")
 
 [node name="UpgradeUI2" parent="UpgradesContainer/HBoxContainer" instance=ExtResource( 5 )]
 unique_name_in_owner = true
@@ -117,28 +117,28 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 369.0
-margin_top = 0.0
-margin_right = 730.0
-margin_bottom = 512.0
+offset_left = 369.0
+offset_top = 0.0
+offset_right = 730.0
+offset_bottom = 512.0
 
 [node name="MarginContainer" parent="UpgradesContainer/HBoxContainer/UpgradeUI2" index="0"]
-margin_bottom = 507.0
+offset_bottom = 507.0
 
 [node name="VBoxContainer" parent="UpgradesContainer/HBoxContainer/UpgradeUI2/MarginContainer" index="0"]
-margin_bottom = 487.0
+offset_bottom = 487.0
 
 [node name="UpgradeDescription" parent="UpgradesContainer/HBoxContainer/UpgradeUI2/MarginContainer/VBoxContainer" index="0"]
-margin_bottom = 391.0
+offset_bottom = 391.0
 
 [node name="EmptySpace" parent="UpgradesContainer/HBoxContainer/UpgradeUI2/MarginContainer/VBoxContainer" index="1"]
-margin_top = 406.0
-margin_bottom = 406.0
+offset_top = 406.0
+offset_bottom = 406.0
 
 [node name="ChooseButton" parent="UpgradesContainer/HBoxContainer/UpgradeUI2/MarginContainer/VBoxContainer" index="2"]
-margin_top = 421.0
-margin_bottom = 472.0
-focus_neighbour_bottom = NodePath("../../../../../HBoxContainer2/RerollButton")
+offset_top = 421.0
+offset_bottom = 472.0
+focus_neighbor_bottom = NodePath("../../../../../HBoxContainer2/RerollButton")
 
 [node name="UpgradeUI3" parent="UpgradesContainer/HBoxContainer" instance=ExtResource( 5 )]
 unique_name_in_owner = true
@@ -146,28 +146,28 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 738.0
-margin_top = 0.0
-margin_right = 1099.0
-margin_bottom = 512.0
+offset_left = 738.0
+offset_top = 0.0
+offset_right = 1099.0
+offset_bottom = 512.0
 
 [node name="MarginContainer" parent="UpgradesContainer/HBoxContainer/UpgradeUI3" index="0"]
-margin_bottom = 507.0
+offset_bottom = 507.0
 
 [node name="VBoxContainer" parent="UpgradesContainer/HBoxContainer/UpgradeUI3/MarginContainer" index="0"]
-margin_bottom = 487.0
+offset_bottom = 487.0
 
 [node name="UpgradeDescription" parent="UpgradesContainer/HBoxContainer/UpgradeUI3/MarginContainer/VBoxContainer" index="0"]
-margin_bottom = 391.0
+offset_bottom = 391.0
 
 [node name="EmptySpace" parent="UpgradesContainer/HBoxContainer/UpgradeUI3/MarginContainer/VBoxContainer" index="1"]
-margin_top = 406.0
-margin_bottom = 406.0
+offset_top = 406.0
+offset_bottom = 406.0
 
 [node name="ChooseButton" parent="UpgradesContainer/HBoxContainer/UpgradeUI3/MarginContainer/VBoxContainer" index="2"]
-margin_top = 421.0
-margin_bottom = 472.0
-focus_neighbour_bottom = NodePath("../../../../../HBoxContainer2/RerollButton")
+offset_top = 421.0
+offset_bottom = 472.0
+focus_neighbor_bottom = NodePath("../../../../../HBoxContainer2/RerollButton")
 
 [node name="UpgradeUI4" parent="UpgradesContainer/HBoxContainer" instance=ExtResource( 5 )]
 unique_name_in_owner = true
@@ -175,46 +175,46 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1107.0
-margin_top = 0.0
-margin_right = 1468.0
-margin_bottom = 512.0
+offset_left = 1107.0
+offset_top = 0.0
+offset_right = 1468.0
+offset_bottom = 512.0
 
 [node name="MarginContainer" parent="UpgradesContainer/HBoxContainer/UpgradeUI4" index="0"]
-margin_bottom = 507.0
+offset_bottom = 507.0
 
 [node name="VBoxContainer" parent="UpgradesContainer/HBoxContainer/UpgradeUI4/MarginContainer" index="0"]
-margin_bottom = 487.0
+offset_bottom = 487.0
 
 [node name="UpgradeDescription" parent="UpgradesContainer/HBoxContainer/UpgradeUI4/MarginContainer/VBoxContainer" index="0"]
-margin_bottom = 391.0
+offset_bottom = 391.0
 
 [node name="EmptySpace" parent="UpgradesContainer/HBoxContainer/UpgradeUI4/MarginContainer/VBoxContainer" index="1"]
-margin_top = 406.0
-margin_bottom = 406.0
+offset_top = 406.0
+offset_bottom = 406.0
 
 [node name="ChooseButton" parent="UpgradesContainer/HBoxContainer/UpgradeUI4/MarginContainer/VBoxContainer" index="2"]
-margin_top = 421.0
-margin_bottom = 472.0
-focus_neighbour_bottom = NodePath("../../../../../HBoxContainer2/RerollButton")
+offset_top = 421.0
+offset_bottom = 472.0
+focus_neighbor_bottom = NodePath("../../../../../HBoxContainer2/RerollButton")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UpgradesContainer"]
-margin_top = 685.0
-margin_right = 1468.0
-margin_bottom = 750.0
+offset_top = 685.0
+offset_right = 1468.0
+offset_bottom = 750.0
 
 [node name="Control2" type="Control" parent="UpgradesContainer/HBoxContainer2"]
-margin_right = 480.0
-margin_bottom = 65.0
+offset_right = 480.0
+offset_bottom = 65.0
 size_flags_horizontal = 3
 
 [node name="RerollButton" parent="UpgradesContainer/HBoxContainer2" instance=ExtResource( 3 )]
 unique_name_in_owner = true
-margin_left = 484.0
-margin_right = 984.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 500, 0 )
-focus_neighbour_bottom = NodePath(".")
+offset_left = 484.0
+offset_right = 984.0
+offset_bottom = 65.0
+custom_minimum_size = Vector2( 500, 0 )
+focus_neighbor_bottom = NodePath(".")
 size_flags_horizontal = 7
 script = ExtResource( 2 )
 
@@ -224,8 +224,8 @@ self_modulate = Color( 1, 1, 1, 0.180392 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-custom_styles/fg = SubResource( 3 )
-custom_styles/bg = SubResource( 4 )
+theme_override_styles/fg = SubResource( 3 )
+theme_override_styles/bg = SubResource( 4 )
 max_value = 1.0
 step = 0.001
 percent_visible = false
@@ -233,70 +233,70 @@ percent_visible = false
 [node name="AdditionalIcon" type="TextureRect" parent="UpgradesContainer/HBoxContainer2/RerollButton"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 14.0
-margin_top = -25.5
-margin_right = 65.0
-margin_bottom = 25.5
-rect_min_size = Vector2( 51, 0 )
+offset_left = 14.0
+offset_top = -25.5
+offset_right = 65.0
+offset_bottom = 25.5
+custom_minimum_size = Vector2( 51, 0 )
 texture = ExtResource( 13 )
 expand = true
 script = ExtResource( 12 )
 input_string = "ui_info"
 
 [node name="Control" type="Control" parent="UpgradesContainer/HBoxContainer2"]
-margin_left = 988.0
-margin_right = 1468.0
-margin_bottom = 65.0
+offset_left = 988.0
+offset_right = 1468.0
+offset_bottom = 65.0
 size_flags_horizontal = 3
 
 [node name="ItemsContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true
-margin_top = 800.0
-margin_right = 1920.0
-margin_bottom = 1602.0
-custom_constants/margin_right = 50
+offset_top = 800.0
+offset_right = 1920.0
+offset_bottom = 1602.0
+theme_override_constants/margin_right = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ItemsContainer"]
-margin_left = 635.0
-margin_right = 1235.0
-margin_bottom = 802.0
-rect_min_size = Vector2( 600, 0 )
+offset_left = 635.0
+offset_right = 1235.0
+offset_bottom = 802.0
+custom_minimum_size = Vector2( 600, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_constants/separation = 50
+theme_override_constants/separation = 50
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="ItemsContainer/VBoxContainer"]
-margin_right = 600.0
-margin_bottom = 73.0
+offset_right = 600.0
+offset_bottom = 73.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 8 )
+theme_override_fonts/font = ExtResource( 8 )
 text = "ITEM_FOUND"
 align = 1
 
 [node name="ItemPanelContainer" type="PanelContainer" parent="ItemsContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_left = 119.0
-margin_top = 123.0
-margin_right = 480.0
-margin_bottom = 539.0
+offset_left = 119.0
+offset_top = 123.0
+offset_right = 480.0
+offset_bottom = 539.0
 size_flags_horizontal = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="ItemsContainer/VBoxContainer/ItemPanelContainer"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 356.0
-margin_bottom = 411.0
-custom_constants/margin_right = 15
-custom_constants/margin_top = 15
-custom_constants/margin_left = 15
-custom_constants/margin_bottom = 15
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 356.0
+offset_bottom = 411.0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_bottom = 15
 
 [node name="ItemDescription" parent="ItemsContainer/VBoxContainer/ItemPanelContainer/MarginContainer" instance=ExtResource( 6 )]
 unique_name_in_owner = true
@@ -304,43 +304,43 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 15.0
-margin_top = 15.0
-margin_right = 336.0
-margin_bottom = 391.0
-custom_constants/separation = 15
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 336.0
+offset_bottom = 391.0
+theme_override_constants/separation = 15
 
 [node name="HBoxContainer" type="VBoxContainer" parent="ItemsContainer/VBoxContainer"]
-margin_top = 589.0
-margin_right = 600.0
-margin_bottom = 802.0
+offset_top = 589.0
+offset_right = 600.0
+offset_bottom = 802.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
-custom_constants/separation = 9
+theme_override_constants/separation = 9
 alignment = 1
 
 [node name="TakeButton" type="Button" parent="ItemsContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 600.0
-margin_bottom = 65.0
+offset_right = 600.0
+offset_bottom = 65.0
 text = "MENU_TAKE"
 expand_icon = true
 script = ExtResource( 4 )
 
 [node name="DiscardButton" type="Button" parent="ItemsContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-margin_top = 74.0
-margin_right = 600.0
-margin_bottom = 139.0
+offset_top = 74.0
+offset_right = 600.0
+offset_bottom = 139.0
 text = "MENU_RECYCLE"
 script = ExtResource( 4 )
 
 [node name="button_y_icon" type="TextureRect" parent="ItemsContainer/VBoxContainer/HBoxContainer/DiscardButton"]
-margin_left = 5.0
-margin_top = 2.0
-margin_right = 66.0
-margin_bottom = 63.0
-rect_min_size = Vector2( 61, 61 )
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 66.0
+offset_bottom = 63.0
+custom_minimum_size = Vector2( 61, 61 )
 mouse_filter = 2
 texture = ExtResource( 13 )
 expand = true
@@ -349,9 +349,9 @@ input_string = "ui_info"
 
 [node name="BanButton" type="Button" parent="ItemsContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-margin_top = 148.0
-margin_right = 600.0
-margin_bottom = 213.0
+offset_top = 148.0
+offset_right = 600.0
+offset_bottom = 213.0
 action_mode = 0
 script = ExtResource( 11 )
 labels_np = [ NodePath("HBoxContainer/label_banitem") ]
@@ -363,8 +363,8 @@ self_modulate = Color( 1, 1, 1, 0.407843 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
+theme_override_styles/fg = SubResource( 1 )
+theme_override_styles/bg = SubResource( 2 )
 max_value = 1.0
 step = 0.001
 percent_visible = false
@@ -372,16 +372,16 @@ percent_visible = false
 [node name="HBoxContainer" type="HBoxContainer" parent="ItemsContainer/VBoxContainer/HBoxContainer/BanButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 6.0
-margin_top = 2.0
-margin_right = -6.0
-margin_bottom = -2.0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = -6.0
+offset_bottom = -2.0
 
 [node name="button_b_icon" type="TextureRect" parent="ItemsContainer/VBoxContainer/HBoxContainer/BanButton/HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 61.0
-margin_bottom = 61.0
-rect_min_size = Vector2( 61, 61 )
+offset_right = 61.0
+offset_bottom = 61.0
+custom_minimum_size = Vector2( 61, 61 )
 mouse_filter = 2
 texture = ExtResource( 9 )
 expand = true
@@ -390,20 +390,20 @@ input_string = "ui_coop_ban"
 
 [node name="label_banitem" type="Label" parent="ItemsContainer/VBoxContainer/HBoxContainer/BanButton/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 65.0
-margin_top = 8.0
-margin_right = 539.0
-margin_bottom = 53.0
+offset_left = 65.0
+offset_top = 8.0
+offset_right = 539.0
+offset_bottom = 53.0
 size_flags_horizontal = 3
 text = "MENU_BAN"
 align = 1
 
 [node name="icon_ban" type="TextureRect" parent="ItemsContainer/VBoxContainer/HBoxContainer/BanButton/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 543.0
-margin_right = 588.0
-margin_bottom = 61.0
-rect_min_size = Vector2( 45, 45 )
+offset_left = 543.0
+offset_right = 588.0
+offset_bottom = 61.0
+custom_minimum_size = Vector2( 45, 45 )
 mouse_filter = 2
 size_flags_horizontal = 5
 texture = ExtResource( 10 )

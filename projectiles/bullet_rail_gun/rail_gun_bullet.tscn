@@ -1,16 +1,16 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://projectiles/player_projectile.tscn" type="PackedScene" id=1]
-[ext_resource path="res://projectiles/bullet_rail_gun/rail_gun_bullet.png" type="Texture" id=2]
+[ext_resource path="res://projectiles/bullet_rail_gun/rail_gun_bullet.png" type="Texture2D" id=2]
 [ext_resource path="res://resources/shaders/shader_double_color.gdshader" type="Shader" id=3]
-[ext_resource path="res://particles/sprites/particle_28.png" type="Texture" id=4]
+[ext_resource path="res://particles/sprites/particle_28.png" type="Texture2D" id=4]
 [ext_resource path="res://projectiles/bullet_rail_gun/rail_gun_projectile.gd" type="Script" id=5]
 
 [sub_resource type="CanvasItemMaterial" id=10]
 blend_mode = 1
 
 [sub_resource type="Gradient" id=11]
-colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
+colors = PackedColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
 
 [sub_resource type="ShaderMaterial" id=9]
 shader = ExtResource( 3 )
@@ -39,7 +39,7 @@ scale_amount_random = 0.45
 color = Color( 0.298039, 0.298039, 0.298039, 1 )
 color_ramp = SubResource( 11 )
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite2D" parent="." index="1"]
 material = SubResource( 9 )
 position = Vector2( 1, 1 )
 texture = ExtResource( 2 )

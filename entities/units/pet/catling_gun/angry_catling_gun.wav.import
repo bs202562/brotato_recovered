@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/angry_catling_gun.wav-dfcb10184c9adb156defc897fb25b7ba.sample"
+type="AudioStreamWAV"
+uid="uid://bied58iuso65q"
+path="res://.godot/imported/angry_catling_gun.wav-dfcb10184c9adb156defc897fb25b7ba.sample"
 
 [deps]
 
 source_file="res://entities/units/pet/catling_gun/angry_catling_gun.wav"
-dest_files=[ "res://.import/angry_catling_gun.wav-dfcb10184c9adb156defc897fb25b7ba.sample" ]
+dest_files=["res://.godot/imported/angry_catling_gun.wav-dfcb10184c9adb156defc897fb25b7ba.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

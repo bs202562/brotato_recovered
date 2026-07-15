@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://particles/burning/burning_blue_gradient.tres" type="Gradient" id=1]
-[ext_resource path="res://particles/sprites/particle_31.png" type="Texture" id=2]
-[ext_resource path="res://particles/sprites/particle_fire_animation.png" type="Texture" id=3]
+[ext_resource path="res://particles/sprites/particle_31.png" type="Texture2D" id=2]
+[ext_resource path="res://particles/sprites/particle_fire_animation.png" type="Texture2D" id=3]
 [ext_resource path="res://particles/burning/burning_particles.gd" type="Script" id=4]
 
 [sub_resource type="CanvasItemMaterial" id=13]
@@ -16,20 +16,20 @@ particles_anim_loop = true
 _data = [ Vector2( 0.366379, 0.993182 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.311364 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=7]
-offsets = PoolRealArray( 0, 0.0748299, 0.225256, 0.320819, 0.406143, 0.720137, 1 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 0.820313, 0, 1, 1, 0.632813, 0, 1, 1, 0.398438, 0, 1, 1, 0, 0, 1, 0.278431, 0.0509804, 0.0509804, 0.686275, 0.211765, 0.14902, 0.14902, 0 )
+offsets = PackedFloat32Array( 0, 0.0748299, 0.225256, 0.320819, 0.406143, 0.720137, 1 )
+colors = PackedColorArray( 1, 1, 1, 0, 1, 0.820313, 0, 1, 1, 0.632813, 0, 1, 1, 0.398438, 0, 1, 1, 0, 0, 1, 0.278431, 0.0509804, 0.0509804, 0.686275, 0.211765, 0.14902, 0.14902, 0 )
 
 [sub_resource type="Gradient" id=14]
-offsets = PoolRealArray( 0, 0.225256, 0.320819, 0.406143, 0.720137, 1 )
-colors = PoolColorArray( 1, 0.820313, 0, 1, 1, 0.632813, 0, 1, 1, 0.398438, 0, 1, 1, 0, 0, 1, 0.278431, 0.0509804, 0.0509804, 0.686275, 0.211765, 0.14902, 0.14902, 0 )
+offsets = PackedFloat32Array( 0, 0.225256, 0.320819, 0.406143, 0.720137, 1 )
+colors = PackedColorArray( 1, 0.820313, 0, 1, 1, 0.632813, 0, 1, 1, 0.398438, 0, 1, 1, 0, 0, 1, 0.278431, 0.0509804, 0.0509804, 0.686275, 0.211765, 0.14902, 0.14902, 0 )
 
 [sub_resource type="Gradient" id=15]
-offsets = PoolRealArray( 0, 0.34471, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 0.865723, 0.609375, 1, 1, 0.275391, 0, 1 )
+offsets = PackedFloat32Array( 0, 0.34471, 1 )
+colors = PackedColorArray( 1, 1, 1, 1, 1, 0.865723, 0.609375, 1, 1, 0.275391, 0, 1 )
 
 [sub_resource type="Gradient" id=16]
-offsets = PoolRealArray( 0, 0.34471, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 0.609375, 0.84436, 1, 1, 0.3125, 0, 1, 1 )
+offsets = PackedFloat32Array( 0, 0.34471, 1 )
+colors = PackedColorArray( 1, 1, 1, 1, 0.609375, 0.84436, 1, 1, 0.3125, 0, 1, 1 )
 
 [sub_resource type="CanvasItemMaterial" id=9]
 blend_mode = 1
@@ -38,11 +38,11 @@ blend_mode = 1
 _data = [ Vector2( 0, 0.763636 ), 0.0, 0.0, 0, 0, Vector2( 0.474684, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.636364 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=11]
-colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
+colors = PackedColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
 
 [sub_resource type="Gradient" id=12]
-offsets = PoolRealArray( 0, 0.34471, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 0.865723, 0.609375, 1, 1, 0.275391, 0, 1 )
+offsets = PackedFloat32Array( 0, 0.34471, 1 )
+colors = PackedColorArray( 1, 1, 1, 1, 1, 0.865723, 0.609375, 1, 1, 0.275391, 0, 1 )
 
 [sub_resource type="CircleShape2D" id=8]
 radius = 128.0

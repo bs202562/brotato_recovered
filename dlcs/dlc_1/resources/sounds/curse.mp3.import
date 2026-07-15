@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/curse.mp3-f8d1236f17adb6a52e2ad5ffb475149e.mp3str"
+uid="uid://ctyjfn7nxre4p"
+path="res://.godot/imported/curse.mp3-f8d1236f17adb6a52e2ad5ffb475149e.mp3str"
 
 [deps]
 
 source_file="res://dlcs/dlc_1/resources/sounds/curse.mp3"
-dest_files=[ "res://.import/curse.mp3-f8d1236f17adb6a52e2ad5ffb475149e.mp3str" ]
+dest_files=["res://.godot/imported/curse.mp3-f8d1236f17adb6a52e2ad5ffb475149e.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

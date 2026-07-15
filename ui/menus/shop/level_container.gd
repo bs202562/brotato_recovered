@@ -6,17 +6,17 @@ signal unfocused(player_index)
 signal hovered(button, title, value, player_index)
 signal unhovered(player_index)
 
-export (String) var key = "CURRENT_LEVEL"
+@export var key: String = "CURRENT_LEVEL"
 
 var player_index: = 0
 
-onready var _icon = $HBoxContainer / Icon
-onready var _label = $HBoxContainer / Label
-onready var _value = $HBoxContainer / Value
+@onready var _icon = $HBoxContainer / Icon
+@onready var _label = $HBoxContainer / Label
+@onready var _value = $HBoxContainer / Value
 
 
 func _ready() -> void :
-	var _levelled_up_error = RunData.connect("levelled_up", self, "update_info")
+	var _levelled_up_error = RunData.connect("levelled_up", Callable(self, "update_info"))
 
 
 func disable_focus() -> void :

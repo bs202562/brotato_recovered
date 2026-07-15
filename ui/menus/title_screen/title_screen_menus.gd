@@ -1,9 +1,9 @@
 class_name TitleScreenMenus
 extends Menus
 
-onready var _menu_credits = $MenuCredits
-onready var _menu_mods = $MenuMods
-onready var _profile_scene = $MenuProfile
+@onready var _menu_credits = $MenuCredits
+@onready var _menu_mods = $MenuMods
+@onready var _profile_scene = $MenuProfile
 
 
 func _on_MainMenu_credits_button_pressed() -> void :

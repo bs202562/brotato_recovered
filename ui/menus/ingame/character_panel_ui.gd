@@ -3,23 +3,23 @@ extends ItemPanelUI
 
 const SCROLL_SPEED: = 600.0
 
-onready var _characterName: Label = $"%CharacterName"
-onready var _inventory: Inventory = $"%Inventory"
-onready var _leftPanel: VBoxContainer = $"%left_panel"
-onready var _rightPanel: PanelContainer = $"%right_panel"
-onready var _scroll_container: ScrollContainer = $"%ScrollContainer"
-onready var _scroll_name: ScrollContainer = $"%ScrollContainer_name"
-onready var _scroll_box_inventory: ScrollContainer = $"%ScrollBoxInventory"
-onready var _left_panel_color: PanelContainer = $"%left_panel_color"
-onready var _character_infos_container: GridContainer = $"%character_infos_container"
-onready var _animation_player: AnimationPlayer = $"%AnimationPlayer"
-onready var _chara_visual: Control = $"%CharacterVisual"
-onready var _tilemap: TileMap = $"%TileMap"
-onready var _characterAnimation: Node2D = $"%CharacterAnimation"
-onready var _inventory_container: Control = $"%inventory_container"
-onready var _item_popup = $"%ItemPopup"
+@onready var _characterName: Label = $"%CharacterName"
+@onready var _inventory: Inventory = $"%Inventory"
+@onready var _leftPanel: VBoxContainer = $"%left_panel"
+@onready var _rightPanel: PanelContainer = $"%right_panel"
+@onready var _scroll_container: ScrollContainer = $"%ScrollContainer"
+@onready var _scroll_name: ScrollContainer = $"%ScrollContainer_name"
+@onready var _scroll_box_inventory: ScrollContainer = $"%ScrollBoxInventory"
+@onready var _left_panel_color: PanelContainer = $"%left_panel_color"
+@onready var _character_infos_container: GridContainer = $"%character_infos_container"
+@onready var _animation_player: AnimationPlayer = $"%AnimationPlayer"
+@onready var _chara_visual: Control = $"%CharacterVisual"
+@onready var _tilemap: TileMap = $"%TileMap"
+@onready var _characterAnimation: Node2D = $"%CharacterAnimation"
+@onready var _inventory_container: Control = $"%inventory_container"
+@onready var _item_popup = $"%ItemPopup"
 
-export (int) var player_index: = 0
+@export var player_index := 0
 var all_sprites_appearance: Array
 
 
@@ -34,7 +34,7 @@ func _process(delta: float) -> void :
 
 func _ready():
 	_animation_player.play("idle")
-	_animation_player.advance(rand_range(0, _animation_player.get_animation("idle").length))
+	_animation_player.advance(randf_range(0, _animation_player.get_animation("idle").length))
 	_update_bg()
 
 
@@ -66,7 +66,7 @@ func on_show_focused_inventory_popup() -> void :
 
 
 func _update_bg():
-	_tilemap.tile_set.tile_set_texture(0, RunData.get_background().get_tiles_sprite())
+	_tilemap.set_tiles_texture(RunData.get_background().get_tiles_sprite()) # 4.x 移植: 见 MyTileMap.set_tiles_texture
 	_tilemap.get_node("Outline").modulate = RunData.get_background().outline_color
 
 
@@ -98,7 +98,7 @@ func apply_items_appearance(all_items: Array) -> void :
 	for item in all_items:
 		allAppearances.append_array(item.item_appearances)
 
-	allAppearances.sort_custom(Sorter, "sort_depth_ascending")
+	allAppearances.sort_custom(Callable(Sorter, "sort_depth_ascending"))
 	var appearances_behind = []
 
 	
@@ -106,7 +106,7 @@ func apply_items_appearance(all_items: Array) -> void :
 		if ProgressData.settings.no_item_appearance and not appearance.is_character_appearance:
 			continue
 
-		var item_sprite = Sprite.new()
+		var item_sprite = Sprite2D.new()
 		all_sprites_appearance.append(item_sprite)
 		item_sprite.texture = appearance.get_sprite()
 		character_node.add_child(item_sprite)
@@ -127,19 +127,19 @@ func apply_items_appearance(all_items: Array) -> void :
 
 func _small(small):
 	if small:
-		_leftPanel.rect_min_size.x = 200
-		_rightPanel.rect_min_size.x = 350
+		_leftPanel.custom_minimum_size.x = 200
+		_rightPanel.custom_minimum_size.x = 350
 		_leftPanel.size_flags_vertical = Control.SIZE_FILL
 		_character_infos_container.columns = 1
-		_chara_visual.rect_scale = Vector2(0.9, 0.9)
+		_chara_visual.scale = Vector2(0.9, 0.9)
 		_characterAnimation.position.y = - 17.6
 		_tilemap.visible = false
 	else:
-		_leftPanel.rect_min_size.x = 300
-		_rightPanel.rect_min_size.x = 450
+		_leftPanel.custom_minimum_size.x = 300
+		_rightPanel.custom_minimum_size.x = 450
 		_leftPanel.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		_character_infos_container.columns = 2
-		_chara_visual.rect_scale = Vector2(1.25, 1.25)
+		_chara_visual.scale = Vector2(1.25, 1.25)
 		_characterName.modulate = Color(1, 1, 1)
 		_left_panel_color.self_modulate.a = 0
 		_characterAnimation.position.y = - 46.8
@@ -188,7 +188,7 @@ func set_data(p_item_data: ItemParentData, _player_index: int) -> void :
 				var item = ItemService.get_element(ItemService.weapons, effect.key_hash)
 				list_of_items.append(item)
 
-	_scroll_box_inventory.rect_min_size.x = list_of_items.size() * _scroll_box_inventory.rect_min_size.y
+	_scroll_box_inventory.custom_minimum_size.x = list_of_items.size() * _scroll_box_inventory.custom_minimum_size.y
 	_inventory.set_elements(list_of_items, false, true)
 	apply_objects_display(list_of_items, p_item_data)
 	_update_stylebox()
@@ -205,7 +205,7 @@ func set_custom_data(name: String, icon: Resource) -> void :
 
 
 func _show_random():
-	._show_random()
+	super._show_random()
 	_chara_visual.visible = false
 	_rightPanel.visible = false
 	_characterName.text = Text.text("RANDOM")

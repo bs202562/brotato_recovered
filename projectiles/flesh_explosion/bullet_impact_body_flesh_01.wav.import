@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/bullet_impact_body_flesh_01.wav-4ea2a63da773e2e2ec87bb6eb23d17a7.sample"
+type="AudioStreamWAV"
+uid="uid://t0uptkaa2poo"
+path="res://.godot/imported/bullet_impact_body_flesh_01.wav-4ea2a63da773e2e2ec87bb6eb23d17a7.sample"
 
 [deps]
 
 source_file="res://projectiles/flesh_explosion/bullet_impact_body_flesh_01.wav"
-dest_files=[ "res://.import/bullet_impact_body_flesh_01.wav-4ea2a63da773e2e2ec87bb6eb23d17a7.sample" ]
+dest_files=["res://.godot/imported/bullet_impact_body_flesh_01.wav-4ea2a63da773e2e2ec87bb6eb23d17a7.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

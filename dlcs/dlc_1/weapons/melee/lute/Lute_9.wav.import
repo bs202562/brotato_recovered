@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Lute_9.wav-f0dc55d751cc456d2ff2919a6c407b83.sample"
+type="AudioStreamWAV"
+uid="uid://cxmtt0i1qtbrr"
+path="res://.godot/imported/Lute_9.wav-f0dc55d751cc456d2ff2919a6c407b83.sample"
 
 [deps]
 
 source_file="res://dlcs/dlc_1/weapons/melee/lute/Lute_9.wav"
-dest_files=[ "res://.import/Lute_9.wav-f0dc55d751cc456d2ff2919a6c407b83.sample" ]
+dest_files=["res://.godot/imported/Lute_9.wav-f0dc55d751cc456d2ff2919a6c407b83.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

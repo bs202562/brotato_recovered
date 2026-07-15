@@ -14,6 +14,7 @@ var _stat_popup4: StatPopup
 
 
 func _ready():
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	_find_nodes()
 
 	var player_count = RunData.get_player_count()
@@ -34,16 +35,16 @@ func _ready():
 
 
 func on_paused() -> void :
-	.on_paused()
-	var _error = InputService.connect("game_lost_focus", self, "_on_game_lost_focus")
+	super.on_paused()
+	var _error = InputService.connect("game_lost_focus", Callable(self, "_on_game_lost_focus"))
 	for player_index in RunData.get_player_count():
 		
 		Utils.get_focus_emulator(player_index).visible = false
 
 
 func on_unpaused() -> void :
-	.on_unpaused()
-	var _error = InputService.disconnect("game_lost_focus", self, "_on_game_lost_focus")
+	super.on_unpaused()
+	InputService.disconnect("game_lost_focus", Callable(self, "_on_game_lost_focus")) # 4.x 移植: disconnect 不再有返回值
 	for player_index in RunData.get_player_count():
 		Utils.get_focus_emulator(player_index).visible = true
 
@@ -51,43 +52,43 @@ func _on_game_lost_focus() -> void :
 	_pause_menu.on_game_lost_focus()
 
 func _on_shop_item_focused(shop_item: ShopItem, player_index: int) -> void :
-	._on_shop_item_focused(shop_item, player_index)
+	super._on_shop_item_focused(shop_item, player_index)
 	_get_coop_player_container(player_index).on_show_shop_item_popup(shop_item)
 
 
 func _on_shop_item_unfocused(shop_item: ShopItem, player_index: int) -> void :
-	._on_shop_item_unfocused(shop_item, player_index)
+	super._on_shop_item_unfocused(shop_item, player_index)
 	_get_coop_player_container(player_index).on_hide_shop_item_popup(shop_item)
 
 
 func _on_element_focused(element: InventoryElement, player_index: int) -> void :
-	._on_element_focused(element, player_index)
+	super._on_element_focused(element, player_index)
 	_get_coop_player_container(player_index).on_show_inventory_popup(element)
 
 
 func _on_element_unfocused(element: InventoryElement, player_index: int) -> void :
-	._on_element_unfocused(element, player_index)
+	super._on_element_unfocused(element, player_index)
 	_get_coop_player_container(player_index).on_hide_inventory_popup(element)
 
 
 func _on_element_pressed(element: InventoryElement, player_index: int, popup_focused: bool) -> void :
-	._on_element_pressed(element, player_index, popup_focused)
+	super._on_element_pressed(element, player_index, popup_focused)
 	if popup_focused:
 		_get_coop_player_container(player_index).on_show_focused_inventory_popup()
 
 
 func _on_item_combine_button_pressed(weapon_data: WeaponData, player_index: int) -> void :
-	._on_item_combine_button_pressed(weapon_data, player_index)
+	super._on_item_combine_button_pressed(weapon_data, player_index)
 	_get_coop_player_container(player_index).on_hide_focused_inventory_popup()
 
 
 func _on_item_discard_button_pressed(weapon_data: WeaponData, player_index: int) -> void :
-	._on_item_discard_button_pressed(weapon_data, player_index)
+	super._on_item_discard_button_pressed(weapon_data, player_index)
 	_get_coop_player_container(player_index).on_hide_focused_inventory_popup()
 
 
 func _on_item_cancel_button_pressed(item_data: ItemParentData, player_index: int) -> void :
-	._on_item_cancel_button_pressed(item_data, player_index)
+	super._on_item_cancel_button_pressed(item_data, player_index)
 	_get_coop_player_container(player_index).on_hide_focused_inventory_popup()
 
 

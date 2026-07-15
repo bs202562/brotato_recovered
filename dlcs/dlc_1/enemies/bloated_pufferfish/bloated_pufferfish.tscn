@@ -2,7 +2,7 @@
 
 [ext_resource path="res://dlcs/dlc_1/enemies/bloated_pufferfish/bloated_pufferfish_stats.tres" type="Resource" id=1]
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://dlcs/dlc_1/enemies/bloated_pufferfish/bloated_pufferfish.png" type="Texture" id=3]
+[ext_resource path="res://dlcs/dlc_1/enemies/bloated_pufferfish/bloated_pufferfish.png" type="Texture2D" id=3]
 [ext_resource path="res://entities/units/movement_behaviors/patrol_edges_of_map_movement_behavior.gd" type="Script" id=4]
 [ext_resource path="res://entities/units/enemies/attack_behaviors/shooting_attack_behavior.gd" type="Script" id=5]
 [ext_resource path="res://dlcs/dlc_1/enemies/bloated_pufferfish/bloated_pufferfish.gd" type="Script" id=6]
@@ -23,7 +23,7 @@ stats = ExtResource( 1 )
 enemy_id = "bloated_pufferfish"
 pop_single_sound = ExtResource( 7 )
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -8 )
 texture = ExtResource( 3 )
 

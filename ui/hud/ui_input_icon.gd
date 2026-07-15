@@ -1,12 +1,12 @@
 extends TextureRect
 class_name InputIcon
 
-export (String, "ui_info", "ui_pause", "ui_select", "ui_coop_ban", "rtrigger", "ltrigger") var input_string
-export (int) var player_index: int = 0
+@export var input_string: String = "" # (String, "ui_info", "ui_pause", "ui_select", "ui_coop_ban", "rtrigger", "ltrigger")
+@export var player_index: int = 0
 
 
 func _ready():
-	UIService.connect("change_device", self, "_change_controller")
+	UIService.connect("change_device", Callable(self, "_change_controller"))
 	_change_controller()
 
 

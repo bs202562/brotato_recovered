@@ -1,5 +1,5 @@
 class_name _ModLoaderScriptExtension
-extends Reference
+extends RefCounted
 
 
 
@@ -12,13 +12,13 @@ const LOG_NAME: = "ModLoader:ScriptExtension"
 static func handle_script_extensions() -> void :
 	var extension_paths: = []
 	for extension_path in ModLoaderStore.script_extensions:
-		if File.new().file_exists(extension_path):
+		if FileAccess.file_exists(extension_path):
 			extension_paths.push_back(extension_path)
 		else:
 			ModLoaderLog.error("The child script path '%s' does not exist" % [extension_path], LOG_NAME)
 
 	
-	extension_paths.sort_custom(InheritanceSorting.new(), "_check_inheritances")
+	extension_paths.sort_custom(Callable(InheritanceSorting.new(), "_check_inheritances"))
 
 	
 	for extension in extension_paths:
@@ -93,7 +93,7 @@ class InheritanceSorting:
 
 static func apply_extension(extension_path: String) -> Script:
 	
-	if not File.new().file_exists(extension_path):
+	if not FileAccess.file_exists(extension_path):
 		ModLoaderLog.error("The child script path '%s' does not exist" % [extension_path], LOG_NAME)
 		return null
 
@@ -176,7 +176,7 @@ static func remove_specific_extension_from_script(extension_path: String) -> voi
 		return
 
 	var parent_script_extensions: Array = ModLoaderStore.saved_scripts[parent_script_path].duplicate()
-	parent_script_extensions.remove(0)
+	parent_script_extensions.remove_at(0)
 
 	
 	var found_script_extension: Script = null

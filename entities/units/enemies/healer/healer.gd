@@ -1,23 +1,23 @@
 class_name Healer
 extends Enemy
 
-export (Resource) var heal_sound
-export (float) var heal = 100.0
-export (float) var heal_increase_each_wave = 10.0
-export (float) var player_heal = 1.0
-export (float) var player_heal_increase_each_wave = 0.5
+@export var heal_sound: Resource
+@export var heal: float = 100.0
+@export var heal_increase_each_wave: float = 10.0
+@export var player_heal: float = 1.0
+@export var player_heal_increase_each_wave: float = 0.5
 
-onready var _boost_zone: Area2D = $"%BoostZone"
-onready var _boost_collision: CollisionShape2D = $"%BoostCollision"
+@onready var _boost_zone: Area2D = $"%BoostZone"
+@onready var _boost_collision: CollisionShape2D = $"%BoostCollision"
 
 
 func respawn() -> void :
-	.respawn()
+	super.respawn()
 	_boost_collision.set_deferred("disabled", false)
 
 
-func die(args: = Utils.default_die_args) -> void :
-	.die(args)
+func die(args = Utils.default_die_args) -> void :
+	super.die(args)
 	_boost_collision.set_deferred("disabled", true)
 
 

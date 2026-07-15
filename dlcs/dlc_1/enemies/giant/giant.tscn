@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://entities/units/enemies/boss/boss.tscn" type="PackedScene" id=1]
-[ext_resource path="res://dlcs/dlc_1/enemies/giant/giant.png" type="Texture" id=2]
+[ext_resource path="res://dlcs/dlc_1/enemies/giant/giant.png" type="Texture2D" id=2]
 [ext_resource path="res://dlcs/dlc_1/enemies/giant/giant.gd" type="Script" id=3]
 [ext_resource path="res://dlcs/dlc_1/enemies/giant/giant_stats.tres" type="Resource" id=4]
 [ext_resource path="res://entities/units/enemies/boss/boss_state.tscn" type="PackedScene" id=5]
@@ -27,7 +27,7 @@ stats = ExtResource( 4 )
 enemy_id = "giant"
 is_elite = true
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( -8, -64 )
 texture = ExtResource( 2 )
 
@@ -84,8 +84,8 @@ only_positions_in_target_direction = false
 scale_charge_duration_with_range = false
 
 [node name="LifeBar" parent="." index="12"]
-margin_top = -184.0
-margin_bottom = -168.0
+offset_top = -184.0
+offset_bottom = -168.0
 
 [node name="Pivot" type="Node2D" parent="." index="14"]
 position = Vector2( 0, -32 )

@@ -1,12 +1,12 @@
 class_name StatCapEffect
 extends Effect
 
-export(String) var set_cap_to_current_stat = ""
+@export var set_cap_to_current_stat: String = ""
 var set_cap_to_current_stat_hash: int = Keys.empty_hash
 
 
 func _generate_hashes() -> void:
-	._generate_hashes()
+	super._generate_hashes()
 	set_cap_to_current_stat_hash = Keys.generate_hash(set_cap_to_current_stat)
 
 
@@ -41,7 +41,7 @@ func get_args(player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.set_cap_to_current_stat = set_cap_to_current_stat
 
@@ -49,14 +49,14 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	set_cap_to_current_stat = serialized.set_cap_to_current_stat
 	set_cap_to_current_stat_hash = Keys.generate_hash(set_cap_to_current_stat)
 
 
 func duplicate(subresources := false) -> Resource:
-	var duplication = .duplicate(subresources)
+	var duplication = super.duplicate(subresources)
 
 	if set_cap_to_current_stat_hash == Keys.empty_hash and set_cap_to_current_stat != "":
 		set_cap_to_current_stat_hash = Keys.generate_hash(set_cap_to_current_stat)

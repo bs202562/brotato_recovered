@@ -1,10 +1,10 @@
 extends VBoxContainer
 class_name KilledByContainer
 
-onready var icon_panel: IconPanel = $IconPanel
-onready var label: Label = $enemy_label
-onready var icon: TextureRect = get_node_or_null("IconPanel/Icon")
-export var bulletIcon: Texture
+@onready var icon_panel: IconPanel = $IconPanel
+@onready var label: Label = $enemy_label
+@onready var icon: TextureRect = get_node_or_null("IconPanel/Icon")
+@export var bulletIcon: Texture2D
 
 var player_index: int = 0
 

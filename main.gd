@@ -24,19 +24,19 @@ extends Node
 signal gold_spawned()  # 有金币生成时发出
 
 # ---------- 编辑器里配置的资源 ----------
-export (PackedScene) var gold_bag_scene: PackedScene  # 波次结束时吸收剩余金币的"钱袋"
-export (PackedScene) var gold_scene: PackedScene  # 金币(材料)场景
-export (PackedScene) var consumable_scene: PackedScene  # 消耗品(食物/箱子)场景
-export (Resource) var turret_effect: Resource  # "树掉落炮塔"效果引用的炮塔数据
-export (Resource) var landmines_effect: Resource  # "击杀布雷"效果引用的地雷数据
-export (Array) var gold_sprites: Array  # 金币的随机贴图
-export (Array, Resource) var gold_pickup_sounds: Array  # 拾取金币音效
-export (Array, Resource) var gold_alt_pickup_sounds: Array  # 拾取金币备选音效(设置里可切换)
-export (Resource) var level_up_sound: Resource  # 升级音效
-export (Array, Resource) var run_won_sounds: Array  # 通关音效
-export (Array, Resource) var run_lost_sounds: Array  # 失败音效
-export (Array, Resource) var end_wave_sounds: Array  # 波次结束音效
-export (PackedScene) var mimic_scene: PackedScene  # 宝箱怪场景
+@export var gold_bag_scene: PackedScene  # 波次结束时吸收剩余金币的"钱袋"
+@export var gold_scene: PackedScene  # 金币(材料)场景
+@export var consumable_scene: PackedScene  # 消耗品(食物/箱子)场景
+@export var turret_effect: Resource  # "树掉落炮塔"效果引用的炮塔数据
+@export var landmines_effect: Resource  # "击杀布雷"效果引用的地雷数据
+@export var gold_sprites: Array  # 金币的随机贴图
+@export var gold_pickup_sounds: Array  # 拾取金币音效 # (Array, Resource)
+@export var gold_alt_pickup_sounds: Array  # 拾取金币备选音效(设置里可切换) # (Array, Resource)
+@export var level_up_sound: Resource  # 升级音效
+@export var run_won_sounds: Array  # 通关音效 # (Array, Resource)
+@export var run_lost_sounds: Array  # 失败音效 # (Array, Resource)
+@export var end_wave_sounds: Array  # 波次结束音效 # (Array, Resource)
+@export var mimic_scene: PackedScene  # 宝箱怪场景
 
 
 # ---------- 常量 ----------
@@ -94,51 +94,51 @@ var _spawn_projectile_args: = WeaponServiceSpawnProjectileArgs.new()
 var _take_damage_args: = TakeDamageArgs.new( - 1)
 
 # ---------- 场景节点引用（onready 在节点进入场景树后自动获取） ----------
-onready var _entities_container: YSort = $"%Entities"
-onready var _entity_spawner = $EntitySpawner
-onready var _effects_manager = $EffectsManager
-onready var _stats_manager = $"%StatsManager"
-onready var _wave_manager = $WaveManager
-onready var _floating_text_manager = $FloatingTextManager
-onready var _effect_behaviors: = $EffectBehaviors
-onready var _camera: MyCamera = $Camera
-onready var _screenshaker = $Camera / Screenshaker
-onready var _materials_container: Node2D = $"%Materials"
-onready var _consumables_container: Node2D = $"%Consumables"
-onready var _births_container: Node2D = $"%Births"
-onready var _pause_menu = $UI / PauseMenu
-onready var _end_wave_timer = $EndWaveTimer
-onready var _upgrades_ui: UpgradesUI = $UI / UpgradesUI
-onready var _coop_upgrades_ui: UpgradesUI = $UI / CoopUpgradesUI
-onready var _wave_timer = $WaveTimer
+@onready var _entities_container: Node2D = $"%Entities"
+@onready var _entity_spawner = $EntitySpawner
+@onready var _effects_manager = $EffectsManager
+@onready var _stats_manager = $"%StatsManager"
+@onready var _wave_manager = $WaveManager
+@onready var _floating_text_manager = $FloatingTextManager
+@onready var _effect_behaviors: = $EffectBehaviors
+@onready var _camera: MyCamera = $Camera3D
+@onready var _screenshaker = $Camera3D / Screenshaker
+@onready var _materials_container: Node2D = $"%Materials"
+@onready var _consumables_container: Node2D = $"%Consumables"
+@onready var _births_container: Node2D = $"%Births"
+@onready var _pause_menu = $UI / PauseMenu
+@onready var _end_wave_timer = $EndWaveTimer
+@onready var _upgrades_ui: UpgradesUI = $UI / UpgradesUI
+@onready var _coop_upgrades_ui: UpgradesUI = $UI / CoopUpgradesUI
+@onready var _wave_timer = $WaveTimer
 
-onready var _wave_cleared_label = $UI / WaveClearedLabel
-onready var _hud = $UI / HUD
-onready var _ui_bonus_gold = $UI / HUD / LifeContainerP1 / UIBonusGold
-onready var _ui_bonus_gold_pos = $UI / HUD / LifeContainerP1 / UIBonusGold / Position2D
-onready var _current_wave_label = $UI / HUD / WaveContainer / CurrentWaveLabel
-onready var _wave_timer_label = $UI / HUD / WaveContainer / WaveTimerLabel
-onready var _ui_wave_container = $UI / HUD / WaveContainer
-onready var _ui_things_to_process_margin_container: MarginContainer = $"%ThingsToProcessMarginContainer"
-onready var _ui_dim_screen = $UI / DimScreen
-onready var _tile_map = $TileMap
-onready var _tile_map_limits = $"%TileMapLimits"
-onready var _background = $CanvasLayer / Background
-onready var _harvesting_timer = $HarvestingTimer
-onready var _challenge_completed_ui = $UI / ChallengeCompletedUI
-onready var _retry_wave = $UI / RetryWave
+@onready var _wave_cleared_label = $UI / WaveClearedLabel
+@onready var _hud = $UI / HUD
+@onready var _ui_bonus_gold = $UI / HUD / LifeContainerP1 / UIBonusGold
+@onready var _ui_bonus_gold_pos = $UI / HUD / LifeContainerP1 / UIBonusGold / Marker2D
+@onready var _current_wave_label = $UI / HUD / WaveContainer / CurrentWaveLabel
+@onready var _wave_timer_label = $UI / HUD / WaveContainer / WaveTimerLabel
+@onready var _ui_wave_container = $UI / HUD / WaveContainer
+@onready var _ui_things_to_process_margin_container: MarginContainer = $"%ThingsToProcessMarginContainer"
+@onready var _ui_dim_screen = $UI / DimScreen
+@onready var _tile_map = $TileMap
+@onready var _tile_map_limits = $"%TileMapLimits"
+@onready var _background = $CanvasLayer / Background
+@onready var _harvesting_timer = $HarvestingTimer
+@onready var _challenge_completed_ui = $UI / ChallengeCompletedUI
+@onready var _retry_wave = $UI / RetryWave
 
-onready var _damage_vignette = $UI / DamageVignette
-onready var _info_popup = $UI / InfoPopup
-onready var _fps_label = $"%FPSLabel"
-onready var _explosions: Node2D = $"Explosions"
-onready var _effects: Node2D = $"Effects"
-onready var _floating_texts: Node2D = $"%FloatingTexts"
-onready var _player_projectiles: Node2D = $"%PlayerProjectiles"
-onready var _enemy_projectiles: Node2D = $"%EnemyProjectiles"
-onready var _half_second_timers: Node2D = $"%HalfSecondTimers"
-onready var _crosshair: Sprite = $"%Crosshair"
-onready var _fog_viewport: FogViewport = $"%fog_viewport"
+@onready var _damage_vignette = $UI / DamageVignette
+@onready var _info_popup = $UI / InfoPopup
+@onready var _fps_label = $"%FPSLabel"
+@onready var _explosions: Node2D = $"Explosions"
+@onready var _effects: Node2D = $"Effects"
+@onready var _floating_texts: Node2D = $"%FloatingTexts"
+@onready var _player_projectiles: Node2D = $"%PlayerProjectiles"
+@onready var _enemy_projectiles: Node2D = $"%EnemyProjectiles"
+@onready var _half_second_timers: Node2D = $"%HalfSecondTimers"
+@onready var _crosshair: Sprite2D = $"%Crosshair"
+@onready var _fog_viewport: FogViewport = $"%fog_viewport"
 
 signal end_of_the_wave  # 波次时间耗尽时发出
 var _consumable_pool_id: int = Keys.empty_hash  # 消耗品对象池 id
@@ -159,7 +159,7 @@ func _ready() -> void :
 	if gold_scene != null:
 		_gold_pool_id = Keys.generate_hash(gold_scene.resource_path)
 
-	var _e = _entity_spawner.connect("players_spawned", self, "_on_EntitySpawner_players_spawned")
+	var _e = _entity_spawner.connect("players_spawned", Callable(self, "_on_EntitySpawner_players_spawned"))
 
 	MusicManager.tween(0)
 	_pause_menu.enabled = true
@@ -168,16 +168,17 @@ func _ready() -> void :
 	RunData.on_wave_start(_wave_timer)
 	_next_gold_player = Utils.randi() % RunData.get_player_count()
 
-	var _popup = _challenge_completed_ui.connect("started", self, "on_chal_popup")
-	var _popout = _challenge_completed_ui.connect("finished", self, "on_chal_popout")
+	var _popup = _challenge_completed_ui.connect("started", Callable(self, "on_chal_popup"))
+	var _popout = _challenge_completed_ui.connect("finished", Callable(self, "on_chal_popout"))
 
 	_background.texture.gradient.colors[1] = ItemService.get_background_gradient_color()
-	_tile_map.tile_set.tile_set_texture(0, RunData.get_background().get_tiles_sprite())
+	# 4.x 移植: 3.x 的 tile_set_texture() 已移除，改为在 MyTileMap 里动态重建图集
+	_tile_map.set_tiles_texture(RunData.get_background().get_tiles_sprite())
 	_tile_map.outline.modulate = RunData.get_background().outline_color
 
 	TempStats.reset()
 
-	var _stats = RunData.connect("stats_updated", self, "on_stats_updated")
+	var _stats = RunData.connect("stats_updated", Callable(self, "on_stats_updated"))
 
 	_gold_bag = Utils.instance_scene_on_main(gold_bag_scene, get_gold_bag_pos())
 	var current_zone = ZoneService.get_zone_data(RunData.current_zone).duplicate()
@@ -200,34 +201,34 @@ func _ready() -> void :
 
 	_wave_timer.start()
 	_wave_timer_label.wave_timer = _wave_timer
-	var _error_wave_timer = _wave_timer.connect("tick_started", self, "on_tick_started")
+	var _error_wave_timer = _wave_timer.connect("tick_started", Callable(self, "on_tick_started"))
 
-	var _error_group_spawn = _wave_manager.connect("group_spawn_timing_reached", _entity_spawner, "on_group_spawn_timing_reached")
+	var _error_group_spawn = _wave_manager.connect("group_spawn_timing_reached", Callable(_entity_spawner, "on_group_spawn_timing_reached"))
 	_wave_manager.init(_wave_timer, current_zone, current_wave_data)
 
-	var _error_connect = _coop_upgrades_ui.connect("upgrade_selected", self, "on_upgrade_selected")
-	_error_connect = _coop_upgrades_ui.connect("item_take_button_pressed", self, "on_item_box_take_button_pressed")
-	_error_connect = _coop_upgrades_ui.connect("item_discard_button_pressed", self, "on_item_box_discard_button_pressed")
-	_error_connect = _coop_upgrades_ui.connect("item_ban_button_pressed", self, "on_item_box_ban_button_pressed")
+	var _error_connect = _coop_upgrades_ui.connect("upgrade_selected", Callable(self, "on_upgrade_selected"))
+	_error_connect = _coop_upgrades_ui.connect("item_take_button_pressed", Callable(self, "on_item_box_take_button_pressed"))
+	_error_connect = _coop_upgrades_ui.connect("item_discard_button_pressed", Callable(self, "on_item_box_discard_button_pressed"))
+	_error_connect = _coop_upgrades_ui.connect("item_ban_button_pressed", Callable(self, "on_item_box_ban_button_pressed"))
 
-	_error_connect = _upgrades_ui.connect("upgrade_selected", self, "on_upgrade_selected")
-	_error_connect = _upgrades_ui.connect("item_take_button_pressed", self, "on_item_box_take_button_pressed")
-	_error_connect = _upgrades_ui.connect("item_discard_button_pressed", self, "on_item_box_discard_button_pressed")
-	_error_connect = _upgrades_ui.connect("item_ban_button_pressed", self, "on_item_box_ban_button_pressed")
+	_error_connect = _upgrades_ui.connect("upgrade_selected", Callable(self, "on_upgrade_selected"))
+	_error_connect = _upgrades_ui.connect("item_take_button_pressed", Callable(self, "on_item_box_take_button_pressed"))
+	_error_connect = _upgrades_ui.connect("item_discard_button_pressed", Callable(self, "on_item_box_discard_button_pressed"))
+	_error_connect = _upgrades_ui.connect("item_ban_button_pressed", Callable(self, "on_item_box_ban_button_pressed"))
 
-	var _error_level_up = RunData.connect("levelled_up", self, "on_levelled_up")
-	var _error_level_up_floating_text = RunData.connect("levelled_up", _floating_text_manager, "on_levelled_up")
-	var _error_xp_added = RunData.connect("xp_added", self, "on_xp_added")
-	var _error_gold_changed = RunData.connect("gold_changed", self, "on_gold_changed")
-	var _error_bonus_gold_ui = RunData.connect("bonus_gold_changed", _ui_bonus_gold, "update_value")
-	var _error_bonus_gold = RunData.connect("bonus_gold_changed", self, "on_bonus_gold_changed")
+	var _error_level_up = RunData.connect("levelled_up", Callable(self, "on_levelled_up"))
+	var _error_level_up_floating_text = RunData.connect("levelled_up", Callable(_floating_text_manager, "on_levelled_up"))
+	var _error_xp_added = RunData.connect("xp_added", Callable(self, "on_xp_added"))
+	var _error_gold_changed = RunData.connect("gold_changed", Callable(self, "on_gold_changed"))
+	var _error_bonus_gold_ui = RunData.connect("bonus_gold_changed", Callable(_ui_bonus_gold, "update_value"))
+	var _error_bonus_gold = RunData.connect("bonus_gold_changed", Callable(self, "on_bonus_gold_changed"))
 	on_bonus_gold_changed(RunData.bonus_gold)
-	var _error_damage_effect = RunData.connect("damage_effect", self, "on_damage_effect")
-	var _error_lifesteal_effect = RunData.connect("lifesteal_effect", self, "on_lifesteal_effect")
-	var _error_healing_effect = RunData.connect("healing_effect", self, "on_healing_effect")
-	var _error_heal_over_time_effect = RunData.connect("heal_over_time_effect", self, "on_heal_over_time_effect")
+	var _error_damage_effect = RunData.connect("damage_effect", Callable(self, "on_damage_effect"))
+	var _error_lifesteal_effect = RunData.connect("lifesteal_effect", Callable(self, "on_lifesteal_effect"))
+	var _error_healing_effect = RunData.connect("healing_effect", Callable(self, "on_healing_effect"))
+	var _error_heal_over_time_effect = RunData.connect("heal_over_time_effect", Callable(self, "on_heal_over_time_effect"))
 
-	var _error_gamepad = InputService.connect("game_lost_focus", self, "_on_game_lost_focus")
+	var _error_gamepad = InputService.connect("game_lost_focus", Callable(self, "_on_game_lost_focus"))
 
 	
 	var max_bounds = ZoneService.get_current_zone_rect().grow_individual(EDGE_SIZE, EDGE_SIZE * 2, EDGE_SIZE, EDGE_SIZE)
@@ -237,11 +238,11 @@ func _ready() -> void :
 
 	_ui_dim_screen.color.a = 0
 
-	var _error_options_1 = _pause_menu._menu_options.connect("character_highlighting_changed", self, "on_character_highlighting_changed")
-	var _error_options_2 = _pause_menu._menu_options.connect("hp_bar_on_character_changed", self, "on_hp_bar_on_character_changed")
-	var _error_options_3 = _pause_menu._menu_options.connect("weapon_highlighting_changed", self, "on_weapon_highlighting_changed")
-	var _error_options_4 = _pause_menu._menu_options.connect("darken_screen_changed", self, "on_darken_screen_changed")
-	var _error_options_5 = _pause_menu._menu_options.connect("lock_coop_camera_changed", self, "on_lock_coop_camera_changed")
+	var _error_options_1 = _pause_menu._menu_options.connect("character_highlighting_changed", Callable(self, "on_character_highlighting_changed"))
+	var _error_options_2 = _pause_menu._menu_options.connect("hp_bar_on_character_changed", Callable(self, "on_hp_bar_on_character_changed"))
+	var _error_options_3 = _pause_menu._menu_options.connect("weapon_highlighting_changed", Callable(self, "on_weapon_highlighting_changed"))
+	var _error_options_4 = _pause_menu._menu_options.connect("darken_screen_changed", Callable(self, "on_darken_screen_changed"))
+	var _error_options_5 = _pause_menu._menu_options.connect("lock_coop_camera_changed", Callable(self, "on_lock_coop_camera_changed"))
 
 	for player_index in CoopService.get_max_players():
 		var player_idx_string = str(player_index + 1)
@@ -261,10 +262,10 @@ func _ready() -> void :
 	if not RunData.is_coop_run:
 		
 		
-		_ui_things_to_process_margin_container.add_constant_override("margin_right", 0)
+		_ui_things_to_process_margin_container.add_theme_constant_override("offset_right", 0)
 
 	for effect_behavior_data in EffectBehaviorService.scene_effect_behaviors:
-		var effect_behavior: SceneEffectBehavior = effect_behavior_data.scene.instance()
+		var effect_behavior: SceneEffectBehavior = effect_behavior_data.scene.instantiate()
 		_effect_behaviors.add_child(effect_behavior.init(_entity_spawner, _wave_manager))
 
 	
@@ -308,7 +309,7 @@ func _ready() -> void :
 	if (RunData.constant_projectile == 2 or (_wave in events_bullet_hell)) and could_be_bullet_hell and _is_fog_wave == false:
 		if (_wave > 20):
 			_wave = 20
-		var rand_bullet_hell: BulletHell = ZoneService.bullets_hell.pick_random().instance()
+		var rand_bullet_hell: BulletHell = ZoneService.bullets_hell.pick_random().instantiate()
 		rand_bullet_hell._update_bullet_hell_parameters(_wave, _is_elite_wave, _is_horde_wave)
 		_enemy_projectiles.add_child(rand_bullet_hell)
 
@@ -348,10 +349,10 @@ func _init_half_second_timers() -> void :
 			timer.wait_time = timer_wait_time
 			timer.autostart = true
 			_half_second_timers.add_child(timer)
-			timer.connect("timeout", self, "_on_HalfSecondTimer_timeout", [player_index])
+			timer.connect("timeout", Callable(self, "_on_HalfSecondTimer_timeout").bind(player_index))
 			if not get_tree().current_scene.name == "GutRunner":
 				
-				yield(get_tree().create_timer(timer_delay), "timeout")
+				await get_tree().create_timer(timer_delay).timeout
 
 
 # 清场阶段悬停"待处理物品"图标时显示提示气泡
@@ -524,7 +525,7 @@ func _on_player_died(p_player: Player, _args: Entity.DieArgs) -> void :
 	player_ui.player_life_bar.hide()
 	if RunData.is_coop_run:
 		player_ui.life_bar.set_value(100)
-		player_ui.life_bar.progress_color = Color.white
+		player_ui.life_bar.progress_color = Color.WHITE
 		player_ui.life_bar.hide_with_flash()
 
 	p_player.highlight.hide()
@@ -532,7 +533,7 @@ func _on_player_died(p_player: Player, _args: Entity.DieArgs) -> void :
 	SoundManager.play(Utils.get_rand_element(run_lost_sounds), - 5, 0, true)
 
 	var live_players: = _get_live_players()
-	if not live_players.empty():
+	if not live_players.is_empty():
 		return
 
 	clean_up_room()
@@ -588,7 +589,7 @@ func _on_enemy_died(enemy: Enemy, args: Entity.DieArgs) -> void :
 		for player in live_players:
 			var player_index = player.player_index
 			var projectiles_on_death = RunData.get_player_effect(Keys.projectiles_on_death_hash, player_index)
-			if projectiles_on_death.empty():
+			if projectiles_on_death.is_empty():
 				continue
 
 			for i in projectiles_on_death[0]:
@@ -606,7 +607,7 @@ func _on_enemy_died(enemy: Enemy, args: Entity.DieArgs) -> void :
 				var _projectile = WeaponService.manage_special_spawn_projectile(
 					enemy, 
 					stats, 
-					rand_range( - PI, PI), 
+					randf_range( - PI, PI), 
 					auto_target_enemy, 
 					_entity_spawner, 
 					from, 
@@ -729,7 +730,7 @@ func spawn_consumables(unit: Unit) -> void :
 	var consumable_to_spawn: ConsumableData = ItemService.get_consumable_to_drop(unit, item_chance)
 	if consumable_to_spawn != null:
 		var pos: = unit.global_position
-		var dist: = rand_range(50, 100 + unit.stats.gold_spread)
+		var dist: = randf_range(50, 100 + unit.stats.gold_spread)
 
 		if consumable_to_spawn.my_id_hash == Keys.consumable_item_box_hash or consumable_to_spawn.my_id_hash == Keys.consumable_legendary_item_box_hash:
 			
@@ -742,10 +743,10 @@ func spawn_consumables(unit: Unit) -> void :
 
 		var consumable: Consumable = get_node_from_pool(_consumable_pool_id, _consumables_container)
 		if consumable == null:
-			consumable = consumable_scene.instance()
+			consumable = consumable_scene.instantiate()
 			_consumables_container.call_deferred("add_child", consumable)
-			var _error = consumable.connect("picked_up", self, "on_consumable_picked_up")
-			yield(consumable, "ready")
+			var _error = consumable.connect("picked_up", Callable(self, "on_consumable_picked_up"))
+			await consumable.ready
 
 		consumable.already_picked_up = false
 		consumable.consumable_data = consumable_to_spawn
@@ -818,12 +819,12 @@ func spawn_gold(value: float, pos: Vector2, spread: int) -> void :
 
 		var gold = get_node_from_pool(_gold_pool_id, _materials_container)
 		if gold == null:
-			gold = gold_scene.instance()
+			gold = gold_scene.instantiate()
 			_materials_container.call_deferred("add_child", gold)
-			var _error = gold.connect("picked_up", self, "on_gold_picked_up")
-			_error = gold.connect("picked_up", _effects_manager, "on_gold_picked_up")
-			_error = gold.connect("picked_up", _floating_text_manager, "on_gold_picked_up")
-			yield(gold, "ready")
+			var _error = gold.connect("picked_up", Callable(self, "on_gold_picked_up"))
+			_error = gold.connect("picked_up", Callable(_effects_manager, "on_gold_picked_up"))
+			_error = gold.connect("picked_up", Callable(_floating_text_manager, "on_gold_picked_up"))
+			await gold.ready
 
 		if RunData.bonus_gold > 0:
 			var gold_value = gold.value
@@ -835,9 +836,9 @@ func spawn_gold(value: float, pos: Vector2, spread: int) -> void :
 
 		gold.set_texture(gold_sprites.pick_random())
 		gold.already_picked_up = false
-		var dist = rand_range(50, 100 + spread)
+		var dist = randf_range(50, 100 + spread)
 		var push_back_destination = ZoneService.get_rand_pos_in_area(pos, dist, 0)
-		gold.drop(pos, rand_range(0, 2 * PI), push_back_destination)
+		gold.drop(pos, randf_range(0, 2 * PI), push_back_destination)
 		_active_golds.push_back(gold)
 
 		for player in _get_shuffled_live_players():
@@ -1016,10 +1017,10 @@ func on_xp_added(current_xp: float, max_xp: float, player_index: int) -> void :
 
 # 把单位的受击/暴击/秒杀信号接到特效管理器和飘字管理器
 func connect_visual_effects(unit: Unit) -> void :
-	var _error_effects = unit.connect("took_damage", _effects_manager, "_on_unit_took_damage")
-	var _error_floating_text = unit.connect("took_damage", _floating_text_manager, "_on_unit_took_damage")
-	var _error_crit_effect = unit.connect("crit_effect", _effects_manager, "_on_weapon_did_crit")
-	var _error_one_shot_effect = unit.connect("one_shot_effect", _effects_manager, "on_one_shot")
+	var _error_effects = unit.connect("took_damage", Callable(_effects_manager, "_on_unit_took_damage"))
+	var _error_floating_text = unit.connect("took_damage", Callable(_floating_text_manager, "_on_unit_took_damage"))
+	var _error_crit_effect = unit.connect("crit_effect", Callable(_effects_manager, "_on_weapon_did_crit"))
+	var _error_one_shot_effect = unit.connect("one_shot_effect", Callable(_effects_manager, "on_one_shot"))
 
 
 # 波次结束清场（全员阵亡或时间到时调用）：
@@ -1111,8 +1112,8 @@ func clean_up_room() -> void :
 			for structure in _entity_spawner.structures:
 				if structure is BuilderTurret:
 					override_gold_bag_pos = structure.global_position
-					var _e = RunData.connect("bonus_gold_converted", structure, "on_bonus_gold_converted")
-					_e = structure.connect("stat_added", _floating_text_manager, "on_turret_stat_added")
+					var _e = RunData.connect("bonus_gold_converted", Callable(structure, "on_bonus_gold_converted"))
+					_e = structure.connect("stat_added", Callable(_floating_text_manager, "on_turret_stat_added"))
 					structure.main_ref = self
 
 		if ProgressData.settings.optimize_end_waves:
@@ -1134,7 +1135,7 @@ func clean_up_room() -> void :
 				gold.set_physics_process(true)
 
 	var live_players: = _get_shuffled_live_players()
-	if not live_players.empty():
+	if not live_players.is_empty():
 		for i in _consumables.size():
 			var player = live_players[i % live_players.size()]
 			var consumable: Consumable = _consumables[i]
@@ -1155,7 +1156,7 @@ func clean_up_room() -> void :
 		for player_index in RunData.get_player_count():
 			var player: Player = _players[player_index]
 			player.won()
-		yield(_players[0], "run_won_screen")
+		await _players[0].run_won_screen
 		SoundManager.play(Utils.get_rand_element(run_won_sounds), - 5, 0, true)
 
 	DebugService.log_data("start wave_cleared_label...")
@@ -1169,7 +1170,7 @@ func clean_up_room() -> void :
 # 超过总波数后死亡一律算胜利(无尽模式的正常终点)
 func _set_run_states() -> void :
 	var live_players: = _get_live_players()
-	var all_players_dead: = live_players.empty()
+	var all_players_dead: = live_players.is_empty()
 
 	_is_wave_failed = all_players_dead
 	if RunData.current_wave < RunData.nb_of_waves:
@@ -1204,7 +1205,7 @@ func get_gold_bag_pos() -> Vector2:
 	if override_gold_bag_pos != Vector2.ZERO:
 		return override_gold_bag_pos
 
-	return get_viewport().get_canvas_transform().affine_inverse().xform(_ui_bonus_gold_pos.global_position)
+	return get_viewport().get_canvas_transform().affine_inverse() * (_ui_bonus_gold_pos.global_position)
 
 
 # 清场缓冲计时结束（波次真正收尾的地方）：
@@ -1250,7 +1251,7 @@ func _on_EndWaveTimer_timeout() -> void :
 			
 			_hud.hide()
 			if _coop_upgrades_ui.show_options(_consumables_to_process, _upgrades_to_process):
-				yield(_coop_upgrades_ui, "options_processed")
+				await _coop_upgrades_ui.options_processed
 			_coop_upgrades_ui.hide()
 		else:
 			if _upgrades_ui.show_options(_consumables_to_process, _upgrades_to_process):
@@ -1258,18 +1259,18 @@ func _on_EndWaveTimer_timeout() -> void :
 				var ui_consumables_to_process = things_to_process_player_container.consumables
 				var ui_upgrades_to_process = things_to_process_player_container.upgrades
 				while not ui_consumables_to_process.is_empty():
-					var consumable = yield(_upgrades_ui, "consumable_selected")
+					var consumable = await _upgrades_ui.consumable_selected
 					ui_consumables_to_process.remove_element(consumable.consumable_data)
 				while not ui_upgrades_to_process.is_empty():
-					var args = yield(_upgrades_ui, "upgrade_selected")
+					var args = await _upgrades_ui.upgrade_selected
 					var upgrade = args[1]
 					ui_upgrades_to_process.remove_element(upgrade.level)
-				yield(_upgrades_ui, "options_processed")
+				await _upgrades_ui.options_processed
 			_upgrades_ui.hide()
 
 		DebugService.log_data("display challenge ui...")
 		if _is_chal_ui_displayed:
-			yield(_challenge_completed_ui, "finished")
+			await _challenge_completed_ui.finished
 
 		scene = RunData.get_shop_scene_path()
 
@@ -1465,7 +1466,7 @@ func _get_shuffled_live_players() -> Array:
 func _change_scene(path: String) -> void :
 	if Utils.is_on_console():
 		OS_Seaven.set_fast_cpu_mode(true)
-	var _error = get_tree().change_scene(path)
+	var _error = get_tree().change_scene_to_file(path)
 	if Utils.is_on_console():
 		OS_Seaven.set_fast_cpu_mode(false)
 
@@ -1537,19 +1538,19 @@ func _on_EntitySpawner_players_spawned(players: Array) -> void :
 
 		_on_player_health_updated(_players[i], _players[i].current_stats.health, _players[i].max_stats.health)
 
-		var _error = _players[i].connect("health_updated", self, "_on_player_health_updated")
-		_error = _players[i].connect("healed", _floating_text_manager, "_on_player_healed")
-		_error = _players[i].connect("died", self, "_on_player_died")
-		_error = _players[i].connect("took_damage", _screenshaker, "_on_player_took_damage")
-		_error = _players[i].connect("healed", self, "on_player_healed")
-		_error = _players[i].connect("wanted_to_spawn_gold", self, "on_player_wanted_to_spawn_gold")
+		var _error = _players[i].connect("health_updated", Callable(self, "_on_player_health_updated"))
+		_error = _players[i].connect("healed", Callable(_floating_text_manager, "_on_player_healed"))
+		_error = _players[i].connect("died", Callable(self, "_on_player_died"))
+		_error = _players[i].connect("took_damage", Callable(_screenshaker, "_on_player_took_damage"))
+		_error = _players[i].connect("healed", Callable(self, "on_player_healed"))
+		_error = _players[i].connect("wanted_to_spawn_gold", Callable(self, "on_player_wanted_to_spawn_gold"))
 
 		var things_to_process_player_container: UIThingsToProcessPlayerContainer = _things_to_process_player_containers[i]
 		things_to_process_player_container.show()
-		_error = things_to_process_player_container.upgrades.connect("ui_element_mouse_entered", self, "on_ui_element_mouse_entered")
-		_error = things_to_process_player_container.upgrades.connect("ui_element_mouse_exited", self, "on_ui_element_mouse_exited")
-		_error = things_to_process_player_container.consumables.connect("ui_element_mouse_entered", self, "on_ui_element_mouse_entered")
-		_error = things_to_process_player_container.consumables.connect("ui_element_mouse_exited", self, "on_ui_element_mouse_exited")
+		_error = things_to_process_player_container.upgrades.connect("ui_element_mouse_entered", Callable(self, "on_ui_element_mouse_entered"))
+		_error = things_to_process_player_container.upgrades.connect("ui_element_mouse_exited", Callable(self, "on_ui_element_mouse_exited"))
+		_error = things_to_process_player_container.consumables.connect("ui_element_mouse_entered", Callable(self, "on_ui_element_mouse_entered"))
+		_error = things_to_process_player_container.consumables.connect("ui_element_mouse_exited", Callable(self, "on_ui_element_mouse_exited"))
 
 		connect_visual_effects(_players[i])
 
@@ -1588,13 +1589,13 @@ func _on_EntitySpawner_players_spawned(players: Array) -> void :
 
 # 敌人生成：连接其死亡/受击/强化/回血等信号到本场景与特效管理器
 func _on_EntitySpawner_enemy_spawned(enemy: Enemy) -> void :
-	var _error_died = enemy.connect("died", self, "_on_enemy_died")
-	var _error_took_damage = enemy.connect("took_damage", self, "_on_enemy_took_damage")
-	_error_took_damage = enemy.connect("took_damage", _screenshaker, "_on_unit_took_damage")
-	var _error_stats_boost = enemy.connect("stats_boosted", _effects_manager, "on_unit_stats_boost")
-	var _error_heal = enemy.connect("healed", _effects_manager, "on_enemy_healed")
-	var _error_speed_removed = enemy.connect("speed_removed", _effects_manager, "on_enemy_speed_removed")
-	var _error_state_changed = enemy.connect("state_changed", _floating_text_manager, "on_enemy_state_changed")
+	var _error_died = enemy.connect("died", Callable(self, "_on_enemy_died"))
+	var _error_took_damage = enemy.connect("took_damage", Callable(self, "_on_enemy_took_damage"))
+	_error_took_damage = enemy.connect("took_damage", Callable(_screenshaker, "_on_unit_took_damage"))
+	var _error_stats_boost = enemy.connect("stats_boosted", Callable(_effects_manager, "on_unit_stats_boost"))
+	var _error_heal = enemy.connect("healed", Callable(_effects_manager, "on_enemy_healed"))
+	var _error_speed_removed = enemy.connect("speed_removed", Callable(_effects_manager, "on_enemy_speed_removed"))
+	var _error_state_changed = enemy.connect("state_changed", Callable(_floating_text_manager, "on_enemy_state_changed"))
 	connect_visual_effects(enemy)
 
 
@@ -1603,8 +1604,8 @@ func _on_EntitySpawner_enemy_respawned(_enemy: Enemy) -> void :
 
 
 func _on_EntitySpawner_neutral_spawned(neutral: Neutral) -> void :
-	var _error_died = neutral.connect("died", self, "_on_neutral_died")
-	var _error_took_damage = neutral.connect("took_damage", _screenshaker, "_on_unit_took_damage")
+	var _error_died = neutral.connect("died", Callable(self, "_on_neutral_died"))
+	var _error_took_damage = neutral.connect("took_damage", Callable(_screenshaker, "_on_unit_took_damage"))
 	connect_visual_effects(neutral)
 
 
@@ -1613,7 +1614,7 @@ func _on_EntitySpawner_neutral_respawned(_neutral: Neutral) -> void :
 
 
 func _on_EntitySpawner_structure_spawned(structure: Structure) -> void :
-	var _error_fruit = structure.connect("wanted_to_spawn_fruit", self, "on_structure_wanted_to_spawn_fruit")
+	var _error_fruit = structure.connect("wanted_to_spawn_fruit", Callable(self, "on_structure_wanted_to_spawn_fruit"))
 
 
 func _on_EntitySpawner_structure_respawned(structure):
@@ -1635,16 +1636,16 @@ func on_structure_wanted_to_spawn_fruit(pos: Vector2) -> void :
 	var consumable_to_spawn = ItemService.get_consumable_for_tier(Tier.COMMON)
 	var consumable: Consumable = get_node_from_pool(_consumable_pool_id, _consumables_container)
 	if consumable == null:
-		consumable = consumable_scene.instance()
+		consumable = consumable_scene.instantiate()
 		_consumables_container.call_deferred("add_child", consumable)
-		var _error = consumable.connect("picked_up", self, "on_consumable_picked_up")
-		yield(consumable, "ready")
+		var _error = consumable.connect("picked_up", Callable(self, "on_consumable_picked_up"))
+		await consumable.ready
 
 	consumable.consumable_data = consumable_to_spawn
 	consumable.already_picked_up = false
 	consumable.set_texture(consumable_to_spawn.icon)
-	var dist = rand_range(100, 150)
-	var push_back_destination = Vector2(rand_range(pos.x - dist, pos.x + dist), rand_range(pos.y - dist, pos.y + dist))
+	var dist = randf_range(100, 150)
+	var push_back_destination = Vector2(randf_range(pos.x - dist, pos.x + dist), randf_range(pos.y - dist, pos.y + dist))
 	consumable.drop(pos, 0, push_back_destination)
 	_consumables.push_back(consumable)
 
@@ -1696,7 +1697,7 @@ func handle_stat_damages(stat_damages: Array, player_index: int) -> Array:
 	var dmg_taken = [0, 0]
 	var tracking_values: Dictionary = {}
 
-	if stat_damages.empty():
+	if stat_damages.is_empty():
 		return dmg_taken
 
 	var include_charmed_enemies = false
@@ -1875,7 +1876,7 @@ func get_node_from_pool(id: int, parent: Node) -> Node:
 			_current_pool = _pool[id]
 			return null
 
-	if _current_pool.empty():
+	if _current_pool.is_empty():
 		return null
 
 	var node = _current_pool.pop_back()
@@ -1889,7 +1890,7 @@ func get_node_from_pool(id: int, parent: Node) -> Node:
 
 func is_pool_empty(id: int) -> bool:
 	if _pool.has(id):
-		return _pool[id].empty()
+		return _pool[id].is_empty()
 
 	return true
 
@@ -1966,4 +1967,4 @@ func _on_HalfWaveTimer_timeout() -> void :
 		Utils.convert_stats(RunData.get_player_effect(Keys.convert_stats_half_wave_hash, player_index), player_index, false)
 
 	if RunData.concat_all_player_effects(Keys.convert_stats_half_wave_hash).size() > 0:
-		_wave_timer_label.change_color(Color.deepskyblue)
+		_wave_timer_label.change_color(Color.DEEP_SKY_BLUE)

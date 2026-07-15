@@ -1,11 +1,11 @@
 class_name CharmEnemyEffectBehavior
 extends EnemyEffectBehavior
 
-export (int) var max_charm_count: = 5
-export (int) var damage_increase: = 50
-export (ShaderMaterial) var projectile_shader: = preload("res://resources/shaders/hue_shift_shadermat.tres")
+@export var max_charm_count := 5
+@export var damage_increase := 50
+@export var projectile_shader := preload("res://resources/shaders/hue_shift_shadermat.tres")
 
-onready var _charm_timer: Timer = $CharmTimer
+@onready var _charm_timer: Timer = $CharmTimer
 
 var _absorb_next_damage: = false
 var charmed: = false
@@ -79,8 +79,8 @@ func charm(from_player_index: int) -> void :
 	RunData.current_charmed_enemies[from_player_index] += 1
 	RunData.emit_signal("enemy_charmed", _parent)
 
-	if not RunData.is_connected("enemy_charmed", _parent, "_on_enemy_charmed"):
-		var _error_enemy_charmed = RunData.connect("enemy_charmed", _parent, "_on_enemy_charmed")
+	if not RunData.is_connected("enemy_charmed", Callable(_parent, "_on_enemy_charmed")):
+		var _error_enemy_charmed = RunData.connect("enemy_charmed", Callable(_parent, "_on_enemy_charmed"))
 
 	_original_collision_layer = _parent.collision_layer
 	_original_collision_mask = _parent.collision_mask
@@ -100,7 +100,7 @@ func charm(from_player_index: int) -> void :
 
 			attack_behavior.custom_collision_layer = Utils.PET_PROJECTILES_BIT
 			var new_shader: = projectile_shader.duplicate()
-			new_shader.set_shader_param("hue", Utils.CHARM_COLOR.h)
+			new_shader.set_shader_parameter("hue", Utils.CHARM_COLOR.h)
 			attack_behavior.custom_sprite_material = new_shader
 
 	if _parent is Healer or _parent is Buffer:
@@ -117,7 +117,7 @@ func charm(from_player_index: int) -> void :
 	_parent.add_outline(Utils.CHARM_COLOR, 0.4, 0.75)
 	_parent.update_target()
 	_parent.shoot_animation_name = "shoot_charmed"
-	_parent.sprite.self_modulate = Color.white
+	_parent.sprite.self_modulate = Color.WHITE
 
 	_charm_timer.start()
 	_parent.emit_signal("charmed", _parent)
@@ -157,7 +157,7 @@ func _on_CharmTimer_timeout() -> void :
 
 func uncharm() -> void :
 	RunData.current_charmed_enemies[charmed_by_player_index] -= 1
-	RunData.disconnect("enemy_charmed", _parent, "_on_enemy_charmed")
+	RunData.disconnect("enemy_charmed", Callable(_parent, "_on_enemy_charmed"))
 
 	_parent.collision_layer = _original_collision_layer
 	_parent.collision_mask = _original_collision_mask

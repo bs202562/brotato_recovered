@@ -4,7 +4,7 @@
 [ext_resource path="res://entities/units/enemies/attack_behaviors/attack_behavior.gd" type="Script" id=2]
 [ext_resource path="res://entities/units/movement_behaviors/movement_behavior.gd" type="Script" id=3]
 [ext_resource path="res://entities/units/neutral/neutral.gd" type="Script" id=4]
-[ext_resource path="res://entities/units/neutral/tree.png" type="Texture" id=7]
+[ext_resource path="res://entities/units/neutral/tree.png" type="Texture2D" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 48.6621
@@ -15,7 +15,7 @@ collision_mask = 2177
 script = ExtResource( 4 )
 number_of_hits_before_dying = 8
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -32 )
 texture = ExtResource( 7 )
 

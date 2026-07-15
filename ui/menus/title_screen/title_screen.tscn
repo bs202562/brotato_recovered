@@ -40,8 +40,8 @@ __meta__ = {
 unique_name_in_owner = true
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1920.0
-margin_bottom = 1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource( 3 )
 
 [node name="MenuProfile" parent="Menus" instance=ExtResource( 6 )]
@@ -49,7 +49,7 @@ visible = false
 
 [node name="MainMenu" parent="Menus" instance=ExtResource( 4 )]
 unique_name_in_owner = true
-margin_top = 47.0
+offset_top = 47.0
 
 [node name="MenuCredits" parent="Menus" instance=ExtResource( 10 )]
 visible = false

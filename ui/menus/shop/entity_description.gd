@@ -6,43 +6,43 @@ const SCROLL_SPEED: = 600.0
 signal mouse_hovered_category
 signal mouse_exited_category
 
-export (bool) var expand_indefinitely = true
-export (bool) var show_details = true
-export (bool) var show_player_stats = false
-export (bool) var hide_description_if_locked_in_codex: = false
-export (bool) var silhouette_locked_items: = false
+@export var expand_indefinitely: bool = true
+@export var show_details: bool = true
+@export var show_player_stats: bool = false
+@export var hide_description_if_locked_in_codex := false
+@export var silhouette_locked_items := false
 
 var item: ItemParentData
-onready var icon_panel: Panel = $"%IconPanel"
+@onready var icon_panel: Panel = $"%IconPanel"
 
-onready var _icon = $"%Icon" as TextureRect
-onready var _name = $"%Name"
-onready var _subtitle = $"%Category"
+@onready var _icon = $"%Icon" as TextureRect
+@onready var _name = $"%Name"
+@onready var _subtitle = $"%Category"
 
-onready var _vbox_container = $"%VBoxContainer"
-onready var _player_stat_descr_l = $"%PlayerStatsDescr_left" as RichTextLabel
-onready var _player_stat_descr_r = $"%PlayerStatsDescr_right" as RichTextLabel
-onready var _behaviourDesc = $"%BehaviourDesc" as Label
+@onready var _vbox_container = $"%VBoxContainer"
+@onready var _player_stat_descr_l = $"%PlayerStatsDescr_left" as RichTextLabel
+@onready var _player_stat_descr_r = $"%PlayerStatsDescr_right" as RichTextLabel
+@onready var _behaviourDesc = $"%BehaviourDesc" as Label
 
-onready var _scroll_container = $"%ScrollContainer" as ScrollContainer
-onready var _player_stat_descr_scrolled_l = $"%PlayerStatsDescr_scrolled_left" as RichTextLabel
-onready var _player_stat_descr_scrolled_r = $"%PlayerStatsDescr_scrolled_right" as RichTextLabel
-onready var _behaviourDesc_scrolled = $"%BehaviourDesc_scrolled" as Label
-onready var _screen_text = $"%screen_texture" as TextureRect
+@onready var _scroll_container = $"%ScrollContainer" as ScrollContainer
+@onready var _player_stat_descr_scrolled_l = $"%PlayerStatsDescr_scrolled_left" as RichTextLabel
+@onready var _player_stat_descr_scrolled_r = $"%PlayerStatsDescr_scrolled_right" as RichTextLabel
+@onready var _behaviourDesc_scrolled = $"%BehaviourDesc_scrolled" as Label
+@onready var _screen_text = $"%screen_texture" as TextureRect
 
-onready var info_stats_container: Container = $"%info_stats_container"
-onready var graph_hp: WaveGraph = $"%graph_hp"
-onready var graph_dammage: WaveGraph = $"%graph_dammage"
-onready var graph_armor: WaveGraph = $"%graph_armor"
-onready var speed_container: Container = $"%speed_container"
-onready var speed_progress_bar: ProgressBar = $"%speed_progress_bar"
-onready var speed_label: Label = $"%speed_label"
-onready var knoback_resistance_container: Container = $"%knoback_resistance_container"
-onready var knoback_resistance_progress_bar: ProgressBar = $"%knoback_resistance_progressbar"
-onready var knoback_resistance_label: Label = $"%knoback_resistance_label"
-onready var material_dropped_container: Container = $"%material_dropped_container"
-onready var material_text_container: Container = $"%material_text_container"
-onready var material_label: Label = $"%material_label"
+@onready var info_stats_container: Container = $"%info_stats_container"
+@onready var graph_hp: WaveGraph = $"%graph_hp"
+@onready var graph_dammage: WaveGraph = $"%graph_dammage"
+@onready var graph_armor: WaveGraph = $"%graph_armor"
+@onready var speed_container: Container = $"%speed_container"
+@onready var speed_progress_bar: ProgressBar = $"%speed_progress_bar"
+@onready var speed_label: Label = $"%speed_label"
+@onready var knoback_resistance_container: Container = $"%knoback_resistance_container"
+@onready var knoback_resistance_progress_bar: ProgressBar = $"%knoback_resistance_progressbar"
+@onready var knoback_resistance_label: Label = $"%knoback_resistance_label"
+@onready var material_dropped_container: Container = $"%material_dropped_container"
+@onready var material_text_container: Container = $"%material_text_container"
+@onready var material_label: Label = $"%material_label"
 
 var _player_index: = 0
 
@@ -68,7 +68,7 @@ func set_item(item_data: ItemEntity, player_index: int, _item_count: = 1) -> voi
 	item = item_data
 	_player_index = player_index
 
-	icon_panel.self_modulate = lerp(ItemService.get_color_from_entity_type(item_data), Color.white, 0.75)
+	icon_panel.self_modulate = lerp(ItemService.get_color_from_entity_type(item_data), Color.WHITE, 0.75)
 	icon_panel.self_modulate.a = 1
 
 	_name.text = item_data.name
@@ -93,8 +93,8 @@ func set_item(item_data: ItemEntity, player_index: int, _item_count: = 1) -> voi
 	get_player_stats(1).visible = show_player_stats
 
 	if show_player_stats:
-		get_player_stats( - 1).bbcode_text = item_data._get_entity_player_stats_description( - 1)
-		get_player_stats(1).bbcode_text = item_data._get_entity_player_stats_description(1)
+		get_player_stats( - 1).text = item_data._get_entity_player_stats_description( - 1)
+		get_player_stats(1).text = item_data._get_entity_player_stats_description(1)
 
 	if silhouette_locked_items and item_data._is_silhouette_in_codex():
 		_icon.modulate = Color(0, 0, 0, 1)
@@ -152,7 +152,7 @@ func set_item(item_data: ItemEntity, player_index: int, _item_count: = 1) -> voi
 
 func set_custom_data(name: String, icon: Resource) -> void :
 	_name.text = name
-	_name.modulate = Color.white
+	_name.modulate = Color.WHITE
 	_icon.texture = icon
 	item = null
 

@@ -4,8 +4,8 @@ class_name ModUserProfile
 
 
 
-export var name: = ""
-export var mod_list: = {}
+@export var name: = ""
+@export var mod_list: = {}
 
 
 func _init(_name: = "", _mod_list: = {}) -> void :

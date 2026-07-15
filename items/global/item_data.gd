@@ -1,10 +1,10 @@
 class_name ItemData
 extends ItemParentData
 
-export(int) var max_nb = -1
-export(Array, Resource) var item_appearances
-export(Array, String) var tags
-export(Resource) var replaced_by
+@export var max_nb: int = -1
+@export var item_appearances: Array = [] # (Array, Resource)
+@export var tags: Array = [] # (Array, String)
+@export var replaced_by: Resource
 
 
 func get_category() -> int:
@@ -13,7 +13,7 @@ func get_category() -> int:
 
 func serialize() -> Dictionary:
 
-	var serialized = .serialize()
+	var serialized = super.serialize()
 
 	serialized.max_nb = str(max_nb)
 	serialized.tags = tags
@@ -32,7 +32,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	max_nb = serialized.max_nb as int
 	tags = serialized.tags

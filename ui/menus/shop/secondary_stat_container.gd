@@ -4,14 +4,14 @@ extends PanelContainer
 signal focused(button, title, value, player_index)
 signal unfocused(player_index)
 
-export (String) var key
-export (String) var custom_text_key
-export (bool) var reverse = false
+@export var key: String
+@export var custom_text_key: String
+@export var reverse: bool = false
 
-onready var key_hash: int = Keys.generate_hash(key.to_lower())
+@onready var key_hash: int = Keys.generate_hash(key.to_lower())
 
-onready var _label = $HBoxContainer / Label
-onready var _value = $HBoxContainer / Value
+@onready var _label = $HBoxContainer / Label
+@onready var _value = $HBoxContainer / Value
 
 
 func disable_focus() -> void :
@@ -41,8 +41,8 @@ func update_player_stat(player_index: int) -> void :
 		_label.modulate = ProgressData.settings.color_negative
 		_value.modulate = ProgressData.settings.color_negative
 	else:
-		_label.modulate = Color.white
-		_value.modulate = Color.white
+		_label.modulate = Color.WHITE
+		_value.modulate = Color.WHITE
 
 
 func _on_SecondaryStatContainer_focus_entered():

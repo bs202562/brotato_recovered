@@ -1,12 +1,12 @@
 class_name LockedPanel
 extends PanelContainer
 
-var player_color_index: = - 1 setget _set_player_color_index
+var player_color_index: = - 1: set = _set_player_color_index
 func _set_player_color_index(v: int) -> void :
 	player_color_index = v
 	_update_stylebox()
 
-onready var _description = $MarginContainer / VBoxContainer / Description
+@onready var _description = $MarginContainer / VBoxContainer / Description
 
 
 func set_element(element: ItemParentData, type: int) -> void :
@@ -20,9 +20,9 @@ func set_element(element: ItemParentData, type: int) -> void :
 
 
 func _update_stylebox() -> void :
-	remove_stylebox_override("panel")
+	remove_theme_stylebox_override("panel")
 	if player_color_index < 0:
 		return
-	var stylebox = get_stylebox("panel").duplicate()
+	var stylebox = get_theme_stylebox("panel").duplicate()
 	CoopService.change_stylebox_for_player(stylebox, player_color_index)
-	add_stylebox_override("panel", stylebox)
+	add_theme_stylebox_override("panel", stylebox)

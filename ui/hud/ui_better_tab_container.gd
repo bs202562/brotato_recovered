@@ -2,11 +2,11 @@ class_name UIBetterTabContainer
 extends Container
 
 
-export var use_shoulder_to_swap_tab: bool = true
-export (Array, NodePath) var buttons_tab_np
-export (NodePath) var tab_container_np
+@export var use_shoulder_to_swap_tab: bool = true
+@export var buttons_tab_np: Array = [] # (Array, NodePath)
+@export var tab_container_np: NodePath
 
-onready var tab_container: TabContainer = get_node(tab_container_np)
+@onready var tab_container: TabContainer = get_node(tab_container_np)
 var buttons_tab: Array
 var _focus_emulator: FocusEmulator
 
@@ -21,10 +21,10 @@ func _ready():
 		var button: Button = get_node(buttons_tab_np[i])
 		buttons_tab.append(button)
 		button.toggle_mode = true
-		button.group = buttonGroup
-		button.connect("pressed", self, "_change_tab", [i])
+		button.button_group = buttonGroup # 4.x 移植: group 改名 button_group
+		button.connect("pressed", Callable(self, "_change_tab").bind(i))
 
-	buttons_tab[0].pressed = true
+	buttons_tab[0].button_pressed = true
 	_change_tab(0)
 
 
@@ -40,12 +40,12 @@ func _input(event):
 			var button: Button = get_node(buttons_tab_np[max(tab_container.current_tab - 1, 0)])
 			if button.disabled: return
 			tab_container.current_tab -= 1
-			buttons_tab[tab_container.current_tab].pressed = true
+			buttons_tab[tab_container.current_tab].button_pressed = true
 		if event.is_action_pressed("rtrigger"):
 			var button: Button = get_node(buttons_tab_np[min(tab_container.current_tab + 1, buttons_tab_np.size() - 1)])
 			if button.disabled: return
 			tab_container.current_tab += 1
-			buttons_tab[tab_container.current_tab].pressed = true
+			buttons_tab[tab_container.current_tab].button_pressed = true
 
 		if event.is_action_pressed("ltrigger") or event.is_action_pressed("rtrigger"):
 			buttons_tab[tab_container.current_tab].grab_focus()
@@ -53,6 +53,6 @@ func _input(event):
 
 func _change_tab(actual_tab: int):
 	var button: Button = get_node(buttons_tab_np[actual_tab])
-	if button.disabled and not button.pressed: return
+	if button.disabled and not button.button_pressed: return
 	tab_container.current_tab = actual_tab
-	if not button.pressed: button.pressed = true
+	if not button.button_pressed: button.button_pressed = true

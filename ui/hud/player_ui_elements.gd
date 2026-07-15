@@ -1,5 +1,5 @@
 class_name PlayerUIElements
-extends Reference
+extends RefCounted
 
 
 var player_index: int
@@ -14,7 +14,7 @@ var level_label: Label
 var gold: UIGold
 
 
-var hud_visible: = false setget _set_hud_visible
+var hud_visible: = false: set = _set_hud_visible
 func _set_hud_visible(value: bool) -> void :
 	hud_visible = value
 	life_bar.visible = value
@@ -28,7 +28,7 @@ func set_hud_position(position_index: int) -> void :
 	hud_container.size_flags_horizontal = 0 if left else Control.SIZE_SHRINK_END
 	hud_container.size_flags_vertical = 0 if top else Control.SIZE_SHRINK_END
 	hud_container.move_child(gold, xp_bar.get_index() + 1 if top else 0)
-	gold.alignment = BoxContainer.ALIGN_BEGIN if left else BoxContainer.ALIGN_END
+	gold.alignment = BoxContainer.ALIGNMENT_BEGIN if left else BoxContainer.ALIGNMENT_END
 
 
 func update_hud(player: Player) -> void :
@@ -38,7 +38,7 @@ func update_hud(player: Player) -> void :
 		xp_bar.self_modulate.a = 0.75
 
 		var player_color = CoopService.get_player_color(player_index)
-		gold.gold_label.add_color_override("font_color", player_color)
+		gold.gold_label.add_theme_color_override("font_color", player_color)
 		gold.icon.modulate = player_color
 
 	life_bar.update_value(player.current_stats.health, player.max_stats.health)

@@ -1,8 +1,8 @@
 class_name PetEffect
 extends Effect
 
-export(PackedScene) var scene = null
-export(bool) var is_structure = false
+@export var scene: PackedScene = null
+@export var is_structure: bool = false
 var is_cursed = false
 
 static func get_id() -> String:
@@ -17,14 +17,14 @@ func unapply(player_index: int) -> void:
 		RunData.get_player_effect(Keys.stat_pets_hash, player_index).erase(self)
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 	serialized.scene = scene.resource_path if scene else null
 	serialized.is_structure = is_structure
 	serialized.is_cursed = is_cursed
 	return serialized
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 
 	if serialized.has("is_structure"):
 		is_structure = serialized.is_structure

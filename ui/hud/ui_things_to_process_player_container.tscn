@@ -7,9 +7,9 @@
 [ext_resource path="res://ui/hud/ui_upgrade_to_process_list.gd" type="Script" id=5]
 
 [node name="UIThingsToProcessPlayerContainer" type="Control"]
-margin_right = 586.0
-margin_bottom = 514.0
-rect_clip_content = true
+offset_right = 586.0
+offset_bottom = 514.0
+clip_contents = true
 mouse_filter = 2
 script = ExtResource( 2 )
 
@@ -17,19 +17,19 @@ script = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-custom_constants/separation = 12
+theme_override_constants/separation = 12
 
 [node name="Upgrades" parent="VBoxContainer" instance=ExtResource( 3 )]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0.501961 )
-margin_right = 586.0
+offset_right = 586.0
 script = ExtResource( 5 )
 element_scene = ExtResource( 1 )
 
 [node name="Consumables" parent="VBoxContainer" instance=ExtResource( 3 )]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0.501961 )
-margin_top = 12.0
-margin_right = 586.0
-margin_bottom = 12.0
+offset_top = 12.0
+offset_right = 586.0
+offset_bottom = 12.0
 script = ExtResource( 4 )

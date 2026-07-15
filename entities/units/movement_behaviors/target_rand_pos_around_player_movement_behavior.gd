@@ -1,9 +1,9 @@
 class_name TargetRandPosAroundPlayerMovementBehavior
 extends MovementBehavior
 
-export (int) var range_around_player = 300
-export (int) var range_randomization = 100
-export (int) var update_every_x_frames = - 1
+@export var range_around_player: int = 300
+@export var range_randomization: int = 100
+@export var update_every_x_frames: int = - 1
 
 var _actual: int
 var _current_target: Vector2 = Vector2.ZERO
@@ -12,8 +12,8 @@ var current_check_update: float = 0.0
 
 
 func init(parent: Node) -> Node:
-	var _init = .init(parent)
-	_actual = range_around_player + rand_range( - range_randomization, range_randomization)
+	var _init = super.init(parent)
+	_actual = range_around_player + randf_range( - range_randomization, range_randomization)
 	return self
 
 
@@ -35,7 +35,7 @@ func get_target_position():
 
 
 func get_new_target() -> Vector2:
-	var new_target = _parent.current_target.global_position + Vector2(rand_range( - _actual, _actual), rand_range( - _actual, _actual))
+	var new_target = _parent.current_target.global_position + Vector2(randf_range( - _actual, _actual), randf_range( - _actual, _actual))
 
 	new_target.x = clamp(new_target.x, _parent._min_pos.x, _parent._max_pos.x)
 	new_target.y = clamp(new_target.y, _parent._min_pos.y, _parent._max_pos.y)

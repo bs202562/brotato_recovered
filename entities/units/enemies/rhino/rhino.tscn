@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://entities/units/enemies/boss/boss.tscn" type="PackedScene" id=1]
-[ext_resource path="res://entities/units/enemies/rhino/rhino.png" type="Texture" id=2]
+[ext_resource path="res://entities/units/enemies/rhino/rhino.png" type="Texture2D" id=2]
 [ext_resource path="res://entities/units/enemies/attack_behaviors/enemy_charge_prep_animation.tres" type="Animation" id=3]
 [ext_resource path="res://entities/units/enemies/rhino/rhino_stats.tres" type="Resource" id=4]
 [ext_resource path="res://entities/units/enemies/rhino/rhino.gd" type="Script" id=5]
@@ -25,7 +25,7 @@ stats = ExtResource( 4 )
 enemy_id = "rhino"
 is_elite = true
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( 0, -56 )
 texture = ExtResource( 2 )
 
@@ -101,8 +101,8 @@ only_positions_in_target_direction = false
 scale_charge_duration_with_range = false
 
 [node name="LifeBar" parent="." index="14"]
-margin_top = -152.0
-margin_bottom = -136.0
+offset_top = -152.0
+offset_bottom = -136.0
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]

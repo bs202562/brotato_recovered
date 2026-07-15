@@ -5,12 +5,12 @@ signal mouse_hovered_category
 signal mouse_exited_category
 
 
-var player_color_index: = - 1 setget _set_player_color_index
+var player_color_index: = - 1: set = _set_player_color_index
 func _set_player_color_index(v: int) -> void :
 	player_color_index = v
 	_update_stylebox()
 
-var selected: = false setget _set_selected
+var selected: = false: set = _set_selected
 func _set_selected(v: bool) -> void :
 	selected = v
 	if selected:
@@ -22,11 +22,11 @@ func _set_selected(v: bool) -> void :
 
 var item_data: ItemParentData
 
-onready var _checkmark = $"Checkmark"
-onready var _item_description = $"%ItemDescription"
-onready var _global_container = $"%MarginContainer"
-onready var _random_icon_container: Control = $"%random_icon_container"
-onready var _frame: Panel = $"%frame"
+@onready var _checkmark = $"Checkmark"
+@onready var _item_description = $"%ItemDescription"
+@onready var _global_container = $"%MarginContainer"
+@onready var _random_icon_container: Control = $"%random_icon_container"
+@onready var _frame: Panel = $"%frame"
 
 func set_data(p_item_data: ItemParentData, player_index: int) -> void :
 	_random_icon_container.visible = false
@@ -51,13 +51,13 @@ func _on_ItemDescription_mouse_exited_category() -> void :
 
 
 func _update_stylebox() -> void :
-	remove_stylebox_override("panel")
-	var stylebox = get_stylebox("panel").duplicate()
+	remove_theme_stylebox_override("panel")
+	var stylebox = get_theme_stylebox("panel").duplicate()
 	if item_data != null:
 		ItemService.change_panel_stylebox_from_tier(stylebox, item_data.tier, false, $"%frame")
 	if player_color_index >= 0:
 		CoopService.change_stylebox_for_player(stylebox, player_color_index)
-	add_stylebox_override("panel", stylebox)
+	add_theme_stylebox_override("panel", stylebox)
 
 
 func _update_frame(stylebox: StyleBox) -> void :
@@ -65,7 +65,7 @@ func _update_frame(stylebox: StyleBox) -> void :
 		_frame.visible = false
 	else:
 		_frame.visible = true
-		_frame.add_stylebox_override("panel", stylebox)
+		_frame.add_theme_stylebox_override("panel", stylebox)
 
 
 func _show_random():

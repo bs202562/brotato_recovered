@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/coin_bag_ring_gemstone_item_03.wav-26c7cebfce452eb697bf12c1dd1289e0.sample"
+type="AudioStreamWAV"
+uid="uid://c06vcqtjovdd5"
+path="res://.godot/imported/coin_bag_ring_gemstone_item_03.wav-26c7cebfce452eb697bf12c1dd1289e0.sample"
 
 [deps]
 
 source_file="res://items/materials/alt_sounds/coin_bag_ring_gemstone_item_03.wav"
-dest_files=[ "res://.import/coin_bag_ring_gemstone_item_03.wav-26c7cebfce452eb697bf12c1dd1289e0.sample" ]
+dest_files=["res://.godot/imported/coin_bag_ring_gemstone_item_03.wav-26c7cebfce452eb697bf12c1dd1289e0.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

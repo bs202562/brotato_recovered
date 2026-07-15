@@ -1,8 +1,8 @@
 shader_type canvas_item;
 render_mode unshaded;
 
-uniform vec4 color_A : hint_color = vec4(0.000000, 0.000000, 0.000000, 1.000000);
-uniform vec4 color_B : hint_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform vec4 color_A : source_color = vec4(0.000000, 0.000000, 0.000000, 1.000000);
+uniform vec4 color_B : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
 
 void fragment() {
 // Input:2

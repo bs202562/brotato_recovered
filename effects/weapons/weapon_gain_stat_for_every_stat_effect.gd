@@ -2,7 +2,7 @@ class_name WeaponGainStatForEveryStatEffect
 extends GainStatForEveryStatEffect
 
 
-export (String) var increased_stat_name = ""
+@export var increased_stat_name: String = ""
 
 
 static func get_id() -> String:

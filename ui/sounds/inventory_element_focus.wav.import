@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/inventory_element_focus.wav-b0f40c22b953c15192ffea530ccf88ab.sample"
+type="AudioStreamWAV"
+uid="uid://f8ua0cbj2m8e"
+path="res://.godot/imported/inventory_element_focus.wav-b0f40c22b953c15192ffea530ccf88ab.sample"
 
 [deps]
 
 source_file="res://ui/sounds/inventory_element_focus.wav"
-dest_files=[ "res://.import/inventory_element_focus.wav-b0f40c22b953c15192ffea530ccf88ab.sample" ]
+dest_files=["res://.godot/imported/inventory_element_focus.wav-b0f40c22b953c15192ffea530ccf88ab.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/gun_submachine_auto_shot_04.wav-3f1fefe0b7f494a2886a100b0f9875b1.sample"
+type="AudioStreamWAV"
+uid="uid://c5d742tayk7t5"
+path="res://.godot/imported/gun_submachine_auto_shot_04.wav-3f1fefe0b7f494a2886a100b0f9875b1.sample"
 
 [deps]
 
 source_file="res://weapons/ranged/smg/gun_submachine_auto_shot_04.wav"
-dest_files=[ "res://.import/gun_submachine_auto_shot_04.wav-3f1fefe0b7f494a2886a100b0f9875b1.sample" ]
+dest_files=["res://.godot/imported/gun_submachine_auto_shot_04.wav-3f1fefe0b7f494a2886a100b0f9875b1.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

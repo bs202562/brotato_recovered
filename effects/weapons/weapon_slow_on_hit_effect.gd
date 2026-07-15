@@ -1,7 +1,7 @@
 class_name WeaponSlowOnHitEffect
 extends NullEffect
 
-export (String) var scaling_stat = "stat_engineering"
+@export var scaling_stat: String = "stat_engineering"
 var scaling_stat_hash: = Keys.empty_hash
 
 
@@ -22,12 +22,12 @@ func get_speed_percent_modifier(player_index: int) -> int:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 	serialized.scaling_stat = scaling_stat
 	return serialized
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void :
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 	scaling_stat = serialized.scaling_stat
 	scaling_stat_hash = Keys.generate_hash(scaling_stat)

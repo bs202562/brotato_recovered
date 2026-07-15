@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://dlcs/dlc_1/enemies/sea_pig/sea_pig.png" type="Texture" id=1]
+[ext_resource path="res://dlcs/dlc_1/enemies/sea_pig/sea_pig.png" type="Texture2D" id=1]
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://dlcs/dlc_1/enemies/sea_pig/sea_pig_stats.tres" type="Resource" id=3]
 [ext_resource path="res://entities/units/movement_behaviors/patrol_edges_of_map_movement_behavior.gd" type="Script" id=4]
@@ -23,7 +23,7 @@ enemy_id = "sea_pig"
 can_be_cursed = false
 can_be_charmed = false
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( -4, -24 )
 texture = ExtResource( 1 )
 

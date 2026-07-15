@@ -1,8 +1,8 @@
 class_name TempStatsPerIntervalEffect
 extends Effect
 
-export var interval := 1
-export var reset_on_hit := false
+@export var interval := 1
+@export var reset_on_hit := false
 
 
 static func get_id() -> String:
@@ -25,7 +25,7 @@ func unapply(player_index: int) -> void:
 		if existing_effect[0] == key_hash and existing_effect[2] == interval and existing_effect[3] == reset_on_hit:
 			existing_effect[1] -= value
 			if existing_effect[1] == 0:
-				gain_stat_effects.remove(i)
+				gain_stat_effects.remove_at(i)
 			return
 
 
@@ -39,7 +39,7 @@ func _add_custom_args() -> void:
 func get_text(player_index: int, colored: bool = true) -> String:
 	if interval == 1:
 		text_key = "EFFECT_TEMP_STATS_PER_INTERVAL_SINGULAR"
-	return .get_text(player_index, colored)
+	return super.get_text(player_index, colored)
 
 
 func get_args(_player_index: int) -> Array:
@@ -47,13 +47,13 @@ func get_args(_player_index: int) -> Array:
 
 
 func serialize() -> Dictionary:
-	var serialized = .serialize()
+	var serialized = super.serialize()
 	serialized.interval = interval
 	serialized.reset_on_hit = reset_on_hit
 	return serialized
 
 
 func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
+	super.deserialize_and_merge(serialized)
 	interval = serialized.interval as int
 	reset_on_hit = serialized.reset_on_hit as bool

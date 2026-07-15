@@ -7,27 +7,27 @@ signal codex_button_pressed
 signal profile_button_pressed
 signal mods_button_pressed
 
-onready var continue_button = $"%ContinueButton"
-onready var profile_button = $"%ProfileButton"
-onready var start_button = $"%StartButton"
-onready var options_button = $"%OptionsButton"
-onready var codex_button = $"%CodexButton"
-onready var mods_button = $"%ModsButton"
-onready var quit_button = $"%QuitButton"
+@onready var continue_button = $"%ContinueButton"
+@onready var profile_button = $"%ProfileButton"
+@onready var start_button = $"%StartButton"
+@onready var options_button = $"%OptionsButton"
+@onready var codex_button = $"%CodexButton"
+@onready var mods_button = $"%ModsButton"
+@onready var quit_button = $"%QuitButton"
 
 
-onready var more_games_button = $"%MoreGamesButton"
-onready var newsletter_button = $"%NewsletterButton"
-onready var community_button = $"%CommunityButton"
-onready var credits_button = $"%CreditsButton"
+@onready var more_games_button = $"%MoreGamesButton"
+@onready var newsletter_button = $"%NewsletterButton"
+@onready var community_button = $"%CommunityButton"
+@onready var credits_button = $"%CreditsButton"
 
-onready var error_label = $"%ErrorLabel"
-onready var version_label = $"%VersionLabel"
-onready var xbox_gamertag = $"%XboxGamerTag"
-onready var logo_container = $"%LogoContainer"
+@onready var error_label = $"%ErrorLabel"
+@onready var version_label = $"%VersionLabel"
+@onready var xbox_gamertag = $"%XboxGamerTag"
+@onready var logo_container = $"%LogoContainer"
 
-onready var left_container = $"MarginContainer/VBoxContainer/HBoxContainer/ButtonsLeft"
-onready var right_container = $"MarginContainer/VBoxContainer/HBoxContainer/ButtonsRight"
+@onready var left_container = $"MarginContainer/VBoxContainer/HBoxContainer/ButtonsLeft"
+@onready var right_container = $"MarginContainer/VBoxContainer/HBoxContainer/ButtonsRight"
 
 func testActivity(act: String) -> void :
 	
@@ -66,21 +66,21 @@ func _process(_delta: float) -> void :
 				setup_dlc_desktop_menu()
 				path_left_right = codex_button.get_path()
 		else:
-			codex_button.focus_neighbour_left = path_left_right
-			codex_button.focus_neighbour_right = path_left_right
-			credits_button.focus_neighbour_left = path_left_right
-			credits_button.focus_neighbour_right = path_left_right
+			codex_button.focus_neighbor_left = path_left_right
+			codex_button.focus_neighbor_right = path_left_right
+			credits_button.focus_neighbor_left = path_left_right
+			credits_button.focus_neighbor_right = path_left_right
 
-		continue_button.focus_neighbour_left = path_left_right
-		continue_button.focus_neighbour_right = path_left_right
-		start_button.focus_neighbour_left = path_left_right
-		start_button.focus_neighbour_right = path_left_right
-		options_button.focus_neighbour_left = path_left_right
-		options_button.focus_neighbour_right = path_left_right
-		quit_button.focus_neighbour_left = path_left_right
-		quit_button.focus_neighbour_right = path_left_right
+		continue_button.focus_neighbor_left = path_left_right
+		continue_button.focus_neighbor_right = path_left_right
+		start_button.focus_neighbor_left = path_left_right
+		start_button.focus_neighbor_right = path_left_right
+		options_button.focus_neighbor_left = path_left_right
+		options_button.focus_neighbor_right = path_left_right
+		quit_button.focus_neighbor_left = path_left_right
+		quit_button.focus_neighbor_right = path_left_right
 
-		var menu_gameplay_options = get_parent().find_node("MenuGameplayOptions")
+		var menu_gameplay_options = get_parent().find_child("MenuGameplayOptions")
 		if menu_gameplay_options != null:
 			menu_gameplay_options.refresh_dlc_button()
 
@@ -124,14 +124,14 @@ func refresh_menu() -> void :
 		else:
 			setup_console_no_dlc_menu()
 
-		continue_button.focus_neighbour_left = path_left_right
-		continue_button.focus_neighbour_right = path_left_right
-		start_button.focus_neighbour_left = path_left_right
-		start_button.focus_neighbour_right = path_left_right
-		options_button.focus_neighbour_left = path_left_right
-		options_button.focus_neighbour_right = path_left_right
-		quit_button.focus_neighbour_left = path_left_right
-		quit_button.focus_neighbour_right = path_left_right
+		continue_button.focus_neighbor_left = path_left_right
+		continue_button.focus_neighbor_right = path_left_right
+		start_button.focus_neighbor_left = path_left_right
+		start_button.focus_neighbor_right = path_left_right
+		options_button.focus_neighbor_left = path_left_right
+		options_button.focus_neighbor_right = path_left_right
+		quit_button.focus_neighbor_left = path_left_right
+		quit_button.focus_neighbor_right = path_left_right
 
 func setup_menu() -> void :
 	refresh_menu()
@@ -148,19 +148,19 @@ func setup_menu() -> void :
 		continue_button.grab_focus()
 
 		
-		start_button.focus_neighbour_top = ""
+		start_button.focus_neighbor_top = ""
 
 		if Utils.is_on_console():
 			
 			if Utils.on_gdk_desktop:
 				
-				credits_button.focus_neighbour_bottom = ""
-				quit_button.focus_neighbour_bottom = continue_button.get_path()
-				continue_button.focus_neighbour_top = quit_button.get_path()
+				credits_button.focus_neighbor_bottom = ""
+				quit_button.focus_neighbor_bottom = continue_button.get_path()
+				continue_button.focus_neighbor_top = quit_button.get_path()
 			else:
 				
-				credits_button.focus_neighbour_bottom = continue_button.get_path()
-				continue_button.focus_neighbour_top = credits_button.get_path()
+				credits_button.focus_neighbor_bottom = continue_button.get_path()
+				continue_button.focus_neighbor_top = credits_button.get_path()
 
 	else:
 		
@@ -170,33 +170,33 @@ func setup_menu() -> void :
 			
 			if Utils.on_gdk_desktop:
 				
-				credits_button.focus_neighbour_bottom = ""
-				quit_button.focus_neighbour_bottom = start_button.get_path()
-				start_button.focus_neighbour_top = quit_button.get_path()
+				credits_button.focus_neighbor_bottom = ""
+				quit_button.focus_neighbor_bottom = start_button.get_path()
+				start_button.focus_neighbor_top = quit_button.get_path()
 			else:
 				
-				start_button.focus_neighbour_top = credits_button.get_path()
-				credits_button.focus_neighbour_bottom = start_button.get_path()
+				start_button.focus_neighbor_top = credits_button.get_path()
+				credits_button.focus_neighbor_bottom = start_button.get_path()
 
 
 func setup_console_no_dlc_menu() -> void :
 	setup_console_common()
 
-	credits_button.focus_neighbour_left = more_games_button.get_path()
-	credits_button.focus_neighbour_right = more_games_button.get_path()
+	credits_button.focus_neighbor_left = more_games_button.get_path()
+	credits_button.focus_neighbor_right = more_games_button.get_path()
 
-	codex_button.focus_neighbour_left = more_games_button.get_path()
-	codex_button.focus_neighbour_right = more_games_button.get_path()
+	codex_button.focus_neighbor_left = more_games_button.get_path()
+	codex_button.focus_neighbor_right = more_games_button.get_path()
 
 
 func setup_console_with_dlc_menu() -> void :
 	setup_console_common()
 
-	credits_button.focus_neighbour_left = ""
-	credits_button.focus_neighbour_right = ""
+	credits_button.focus_neighbor_left = ""
+	credits_button.focus_neighbor_right = ""
 
-	codex_button.focus_neighbour_left = ""
-	codex_button.focus_neighbour_right = ""
+	codex_button.focus_neighbor_left = ""
+	codex_button.focus_neighbor_right = ""
 
 
 func setup_console_common() -> void :
@@ -235,11 +235,11 @@ func setup_dlc_desktop_menu() -> void :
 		right_container.add_child(codex_button)
 		codex_button.size_flags_horizontal = 8
 
-	credits_button.focus_neighbour_left = quit_button.get_path()
-	credits_button.focus_neighbour_right = quit_button.get_path()
+	credits_button.focus_neighbor_left = quit_button.get_path()
+	credits_button.focus_neighbor_right = quit_button.get_path()
 
-	codex_button.focus_neighbour_left = options_button.get_path()
-	codex_button.focus_neighbour_right = options_button.get_path()
+	codex_button.focus_neighbor_left = options_button.get_path()
+	codex_button.focus_neighbor_right = options_button.get_path()
 
 	
 	right_container.move_child(credits_button, right_container.get_child_count() - 1)
@@ -251,12 +251,12 @@ func init() -> void :
 		RunData.reset()
 
 	more_games_button.text = "MENU_DLC_AVAILABLE_STANDARD"
-	more_games_button.add_color_override("font_color", Utils.DLC_BUTTON_TEXT_COLOR)
+	more_games_button.add_theme_color_override("font_color", Utils.DLC_BUTTON_TEXT_COLOR)
 	more_games_button.theme = load("res://resources/themes/special_button_theme.tres")
 	for dlc in ProgressData.available_dlcs:
 		if dlc.my_id == "abyssal_terrors":
 			more_games_button.text = "MENU_MORE_GAMES"
-			more_games_button.remove_color_override("font_color")
+			more_games_button.remove_theme_color_override("font_color")
 			more_games_button.theme = null
 			break
 
@@ -305,9 +305,9 @@ func init() -> void :
 
 		error_label.text = status_text
 		error_label.show()
-	elif not Utils.is_on_console() and not CrashReporter.previous_crash_message.empty():
+	elif not Utils.is_on_console() and not CrashReporter.previous_crash_message.is_empty():
 		var error_text = "(!) "
-		if CrashReporter.previous_crashed_mod.empty():
+		if CrashReporter.previous_crashed_mod.is_empty():
 			error_text += "%s %s" % [
 				tr("CRASH_RECOVERY_MESSAGE_GENERAL"), 
 				tr("CRASH_RECOVERY_MESSAGE_MODS_DISABLED")
@@ -330,7 +330,7 @@ func reload_logo(screen: TitleScreenBackgroundData) -> void :
 	for child in logo_container.get_children():
 		child.queue_free()
 
-	var instance = screen.logo_scene.instance()
+	var instance = screen.logo_scene.instantiate()
 	logo_container.add_child(instance)
 
 
@@ -338,7 +338,7 @@ func reload_logo(screen: TitleScreenBackgroundData) -> void :
 func _on_StartButton_pressed() -> void :
 	MusicManager.tween( - 5)
 	ProgressData.start_activity()
-	var _error = get_tree().change_scene(MenuData.character_selection_scene)
+	var _error = get_tree().change_scene_to_file(MenuData.character_selection_scene)
 
 
 func _on_OptionsButton_pressed() -> void :
@@ -351,7 +351,7 @@ func _on_CommunityButton_pressed() -> void :
 
 func _on_QuitButton_pressed() -> void :
 	if not Utils.is_on_console() or Utils.on_gdk_desktop:
-		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+		get_tree().notification(Node.NOTIFICATION_WM_CLOSE_REQUEST)
 
 
 func _on_NewsletterButton_pressed() -> void :
@@ -392,7 +392,7 @@ func _on_ContinueButton_pressed() -> void :
 	RunData.continue_current_run_in_shop()
 
 	var scene: = "res://ui/menus/shop/coop_resume.tscn" if RunData.play_mode == RunData.PlayMode.COOP else "res://ui/menus/shop/shop.tscn"
-	var _error = get_tree().change_scene(scene)
+	var _error = get_tree().change_scene_to_file(scene)
 
 
 func _on_ModsButton_pressed() -> void :

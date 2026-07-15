@@ -1,9 +1,9 @@
 class_name Flasher
 extends Node
 
-export (Array, NodePath) var node_paths
-export (bool) var hide_after_flash: = false
-export (int) var flash_count: = 12
+@export var node_paths: Array = [] # (Array, NodePath)
+@export var hide_after_flash := false
+@export var flash_count := 12
 
 var _timer: Timer
 var _count: = 0
@@ -14,7 +14,7 @@ func _ready() -> void :
 	_timer = Timer.new()
 	_timer.wait_time = 0.05
 	add_child(_timer)
-	var _error_timeout = _timer.connect("timeout", self, "_on_flash_timer_timeout")
+	var _error_timeout = _timer.connect("timeout", Callable(self, "_on_flash_timer_timeout"))
 	for node in _get_nodes():
 		_node_alphas.push_back(node.modulate.a)
 

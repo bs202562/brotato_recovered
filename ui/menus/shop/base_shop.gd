@@ -1,9 +1,9 @@
 class_name BaseShop
 extends Control
 
-export (Array, Resource) var combine_sounds
-export (Array, Resource) var recycle_sounds
-export var go_text: = "MENU_GO"
+@export var combine_sounds: Array = [] # (Array, Resource)
+@export var recycle_sounds: Array = [] # (Array, Resource)
+@export var go_text: = "MENU_GO"
 
 var _shop_items: = [[], [], [], []]
 var _focused_shop_item: = [null, null, null, null]
@@ -19,13 +19,13 @@ var _reroll_count: = [0, 0, 0, 0]
 var _paid_reroll_count: = [0, 0, 0, 0]
 var _reroll_discount: = [0, 0, 0, 0]
 
-onready var _pause_menu = $PauseMenu
-onready var _synergy_popup: SynergyContainer = $Content / SynergyPopup
-onready var _tags_popup: TagsContainer = $Content / TagsContainer
-onready var _popup_manager: PopupManager = $PopupManager
-onready var _background = $"%Background"
-onready var _floating_text_manager: FloatingTextManagerShop = $"%FloatingTextManagerShop"
-onready var _floating_texts: Node2D = $"%FloatingTexts"
+@onready var _pause_menu = $PauseMenu
+@onready var _synergy_popup: SynergyContainer = $Content / SynergyPopup
+@onready var _tags_popup: TagsContainer = $Content / TagsContainer
+@onready var _popup_manager: PopupManager = $PopupManager
+@onready var _background = $"%Background"
+@onready var _floating_text_manager: FloatingTextManagerShop = $"%FloatingTextManagerShop"
+@onready var _floating_texts: Node2D = $"%FloatingTexts"
 
 
 func _ready() -> void :
@@ -34,14 +34,14 @@ func _ready() -> void :
 
 	_find_nodes()
 
-	var _error_exited_tree = self.connect("tree_exited", self, "_on_tree_exited")
+	var _error_exited_tree = self.connect("tree_exited", Callable(self, "_on_tree_exited"))
 
-	var _error_connect = _popup_manager.connect("shop_item_focused", self, "_on_shop_item_focused")
-	_error_connect = _popup_manager.connect("shop_item_unfocused", self, "_on_shop_item_unfocused")
+	var _error_connect = _popup_manager.connect("shop_item_focused", Callable(self, "_on_shop_item_focused"))
+	_error_connect = _popup_manager.connect("shop_item_unfocused", Callable(self, "_on_shop_item_unfocused"))
 
-	_error_connect = _popup_manager.connect("element_focused", self, "_on_element_focused")
-	_error_connect = _popup_manager.connect("element_unfocused", self, "_on_element_unfocused")
-	_error_connect = _popup_manager.connect("element_pressed", self, "_on_element_pressed")
+	_error_connect = _popup_manager.connect("element_focused", Callable(self, "_on_element_focused"))
+	_error_connect = _popup_manager.connect("element_unfocused", Callable(self, "_on_element_unfocused"))
+	_error_connect = _popup_manager.connect("element_pressed", Callable(self, "_on_element_pressed"))
 
 	var player_count: int = RunData.get_player_count()
 	for player_index in player_count:
@@ -97,9 +97,9 @@ func _ready() -> void :
 	if elite_info_panel.visible:
 		elite_info_panel.info_box.text = Text.text(key, [str(next_elite_wave)])
 		if next_elite_wave == RunData.current_wave + 1:
-			var stylebox_color = elite_info_panel.get_stylebox("panel").duplicate()
-			stylebox_color.border_color = Color.gray
-			elite_info_panel.add_stylebox_override("panel", stylebox_color)
+			var stylebox_color = elite_info_panel.get_theme_stylebox("panel").duplicate()
+			stylebox_color.border_color = Color.GRAY
+			elite_info_panel.add_theme_stylebox_override("panel", stylebox_color)
 
 	var need_to_set_locked = false
 	if RunData.resumed_from_state_in_shop:
@@ -128,11 +128,11 @@ func _ready() -> void :
 		_reroll_price[player_index] = result[0]
 		_reroll_discount[player_index] = result[1]
 
-		_has_bonus_free_reroll[player_index] = _shop_items[player_index].empty()
+		_has_bonus_free_reroll[player_index] = _shop_items[player_index].is_empty()
 		set_reroll_button_price(player_index)
 
-	_error_connect = _pause_menu.connect("paused", self, "on_paused")
-	_error_connect = _pause_menu.connect("unpaused", self, "on_unpaused")
+	_error_connect = _pause_menu.connect("paused", Callable(self, "on_paused"))
+	_error_connect = _pause_menu.connect("unpaused", Callable(self, "on_unpaused"))
 
 	for player_index in player_count:
 		var weapons = RunData.get_player_weapons(player_index)
@@ -145,37 +145,37 @@ func _ready() -> void :
 		var shop_items_container = _get_shop_items_container(player_index)
 		shop_items_container.item_steals = _item_steals[player_index]
 		shop_items_container.set_shop_items(_shop_items[player_index])
-		_error_connect = shop_items_container.connect("shop_item_bought", self, "on_shop_item_bought", [player_index])
-		_error_connect = shop_items_container.connect("shop_item_stolen", self, "on_shop_item_stolen", [player_index])
-		_error_connect = shop_items_container.connect("shop_item_insufficient_currency", self, "_on_shop_item_insufficient_currency", [player_index])
-		_error_connect = shop_items_container.connect("shop_item_deactivated", self, "on_shop_item_deactivated", [player_index])
-		_error_connect = shop_items_container.connect("shop_item_banned", self, "on_shop_item_banned", [player_index])
+		_error_connect = shop_items_container.connect("shop_item_bought", Callable(self, "on_shop_item_bought").bind(player_index))
+		_error_connect = shop_items_container.connect("shop_item_stolen", Callable(self, "on_shop_item_stolen").bind(player_index))
+		_error_connect = shop_items_container.connect("shop_item_insufficient_currency", Callable(self, "_on_shop_item_insufficient_currency").bind(player_index))
+		_error_connect = shop_items_container.connect("shop_item_deactivated", Callable(self, "on_shop_item_deactivated").bind(player_index))
+		_error_connect = shop_items_container.connect("shop_item_banned", Callable(self, "on_shop_item_banned").bind(player_index))
 
 		var gold_label = _get_gold_label(player_index)
 		gold_label.update_value(RunData.get_player_gold(player_index))
 
 		var reroll_button = _get_reroll_button(player_index)
-		_error_connect = reroll_button.connect("pressed", self, "_on_RerollButton_pressed", [player_index])
+		_error_connect = reroll_button.connect("pressed", Callable(self, "_on_RerollButton_pressed").bind(player_index))
 
 		var item_popup = _get_item_popup(player_index)
 		item_popup.item_steals = _item_steals[player_index]
-		_error_connect = item_popup.connect("item_cancel_button_pressed", self, "_on_item_cancel_button_pressed", [player_index])
-		_error_connect = item_popup.connect("item_discard_button_pressed", self, "_on_item_discard_button_pressed", [player_index])
-		_error_connect = item_popup.connect("item_combine_button_pressed", self, "_on_item_combine_button_pressed", [player_index])
+		_error_connect = item_popup.connect("item_cancel_button_pressed", Callable(self, "_on_item_cancel_button_pressed").bind(player_index))
+		_error_connect = item_popup.connect("item_discard_button_pressed", Callable(self, "_on_item_discard_button_pressed").bind(player_index))
+		_error_connect = item_popup.connect("item_combine_button_pressed", Callable(self, "_on_item_combine_button_pressed").bind(player_index))
 
 		_popup_manager.add_item_popup(item_popup, player_index)
 
 		var weapons_container = player_gear_container.weapons_container
 		_popup_manager.connect_inventory_container(weapons_container)
-		_error_connect = weapons_container._elements.connect("focus_lost", self, "_on_player_focus_lost", [player_index])
+		_error_connect = weapons_container._elements.connect("focus_lost", Callable(self, "_on_player_focus_lost").bind(player_index))
 
 		var items_container = player_gear_container.items_container
 		_popup_manager.connect_inventory_container(items_container)
-		_error_connect = items_container._elements.connect("focus_lost", self, "_on_player_focus_lost", [player_index])
+		_error_connect = items_container._elements.connect("focus_lost", Callable(self, "_on_player_focus_lost").bind(player_index))
 
 		var go_button = _get_go_button(player_index)
-		_error_connect = go_button.connect("pressed", self, "_on_GoButton_pressed", [player_index])
-		_error_connect = go_button.connect("focus_exited", self, "_on_GoButton_focus_exited", [player_index])
+		_error_connect = go_button.connect("pressed", Callable(self, "_on_GoButton_pressed").bind(player_index))
+		_error_connect = go_button.connect("focus_exited", Callable(self, "_on_GoButton_focus_exited").bind(player_index))
 		go_button.text = tr(go_text) + " (" + Text.text("WAVE", [str(RunData.current_wave + 1)]) + ")"
 		
 
@@ -188,10 +188,10 @@ func _ready() -> void :
 	if need_to_set_locked:
 		_update_visual_locks()
 
-	var _error_category_hovered = _get_shop_items_container(0).connect("mouse_hovered_category", self, "on_mouse_hovered_category")
-	var _error_category_exited = _get_shop_items_container(0).connect("mouse_exited_category", self, "on_mouse_exited_category")
+	var _error_category_hovered = _get_shop_items_container(0).connect("mouse_hovered_category", Callable(self, "on_mouse_hovered_category"))
+	var _error_category_exited = _get_shop_items_container(0).connect("mouse_exited_category", Callable(self, "on_mouse_exited_category"))
 
-	var _error_gold = RunData.connect("gold_changed", self, "_on_gold_changed")
+	var _error_gold = RunData.connect("gold_changed", Callable(self, "_on_gold_changed"))
 
 	for player_index in player_count:
 		Utils.focus_player_control(_get_default_focus_control(player_index), player_index)
@@ -232,7 +232,7 @@ func _input(event: InputEvent) -> void :
 
 			if RunData.is_coop_run:
 				_get_item_popup(player_index).show_shop_hints(shop_item)
-			get_tree().set_input_as_handled()
+			get_viewport().set_input_as_handled()
 		elif (
 		Utils.is_player_ui_coop_ban_pressed(event, player_index)
 		and shop_item != null
@@ -257,7 +257,7 @@ func _input(event: InputEvent) -> void :
 			)
 		):
 			_clear_go_button_pressed(player_index)
-			get_tree().set_input_as_handled()
+			get_viewport().set_input_as_handled()
 
 
 
@@ -319,23 +319,23 @@ func _on_GoButton_pressed(player_index: int) -> void :
 	ProgressData.save_run_state(_shop_items, _reroll_count, _paid_reroll_count, _initial_free_rerolls, _free_rerolls, _item_steals)
 
 	
-	for player_index in RunData.get_player_count():
-		if RunData.get_player_effects(player_index).has(Keys.used_item_locking_hash):
-			if not ChallengeService.is_challenge_completed(ChallengeService.chal_candy_bag_hash) and not RunData.get_player_effect_bool(Keys.used_item_locking_hash, player_index):
-				var shop_item_containers = _get_shop_items_container(player_index)
+	for lock_player_index in RunData.get_player_count():
+		if RunData.get_player_effects(lock_player_index).has(Keys.used_item_locking_hash):
+			if not ChallengeService.is_challenge_completed(ChallengeService.chal_candy_bag_hash) and not RunData.get_player_effect_bool(Keys.used_item_locking_hash, lock_player_index):
+				var shop_item_containers = _get_shop_items_container(lock_player_index)
 				for shop_item in shop_item_containers._shop_items:
 					if shop_item != null and shop_item.active and shop_item.locked:
-						var effects = RunData.get_player_effects(player_index)
+						var effects = RunData.get_player_effects(lock_player_index)
 						effects[Keys.used_item_locking_hash] = 1
 
 	var wave_reset_count: = 0
-	for player_index in RunData.get_player_count():
-		var effects = RunData.get_player_effects(player_index)
+	for hourglass_player_index in RunData.get_player_count():
+		var effects = RunData.get_player_effects(hourglass_player_index)
 		var hourglass_count = effects[Keys.item_hourglass_hash] if effects.has(Keys.item_hourglass_hash) else 0
 		if hourglass_count > 0:
 			wave_reset_count += hourglass_count
-			var source_item = RunData.get_player_item(Keys.item_hourglass_hash, player_index)
-			RunData.remove_item(source_item, player_index)
+			var source_item = RunData.get_player_item(Keys.item_hourglass_hash, hourglass_player_index)
+			RunData.remove_item(source_item, hourglass_player_index)
 
 		var extra_elite_spawn_chance = effects[Keys.extra_elite_next_wave_chance_hash] if effects.has(Keys.extra_elite_next_wave_chance_hash) else 0
 		if Utils.get_chance_success(float(extra_elite_spawn_chance) / 100):
@@ -343,7 +343,7 @@ func _on_GoButton_pressed(player_index: int) -> void :
 			effects[Keys.extra_enemies_next_wave_hash].append(["res://zones/common/elite/group_elite.tres", 1, rand_elite_id])
 
 	RunData.current_wave += 1 - wave_reset_count
-	var _error = get_tree().change_scene(MenuData.game_scene)
+	var _error = get_tree().change_scene_to_file(MenuData.game_scene)
 
 
 func _on_GoButton_focus_exited(player_index: int):
@@ -424,11 +424,11 @@ func _on_RerollButton_pressed(player_index: int) -> void :
 			RunData.add_stat(stat, stat_increase, player_index)
 
 			var reroll_button: = _get_reroll_button(player_index)
-			var pos = reroll_button.rect_global_position
+			var pos = reroll_button.global_position
 			if not RunData.is_coop_run:
-				pos.y += reroll_button.rect_size.y / 2
+				pos.y += reroll_button.size.y / 2
 			else:
-				pos.x += reroll_button.rect_size.x - 80
+				pos.x += reroll_button.size.x - 80
 
 			_floating_text_manager.stat_added(stat, stat_increase, 0, pos)
 
@@ -540,7 +540,7 @@ func on_shop_item_bought(shop_item: ShopItem, player_index: int) -> void :
 		_initial_free_rerolls[player_index] = total_free_rerolls
 		_free_rerolls[player_index] += new_rerolls
 
-	_has_bonus_free_reroll[player_index] = _shop_items[player_index].empty()
+	_has_bonus_free_reroll[player_index] = _shop_items[player_index].is_empty()
 	set_reroll_button_price(player_index)
 
 
@@ -561,14 +561,14 @@ func on_shop_item_stolen(shop_item: ShopItem, player_index: int) -> void :
 
 		if Utils.get_chance_success(caught_chance):
 			var icon = ItemService.get_element(ItemService.icons, Keys.icon_elite_hash).icon
-			var popup_pos = shop_item._steal_button.rect_global_position
+			var popup_pos = shop_item._steal_button.global_position
 			var direction: Vector2
 
 			if RunData.is_coop_run:
 				popup_pos.x -= 35
 				direction = Vector2(0, - 30)
 			else:
-				popup_pos.x += shop_item._steal_button.rect_size.x / 2.0
+				popup_pos.x += shop_item._steal_button.size.x / 2.0
 				direction = Vector2(25, - 100)
 
 			_floating_text_manager.display_shop_icon(icon, popup_pos, direction)
@@ -852,7 +852,7 @@ func on_shop_item_banned(shop_item: ShopItem, player_index: int) -> void :
 			_shop_items[player_index].erase(item)
 			break
 
-	_has_bonus_free_reroll[player_index] = _shop_items[player_index].empty()
+	_has_bonus_free_reroll[player_index] = _shop_items[player_index].is_empty()
 	set_reroll_button_price(player_index)
 
 func _on_tree_exited() -> void :

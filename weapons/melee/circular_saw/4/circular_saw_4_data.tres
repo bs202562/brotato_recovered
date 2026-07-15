@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=7 format=2]
 
-[ext_resource path="res://weapons/melee/circular_saw/circular_saw_icon.png" type="Texture" id=1]
+[ext_resource path="res://weapons/melee/circular_saw/circular_saw_icon.png" type="Texture2D" id=1]
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=2]
 [ext_resource path="res://weapons/melee/circular_saw/circular_saw.tscn" type="PackedScene" id=3]
 [ext_resource path="res://weapons/melee/circular_saw/4/circular_saw_4_stats.tres" type="Resource" id=4]

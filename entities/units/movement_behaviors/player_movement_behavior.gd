@@ -13,7 +13,7 @@ func get_movement() -> Vector2:
 		var mouse_pos = get_global_mouse_position()
 		movement = Vector2(mouse_pos.x - _parent.global_position.x, mouse_pos.y - _parent.global_position.y)
 
-		if (abs(movement.x) < MIN_MOVE_DIST and abs(movement.y) < MIN_MOVE_DIST) or Input.is_mouse_button_pressed(BUTTON_LEFT):
+		if (abs(movement.x) < MIN_MOVE_DIST and abs(movement.y) < MIN_MOVE_DIST) or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			movement = Vector2.ZERO
 	else:
 		var analog_input: Vector2 = get_vector_for_input_prefix("analog_")

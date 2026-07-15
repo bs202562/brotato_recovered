@@ -1,4 +1,4 @@
 class_name EffectBehaviorData
 extends Resource
 
-export (PackedScene) var scene = null
+@export var scene: PackedScene = null

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://dlcs/dlc_1/enemies/cool_walrus/cool_walrus_stats.tres" type="Resource" id=1]
 [ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://dlcs/dlc_1/enemies/cool_walrus/cool_walrus.png" type="Texture" id=3]
+[ext_resource path="res://dlcs/dlc_1/enemies/cool_walrus/cool_walrus.png" type="Texture2D" id=3]
 [ext_resource path="res://entities/units/enemies/attack_behaviors/charging_attack_behavior.gd" type="Script" id=4]
 [ext_resource path="res://projectiles/slash/slash_projectile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/units/enemies/attack_behaviors/shooting_attack_behavior.gd" type="Script" id=6]
@@ -23,7 +23,7 @@ script = ExtResource( 7 )
 stats = ExtResource( 1 )
 enemy_id = "cool_walrus"
 
-[node name="Sprite" parent="Animation" index="0"]
+[node name="Sprite2D" parent="Animation" index="0"]
 position = Vector2( -5, -17 )
 texture = ExtResource( 3 )
 

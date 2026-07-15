@@ -12,7 +12,7 @@ var epic_language: String
 func _ready():
 	epic = load("res://addons/epic_bindings/epic_bindings.gdns").new()
 	add_child(epic)
-	var _e = epic.connect("init_finished", self, "_on_init_finished")
+	var _e = epic.connect("init_finished", Callable(self, "_on_init_finished"))
 
 	var arguments = Utils.get_startup_arguments()
 	epic.client_id = "xyza7891C21j49Oc0g9k8FOHSs4afyL8"
@@ -53,7 +53,7 @@ func get_user_id() -> String:
 
 func is_challenge_completed(chal_id: String) -> bool:
 	if not initialized:
-		yield(epic, "init_finished")
+		await epic.init_finished
 	if init_success:
 		return epic.is_achievement_unlocked(chal_id)
 	return false
@@ -61,7 +61,7 @@ func is_challenge_completed(chal_id: String) -> bool:
 
 func complete_challenge(chal_id: int) -> void :
 	if not initialized:
-		yield(epic, "init_finished")
+		await epic.init_finished
 	if init_success and not epic.is_achievement_unlocked(Keys.hash_to_string[chal_id]):
 		epic.unlock_achievement(Keys.hash_to_string[chal_id])
 

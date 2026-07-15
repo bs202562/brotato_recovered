@@ -1,10 +1,10 @@
 class_name CurseSceneEffectBehavior
 extends SceneEffectBehavior
 
-export (int) var hp_boost = 200
-export (int) var damage_boost = 50
-export (int) var speed_boost = 75
-export (Resource) var curse_enemy_effect_behavior_data
+@export var hp_boost: int = 200
+@export var damage_boost: int = 50
+@export var speed_boost: int = 75
+@export var curse_enemy_effect_behavior_data: Resource
 
 
 const MAX_CURSE_HP_BOOST: int = 300
@@ -13,7 +13,7 @@ var _loot_alien_stats: = []
 
 
 func _ready() -> void :
-	var _err = _entity_spawner_ref.connect("enemy_respawned", self, "_on_EntitySpawner_enemy_respawned")
+	var _err = _entity_spawner_ref.connect("enemy_respawned", Callable(self, "_on_EntitySpawner_enemy_respawned"))
 	for group_data in _wave_manager.current_zone_data.loot_alien_groups:
 		for unit_data in group_data.wave_units_data:
 			_loot_alien_stats.append(_get_unit_data_stats(unit_data))
@@ -23,7 +23,7 @@ func _curse_enemy(enemy: Enemy, curse: float) -> void :
 	if not is_instance_valid(enemy) or enemy.dead:
 		return
 
-	var enemy_being_cursed_effect_behavior = curse_enemy_effect_behavior_data.scene.instance()
+	var enemy_being_cursed_effect_behavior = curse_enemy_effect_behavior_data.scene.instantiate()
 	enemy.effect_behaviors.add_child(enemy_being_cursed_effect_behavior.init(enemy))
 
 	var boost_args: = BoostArgs.new()

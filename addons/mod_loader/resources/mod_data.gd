@@ -45,10 +45,10 @@ var importance: = 0
 var manifest: ModManifest
 
 var configs: = {}
-var current_config: ModConfig setget _set_current_config
+var current_config: ModConfig: set = _set_current_config
 
 
-var file_paths: PoolStringArray = []
+var file_paths: PackedStringArray = []
 
 
 
@@ -112,7 +112,10 @@ func _load_config(config_file_path: String) -> void :
 func _set_current_config(new_current_config: ModConfig) -> void :
 	ModLoaderUserProfile.set_mod_current_config(dir_name, new_current_config)
 	current_config = new_current_config
-	ModLoader.emit_signal("current_config_changed", new_current_config)
+	# 3to4: runtime lookup instead of the ModLoader autoload identifier, to avoid a cyclic compile-time dependency
+	var mod_loader_node: Node = Engine.get_main_loop().root.get_node_or_null("/root/ModLoader")
+	if mod_loader_node != null:
+		mod_loader_node.emit_signal("current_config_changed", new_current_config)
 
 
 
@@ -147,13 +150,13 @@ func _has_manifest(mod_manifest: ModManifest) -> bool:
 func get_required_mod_file_path(required_file: int) -> String:
 	match required_file:
 		required_mod_files.MOD_MAIN:
-			return dir_path.plus_file("mod_main.gd")
+			return dir_path.path_join("mod_main.gd")
 		required_mod_files.MANIFEST:
-			return dir_path.plus_file("manifest.json")
+			return dir_path.path_join("manifest.json")
 	return ""
 
 func get_optional_mod_file_path(optional_file: int) -> String:
 	match optional_file:
 		optional_mod_files.OVERWRITES:
-			return dir_path.plus_file("overwrites.gd")
+			return dir_path.path_join("overwrites.gd")
 	return ""

@@ -2,12 +2,12 @@
 
 [ext_resource path="res://singletons/bug_reporter.gd" type="Script" id=1]
 [ext_resource path="res://ui/menus/global/tooltip.tscn" type="PackedScene" id=2]
-[ext_resource path="res://resources/fonts/actual/base/font_22.tres" type="DynamicFont" id=3]
+[ext_resource path="res://resources/fonts/actual/base/font_22.tres" type="FontFile" id=3]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=4]
-[ext_resource path="res://resources/fonts/actual/base/font_26_outline.tres" type="DynamicFont" id=5]
+[ext_resource path="res://resources/fonts/actual/base/font_26_outline.tres" type="FontFile" id=5]
 [ext_resource path="res://singletons/bug_reporter_input.gd" type="Script" id=6]
 [ext_resource path="res://singletons/bug_reporter_response.gd" type="Script" id=7]
-[ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="DynamicFont" id=8]
+[ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="FontFile" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.152941, 0.160784, 0.172549, 0.960784 )
@@ -45,7 +45,7 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [node name="BugReporter" type="CanvasLayer"]
-pause_mode = 2
+process_mode = 3
 layer = 10
 script = ExtResource( 1 )
 
@@ -57,83 +57,83 @@ theme = ExtResource( 4 )
 [node name="Panel" type="Panel" parent="UI"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 100.0
-margin_top = -400.0
-margin_right = 500.0
-margin_bottom = 400.0
-rect_min_size = Vector2( 500, 800 )
-custom_styles/panel = SubResource( 1 )
+offset_left = 100.0
+offset_top = -400.0
+offset_right = 500.0
+offset_bottom = 400.0
+custom_minimum_size = Vector2( 500, 800 )
+theme_override_styles/panel = SubResource( 1 )
 
 [node name="InputContainer" type="VBoxContainer" parent="UI/Panel"]
 unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 50.0
-margin_top = 40.0
-margin_right = -50.0
-margin_bottom = -50.0
-custom_constants/separation = 30
+offset_left = 50.0
+offset_top = 40.0
+offset_right = -50.0
+offset_bottom = -50.0
+theme_override_constants/separation = 30
 script = ExtResource( 6 )
 tooltip_path = NodePath("../../Tooltip")
 
 [node name="TitleLabel" type="Label" parent="UI/Panel/InputContainer"]
-margin_right = 400.0
-margin_bottom = 31.0
+offset_right = 400.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 5 )
+theme_override_fonts/font = ExtResource( 5 )
 text = "BUG_REPORT_TITLE"
 
 [node name="FeedbackInput" type="TextEdit" parent="UI/Panel/InputContainer"]
-margin_top = 61.0
-margin_right = 400.0
-margin_bottom = 507.0
+offset_top = 61.0
+offset_right = 400.0
+offset_bottom = 507.0
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 8 )
-custom_styles/focus = SubResource( 23 )
-custom_styles/normal = SubResource( 23 )
+theme_override_fonts/font = ExtResource( 8 )
+theme_override_styles/focus = SubResource( 23 )
+theme_override_styles/normal = SubResource( 23 )
 wrap_enabled = true
 caret_blink = true
 
 [node name="DataButton" type="Button" parent="UI/Panel/InputContainer"]
-margin_top = 537.0
-margin_right = 400.0
-margin_bottom = 582.0
+offset_top = 537.0
+offset_right = 400.0
+offset_bottom = 582.0
 size_flags_stretch_ratio = 0.0
-custom_fonts/font = ExtResource( 8 )
-custom_styles/normal = SubResource( 24 )
+theme_override_fonts/font = ExtResource( 8 )
+theme_override_styles/normal = SubResource( 24 )
 text = "BUG_REPORT_DATA"
 
 [node name="StatusLabel" type="Label" parent="UI/Panel/InputContainer"]
-margin_top = 612.0
-margin_right = 400.0
-margin_bottom = 636.0
-custom_colors/font_color = Color( 1, 0.415686, 0.415686, 1 )
-custom_fonts/font = ExtResource( 3 )
+offset_top = 612.0
+offset_right = 400.0
+offset_bottom = 636.0
+theme_override_colors/font_color = Color( 1, 0.415686, 0.415686, 1 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "Error submitting report"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Panel/InputContainer"]
-margin_top = 666.0
-margin_right = 400.0
-margin_bottom = 710.0
-custom_constants/separation = 20
+offset_top = 666.0
+offset_right = 400.0
+offset_bottom = 710.0
+theme_override_constants/separation = 20
 
 [node name="SendButton" type="Button" parent="UI/Panel/InputContainer/HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 190.0
-margin_bottom = 44.0
+offset_right = 190.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 3 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "MENU_SUBMIT"
 
 [node name="CancelButton" type="Button" parent="UI/Panel/InputContainer/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 210.0
-margin_right = 400.0
-margin_bottom = 44.0
+offset_left = 210.0
+offset_right = 400.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 3 )
-custom_styles/normal = SubResource( 24 )
+theme_override_fonts/font = ExtResource( 3 )
+theme_override_styles/normal = SubResource( 24 )
 text = "MENU_CANCEL"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="UI/Panel/InputContainer"]
@@ -143,46 +143,46 @@ timeout = 20.0
 unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 50.0
-margin_top = 40.0
-margin_right = -50.0
-margin_bottom = -50.0
-custom_constants/separation = 30
+offset_left = 50.0
+offset_top = 40.0
+offset_right = -50.0
+offset_bottom = -50.0
+theme_override_constants/separation = 30
 alignment = 1
 script = ExtResource( 7 )
 tooltip_path = NodePath("../../Tooltip")
 
 [node name="ResponseLabel" type="Label" parent="UI/Panel/ResponseContainer"]
-margin_top = 269.0
-margin_right = 400.0
-margin_bottom = 293.0
-custom_colors/font_color = Color( 0.415686, 1, 0.423529, 1 )
-custom_fonts/font = ExtResource( 3 )
+offset_top = 269.0
+offset_right = 400.0
+offset_bottom = 293.0
+theme_override_colors/font_color = Color( 0.415686, 1, 0.423529, 1 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "BUG_REPORT_SUCCESS"
 align = 1
 
 [node name="IDButton" type="Button" parent="UI/Panel/ResponseContainer"]
-margin_top = 323.0
-margin_right = 400.0
-margin_bottom = 367.0
+offset_top = 323.0
+offset_right = 400.0
+offset_bottom = 367.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 3 )
-custom_styles/normal = SubResource( 24 )
+theme_override_fonts/font = ExtResource( 3 )
+theme_override_styles/normal = SubResource( 24 )
 text = "ID: 2024-01-05/021437-O4XL6INP"
 
 [node name="ReturnButton" type="Button" parent="UI/Panel/ResponseContainer"]
-margin_top = 397.0
-margin_right = 400.0
-margin_bottom = 441.0
+offset_top = 397.0
+offset_right = 400.0
+offset_bottom = 441.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 3 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "MENU_RETURN_GAME"
 
 [node name="Tooltip" parent="UI" instance=ExtResource( 2 )]
 unique_name_in_owner = true
 visible = false
 
-[connection signal="cancelled" from="UI/Panel/InputContainer" to="." method="_on_InputContainer_cancelled"]
+[connection signal="canceled" from="UI/Panel/InputContainer" to="." method="_on_InputContainer_cancelled"]
 [connection signal="submitted" from="UI/Panel/InputContainer" to="." method="_on_InputContainer_submitted"]
 [connection signal="mouse_entered" from="UI/Panel/InputContainer/DataButton" to="UI/Panel/InputContainer" method="_on_DataButton_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Panel/InputContainer/DataButton" to="UI/Panel/InputContainer" method="_on_DataButton_mouse_exited"]

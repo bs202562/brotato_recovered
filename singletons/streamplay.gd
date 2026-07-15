@@ -40,7 +40,7 @@ func is_online():
 	
 func _on_popin_confirmed():
 	get_tree().paused = false
-	var _error = get_tree().change_scene(MenuData.title_screen_scene)
+	var _error = get_tree().change_scene_to_file(MenuData.title_screen_scene)
 	ProgressData.end_activity(false)
 
 

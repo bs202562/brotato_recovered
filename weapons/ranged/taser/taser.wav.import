@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/taser.wav-dc404d1476f8f1578fe8198b45fd03c5.sample"
+type="AudioStreamWAV"
+uid="uid://codrkwu5q1iwy"
+path="res://.godot/imported/taser.wav-dc404d1476f8f1578fe8198b45fd03c5.sample"
 
 [deps]
 
 source_file="res://weapons/ranged/taser/taser.wav"
-dest_files=[ "res://.import/taser.wav-dc404d1476f8f1578fe8198b45fd03c5.sample" ]
+dest_files=["res://.godot/imported/taser.wav-dc404d1476f8f1578fe8198b45fd03c5.sample"]
 
 [params]
 
@@ -20,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

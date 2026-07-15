@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=28 format=2]
 
 [ext_resource path="res://weapons/ranged/wand/1/wand_data.tres" type="Resource" id=1]
-[ext_resource path="res://items/characters/renegade/renegade_icon.png" type="Texture" id=2]
+[ext_resource path="res://items/characters/renegade/renegade_icon.png" type="Texture2D" id=2]
 [ext_resource path="res://items/characters/character_data.gd" type="Script" id=3]
 [ext_resource path="res://items/characters/renegade/renegade_eyes_appearance.tres" type="Resource" id=4]
 [ext_resource path="res://items/characters/renegade/renegade_hair_appearance.tres" type="Resource" id=5]

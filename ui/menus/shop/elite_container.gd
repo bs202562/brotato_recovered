@@ -5,6 +5,7 @@ var elite_elements: = []
 var displays_something: = false
 
 func _ready() -> void :
+	super._ready() # 4.x 移植: Godot 3 自动调用父类虚函数，4.x 需显式调用
 	elite_elements = get_children()
 
 	for element in elite_elements:
@@ -32,9 +33,9 @@ func _ready() -> void :
 		
 		
 		if wave_number == next_wave:
-			var stylebox_color = elite_elements[i].get_stylebox("normal").duplicate()
+			var stylebox_color = elite_elements[i].get_theme_stylebox("normal").duplicate()
 			ItemService.change_inventory_element_stylebox_from_tier(stylebox_color, Tier.DANGER_0, 0.25)
-			elite_elements[i].add_stylebox_override("normal", stylebox_color)
+			elite_elements[i].add_theme_stylebox_override("normal", stylebox_color)
 
 		elite_elements[i].show()
 		displays_something = true

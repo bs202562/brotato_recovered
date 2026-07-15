@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://entities/units/enemies/baby_alien/baby_alien_icon.png" type="Texture" id=1]
+[ext_resource path="res://entities/units/enemies/baby_alien/baby_alien_icon.png" type="Texture2D" id=1]
 [ext_resource path="res://entities/units/enemies/ItemEnemy.gd" type="Script" id=2]
 [ext_resource path="res://entities/units/enemies/baby_alien/baby_alien_stats.tres" type="Resource" id=3]
 

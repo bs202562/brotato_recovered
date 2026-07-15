@@ -5,16 +5,16 @@ signal choose_button_pressed(zone)
 signal decrease_difficulty_pressed(zone)
 signal increase_difficulty_pressed(zone)
 
-export (Resource) var icon_difficulty
-export (Resource) var icon_difficulty_unselected
+@export var icon_difficulty: Resource
+@export var icon_difficulty_unselected: Resource
 
 var my_id: int = 0
 
-onready var _choose_button = $MarginContainer / VBoxContainer / ChooseButton
-onready var _title = $MarginContainer / VBoxContainer / Title
-onready var _icon = $MarginContainer / VBoxContainer / Icon
-onready var _difficulty_container = $MarginContainer / VBoxContainer / DifficultyContainer
-onready var _difficulty_icons_container = $MarginContainer / VBoxContainer / DifficultyContainer / DifficultyIconsContainer
+@onready var _choose_button = $MarginContainer / VBoxContainer / ChooseButton
+@onready var _title = $MarginContainer / VBoxContainer / Title
+@onready var _icon = $MarginContainer / VBoxContainer / Icon
+@onready var _difficulty_container = $MarginContainer / VBoxContainer / DifficultyContainer
+@onready var _difficulty_icons_container = $MarginContainer / VBoxContainer / DifficultyContainer / DifficultyIconsContainer
 
 
 func set_zone_data(zone_data: ZoneData) -> void :
