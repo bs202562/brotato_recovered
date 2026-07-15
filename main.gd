@@ -1,72 +1,99 @@
+# ============================================================
+# 战斗主场景脚本（main.tscn）—— 每一波(Wave)战斗的总控制器
+#
+# 游戏整体场景流转：
+#   pause.tscn(启动闪屏) → title_screen(标题菜单) → 选角开局
+#   → main.tscn(本文件，打一波) → 波次结束结算(升级/开箱)
+#   → shop(商店) → 回到 main.tscn 打下一波 … → 通关或失败进结算
+#
+# 本脚本主要职责：
+#   1. _ready(): 初始化地图、摄像机、波次计时器、刷怪器，连接大量信号
+#   2. 监听敌人/玩家/中立单位(树)的死亡 → 掉落金币(材料)与消耗品
+#   3. 结算各种道具触发效果（击杀掉弹幕、拾取回血、收获等）
+#   4. 波次结束: clean_up_room() 清场 → 处理升级与物品箱 → 切场景
+#   5. 维护金币/消耗品的对象池(pool)，避免节点频繁创建销毁
+#
+# 常用全局单例（project.godot [autoload] 中注册）：
+#   RunData=本局运行数据  ProgressData=永久存档  ZoneService=地图/区域
+#   ItemService=物品  WeaponService=武器  ChallengeService=成就挑战
+#   Keys=字符串哈希常量表  Utils=工具函数
+# ============================================================
 class_name Main
 extends Node
 
-signal gold_spawned()
+signal gold_spawned()  # 有金币生成时发出
 
-export (PackedScene) var gold_bag_scene: PackedScene
-export (PackedScene) var gold_scene: PackedScene
-export (PackedScene) var consumable_scene: PackedScene
-export (Resource) var turret_effect: Resource
-export (Resource) var landmines_effect: Resource
-export (Array) var gold_sprites: Array
-export (Array, Resource) var gold_pickup_sounds: Array
-export (Array, Resource) var gold_alt_pickup_sounds: Array
-export (Resource) var level_up_sound: Resource
-export (Array, Resource) var run_won_sounds: Array
-export (Array, Resource) var run_lost_sounds: Array
-export (Array, Resource) var end_wave_sounds: Array
-export (PackedScene) var mimic_scene: PackedScene
+# ---------- 编辑器里配置的资源 ----------
+export (PackedScene) var gold_bag_scene: PackedScene  # 波次结束时吸收剩余金币的"钱袋"
+export (PackedScene) var gold_scene: PackedScene  # 金币(材料)场景
+export (PackedScene) var consumable_scene: PackedScene  # 消耗品(食物/箱子)场景
+export (Resource) var turret_effect: Resource  # "树掉落炮塔"效果引用的炮塔数据
+export (Resource) var landmines_effect: Resource  # "击杀布雷"效果引用的地雷数据
+export (Array) var gold_sprites: Array  # 金币的随机贴图
+export (Array, Resource) var gold_pickup_sounds: Array  # 拾取金币音效
+export (Array, Resource) var gold_alt_pickup_sounds: Array  # 拾取金币备选音效(设置里可切换)
+export (Resource) var level_up_sound: Resource  # 升级音效
+export (Array, Resource) var run_won_sounds: Array  # 通关音效
+export (Array, Resource) var run_lost_sounds: Array  # 失败音效
+export (Array, Resource) var end_wave_sounds: Array  # 波次结束音效
+export (PackedScene) var mimic_scene: PackedScene  # 宝箱怪场景
 
 
-const EDGE_SIZE = 96
-const MAX_GOLDS = 50
-const MIN_GOLD_CHANCE = 0.5
-const MIN_MAP_SIZE = 12
+# ---------- 常量 ----------
+const EDGE_SIZE = 96  # 地图边缘留白(像素)，用于限制摄像机范围
+const MAX_GOLDS = 50  # 场上金币节点数量上限，超出后改为增强已有金币的价值
+const MIN_GOLD_CHANCE = 0.5  # 金币价值下限系数(至少保留基础价值的 50%)
+const MIN_MAP_SIZE = 12  # 地图最小尺寸(格)，"地图大小"负面效果也不能低于此值
 
-const CROSSHAIR_DIST_FROM_PLAYER_MANUAL_AIM = 200
+const CROSSHAIR_DIST_FROM_PLAYER_MANUAL_AIM = 200  # 手柄手动瞄准时准星与玩家的距离
 
-var _cleaning_up: = false
-var _active_golds: = []
-var _consumables: = []
-var _upgrades_to_process: = [[], [], [], []]
-var _consumables_to_process: = [[], [], [], []]
+# ---------- 运行时状态 ----------
+var _cleaning_up: = false  # 是否处于波次结束的清场阶段
+var _active_golds: = []  # 当前场上所有金币节点
+var _consumables: = []  # 当前场上所有消耗品节点
+var _upgrades_to_process: = [[], [], [], []]  # 每个玩家(最多4人)波后待选的升级
+var _consumables_to_process: = [[], [], [], []]  # 每个玩家波后待处理的箱子类消耗品
 
-var _end_wave_timer_timedout: = false
+var _end_wave_timer_timedout: = false  # 清场缓冲计时器是否已结束
 
-var _players: = []
-var _next_gold_player: int
-var _players_ui: = []
-var _things_to_process_player_containers: = []
+var _players: = []  # 玩家节点列表(刷怪器生成后填入)
+var _next_gold_player: int  # 下一个分到金币的玩家索引(多人时轮流分配)
+var _players_ui: = []  # 每个玩家对应的 HUD 元素集合(PlayerUIElements)
+var _things_to_process_player_containers: = []  # 每个玩家"波后待处理"图标条的 UI 容器
 
-var _is_run_lost: bool
-var _is_wave_failed: bool
-var _is_run_won: bool
-var _gold_bag: Node
+var _is_run_lost: bool  # 本局失败
+var _is_wave_failed: bool  # 本波失败(全员阵亡，可重试)
+var _is_run_won: bool  # 本局胜利
+var _gold_bag: Node  # 清场时吸收剩余金币的钱袋节点
 
-var _is_chal_ui_displayed = false
+var _is_chal_ui_displayed = false  # 成就完成弹窗是否正在显示
 
-var _proj_on_death_stat_caches: = [null, null, null, null]
-var _items_spawned_this_wave: = 0
-var _player_is_under_half_health: = [false, false, false, false]
+var _proj_on_death_stat_caches: = [null, null, null, null]  # "敌人死亡掉弹幕"效果的属性缓存(按玩家)
+var _items_spawned_this_wave: = 0  # 本波已掉落的物品箱数量(用于递减后续掉率)
+var _player_is_under_half_health: = [false, false, false, false]  # 各玩家是否处于半血以下(用于半血触发效果)
 
+# 特殊波次标记(部落波/精英波/迷雾波/弹幕波)
 var _is_horde_wave: = false
 var _is_elite_wave: = false
 var _is_fog_wave: = false
 var _is_bullet_hell_wave: = false
 
-var _elite_killed_bonus: = 0
-var override_gold_bag_pos: = Vector2.ZERO
+var _elite_killed_bonus: = 0  # 击杀精英获得的收获加成
+var override_gold_bag_pos: = Vector2.ZERO  # 钱袋位置覆盖(建造者角色有炮塔时指向炮塔)
 
-var _pool: = {}
+# ---------- 对象池相关(见文件末尾 get_node_from_pool 等函数) ----------
+var _pool: = {}  # 池字典: 场景路径哈希 -> 可复用节点数组
 var _pool_parent: = {}
-var _skip_pause_check = false
-var _crosshair_cursor_active: = false
-var _current_pool_id: int = Keys.empty_hash
+var _skip_pause_check = false  # 刚从暂停恢复的那一帧跳过暂停检测，避免立刻再次暂停
+var _crosshair_cursor_active: = false  # 鼠标光标当前是否为准星样式
+var _current_pool_id: int = Keys.empty_hash  # 最近访问的池 id(小缓存，减少字典查询)
 var _current_pool = null
 
+# 复用的参数对象(避免每次调用都 new)
 var _spawn_projectile_args: = WeaponServiceSpawnProjectileArgs.new()
 var _take_damage_args: = TakeDamageArgs.new( - 1)
 
+# ---------- 场景节点引用（onready 在节点进入场景树后自动获取） ----------
 onready var _entities_container: YSort = $"%Entities"
 onready var _entity_spawner = $EntitySpawner
 onready var _effects_manager = $EffectsManager
@@ -113,11 +140,15 @@ onready var _half_second_timers: Node2D = $"%HalfSecondTimers"
 onready var _crosshair: Sprite = $"%Crosshair"
 onready var _fog_viewport: FogViewport = $"%fog_viewport"
 
-signal end_of_the_wave
-var _consumable_pool_id: int = Keys.empty_hash
-var _gold_pool_id: int = Keys.empty_hash
+signal end_of_the_wave  # 波次时间耗尽时发出
+var _consumable_pool_id: int = Keys.empty_hash  # 消耗品对象池 id
+var _gold_pool_id: int = Keys.empty_hash  # 金币对象池 id
 
 
+# 场景初始化入口：每一波开始时执行一次。
+# 主要流程：初始化对象池 id → 音乐/HUD → 按"地图大小"效果缩放地图
+# → 启动波次计时器与刷怪管理器 → 连接升级 UI / RunData / 暂停菜单的
+# 大量信号 → 处理特殊波次(迷雾波/弹幕波)与开波触发的道具效果。
 func _ready() -> void :
 	if DebugService.display_fps:
 		_fps_label.show()
@@ -285,6 +316,7 @@ func _ready() -> void :
 	_init_half_second_timers()
 
 
+# 根据调试开关(DebugService)显示/隐藏 HUD、波次计时器和飘字
 func _updatehidingHUD() -> void :
 	if DebugService.hide_wave_timer:
 		_ui_wave_container.hide()
@@ -304,6 +336,8 @@ func _updatehidingHUD() -> void :
 		$WorldUI.show()
 
 
+# 为需要每 0.5 秒刷新联动属性(LinkedStats)的玩家各建一个定时器；
+# 多人时按人数错开启动时间，避免所有玩家在同一帧结算造成卡顿
 func _init_half_second_timers() -> void :
 	var timer_wait_time: = 0.5
 	var player_count: int = RunData.get_player_count()
@@ -320,6 +354,7 @@ func _init_half_second_timers() -> void :
 				yield(get_tree().create_timer(timer_delay), "timeout")
 
 
+# 清场阶段悬停"待处理物品"图标时显示提示气泡
 func on_ui_element_mouse_entered(ui_element: Node, text: String) -> void :
 	if _cleaning_up:
 		_info_popup.display(ui_element, tr(text))
@@ -329,6 +364,9 @@ func on_ui_element_mouse_exited(_ui_element: Node) -> void :
 	_info_popup.hide()
 
 
+# ---------- 以下几个 on_xxx_changed 是暂停菜单里设置项变更的回调 ----------
+
+# 角色高亮描边设置变更
 func on_character_highlighting_changed(_value: bool) -> void :
 	for player in _players:
 		if not is_instance_valid(player) or not player.is_inside_tree():
@@ -357,11 +395,13 @@ func on_hp_bar_on_character_changed(_value: int) -> void :
 		_on_player_health_updated(_players[i], _players[i].current_stats.health, _players[i].max_stats.health)
 
 
+# 玩家属性发生变化：重载其数值显示，并清空"死亡掉弹幕"效果的属性缓存
 func on_stats_updated(player_index: int) -> void :
 	_stats_manager.reload_stats(_players[player_index])
 	_proj_on_death_stat_caches[player_index] = null
 
 
+# 每帧逻辑：调试变速快捷键(1/2/3 键) + 手动瞄准准星显示 + 暂停键检测
 func _process(_delta: float) -> void :
 	if DebugService.enable_time_scale_buttons:
 		if Input.is_physical_key_pressed(KEY_1):
@@ -376,6 +416,8 @@ func _process(_delta: float) -> void :
 	_check_for_pause()
 
 
+# 单人模式手动瞄准的视觉处理：手柄玩家显示世界内准星并隐藏鼠标；
+# 鼠标玩家把光标换成准星贴图；其余情况按设置显示/隐藏系统光标
 func _handle_manual_aim_visuals() -> void :
 	if RunData.is_coop_run:
 		return
@@ -405,6 +447,7 @@ func _handle_manual_aim_visuals() -> void :
 	_set_crosshair_cursor(crosshair_cursor)
 
 
+# 把系统鼠标光标切换为准星贴图 / 恢复默认光标
 func _set_crosshair_cursor(enable: bool) -> void :
 	if enable and not _crosshair_cursor_active:
 		Input.set_custom_mouse_cursor(_crosshair.texture, Input.CURSOR_ARROW, Vector2(35, 35))
@@ -414,6 +457,8 @@ func _set_crosshair_cursor(enable: bool) -> void :
 		_crosshair_cursor_active = false
 
 
+# 检测暂停键。合作模式下按输入设备映射找到是哪个玩家按的暂停；
+# 直播联机(streamplay)模式只允许 1P 暂停
 func _check_for_pause() -> void :
 	if _skip_pause_check:
 		_skip_pause_check = false
@@ -435,6 +480,8 @@ func _check_for_pause() -> void :
 			_pause_menu.pause(0)
 
 
+# 物理帧逻辑：清场时让钱袋跟随目标位置；每帧刷新血条颜色特效；
+# 战斗中读取手柄右摇杆更新各玩家的瞄准方向
 func _physics_process(_delta: float) -> void :
 	if _cleaning_up:
 		_gold_bag.global_position = get_gold_bag_pos()
@@ -454,6 +501,7 @@ func _physics_process(_delta: float) -> void :
 				_players[player_index].gamepad_attack_vector = rjoy.normalized()
 
 
+# 波次倒计时进入最后读秒阶段：计时数字变红提示
 func on_tick_started() -> void :
 	_wave_timer_label.modulate = Color(ProgressData.settings.color_negative)
 
@@ -463,6 +511,9 @@ func on_bonus_gold_changed(value: int) -> void :
 		_ui_bonus_gold.hide()
 
 
+# 玩家死亡处理：记录死亡信息(死因/是否死于弹幕)、隐藏其血条与高亮、
+# 播放失败音效；若还有存活玩家则继续战斗，否则清场结束本波，
+# 并把击杀来源计入"被哪种敌人杀死"的永久统计
 func _on_player_died(p_player: Player, _args: Entity.DieArgs) -> void :
 	if (_args.from is BulletHell):
 		_args.is_bullet_hell = true
@@ -500,6 +551,12 @@ func _on_player_died(p_player: Player, _args: Entity.DieArgs) -> void :
 			ProgressData.increment_stat("evil_mob_killed_by")
 
 
+# 敌人死亡处理（核心掉落/效果结算之一）：
+#   - 最后一波的最后一个 Boss 死亡：普通模式立刻结束波次；
+#     无尽模式则追加刷怪组继续
+#   - 依次触发各存活玩家的"敌人死亡时"类道具效果：
+#     属性伤害、死亡掉弹幕(带属性缓存)、死亡爆炸、烧伤击杀叠属性
+#   - 掉落战利品(spawn_loot)并计入击杀统计
 func _on_enemy_died(enemy: Enemy, args: Entity.DieArgs) -> void :
 	RunData.current_living_enemies -= 1
 
@@ -596,12 +653,14 @@ func _on_enemy_took_damage(
 	_hit_type: int, 
 	_is_one_shot: bool
 	) -> void :
+	# 敌人受击回调：若这一下打死了敌人且满足条件，在其尸体附近布雷
 	if enemy.dead and WeaponService.should_spawn_landmines_on_enemy_death(args.hitbox, args.is_burning, args.from_player_index):
 		var pos = _entity_spawner.get_spawn_pos_in_area(enemy.global_position, 200)
 		var queue = _entity_spawner.queues_to_spawn_structures[args.from_player_index]
 		queue.push_back([EntityType.STRUCTURE, landmines_effect.scene, pos, landmines_effect])
 
 
+# 中立单位(树)死亡：掉落战利品；持有"树生成炮塔"效果的玩家在附近刷炮塔
 func _on_neutral_died(neutral: Neutral, args: Entity.DieArgs) -> void :
 	RunData.current_living_trees -= 1
 
@@ -616,11 +675,14 @@ func _on_neutral_died(neutral: Neutral, args: Entity.DieArgs) -> void :
 				queue.push_back([EntityType.STRUCTURE, turret_effect.scene, pos, turret_effect])
 
 
+# 某些道具效果让玩家主动生成金币时的入口
 func on_player_wanted_to_spawn_gold(value: int, pos: Vector2, spread: int) -> void :
 	var actual_value = get_gold_value(EntityType.NEUTRAL, Utils.default_die_args, value)
 	spawn_gold(actual_value, pos, spread)
 
 
+# 单位死亡掉落总入口：先尝试掉消耗品，再按概率掉金币。
+# 金币掉率随波数递减(前 5 波 100%，之后最低 50%)，部落波再乘 0.65
 func spawn_loot(unit: Unit, entity_type: int, args: Entity.DieArgs) -> void :
 	if not unit.can_drop_loot:
 		return
@@ -648,6 +710,8 @@ func spawn_loot(unit: Unit, entity_type: int, args: Entity.DieArgs) -> void :
 	spawn_gold(value, unit.global_position, gold_spread)
 
 
+# 尝试掉落消耗品(食物/物品箱)：掉率受全队幸运值加成、
+# 受本波已掉箱子数递减；节点优先从对象池复用
 func spawn_consumables(unit: Unit) -> void :
 	var luck: = 0.0
 
@@ -691,6 +755,8 @@ func spawn_consumables(unit: Unit) -> void :
 		_consumables.push_back(consumable)
 
 
+# 消耗品被拾取：节点回收进对象池；物品箱类记入"波后待处理"队列
+# (合作模式开启共享战利品时分给队列最短的玩家)；即时类效果直接生效
 func on_consumable_picked_up(consumable: Node, player_index: int) -> void :
 	if consumable.already_picked_up:
 		return
@@ -732,6 +798,9 @@ func on_consumable_picked_up(consumable: Node, player_index: int) -> void :
 	RunData.apply_item_effects(consumable.consumable_data, player_index)
 
 
+# 生成金币：小数部分按概率四舍五入决定个数；场上金币达到上限(50)时
+# 不再新建节点，改为随机强化一枚已有金币的价值和体积；
+# 有"即时吸取金币"效果的玩家可能让新金币直接飞向自己(或拾荒虫)
 func spawn_gold(value: float, pos: Vector2, spread: int) -> void :
 	var value_floored: = int(value)
 	var residual_chance: = value - value_floored
@@ -783,6 +852,9 @@ func spawn_gold(value: float, pos: Vector2, spread: int) -> void :
 	emit_signal("gold_spawned")
 
 
+# 计算一个单位掉落的金币价值：
+# 基础值 × 合作人数补正 × (+材料掉落/敌人材料/树木材料 效果)
+# × 单位身上效果行为的修正 × "距离越远材料越多"类效果的缩放
 func get_gold_value(entity_type: int, args: Entity.DieArgs, base_value: float, unit: Unit = null) -> float:
 	var value = base_value
 	var coop_factor: float = CoopService.get_coop_materials_factor()
@@ -824,6 +896,9 @@ func get_gold_value(entity_type: int, args: Entity.DieArgs, base_value: float, u
 	return value
 
 
+# 金币被拾取（player_index < 0 表示清场时被钱袋吸收，折算成额外金币）：
+# 播放音效 → 应用材料增值/翻倍效果 → 触发拾取回血、拾取受伤、
+# 拾取装填(武器冷却清零)等道具效果 → 金币与经验按轮转顺序分给各玩家
 func on_gold_picked_up(gold: Node, player_index: int) -> void :
 	if gold.already_picked_up:
 		return
@@ -896,6 +971,8 @@ func on_gold_picked_up(gold: Node, player_index: int) -> void :
 
 
 
+# 玩家升级：播放音效、把这次升级记入"波后待选升级"队列并显示图标、
+# 固定 +1 最大生命，再应用"升级时加属性"类效果并记录溯源数据
 func on_levelled_up(player_index: int) -> void :
 	SoundManager.play(level_up_sound, 0, 0, true)
 	var level = RunData.get_player_level(player_index)
@@ -930,12 +1007,14 @@ func on_levelled_up(player_index: int) -> void :
 				RunData.add_tracked_value(player_index, Keys.item_barnacle_hash, 1)
 
 
+# 获得经验时刷新经验条 UI
 func on_xp_added(current_xp: float, max_xp: float, player_index: int) -> void :
 	var player_ui: PlayerUIElements = _players_ui[player_index]
 	var display_xp = int(current_xp) % int(ceil(max_xp))
 	player_ui.xp_bar.update_value(display_xp, int(max_xp))
 
 
+# 把单位的受击/暴击/秒杀信号接到特效管理器和飘字管理器
 func connect_visual_effects(unit: Unit) -> void :
 	var _error_effects = unit.connect("took_damage", _effects_manager, "_on_unit_took_damage")
 	var _error_floating_text = unit.connect("took_damage", _floating_text_manager, "_on_unit_took_damage")
@@ -943,6 +1022,14 @@ func connect_visual_effects(unit: Unit) -> void :
 	var _error_one_shot_effect = unit.connect("one_shot_effect", _effects_manager, "on_one_shot")
 
 
+# 波次结束清场（全员阵亡或时间到时调用）：
+#   1. _set_run_states() 判定本波/本局的胜负状态
+#   2. 停掉各计时器、压暗画面、启动清场缓冲计时器(EndWaveTimer)
+#   3. 无尽模式记录最高波数；保存永久存档
+#   4. 残留金币：开"波末优化"设置时直接折算成额外金币，
+#      否则逐枚飞向钱袋(建造者角色有炮塔时飞向炮塔)
+#   5. 残留消耗品飞向存活玩家；通知刷怪器/特效等各管理器清理
+#   6. 显示"波次完成/失败/胜利"的大字标签
 func clean_up_room() -> void :
 	_set_run_states()
 
@@ -1076,6 +1163,10 @@ func clean_up_room() -> void :
 	DebugService.log_data("wave_cleared_label started...")
 
 
+# 根据"是否全员阵亡 + 当前波数 vs 总波数"判定：
+# 本波失败(_is_wave_failed) / 整局失败(_is_run_lost) / 整局胜利(_is_run_won)。
+# 注意无尽模式下：死在最后一波但已杀完 Boss 也算胜利；
+# 超过总波数后死亡一律算胜利(无尽模式的正常终点)
 func _set_run_states() -> void :
 	var live_players: = _get_live_players()
 	var all_players_dead: = live_players.empty()
@@ -1106,6 +1197,8 @@ func _set_run_states() -> void :
 		ProgressData.increment_stat("run_won")
 
 
+# 钱袋的位置：默认取 HUD 上"额外金币"图标对应的世界坐标；
+# 被覆盖时(建造者的炮塔)用覆盖位置
 func get_gold_bag_pos() -> Vector2:
 
 	if override_gold_bag_pos != Vector2.ZERO:
@@ -1114,6 +1207,12 @@ func get_gold_bag_pos() -> Vector2:
 	return get_viewport().get_canvas_transform().affine_inverse().xform(_ui_bonus_gold_pos.global_position)
 
 
+# 清场缓冲计时结束（波次真正收尾的地方）：
+#   - 本波失败且可重试：显示"重试本波"界面后返回
+#   - 否则结算波次(RunData.on_wave_end)，然后：
+#       整局结束 → 切到胜利/失败结算场景
+#       正常过关 → 依次弹出升级选择、物品箱处理 UI(单人/合作两套)，
+#                  等玩家处理完并等成就弹窗放完 → 切到商店场景
 func _on_EndWaveTimer_timeout() -> void :
 	_coop_upgrades_ui.propagate_call("set_process_input", [true])
 	DebugService.log_data("_on_EndWaveTimer_timeout")
@@ -1177,14 +1276,19 @@ func _on_EndWaveTimer_timeout() -> void :
 	_change_scene(scene)
 
 
+# ---------- 波后升级/物品箱界面的按钮回调 ----------
+
+# 选择了一个升级项
 func on_upgrade_selected(upgrade_data: UpgradeData, upgrade: UpgradesUI.UpgradeToProcess) -> void :
 	RunData.apply_item_effects(upgrade_data, upgrade.player_index)
 
 
+# 物品箱：拿取物品
 func on_item_box_take_button_pressed(item_data: ItemParentData, consumable: UpgradesUI.ConsumableToProcess) -> void :
 	RunData.add_item(item_data, consumable.player_index)
 
 
+# 物品箱：回收物品换金币
 func on_item_box_discard_button_pressed(item_data: ItemParentData, consumable: UpgradesUI.ConsumableToProcess) -> void :
 	var player_index = consumable.player_index
 	var value = ItemService.get_recycling_value(RunData.current_wave, item_data.value, player_index)
@@ -1192,6 +1296,7 @@ func on_item_box_discard_button_pressed(item_data: ItemParentData, consumable: U
 	RunData.update_recycling_tracking_value(item_data, player_index)
 
 
+# 物品箱：禁用该物品(本局不再出现)并回收换金币，消耗一枚禁用令牌
 func on_item_box_ban_button_pressed(item_data: ItemParentData, consumable: UpgradesUI.ConsumableToProcess) -> void :
 	var player_index = consumable.player_index
 	var value = floor(ItemService.get_recycling_value(RunData.current_wave, item_data.value, player_index))
@@ -1202,10 +1307,13 @@ func on_item_box_ban_button_pressed(item_data: ItemParentData, consumable: Upgra
 	RunData.update_recycling_tracking_value(item_data, player_index)
 
 
+# 打开暂停菜单：恢复手柄按键重复(方便菜单导航)
 func _on_PauseMenu_paused() -> void :
 	InputService.set_gamepad_echo_processing(true)
 
 
+# 关闭暂停菜单：下一帧跳过暂停检测(避免立刻再触发)，
+# 若升级界面还开着则把焦点还给它
 func _on_PauseMenu_unpaused() -> void :
 	_skip_pause_check = true
 
@@ -1218,6 +1326,12 @@ func _on_PauseMenu_unpaused() -> void :
 		_upgrades_ui.focus()
 
 
+# 波次时间耗尽（正常打完一波的入口）：
+#   1. 检查各类计数型成就(残血过关/树木数量等)
+#   2. 结算每个玩家"波结束加属性"类效果并记录溯源
+#   3. 结算"波结束转换属性"效果，发出 end_of_the_wave 信号
+#   4. manage_harvesting() 结算收获 → clean_up_room() 清场
+#   5. 重置临时属性(TempStats)
 func _on_WaveTimer_timeout() -> void :
 	DebugService.log_run_info(_upgrades_to_process, _consumables_to_process)
 	ChallengeService.check_counted_challenges()
@@ -1276,6 +1390,7 @@ func _on_WaveTimer_timeout() -> void :
 
 	TempStats.reset()
 
+# 检查"场上金币总价值达标"的拾荒虫成就
 func check_lootworm_chal():
 	if not ChallengeService.is_challenge_completed(ChallengeService.chal_lootworm_hash):
 		var value: = 0
@@ -1286,6 +1401,9 @@ func check_lootworm_chal():
 			ChallengeService.complete_challenge(ChallengeService.chal_lootworm_hash)
 			RunData.check_beast_master_chal()
 
+# 波次结束时结算"收获"：收获属性 + 和平主义(按存活敌人数)
+# + 神秘生物(按存活树数) + 精英击杀加成 + 魅惑敌人价值等，
+# 折算成金币和经验发给玩家(为负则扣钱)
 func manage_harvesting() -> void :
 	for player_index in RunData.get_player_count():
 		var pacifist_effect = RunData.get_player_effect(Keys.pacifist_hash, player_index)
@@ -1323,6 +1441,7 @@ func manage_harvesting() -> void :
 			RunData.add_xp(0, player_index)
 
 
+# 取所有存活玩家
 func _get_live_players() -> Array:
 	var live_players: = []
 	for player in _players:
@@ -1334,6 +1453,7 @@ func _get_live_players() -> Array:
 
 
 
+# 取所有存活玩家并随机打乱顺序(避免多人时效果总是先结算 1P)
 func _get_shuffled_live_players() -> Array:
 	var live_players: = _get_live_players()
 	live_players.shuffle()
@@ -1341,6 +1461,7 @@ func _get_shuffled_live_players() -> Array:
 
 
 
+# 切换场景；主机平台切换期间临时开启高性能 CPU 模式加快加载
 func _change_scene(path: String) -> void :
 	if Utils.is_on_console():
 		OS_Seaven.set_fast_cpu_mode(true)
@@ -1358,6 +1479,11 @@ func _on_UIBonusGold_mouse_exited() -> void :
 	_info_popup.hide()
 
 
+# 刷怪器把所有玩家生成完毕后的回调（开波时最重要的初始化之一）：
+#   - 保存玩家引用、设置摄像机跟随目标
+#   - 为每个玩家组装 HUD 元素(血条/经验条/金币/受击保护等)
+#   - 按"开波血量百分比"效果设置初始血量，连接死亡/受伤/回血等信号
+#   - 结算"开波按百分比得/扣金币"、"下一波临时属性"等效果
 func _on_EntitySpawner_players_spawned(players: Array) -> void :
 	_players = players
 	_camera.targets = players
@@ -1458,6 +1584,9 @@ func _on_EntitySpawner_players_spawned(players: Array) -> void :
 	RunData.reset_wave_caches()
 
 
+# ---------- 刷怪器(EntitySpawner)各类生成事件的回调 ----------
+
+# 敌人生成：连接其死亡/受击/强化/回血等信号到本场景与特效管理器
 func _on_EntitySpawner_enemy_spawned(enemy: Enemy) -> void :
 	var _error_died = enemy.connect("died", self, "_on_enemy_died")
 	var _error_took_damage = enemy.connect("took_damage", self, "_on_enemy_took_damage")
@@ -1488,6 +1617,7 @@ func _on_EntitySpawner_structure_spawned(structure: Structure) -> void :
 
 
 func _on_EntitySpawner_structure_respawned(structure):
+	# 迷雾波时把新生成的建筑注册进迷雾视口(让它周围可见)
 	if _is_fog_wave:
 		_fog_viewport._on_spawn_structure_or_pet(structure)
 
@@ -1500,6 +1630,7 @@ func _on_EntitySpawner_enemy_charmed(enemy):
 	if _is_fog_wave:
 		_fog_viewport._on_spawn_structure_or_pet(enemy)
 
+# 果树类建筑请求生成水果：随机取一个普通品质消耗品掉在附近
 func on_structure_wanted_to_spawn_fruit(pos: Vector2) -> void :
 	var consumable_to_spawn = ItemService.get_consumable_for_tier(Tier.COMMON)
 	var consumable: Consumable = get_node_from_pool(_consumable_pool_id, _consumables_container)
@@ -1518,6 +1649,8 @@ func on_structure_wanted_to_spawn_fruit(pos: Vector2) -> void :
 	_consumables.push_back(consumable)
 
 
+# 收获成长定时结算：普通波按"收获成长%"增加收获属性(皇冠道具会记录溯源)；
+# 无尽模式(超过总波数)则按固定比例衰减收获
 func _on_HarvestingTimer_timeout() -> void :
 	for player_index in RunData.get_player_count():
 		var harvesting_stat = Utils.get_stat(Keys.stat_harvesting_hash, player_index)
@@ -1549,10 +1682,15 @@ func _on_HarvestingTimer_timeout() -> void :
 				RunData.add_stat(Keys.stat_harvesting_hash, val, player_index)
 
 
+# 玩家回血时触发"回血时对敌造成属性伤害"类效果
 func on_player_healed(_value: int, player_index: int) -> void :
 	var dmg_when_heal_effect = RunData.get_player_effect(Keys.dmg_when_heal_hash, player_index)
 	var _dmg_taken = handle_stat_damages(dmg_when_heal_effect, player_index)
 
+# "按自身属性百分比对随机一名敌人造成伤害"类效果的统一结算。
+# stat_damages 每项为 [属性哈希, 百分比, 触发概率, (可选)溯源key]；
+# 汇总所有触发项的伤害一次性打出，并把实际造成的伤害按比例记录溯源。
+# 返回 [造成的伤害, 实际扣血]
 func handle_stat_damages(stat_damages: Array, player_index: int) -> Array:
 	var total_dmg_to_deal = 0
 	var dmg_taken = [0, 0]
@@ -1619,6 +1757,7 @@ func handle_stat_damages(stat_damages: Array, player_index: int) -> Array:
 	return dmg_taken
 
 
+# 玩家血量跨越 50% 阈值时，添加/移除"半血以下生效"的临时属性
 func check_half_health_stats(player_index: int) -> void :
 	var stats_below_half_health = RunData.get_player_effect(Keys.stats_below_half_health_hash, player_index)
 	if stats_below_half_health.size() == 0:
@@ -1641,6 +1780,8 @@ func check_half_health_stats(player_index: int) -> void :
 			RunData.emit_signal("stat_removed", stat[0], stat[1], 0.0, player_index)
 
 
+# 玩家血量变化：更新 HUD 血条、头顶血条、受伤红屏暗角、
+# "一击必死"效果的血量标签隐藏、受击保护计数等
 func _on_player_health_updated(player: Player, current_val: int, max_val: int) -> void :
 	var player_index = player.player_index
 	RunData.players_data[player_index].current_health = current_val
@@ -1668,10 +1809,13 @@ func _on_player_health_updated(player: Player, current_val: int, max_val: int) -
 	player_ui.update_hit_protection_count(player, hit_protection_count)
 
 
+# 金币数变化时刷新 HUD
 func on_gold_changed(new_value: int, player_index: int) -> void :
 	var player_ui: PlayerUIElements = _players_ui[player_index]
 	player_ui.gold.update_value(new_value)
 
+
+# ---------- RunData 发出的效果信号 → 转发给对应玩家节点 ----------
 
 func on_damage_effect(value: int, player_index: int, armor_applied: bool, dodgeable: bool, from = null) -> void :
 	_players[player_index].on_damage_effect(value, armor_applied, dodgeable, from)
@@ -1690,6 +1834,7 @@ func on_heal_over_time_effect(total_healing: int, duration: int, player_index: i
 	_players[player_index].on_heal_over_time_effect(total_healing, duration)
 
 
+# 成就完成弹窗开始/结束显示的标记(波末要等弹窗放完才切场景)
 func on_chal_popup() -> void :
 	_is_chal_ui_displayed = true
 
@@ -1698,11 +1843,13 @@ func on_chal_popout() -> void :
 	_is_chal_ui_displayed = false
 
 
+# 每 0.5 秒重算一次该玩家的联动属性(如"攻速随缺失生命提升"类)
 func _on_HalfSecondTimer_timeout(player_index: int) -> void :
 	if LinkedStats.update_for_player_every_half_sec[player_index]:
 		LinkedStats.reset_player(player_index)
 
 
+# 游戏窗口失去焦点时自动暂停(重试界面显示中除外)
 func _on_game_lost_focus() -> void :
 	if not _retry_wave.visible:
 		_pause_menu.on_game_lost_focus()
@@ -1713,6 +1860,11 @@ func _on_emit_fire_particle(burning_particle):
 		_fog_viewport._on_emit_fire_particle(burning_particle)
 
 
+# ---------- 简易对象池：复用金币/消耗品节点，避免频繁实例化 ----------
+# 原理：节点"回收"时从场景树摘下存进 _pool[id] 数组，
+# 需要时再取出挂回场景树；id 是场景资源路径的哈希
+
+# 从 id 对应的池里取一个可用节点挂到 parent 下；池空返回 null(由调用方新建)
 func get_node_from_pool(id: int, parent: Node) -> Node:
 	if _current_pool_id != id:
 		_current_pool_id = id
@@ -1742,6 +1894,7 @@ func is_pool_empty(id: int) -> bool:
 	return true
 
 
+# 把节点回收进 id 对应的池
 func add_node_to_pool(node: Node, id: int) -> void :
 	assert (_pool.has(id))
 	_add_node_to_pool(node, id)
@@ -1765,6 +1918,8 @@ func _add_node_to_pool(node: Node, id: int) -> void :
 	node.get_parent().remove_child(node)
 
 
+
+# ---------- add_xxx 系列：供其他系统把节点挂到本场景对应的容器下 ----------
 
 func add_explosion(instance: PlayerExplosion) -> void :
 	_explosions.add_child(instance)
@@ -1794,6 +1949,8 @@ func add_entity(instance: Entity) -> void :
 	_entities_container.add_child(instance)
 
 
+# 场景退出(切到商店/结算)时：释放对象池里缓存的全部节点
+# (它们已不在场景树上，不释放会内存泄漏)
 func _exit_tree() -> void :
 	InputService.set_gamepad_echo_processing(true)
 	if _pool != null:
@@ -1803,6 +1960,7 @@ func _exit_tree() -> void :
 				node.queue_free()
 
 
+# 波次进行到一半时：结算"半波转换属性"类效果，并把计时器变蓝提示
 func _on_HalfWaveTimer_timeout() -> void :
 	for player_index in RunData.get_player_count():
 		Utils.convert_stats(RunData.get_player_effect(Keys.convert_stats_half_wave_hash, player_index), player_index, false)
