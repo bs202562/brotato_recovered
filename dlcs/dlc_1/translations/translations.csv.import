@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://dlcs/dlc_1/translations/translations.en.translation", "res://dlcs/dlc_1/translations/translations.fr.translation", "res://dlcs/dlc_1/translations/translations.zh.translation", "res://dlcs/dlc_1/translations/translations.ja.translation", "res://dlcs/dlc_1/translations/translations.ko.translation", "res://dlcs/dlc_1/translations/translations.zh_TW.translation", "res://dlcs/dlc_1/translations/translations.ru.translation", "res://dlcs/dlc_1/translations/translations.pl.translation", "res://dlcs/dlc_1/translations/translations.es.translation", "res://dlcs/dlc_1/translations/translations.pt.translation", "res://dlcs/dlc_1/translations/translations.de.translation", "res://dlcs/dlc_1/translations/translations.tr.translation", "res://dlcs/dlc_1/translations/translations.it.translation" ]
+
+source_file="res://dlcs/dlc_1/translations/translations.csv"
+dest_files=[ "res://dlcs/dlc_1/translations/translations.en.translation", "res://dlcs/dlc_1/translations/translations.fr.translation", "res://dlcs/dlc_1/translations/translations.zh.translation", "res://dlcs/dlc_1/translations/translations.ja.translation", "res://dlcs/dlc_1/translations/translations.ko.translation", "res://dlcs/dlc_1/translations/translations.zh_TW.translation", "res://dlcs/dlc_1/translations/translations.ru.translation", "res://dlcs/dlc_1/translations/translations.pl.translation", "res://dlcs/dlc_1/translations/translations.es.translation", "res://dlcs/dlc_1/translations/translations.pt.translation", "res://dlcs/dlc_1/translations/translations.de.translation", "res://dlcs/dlc_1/translations/translations.tr.translation", "res://dlcs/dlc_1/translations/translations.it.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

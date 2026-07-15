@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://effects/items/item_exploding_when_below_hp_effect.gd" type="Script" id=1]
+[ext_resource path="res://dlcs/dlc_1/items/sunken_bell/effects/sunken_bell_explosion_stats.tres" type="Resource" id=2]
+[ext_resource path="res://projectiles/explosion.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 1 )
+key = "explode_when_below_hp"
+text_key = "effect_explode_when_below_hp"
+value = 1
+custom_key = ""
+storage_method = 0
+effect_sign = 3
+custom_args = [  ]
+chance = 1.0
+explosion_scene = ExtResource( 3 )
+scale = 6.0
+base_smoke_amount = 40
+sound_db_mod = -10
+stats = ExtResource( 2 )
+tracking_key = "item_sunken_bell"
+scale_with_missing_health = false
+hp_threshold = 40

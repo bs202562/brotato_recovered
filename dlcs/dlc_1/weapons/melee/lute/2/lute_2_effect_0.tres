@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://effects/weapons/weapon_percent_damage_effect.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+key = "stat_all"
+text_key = "EFFECT_INCREASE_DAMAGE_RECEIVED"
+value = 10
+custom_key = "enemy_percent_damage_taken"
+storage_method = 0
+effect_sign = 3
+custom_args = [  ]
+source_id = "weapon_lute"
+duration_secs = 3
+max_stacks = 5
+max_procs = -1
+outline_color = Color( 0.74902, 0.921569, 1, 1 )

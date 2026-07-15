@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/sp_shadow.png-ae73bdddcb1c2fbdae565d5d341959c1.res"
+group_file="res://entities/units/pet/ratzilla/ratzilla.png"
+valid=true
+[deps]
+
+
+source_file="res://entities/units/pet/ratzilla/sp_shadow.png"
+dest_files=[ "res://.import/sp_shadow.png-ae73bdddcb1c2fbdae565d5d341959c1.res" ]
+
+[params]
+
+atlas_file="res://entities/units/pet/ratzilla/ratzilla.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

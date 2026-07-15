@@ -1,0 +1,235 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="DynamicFont" id=1]
+[ext_resource path="res://items/stats/max_hp.png" type="Texture" id=2]
+[ext_resource path="res://ui/menus/pages/menu_codex/grid_graph.png" type="Texture" id=3]
+[ext_resource path="res://ui/menus/pages/menu_codex/wave_graph.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+
+[node name="wave_graph" type="HBoxContainer"]
+margin_top = 295.0
+margin_right = 624.0
+margin_bottom = 464.0
+script = ExtResource( 4 )
+
+[node name="left_column" type="VBoxContainer" parent="."]
+margin_right = 170.0
+margin_bottom = 169.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="left_column"]
+margin_top = 115.0
+margin_right = 170.0
+margin_bottom = 140.0
+
+[node name="base_stat_label" type="Label" parent="left_column/HBoxContainer"]
+margin_right = 115.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "HP :"
+valign = 1
+
+[node name="base_stat_label_number" type="Label" parent="left_column/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 119.0
+margin_right = 142.0
+margin_bottom = 25.0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "12"
+align = 2
+valign = 1
+
+[node name="base_stat_texture" type="TextureRect" parent="left_column/HBoxContainer"]
+margin_left = 146.0
+margin_right = 170.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 24, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="left_column"]
+margin_top = 144.0
+margin_right = 170.0
+margin_bottom = 169.0
+
+[node name="adding_stat_label" type="Label" parent="left_column/HBoxContainer2"]
+margin_right = 116.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "+ HP/wave"
+valign = 1
+
+[node name="adding_stat_label_number" type="Label" parent="left_column/HBoxContainer2"]
+unique_name_in_owner = true
+margin_left = 120.0
+margin_right = 142.0
+margin_bottom = 25.0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="adding_stat_texture" type="TextureRect" parent="left_column/HBoxContainer2"]
+margin_left = 146.0
+margin_right = 170.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 24, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="VSeparator" type="Control" parent="."]
+margin_left = 174.0
+margin_right = 179.0
+margin_bottom = 169.0
+rect_min_size = Vector2( 5, 0 )
+
+[node name="right_graph" type="GridContainer" parent="."]
+margin_left = 183.0
+margin_right = 624.0
+margin_bottom = 169.0
+columns = 2
+
+[node name="top_left" type="Control" parent="right_graph"]
+margin_right = 57.0
+margin_bottom = 25.0
+
+[node name="wave_label" type="Label" parent="right_graph/top_left"]
+margin_left = 30.0
+margin_right = 385.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "wave"
+
+[node name="top_container" type="HBoxContainer" parent="right_graph"]
+margin_left = 61.0
+margin_right = 441.0
+margin_bottom = 25.0
+
+[node name="wave_05_label" type="Label" parent="right_graph/top_container"]
+margin_right = 92.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "5"
+align = 2
+
+[node name="wave_10_label" type="Label" parent="right_graph/top_container"]
+margin_left = 96.0
+margin_right = 188.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "10"
+align = 2
+
+[node name="wave_15_label" type="Label" parent="right_graph/top_container"]
+margin_left = 192.0
+margin_right = 284.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "15"
+align = 2
+
+[node name="wave_20_label" type="Label" parent="right_graph/top_container"]
+margin_left = 288.0
+margin_right = 380.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "20"
+align = 2
+
+[node name="left_container" type="VBoxContainer" parent="right_graph"]
+margin_top = 29.0
+margin_right = 57.0
+margin_bottom = 169.0
+rect_min_size = Vector2( 57, 0 )
+
+[node name="scale_3" type="Label" parent="right_graph/left_container"]
+unique_name_in_owner = true
+margin_right = 57.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 1 )
+text = "320"
+align = 2
+
+[node name="scale_2" type="Label" parent="right_graph/left_container"]
+unique_name_in_owner = true
+margin_top = 36.0
+margin_right = 57.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 1 )
+text = "160"
+align = 2
+
+[node name="scale_1" type="Label" parent="right_graph/left_container"]
+unique_name_in_owner = true
+margin_top = 72.0
+margin_right = 57.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 1 )
+text = "40"
+align = 2
+
+[node name="scale_0" type="Label" parent="right_graph/left_container"]
+unique_name_in_owner = true
+margin_top = 108.0
+margin_right = 57.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 1 )
+text = "10"
+align = 2
+
+[node name="GraphContainer" type="PanelContainer" parent="right_graph"]
+unique_name_in_owner = true
+margin_left = 61.0
+margin_top = 29.0
+margin_right = 441.0
+margin_bottom = 169.0
+rect_min_size = Vector2( 380, 140 )
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 7 )
+
+[node name="polygon" type="Polygon2D" parent="right_graph/GraphContainer"]
+unique_name_in_owner = true
+color = Color( 0.290196, 0.854902, 0.364706, 0.533333 )
+polygon = PoolVector2Array( 0, 140, 19, 123, 38, 107, 57, 95, 76, 86, 95, 76, 114, 68, 133, 62, 152, 55, 171, 55, 190, 55, 209, 55, 228, 55, 247, 55, 266, 55, 285, 55, 304, 55, 323, 55, 343, 55, 361, 55, 380, 55, 380, 140, 0, 140 )
+
+[node name="grid_texture" type="TextureRect" parent="right_graph/GraphContainer"]
+modulate = Color( 1, 1, 1, 0.203922 )
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 377.0
+margin_bottom = 137.0
+texture = ExtResource( 3 )
+expand = true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/catling_gun_ear_r.png-c3087d12f250b2b8e68ffcdf32ba3b45.res"
+group_file="res://entities/units/pet/catling_gun/catling_gun.png"
+valid=true
+[deps]
+
+
+source_file="res://entities/units/pet/catling_gun/catling_gun_ear_r.png"
+dest_files=[ "res://.import/catling_gun_ear_r.png-c3087d12f250b2b8e68ffcdf32ba3b45.res" ]
+
+[params]
+
+atlas_file="res://entities/units/pet/catling_gun/catling_gun.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

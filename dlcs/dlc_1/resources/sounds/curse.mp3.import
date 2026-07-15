@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/curse.mp3-f8d1236f17adb6a52e2ad5ffb475149e.mp3str"
+
+[deps]
+
+source_file="res://dlcs/dlc_1/resources/sounds/curse.mp3"
+dest_files=[ "res://.import/curse.mp3-f8d1236f17adb6a52e2ad5ffb475149e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

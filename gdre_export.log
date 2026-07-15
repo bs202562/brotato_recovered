@@ -1,0 +1,65 @@
+GDRE Tools v2.6.0-beta.4
+Windows 10.0.26200, headless
+Opening file: D:/SteamLibrary/steamapps/common/Brotato/Brotato.pck
+ERROR: Failed to detect GDScript revision for bytecode version 13, engine version 3.7, candidates: 3.5.0-stable (a7aad78), 3.2.0-stable (5565f55).
+   at: BytecodeTester::generic_test (modules\gdsdecomp\bytecode\bytecode_tester.cpp:230)
+Guessing bytecode revision from engine version: 3.7.0 (rev 0xa7aad78)
+Loaded 2009 imported files
+Detected Engine Version: 3.7.0
+Detected Bytecode Revision: 3.5.0-stable (a7aad78)
+Successfully loaded PCK!
+Version: 3.7.0
+Verified 7416 files, no errors detected!
+Extracted 7416 files, no errors detected!
+Recreating plugin configs...
+Loading resource strings, this may take a while!!
+Resource strings loaded!
+Saved project config.
+
+
+********************************EXPORT REPORT********************************
+
+Totals:                                 
+Decompiled scripts:                     445
+Scripts not decompiled:                 0
+Imported resources for export session:  2009
+Successfully converted:                 2009
+Lossy:                                  0
+Rewrote metadata:                       0
+Non-importable conversions:             0
+Not converted:                          0
+Failed conversions:                     0
+-------------
+
+------
+
+The following plugins failed to have their plugin.cfg regenerated:
+resave_scenes
+
+
+
+---------------------------------IMPORTANT NOTES----------------------------------
+
+
+Translation Export Incomplete:
+Could not recover 188/1200 keys for res://resources/translations/translations.csv
+Too inaccurate, saved translations.csv to res://.assets/resources/translations/translations.csv
+
+
+------
+Incomplete Plugin Export:
+The following addons failed to have their plugin.cfg regenerated
+You may encounter editor errors due to this.
+Tip: Try finding the plugin in the Godot Asset Library or Github.
+
+ - resave_scenes
+
+
+
+------------------------------------------------------------------------------------
+
+Use Godot editor version 3.7.0 to edit the project.
+
+*******************************************************************************
+
+Recovery finished in 00m04s

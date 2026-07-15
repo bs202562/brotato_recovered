@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/body.png-d670c51d3880a058152e76155f9faeb1.res"
+group_file="res://entities/units/pet/bonk_dog/bonk_dog.png"
+valid=true
+[deps]
+
+
+source_file="res://entities/units/pet/bonk_dog/body.png"
+dest_files=[ "res://.import/body.png-d670c51d3880a058152e76155f9faeb1.res" ]
+
+[params]
+
+atlas_file="res://entities/units/pet/bonk_dog/bonk_dog.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://items/all/evil_hat/evil_hat_effect_0.tres" type="Resource" id=1]
+[ext_resource path="res://items/all/evil_hat/evil_hat_effect_1.tres" type="Resource" id=2]
+[ext_resource path="res://items/all/evil_hat/evil_hat_icon.png" type="Texture" id=3]
+[ext_resource path="res://items/all/evil_hat/evil_hat_hat.tres" type="Resource" id=4]
+[ext_resource path="res://items/global/item_data.gd" type="Script" id=5]
+[ext_resource path="res://items/all/evil_hat/evil_hat_effect_2.tres" type="Resource" id=6]
+
+[resource]
+script = ExtResource( 5 )
+my_id = "item_evil_hat"
+unlocked_by_default = false
+can_be_looted = true
+icon = ExtResource( 3 )
+name = "ITEM_EVIL_HAT"
+tier = 3
+value = 130
+effects = [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 6 ) ]
+tracking_text = ""
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+max_nb = 1
+item_appearances = [ ExtResource( 4 ) ]
+tags = [ "economy", "pickup" ]

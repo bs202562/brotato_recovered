@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Adonai - Thalassophobia.mp3-b4ada68d6cd5cc41482dedbd89bc5a11.mp3str"
+
+[deps]
+
+source_file="res://dlcs/dlc_1/resources/music/Adonai - Thalassophobia.mp3"
+dest_files=[ "res://.import/Adonai - Thalassophobia.mp3-b4ada68d6cd5cc41482dedbd89bc5a11.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

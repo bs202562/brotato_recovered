@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Adonai - Currents.mp3-8083405d292efbf1288f714d3533b92f.mp3str"
+
+[deps]
+
+source_file="res://dlcs/dlc_1/resources/music/Adonai - Currents.mp3"
+dest_files=[ "res://.import/Adonai - Currents.mp3-8083405d292efbf1288f714d3533b92f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

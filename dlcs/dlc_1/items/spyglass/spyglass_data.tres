@@ -1,0 +1,27 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
+[ext_resource path="res://dlcs/dlc_1/items/spyglass/appearances/spyglass_app_1.tres" type="Resource" id=2]
+[ext_resource path="res://dlcs/dlc_1/items/spyglass/effects/spyglass_effect_0.tres" type="Resource" id=3]
+[ext_resource path="res://dlcs/dlc_1/items/spyglass/appearances/spyglass_app_0.tres" type="Resource" id=4]
+[ext_resource path="res://dlcs/dlc_1/items/spyglass/effects/spyglass_effect_1.tres" type="Resource" id=5]
+[ext_resource path="res://dlcs/dlc_1/items/spyglass/spyglass_icon.png" type="Texture" id=6]
+
+[resource]
+script = ExtResource( 1 )
+my_id = "item_spyglass"
+unlocked_by_default = true
+can_be_looted = true
+icon = ExtResource( 6 )
+name = "ITEM_SPYGLASS"
+tier = 1
+value = 30
+effects = [ ExtResource( 3 ), ExtResource( 5 ) ]
+tracking_text = "MATERIALS_SAVED"
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+max_nb = 2
+item_appearances = [ ExtResource( 4 ), ExtResource( 2 ) ]
+tags = [ "stat_range" ]

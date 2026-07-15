@@ -1,0 +1,183 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://entities/units/enemies/boss/boss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://dlcs/dlc_1/enemies/jellyfish/jellyfish.png" type="Texture" id=2]
+[ext_resource path="res://dlcs/dlc_1/enemies/jellyfish/jellyfish_stats.tres" type="Resource" id=3]
+[ext_resource path="res://dlcs/dlc_1/enemies/jellyfish/jellyfish.gd" type="Script" id=4]
+[ext_resource path="res://entities/units/movement_behaviors/go_towards_map_center_movement_behavior.gd" type="Script" id=5]
+[ext_resource path="res://projectiles/pillar_enemy/pillar_projectile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/units/enemies/attack_behaviors/shooting_attack_behavior.gd" type="Script" id=7]
+[ext_resource path="res://projectiles/bullet_enemy/enemy_projectile.tscn" type="PackedScene" id=8]
+[ext_resource path="res://projectiles/bullet_enemy/enemy_projectile_rotating.gd" type="Script" id=9]
+[ext_resource path="res://entities/units/enemies/corrupted_tree/pivot.gd" type="Script" id=10]
+[ext_resource path="res://entities/units/enemies/boss/boss_state.tscn" type="PackedScene" id=11]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 56.5685
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 32.9848
+
+[node name="Boss" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+can_be_boosted = false
+stats = ExtResource( 3 )
+enemy_id = "jellyfish"
+is_elite = true
+
+[node name="Sprite" parent="Animation" index="0"]
+position = Vector2( 0, -32 )
+texture = ExtResource( 2 )
+
+[node name="Collision" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="Collision" parent="Hurtbox" index="0"]
+position = Vector2( 0, 0 )
+shape = SubResource( 2 )
+
+[node name="Collision" parent="Hitbox" index="0"]
+shape = SubResource( 3 )
+
+[node name="AttackBehavior" parent="." index="7"]
+script = ExtResource( 7 )
+projectile_scene = ExtResource( 6 )
+projectile_speed = 300
+projectile_speed_randomization = 0
+speed_change_after_each_projectile = 0
+cooldown = 60.0
+initial_cooldown = 60
+max_cd_randomization = 0
+long_cooldown_every_x_shoots = 0
+long_cooldown = 0
+damage = 1
+damage_increase_each_wave = 1.15
+min_range = 0
+max_range = 9999
+attack_anim_speed = 3.0
+base_direction_randomization = 0.0
+base_direction_constant_spread = false
+alternate_between_base_direction_spread = false
+random_direction = false
+number_projectiles = 24
+projectile_spread = 0.0
+spawn_projectiles_on_target = false
+projectile_spawn_spread = 1200
+projectile_spawn_only_on_borders = true
+specific_degrees_spawns = [  ]
+constant_spread = true
+constant_spread_rand_base_pos = 0.0
+atleast_one_projectile_on_target = false
+shoot_towards_unit = true
+shoot_in_unit_direction = false
+shoot_away_from_unit = false
+shoot_from_proj_pos_towards_player = false
+random_rotation = 0.0
+rotate_projectile = false
+delete_projectile_on_death = false
+
+[node name="SecondPhaseShootingBehavior" type="Node2D" parent="." index="10"]
+script = ExtResource( 7 )
+projectile_speed = 450
+speed_change_after_each_projectile = 75
+max_cd_randomization = 0
+damage_increase_each_wave = 1.15
+max_range = 9999
+base_direction_randomization = 0.8
+base_direction_constant_spread = true
+alternate_between_base_direction_spread = true
+number_projectiles = 4
+
+[node name="State1" parent="States" index="0" instance=ExtResource( 11 )]
+hp_start = 0.6
+timer_start = 25.0
+
+[node name="MovementBehavior" parent="States/State1" index="0"]
+script = ExtResource( 5 )
+
+[node name="AttackBehavior" parent="States/State1" index="1"]
+projectile_scene = ExtResource( 6 )
+projectile_speed = 200
+cooldown = 45.0
+initial_cooldown = 30
+max_cd_randomization = 0
+damage_increase_each_wave = 1.15
+max_range = 9999
+attack_anim_speed = 3.0
+number_projectiles = 30
+projectile_spawn_spread = 1650
+projectile_spawn_only_on_borders = true
+constant_spread = true
+shoot_towards_unit = true
+rotate_projectile = false
+
+[node name="LifeBar" parent="." index="13"]
+margin_top = -128.0
+margin_bottom = -112.0
+
+[node name="Pivot4" type="Node2D" parent="." index="15"]
+script = ExtResource( 10 )
+rotation_speed = 1.2
+start_rotation = 30.0
+
+[node name="EnemyProjectile" parent="Pivot4" index="0" instance=ExtResource( 8 )]
+script = ExtResource( 9 )
+destroy_on_leaving_screen = false
+min_target_distance = 350
+max_target_distance = 350
+speed = 100
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot3" type="Node2D" parent="." index="16"]
+script = ExtResource( 10 )
+rotation_speed = 1.2
+start_rotation = 60.0
+
+[node name="EnemyProjectile" parent="Pivot3" index="0" instance=ExtResource( 8 )]
+script = ExtResource( 9 )
+destroy_on_leaving_screen = false
+min_target_distance = 350
+max_target_distance = 350
+speed = 100
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot2" type="Node2D" parent="." index="17"]
+script = ExtResource( 10 )
+rotation_speed = 1.2
+start_rotation = 90.0
+
+[node name="EnemyProjectile" parent="Pivot2" index="0" instance=ExtResource( 8 )]
+script = ExtResource( 9 )
+destroy_on_leaving_screen = false
+min_target_distance = 350
+max_target_distance = 350
+speed = 100
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot" type="Node2D" parent="." index="18"]
+script = ExtResource( 10 )
+rotation_speed = 1.2
+start_rotation = 120.0
+
+[node name="EnemyProjectile" parent="Pivot" index="0" instance=ExtResource( 8 )]
+script = ExtResource( 9 )
+destroy_on_leaving_screen = false
+min_target_distance = 350
+max_target_distance = 350
+speed = 100
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]
+[editable path="States/State1"]

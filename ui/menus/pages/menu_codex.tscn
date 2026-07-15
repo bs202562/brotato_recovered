@@ -1,0 +1,1335 @@
+[gd_scene load_steps=57 format=2]
+
+[ext_resource path="res://ui/menus/global/arrow_left_border.png" type="Texture" id=1]
+[ext_resource path="res://ui/menus/global/my_menu_button.gd" type="Script" id=2]
+[ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=3]
+[ext_resource path="res://resources/themes/separator/separator_white.png" type="Texture" id=4]
+[ext_resource path="res://resources/fonts/actual/base/font_26.tres" type="DynamicFont" id=5]
+[ext_resource path="res://ui/menus/pages/menu_codex/codex_entity_description.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/menus/pages/menu_codex.gd" type="Script" id=7]
+[ext_resource path="res://ui/menus/shop/inventory.gd" type="Script" id=8]
+[ext_resource path="res://ui/hud/ui_better_tab_container.gd" type="Script" id=9]
+[ext_resource path="res://ui/menus/pages/menu_codex/snd_codex_menu_open.wav" type="AudioStream" id=10]
+[ext_resource path="res://ui/menus/pages/progression_ui.gd" type="Script" id=11]
+[ext_resource path="res://ui/menus/shop/inventory.tscn" type="PackedScene" id=12]
+[ext_resource path="res://ui/menus/pages/menu_codex/codex_weapon_description.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ui/menus/pages/menu_codex/codex_item_description.tscn" type="PackedScene" id=14]
+[ext_resource path="res://items/global/inventory_element.tscn" type="PackedScene" id=15]
+[ext_resource path="res://resources/themes/inventory_button_theme.tres" type="Theme" id=16]
+[ext_resource path="res://ui/menus/run/challenge_and_reward_ui.tscn" type="PackedScene" id=17]
+[ext_resource path="res://items/global/locked_icon.png" type="Texture" id=18]
+[ext_resource path="res://ui/icons/misc/weapon_icon.png" type="Texture" id=19]
+[ext_resource path="res://ui/icons/misc/entity_icon.png" type="Texture" id=20]
+[ext_resource path="res://ui/icons/misc/item_icon.png" type="Texture" id=21]
+[ext_resource path="res://ui/icons/misc/challenge_icon.png" type="Texture" id=22]
+[ext_resource path="res://ui/menus/pages/menu_codex/codex_menu_cable.png" type="Texture" id=23]
+[ext_resource path="res://ui/menus/pages/menu_codex/codex_menu_shelf.png" type="Texture" id=24]
+[ext_resource path="res://ui/menus/pages/menu_codex/codex_menu_pointer.png" type="Texture" id=25]
+[ext_resource path="res://ui/menus/pages/menu_codex/snd_codex_menu_close.wav" type="AudioStream" id=26]
+[ext_resource path="res://resources/themes/separator/separator_horizontal_white.png" type="Texture" id=27]
+[ext_resource path="res://resources/themes/tab_buttons_physic.tres" type="Theme" id=28]
+[ext_resource path="res://ui/menus/pages/sort_inventory_button.gd" type="Script" id=29]
+[ext_resource path="res://resources/themes/verysmall_option_button_theme.tres" type="Theme" id=30]
+[ext_resource path="res://ui/menus/pages/menu_codex/cathode_filterr.tres" type="Shader" id=31]
+[ext_resource path="res://ui/hud/ui_panel_flat.png" type="Texture" id=32]
+[ext_resource path="res://ui/hud/ui_input_icon.gd" type="Script" id=33]
+[ext_resource path="res://ui/menus/global/key_ps_r1.png" type="Texture" id=34]
+[ext_resource path="res://ui/icons/misc/buffer_unlockall.png" type="Texture" id=35]
+[ext_resource path="res://ui/menus/global/key_ps_l1.png" type="Texture" id=36]
+[ext_resource path="res://ui/menus/global/inverse_order_icon.png" type="Texture" id=37]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.2, 0.2, 0.2, 0.815686 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 27 )
+region_rect = Rect2( 0, 0, 128, 14 )
+margin_left = 20.0
+margin_right = 20.0
+margin_top = 1.0
+margin_bottom = 1.0
+modulate_color = Color( 0, 0, 0, 0.239216 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 14, 128 )
+margin_left = 1.0
+margin_right = 1.0
+margin_top = 20.0
+margin_bottom = 20.0
+modulate_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="ButtonGroup" id=4]
+
+[sub_resource type="StyleBoxTexture" id=26]
+texture = ExtResource( 32 )
+region_rect = Rect2( 0, 0, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=27]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 14, 128 )
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="ShaderMaterial" id=24]
+shader = ExtResource( 31 )
+shader_param/strenght = 0.012
+shader_param/uv_size = 19.654
+shader_param/speed = 3.0
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("root:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("root/shelf/pointer:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 60.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("root/shelf/cable:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("root/shelf/cable:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Cache:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("root:rect_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1920, 1080 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("root:rect_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("root/BetterTabContainer:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "finish"
+length = 0.4
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("root:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -204, 173 ), Vector2( 222, -1692 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Cache:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("root:rect_scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.233, 0.831 ), Vector2( 0.776, 1.539 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("root/shelf/cable:rect_scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.207, 1 ), Vector2( 0.899, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("root/shelf/cable:rect_rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -3.3, 1.5 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("root/BetterTabContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 26 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "idle"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("root/shelf/pointer:rect_rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.3, 1.6, 1.8, 2.6, 3.2, 3.9, 4.2, 4.6, 5.1, 6.6, 7.5, 8, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 60.0, 89.8, 27.4, 52.4, 32.6, -18.3, 47.8, 26.9, 80.1, 48.4, 77.7, -48.7, 80.3, 28.0, 60.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("root/shelf/cable:rect_rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.1, 3, 5.8, 6.4, 8.1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.7, -0.9, 0.4, -0.5, 0.6, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("root/shelf/cable:rect_scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9, 1.4, 1.8, 2.1, 2.8, 3.2, 3.5, 4, 4.7, 5.2, 5.8, 6.6, 7.7, 8.1, 8.6, 9.1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.956, 1 ), Vector2( 0.982, 1 ), Vector2( 0.942, 1 ), Vector2( 1, 1 ), Vector2( 0.956, 1 ), Vector2( 0.982, 1 ), Vector2( 0.942, 1 ), Vector2( 1.044, 1 ), Vector2( 0.977, 1 ), Vector2( 1.056, 1 ), Vector2( 0.975, 1 ), Vector2( 1.028, 1 ), Vector2( 0.939, 1 ), Vector2( 1.031, 1 ), Vector2( 0.973, 1 ), Vector2( 1.041, 1 ), Vector2( 0.966, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "start"
+length = 0.4
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("root:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 222, -1692 ), Vector2( -204, 173 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Cache:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("root:rect_scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.776, 1.539 ), Vector2( 1.233, 0.831 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("root/shelf/cable:rect_scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.899, 1 ), Vector2( 1.207, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("root/shelf/cable:rect_rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.5, -3.3, 0.0 ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("root/BetterTabContainer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "finish"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "start"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+advance_condition = "finish"
+
+[sub_resource type="AnimationNodeStateMachine" id=17]
+states/finish/node = SubResource( 20 )
+states/finish/position = Vector2( 498, -30 )
+states/idle/node = SubResource( 14 )
+states/idle/position = Vector2( 295, 41 )
+states/start/node = SubResource( 15 )
+states/start/position = Vector2( 85, 41 )
+transitions = [ "start", "idle", SubResource( 16 ), "idle", "finish", SubResource( 21 ) ]
+start_node = "start"
+graph_offset = Vector2( -151, -78 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=18]
+
+[node name="menu_codex" type="Popup"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -528, -91 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+theme = ExtResource( 3 )
+popup_exclusive = true
+script = ExtResource( 7 )
+
+[node name="Cache" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="root" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="root"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -708.0
+margin_top = -498.0
+margin_right = 708.0
+margin_bottom = -365.0
+custom_constants/separation = -1
+
+[node name="tab_space_left" type="Control" parent="root/HBoxContainer"]
+margin_right = 236.0
+margin_bottom = 133.0
+size_flags_horizontal = 3
+
+[node name="but_tab_challenger" type="Button" parent="root/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 235.0
+margin_right = 472.0
+margin_bottom = 133.0
+focus_neighbour_left = NodePath("../../../BackButton")
+focus_neighbour_top = NodePath("../../../BackButton")
+focus_neighbour_right = NodePath("../but_tab_items")
+focus_next = NodePath("../but_tab_items")
+focus_previous = NodePath("../../../BackButton")
+size_flags_horizontal = 3
+theme = ExtResource( 28 )
+icon = ExtResource( 22 )
+icon_align = 1
+expand_icon = true
+script = ExtResource( 2 )
+
+[node name="but_tab_items" type="Button" parent="root/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 471.0
+margin_right = 708.0
+margin_bottom = 133.0
+focus_neighbour_left = NodePath("../but_tab_challenger")
+focus_neighbour_top = NodePath("../../../BackButton")
+focus_neighbour_right = NodePath("../but_tab_weapons")
+focus_next = NodePath("../but_tab_weapons")
+focus_previous = NodePath("../but_tab_challenger")
+size_flags_horizontal = 3
+theme = ExtResource( 28 )
+icon = ExtResource( 21 )
+icon_align = 1
+expand_icon = true
+script = ExtResource( 2 )
+
+[node name="but_tab_weapons" type="Button" parent="root/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 707.0
+margin_right = 944.0
+margin_bottom = 133.0
+focus_neighbour_left = NodePath("../but_tab_items")
+focus_neighbour_top = NodePath("../../../BackButton")
+focus_neighbour_right = NodePath("../but_tab_enemies")
+focus_next = NodePath("../but_tab_enemies")
+focus_previous = NodePath("../../../BackButton")
+size_flags_horizontal = 3
+theme = ExtResource( 28 )
+icon = ExtResource( 19 )
+icon_align = 1
+expand_icon = true
+script = ExtResource( 2 )
+
+[node name="but_tab_enemies" type="Button" parent="root/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 943.0
+margin_right = 1180.0
+margin_bottom = 133.0
+focus_neighbour_left = NodePath("../but_tab_weapons")
+focus_neighbour_top = NodePath("../../../BackButton")
+focus_neighbour_right = NodePath(".")
+focus_next = NodePath("../../../BackButton")
+focus_previous = NodePath("../but_tab_weapons")
+size_flags_horizontal = 3
+theme = ExtResource( 28 )
+icon = ExtResource( 20 )
+icon_align = 1
+expand_icon = true
+script = ExtResource( 2 )
+
+[node name="tab_space_right" type="Control" parent="root/HBoxContainer"]
+margin_left = 1179.0
+margin_right = 1416.0
+margin_bottom = 133.0
+size_flags_horizontal = 3
+
+[node name="BetterTabContainer" type="VBoxContainer" parent="root"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -713.0
+margin_top = -339.0
+margin_right = 713.0
+margin_bottom = 411.0
+rect_min_size = Vector2( 1426, 750 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../HBoxContainer")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath("../../BackButton")
+focus_previous = NodePath("../HBoxContainer")
+size_flags_vertical = 3
+custom_constants/separation = -14
+script = ExtResource( 9 )
+buttons_tab_np = [ NodePath("../HBoxContainer/but_tab_challenger"), NodePath("../HBoxContainer/but_tab_items"), NodePath("../HBoxContainer/but_tab_weapons"), NodePath("../HBoxContainer/but_tab_enemies") ]
+tab_container_np = NodePath("TabContainer")
+
+[node name="TabContainer" type="TabContainer" parent="root/BetterTabContainer"]
+margin_right = 1426.0
+margin_bottom = 750.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="tab_challenges" type="PanelContainer" parent="root/BetterTabContainer/TabContainer"]
+unique_name_in_owner = true
+self_modulate = Color( 0.258824, 0.278431, 0.239216, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+theme = ExtResource( 3 )
+custom_styles/panel = SubResource( 22 )
+script = ExtResource( 11 )
+locked_icon = ExtResource( 18 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_challenges"]
+margin_left = 15.0
+margin_top = 10.0
+margin_right = 1411.0
+margin_bottom = 720.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer"]
+margin_right = 1396.0
+margin_bottom = 675.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer/HBoxContainer"]
+margin_right = 685.0
+margin_bottom = 675.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+size_flags_horizontal = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="MarginContainer" type="MarginContainer" parent="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer/HBoxContainer/ScrollContainer"]
+margin_right = 20.0
+custom_constants/margin_right = 20
+
+[node name="Inventory" parent="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer/HBoxContainer/ScrollContainer/MarginContainer" instance=ExtResource( 12 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../../../../../../../../HBoxContainer")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath("../../../../../../../../../BackButton")
+focus_previous = NodePath("../../../../../../../../HBoxContainer")
+columns = 8
+set_neighbour_left = true
+set_neighbour_right = true
+element_size = Vector2( 80, 80 )
+
+[node name="ChallengeAndRewardUI" parent="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer/HBoxContainer" instance=ExtResource( 17 )]
+margin_left = 710.0
+margin_right = 1396.0
+margin_bottom = 675.0
+rect_min_size = Vector2( 0, 0 )
+focus_neighbour_top = NodePath("../ScrollContainer")
+focus_previous = NodePath("../ScrollContainer")
+custom_constants/separation = 25
+
+[node name="ProgressChallengeUI" parent="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer/HBoxContainer/ChallengeAndRewardUI" index="0"]
+margin_right = 686.0
+
+[node name="VBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer/HBoxContainer/ChallengeAndRewardUI" index="1"]
+margin_top = 125.0
+margin_right = 686.0
+margin_bottom = 675.0
+rect_min_size = Vector2( 0, 550 )
+
+[node name="Label" parent="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer/HBoxContainer/ChallengeAndRewardUI/VBoxContainer" index="0"]
+margin_right = 686.0
+
+[node name="ItemPanelUI" parent="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer/HBoxContainer/ChallengeAndRewardUI/VBoxContainer" index="1"]
+margin_left = 163.0
+margin_right = 522.0
+margin_bottom = 489.0
+
+[node name="ItemDescription" parent="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer/HBoxContainer/ChallengeAndRewardUI/VBoxContainer/ItemPanelUI/MarginContainer/VBoxContainer" index="0"]
+expand_indefinitely = false
+
+[node name="ZonePanel" parent="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer/HBoxContainer/ChallengeAndRewardUI/VBoxContainer" index="2"]
+visible = false
+margin_left = 195.0
+margin_top = 514.0
+margin_right = 491.0
+margin_bottom = 703.0
+
+[node name="tab_items" type="PanelContainer" parent="root/BetterTabContainer/TabContainer"]
+visible = false
+self_modulate = Color( 0.258824, 0.278431, 0.239216, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 22 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_items"]
+margin_left = 15.0
+margin_top = 10.0
+margin_right = 1411.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_items/HBoxContainer"]
+margin_right = 720.0
+margin_bottom = 710.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_items/HBoxContainer/VBoxContainer2"]
+margin_right = 720.0
+margin_bottom = 51.0
+custom_constants/separation = 12
+
+[node name="Sort_Inventory_button" type="OptionButton" parent="root/BetterTabContainer/TabContainer/tab_items/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_right = 657.0
+margin_bottom = 51.0
+size_flags_horizontal = 3
+theme = ExtResource( 30 )
+script = ExtResource( 29 )
+inventory_to_sort_path = NodePath("../../ScrollContainer/InventoryItems")
+reverse_order_button_path = NodePath("../button_reverse_order")
+save_presset = 9
+sort_by_tier = true
+sort_by_name = true
+sort_by_time_got_it = true
+
+[node name="button_reverse_order" type="Button" parent="root/BetterTabContainer/TabContainer/tab_items/HBoxContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 669.0
+margin_right = 720.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 51, 32 )
+theme = ExtResource( 30 )
+toggle_mode = true
+icon = ExtResource( 37 )
+icon_align = 1
+expand_icon = true
+script = ExtResource( 2 )
+
+[node name="HSeparator" type="HSeparator" parent="root/BetterTabContainer/TabContainer/tab_items/HBoxContainer/VBoxContainer2"]
+margin_top = 55.0
+margin_right = 720.0
+margin_bottom = 84.0
+custom_constants/separation = 29
+custom_styles/separator = SubResource( 25 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="root/BetterTabContainer/TabContainer/tab_items/HBoxContainer/VBoxContainer2"]
+margin_top = 88.0
+margin_right = 720.0
+margin_bottom = 710.0
+rect_min_size = Vector2( 720, 0 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="InventoryItems" type="GridContainer" parent="root/BetterTabContainer/TabContainer/tab_items/HBoxContainer/VBoxContainer2/ScrollContainer"]
+unique_name_in_owner = true
+margin_right = 720.0
+margin_bottom = 622.0
+focus_neighbour_left = NodePath(".")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 7
+script = ExtResource( 8 )
+element_scene = ExtResource( 15 )
+silhouette_locked_items = true
+set_neighbour_left = true
+set_neighbour_right = true
+
+[node name="VSeparator" type="VSeparator" parent="root/BetterTabContainer/TabContainer/tab_items/HBoxContainer"]
+margin_left = 740.0
+margin_right = 758.0
+margin_bottom = 710.0
+custom_constants/separation = 18
+custom_styles/separator = SubResource( 2 )
+
+[node name="scroll_right_items" type="ScrollContainer" parent="root/BetterTabContainer/TabContainer/tab_items/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 778.0
+margin_right = 1396.0
+margin_bottom = 710.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="codex_item_description" parent="root/BetterTabContainer/TabContainer/tab_items/HBoxContainer/scroll_right_items" instance=ExtResource( 14 )]
+unique_name_in_owner = true
+margin_right = 618.0
+margin_bottom = 710.0
+
+[node name="tab_weapons" type="PanelContainer" parent="root/BetterTabContainer/TabContainer"]
+visible = false
+self_modulate = Color( 0.258824, 0.278431, 0.239216, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 22 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_weapons"]
+margin_left = 15.0
+margin_top = 10.0
+margin_right = 1411.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer"]
+margin_right = 590.0
+margin_bottom = 710.0
+focus_neighbour_top = NodePath("../../../../../HBoxContainer")
+focus_neighbour_bottom = NodePath("../VBoxContainer")
+focus_next = NodePath("../VBoxContainer")
+focus_previous = NodePath("../../../../../HBoxContainer")
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer2"]
+margin_right = 590.0
+margin_bottom = 51.0
+rect_pivot_offset = Vector2( 227, 420 )
+custom_constants/separation = 12
+
+[node name="Sort_Inventory_button" type="OptionButton" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_right = 527.0
+margin_bottom = 51.0
+size_flags_horizontal = 3
+theme = ExtResource( 30 )
+script = ExtResource( 29 )
+inventory_to_sort_path = NodePath("../../ScrollContainer/InventoryWeapons")
+reverse_order_button_path = NodePath("../button_reverse_order")
+save_presset = 10
+sort_by_tier = true
+sort_by_name = true
+sort_by_time_got_it = true
+sort_by_category = true
+
+[node name="button_reverse_order" type="Button" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 539.0
+margin_right = 590.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 51, 32 )
+theme = ExtResource( 30 )
+toggle_mode = true
+icon = ExtResource( 37 )
+icon_align = 1
+expand_icon = true
+script = ExtResource( 2 )
+
+[node name="HSeparator" type="HSeparator" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer2"]
+margin_top = 55.0
+margin_right = 590.0
+margin_bottom = 84.0
+custom_constants/separation = 29
+custom_styles/separator = SubResource( 25 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer2"]
+margin_top = 88.0
+margin_right = 590.0
+margin_bottom = 710.0
+rect_min_size = Vector2( 590, 0 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="InventoryWeapons" type="GridContainer" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer2/ScrollContainer"]
+unique_name_in_owner = true
+margin_right = 590.0
+margin_bottom = 622.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 5
+script = ExtResource( 8 )
+element_scene = ExtResource( 15 )
+silhouette_locked_items = true
+set_neighbour_left = true
+set_neighbour_right = true
+element_size = Vector2( 110, 110 )
+
+[node name="VSeparator" type="VSeparator" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer"]
+margin_left = 610.0
+margin_right = 628.0
+margin_bottom = 710.0
+custom_constants/separation = 18
+custom_styles/separator = SubResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer"]
+margin_left = 648.0
+margin_right = 1396.0
+margin_bottom = 710.0
+focus_neighbour_left = NodePath("../VBoxContainer2/ScrollContainer")
+focus_neighbour_top = NodePath("../../../../../HBoxContainer")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath("../../../../../../BackButton")
+focus_previous = NodePath("../VBoxContainer2/ScrollContainer")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="scroll_right_weapons" type="ScrollContainer" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_right = 748.0
+margin_bottom = 658.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="codex_weapon_description" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer/scroll_right_weapons" instance=ExtResource( 13 )]
+unique_name_in_owner = true
+margin_right = 748.0
+margin_bottom = 658.0
+
+[node name="TierButtonContainer" type="HBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer"]
+margin_top = 662.0
+margin_right = 748.0
+margin_bottom = 710.0
+rect_min_size = Vector2( 0, 48 )
+size_flags_horizontal = 3
+
+[node name="ButTier0" type="Button" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer/TierButtonContainer"]
+unique_name_in_owner = true
+margin_right = 184.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+theme = ExtResource( 16 )
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = true
+pressed = true
+group = SubResource( 4 )
+text = "Tier 1"
+script = ExtResource( 2 )
+
+[node name="ButTier1" type="Button" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer/TierButtonContainer"]
+unique_name_in_owner = true
+margin_left = 188.0
+margin_right = 372.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+theme = ExtResource( 16 )
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = true
+group = SubResource( 4 )
+text = "Tier 2"
+script = ExtResource( 2 )
+
+[node name="ButTier2" type="Button" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer/TierButtonContainer"]
+unique_name_in_owner = true
+margin_left = 376.0
+margin_right = 560.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+theme = ExtResource( 16 )
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = true
+group = SubResource( 4 )
+text = "Tier 3"
+script = ExtResource( 2 )
+
+[node name="ButTier3" type="Button" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer/TierButtonContainer"]
+unique_name_in_owner = true
+margin_left = 564.0
+margin_right = 748.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+theme = ExtResource( 16 )
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = true
+group = SubResource( 4 )
+text = "Tier 4"
+script = ExtResource( 2 )
+
+[node name="tab_entities" type="PanelContainer" parent="root/BetterTabContainer/TabContainer"]
+visible = false
+self_modulate = Color( 0.258824, 0.278431, 0.239216, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 22 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_entities"]
+margin_left = 15.0
+margin_top = 10.0
+margin_right = 1411.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_entities/HBoxContainer"]
+margin_right = 588.0
+margin_bottom = 710.0
+focus_neighbour_top = NodePath("../../../../../HBoxContainer")
+focus_neighbour_bottom = NodePath("../scroll_right_enemies")
+focus_next = NodePath("../scroll_right_enemies")
+focus_previous = NodePath("../../../../../HBoxContainer")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="root/BetterTabContainer/TabContainer/tab_entities/HBoxContainer/VBoxContainer"]
+margin_right = 588.0
+margin_bottom = 51.0
+custom_constants/separation = 12
+
+[node name="Sort_Inventory_button" type="OptionButton" parent="root/BetterTabContainer/TabContainer/tab_entities/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 525.0
+margin_bottom = 51.0
+size_flags_horizontal = 3
+theme = ExtResource( 30 )
+script = ExtResource( 29 )
+inventory_to_sort_path = NodePath("../../ScrollContainer/InventoryEnemies")
+reverse_order_button_path = NodePath("../button_reverse_order")
+by_default = 11
+save_presset = 11
+sort_by_name = true
+sort_by_killed_time = true
+sort_by_strenght = true
+sort_by_hp = true
+sort_by_type_of_entity = true
+
+[node name="button_reverse_order" type="Button" parent="root/BetterTabContainer/TabContainer/tab_entities/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 537.0
+margin_right = 588.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 51, 32 )
+theme = ExtResource( 30 )
+toggle_mode = true
+icon = ExtResource( 37 )
+icon_align = 1
+expand_icon = true
+script = ExtResource( 2 )
+
+[node name="HSeparator" type="HSeparator" parent="root/BetterTabContainer/TabContainer/tab_entities/HBoxContainer/VBoxContainer"]
+margin_top = 55.0
+margin_right = 588.0
+margin_bottom = 84.0
+custom_constants/separation = 29
+custom_styles/separator = SubResource( 25 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="root/BetterTabContainer/TabContainer/tab_entities/HBoxContainer/VBoxContainer"]
+margin_top = 88.0
+margin_right = 588.0
+margin_bottom = 710.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="InventoryEnemies" type="GridContainer" parent="root/BetterTabContainer/TabContainer/tab_entities/HBoxContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+margin_right = 588.0
+margin_bottom = 622.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+script = ExtResource( 8 )
+element_scene = ExtResource( 15 )
+silhouette_locked_items = true
+set_neighbour_left = true
+set_neighbour_right = true
+element_size = Vector2( 135, 135 )
+
+[node name="VSeparator" type="VSeparator" parent="root/BetterTabContainer/TabContainer/tab_entities/HBoxContainer"]
+margin_left = 608.0
+margin_right = 626.0
+margin_bottom = 710.0
+custom_constants/separation = 18
+custom_styles/separator = SubResource( 2 )
+
+[node name="scroll_right_enemies" type="ScrollContainer" parent="root/BetterTabContainer/TabContainer/tab_entities/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 646.0
+margin_right = 1396.0
+margin_bottom = 710.0
+rect_min_size = Vector2( 750, 0 )
+focus_neighbour_top = NodePath("../VBoxContainer")
+focus_previous = NodePath("../VBoxContainer")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="codex_enemy_description" parent="root/BetterTabContainer/TabContainer/tab_entities/HBoxContainer/scroll_right_enemies" instance=ExtResource( 6 )]
+unique_name_in_owner = true
+margin_right = 750.0
+margin_bottom = 1267.0
+
+[node name="shelf" type="TextureRect" parent="root"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+mouse_filter = 2
+texture = ExtResource( 24 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Panel" type="ColorRect" parent="root/shelf"]
+show_behind_parent = true
+margin_left = 289.0
+margin_top = 959.0
+margin_right = 1277.0
+margin_bottom = 1033.0
+color = Color( 0.258824, 0.278431, 0.239216, 1 )
+
+[node name="ProgressBar_codex" type="ProgressBar" parent="root/shelf"]
+unique_name_in_owner = true
+self_modulate = Color( 0.74902, 1, 0.752941, 1 )
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -691.0
+margin_top = 427.0
+margin_right = 60.0
+margin_bottom = 480.0
+custom_styles/fg = SubResource( 26 )
+max_value = 1.0
+value = 1.0
+percent_visible = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="root/shelf/ProgressBar_codex"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 29.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VSeparator" type="VSeparator" parent="root/shelf/ProgressBar_codex/HBoxContainer"]
+modulate = Color( 0.407843, 0.486275, 0.403922, 1 )
+margin_right = 355.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+custom_styles/separator = SubResource( 27 )
+
+[node name="VSeparator3" type="VSeparator" parent="root/shelf/ProgressBar_codex/HBoxContainer"]
+modulate = Color( 0.407843, 0.486275, 0.403922, 1 )
+margin_left = 359.0
+margin_right = 363.0
+margin_bottom = 53.0
+custom_styles/separator = SubResource( 27 )
+
+[node name="VSeparator2" type="VSeparator" parent="root/shelf/ProgressBar_codex/HBoxContainer"]
+modulate = Color( 0.407843, 0.486275, 0.403922, 1 )
+margin_left = 367.0
+margin_right = 722.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+custom_styles/separator = SubResource( 27 )
+
+[node name="Progress_label_codex" type="Label" parent="root/shelf"]
+unique_name_in_owner = true
+self_modulate = Color( 0.74902, 1, 0.752941, 1 )
+show_behind_parent = true
+margin_left = 1042.0
+margin_top = 961.0
+margin_right = 1191.0
+margin_bottom = 1029.0
+text = "10%"
+align = 1
+valign = 1
+
+[node name="ColorRect" type="ColorRect" parent="root/shelf"]
+modulate = Color( 0.458824, 1, 0.517647, 1 )
+show_behind_parent = true
+material = SubResource( 24 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -726.0
+margin_top = -328.0
+margin_right = 726.0
+margin_bottom = 453.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="cable" type="TextureRect" parent="root/shelf"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1668.0
+margin_top = 99.0
+margin_right = -12.0
+margin_bottom = -91.0
+mouse_filter = 2
+texture = ExtResource( 23 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="pointer" type="TextureRect" parent="root/shelf"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1777.0
+margin_top = 591.0
+margin_right = -63.0
+margin_bottom = -451.0
+rect_rotation = 60.0
+rect_pivot_offset = Vector2( 17.675, 18.982 )
+mouse_filter = 2
+texture = ExtResource( 25 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="lb_texture" type="TextureRect" parent="root/shelf"]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0.760784 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -618.0
+margin_top = -444.0
+margin_right = -528.0
+margin_bottom = -381.0
+texture = ExtResource( 36 )
+script = ExtResource( 33 )
+input_string = "ltrigger"
+
+[node name="rb_texture" type="TextureRect" parent="root/shelf"]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0.760784 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 538.0
+margin_top = -444.0
+margin_right = 628.0
+margin_bottom = -381.0
+texture = ExtResource( 34 )
+script = ExtResource( 33 )
+input_string = "rtrigger"
+
+[node name="unlockall_icon" type="TextureRect" parent="root/shelf"]
+unique_name_in_owner = true
+modulate = Color( 0.458824, 0.380392, 0.12549, 0.901961 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -1043.0
+margin_top = 909.0
+margin_right = -904.0
+margin_bottom = 1048.0
+rect_rotation = 15.7
+rect_pivot_offset = Vector2( 50, 50 )
+mouse_filter = 2
+texture = ExtResource( 35 )
+expand = true
+
+[node name="BackButton" type="Button" parent="."]
+unique_name_in_owner = true
+self_modulate = Color( 1, 1, 1, 0.862745 )
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 271.0
+margin_bottom = 83.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath("../root/HBoxContainer/but_tab_challenger")
+focus_neighbour_bottom = NodePath("../root/HBoxContainer/but_tab_challenger")
+focus_next = NodePath("../root/HBoxContainer/but_tab_challenger")
+focus_previous = NodePath("../root/HBoxContainer/but_tab_enemies")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 5 )
+text = "MENU_BACK"
+icon = ExtResource( 1 )
+expand_icon = true
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 11 )
+anims/finish = SubResource( 19 )
+anims/idle = SubResource( 12 )
+anims/start = SubResource( 13 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 17 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 18 )
+parameters/conditions/finish = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "Sound"
+
+[connection signal="draw" from="root/BetterTabContainer/TabContainer/tab_challenges" to="." method="_on_but_tab_challenger_pressed"]
+[connection signal="draw" from="root/BetterTabContainer/TabContainer/tab_items" to="." method="_on_but_tab_items_pressed"]
+[connection signal="element_focused" from="root/BetterTabContainer/TabContainer/tab_items/HBoxContainer/VBoxContainer2/ScrollContainer/InventoryItems" to="." method="_on_InventoryItems_element_pressed"]
+[connection signal="draw" from="root/BetterTabContainer/TabContainer/tab_weapons" to="." method="_on_but_tab_weapons_pressed"]
+[connection signal="element_focused" from="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer2/ScrollContainer/InventoryWeapons" to="." method="_on_InventoryWeapons_element_pressed"]
+[connection signal="draw" from="root/BetterTabContainer/TabContainer/tab_entities" to="." method="_on_but_tab_enemies_pressed"]
+[connection signal="element_focused" from="root/BetterTabContainer/TabContainer/tab_entities/HBoxContainer/VBoxContainer/ScrollContainer/InventoryEnemies" to="." method="_on_InventoryEnemies_element_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+
+[editable path="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer/HBoxContainer/ChallengeAndRewardUI"]
+[editable path="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer/HBoxContainer/ChallengeAndRewardUI/VBoxContainer/ItemPanelUI"]

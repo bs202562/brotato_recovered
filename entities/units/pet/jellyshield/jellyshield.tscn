@@ -1,0 +1,150 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://entities/entity.tscn" type="PackedScene" id=1]
+[ext_resource path="res://visual_effects/shader_noise_displacement.tres" type="Shader" id=2]
+[ext_resource path="res://overlap/hurtbox.gd" type="Script" id=3]
+[ext_resource path="res://entities/units/pet/jellyshield/jellyshield_head.png" type="Texture" id=4]
+[ext_resource path="res://entities/units/pet/jellyshield/jellyshield_tentacle.png" type="Texture" id=5]
+[ext_resource path="res://entities/units/pet/jellyshield/jellyshield.gd" type="Script" id=6]
+[ext_resource path="res://entities/units/pet/jellyshield/jellyshield_hit.wav" type="AudioStream" id=7]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 2 )
+shader_param/wave_speed = 0.5
+shader_param/wave_size = 1.636
+shader_param/wave_strenght = 0.431
+shader_param/TextureUniform = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 2 )
+shader_param/wave_speed = 0.398
+shader_param/wave_size = 1.769
+shader_param/wave_strenght = 0.213
+shader_param/TextureUniform = ExtResource( 4 )
+
+[sub_resource type="ViewportTexture" id=5]
+flags = 4
+viewport_path = NodePath("Animation/Viewport")
+
+[sub_resource type="Animation" id=4]
+resource_name = "hit"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animation:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -27 ), Vector2( 0, -27 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Animation:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 1.5 ), Vector2( 1.5, 0.5 ), Vector2( 0.75, 1.25 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Animation:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Animation:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.0
+
+[node name="Jellyshield" instance=ExtResource( 1 )]
+script = ExtResource( 6 )
+radius = 100.0
+rotation_speed = 1.0
+
+[node name="Animation" parent="." index="0"]
+position = Vector2( 0, -27 )
+
+[node name="Viewport" type="Viewport" parent="Animation" index="0"]
+size = Vector2( 64, 64 )
+transparent_bg = true
+hdr = false
+disable_3d = true
+render_target_v_flip = true
+render_target_update_mode = 3
+
+[node name="sp_tentacle" type="Sprite" parent="Animation/Viewport" index="0"]
+material = SubResource( 2 )
+position = Vector2( 32, 30 )
+texture = ExtResource( 5 )
+
+[node name="sp_body" type="Sprite" parent="Animation/Viewport" index="1"]
+material = SubResource( 3 )
+position = Vector2( 32, 30 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" parent="Animation" index="1"]
+position = Vector2( 0, 9 )
+texture = SubResource( 5 )
+
+[node name="Collision" parent="." index="1"]
+visible = false
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/hit = SubResource( 4 )
+
+[node name="Hurtbox" type="Area2D" parent="." index="3"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 3 )
+
+[node name="Collision" type="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, -18 )
+shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource( 7 )
+bus = "Sound"
+
+[node name="gun_offset" type="Node2D" parent="." index="5"]
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

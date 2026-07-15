@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
+[ext_resource path="res://dlcs/dlc_1/items/goldfish_used/goldfish_used_icon.png" type="Texture" id=2]
+[ext_resource path="res://dlcs/dlc_1/items/goldfish_used/effects/goldfish_used_effect_0.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+my_id = "item_goldfish_used"
+unlocked_by_default = true
+can_be_looted = false
+icon = ExtResource( 2 )
+name = "ITEM_GOLDFISH_USED"
+tier = 2
+value = 30
+effects = [ ExtResource( 3 ) ]
+tracking_text = ""
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+max_nb = 0
+item_appearances = [  ]
+tags = [  ]

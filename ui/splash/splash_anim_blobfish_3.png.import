@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/splash_anim_blobfish_3.png-1adbbac0812dde5649006b5a883006e6.res"
+group_file="res://ui/splash/splashart_atlas.png"
+valid=true
+[deps]
+
+
+source_file="res://ui/splash/splash_anim_blobfish_3.png"
+dest_files=[ "res://.import/splash_anim_blobfish_3.png-1adbbac0812dde5649006b5a883006e6.res" ]
+
+[params]
+
+atlas_file="res://ui/splash/splashart_atlas.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

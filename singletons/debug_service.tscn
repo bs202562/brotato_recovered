@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://singletons/debug_service.gd" type="Script" id=1]
+[ext_resource path="res://zones/common/debug/debug_unit_1.tres" type="Resource" id=2]
+[ext_resource path="res://ui/menus/debug/debug_menu.tscn" type="PackedScene" id=3]
+
+[node name="DebugService" type="Node"]
+script = ExtResource( 1 )
+debug_menu = ExtResource( 3 )
+debug_enemies = [ ExtResource( 2 ) ]
+no_skin = true

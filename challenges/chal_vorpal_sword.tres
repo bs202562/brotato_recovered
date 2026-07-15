@@ -1,0 +1,27 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://weapons/melee/vorpal_sword/2/vorpal_sword_2_data.tres" type="Resource" id=1]
+[ext_resource path="res://weapons/melee/vorpal_sword/vorpal_sword_icon.png" type="Texture" id=2]
+[ext_resource path="res://challenges/global/challenge_data.gd" type="Script" id=3]
+
+[resource]
+script = ExtResource( 3 )
+my_id = "chal_vorpal_sword"
+unlocked_by_default = false
+can_be_looted = true
+icon = ExtResource( 2 )
+name = "CHAL_VORPAL_SWORD"
+tier = 0
+value = 100
+effects = [  ]
+tracking_text = ""
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+description = "CHAL_STAT_DESC"
+reward_type = 1
+reward = ExtResource( 1 )
+number = 0
+stat = "stat_crit_chance"
+additional_args = [  ]

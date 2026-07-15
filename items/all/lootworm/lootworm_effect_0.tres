@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://entities/units/pet/lootworm/lootworm.tscn" type="PackedScene" id=1]
+[ext_resource path="res://effects/items/lootworm_effect.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+key = ""
+text_key = "EFFECT_PET_LOOTWORM"
+value = 1
+custom_key = ""
+storage_method = 0
+effect_sign = 3
+custom_args = [  ]
+scene = ExtResource( 1 )
+is_structure = false
+double_chance = 0.1

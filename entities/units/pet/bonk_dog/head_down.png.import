@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/head_down.png-e9f39b8a4f9a05ada2472a8c6bce20b6.res"
+group_file="res://entities/units/pet/bonk_dog/bonk_dog.png"
+valid=true
+[deps]
+
+
+source_file="res://entities/units/pet/bonk_dog/head_down.png"
+dest_files=[ "res://.import/head_down.png-e9f39b8a4f9a05ada2472a8c6bce20b6.res" ]
+
+[params]
+
+atlas_file="res://entities/units/pet/bonk_dog/bonk_dog.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

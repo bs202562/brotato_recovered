@@ -1,0 +1,1646 @@
+[gd_scene load_steps=81 format=2]
+
+[ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=1]
+[ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/themes/button_styles/button_hover.tres" type="StyleBox" id=3]
+[ext_resource path="res://resources/fonts/actual/base/font_40_outline.tres" type="DynamicFont" id=4]
+[ext_resource path="res://ui/menus/global/slider_option.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/menus/global/color_option.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/hud/ui_better_tab_container.gd" type="Script" id=7]
+[ext_resource path="res://ui/menus/global/my_menu_button.gd" type="Script" id=8]
+[ext_resource path="res://ui/menus/pages/language_button.gd" type="Script" id=9]
+[ext_resource path="res://ui/menus/pages/background_button.gd" type="Script" id=10]
+[ext_resource path="res://ui/menus/pages/score_storing_button.gd" type="Script" id=11]
+[ext_resource path="res://ui/menus/pages/menu_options.gd" type="Script" id=12]
+[ext_resource path="res://ui/menus/global/reset_icon.png" type="Texture" id=13]
+[ext_resource path="res://ui/menus/global/audio_icon.png" type="Texture" id=14]
+[ext_resource path="res://ui/menus/global/gameplay_icon.png" type="Texture" id=15]
+[ext_resource path="res://ui/menus/global/video_icon.png" type="Texture" id=16]
+[ext_resource path="res://ui/menus/global/accessibility_icon.png" type="Texture" id=17]
+[ext_resource path="res://ui/menus/global/arrow_left_border.png" type="Texture" id=18]
+[ext_resource path="res://ui/menus/global/profil_icon.png" type="Texture" id=19]
+[ext_resource path="res://resources/themes/tab_buttons_physic.tres" type="Theme" id=20]
+[ext_resource path="res://ui/menus/global/triangle_up_icon.png" type="Texture" id=21]
+[ext_resource path="res://ui/button_expand.gd" type="Script" id=22]
+[ext_resource path="res://ui/menus/global/triangle_down_icon.png" type="Texture" id=23]
+[ext_resource path="res://ui/menus/global/key_xbox_rb.png" type="Texture" id=24]
+[ext_resource path="res://ui/menus/global/key_xbox_lb.png" type="Texture" id=25]
+[ext_resource path="res://resources/fonts/actual/base/font_22.tres" type="DynamicFont" id=26]
+[ext_resource path="res://ui/hud/ui_input_icon.gd" type="Script" id=27]
+[ext_resource path="res://ui/menus/pages/menu_profil/separator_physic.png" type="Texture" id=28]
+[ext_resource path="res://ui/menus/pages/constant_projectile_button.gd" type="Script" id=29]
+[ext_resource path="res://ui/menus/pages/on_lost_focus_button.gd" type="Script" id=30]
+[ext_resource path="res://ui/menus/pages/main_screen_art_button.gd" type="Script" id=31]
+
+[sub_resource type="StyleBoxTexture" id=49]
+texture = ExtResource( 28 )
+region_rect = Rect2( 0, 0, 128, 32 )
+margin_left = 45.0
+margin_right = 45.0
+margin_bottom = 30.0
+
+[sub_resource type="Gradient" id=1]
+resource_local_to_scene = true
+offsets = PoolRealArray( 0, 0.121, 0.187328, 0.25, 0.374656, 0.5, 0.61708, 0.75, 0.870523, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.726697, 0, 1, 0.945312, 1, 0, 1, 0.265625, 1, 0, 1, 0, 1, 0.421591, 1, 0, 1, 1, 1, 0, 0.465146, 1, 1, 0.265625, 0, 1, 1, 1, 0, 0.835788, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+resource_local_to_scene = true
+gradient = SubResource( 1 )
+
+[sub_resource type="Gradient" id=3]
+resource_local_to_scene = true
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+resource_local_to_scene = true
+gradient = SubResource( 3 )
+
+[sub_resource type="Gradient" id=5]
+resource_local_to_scene = true
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+resource_local_to_scene = true
+gradient = SubResource( 5 )
+
+[sub_resource type="Gradient" id=7]
+resource_local_to_scene = true
+offsets = PoolRealArray( 0, 0.121, 0.187328, 0.25, 0.374656, 0.5, 0.61708, 0.75, 0.870523, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.726697, 0, 1, 0.945312, 1, 0, 1, 0.265625, 1, 0, 1, 0, 1, 0.421591, 1, 0, 1, 1, 1, 0, 0.465146, 1, 1, 0.265625, 0, 1, 1, 1, 0, 0.835788, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+resource_local_to_scene = true
+gradient = SubResource( 7 )
+
+[sub_resource type="Gradient" id=9]
+resource_local_to_scene = true
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=10]
+resource_local_to_scene = true
+gradient = SubResource( 9 )
+
+[sub_resource type="Gradient" id=11]
+resource_local_to_scene = true
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=12]
+resource_local_to_scene = true
+gradient = SubResource( 11 )
+
+[sub_resource type="Gradient" id=13]
+resource_local_to_scene = true
+offsets = PoolRealArray( 0, 0.121, 0.187328, 0.25, 0.374656, 0.5, 0.61708, 0.75, 0.870523, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.726697, 0, 1, 0.945312, 1, 0, 1, 0.265625, 1, 0, 1, 0, 1, 0.421591, 1, 0, 1, 1, 1, 0, 0.465146, 1, 1, 0.265625, 0, 1, 1, 1, 0, 0.835788, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=14]
+resource_local_to_scene = true
+gradient = SubResource( 13 )
+
+[sub_resource type="Gradient" id=15]
+resource_local_to_scene = true
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=16]
+resource_local_to_scene = true
+gradient = SubResource( 15 )
+
+[sub_resource type="Gradient" id=17]
+resource_local_to_scene = true
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=18]
+resource_local_to_scene = true
+gradient = SubResource( 17 )
+
+[sub_resource type="Gradient" id=19]
+resource_local_to_scene = true
+offsets = PoolRealArray( 0, 0.121, 0.187328, 0.25, 0.374656, 0.5, 0.61708, 0.75, 0.870523, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.726697, 0, 1, 0.945312, 1, 0, 1, 0.265625, 1, 0, 1, 0, 1, 0.421591, 1, 0, 1, 1, 1, 0, 0.465146, 1, 1, 0.265625, 0, 1, 1, 1, 0, 0.835788, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=20]
+resource_local_to_scene = true
+gradient = SubResource( 19 )
+
+[sub_resource type="Gradient" id=21]
+resource_local_to_scene = true
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=22]
+resource_local_to_scene = true
+gradient = SubResource( 21 )
+
+[sub_resource type="Gradient" id=23]
+resource_local_to_scene = true
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=24]
+resource_local_to_scene = true
+gradient = SubResource( 23 )
+
+[sub_resource type="Gradient" id=25]
+resource_local_to_scene = true
+offsets = PoolRealArray( 0, 0.121, 0.187328, 0.25, 0.374656, 0.5, 0.61708, 0.75, 0.870523, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.726697, 0, 1, 0.945312, 1, 0, 1, 0.265625, 1, 0, 1, 0, 1, 0.421591, 1, 0, 1, 1, 1, 0, 0.465146, 1, 1, 0.265625, 0, 1, 1, 1, 0, 0.835788, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=26]
+resource_local_to_scene = true
+gradient = SubResource( 25 )
+
+[sub_resource type="Gradient" id=27]
+resource_local_to_scene = true
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=28]
+resource_local_to_scene = true
+gradient = SubResource( 27 )
+
+[sub_resource type="Gradient" id=29]
+resource_local_to_scene = true
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=30]
+resource_local_to_scene = true
+gradient = SubResource( 29 )
+
+[sub_resource type="Gradient" id=31]
+resource_local_to_scene = true
+offsets = PoolRealArray( 0, 0.121, 0.187328, 0.25, 0.374656, 0.5, 0.61708, 0.75, 0.870523, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.726697, 0, 1, 0.945312, 1, 0, 1, 0.265625, 1, 0, 1, 0, 1, 0.421591, 1, 0, 1, 1, 1, 0, 0.465146, 1, 1, 0.265625, 0, 1, 1, 1, 0, 0.835788, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=32]
+resource_local_to_scene = true
+gradient = SubResource( 31 )
+
+[sub_resource type="Gradient" id=33]
+resource_local_to_scene = true
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=34]
+resource_local_to_scene = true
+gradient = SubResource( 33 )
+
+[sub_resource type="Gradient" id=35]
+resource_local_to_scene = true
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=36]
+resource_local_to_scene = true
+gradient = SubResource( 35 )
+
+[sub_resource type="Gradient" id=37]
+resource_local_to_scene = true
+offsets = PoolRealArray( 0, 0.121, 0.187328, 0.25, 0.374656, 0.5, 0.61708, 0.75, 0.870523, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.726697, 0, 1, 0.945312, 1, 0, 1, 0.265625, 1, 0, 1, 0, 1, 0.421591, 1, 0, 1, 1, 1, 0, 0.465146, 1, 1, 0.265625, 0, 1, 1, 1, 0, 0.835788, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=38]
+resource_local_to_scene = true
+gradient = SubResource( 37 )
+
+[sub_resource type="Gradient" id=39]
+resource_local_to_scene = true
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=40]
+resource_local_to_scene = true
+gradient = SubResource( 39 )
+
+[sub_resource type="Gradient" id=41]
+resource_local_to_scene = true
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=42]
+resource_local_to_scene = true
+gradient = SubResource( 41 )
+
+[sub_resource type="Gradient" id=43]
+resource_local_to_scene = true
+offsets = PoolRealArray( 0, 0.121, 0.187328, 0.25, 0.374656, 0.5, 0.61708, 0.75, 0.870523, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.726697, 0, 1, 0.945312, 1, 0, 1, 0.265625, 1, 0, 1, 0, 1, 0.421591, 1, 0, 1, 1, 1, 0, 0.465146, 1, 1, 0.265625, 0, 1, 1, 1, 0, 0.835788, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=44]
+resource_local_to_scene = true
+gradient = SubResource( 43 )
+
+[sub_resource type="Gradient" id=45]
+resource_local_to_scene = true
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=46]
+resource_local_to_scene = true
+gradient = SubResource( 45 )
+
+[sub_resource type="Gradient" id=47]
+resource_local_to_scene = true
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=48]
+resource_local_to_scene = true
+gradient = SubResource( 47 )
+
+[node name="MenuOptions" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+custom_constants/margin_right = 125
+custom_constants/margin_top = 25
+custom_constants/margin_left = 125
+custom_constants/margin_bottom = 10
+script = ExtResource( 12 )
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+margin_left = 125.0
+margin_top = 25.0
+margin_right = 1795.0
+margin_bottom = 1070.0
+rect_min_size = Vector2( 600, 0 )
+size_flags_horizontal = 7
+size_flags_vertical = 3
+custom_constants/separation = 25
+alignment = 1
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+buttons_tab_np = [ NodePath("HBoxContainer2/Audio_but"), NodePath("HBoxContainer2/Visual_but"), NodePath("HBoxContainer2/Gameplay_but"), NodePath("HBoxContainer2/Accessibility_but") ]
+tab_container_np = NodePath("HBoxContainer3/TabContainer")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Buttons"]
+margin_right = 1670.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+
+[node name="empty_space_left" type="Control" parent="Buttons/HBoxContainer2"]
+margin_right = 64.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 64, 0 )
+
+[node name="lb_texture" type="TextureRect" parent="Buttons/HBoxContainer2/empty_space_left"]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0.776471 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -57.0
+margin_right = -31.0
+texture = ExtResource( 25 )
+script = ExtResource( 27 )
+input_string = "ltrigger"
+
+[node name="Audio_but" type="Button" parent="Buttons/HBoxContainer2"]
+unique_name_in_owner = true
+margin_left = 68.0
+margin_right = 443.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 20 )
+custom_colors/font_color_focus = Color( 1, 0.988235, 0.521569, 1 )
+custom_colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.992157, 0.894118, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+text = "MENU_SOUND"
+icon = ExtResource( 14 )
+expand_icon = true
+script = ExtResource( 8 )
+
+[node name="Visual_but" type="Button" parent="Buttons/HBoxContainer2"]
+margin_left = 447.0
+margin_right = 823.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 20 )
+custom_colors/font_color_focus = Color( 1, 0.988235, 0.521569, 1 )
+custom_colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.992157, 0.894118, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+text = "MENU_VIDEO"
+icon = ExtResource( 16 )
+expand_icon = true
+script = ExtResource( 8 )
+
+[node name="Gameplay_but" type="Button" parent="Buttons/HBoxContainer2"]
+margin_left = 827.0
+margin_right = 1202.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 20 )
+custom_colors/font_color_focus = Color( 1, 0.988235, 0.521569, 1 )
+custom_colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.992157, 0.894118, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+text = "MENU_GAMEPLAY"
+icon = ExtResource( 15 )
+expand_icon = true
+script = ExtResource( 8 )
+
+[node name="Accessibility_but" type="Button" parent="Buttons/HBoxContainer2"]
+margin_left = 1206.0
+margin_right = 1601.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 20 )
+custom_colors/font_color_focus = Color( 1, 0.988235, 0.521569, 1 )
+custom_colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.992157, 0.894118, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+text = "MENU_ACCESSIBILITY"
+icon = ExtResource( 17 )
+expand_icon = true
+script = ExtResource( 8 )
+
+[node name="empty_space_right" type="Control" parent="Buttons/HBoxContainer2"]
+margin_left = 1605.0
+margin_right = 1669.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 64, 0 )
+
+[node name="rb_texture" type="TextureRect" parent="Buttons/HBoxContainer2/empty_space_right"]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0.776471 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 31.0
+margin_right = 57.0
+texture = ExtResource( 24 )
+script = ExtResource( 27 )
+input_string = "rtrigger"
+
+[node name="Control" type="Control" parent="Buttons"]
+margin_top = 153.0
+margin_right = 1670.0
+margin_bottom = 153.0
+
+[node name="HSeparator" type="HSeparator" parent="Buttons/Control"]
+margin_top = -25.0
+margin_right = 1670.0
+margin_bottom = -21.0
+custom_styles/separator = SubResource( 49 )
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Buttons"]
+margin_top = 178.0
+margin_right = 1670.0
+margin_bottom = 955.0
+focus_neighbour_top = NodePath("../HBoxContainer2")
+focus_neighbour_bottom = NodePath("../HBoxContainer")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TabContainer" type="TabContainer" parent="Buttons/HBoxContainer3"]
+margin_left = 335.0
+margin_right = 1335.0
+margin_bottom = 777.0
+rect_min_size = Vector2( 1000, 0 )
+rect_pivot_offset = Vector2( -673, -52 )
+size_flags_horizontal = 6
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="Audio_Container" type="ScrollContainer" parent="Buttons/HBoxContainer3/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+focus_neighbour_top = NodePath("../../../HBoxContainer2")
+focus_neighbour_bottom = NodePath("../../../HBoxContainer")
+focus_next = NodePath("../../../HBoxContainer")
+focus_previous = NodePath("../../../HBoxContainer2")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="AudioContainer" type="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container"]
+unique_name_in_owner = true
+margin_right = 1000.0
+margin_bottom = 757.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 25
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer"]
+margin_top = 89.0
+margin_right = 1000.0
+margin_bottom = 232.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MasterSlider" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer" instance=ExtResource( 5 )]
+unique_name_in_owner = true
+margin_top = 0.0
+margin_right = 1000.0
+margin_bottom = 45.0
+
+[node name="Label" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/MasterSlider" index="0"]
+margin_top = 0.0
+margin_right = 610.0
+margin_bottom = 45.0
+text = "MENU_MASTER"
+
+[node name="HSlider" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/MasterSlider" index="1"]
+margin_left = 660.0
+margin_right = 860.0
+margin_bottom = 45.0
+
+[node name="Value" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/MasterSlider" index="2"]
+margin_left = 910.0
+margin_top = 0.0
+margin_right = 1000.0
+margin_bottom = 45.0
+
+[node name="SoundSlider" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer" instance=ExtResource( 5 )]
+unique_name_in_owner = true
+margin_top = 49.0
+margin_right = 1000.0
+margin_bottom = 94.0
+
+[node name="Label" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/SoundSlider" index="0"]
+margin_top = 0.0
+margin_right = 610.0
+margin_bottom = 45.0
+text = "MENU_SOUND"
+
+[node name="HSlider" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/SoundSlider" index="1"]
+margin_left = 660.0
+margin_right = 860.0
+margin_bottom = 45.0
+
+[node name="Value" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/SoundSlider" index="2"]
+margin_left = 910.0
+margin_top = 0.0
+margin_right = 1000.0
+margin_bottom = 45.0
+
+[node name="MusicSlider" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer" instance=ExtResource( 5 )]
+unique_name_in_owner = true
+margin_top = 98.0
+margin_right = 1000.0
+margin_bottom = 143.0
+
+[node name="Label" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/MusicSlider" index="0"]
+margin_top = 0.0
+margin_right = 610.0
+margin_bottom = 45.0
+text = "MENU_MUSIC"
+
+[node name="HSlider" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/MusicSlider" index="1"]
+margin_left = 660.0
+margin_right = 860.0
+margin_bottom = 45.0
+
+[node name="Value" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/MusicSlider" index="2"]
+margin_left = 910.0
+margin_top = 0.0
+margin_right = 1000.0
+margin_bottom = 45.0
+
+[node name="RightContainer" type="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer"]
+unique_name_in_owner = true
+margin_top = 257.0
+margin_right = 1000.0
+margin_bottom = 618.0
+
+[node name="MuteOnFocusLostButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer"]
+unique_name_in_owner = true
+margin_right = 1000.0
+margin_bottom = 70.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_MUTE_ON_FOCUS_LOST"
+script = ExtResource( 8 )
+
+[node name="OnLostFocusContainer" type="HBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer" groups=["hide_in_run"]]
+margin_top = 74.0
+margin_right = 1000.0
+margin_bottom = 139.0
+size_flags_horizontal = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer/OnLostFocusContainer"]
+margin_top = 10.0
+margin_right = 480.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 350, 0 )
+size_flags_horizontal = 3
+text = "MENU_ON_LOST_FOCUS"
+autowrap = true
+
+[node name="EmptySpace" type="Control" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer/OnLostFocusContainer"]
+margin_left = 500.0
+margin_right = 500.0
+margin_bottom = 65.0
+
+[node name="OnLostFocusButton" type="OptionButton" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer/OnLostFocusContainer"]
+unique_name_in_owner = true
+margin_left = 520.0
+margin_right = 1000.0
+margin_bottom = 65.0
+focus_neighbour_top = NodePath("../../MuteOnFocusLostButton")
+focus_neighbour_bottom = NodePath("../../NewTracksButton")
+focus_next = NodePath("../../NewTracksButton")
+focus_previous = NodePath("../../MuteOnFocusLostButton")
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 4 )
+script = ExtResource( 30 )
+
+[node name="PauseOnFocusLostButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer"]
+unique_name_in_owner = true
+visible = false
+margin_top = 143.0
+margin_right = 1000.0
+margin_bottom = 213.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_PAUSE_ON_FOCUS_LOST"
+script = ExtResource( 8 )
+
+[node name="NewTracksButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer"]
+unique_name_in_owner = true
+margin_top = 143.0
+margin_right = 1000.0
+margin_bottom = 213.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_NEW_TRACKS"
+script = ExtResource( 8 )
+
+[node name="OldTracksButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer"]
+unique_name_in_owner = true
+margin_top = 217.0
+margin_right = 1000.0
+margin_bottom = 287.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_OLD_TRACKS"
+script = ExtResource( 8 )
+
+[node name="AbyssalTerrorsTracksButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer"]
+unique_name_in_owner = true
+margin_top = 291.0
+margin_right = 1000.0
+margin_bottom = 361.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_ABYSSAL_TERRORS_TRACKS"
+script = ExtResource( 8 )
+
+[node name="OldTracksWarningLabel" type="Label" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer"]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 643.0
+margin_right = 1000.0
+margin_bottom = 667.0
+custom_fonts/font = ExtResource( 26 )
+text = "MENU_OLD_TRACKS_INFO"
+autowrap = true
+
+[node name="Video_Container" type="ScrollContainer" parent="Buttons/HBoxContainer3/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+focus_neighbour_top = NodePath("../../../HBoxContainer2")
+focus_neighbour_bottom = NodePath("../../../HBoxContainer")
+focus_next = NodePath("../../../HBoxContainer")
+focus_previous = NodePath("../../../HBoxContainer2")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="VideoContainer" type="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Video_Container"]
+unique_name_in_owner = true
+margin_right = 1000.0
+margin_bottom = 757.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="LanguageButton" type="OptionButton" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer"]
+unique_name_in_owner = true
+margin_top = 55.0
+margin_right = 1000.0
+margin_bottom = 120.0
+custom_fonts/font = ExtResource( 4 )
+script = ExtResource( 9 )
+
+[node name="MainScreenKeyArtContainer" type="HBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer"]
+margin_top = 124.0
+margin_right = 1000.0
+margin_bottom = 189.0
+
+[node name="Label" type="Label" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/MainScreenKeyArtContainer"]
+margin_top = 10.0
+margin_right = 508.0
+margin_bottom = 55.0
+text = "MENU_MAIN_SCREEN_ART"
+
+[node name="EmptySpace" type="Control" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/MainScreenKeyArtContainer"]
+margin_left = 512.0
+margin_right = 932.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+
+[node name="MainScreenArt" type="OptionButton" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/MainScreenKeyArtContainer"]
+unique_name_in_owner = true
+margin_left = 936.0
+margin_right = 1000.0
+margin_bottom = 65.0
+script = ExtResource( 31 )
+
+[node name="BackgroundContainer" type="HBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer"]
+margin_top = 193.0
+margin_right = 1000.0
+margin_bottom = 258.0
+
+[node name="Label" type="Label" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/BackgroundContainer"]
+margin_top = 10.0
+margin_right = 394.0
+margin_bottom = 55.0
+text = "MENU_BACKGROUND"
+
+[node name="EmptySpace" type="Control" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/BackgroundContainer"]
+margin_left = 398.0
+margin_right = 932.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+
+[node name="BackgroundButton" type="OptionButton" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/BackgroundContainer"]
+unique_name_in_owner = true
+margin_left = 936.0
+margin_right = 1000.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 4 )
+script = ExtResource( 10 )
+
+[node name="ScreenshakeButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer"]
+unique_name_in_owner = true
+margin_top = 262.0
+margin_right = 1000.0
+margin_bottom = 332.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_OPTIONS_SCREENSHAKE"
+script = ExtResource( 8 )
+
+[node name="FullScreenButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer"]
+unique_name_in_owner = true
+margin_top = 336.0
+margin_right = 1000.0
+margin_bottom = 406.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_OPTIONS_FULLSCREEN"
+script = ExtResource( 8 )
+
+[node name="VisualEffectsButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer"]
+unique_name_in_owner = true
+margin_top = 410.0
+margin_right = 1000.0
+margin_bottom = 480.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_OPTIONS_VISUAL_EFFECTS"
+script = ExtResource( 8 )
+
+[node name="DamageDisplayButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer"]
+unique_name_in_owner = true
+margin_top = 484.0
+margin_right = 1000.0
+margin_bottom = 554.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_DAMAGE_DISPLAY"
+script = ExtResource( 8 )
+
+[node name="OptimizeEndWavesButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer"]
+unique_name_in_owner = true
+margin_top = 558.0
+margin_right = 1000.0
+margin_bottom = 628.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_OPTIMIZE_END_WAVES"
+script = ExtResource( 8 )
+
+[node name="LimitFPSButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer"]
+unique_name_in_owner = true
+margin_top = 632.0
+margin_right = 1000.0
+margin_bottom = 702.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_LIMIT_FPS"
+script = ExtResource( 8 )
+
+[node name="Gameplay_Container" type="ScrollContainer" parent="Buttons/HBoxContainer3/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+focus_neighbour_top = NodePath("../../../HBoxContainer2")
+focus_neighbour_bottom = NodePath("../../../HBoxContainer")
+focus_next = NodePath("../../../HBoxContainer")
+focus_previous = NodePath("../../../HBoxContainer2")
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="GameplayVBoxContainer" type="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container"]
+unique_name_in_owner = true
+margin_right = 1000.0
+margin_bottom = 1245.0
+focus_neighbour_top = NodePath("../../../../HBoxContainer2")
+focus_neighbour_bottom = NodePath("../../../../HBoxContainer")
+size_flags_horizontal = 3
+custom_constants/separation = 5
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MouseOnlyButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+unique_name_in_owner = true
+margin_right = 990.0
+margin_bottom = 70.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_OPTIONS_MOUSE_ONLY"
+script = ExtResource( 8 )
+
+[node name="ManualAimButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+unique_name_in_owner = true
+margin_top = 75.0
+margin_right = 990.0
+margin_bottom = 145.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_OPTIONS_MANUAL_AIM"
+script = ExtResource( 8 )
+
+[node name="ManualAimOnMousePressButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+unique_name_in_owner = true
+margin_top = 150.0
+margin_right = 990.0
+margin_bottom = 220.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_MANUAL_AIM_ON_MOUSE_PRESS"
+script = ExtResource( 8 )
+
+[node name="MovementWithGamepad" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+unique_name_in_owner = true
+margin_top = 225.0
+margin_right = 990.0
+margin_bottom = 295.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_MOVEMENT_WITH_GAMEPAD"
+script = ExtResource( 8 )
+
+[node name="HPbarOnCharacterButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+unique_name_in_owner = true
+margin_top = 300.0
+margin_right = 990.0
+margin_bottom = 370.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_HP_BAR_ON_CHAR"
+script = ExtResource( 8 )
+
+[node name="BossHPBarButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+unique_name_in_owner = true
+margin_top = 375.0
+margin_right = 990.0
+margin_bottom = 445.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_BOSS_HP_BAR"
+script = ExtResource( 8 )
+
+[node name="KeepLockButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+unique_name_in_owner = true
+margin_top = 450.0
+margin_right = 990.0
+margin_bottom = 520.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_KEEP_LOCK"
+script = ExtResource( 8 )
+
+[node name="LockCoopCameraButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+unique_name_in_owner = true
+margin_top = 525.0
+margin_right = 990.0
+margin_bottom = 595.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_LOCK_COOP_CAMERA"
+script = ExtResource( 8 )
+
+[node name="ShareCoopLootButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+unique_name_in_owner = true
+margin_top = 600.0
+margin_right = 990.0
+margin_bottom = 670.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_SHARE_COOP_LOOT"
+script = ExtResource( 8 )
+
+[node name="NoItemAppearanceButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+unique_name_in_owner = true
+margin_top = 675.0
+margin_right = 990.0
+margin_bottom = 745.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+pressed = true
+text = "MENU_NO_ITEM_APPEARANCE"
+script = ExtResource( 8 )
+
+[node name="NoHoldingButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+unique_name_in_owner = true
+margin_top = 750.0
+margin_right = 990.0
+margin_bottom = 820.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+pressed = true
+text = "MENU_NO_HOLDING_BUTTON"
+script = ExtResource( 8 )
+
+[node name="CompletedChallengeCheckButton" type="Button" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+unique_name_in_owner = true
+margin_top = 825.0
+margin_right = 990.0
+margin_bottom = 890.0
+focus_previous = NodePath("../ScoreContainer/ScoreStoringButton")
+text = "MENU_CHALLENGE_CHECK"
+icon = ExtResource( 19 )
+expand_icon = true
+script = ExtResource( 8 )
+
+[node name="AbyssalTerrorsDLCButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer" groups=["hide_in_run"]]
+unique_name_in_owner = true
+margin_top = 895.0
+margin_right = 990.0
+margin_bottom = 965.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_DLC"
+script = ExtResource( 8 )
+
+[node name="GreenSkinsButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+unique_name_in_owner = true
+margin_top = 970.0
+margin_right = 990.0
+margin_bottom = 1040.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+pressed = true
+text = "MENU_GREEN_SKINS"
+script = ExtResource( 8 )
+
+[node name="ScoreContainer" type="HBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+margin_top = 1045.0
+margin_right = 990.0
+margin_bottom = 1138.0
+size_flags_horizontal = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/ScoreContainer"]
+margin_right = 350.0
+margin_bottom = 93.0
+rect_min_size = Vector2( 350, 0 )
+size_flags_horizontal = 3
+text = "ENDLESS_SCORE_STORING"
+autowrap = true
+
+[node name="EmptySpace" type="Control" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/ScoreContainer"]
+margin_left = 370.0
+margin_right = 670.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+
+[node name="ScoreStoringButton" type="OptionButton" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/ScoreContainer"]
+unique_name_in_owner = true
+margin_left = 690.0
+margin_right = 990.0
+margin_bottom = 93.0
+focus_neighbour_bottom = NodePath("../../button_reset_gameplay")
+focus_next = NodePath("../../button_reset_gameplay")
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+script = ExtResource( 11 )
+
+[node name="HSeparator" type="HSeparator" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+margin_top = 1143.0
+margin_right = 990.0
+margin_bottom = 1175.0
+custom_constants/separation = 32
+
+[node name="button_reset_gameplay" type="Button" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer"]
+margin_top = 1180.0
+margin_right = 990.0
+margin_bottom = 1245.0
+focus_neighbour_top = NodePath("../ScoreContainer/ScoreStoringButton")
+focus_previous = NodePath("../ScoreContainer/ScoreStoringButton")
+text = "MENU_RESET_TO_DEFAULT"
+icon = ExtResource( 13 )
+expand_icon = true
+script = ExtResource( 8 )
+
+[node name="Accessibility_Container" type="ScrollContainer" parent="Buttons/HBoxContainer3/TabContainer"]
+unique_name_in_owner = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+focus_neighbour_top = NodePath("../../../HBoxContainer2")
+focus_neighbour_bottom = NodePath("../../../HBoxContainer")
+focus_next = NodePath("../../../HBoxContainer")
+focus_previous = NodePath("../../../HBoxContainer2")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="AccessibilityContainer" type="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container"]
+unique_name_in_owner = true
+margin_right = 1000.0
+margin_bottom = 1435.0
+focus_neighbour_top = NodePath("../../../../HBoxContainer2")
+focus_neighbour_bottom = NodePath("../../../../HBoxContainer")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 5
+alignment = 1
+
+[node name="accessibility_slider_container" type="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer"]
+unique_name_in_owner = true
+margin_right = 990.0
+margin_bottom = 145.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyHealthSlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container" groups=["hide_in_run"] instance=ExtResource( 5 )]
+unique_name_in_owner = true
+margin_top = 0.0
+margin_right = 990.0
+margin_bottom = 45.0
+
+[node name="Label" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemyHealthSlider" index="0"]
+margin_top = 0.0
+margin_right = 600.0
+margin_bottom = 45.0
+text = "MENU_ENEMY_HEALTH"
+
+[node name="HSlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemyHealthSlider" index="1"]
+margin_left = 650.0
+margin_right = 850.0
+margin_bottom = 45.0
+min_value = 0.25
+max_value = 2.0
+value = 1.0
+
+[node name="Value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemyHealthSlider" index="2"]
+margin_left = 900.0
+margin_top = 0.0
+margin_right = 990.0
+margin_bottom = 45.0
+
+[node name="EnemyDamageSlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container" groups=["hide_in_run"] instance=ExtResource( 5 )]
+unique_name_in_owner = true
+margin_top = 50.0
+margin_right = 990.0
+margin_bottom = 95.0
+
+[node name="Label" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemyDamageSlider" index="0"]
+margin_top = 0.0
+margin_right = 600.0
+margin_bottom = 45.0
+text = "MENU_ENEMY_DAMAGE"
+
+[node name="HSlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemyDamageSlider" index="1"]
+margin_left = 650.0
+margin_right = 850.0
+margin_bottom = 45.0
+min_value = 0.25
+max_value = 2.0
+value = 1.0
+
+[node name="Value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemyDamageSlider" index="2"]
+margin_left = 900.0
+margin_top = 0.0
+margin_right = 990.0
+margin_bottom = 45.0
+
+[node name="EnemySpeedSlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container" groups=["hide_in_run"] instance=ExtResource( 5 )]
+unique_name_in_owner = true
+margin_top = 100.0
+margin_right = 990.0
+margin_bottom = 145.0
+
+[node name="Label" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemySpeedSlider" index="0"]
+margin_top = 0.0
+margin_right = 600.0
+margin_bottom = 45.0
+text = "MENU_ENEMY_SPEED"
+
+[node name="HSlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemySpeedSlider" index="1"]
+margin_left = 650.0
+margin_right = 850.0
+margin_bottom = 45.0
+min_value = 0.25
+max_value = 1.5
+value = 1.0
+
+[node name="Value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemySpeedSlider" index="2"]
+margin_left = 900.0
+margin_top = 0.0
+margin_right = 990.0
+margin_bottom = 45.0
+
+[node name="ConstantProjectileContainer" type="HBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer" groups=["hide_in_run"]]
+margin_top = 150.0
+margin_right = 990.0
+margin_bottom = 243.0
+size_flags_horizontal = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ConstantProjectileContainer"]
+margin_right = 475.0
+margin_bottom = 93.0
+rect_min_size = Vector2( 350, 0 )
+size_flags_horizontal = 3
+text = "MENU_CONSTANT_PROJECTILE_IN_NIGHTMARE"
+autowrap = true
+
+[node name="EmptySpace" type="Control" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ConstantProjectileContainer"]
+margin_left = 495.0
+margin_right = 495.0
+margin_bottom = 93.0
+
+[node name="ConstantProjectileButton" type="OptionButton" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ConstantProjectileContainer"]
+unique_name_in_owner = true
+margin_left = 515.0
+margin_top = 14.0
+margin_right = 990.0
+margin_bottom = 79.0
+focus_neighbour_bottom = NodePath("../../accessibility_slider_container2/ExplosionOpacitySlider/HSlider")
+focus_next = NodePath("../../accessibility_slider_container2/ExplosionOpacitySlider/HSlider")
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 4 )
+script = ExtResource( 29 )
+
+[node name="accessibility_slider_container2" type="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer"]
+unique_name_in_owner = true
+margin_top = 248.0
+margin_right = 990.0
+margin_bottom = 443.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExplosionOpacitySlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2" instance=ExtResource( 5 )]
+unique_name_in_owner = true
+margin_top = 0.0
+margin_right = 990.0
+margin_bottom = 45.0
+
+[node name="Label" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/ExplosionOpacitySlider" index="0"]
+margin_top = 0.0
+margin_right = 600.0
+margin_bottom = 45.0
+text = "MENU_EXPLOSION_OPACITY"
+
+[node name="HSlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/ExplosionOpacitySlider" index="1"]
+margin_left = 650.0
+margin_right = 850.0
+margin_bottom = 45.0
+value = 1.0
+
+[node name="Value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/ExplosionOpacitySlider" index="2"]
+margin_left = 900.0
+margin_top = 0.0
+margin_right = 990.0
+margin_bottom = 45.0
+
+[node name="ProjectileOpacitySlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2" instance=ExtResource( 5 )]
+unique_name_in_owner = true
+margin_top = 50.0
+margin_right = 990.0
+margin_bottom = 95.0
+
+[node name="Label" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/ProjectileOpacitySlider" index="0"]
+margin_top = 0.0
+margin_right = 600.0
+margin_bottom = 45.0
+text = "MENU_PROJECTILE_OPACITY"
+
+[node name="HSlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/ProjectileOpacitySlider" index="1"]
+margin_left = 650.0
+margin_right = 850.0
+margin_bottom = 45.0
+value = 1.0
+
+[node name="Value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/ProjectileOpacitySlider" index="2"]
+margin_left = 900.0
+margin_top = 0.0
+margin_right = 990.0
+margin_bottom = 45.0
+
+[node name="PetOpacitySlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2" instance=ExtResource( 5 )]
+unique_name_in_owner = true
+margin_top = 100.0
+margin_right = 990.0
+margin_bottom = 145.0
+
+[node name="Label" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/PetOpacitySlider" index="0"]
+margin_top = 0.0
+margin_right = 600.0
+margin_bottom = 45.0
+text = "MENU_PET_OPACITY"
+
+[node name="HSlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/PetOpacitySlider" index="1"]
+margin_left = 650.0
+margin_right = 850.0
+margin_bottom = 45.0
+value = 1.0
+
+[node name="Value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/PetOpacitySlider" index="2"]
+margin_left = 900.0
+margin_top = 0.0
+margin_right = 990.0
+margin_bottom = 45.0
+
+[node name="FontSizeSlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2" instance=ExtResource( 5 )]
+unique_name_in_owner = true
+margin_top = 150.0
+margin_right = 990.0
+margin_bottom = 195.0
+
+[node name="Label" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/FontSizeSlider" index="0"]
+margin_top = 10.0
+margin_right = 600.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 2 )
+text = "MENU_FONT_SIZE"
+
+[node name="HSlider" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/FontSizeSlider" index="1"]
+margin_left = 650.0
+margin_right = 850.0
+margin_bottom = 45.0
+min_value = 0.8
+max_value = 1.25
+value = 1.0
+
+[node name="Value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/FontSizeSlider" index="2"]
+margin_left = 900.0
+margin_top = 0.0
+margin_right = 990.0
+margin_bottom = 45.0
+
+[node name="CharacterHighlightingButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer"]
+unique_name_in_owner = true
+margin_top = 448.0
+margin_right = 990.0
+margin_bottom = 518.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_CHAR_HIGHLIGHTING"
+script = ExtResource( 8 )
+
+[node name="WeaponHighlightingButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer"]
+unique_name_in_owner = true
+margin_top = 523.0
+margin_right = 990.0
+margin_bottom = 593.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_WEAPON_HIGHLIGHTING"
+script = ExtResource( 8 )
+
+[node name="ProjectileHighlightingButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer"]
+unique_name_in_owner = true
+margin_top = 598.0
+margin_right = 990.0
+margin_bottom = 668.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_PROJECTILES_HIGHLIGHTING"
+script = ExtResource( 8 )
+
+[node name="TurretHighlightingButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer"]
+unique_name_in_owner = true
+margin_top = 673.0
+margin_right = 990.0
+margin_bottom = 743.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_TURRETS_HIGHLIGHTING"
+script = ExtResource( 8 )
+
+[node name="PetHighlightingButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer"]
+unique_name_in_owner = true
+margin_top = 748.0
+margin_right = 990.0
+margin_bottom = 818.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_PETS_HIGHLIGHTING"
+script = ExtResource( 8 )
+
+[node name="EffectsIconsInDescriptionButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer"]
+unique_name_in_owner = true
+margin_top = 823.0
+margin_right = 990.0
+margin_bottom = 893.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_DESCRIPTIONS_ICONS"
+script = ExtResource( 8 )
+
+[node name="GoldSoundsButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer"]
+unique_name_in_owner = true
+margin_top = 898.0
+margin_right = 990.0
+margin_bottom = 968.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_GOLD_SOUNDS"
+script = ExtResource( 8 )
+
+[node name="DarkenScreenButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer"]
+unique_name_in_owner = true
+margin_top = 973.0
+margin_right = 990.0
+margin_bottom = 1043.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_DARKEN_SCREEN"
+script = ExtResource( 8 )
+
+[node name="RetryWaveButton" type="CheckButton" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer"]
+unique_name_in_owner = true
+margin_top = 1048.0
+margin_right = 990.0
+margin_bottom = 1118.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 3 )
+text = "MENU_RETRY_WAVE"
+script = ExtResource( 8 )
+
+[node name="ColorPositiveText" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer" instance=ExtResource( 6 )]
+margin_top = 1123.0
+margin_bottom = 1188.0
+
+[node name="button_expand" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorPositiveText/VBoxContainer" index="0"]
+text = "COLOR_POSITIVE"
+
+[node name="ramp_hue" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorPositiveText/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Hue" index="0"]
+texture = SubResource( 2 )
+
+[node name="ramp_saturation" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorPositiveText/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Saturation" index="0"]
+texture = SubResource( 4 )
+
+[node name="ramp_value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorPositiveText/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Value" index="0"]
+texture = SubResource( 6 )
+
+[node name="ColorNegativeText" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer" instance=ExtResource( 6 )]
+margin_top = 1193.0
+margin_bottom = 1258.0
+
+[node name="button_expand" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorNegativeText/VBoxContainer" index="0"]
+text = "COLOR_NEGATIVE"
+
+[node name="ramp_hue" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorNegativeText/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Hue" index="0"]
+texture = SubResource( 8 )
+
+[node name="ramp_saturation" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorNegativeText/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Saturation" index="0"]
+texture = SubResource( 10 )
+
+[node name="ramp_value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorNegativeText/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Value" index="0"]
+texture = SubResource( 12 )
+
+[node name="buttton_expand_change_color" type="Button" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer"]
+margin_top = 1263.0
+margin_right = 990.0
+margin_bottom = 1328.0
+focus_neighbour_bottom = NodePath("../button_reset_accessibility")
+focus_next = NodePath("../button_reset_accessibility")
+text = "CHANGE_COLOR_TIER"
+icon = ExtResource( 23 )
+align = 0
+icon_align = 2
+script = ExtResource( 22 )
+group_visible = NodePath("../HBoxContainer")
+icon_up = ExtResource( 21 )
+icon_down = ExtResource( 23 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer"]
+visible = false
+margin_top = 960.0
+margin_right = 990.0
+margin_bottom = 1370.0
+
+[node name="VSeparator" type="VSeparator" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 28.0
+margin_bottom = 410.0
+custom_constants/separation = 28
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer"]
+margin_left = 32.0
+margin_right = 958.0
+margin_bottom = 410.0
+size_flags_horizontal = 3
+
+[node name="Color_tier0" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+margin_right = 926.0
+
+[node name="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier0" index="0"]
+margin_right = 857.0
+
+[node name="button_expand" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier0/VBoxContainer" index="0"]
+margin_right = 857.0
+text = "COLOR_TIER0"
+
+[node name="ramp_hue" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier0/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Hue" index="0"]
+texture = SubResource( 14 )
+
+[node name="ramp_saturation" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier0/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Saturation" index="0"]
+texture = SubResource( 16 )
+
+[node name="ramp_value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier0/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Value" index="0"]
+texture = SubResource( 18 )
+
+[node name="Color_tier1" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+margin_top = 69.0
+margin_right = 926.0
+margin_bottom = 134.0
+
+[node name="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier1" index="0"]
+margin_right = 857.0
+
+[node name="button_expand" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier1/VBoxContainer" index="0"]
+margin_right = 857.0
+text = "COLOR_TIER1"
+
+[node name="ramp_hue" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier1/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Hue" index="0"]
+texture = SubResource( 20 )
+
+[node name="ramp_saturation" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier1/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Saturation" index="0"]
+texture = SubResource( 22 )
+
+[node name="ramp_value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier1/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Value" index="0"]
+texture = SubResource( 24 )
+
+[node name="Color_tier2" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+margin_top = 138.0
+margin_right = 926.0
+margin_bottom = 203.0
+
+[node name="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier2" index="0"]
+margin_right = 857.0
+
+[node name="button_expand" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier2/VBoxContainer" index="0"]
+margin_right = 857.0
+text = "COLOR_TIER2"
+
+[node name="ramp_hue" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier2/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Hue" index="0"]
+texture = SubResource( 26 )
+
+[node name="ramp_saturation" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier2/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Saturation" index="0"]
+texture = SubResource( 28 )
+
+[node name="ramp_value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier2/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Value" index="0"]
+texture = SubResource( 30 )
+
+[node name="Color_tier3" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+margin_top = 207.0
+margin_right = 926.0
+margin_bottom = 272.0
+
+[node name="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier3" index="0"]
+margin_right = 857.0
+
+[node name="button_expand" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier3/VBoxContainer" index="0"]
+margin_right = 857.0
+text = "COLOR_TIER3"
+
+[node name="ramp_hue" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier3/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Hue" index="0"]
+texture = SubResource( 32 )
+
+[node name="ramp_saturation" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier3/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Saturation" index="0"]
+texture = SubResource( 34 )
+
+[node name="ramp_value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier3/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Value" index="0"]
+texture = SubResource( 36 )
+
+[node name="Color_tier4" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+margin_top = 276.0
+margin_right = 926.0
+margin_bottom = 341.0
+
+[node name="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier4" index="0"]
+margin_right = 857.0
+
+[node name="button_expand" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier4/VBoxContainer" index="0"]
+margin_right = 857.0
+text = "COLOR_TIER4"
+
+[node name="ramp_hue" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier4/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Hue" index="0"]
+texture = SubResource( 38 )
+
+[node name="ramp_saturation" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier4/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Saturation" index="0"]
+texture = SubResource( 40 )
+
+[node name="ramp_value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier4/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Value" index="0"]
+texture = SubResource( 42 )
+
+[node name="Color_tier5" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+margin_top = 345.0
+margin_right = 926.0
+margin_bottom = 410.0
+
+[node name="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier5" index="0"]
+margin_right = 857.0
+
+[node name="button_expand" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier5/VBoxContainer" index="0"]
+margin_right = 857.0
+text = "COLOR_TIER5"
+
+[node name="ramp_hue" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier5/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Hue" index="0"]
+texture = SubResource( 44 )
+
+[node name="ramp_saturation" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier5/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Saturation" index="0"]
+texture = SubResource( 46 )
+
+[node name="ramp_value" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier5/VBoxContainer/Setup_Color/PanelContainer/VBoxContainer/Slider_Value" index="0"]
+texture = SubResource( 48 )
+
+[node name="VSeparator2" type="VSeparator" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 962.0
+margin_right = 990.0
+margin_bottom = 410.0
+custom_constants/separation = 28
+
+[node name="HSeparator" type="HSeparator" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer" groups=["hide_in_run"]]
+margin_top = 1333.0
+margin_right = 990.0
+margin_bottom = 1365.0
+custom_constants/separation = 32
+
+[node name="button_reset_accessibility" type="Button" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer" groups=["hide_in_run"]]
+margin_top = 1370.0
+margin_right = 990.0
+margin_bottom = 1435.0
+text = "MENU_RESET_TO_DEFAULT"
+icon = ExtResource( 13 )
+expand_icon = true
+script = ExtResource( 8 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
+margin_top = 980.0
+margin_right = 1670.0
+margin_bottom = 1045.0
+
+[node name="HSeparator2" type="HSeparator" parent="Buttons/HBoxContainer"]
+margin_right = 554.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+
+[node name="BackButton" type="Button" parent="Buttons/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 558.0
+margin_right = 1112.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+text = "MENU_BACK"
+icon = ExtResource( 18 )
+expand_icon = true
+script = ExtResource( 8 )
+
+[node name="HSeparator" type="HSeparator" parent="Buttons/HBoxContainer"]
+margin_left = 1116.0
+margin_right = 1670.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+
+[connection signal="hide" from="." to="." method="_on_MenuOptions_hide"]
+[connection signal="value_changed" from="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
+[connection signal="value_changed" from="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/SoundSlider" to="." method="_on_SoundSlider_value_changed"]
+[connection signal="value_changed" from="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer/MuteOnFocusLostButton" to="." method="_on_MuteOnFocusLostButton_toggled"]
+[connection signal="item_selected" from="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer/OnLostFocusContainer/OnLostFocusButton" to="." method="_on_OnLostFocusButton_item_selected"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer/PauseOnFocusLostButton" to="." method="_on_PauseOnFocusLostButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer/NewTracksButton" to="." method="_on_StreamerModeTracksButton_toggled"]
+[connection signal="focus_entered" from="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer/OldTracksButton" to="." method="_on_OldTracksButton_focus_entered"]
+[connection signal="focus_exited" from="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer/OldTracksButton" to="." method="_on_OldTracksButton_focus_exited"]
+[connection signal="mouse_entered" from="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer/OldTracksButton" to="." method="_on_OldTracksButton_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer/OldTracksButton" to="." method="_on_OldTracksButton_mouse_exited"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer/OldTracksButton" to="." method="_on_LegacyTracksButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/RightContainer/AbyssalTerrorsTracksButton" to="." method="_on_AbyssalTerrorsTracksButton_toggled"]
+[connection signal="item_selected" from="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/LanguageButton" to="." method="_on_LanguageButton_item_selected"]
+[connection signal="item_selected" from="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/MainScreenKeyArtContainer/MainScreenArt" to="." method="_on_MainScreenArt_item_selected"]
+[connection signal="item_selected" from="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/BackgroundContainer/BackgroundButton" to="." method="_on_BackgroundButton_item_selected"]
+[connection signal="item_selected" from="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/BackgroundContainer/BackgroundButton" to="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/BackgroundContainer/BackgroundButton" method="_on_BackgroundButton_item_selected"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/ScreenshakeButton" to="." method="_on_ScreenshakeButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/FullScreenButton" to="." method="_on_FullScreenButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/VisualEffectsButton" to="." method="_on_VisualEffectsButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/DamageDisplayButton" to="." method="_on_DamageDisplayButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/OptimizeEndWavesButton" to="." method="_on_OptimizeEndWavesButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Video_Container/VideoContainer/LimitFPSButton" to="." method="_on_LimitFPSButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/MouseOnlyButton" to="." method="_on_MouseOnlyButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/ManualAimButton" to="." method="_on_ManualAimButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/ManualAimOnMousePressButton" to="." method="_on_ManualAimOnMousePressButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/MovementWithGamepad" to="." method="_on_MovementWithGamepad_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/HPbarOnCharacterButton" to="." method="_on_HPbarOnCharacterButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/BossHPBarButton" to="." method="_on_BossHPBarButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/KeepLockButton" to="." method="_on_KeepLockButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/LockCoopCameraButton" to="." method="_on_LockCoopCameraButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/ShareCoopLootButton" to="." method="_on_ShareCoopLootButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/NoItemAppearanceButton" to="." method="_on_NoItemAppearanceButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/NoHoldingButton" to="." method="_on_NoHoldingButton_toggled"]
+[connection signal="pressed" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/CompletedChallengeCheckButton" to="." method="_on_CompletedChallengeCheckButton_pressed"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/AbyssalTerrorsDLCButton" to="." method="_on_AbyssalTerrorsDLCButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/GreenSkinsButton" to="." method="_on_GreenSkinsButton_toggled"]
+[connection signal="item_selected" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/ScoreContainer/ScoreStoringButton" to="." method="_on_ScoreButton_item_selected"]
+[connection signal="pressed" from="Buttons/HBoxContainer3/TabContainer/Gameplay_Container/GameplayVBoxContainer/button_reset_gameplay" to="." method="_on_button_reset_gameplay_pressed"]
+[connection signal="value_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemyHealthSlider" to="." method="_on_EnemyHealthSlider_value_changed"]
+[connection signal="value_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemyDamageSlider" to="." method="_on_EnemyDamageSlider_value_changed"]
+[connection signal="value_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemySpeedSlider" to="." method="_on_EnemySpeedSlider_value_changed"]
+[connection signal="item_selected" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ConstantProjectileContainer/ConstantProjectileButton" to="." method="_on_ConstantProjectileButton_item_selected"]
+[connection signal="value_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/ExplosionOpacitySlider" to="." method="_on_ExplosionOpacitySlider_value_changed"]
+[connection signal="value_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/ProjectileOpacitySlider" to="." method="_on_ProjectileOpacitySlider_value_changed"]
+[connection signal="value_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/PetOpacitySlider" to="." method="_on_PetOpacitySlider_value_changed"]
+[connection signal="value_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/FontSizeSlider" to="." method="_on_FontSizeSlider_value_changed"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/CharacterHighlightingButton" to="." method="_on_CharacterHighlightingButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/WeaponHighlightingButton" to="." method="_on_WeaponHighlightingButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ProjectileHighlightingButton" to="." method="_on_ProjectileHighlightingButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/TurretHighlightingButton" to="." method="_on_TurretHighlightingButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/PetHighlightingButton" to="." method="_on_PetHighlightingButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/EffectsIconsInDescriptionButton" to="." method="_on_EffectsIconsInDescriptionButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/GoldSoundsButton" to="." method="_on_GoldSoundsButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/DarkenScreenButton" to="." method="_on_DarkenScreenButton_toggled"]
+[connection signal="toggled" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/RetryWaveButton" to="." method="_on_RetryWaveButton_toggled"]
+[connection signal="color_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorPositiveText" to="." method="_on_ColorPositiveText_color_changed"]
+[connection signal="color_reset" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorPositiveText" to="." method="_on_ColorPositiveText_color_reset"]
+[connection signal="color_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorNegativeText" to="." method="_on_ColorNegativeText_color_changed"]
+[connection signal="color_reset" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorNegativeText" to="." method="_on_ColorNegativeText_color_reset"]
+[connection signal="color_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier0" to="." method="_on_Color_tiers0_color_changed"]
+[connection signal="color_reset" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier0" to="." method="_on_Color_tier0_color_reset"]
+[connection signal="color_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier1" to="." method="_on_Color_tiers1_color_changed"]
+[connection signal="color_reset" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier1" to="." method="_on_Color_tier1_color_reset"]
+[connection signal="color_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier2" to="." method="_on_Color_tiers2_color_changed"]
+[connection signal="color_reset" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier2" to="." method="_on_Color_tier2_color_reset"]
+[connection signal="color_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier3" to="." method="_on_Color_tiers3_color_changed"]
+[connection signal="color_reset" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier3" to="." method="_on_Color_tier3_color_reset"]
+[connection signal="color_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier4" to="." method="_on_Color_tiers4_color_changed"]
+[connection signal="color_reset" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier4" to="." method="_on_Color_tier4_color_reset"]
+[connection signal="color_changed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier5" to="." method="_on_Color_tiers5_color_changed"]
+[connection signal="color_reset" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier5" to="." method="_on_Color_tier5_color_reset"]
+[connection signal="pressed" from="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/button_reset_accessibility" to="." method="_on_button_reset_accessibility_pressed"]
+[connection signal="pressed" from="Buttons/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+
+[editable path="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/MasterSlider"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/SoundSlider"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Audio_Container/AudioContainer/VBoxContainer/MusicSlider"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemyHealthSlider"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemyDamageSlider"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container/EnemySpeedSlider"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/ExplosionOpacitySlider"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/ProjectileOpacitySlider"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/PetOpacitySlider"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/accessibility_slider_container2/FontSizeSlider"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorPositiveText"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/ColorNegativeText"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier0"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier1"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier2"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier3"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier4"]
+[editable path="Buttons/HBoxContainer3/TabContainer/Accessibility_Container/AccessibilityContainer/HBoxContainer/VBoxContainer/Color_tier5"]

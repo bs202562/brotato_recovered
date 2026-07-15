@@ -1,0 +1,32 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://effects/weapons/weapon_effect_with_sub_effect.gd" type="Script" id=1]
+[ext_resource path="res://items/global/custom_arg.gd" type="Script" id=2]
+[ext_resource path="res://dlcs/dlc_1/weapons/ranged/javelin/1/javelin_effect_0c.tres" type="Resource" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+arg_index = 2
+arg_sign = 4
+arg_value = 0
+arg_format = 0
+arg_key = ""
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 2 )
+arg_index = 3
+arg_sign = 0
+arg_value = 0
+arg_format = 0
+arg_key = ""
+
+[resource]
+script = ExtResource( 1 )
+key = "modify_every_x_projectile"
+text_key = "EFFECT_WEAPON_MODIFY_EVERY_X_PROJECTILE"
+value = 5
+custom_key = ""
+storage_method = 0
+effect_sign = 2
+custom_args = [ SubResource( 1 ), SubResource( 2 ) ]
+sub_effects = [ ExtResource( 3 ) ]

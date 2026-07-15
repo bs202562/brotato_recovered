@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=16 format=2]
+
+[ext_resource path="res://zones/wave_data.gd" type="Script" id=1]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/group_1.tres" type="Resource" id=2]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/group_3.tres" type="Resource" id=3]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/group_4.tres" type="Resource" id=4]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/group_2.tres" type="Resource" id=5]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/d3_group_pufferfish.tres" type="Resource" id=6]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/group_5.tres" type="Resource" id=7]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/group_7_planktons.tres" type="Resource" id=8]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/d4_group_pufferfish_begin.tres" type="Resource" id=9]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/d1_group_1.tres" type="Resource" id=10]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/d5_group_1.tres" type="Resource" id=11]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/d5_group_2.tres" type="Resource" id=12]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/d6_group_shielded_diplocaulus.tres" type="Resource" id=13]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/d6_group_2.tres" type="Resource" id=14]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/015/d6_group_3.tres" type="Resource" id=15]
+
+[resource]
+script = ExtResource( 1 )
+wave_duration = 60
+max_enemies = 100
+groups_data = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ]
+conditional_groups_data = [  ]

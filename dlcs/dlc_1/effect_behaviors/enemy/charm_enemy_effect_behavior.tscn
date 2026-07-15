@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://dlcs/dlc_1/effect_behaviors/enemy/charm_enemy_effect_behavior.gd" type="Script" id=2]
+
+[node name="CharmEnemyEffectBehavior" type="Node2D"]
+script = ExtResource( 2 )
+max_charm_count = 999
+damage_increase = 200
+
+[node name="CharmTimer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[connection signal="timeout" from="CharmTimer" to="." method="_on_CharmTimer_timeout"]

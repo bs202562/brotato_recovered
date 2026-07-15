@@ -1,0 +1,236 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://projectiles/bullet_hells/bullet_hell_projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://projectiles/GroupOfBullets.gd" type="Script" id=2]
+[ext_resource path="res://overlap/hitbox.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Node2D/BulletHellProjectile:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Node2D2/BulletHellProjectile:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Node2D3/BulletHellProjectile:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Node2D4/BulletHellProjectile:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Node2D5/BulletHellProjectile:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Node2D6/BulletHellProjectile:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "animation_0"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0309491, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Node2D/BulletHellProjectile:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ), Vector2( 0, -240 ), Vector2( 0, -80 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Node2D2/BulletHellProjectile:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ), Vector2( 0, -240 ), Vector2( 0, -80 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Node2D3/BulletHellProjectile:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ), Vector2( 0, -240 ), Vector2( 0, -80 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Node2D4/BulletHellProjectile:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ), Vector2( 0, -240 ), Vector2( 0, -80 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Node2D5/BulletHellProjectile:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ), Vector2( 0, -240 ), Vector2( 0, -80 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Node2D6/BulletHellProjectile:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ), Vector2( 0, -240 ), Vector2( 0, -80 ) ]
+}
+
+[node name="CircleOfBullets0" type="Node2D"]
+script = ExtResource( 2 )
+destroy_on_leaving_screen = false
+list_of_bullets_path = [ NodePath("Node2D/BulletHellProjectile"), NodePath("Node2D2/BulletHellProjectile"), NodePath("Node2D3/BulletHellProjectile"), NodePath("Node2D4/BulletHellProjectile"), NodePath("Node2D5/BulletHellProjectile"), NodePath("Node2D6/BulletHellProjectile") ]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="BulletHellProjectile" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 0, -80 )
+
+[node name="Node2D2" type="Node2D" parent="."]
+rotation = 1.0472
+
+[node name="BulletHellProjectile" parent="Node2D2" instance=ExtResource( 1 )]
+position = Vector2( 0, -80 )
+
+[node name="Node2D3" type="Node2D" parent="."]
+rotation = 2.0944
+
+[node name="BulletHellProjectile" parent="Node2D3" instance=ExtResource( 1 )]
+position = Vector2( 0, -80 )
+
+[node name="Node2D4" type="Node2D" parent="."]
+rotation = 3.14159
+
+[node name="BulletHellProjectile" parent="Node2D4" instance=ExtResource( 1 )]
+position = Vector2( 0, -80 )
+
+[node name="Node2D5" type="Node2D" parent="."]
+rotation = 4.18879
+
+[node name="BulletHellProjectile" parent="Node2D5" instance=ExtResource( 1 )]
+position = Vector2( 0, -80 )
+
+[node name="Node2D6" type="Node2D" parent="."]
+rotation = 5.23599
+
+[node name="BulletHellProjectile" parent="Node2D6" instance=ExtResource( 1 )]
+position = Vector2( 0, -80 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+autoplay = "animation_0"
+anims/RESET = SubResource( 1 )
+anims/animation_0 = SubResource( 2 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true
+collision_layer = 16
+
+[node name="Collision" parent="Hitbox" index="0"]
+shape = null
+
+[editable path="Hitbox"]

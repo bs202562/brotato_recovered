@@ -1,0 +1,249 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://projectiles/bullet_enemy/enemy_projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/units/enemies/corrupted_tree/pivot.gd" type="Script" id=2]
+[ext_resource path="res://projectiles/bullet_enemy/enemy_projectile_rotating.gd" type="Script" id=3]
+[ext_resource path="res://dlcs/dlc_1/enemies/eel/eel_pivots.gd" type="Script" id=4]
+
+[node name="Pivots" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="BulletsFar" type="Node2D" parent="."]
+
+[node name="Pivot" type="Node2D" parent="BulletsFar"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+
+[node name="EnemyProjectile" parent="BulletsFar/Pivot" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 500
+max_target_distance = 500
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot2" type="Node2D" parent="BulletsFar"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+
+[node name="EnemyProjectile" parent="BulletsFar/Pivot2" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 550
+max_target_distance = 550
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot3" type="Node2D" parent="BulletsFar"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+
+[node name="EnemyProjectile" parent="BulletsFar/Pivot3" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 600
+max_target_distance = 600
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot4" type="Node2D" parent="BulletsFar"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+
+[node name="EnemyProjectile" parent="BulletsFar/Pivot4" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 650
+max_target_distance = 650
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot7" type="Node2D" parent="BulletsFar"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+start_rotation = 180.0
+
+[node name="EnemyProjectile" parent="BulletsFar/Pivot7" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 500
+max_target_distance = 500
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot8" type="Node2D" parent="BulletsFar"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+start_rotation = 180.0
+
+[node name="EnemyProjectile" parent="BulletsFar/Pivot8" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 550
+max_target_distance = 550
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot9" type="Node2D" parent="BulletsFar"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+start_rotation = 180.0
+
+[node name="EnemyProjectile" parent="BulletsFar/Pivot9" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 600
+max_target_distance = 600
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot10" type="Node2D" parent="BulletsFar"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+start_rotation = 180.0
+
+[node name="EnemyProjectile" parent="BulletsFar/Pivot10" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 650
+max_target_distance = 650
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="BulletsClose" type="Node2D" parent="."]
+
+[node name="Pivot" type="Node2D" parent="BulletsClose"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+start_rotation = 90.0
+
+[node name="EnemyProjectile" parent="BulletsClose/Pivot" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 250
+max_target_distance = 250
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot2" type="Node2D" parent="BulletsClose"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+start_rotation = 90.0
+
+[node name="EnemyProjectile" parent="BulletsClose/Pivot2" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 300
+max_target_distance = 300
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot3" type="Node2D" parent="BulletsClose"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+start_rotation = 90.0
+
+[node name="EnemyProjectile" parent="BulletsClose/Pivot3" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 350
+max_target_distance = 350
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot4" type="Node2D" parent="BulletsClose"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+start_rotation = 90.0
+
+[node name="EnemyProjectile" parent="BulletsClose/Pivot4" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 400
+max_target_distance = 400
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot7" type="Node2D" parent="BulletsClose"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+start_rotation = 270.0
+
+[node name="EnemyProjectile" parent="BulletsClose/Pivot7" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 250
+max_target_distance = 250
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot8" type="Node2D" parent="BulletsClose"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+start_rotation = 270.0
+
+[node name="EnemyProjectile" parent="BulletsClose/Pivot8" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 300
+max_target_distance = 300
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot9" type="Node2D" parent="BulletsClose"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+start_rotation = 270.0
+
+[node name="EnemyProjectile" parent="BulletsClose/Pivot9" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 350
+max_target_distance = 350
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15
+
+[node name="Pivot10" type="Node2D" parent="BulletsClose"]
+script = ExtResource( 2 )
+rotation_speed = 1.2
+start_rotation = 270.0
+
+[node name="EnemyProjectile" parent="BulletsClose/Pivot10" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+destroy_on_leaving_screen = false
+min_target_distance = 400
+max_target_distance = 400
+speed = 200
+destroy_on_hit = false
+damage = 1.0
+damage_increase_each_wave = 1.15

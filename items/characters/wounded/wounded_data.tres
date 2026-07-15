@@ -1,0 +1,56 @@
+[gd_resource type="Resource" load_steps=30 format=2]
+
+[ext_resource path="res://items/characters/wounded/wounded_forehead_appearance.tres" type="Resource" id=1]
+[ext_resource path="res://weapons/ranged/taser/1/taser_data.tres" type="Resource" id=2]
+[ext_resource path="res://weapons/ranged/smg/1/smg_data.tres" type="Resource" id=3]
+[ext_resource path="res://weapons/ranged/pistol/1/pistol_data.tres" type="Resource" id=4]
+[ext_resource path="res://weapons/melee/ghost_flint/1/ghost_flint_data.tres" type="Resource" id=5]
+[ext_resource path="res://weapons/melee/cactus_mace/1/cactus_mace_data.tres" type="Resource" id=6]
+[ext_resource path="res://weapons/ranged/wand/1/wand_data.tres" type="Resource" id=7]
+[ext_resource path="res://weapons/ranged/icicle/1/icicle_data.tres" type="Resource" id=8]
+[ext_resource path="res://weapons/ranged/slingshot/1/slingshot_data.tres" type="Resource" id=9]
+[ext_resource path="res://weapons/melee/wrench/1/wrench_data.tres" type="Resource" id=10]
+[ext_resource path="res://items/characters/wounded/wounded_effect_4.tres" type="Resource" id=11]
+[ext_resource path="res://items/characters/wounded/wounded_effect_2.tres" type="Resource" id=12]
+[ext_resource path="res://items/characters/wounded/wounded_eyes_appearance.tres" type="Resource" id=13]
+[ext_resource path="res://items/characters/wounded/wounded_mouth_appearance.tres" type="Resource" id=14]
+[ext_resource path="res://items/characters/wounded/wounded_effect_1.tres" type="Resource" id=15]
+[ext_resource path="res://items/characters/wounded/wounded_icon.png" type="Texture" id=16]
+[ext_resource path="res://items/characters/character_data.gd" type="Script" id=17]
+[ext_resource path="res://weapons/ranged/double_barrel_shotgun/1/double_barrel_shotgun_data.tres" type="Resource" id=18]
+[ext_resource path="res://weapons/melee/fist/1/fist_data.tres" type="Resource" id=19]
+[ext_resource path="res://weapons/melee/stick/1/stick_data.tres" type="Resource" id=20]
+[ext_resource path="res://weapons/melee/knife/1/knife_data.tres" type="Resource" id=21]
+[ext_resource path="res://items/characters/wounded/wounded_skin_appearance.tres" type="Resource" id=22]
+[ext_resource path="res://items/characters/wounded/wounded_effect_3.tres" type="Resource" id=23]
+[ext_resource path="res://weapons/ranged/rail_gun/1/rail_gun_1_data.tres" type="Resource" id=24]
+[ext_resource path="res://items/characters/wounded/wounded_effect_5.tres" type="Resource" id=25]
+[ext_resource path="res://weapons/melee/fighting_stick/1/fighting_stick_data.tres" type="Resource" id=26]
+[ext_resource path="res://weapons/melee/chopper/1/chopper_data.tres" type="Resource" id=27]
+[ext_resource path="res://weapons/melee/hatchet/1/hatchet_data.tres" type="Resource" id=28]
+[ext_resource path="res://weapons/melee/spiky_shield/1/spiky_shield_data.tres" type="Resource" id=29]
+
+[resource]
+script = ExtResource( 17 )
+my_id = "character_wounded"
+unlocked_by_default = false
+can_be_looted = true
+icon = ExtResource( 16 )
+name = "CHARACTER_WOUNDED"
+tier = 0
+value = 1
+effects = [ ExtResource( 15 ), ExtResource( 12 ), ExtResource( 23 ), ExtResource( 11 ), ExtResource( 25 ) ]
+tracking_text = ""
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+max_nb = -1
+item_appearances = [ ExtResource( 1 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 22 ) ]
+tags = [  ]
+wanted_tags = [  ]
+banned_item_groups = [  ]
+banned_items = [ "item_acid", "item_alien_baby", "item_alien_magic", "item_alien_worm", "item_baby_squid", "item_bat", "item_blood_donation", "item_blood_leech", "item_bloody_hand", "item_broken_mouth", "item_butterfly", "item_cake", "item_coral", "item_cute_monkey", "item_decomposing_flesh", "item_estys_couch", "item_extra_stomach", "item_fairy", "item_fresh_meat", "item_fried_rice", "item_goblet", "item_grinds_magical_leaf", "item_helmet", "item_jelly", "item_jerky", "item_krakens_eye", "item_lemonade", "item_medikit", "item_metal_plate", "item_mushroom", "item_octopus", "item_padding", "item_penguin", "item_plant", "item_potion", "item_sad_tomato", "item_shmoop", "item_spicy_sauce", "item_stone_skin", "item_sunken_bell", "item_torture", "item_warrior_helmet", "item_weird_food", "item_weird_ghost", "item_whetstone", "item_alien_eyes", "item_garden", "item_doc_moth", "item_fruit_basket", "item_turret_healing" ]
+banned_upgrades = [ "upgrade_armor", "upgrade_max_hp", "upgrade_hp_regeneration", "upgrade_lifesteal" ]
+starting_weapons = [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 6 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 18 ), ExtResource( 9 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 24 ) ]
+starting_items = [  ]

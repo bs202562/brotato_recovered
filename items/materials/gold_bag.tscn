@@ -1,0 +1,30 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://items/materials/gold_bag.gd" type="Script" id=1]
+[ext_resource path="res://items/materials/water_drop_drip_single_04.wav" type="AudioStream" id=2]
+[ext_resource path="res://items/materials/water_drop_drip_single_01.wav" type="AudioStream" id=3]
+[ext_resource path="res://items/materials/water_drop_drip_single_03.wav" type="AudioStream" id=4]
+[ext_resource path="res://items/materials/alt_sounds/coin_bag_ring_gemstone_item_02.wav" type="AudioStream" id=5]
+[ext_resource path="res://items/materials/alt_sounds/coin_bag_ring_gemstone_item_04.wav" type="AudioStream" id=6]
+[ext_resource path="res://items/materials/alt_sounds/coin_bag_ring_gemstone_item_03.wav" type="AudioStream" id=7]
+[ext_resource path="res://items/materials/alt_sounds/coin_bag_ring_gemstone_item_01.wav" type="AudioStream" id=8]
+[ext_resource path="res://items/materials/alt_sounds/coin_bag_ring_gemstone_item_05.wav" type="AudioStream" id=9]
+[ext_resource path="res://items/materials/water_drop_drip_single_02.wav" type="AudioStream" id=10]
+[ext_resource path="res://items/materials/water_drop_drip_single_05.wav" type="AudioStream" id=11]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 24.0
+
+[node name="GoldBag" type="Area2D"]
+collision_layer = 0
+collision_mask = 256
+monitorable = false
+script = ExtResource( 1 )
+gold_pickup_sounds = [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 11 ) ]
+gold_alt_pickup_sounds = [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 9 ) ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color( 0, 0.0627451, 1, 1 )
+shape = SubResource( 1 )
+
+[connection signal="area_entered" from="." to="." method="_on_GoldBag_area_entered"]

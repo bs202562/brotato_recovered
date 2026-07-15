@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://effects/items/weapon_type_bonus_effect.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+key = ""
+text_key = "EFFECT_MELEE_WEAPON_BONUS"
+value = 50
+custom_key = ""
+storage_method = 0
+effect_sign = 3
+custom_args = [  ]
+weapon_type = 0
+stat_displayed_name = "stat_range"
+stat_name = "max_range"

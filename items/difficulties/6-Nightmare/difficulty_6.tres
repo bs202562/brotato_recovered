@@ -1,0 +1,30 @@
+[gd_resource type="Resource" load_steps=13 format=2]
+
+[ext_resource path="res://items/difficulties/difficulty_data.gd" type="Script" id=1]
+[ext_resource path="res://items/difficulties/6-Nightmare/difficulty_6_effect_0.tres" type="Resource" id=2]
+[ext_resource path="res://items/difficulties/6-Nightmare/difficulty_6_effect_1.tres" type="Resource" id=3]
+[ext_resource path="res://items/difficulties/6-Nightmare/difficulty_6_effect_4.tres" type="Resource" id=4]
+[ext_resource path="res://items/difficulties/6-Nightmare/difficulty_6_effect_5.tres" type="Resource" id=5]
+[ext_resource path="res://items/difficulties/6-Nightmare/difficulty_6_effect_6.tres" type="Resource" id=6]
+[ext_resource path="res://ui/menus/run/difficulty_selection/difficulty_icons/nightmare.png" type="Texture" id=7]
+[ext_resource path="res://items/difficulties/6-Nightmare/difficulty_6_effect_2.tres" type="Resource" id=8]
+[ext_resource path="res://items/difficulties/6-Nightmare/difficulty_6_effect_3.tres" type="Resource" id=9]
+[ext_resource path="res://items/difficulties/6-Nightmare/difficulty_6_effect_7.tres" type="Resource" id=10]
+[ext_resource path="res://items/difficulties/6-Nightmare/difficulty_6_effect_9.tres" type="Resource" id=11]
+[ext_resource path="res://items/difficulties/6-Nightmare/difficulty_6_effect_8.tres" type="Resource" id=12]
+
+[resource]
+script = ExtResource( 1 )
+my_id = "difficulty_6"
+unlocked_by_default = false
+can_be_looted = true
+icon = ExtResource( 7 )
+name = "DIFFICULTY_NIGHTMARE_1"
+tier = 6
+value = 6
+effects = [ ExtResource( 5 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 12 ) ]
+tracking_text = ""
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0

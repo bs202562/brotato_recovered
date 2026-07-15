@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/bot_o_mine_head.png-0bccf22132b9068ded980a4119a6604f.res"
+group_file="res://entities/units/pet/bot_o_mine/bot_o_mine.png"
+valid=true
+[deps]
+
+
+source_file="res://entities/units/pet/bot_o_mine/bot_o_mine_head.png"
+dest_files=[ "res://.import/bot_o_mine_head.png-0bccf22132b9068ded980a4119a6604f.res" ]
+
+[params]
+
+atlas_file="res://entities/units/pet/bot_o_mine/bot_o_mine.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

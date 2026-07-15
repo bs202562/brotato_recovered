@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/blazemander_head_1.png-626e179f2b2a12fe1776cccebeb9bb40.res"
+group_file="res://entities/units/pet/blazemander/blazemander.png"
+valid=true
+[deps]
+
+
+source_file="res://entities/units/pet/blazemander/blazemander_head_1.png"
+dest_files=[ "res://.import/blazemander_head_1.png-626e179f2b2a12fe1776cccebeb9bb40.res" ]
+
+[params]
+
+atlas_file="res://entities/units/pet/blazemander/blazemander.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

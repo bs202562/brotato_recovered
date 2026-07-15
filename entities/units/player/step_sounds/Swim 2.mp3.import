@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Swim 2.mp3-19c2373c6342ee8ed3af3bed7eb969f5.mp3str"
+
+[deps]
+
+source_file="res://entities/units/player/step_sounds/Swim 2.mp3"
+dest_files=[ "res://.import/Swim 2.mp3-19c2373c6342ee8ed3af3bed7eb969f5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

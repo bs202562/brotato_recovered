@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/splash_anim_eetitle_0000.png-2cd4bf99e28d4d06e40e73c5a40d8661.res"
+group_file="res://ui/splash/splashart_atlas.png"
+valid=true
+[deps]
+
+
+source_file="res://ui/splash/splash_anim_eetitle_0000.png"
+dest_files=[ "res://.import/splash_anim_eetitle_0000.png-2cd4bf99e28d4d06e40e73c5a40d8661.res" ]
+
+[params]
+
+atlas_file="res://ui/splash/splashart_atlas.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

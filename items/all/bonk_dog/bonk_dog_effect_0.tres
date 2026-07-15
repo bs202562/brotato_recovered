@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://effects/items/bonk_dog_effect.gd" type="Script" id=1]
+[ext_resource path="res://entities/units/pet/bonk_dog/bonk_dog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/units/pet/bonk_dog/bonk_dog_weapon_stats.tres" type="Resource" id=3]
+[ext_resource path="res://entities/units/pet/bonk_dog/bonk_dog_exploding_effect.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+key = ""
+text_key = "EFFECT_PET_BONK_DOG"
+value = 1
+custom_key = ""
+storage_method = 0
+effect_sign = 3
+custom_args = [  ]
+scene = ExtResource( 2 )
+is_structure = false
+weapon_stats = ExtResource( 3 )
+explosion_effect = ExtResource( 4 )

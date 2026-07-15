@@ -1,0 +1,372 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://entities/units/pet/pet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/units/pet/ratzilla/ratzilla.gd" type="Script" id=2]
+[ext_resource path="res://entities/units/pet/ratzilla/sp_eyes_blink.png" type="Texture" id=3]
+[ext_resource path="res://entities/units/target_behavior/closest_enemy_target_behavior.gd" type="Script" id=4]
+[ext_resource path="res://entities/units/pet/ratzilla/ratzilla_stats.tres" type="Resource" id=5]
+[ext_resource path="res://overlap/hitbox.gd" type="Script" id=6]
+[ext_resource path="res://entities/units/pet/ratzilla/sp_shadow.png" type="Texture" id=7]
+[ext_resource path="res://entities/units/pet/ratzilla/sp_body.png" type="Texture" id=8]
+[ext_resource path="res://entities/units/pet/ratzilla/sp_eyes.png" type="Texture" id=9]
+[ext_resource path="res://visual_effects/shader_noise_displacement.tres" type="Shader" id=10]
+[ext_resource path="res://entities/units/pet/ratzilla/sp_tail.png" type="Texture" id=11]
+[ext_resource path="res://entities/units/pet/hand_pet.png" type="Texture" id=17]
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = ExtResource( 10 )
+shader_param/wave_speed = -0.287
+shader_param/wave_size = 1.725
+shader_param/wave_strenght = 0.276
+shader_param/TextureUniform = ExtResource( 11 )
+
+[sub_resource type="ViewportTexture" id=7]
+flags = 4
+viewport_path = NodePath("Animation/Viewport")
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 22.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle_pet"
+length = 2.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Animation:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Animation:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -24, -0.25, 0, 0.25, 0, -19, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -19, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Animation:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Animation:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Animation/Viewport/offset/Node2D:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "move"
+length = 2.0
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animation:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Animation:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -23.0182 ), Vector2( 0, -12 ), Vector2( 0, -23.0182 ), Vector2( 0, -12 ), Vector2( 0, -23.0182 ), Vector2( 0, -12 ), Vector2( 0, -23.0182 ), Vector2( 0, -12 ), Vector2( 0, -23.0182 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Animation/Viewport/offset/Node2D:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 53.3, 0.0, 33.4, 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "pet"
+length = 2.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Animation:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Animation:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -24, -0.25, 0, 0.25, 0, -21.874, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Animation:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Animation:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2.5 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Animation/hand_pet:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Animation/hand_pet:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.1, 0.2, 1, 1.1, 1.2, 2.2, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 29.9376, -13.1461 ), Vector2( 10.9246, -7.37766 ), Vector2( 37.5516, 0.322039 ), Vector2( 19.1806, -19.1367 ), Vector2( 10.4806, -6.6175 ), Vector2( 36.2758, 2.601 ), Vector2( 30, -45 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Animation/hand_pet:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2, 1, 1.1, 1.2, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -8.4, 22.7, -16.4, -8.4, 22.7 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Animation/Viewport/offset/Node2D:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 2.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 24.2, 24.2, 0.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 600.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 33.39
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animation/Viewport/offset/eyes:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "blink_animation"
+length = 1.666
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animation/Viewport/offset/eyes:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 9 ), ExtResource( 3 ) ]
+}
+
+[node name="Ratzilla" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+stats = ExtResource( 5 )
+shoot_projectiles = false
+
+[node name="Animation" parent="." index="0"]
+position = Vector2( 0, -12 )
+
+[node name="Viewport" type="Viewport" parent="Animation" index="0"]
+size = Vector2( 200, 200 )
+transparent_bg = true
+hdr = false
+disable_3d = true
+render_target_v_flip = true
+render_target_update_mode = 3
+
+[node name="offset" type="Node2D" parent="Animation/Viewport" index="0"]
+position = Vector2( 100, 128.987 )
+
+[node name="shadow" type="Sprite" parent="Animation/Viewport/offset" index="0"]
+position = Vector2( 0, -33.778 )
+texture = ExtResource( 7 )
+
+[node name="Node2D" type="Node2D" parent="Animation/Viewport/offset" index="1"]
+position = Vector2( -10, -1.987 )
+
+[node name="trail" type="Sprite" parent="Animation/Viewport/offset/Node2D" index="0"]
+material = SubResource( 12 )
+position = Vector2( 10, -31.791 )
+texture = ExtResource( 11 )
+
+[node name="body" type="Sprite" parent="Animation/Viewport/offset" index="2"]
+position = Vector2( 0, -33.778 )
+texture = ExtResource( 8 )
+
+[node name="eyes" type="Sprite" parent="Animation/Viewport/offset" index="3"]
+position = Vector2( -1.458, -33.778 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" parent="Animation" index="1"]
+position = Vector2( 1, 39.046 )
+texture = SubResource( 7 )
+offset = Vector2( -1, -39.046 )
+
+[node name="hand_pet" type="Sprite" parent="Animation" index="2"]
+visible = false
+position = Vector2( 29.9376, -13.1461 )
+rotation = 0.39619
+texture = ExtResource( 17 )
+offset = Vector2( -14.2688, 31.621 )
+
+[node name="Collision" parent="." index="1"]
+position = Vector2( 0, 10 )
+shape = SubResource( 10 )
+
+[node name="Hurtbox" parent="." index="2"]
+visible = false
+position = Vector2( 0, -5 )
+
+[node name="Collision" parent="Hurtbox" index="0"]
+shape = SubResource( 11 )
+
+[node name="AnimationPlayer" parent="." index="3"]
+anims/idle_pet = SubResource( 3 )
+anims/move = SubResource( 5 )
+anims/pet = SubResource( 6 )
+blend_times = [ "idle_pet", "move", 0.15, "move", "idle_pet", 0.15 ]
+
+[node name="MovementBehavior" parent="." index="5"]
+stop_close_to_target = true
+distance_to_target = 100.0
+
+[node name="TargetBehavior" parent="." index="6"]
+visible = false
+script = ExtResource( 4 )
+target_player_if_no_target = false
+pet_id = "ratzilla"
+exclude_elite_and_boss_target = true
+
+[node name="Range" type="Area2D" parent="TargetBehavior" index="0"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetBehavior/Range" index="0"]
+shape = SubResource( 1 )
+
+[node name="Hitbox" type="Area2D" parent="." index="10"]
+unique_name_in_owner = true
+collision_layer = 1024
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, 10 )
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="." index="11"]
+unique_name_in_owner = true
+
+[node name="blink_animation" type="AnimationPlayer" parent="." index="12"]
+autoplay = "blink_animation"
+anims/RESET = SubResource( 8 )
+anims/blink_animation = SubResource( 9 )
+
+[connection signal="target_found" from="TargetBehavior" to="MovementBehavior" method="_on_TargetBehavior_target_found"]
+[connection signal="target_player" from="TargetBehavior" to="MovementBehavior" method="_on_TargetBehavior_target_player"]
+[connection signal="body_entered" from="TargetBehavior/Range" to="TargetBehavior" method="_on_Range_body_entered"]
+[connection signal="body_exited" from="TargetBehavior/Range" to="TargetBehavior" method="_on_Range_body_exited"]
+[connection signal="hit_something" from="Hitbox" to="." method="_on_Hitbox_hit_something"]
+
+[editable path="Hurtbox"]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://projectiles/bullet_hells/bullet_hell_projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://projectiles/bullet_hells/bullet_hell.gd" type="Script" id=2]
+[ext_resource path="res://projectiles/bullet_hells/bullets_generator.gd" type="Script" id=3]
+[ext_resource path="res://projectiles/bullet_hells/snake_of_bullets_0.tscn" type="PackedScene" id=4]
+
+[node name="BulletHell" type="Node2D"]
+script = ExtResource( 2 )
+projectile_scene = ExtResource( 1 )
+projectile_damage = 3
+projectile_damage_increase_each_wave = 1.0
+projectile_speed = 150.0
+spawn_rate = 15.0
+
+[node name="snakes" type="Node2D" parent="."]
+script = ExtResource( 3 )
+anchor_position = 1
+offset_anchor_positon = Vector2( -64, -250 )
+projectile_scene_override = ExtResource( 4 )
+duplication_constant_along = 1
+duplication_offset_position = Vector2( 500, 0 )
+duplication_offset_start_cd = 1.0
+spawn_rate_factor = 0.25
+direction = Vector2( 0, 1 )
+position_spawn_randomness = Vector2( 400, 0 )
+sinusoidal_motion_speed = Vector2( 1, 1 )
+
+[node name="bullets_l" type="Node2D" parent="."]
+script = ExtResource( 3 )
+anchor_position = 7
+offset_anchor_positon = Vector2( -64, 250 )
+duplication_constant_along = 2
+duplication_offset_position = Vector2( 0, -300 )
+duplication_offset_start_cd = 2.0
+speed_factor = 1.245
+spawn_rate_factor = 0.971
+position_spawn_randomness = Vector2( 0, 120 )
+sinusoidal_motion = Vector2( 0, 75 )
+sinusoidal_motion_speed = Vector2( 0, 0.78 )
+
+[node name="bullets_r" type="Node2D" parent="."]
+script = ExtResource( 3 )
+anchor_position = 9
+offset_anchor_positon = Vector2( 64, 250 )
+duplication_constant_along = 2
+duplication_offset_position = Vector2( 0, -300 )
+duplication_offset_start_cd = 2.0
+speed_factor = 1.245
+spawn_rate_factor = 0.971
+direction = Vector2( -1, 0 )
+position_spawn_randomness = Vector2( 0, 120 )
+sinusoidal_motion = Vector2( 0, 75 )
+sinusoidal_motion_speed = Vector2( 0, 0.78 )

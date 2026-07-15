@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://addons/mod_loader/options/profiles/steam.tres" type="Resource" id=1]
+[ext_resource path="res://addons/mod_loader/resources/options_current.gd" type="Script" id=2]
+[ext_resource path="res://addons/mod_loader/options/profiles/editor.tres" type="Resource" id=3]
+[ext_resource path="res://addons/mod_loader/options/profiles/epic.tres" type="Resource" id=4]
+[ext_resource path="res://addons/mod_loader/options/profiles/default.tres" type="Resource" id=5]
+[ext_resource path="res://addons/mod_loader/options/profiles/gog.tres" type="Resource" id=6]
+
+[resource]
+script = ExtResource( 2 )
+current_options = ExtResource( 5 )
+feature_override_options = {
+"editor": ExtResource( 3 ),
+"epic": ExtResource( 4 ),
+"gog": ExtResource( 6 ),
+"steam": ExtResource( 1 )
+}

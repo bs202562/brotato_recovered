@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/bot_o_mine_antenna.png-ab6d3172b9e7c2c54e3b5c1d105075fc.res"
+group_file="res://entities/units/pet/bot_o_mine/bot_o_mine.png"
+valid=true
+[deps]
+
+
+source_file="res://entities/units/pet/bot_o_mine/bot_o_mine_antenna.png"
+dest_files=[ "res://.import/bot_o_mine_antenna.png-ab6d3172b9e7c2c54e3b5c1d105075fc.res" ]
+
+[params]
+
+atlas_file="res://entities/units/pet/bot_o_mine/bot_o_mine.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

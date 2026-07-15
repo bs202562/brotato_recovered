@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ui/menus/title_screen/title_screen.gd" type="Script" id=1]
+[ext_resource path="res://ui/menus/menus.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/menus/title_screen/title_screen_menus.gd" type="Script" id=3]
+[ext_resource path="res://ui/menus/pages/main_menu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=5]
+[ext_resource path="res://ui/menus/pages/menu_profile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/popups/popup_anouncement_modupdatewarning.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/popups/popup_beta_save_warning.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/menus/pages/menu_credits.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ui/menus/pages/mods/menu_mods.tscn" type="PackedScene" id=15]
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+script = ExtResource( 1 )
+
+[node name="AnimatedBackgroundContainer" type="Control" parent="."]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AttenuateBackground" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color( 1, 1, 1, 0.666667 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menus" parent="." instance=ExtResource( 2 )]
+unique_name_in_owner = true
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+script = ExtResource( 3 )
+
+[node name="MenuProfile" parent="Menus" instance=ExtResource( 6 )]
+visible = false
+
+[node name="MainMenu" parent="Menus" instance=ExtResource( 4 )]
+unique_name_in_owner = true
+margin_top = 47.0
+
+[node name="MenuCredits" parent="Menus" instance=ExtResource( 10 )]
+visible = false
+
+[node name="MenuMods" parent="Menus" instance=ExtResource( 15 )]
+visible = false
+
+[node name="popup_mods_update_warning" parent="." instance=ExtResource( 7 )]
+unique_name_in_owner = true
+
+[node name="popup_beta_save_warning" parent="." instance=ExtResource( 8 )]
+unique_name_in_owner = true
+
+[connection signal="back_button_pressed" from="Menus/MenuProfile" to="Menus" method="_on_MenuProfile_back_button_pressed"]
+[connection signal="credits_button_pressed" from="Menus/MainMenu" to="Menus" method="_on_MainMenu_credits_button_pressed"]
+[connection signal="mods_button_pressed" from="Menus/MainMenu" to="Menus" method="_on_MainMenu_mods_button_pressed"]
+[connection signal="profile_button_pressed" from="Menus/MainMenu" to="Menus" method="_on_MainMenu_profile_button_pressed"]
+[connection signal="back_button_pressed" from="Menus/MenuCredits" to="Menus" method="_on_MenuCredits_back_button_pressed"]
+[connection signal="back_button_pressed" from="Menus/MenuMods" to="Menus" method="_on_MenuMods_back_button_pressed"]
+
+[editable path="Menus"]

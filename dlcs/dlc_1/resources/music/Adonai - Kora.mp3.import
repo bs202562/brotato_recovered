@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Adonai - Kora.mp3-ffbcd1d8615d8e2d8926c1629ccdc838.mp3str"
+
+[deps]
+
+source_file="res://dlcs/dlc_1/resources/music/Adonai - Kora.mp3"
+dest_files=[ "res://.import/Adonai - Kora.mp3-ffbcd1d8615d8e2d8926c1629ccdc838.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

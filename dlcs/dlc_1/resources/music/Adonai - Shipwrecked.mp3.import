@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Adonai - Shipwrecked.mp3-3122353eca4e606e779aa37eb92d56eb.mp3str"
+
+[deps]
+
+source_file="res://dlcs/dlc_1/resources/music/Adonai - Shipwrecked.mp3"
+dest_files=[ "res://.import/Adonai - Shipwrecked.mp3-3122353eca4e606e779aa37eb92d56eb.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

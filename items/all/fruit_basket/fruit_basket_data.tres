@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://items/all/fruit_basket/fruit_basket_effect_2.tres" type="Resource" id=1]
+[ext_resource path="res://items/all/fruit_basket/fruit_basket_effect_1.tres" type="Resource" id=2]
+[ext_resource path="res://items/global/item_data.gd" type="Script" id=3]
+[ext_resource path="res://items/all/fruit_basket/fruit_basket_icon.png" type="Texture" id=4]
+[ext_resource path="res://items/all/fruit_basket/fruit_basket_appearance.tres" type="Resource" id=5]
+
+[resource]
+script = ExtResource( 3 )
+my_id = "item_fruit_basket"
+unlocked_by_default = false
+can_be_looted = true
+icon = ExtResource( 4 )
+name = "ITEM_FRUIT_BASKET"
+tier = 1
+value = 45
+effects = [ ExtResource( 2 ), ExtResource( 1 ) ]
+tracking_text = "fruit_count"
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+max_nb = 4
+item_appearances = [ ExtResource( 5 ) ]
+tags = [ "consumable" ]

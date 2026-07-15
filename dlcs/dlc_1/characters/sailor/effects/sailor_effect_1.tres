@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://items/global/effect.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+key = "weapon_class_naval"
+text_key = "effect_bonus_weapon_class_damage_against_cursed_enemies"
+value = 200
+custom_key = "bonus_weapon_class_damage_against_cursed_enemies"
+storage_method = 1
+effect_sign = 3
+custom_args = [  ]

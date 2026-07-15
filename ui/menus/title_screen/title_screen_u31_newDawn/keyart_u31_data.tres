@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://ui/menus/title_screen/title_screen_u31_newDawn/title_screen_u31_newDawn_background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u31_newDawn/keyart_u31_logo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/menus/title_screen/title_screen_background/title_screen_background_data.gd" type="Script" id=3]
+
+[resource]
+script = ExtResource( 3 )
+my_id = "KEYART_U31"
+index_priority = 31
+scene = ExtResource( 1 )
+logo_scene = ExtResource( 2 )
+last_update = false
+start_date = {
+"day": 1,
+"month": 1,
+"year": 2026
+}
+end_date = {
+"day": 31,
+"month": 1,
+"year": 2026
+}

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" load_steps=9 format=2]
+
+[ext_resource path="res://items/global/weapon_data.gd" type="Script" id=1]
+[ext_resource path="res://dlcs/dlc_1/weapons/melee/chainsaw/chainsaw_icon.png" type="Texture" id=2]
+[ext_resource path="res://dlcs/dlc_1/weapons/melee/chainsaw/3/chainsaw_3_stats.tres" type="Resource" id=3]
+[ext_resource path="res://dlcs/dlc_1/weapons/melee/chainsaw/4/chainsaw_4_data.tres" type="Resource" id=4]
+[ext_resource path="res://dlcs/dlc_1/weapons/melee/chainsaw/chainsaw.tscn" type="PackedScene" id=5]
+[ext_resource path="res://dlcs/dlc_1/weapons/melee/chainsaw/3/chainsaw_3_effect_0.tres" type="Resource" id=6]
+[ext_resource path="res://items/sets/tool/tool_set_data.tres" type="Resource" id=7]
+[ext_resource path="res://items/sets/blade/blade_set_data.tres" type="Resource" id=8]
+
+[resource]
+script = ExtResource( 1 )
+my_id = "weapon_chainsaw_3"
+unlocked_by_default = true
+icon = ExtResource( 2 )
+name = "WEAPON_CHAINSAW"
+tier = 2
+value = 112
+effects = [ ExtResource( 6 ) ]
+tracking_text = ""
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+weapon_id = "weapon_chainsaw"
+type = 0
+sets = [ ExtResource( 8 ), ExtResource( 7 ) ]
+scene = ExtResource( 5 )
+stats = ExtResource( 3 )
+upgrades_into = ExtResource( 4 )
+add_to_chars_as_starting = [  ]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/lootworm_body_2.png-bed6ef4bb446fa5bf49534b5db42ad63.res"
+group_file="res://entities/units/pet/lootworm/lootworm.png"
+valid=true
+[deps]
+
+
+source_file="res://entities/units/pet/lootworm/lootworm_body_2.png"
+dest_files=[ "res://.import/lootworm_body_2.png-bed6ef4bb446fa5bf49534b5db42ad63.res" ]
+
+[params]
+
+atlas_file="res://entities/units/pet/lootworm/lootworm.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

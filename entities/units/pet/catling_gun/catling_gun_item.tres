@@ -1,0 +1,32 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://entities/units/pet/ItemPet.gd" type="Script" id=1]
+[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_icon.png" type="Texture" id=2]
+[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_stats.tres" type="Resource" id=3]
+[ext_resource path="res://items/all/catling_gun/catling_gun.tres" type="Resource" id=4]
+[ext_resource path="res://entities/units/pet/catling_gun/catling_gun_screen.png" type="Texture" id=5]
+
+[resource]
+script = ExtResource( 1 )
+my_id = "catling_gun"
+unlocked_by_default = false
+can_be_looted = true
+icon = ExtResource( 2 )
+name = "CATLING_GUN_NAME"
+tier = 0
+value = 1
+effects = [  ]
+tracking_text = ""
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+stats = ExtResource( 3 )
+behaviour_description = "CATLING_GUN_BEHAVIOUR_DESCRIPTION"
+show_hp = false
+show_dammage = false
+show_speed = true
+show_knoback_resistance = false
+show_material_dropped = false
+screen_example = ExtResource( 5 )
+item_drop = ExtResource( 4 )

@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://dlcs/dlc_1/enemies/diplocaulus/diplocaulus.png" type="Texture" id=1]
+[ext_resource path="res://entities/units/enemies/enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://dlcs/dlc_1/enemies/diplocaulus/diplocaulus_stats.tres" type="Resource" id=3]
+[ext_resource path="res://entities/units/enemies/attack_behaviors/spawning_attack_behavior.gd" type="Script" id=4]
+[ext_resource path="res://entities/units/movement_behaviors/target_rand_pos_movement_behavior.gd" type="Script" id=5]
+[ext_resource path="res://entities/units/enemies/slasher_egg/slasher_egg.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 35.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 37.0135
+
+[node name="Enemy" instance=ExtResource( 2 )]
+stats = ExtResource( 3 )
+enemy_id = "diplocaulus"
+
+[node name="Sprite" parent="Animation" index="0"]
+position = Vector2( -8, -17 )
+texture = ExtResource( 1 )
+
+[node name="Collision" parent="." index="1"]
+position = Vector2( -1, -9 )
+shape = SubResource( 2 )
+
+[node name="Collision" parent="Hurtbox" index="0"]
+position = Vector2( 0, -8 )
+shape = SubResource( 3 )
+
+[node name="Collision" parent="Hitbox" index="0"]
+position = Vector2( 0, -11 )
+shape = SubResource( 4 )
+
+[node name="MovementBehavior" parent="." index="6"]
+script = ExtResource( 5 )
+
+[node name="AttackBehavior" parent="." index="7"]
+script = ExtResource( 4 )
+enemy_to_spawn = ExtResource( 6 )
+cooldown = 180.0
+max_cd_randomization = 10
+attack_anim_speed = 1.0
+nb_to_spawn = 1
+spawn_at_random_pos = false
+spawn_in_radius_around_unit = 300
+max_nb_of_spawns = 5
+
+[connection signal="wanted_to_spawn_an_enemy" from="AttackBehavior" to="." method="_on_AttackBehavior_wanted_to_spawn_an_enemy"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]

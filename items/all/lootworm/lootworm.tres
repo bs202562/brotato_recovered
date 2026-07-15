@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://items/all/lootworm/lootworm_effect_0.tres" type="Resource" id=1]
+[ext_resource path="res://items/global/item_data.gd" type="Script" id=2]
+[ext_resource path="res://items/all/lootworm/egg_lootworm_icon.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 2 )
+my_id = "item_lootworm"
+unlocked_by_default = false
+can_be_looted = true
+icon = ExtResource( 3 )
+name = "ITEM_LOOTWORM"
+tier = 0
+value = 30
+effects = [ ExtResource( 1 ) ]
+tracking_text = "MATERIALS_GAINED"
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+max_nb = 1
+item_appearances = [  ]
+tags = [ "economy", "pickup", "pet" ]

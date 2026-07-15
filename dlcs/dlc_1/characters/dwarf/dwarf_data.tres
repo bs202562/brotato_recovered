@@ -1,0 +1,41 @@
+[gd_resource type="Resource" load_steps=16 format=2]
+
+[ext_resource path="res://items/characters/character_data.gd" type="Script" id=1]
+[ext_resource path="res://dlcs/dlc_1/characters/dwarf/effects/dwarf_effect_1.tres" type="Resource" id=2]
+[ext_resource path="res://dlcs/dlc_1/characters/dwarf/appearances/dwarf_app_0.tres" type="Resource" id=3]
+[ext_resource path="res://dlcs/dlc_1/characters/dwarf/effects/dwarf_effect_0.tres" type="Resource" id=4]
+[ext_resource path="res://dlcs/dlc_1/characters/dwarf/effects/dwarf_effect_2.tres" type="Resource" id=5]
+[ext_resource path="res://dlcs/dlc_1/characters/dwarf/appearances/dwarf_app_2.tres" type="Resource" id=6]
+[ext_resource path="res://dlcs/dlc_1/characters/dwarf/appearances/dwarf_app_1.tres" type="Resource" id=7]
+[ext_resource path="res://dlcs/dlc_1/characters/dwarf/dwarf_icon.png" type="Texture" id=8]
+[ext_resource path="res://weapons/melee/wrench/2/wrench_2_data.tres" type="Resource" id=9]
+[ext_resource path="res://weapons/melee/hammer/2/hammer_2_data.tres" type="Resource" id=10]
+[ext_resource path="res://dlcs/dlc_1/characters/dwarf/effects/dwarf_effect_1a.tres" type="Resource" id=11]
+[ext_resource path="res://dlcs/dlc_1/characters/dwarf/effects/dwarf_effect_3.tres" type="Resource" id=12]
+[ext_resource path="res://dlcs/dlc_1/characters/dwarf/effects/dwarf_effect_1b.tres" type="Resource" id=13]
+[ext_resource path="res://dlcs/dlc_1/weapons/melee/brick/2/brick_2_data.tres" type="Resource" id=14]
+[ext_resource path="res://dlcs/dlc_1/weapons/melee/mace/2/mace_2_data.tres" type="Resource" id=15]
+
+[resource]
+script = ExtResource( 1 )
+my_id = "character_dwarf"
+unlocked_by_default = false
+can_be_looted = true
+icon = ExtResource( 8 )
+name = "CHARACTER_DWARF"
+tier = 0
+value = 1
+effects = [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 12 ) ]
+tracking_text = "stats_gained"
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+max_nb = -1
+item_appearances = [ ExtResource( 3 ), ExtResource( 7 ), ExtResource( 6 ) ]
+tags = [  ]
+wanted_tags = [ "stat_engineering", "structure" ]
+banned_item_groups = [  ]
+banned_items = [  ]
+starting_weapons = [ ExtResource( 10 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 15 ) ]
+starting_items = [  ]

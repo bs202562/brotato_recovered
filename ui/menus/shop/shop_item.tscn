@@ -1,0 +1,326 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/menus/shop/item_description.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/menus/shop/button_with_icon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/menus/shop/shop_item.gd" type="Script" id=4]
+[ext_resource path="res://resources/themes/panel_button_theme.tres" type="Theme" id=5]
+[ext_resource path="res://resources/fonts/actual/base/font_26.tres" type="DynamicFont" id=6]
+[ext_resource path="res://ui/menus/global/my_menu_button.gd" type="Script" id=7]
+[ext_resource path="res://items/global/locked_icon.png" type="Texture" id=8]
+[ext_resource path="res://ui/icons/misc/elite_icon_small.png" type="Texture" id=9]
+[ext_resource path="res://ui/menus/global/key_xbox_b.png" type="Texture" id=10]
+[ext_resource path="res://ui/menus/global/key_xbox_x.png" type="Texture" id=11]
+[ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="DynamicFont" id=12]
+[ext_resource path="res://ui/hud/ui_input_icon.gd" type="Script" id=13]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 0 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="ShopItem" type="VBoxContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -271.0
+margin_top = -328.0
+margin_right = 70.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 300, 0 )
+theme = ExtResource( 1 )
+custom_constants/separation = 10
+script = ExtResource( 4 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_right = 465.0
+margin_bottom = 482.0
+rect_min_size = Vector2( 0, 475 )
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 460.0
+margin_bottom = 477.0
+rect_clip_content = true
+mouse_filter = 2
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 445.0
+margin_bottom = 462.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemDescription" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 435.0
+margin_bottom = 376.0
+mouse_filter = 2
+custom_constants/separation = 15
+
+[node name="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription" index="0"]
+margin_right = 435.0
+mouse_filter = 2
+
+[node name="IconPanel" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/HBoxContainer" index="0"]
+mouse_filter = 2
+
+[node name="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/HBoxContainer" index="1"]
+margin_right = 435.0
+mouse_filter = 2
+
+[node name="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/HBoxContainer/ScrollContainer" index="0"]
+margin_right = 324.0
+mouse_filter = 2
+
+[node name="Name" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/HBoxContainer/ScrollContainer/VBoxContainer" index="0"]
+margin_right = 324.0
+
+[node name="Category" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/HBoxContainer/ScrollContainer/VBoxContainer" index="1"]
+margin_right = 324.0
+mouse_filter = 1
+
+[node name="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription" index="1"]
+mouse_filter = 2
+
+[node name="PlayerStatsDescr" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/VBoxContainer" index="0"]
+mouse_filter = 2
+
+[node name="PlayerStatsDescr_left" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/VBoxContainer/PlayerStatsDescr" index="0"]
+mouse_filter = 2
+
+[node name="PlayerStatsDescr_right" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/VBoxContainer/PlayerStatsDescr" index="1"]
+mouse_filter = 2
+
+[node name="WeaponStats" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/VBoxContainer" index="1"]
+mouse_filter = 2
+
+[node name="Effects" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/VBoxContainer" index="2"]
+mouse_filter = 2
+
+[node name="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription" index="2"]
+margin_top = 111.0
+margin_right = 435.0
+margin_bottom = 376.0
+mouse_filter = 1
+
+[node name="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/ScrollContainer" index="0"]
+margin_right = 435.0
+mouse_filter = 2
+
+[node name="PlayerStatsDescr_scrolled" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/ScrollContainer/VBoxContainer" index="0"]
+mouse_filter = 2
+
+[node name="PlayerStatsDescr_scrolled_left" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/ScrollContainer/VBoxContainer/PlayerStatsDescr_scrolled" index="0"]
+mouse_filter = 2
+
+[node name="PlayerStatsDescr_scrolled_right" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/ScrollContainer/VBoxContainer/PlayerStatsDescr_scrolled" index="1"]
+mouse_filter = 2
+
+[node name="WeaponStats_scrolled" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/ScrollContainer/VBoxContainer" index="1"]
+mouse_filter = 2
+
+[node name="Effects_scrolled" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/ScrollContainer/VBoxContainer" index="2"]
+margin_right = 435.0
+mouse_filter = 2
+
+[node name="effect_line" parent="PanelContainer/MarginContainer/VBoxContainer/ItemDescription/ScrollContainer/VBoxContainer/Effects_scrolled" index="0"]
+margin_right = 435.0
+
+[node name="EmptySpace" type="ColorRect" parent="PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 380.0
+margin_right = 435.0
+margin_bottom = 380.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyButton" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
+unique_name_in_owner = true
+margin_left = 214.0
+margin_top = 384.0
+margin_right = 220.0
+margin_bottom = 452.0
+size_flags_horizontal = 4
+theme = ExtResource( 5 )
+
+[node name="TopButtonsContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+margin_top = 492.0
+margin_right = 465.0
+margin_bottom = 548.0
+alignment = 1
+
+[node name="empty_space_l" type="Control" parent="TopButtonsContainer"]
+margin_right = 20.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="StealButton" type="Button" parent="TopButtonsContainer"]
+unique_name_in_owner = true
+margin_left = 24.0
+margin_right = 257.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 6 )
+toggle_mode = true
+text = "MENU_STEAL"
+icon = ExtResource( 9 )
+icon_align = 2
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LockButton" type="Button" parent="TopButtonsContainer"]
+unique_name_in_owner = true
+margin_left = 261.0
+margin_right = 441.0
+margin_bottom = 56.0
+focus_mode = 0
+size_flags_horizontal = 7
+custom_fonts/font = ExtResource( 6 )
+toggle_mode = true
+text = "MENU_LOCK"
+expand_icon = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AdditionalIcon" type="TextureRect" parent="TopButtonsContainer/LockButton"]
+margin_right = 51.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 51, 0 )
+texture = ExtResource( 11 )
+expand = true
+script = ExtResource( 13 )
+input_string = "ui_select"
+
+[node name="LockIcon" type="TextureRect" parent="TopButtonsContainer/LockButton"]
+unique_name_in_owner = true
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -64.0
+rect_min_size = Vector2( 64, 0 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="empty_space_r" type="Control" parent="TopButtonsContainer"]
+margin_left = 445.0
+margin_right = 465.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="BottomButtonsContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+margin_top = 558.0
+margin_right = 465.0
+margin_bottom = 603.0
+alignment = 1
+
+[node name="empty_space_l" type="Control" parent="BottomButtonsContainer"]
+margin_right = 20.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="BanButton" type="Button" parent="BottomButtonsContainer"]
+unique_name_in_owner = true
+margin_left = 24.0
+margin_right = 441.0
+margin_bottom = 45.0
+rect_pivot_offset = Vector2( -705, -170 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 12 )
+text = "BAN_SHOP"
+expand_icon = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="progress_ban" type="ProgressBar" parent="BottomButtonsContainer/BanButton"]
+unique_name_in_owner = true
+modulate = Color( 1, 0, 0, 1 )
+self_modulate = Color( 1, 1, 1, 0.407843 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+max_value = 1.0
+step = 0.001
+percent_visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AdditionalIcon" type="TextureRect" parent="BottomButtonsContainer/BanButton"]
+margin_right = 51.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 51, 0 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 13 )
+input_string = "ui_coop_ban"
+
+[node name="empty_space_r" type="Control" parent="BottomButtonsContainer"]
+margin_left = 445.0
+margin_right = 465.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 20, 0 )
+
+[connection signal="mouse_entered" from="PanelContainer" to="." method="_on_BuyButton_focus_entered"]
+[connection signal="mouse_exited" from="PanelContainer" to="." method="_on_BuyButton_focus_exited"]
+[connection signal="mouse_exited_category" from="PanelContainer/MarginContainer/VBoxContainer/ItemDescription" to="." method="_on_ItemDescription_mouse_exited_category"]
+[connection signal="mouse_hovered_category" from="PanelContainer/MarginContainer/VBoxContainer/ItemDescription" to="." method="_on_ItemDescription_mouse_hovered_category"]
+[connection signal="focus_entered" from="PanelContainer/MarginContainer/VBoxContainer/BuyButton" to="." method="_on_BuyButton_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/MarginContainer/VBoxContainer/BuyButton" to="." method="_on_BuyButton_focus_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/BuyButton" to="." method="_on_BuyButton_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/BuyButton" to="." method="_on_BuyButton_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BuyButton" to="." method="_on_BuyButton_pressed" flags=3]
+[connection signal="focus_entered" from="TopButtonsContainer/StealButton" to="." method="_on_BuyButton_focus_entered"]
+[connection signal="focus_exited" from="TopButtonsContainer/StealButton" to="." method="_on_BuyButton_focus_exited"]
+[connection signal="pressed" from="TopButtonsContainer/StealButton" to="." method="_on_StealButton_pressed" flags=3]
+[connection signal="focus_entered" from="TopButtonsContainer/LockButton" to="." method="_on_BuyButton_focus_entered"]
+[connection signal="focus_exited" from="TopButtonsContainer/LockButton" to="." method="_on_BuyButton_focus_exited"]
+[connection signal="toggled" from="TopButtonsContainer/LockButton" to="." method="_on_LockButton_toggled"]
+[connection signal="button_down" from="BottomButtonsContainer/BanButton" to="." method="_on_BanButton_button_down"]
+[connection signal="focus_entered" from="BottomButtonsContainer/BanButton" to="." method="_on_BuyButton_focus_entered"]
+[connection signal="focus_exited" from="BottomButtonsContainer/BanButton" to="." method="_on_BuyButton_focus_exited"]
+[connection signal="pressed" from="BottomButtonsContainer/BanButton" to="." method="_on_BanButton_pressed"]
+
+[editable path="PanelContainer/MarginContainer/VBoxContainer/ItemDescription"]

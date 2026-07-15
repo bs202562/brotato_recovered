@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/scapegoat_body.png-73dd9a182c053cf7d9f47bfa368f0b74.res"
+group_file="res://entities/units/pet/scapegoat/scapegoat.png"
+valid=true
+[deps]
+
+
+source_file="res://entities/units/pet/scapegoat/scapegoat_body.png"
+dest_files=[ "res://.import/scapegoat_body.png-73dd9a182c053cf7d9f47bfa368f0b74.res" ]
+
+[params]
+
+atlas_file="res://entities/units/pet/scapegoat/scapegoat.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

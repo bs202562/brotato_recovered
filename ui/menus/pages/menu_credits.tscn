@@ -1,0 +1,286 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/menus/pages/menu_credits.gd" type="Script" id=2]
+[ext_resource path="res://resources/fonts/actual/base/font_26_outline.tres" type="DynamicFont" id=3]
+[ext_resource path="res://ui/blobfish_games_logo.png" type="Texture" id=4]
+[ext_resource path="res://resources/fonts/actual/base/font_26.tres" type="DynamicFont" id=5]
+[ext_resource path="res://ui/splash/splash_anim_evilboy_0008.png" type="Texture" id=6]
+[ext_resource path="res://ui/splash/splash_anim_eetitle_0006.png" type="Texture" id=7]
+[ext_resource path="res://resources/fonts/actual/base/font_60_outline.tres" type="DynamicFont" id=8]
+[ext_resource path="res://ui/menus/global/arrow_left_border.png" type="Texture" id=9]
+[ext_resource path="res://ui/seaven_logo.png" type="Texture" id=10]
+
+[node name="MenuCredits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.572549 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_top = 75.0
+margin_right = 1920.0
+margin_bottom = 1008.0
+custom_constants/separation = 79
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_right = 1920.0
+margin_bottom = 800.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control"]
+margin_right = 640.0
+margin_bottom = 1000.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Control/VBoxContainer"]
+margin_right = 640.0
+margin_bottom = 73.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 8 )
+text = "A game by"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/VBoxContainer"]
+margin_left = 195.0
+margin_top = 77.0
+margin_right = 445.0
+margin_bottom = 327.0
+rect_min_size = Vector2( 250, 250 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="Names" type="RichTextLabel" parent="VBoxContainer/Control/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 331.0
+margin_right = 640.0
+margin_bottom = 663.0
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center]Thomas Gervraud - [color=#ffee8b]lots of stuff[/color]
+Kilian Diener - [color=#ffee8b]programming[/color]
+Gian Jenal - [color=#ffee8b]game design, art, sfx[/color]
+Marco Conrad - [color=#ffee8b]marketing[/color]
+Tobias Mansfield-Williams - [color=#ffee8b]programming[/color]
+Maxime Gervraud - [color=#ffee8b]playtesting, video editing[/color]
+Adrien Gervraud - [color=#ffee8b]playtesting[/color]"
+text = "Thomas Gervraud - lots of stuff
+Kilian Diener - programming
+Gian Jenal - game design, art, sfx
+Marco Conrad - marketing
+Tobias Mansfield-Williams - programming
+Maxime Gervraud - playtesting, video editing
+Adrien Gervraud - playtesting"
+
+[node name="Label3" type="RichTextLabel" parent="VBoxContainer/Control/VBoxContainer"]
+margin_top = 667.0
+margin_right = 640.0
+margin_bottom = 1000.0
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "
+[center][color=#ffee8b]New music tracks produced by Adonai
+
+Made with the Godot Engine
+
+Old music licensed through Artlist
+(2050, Luke Melville, Aviad Zinemanas, Evgeny Bardyuzha)"
+text = "
+New music tracks produced by Adonai
+
+Made with the Godot Engine
+
+Old music licensed through Artlist
+(2050, Luke Melville, Aviad Zinemanas, Evgeny Bardyuzha)"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Control"]
+margin_left = 640.0
+margin_right = 1280.0
+margin_bottom = 800.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Control/VBoxContainer2"]
+margin_right = 640.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
+text = "...and supported since September 2025 by"
+align = 1
+valign = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/VBoxContainer2"]
+margin_left = 220.0
+margin_top = 124.0
+margin_right = 420.0
+margin_bottom = 324.0
+rect_min_size = Vector2( 200, 200 )
+rect_pivot_offset = Vector2( 122, 150 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Control/VBoxContainer2/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="Names" type="RichTextLabel" parent="VBoxContainer/Control/VBoxContainer2"]
+margin_top = 328.0
+margin_right = 640.0
+margin_bottom = 800.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center]Dev Team
+Adrien Chaumont - [color=#ffee8b]marketing, producing[/color]
+Damien Clergeaud - [color=#ffee8b]game design, programming[/color]
+Jérémie Klemke - [color=#ffee8b]game design, programming[/color]
+Théophile Lecroart - [color=#ffee8b]art, programming[/color]
+
+Market
+Bérenger Dupré - [color=#ffee8b]Matt-wish[/color]
+Matthew Houghton - [color=#ffee8b]Matt[/color]
+Xin Yang - [color=#ffee8b]XYZ[/color]
+
+Direction
+Benjamin Laulan - [color=#ffee8b]businessing[/color]
+Thomas Pfeiffer - [color=#ffee8b]studio directing[/color]
+"
+text = "Dev Team
+Adrien Chaumont - marketing, producing
+Damien Clergeaud - game design, programming
+Jérémie Klemke - game design, programming
+Théophile Lecroart - art, programming
+
+Market
+Bérenger Dupré - Matt-wish
+Matthew Houghton - Matt
+Xin Yang - XYZ
+
+Direction
+Benjamin Laulan - businessing
+Thomas Pfeiffer - studio directing
+"
+scroll_active = false
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Control"]
+margin_left = 1280.0
+margin_right = 1920.0
+margin_bottom = 1000.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Control/VBoxContainer3"]
+margin_right = 640.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
+text = "...and consoles ports by"
+align = 1
+valign = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/VBoxContainer3"]
+margin_left = 230.0
+margin_top = 124.0
+margin_right = 410.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 180, 180 )
+rect_pivot_offset = Vector2( 122, 150 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="Names" type="RichTextLabel" parent="VBoxContainer/Control/VBoxContainer3"]
+margin_top = 308.0
+margin_right = 640.0
+margin_bottom = 1000.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center][color=#ffee8b]Console ports - Seaven Studio[/color]
+Pierre Chabiland
+Sylvain Dupont
+Pascal Féard
+Diane Landais
+Olivier Penot
+
+[color=#ffee8b]Console QA - Lollipop Robot[/color]
+Óscar Navalón
+Iván De Rosa
+Iván Cano
+Arquel Adonis
+Jaime Alfaro
+Álvaro Sanchez"
+text = "Console ports - Seaven Studio
+Pierre Chabiland
+Sylvain Dupont
+Pascal Féard
+Diane Landais
+Olivier Penot
+
+Console QA - Lollipop Robot
+Óscar Navalón
+Iván De Rosa
+Iván Cano
+Arquel Adonis
+Jaime Alfaro
+Álvaro Sanchez"
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 79.0
+margin_right = 1920.0
+margin_bottom = 879.0
+rect_min_size = Vector2( 0, 800 )
+size_flags_horizontal = 3
+custom_constants/separation = -420
+
+[node name="Buttons" type="VBoxContainer" parent="VBoxContainer"]
+margin_left = 660.0
+margin_top = 879.0
+margin_right = 1260.0
+margin_bottom = 933.0
+rect_min_size = Vector2( 600, 0 )
+size_flags_horizontal = 4
+custom_constants/separation = 25
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="VBoxContainer/Buttons"]
+unique_name_in_owner = true
+margin_left = 175.0
+margin_right = 425.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 5 )
+text = "MENU_BACK"
+icon = ExtResource( 9 )
+
+[connection signal="pressed" from="VBoxContainer/Buttons/BackButton" to="." method="_on_BackButton_pressed"]

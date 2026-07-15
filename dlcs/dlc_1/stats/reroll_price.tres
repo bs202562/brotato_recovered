@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://items/upgrades/stat_data.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+stat_name = "reroll_price"
+is_primary_stat = false
+is_dlc_stat = true
+color_override = Color( 0, 0, 0, 1 )
+reverse = true

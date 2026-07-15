@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/scapegoat_pet.wav-1cf404334ddb29887892f1cf6c6fdf4f.sample"
+
+[deps]
+
+source_file="res://entities/units/pet/scapegoat/scapegoat_pet.wav"
+dest_files=[ "res://.import/scapegoat_pet.wav-1cf404334ddb29887892f1cf6c6fdf4f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

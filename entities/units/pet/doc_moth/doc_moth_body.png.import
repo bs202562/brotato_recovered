@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/doc_moth_body.png-54063cc5ae6bd0764069856d674f07c5.res"
+group_file="res://entities/units/pet/doc_moth/doc_moth.png"
+valid=true
+[deps]
+
+
+source_file="res://entities/units/pet/doc_moth/doc_moth_body.png"
+dest_files=[ "res://.import/doc_moth_body.png-54063cc5ae6bd0764069856d674f07c5.res" ]
+
+[params]
+
+atlas_file="res://entities/units/pet/doc_moth/doc_moth.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

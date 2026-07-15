@@ -1,0 +1,34 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://effects/items/item_exploding_and_burn_effect.gd" type="Script" id=1]
+[ext_resource path="res://projectiles/explosion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://dlcs/dlc_1/characters/chef/effects/chef_explosion_stats.tres" type="Resource" id=3]
+[ext_resource path="res://dlcs/dlc_1/characters/chef/effects/chef_burning_data.tres" type="Resource" id=4]
+[ext_resource path="res://items/global/custom_arg.gd" type="Script" id=5]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 5 )
+arg_index = 4
+arg_sign = 2
+arg_value = 0
+arg_format = 0
+arg_key = ""
+
+[resource]
+script = ExtResource( 1 )
+key = "explode_on_consumable_burning"
+text_key = "EFFECT_EXPLODE_AND_BURN_ON_CONSUMABLE"
+value = 1
+custom_key = ""
+storage_method = 0
+effect_sign = 3
+custom_args = [ SubResource( 1 ) ]
+chance = 1.0
+explosion_scene = ExtResource( 2 )
+scale = 2.5
+base_smoke_amount = 20
+sound_db_mod = -13
+stats = ExtResource( 3 )
+tracking_key = "character_chef"
+scale_with_missing_health = false
+burning_data = ExtResource( 4 )

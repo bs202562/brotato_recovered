@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://dlcs/dlc_1/effect_behaviors/scene/curse_scene_effect_behavior.gd" type="Script" id=1]
+[ext_resource path="res://dlcs/dlc_1/effect_behaviors/enemy/curse_enemy_effect_behavior_data.tres" type="Resource" id=2]
+
+[node name="CurseSceneEffectBehavior" type="Node"]
+script = ExtResource( 1 )
+hp_boost = 150
+damage_boost = 25
+speed_boost = 15
+curse_enemy_effect_behavior_data = ExtResource( 2 )

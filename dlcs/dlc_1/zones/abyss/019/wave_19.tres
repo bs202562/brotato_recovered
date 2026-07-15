@@ -1,0 +1,27 @@
+[gd_resource type="Resource" load_steps=19 format=2]
+
+[ext_resource path="res://zones/wave_data.gd" type="Script" id=1]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/group_1.tres" type="Resource" id=2]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/group_3.tres" type="Resource" id=3]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/group_4.tres" type="Resource" id=4]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/group_2.tres" type="Resource" id=5]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/group_5.tres" type="Resource" id=6]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/d5_group_1b.tres" type="Resource" id=7]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/d1_group_1b.tres" type="Resource" id=8]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/d2_group_narwhal.tres" type="Resource" id=9]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/group_8.tres" type="Resource" id=10]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/group_6.tres" type="Resource" id=11]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/group_9.tres" type="Resource" id=12]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/group_10.tres" type="Resource" id=13]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/d3_group_1b.tres" type="Resource" id=14]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/group_11.tres" type="Resource" id=15]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/d4_group_anglerfish.tres" type="Resource" id=16]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/d6_group_1.tres" type="Resource" id=17]
+[ext_resource path="res://dlcs/dlc_1/zones/abyss/019/d6_group_scaled_goblin_shark.tres" type="Resource" id=18]
+
+[resource]
+script = ExtResource( 1 )
+wave_duration = 60
+max_enemies = 100
+groups_data = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ]
+conditional_groups_data = [  ]

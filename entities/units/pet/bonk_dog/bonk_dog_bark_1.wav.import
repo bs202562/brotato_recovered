@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bonk_dog_bark_1.wav-952239e7f25ea0e646f65014f0c40cfc.sample"
+
+[deps]
+
+source_file="res://entities/units/pet/bonk_dog/bonk_dog_bark_1.wav"
+dest_files=[ "res://.import/bonk_dog_bark_1.wav-952239e7f25ea0e646f65014f0c40cfc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

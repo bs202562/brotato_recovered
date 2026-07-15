@@ -1,0 +1,30 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://items/all/jellyshield/jellyshield.tres" type="Resource" id=1]
+[ext_resource path="res://entities/units/pet/jellyshield/jellyshield_icon.png" type="Texture" id=2]
+[ext_resource path="res://entities/units/pet/ItemPet.gd" type="Script" id=3]
+[ext_resource path="res://entities/units/pet/jellyshield/jellyshield_screen.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 3 )
+my_id = "jellyshield"
+unlocked_by_default = false
+can_be_looted = true
+icon = ExtResource( 2 )
+name = "JELLYSHIELD_NAME"
+tier = 0
+value = 1
+effects = [  ]
+tracking_text = ""
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+behaviour_description = "JELLYSHIELD_BEHAVIOUR_DESCRIPTION"
+show_hp = false
+show_dammage = false
+show_speed = true
+show_knoback_resistance = false
+show_material_dropped = false
+screen_example = ExtResource( 4 )
+item_drop = ExtResource( 1 )

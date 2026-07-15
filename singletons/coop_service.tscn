@@ -1,0 +1,66 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://singletons/coop_service.gd" type="Script" id=1]
+[ext_resource path="res://ui/menus/global/key_ps_triangle.png" type="Texture" id=2]
+[ext_resource path="res://ui/menus/global/key_xbox_y.png" type="Texture" id=3]
+[ext_resource path="res://ui/menus/global/key_e.png" type="Texture" id=4]
+[ext_resource path="res://ui/menus/global/key_switch_b.png" type="Texture" id=5]
+[ext_resource path="res://ui/menus/global/key_switch_y.png" type="Texture" id=7]
+[ext_resource path="res://ui/menus/global/key_space.png" type="Texture" id=8]
+[ext_resource path="res://ui/menus/global/key_ps_cross.png" type="Texture" id=9]
+[ext_resource path="res://ui/menus/global/key_xbox_a.png" type="Texture" id=10]
+[ext_resource path="res://ui/menus/global/key_switch_x.png" type="Texture" id=12]
+[ext_resource path="res://ui/menus/global/key_ps_square.png" type="Texture" id=13]
+[ext_resource path="res://ui/menus/global/key_f.png" type="Texture" id=14]
+[ext_resource path="res://ui/menus/global/key_xbox_x.png" type="Texture" id=15]
+[ext_resource path="res://ui/menus/global/key_ps_r1.png" type="Texture" id=16]
+[ext_resource path="res://ui/menus/global/key_ps_l1.png" type="Texture" id=17]
+[ext_resource path="res://ui/menus/global/key_xbox_rb.png" type="Texture" id=18]
+[ext_resource path="res://ui/menus/global/key_xbox_lb.png" type="Texture" id=19]
+[ext_resource path="res://ui/menus/global/key_switch_positional_down.png" type="Texture" id=20]
+[ext_resource path="res://ui/menus/global/key_switch_positional_left.png" type="Texture" id=21]
+[ext_resource path="res://ui/menus/global/key_switch_positional_right.png" type="Texture" id=22]
+[ext_resource path="res://ui/menus/global/key_switch_positional_up.png" type="Texture" id=23]
+[ext_resource path="res://ui/menus/global/key_switch_l.png" type="Texture" id=24]
+[ext_resource path="res://ui/menus/global/key_switch_r.png" type="Texture" id=25]
+[ext_resource path="res://ui/menus/global/key_switch_sl.png" type="Texture" id=26]
+[ext_resource path="res://ui/menus/global/key_switch_sr.png" type="Texture" id=27]
+[ext_resource path="res://ui/menus/global/key_switch_a.png" type="Texture" id=28]
+[ext_resource path="res://ui/menus/global/key_ps_circle.png" type="Texture" id=29]
+[ext_resource path="res://ui/menus/global/key_xbox_b.png" type="Texture" id=30]
+[ext_resource path="res://ui/menus/global/key_r.png" type="Texture" id=31]
+
+[node name="CoopService" type="Node"]
+script = ExtResource( 1 )
+additional_enemies_per_coop_player = 0.3
+additional_enemy_health_per_coop_player = 0.3
+additional_enemy_damage_per_coop_player = 0.08
+keyboard_ui_accept_icon = ExtResource( 8 )
+gamepad_xbox_ui_accept_icon = ExtResource( 10 )
+gamepad_playstation_ui_accept_icon = ExtResource( 9 )
+gamepad_switch_ui_accept_icon = ExtResource( 5 )
+keyboard_ui_select_icon = ExtResource( 4 )
+gamepad_xbox_ui_select_icon = ExtResource( 15 )
+gamepad_playstation_ui_select_icon = ExtResource( 13 )
+gamepad_switch_ui_select_icon = ExtResource( 7 )
+keyboard_ui_info_icon = ExtResource( 14 )
+gamepad_xbox_ui_info_icon = ExtResource( 3 )
+gamepad_playstation_ui_info_icon = ExtResource( 2 )
+gamepad_switch_ui_info_icon = ExtResource( 12 )
+gamepad_ltrigger_icon = ExtResource( 19 )
+gamepad_rtrigger_icon = ExtResource( 18 )
+keyboard_ui_coop_ban_icon = ExtResource( 31 )
+gamepad_xbox_ui_coop_ban_icon = ExtResource( 30 )
+gamepad_playstation_ui_coop_ban_icon = ExtResource( 29 )
+gamepad_switch_ui_coop_ban_icon = ExtResource( 28 )
+gamepad_switch_ltrigger_icon = ExtResource( 24 )
+gamepad_switch_rtrigger_icon = ExtResource( 25 )
+gamepad_playstation_ltrigger_icon = ExtResource( 17 )
+gamepad_playstation_rtrigger_icon = ExtResource( 16 )
+gamepad_switch_pos_down_icon = ExtResource( 20 )
+gamepad_switch_pos_up_icon = ExtResource( 23 )
+gamepad_switch_pos_right_icon = ExtResource( 22 )
+gamepad_switch_pos_left_icon = ExtResource( 21 )
+gamepad_switch_sl_icon = ExtResource( 26 )
+gamepad_switch_sr_icon = ExtResource( 27 )
+player_colors = [ Color( 0.7227, 0.99, 0.92763, 1 ), Color( 0.95, 0.7277, 0.608, 1 ), Color( 0.87451, 0.988235, 0.721569, 1 ), Color( 0.99, 0.94842, 0.6336, 1 ) ]

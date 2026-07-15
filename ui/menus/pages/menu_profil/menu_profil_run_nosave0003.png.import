@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/menu_profil_run_nosave0003.png-ad0999d6738e44544f50551ef96c9028.res"
+group_file="res://ui/menus/pages/menu_profil/menu_profil_run.png"
+valid=true
+[deps]
+
+
+source_file="res://ui/menus/pages/menu_profil/menu_profil_run_nosave0003.png"
+dest_files=[ "res://.import/menu_profil_run_nosave0003.png-ad0999d6738e44544f50551ef96c9028.res" ]
+
+[params]
+
+atlas_file="res://ui/menus/pages/menu_profil/menu_profil_run.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

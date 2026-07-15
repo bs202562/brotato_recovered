@@ -1,0 +1,188 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://entities/units/enemies/boss/boss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://dlcs/dlc_1/enemies/eel/eel.png" type="Texture" id=2]
+[ext_resource path="res://dlcs/dlc_1/enemies/eel/eel_stats.tres" type="Resource" id=3]
+[ext_resource path="res://dlcs/dlc_1/enemies/eel/eel.gd" type="Script" id=4]
+[ext_resource path="res://entities/units/enemies/boss/boss_state.tscn" type="PackedScene" id=5]
+[ext_resource path="res://projectiles/bullet_enemy/enemy_projectile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/units/enemies/attack_behaviors/shooting_attack_behavior.gd" type="Script" id=7]
+[ext_resource path="res://entities/units/movement_behaviors/target_rand_pos_movement_behavior.gd" type="Script" id=8]
+[ext_resource path="res://projectiles/pillar_enemy/pillar_projectile.tscn" type="PackedScene" id=9]
+[ext_resource path="res://projectiles/slash/slash_projectile.tscn" type="PackedScene" id=11]
+[ext_resource path="res://dlcs/dlc_1/enemies/eel/eel_pivots.tscn" type="PackedScene" id=12]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 72.1734
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 51.0098
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 50.0899
+
+[node name="Boss" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+can_be_boosted = false
+stats = ExtResource( 3 )
+enemy_id = "eel"
+is_elite = false
+pivots_scene = ExtResource( 12 )
+
+[node name="Sprite" parent="Animation" index="0"]
+position = Vector2( 0, -32 )
+texture = ExtResource( 2 )
+
+[node name="Collision" parent="." index="1"]
+position = Vector2( 0, -32 )
+shape = SubResource( 1 )
+
+[node name="Collision" parent="Hurtbox" index="0"]
+position = Vector2( 0, 0 )
+shape = SubResource( 2 )
+
+[node name="Collision" parent="Hitbox" index="0"]
+position = Vector2( 0, -16 )
+shape = SubResource( 3 )
+
+[node name="AttackBehavior" parent="." index="7"]
+script = ExtResource( 7 )
+projectile_scene = ExtResource( 6 )
+projectile_speed = 450
+projectile_speed_randomization = 0
+speed_change_after_each_projectile = 75
+cooldown = 5.0
+initial_cooldown = 60
+max_cd_randomization = 0
+long_cooldown_every_x_shoots = 3
+long_cooldown = 120
+damage = 1
+damage_increase_each_wave = 1.15
+min_range = 0
+max_range = 99999
+attack_anim_speed = 4.0
+base_direction_randomization = 0.5
+base_direction_constant_spread = false
+alternate_between_base_direction_spread = false
+random_direction = false
+number_projectiles = 5
+projectile_spread = 0.0
+spawn_projectiles_on_target = false
+projectile_spawn_spread = 0
+projectile_spawn_only_on_borders = false
+specific_degrees_spawns = [  ]
+constant_spread = false
+constant_spread_rand_base_pos = 0.0
+atleast_one_projectile_on_target = false
+shoot_towards_unit = false
+shoot_in_unit_direction = false
+shoot_away_from_unit = false
+shoot_from_proj_pos_towards_player = false
+random_rotation = 0.0
+rotate_projectile = true
+delete_projectile_on_death = false
+
+[node name="ChargingShootProjectilesBehavior" type="Node2D" parent="." index="9"]
+script = ExtResource( 7 )
+projectile_scene = ExtResource( 9 )
+projectile_speed = 100
+speed_change_after_each_projectile = 25
+max_cd_randomization = 0
+damage_increase_each_wave = 1.15
+max_range = 99999
+attack_anim_speed = 1.5
+number_projectiles = 12
+spawn_projectiles_on_target = true
+projectile_spawn_spread = 400
+projectile_spawn_only_on_borders = true
+constant_spread = true
+constant_spread_rand_base_pos = 3.1
+shoot_from_proj_pos_towards_player = true
+rotate_projectile = false
+
+[node name="ShootOnChangePhaseBehavior" type="Node2D" parent="." index="10"]
+script = ExtResource( 7 )
+projectile_scene = ExtResource( 11 )
+projectile_speed = 650
+cooldown = 999999.0
+max_cd_randomization = 0
+long_cooldown_every_x_shoots = 1
+long_cooldown = 99999
+damage_increase_each_wave = 1.15
+max_range = 99999
+number_projectiles = 6
+projectile_spawn_spread = 500
+projectile_spawn_only_on_borders = true
+constant_spread = true
+constant_spread_rand_base_pos = 3.1
+shoot_away_from_unit = true
+
+[node name="ShootOnChargeLastPhaseBehavior" type="Node2D" parent="." index="11"]
+script = ExtResource( 7 )
+projectile_scene = ExtResource( 11 )
+projectile_speed = 1000
+cooldown = 45.0
+max_cd_randomization = 0
+damage_increase_each_wave = 1.15
+max_range = 99999
+number_projectiles = 4
+projectile_spawn_spread = 400
+projectile_spawn_only_on_borders = true
+constant_spread = true
+constant_spread_rand_base_pos = 3.1
+shoot_away_from_unit = true
+
+[node name="State1" parent="States" index="0" instance=ExtResource( 5 )]
+hp_start = 0.7
+timer_start = 25.0
+
+[node name="MovementBehavior" parent="States/State1" index="0"]
+script = ExtResource( 8 )
+
+[node name="AttackBehavior" parent="States/State1" index="1"]
+projectile_scene = ExtResource( 9 )
+projectile_speed = 100
+speed_change_after_each_projectile = 35
+initial_cooldown = 45
+max_cd_randomization = 0
+damage_increase_each_wave = 1.15
+max_range = 9999
+attack_anim_speed = 1.5
+number_projectiles = 12
+spawn_projectiles_on_target = true
+projectile_spawn_spread = 700
+projectile_spawn_only_on_borders = true
+constant_spread = true
+constant_spread_rand_base_pos = 3.1
+shoot_from_proj_pos_towards_player = true
+rotate_projectile = false
+
+[node name="State2" parent="States" index="1" instance=ExtResource( 5 )]
+hp_start = 0.4
+timer_start = 55.0
+
+[node name="AttackBehavior" parent="States/State2" index="1"]
+projectile_scene = ExtResource( 9 )
+projectile_speed = 100
+speed_change_after_each_projectile = 25
+max_cd_randomization = 0
+damage_increase_each_wave = 1.15
+max_range = 9999999
+attack_anim_speed = 1.5
+number_projectiles = 12
+spawn_projectiles_on_target = true
+projectile_spawn_spread = 400
+projectile_spawn_only_on_borders = true
+constant_spread = true
+constant_spread_rand_base_pos = 3.14
+shoot_from_proj_pos_towards_player = true
+rotate_projectile = false
+
+[node name="LifeBar" parent="." index="15"]
+margin_top = -96.0
+margin_bottom = -80.0
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]
+[editable path="States/State1"]
+[editable path="States/State2"]

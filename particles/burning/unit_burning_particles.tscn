@@ -1,0 +1,106 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://particles/burning/burning_blue_gradient.tres" type="Gradient" id=1]
+[ext_resource path="res://particles/sprites/particle_31.png" type="Texture" id=2]
+[ext_resource path="res://particles/sprites/particle_fire_animation.png" type="Texture" id=3]
+[ext_resource path="res://particles/burning/burning_particles.gd" type="Script" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=13]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 9
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0.366379, 0.993182 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.311364 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.0748299, 0.225256, 0.320819, 0.406143, 0.720137, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 0.820313, 0, 1, 1, 0.632813, 0, 1, 1, 0.398438, 0, 1, 1, 0, 0, 1, 0.278431, 0.0509804, 0.0509804, 0.686275, 0.211765, 0.14902, 0.14902, 0 )
+
+[sub_resource type="Gradient" id=14]
+offsets = PoolRealArray( 0, 0.225256, 0.320819, 0.406143, 0.720137, 1 )
+colors = PoolColorArray( 1, 0.820313, 0, 1, 1, 0.632813, 0, 1, 1, 0.398438, 0, 1, 1, 0, 0, 1, 0.278431, 0.0509804, 0.0509804, 0.686275, 0.211765, 0.14902, 0.14902, 0 )
+
+[sub_resource type="Gradient" id=15]
+offsets = PoolRealArray( 0, 0.34471, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.865723, 0.609375, 1, 1, 0.275391, 0, 1 )
+
+[sub_resource type="Gradient" id=16]
+offsets = PoolRealArray( 0, 0.34471, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.609375, 0.84436, 1, 1, 0.3125, 0, 1, 1 )
+
+[sub_resource type="CanvasItemMaterial" id=9]
+blend_mode = 1
+
+[sub_resource type="Curve" id=10]
+_data = [ Vector2( 0, 0.763636 ), 0.0, 0.0, 0, 0, Vector2( 0.474684, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.636364 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=11]
+colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="Gradient" id=12]
+offsets = PoolRealArray( 0, 0.34471, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.865723, 0.609375, 1, 1, 0.275391, 0, 1 )
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 128.0
+
+[node name="BurningParticles" type="CPUParticles2D"]
+material = SubResource( 13 )
+amount = 3
+lifetime = 0.6
+randomness = 0.5
+texture = ExtResource( 3 )
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, -400 )
+initial_velocity = 10.0
+initial_velocity_random = 0.03
+angular_velocity = -150.0
+angular_velocity_random = 0.41
+angle = 12.0
+angle_random = 0.91
+scale_amount = 0.66
+scale_amount_random = 0.5
+scale_amount_curve = SubResource( 6 )
+color = Color( 0.388235, 0.388235, 0.388235, 1 )
+color_ramp = SubResource( 7 )
+anim_speed = 2.0
+anim_speed_random = 0.29
+script = ExtResource( 4 )
+red_gradient = SubResource( 14 )
+red_gradient_secondary = SubResource( 15 )
+blue_gradient = ExtResource( 1 )
+blue_gradient_secondary = SubResource( 16 )
+
+[node name="secondaryParticle" type="CPUParticles2D" parent="."]
+material = SubResource( 9 )
+amount = 2
+lifetime = 0.5
+texture = ExtResource( 2 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+angle = 720.0
+angle_random = 1.0
+scale_amount = 2.5
+scale_amount_random = 0.89
+scale_amount_curve = SubResource( 10 )
+color = Color( 0.137255, 0.137255, 0.137255, 1 )
+color_ramp = SubResource( 11 )
+color_initial_ramp = SubResource( 12 )
+
+[node name="SpreadArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpreadArea"]
+visible = false
+shape = SubResource( 8 )
+
+[connection signal="body_entered" from="SpreadArea" to="." method="_on_SpreadArea_body_entered"]
+[connection signal="body_exited" from="SpreadArea" to="." method="_on_SpreadArea_body_exited"]

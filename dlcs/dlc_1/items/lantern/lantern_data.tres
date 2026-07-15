@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=9 format=2]
+
+[ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
+[ext_resource path="res://dlcs/dlc_1/items/lantern/lantern_icon.png" type="Texture" id=2]
+[ext_resource path="res://dlcs/dlc_1/items/lantern/effects/lantern_effect_0c.tres" type="Resource" id=3]
+[ext_resource path="res://dlcs/dlc_1/items/lantern/appearances/lantern_app_0.tres" type="Resource" id=4]
+[ext_resource path="res://dlcs/dlc_1/items/lantern/effects/lantern_effect_1.tres" type="Resource" id=5]
+[ext_resource path="res://dlcs/dlc_1/items/lantern/effects/lantern_effect_0d.tres" type="Resource" id=6]
+[ext_resource path="res://dlcs/dlc_1/items/lantern/effects/lantern_effect_0b.tres" type="Resource" id=7]
+[ext_resource path="res://dlcs/dlc_1/items/lantern/effects/lantern_effect_2.tres" type="Resource" id=8]
+
+[resource]
+script = ExtResource( 1 )
+my_id = "item_lantern"
+unlocked_by_default = true
+can_be_looted = true
+icon = ExtResource( 2 )
+name = "ITEM_LANTERN"
+tier = 3
+value = 100
+effects = [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ) ]
+tracking_text = ""
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+max_nb = 1
+item_appearances = [ ExtResource( 4 ) ]
+tags = [ "stat_percent_damage", "stat_range", "knockback" ]

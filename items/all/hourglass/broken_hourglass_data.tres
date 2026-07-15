@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://items/all/hourglass/hourglass_appearance_0.tres" type="Resource" id=1]
+[ext_resource path="res://items/all/hourglass/broken_hourglass_effect_1.tres" type="Resource" id=2]
+[ext_resource path="res://items/all/hourglass/broken_hourglass_effect_2.tres" type="Resource" id=3]
+[ext_resource path="res://items/global/item_data.gd" type="Script" id=4]
+[ext_resource path="res://items/all/hourglass/hourglass_broken_icon.png" type="Texture" id=5]
+
+[resource]
+script = ExtResource( 4 )
+my_id = "item_broken_hourglass"
+unlocked_by_default = true
+can_be_looted = false
+icon = ExtResource( 5 )
+name = "ITEM_BROKEN_HOURGLASS"
+tier = 3
+value = 1
+effects = [ ExtResource( 2 ), ExtResource( 3 ) ]
+tracking_text = ""
+is_lockable = false
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+max_nb = 0
+item_appearances = [ ExtResource( 1 ) ]
+tags = [  ]

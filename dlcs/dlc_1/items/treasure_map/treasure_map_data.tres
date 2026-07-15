@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
+[ext_resource path="res://dlcs/dlc_1/items/treasure_map/treasure_map_icon.png" type="Texture" id=2]
+[ext_resource path="res://dlcs/dlc_1/items/treasure_map/effects/treasure_map_effect_0.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+my_id = "item_treasure_map"
+unlocked_by_default = false
+can_be_looted = true
+icon = ExtResource( 2 )
+name = "ITEM_TREASURE_MAP"
+tier = 1
+value = 35
+effects = [ ExtResource( 3 ) ]
+tracking_text = "items_found"
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+max_nb = 5
+item_appearances = [  ]
+tags = [ "stat_luck" ]

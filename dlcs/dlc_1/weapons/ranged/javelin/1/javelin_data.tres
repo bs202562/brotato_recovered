@@ -1,0 +1,31 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://items/global/weapon_data.gd" type="Script" id=1]
+[ext_resource path="res://dlcs/dlc_1/weapons/ranged/javelin/javelin_icon.png" type="Texture" id=2]
+[ext_resource path="res://dlcs/dlc_1/weapons/ranged/javelin/1/javelin_stats.tres" type="Resource" id=3]
+[ext_resource path="res://dlcs/dlc_1/weapons/ranged/javelin/2/javelin_2_data.tres" type="Resource" id=4]
+[ext_resource path="res://dlcs/dlc_1/weapons/ranged/javelin/javelin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://dlcs/dlc_1/weapons/ranged/javelin/1/javelin_effect_0.tres" type="Resource" id=6]
+[ext_resource path="res://items/sets/primitive/primitive_set_data.tres" type="Resource" id=7]
+
+[resource]
+script = ExtResource( 1 )
+my_id = "weapon_javelin_1"
+unlocked_by_default = true
+icon = ExtResource( 2 )
+name = "WEAPON_JAVELIN"
+tier = 0
+value = 18
+effects = [ ExtResource( 6 ) ]
+tracking_text = ""
+is_lockable = true
+unlock_codex_descr_after_get_it = 1
+is_cursed = false
+curse_factor = 0.0
+weapon_id = "weapon_javelin"
+type = 1
+sets = [ ExtResource( 7 ) ]
+scene = ExtResource( 5 )
+stats = ExtResource( 3 )
+upgrades_into = ExtResource( 4 )
+add_to_chars_as_starting = [ "character_wildling", "character_generalist", "character_fisherman", "character_renegade", "character_one_arm", "character_soldier", "character_hunter", "character_loud", "character_speedy", "character_streamer" ]

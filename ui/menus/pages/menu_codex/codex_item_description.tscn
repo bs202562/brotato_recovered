@@ -1,0 +1,264 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://ui/menus/shop/item_description.gd" type="Script" id=1]
+[ext_resource path="res://resources/fonts/actual/base/font_60_outline.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/menus/pages/menu_codex/codex_icon_panel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=4]
+[ext_resource path="res://resources/themes/separator/separator_horizontal_white.png" type="Texture" id=5]
+[ext_resource path="res://resources/themes/button_styles/button_invisible.tres" type="StyleBox" id=6]
+[ext_resource path="res://resources/fonts/raw/NotoSansJP-Medium.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://resources/fonts/raw/Anybody-Medium.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://resources/fonts/raw/NotoSansTC-Medium.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://resources/fonts/raw/NotoSansKR-Medium.otf" type="DynamicFontData" id=10]
+[ext_resource path="res://resources/fonts/raw/NotoSansSC-Medium.otf" type="DynamicFontData" id=11]
+[ext_resource path="res://items/global/effect_line.tscn" type="PackedScene" id=12]
+[ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="DynamicFont" id=13]
+
+[sub_resource type="DynamicFont" id=4]
+size = 35
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
+fallback/0 = ExtResource( 7 )
+fallback/1 = ExtResource( 10 )
+fallback/2 = ExtResource( 11 )
+fallback/3 = ExtResource( 9 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 128, 14 )
+margin_left = 20.0
+margin_right = 20.0
+margin_top = 1.0
+margin_bottom = 1.0
+modulate_color = Color( 0, 0, 0, 0.239216 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 128, 14 )
+margin_left = 20.0
+margin_right = 20.0
+margin_top = 1.0
+margin_bottom = 1.0
+modulate_color = Color( 0, 0, 0, 0.239216 )
+
+[node name="codex_item_description" type="VBoxContainer"]
+margin_right = 873.0
+margin_bottom = 696.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+custom_constants/separation = 34
+script = ExtResource( 1 )
+effect_line = ExtResource( 12 )
+show_player_stats = true
+hide_description_if_locked_in_codex = true
+silhouette_locked_items = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 873.0
+margin_bottom = 170.0
+
+[node name="IconPanel" parent="HBoxContainer" instance=ExtResource( 3 )]
+unique_name_in_owner = true
+margin_right = 170.0
+margin_bottom = 170.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 174.0
+margin_right = 873.0
+margin_bottom = 170.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Name" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_right = 699.0
+margin_bottom = 73.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "ITEM_NAME"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Category" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 77.0
+margin_right = 699.0
+margin_bottom = 114.0
+custom_colors/font_color_disabled = Color( 0.980392, 0.956863, 0.8, 1 )
+custom_colors/font_color_focus = Color( 0.980392, 0.956863, 0.8, 1 )
+custom_colors/font_color = Color( 0.917647, 0.886275, 0.690196, 1 )
+custom_colors/font_color_hover = Color( 0.980392, 0.956863, 0.8, 1 )
+custom_colors/font_color_pressed = Color( 0.980392, 0.956863, 0.8, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+text = "ITEM_CATEGORY"
+flat = true
+clip_text = true
+
+[node name="Control" type="MarginContainer" parent="."]
+margin_top = 204.0
+margin_right = 873.0
+margin_bottom = 696.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+unique_name_in_owner = true
+visible = false
+margin_right = 873.0
+margin_bottom = 492.0
+size_flags_horizontal = 3
+
+[node name="PlayerStatsDescr" type="MarginContainer" parent="Control/VBoxContainer"]
+margin_right = 873.0
+margin_bottom = 29.0
+custom_constants/margin_right = 40
+custom_constants/margin_left = 40
+
+[node name="PlayerStatsDescr_left" type="RichTextLabel" parent="Control/VBoxContainer/PlayerStatsDescr"]
+unique_name_in_owner = true
+margin_left = 40.0
+margin_right = 833.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 13 )
+bbcode_enabled = true
+bbcode_text = "Bought :"
+text = "Bought :"
+fit_content_height = true
+scroll_active = false
+
+[node name="PlayerStatsDescr_right" type="RichTextLabel" parent="Control/VBoxContainer/PlayerStatsDescr"]
+unique_name_in_owner = true
+margin_left = 40.0
+margin_right = 833.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 13 )
+bbcode_enabled = true
+bbcode_text = "[right][color=#65c071]%s"
+text = "%s"
+fit_content_height = true
+scroll_active = false
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
+margin_top = 33.0
+margin_right = 873.0
+margin_bottom = 62.0
+custom_constants/separation = 29
+custom_styles/separator = SubResource( 7 )
+
+[node name="WeaponStats" type="RichTextLabel" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+margin_right = 321.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 13 )
+bbcode_enabled = true
+bbcode_text = "BBCode [color=blue]blue[/color]
+qsdsqd
+qsdqsd"
+text = "BBCode blue
+qsdsqd
+qsdqsd"
+fit_content_height = true
+scroll_active = false
+
+[node name="Effects" type="VBoxContainer" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 82.0
+margin_right = 321.0
+margin_bottom = 160.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+unique_name_in_owner = true
+margin_right = 873.0
+margin_bottom = 492.0
+rect_min_size = Vector2( 0, 265 )
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
+margin_right = 873.0
+margin_bottom = 492.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerStatsDescr_scrolled" type="MarginContainer" parent="Control/ScrollContainer/VBoxContainer"]
+margin_right = 873.0
+margin_bottom = 26.0
+custom_constants/margin_right = 40
+custom_constants/margin_left = 40
+
+[node name="PlayerStatsDescr_scrolled_left" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/PlayerStatsDescr_scrolled"]
+unique_name_in_owner = true
+margin_left = 40.0
+margin_right = 833.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+custom_fonts/normal_font = ExtResource( 13 )
+bbcode_enabled = true
+bbcode_text = "Bought :"
+text = "Bought :"
+fit_content_height = true
+scroll_active = false
+
+[node name="PlayerStatsDescr_scrolled_right" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/PlayerStatsDescr_scrolled"]
+unique_name_in_owner = true
+margin_left = 40.0
+margin_right = 833.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+custom_fonts/normal_font = ExtResource( 13 )
+bbcode_enabled = true
+bbcode_text = "[right][color=#65c071]%s"
+text = "%s"
+fit_content_height = true
+scroll_active = false
+
+[node name="HSeparator" type="HSeparator" parent="Control/ScrollContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 873.0
+margin_bottom = 59.0
+custom_constants/separation = 29
+custom_styles/separator = SubResource( 9 )
+
+[node name="WeaponStats_scrolled" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_right = 321.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+custom_fonts/normal_font = ExtResource( 13 )
+bbcode_enabled = true
+bbcode_text = "BBCode [color=blue]blue[/color]
+qsdsqd
+qsdqsd"
+text = "BBCode blue
+qsdsqd
+qsdqsd"
+fit_content_height = true
+scroll_active = false
+
+[node name="Effects_scrolled" type="VBoxContainer" parent="Control/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 63.0
+margin_right = 873.0
+margin_bottom = 492.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/Category" to="." method="_on_Category_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/Category" to="." method="_on_Category_mouse_exited"]

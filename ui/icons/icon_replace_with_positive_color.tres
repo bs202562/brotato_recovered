@@ -1,0 +1,52 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+uniform vec4 new_color : hint_color = vec4(0.105882, 1.000000, 0.176471, 1.000000);
+uniform float detection_offset : hint_range(-1, 1) = 0.88;
+uniform float detection_strenght : hint_range(0, 25) = 1;
+uniform vec4 color_to_replace : hint_color = vec4(0.105882, 1.000000, 0.176471, 1.000000);
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+	vec3 texture_rgb;
+	float texture_alpha;
+	{
+		vec4 TEXTURE_tex_read = texture(TEXTURE, UV.xy);
+		texture_rgb = TEXTURE_tex_read.rgb;
+		texture_alpha = TEXTURE_tex_read.a;
+	}
+
+	float distance_between_two_colors = (distance(color_to_replace.rgb, texture_rgb) * detection_strenght) + detection_offset;
+	float mask_color = clamp(distance_between_two_colors, 0.0, 1.0);
+
+
+	vec3 texture_grayscale;
+	{
+		vec3 c = texture_rgb;
+		float max1 = max(c.r, c.g);
+		float max2 = max(max1, c.b);
+		texture_grayscale = vec3(max2, max2, max2);
+	}
+
+	vec3 texture_with_new_color_part = new_color.rgb * vec3(1.0 - mask_color) * texture_grayscale;
+
+	vec3 texture_with_old_color_part = vec3(mask_color) * texture_rgb;
+	COLOR.rgb = MODULATE.rgb * (texture_with_new_color_part + texture_with_old_color_part) ;
+	COLOR.a = texture_alpha * MODULATE.a;
+
+}
+"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/new_color = Color( 0.105882, 1, 0.176471, 1 )
+shader_param/detection_offset = -0.648
+shader_param/detection_strenght = 2.128
+shader_param/color_to_replace = Color( 0.105882, 1, 0.176471, 1 )

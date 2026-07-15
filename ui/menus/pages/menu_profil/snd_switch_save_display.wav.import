@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/snd_switch_save_display.wav-82ae0f89c82b38669c3ac05727a4dbf0.sample"
+
+[deps]
+
+source_file="res://ui/menus/pages/menu_profil/snd_switch_save_display.wav"
+dest_files=[ "res://.import/snd_switch_save_display.wav-82ae0f89c82b38669c3ac05727a4dbf0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

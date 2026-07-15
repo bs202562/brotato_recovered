@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/vorpal_one_shot.mp3-35f183a30c65f8530e3e863f9354e43b.mp3str"
+
+[deps]
+
+source_file="res://weapons/melee/vorpal_sword/vorpal_one_shot.mp3"
+dest_files=[ "res://.import/vorpal_one_shot.mp3-35f183a30c65f8530e3e863f9354e43b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

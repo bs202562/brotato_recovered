@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://ui/menus/title_screen/title_screen_u32_pawsAndClaws/keyart_u32_logo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/menus/title_screen/title_screen_background/title_screen_background_data.gd" type="Script" id=2]
+[ext_resource path="res://ui/menus/title_screen/title_screen_u32_pawsAndClaws/title_screen_u32_pawsAndClaws.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 2 )
+my_id = "KEYART_U32"
+index_priority = 32
+scene = ExtResource( 3 )
+logo_scene = ExtResource( 1 )
+last_update = false
+start_date = {
+"day": 1,
+"month": 2,
+"year": 2026
+}
+end_date = {
+"day": 25,
+"month": 2,
+"year": 2026
+}

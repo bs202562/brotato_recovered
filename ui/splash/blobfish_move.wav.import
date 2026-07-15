@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/blobfish_move.wav-7531dacd16d2778687f3dd5114029a2a.sample"
+
+[deps]
+
+source_file="res://ui/splash/blobfish_move.wav"
+dest_files=[ "res://.import/blobfish_move.wav-7531dacd16d2778687f3dd5114029a2a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

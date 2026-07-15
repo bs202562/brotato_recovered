@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bell_large_ringing_01.wav-6cde374c27fee1a7096524f0de7b253a.sample"
+
+[deps]
+
+source_file="res://dlcs/dlc_1/items/sunken_bell/bell_large_ringing_01.wav"
+dest_files=[ "res://.import/bell_large_ringing_01.wav-6cde374c27fee1a7096524f0de7b253a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
