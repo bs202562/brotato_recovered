@@ -24,6 +24,14 @@ func _process(_delta):
 func get_cursor_image() -> Resource:
 	var tree = get_tree()
 	var current_scene = tree.current_scene
+
+	# 4.x 移植: change_scene_to_file() 会立刻把 current_scene 置空，新场景要到本帧末
+	# 才挂上，中间存在空窗期(3.x 换场景是原子的，不会出现)。本单例是
+	# PROCESS_MODE_ALWAYS、每帧都跑，切场景时会撞进空窗期，故需判空。
+	# 空窗期没有场景可询问，按默认光标处理。
+	if current_scene == null:
+		return normal_image
+
 	var show_manual_cursor = (
 		current_scene.has_method("show_manual_cursor")
 		and current_scene.show_manual_cursor()
