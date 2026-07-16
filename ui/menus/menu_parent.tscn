@@ -3,7 +3,9 @@
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=1]
 
 [sub_resource type="GDScript" id=1]
-script/source = "class_name MenuOptions
+script/source = "# 4.x 移植: 内嵌脚本不允许 class_name(4.x 解析错误)；
+# 且此处的 MenuOptions 与真正的 ui/menus/pages/menu_options.gd 重名。
+# 本场景已无人引用，仅去掉 class_name 以消除错误。
 extends Control
 
 

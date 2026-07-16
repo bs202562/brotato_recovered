@@ -66,7 +66,10 @@ func on_show_focused_inventory_popup() -> void :
 
 
 func _update_bg():
-	_tilemap.set_tiles_texture(RunData.get_background().get_tiles_sprite()) # 4.x 移植: 见 MyTileMap.set_tiles_texture
+	# 4.x 移植: 3.x 的 tile_set.tile_set_texture() 已移除，且 ground_tiles.tres 是
+	# 3.x 格式在 4.x 下加载为空。本节点是普通 TileMap(无脚本)，直接整体换掉 TileSet；
+	# 场景里已摆好的格子引用 source 0，build_tileset 固定用该 id，故格子仍有效。
+	_tilemap.tile_set = MyTileMap.build_tileset(RunData.get_background().get_tiles_sprite())
 	_tilemap.get_node("Outline").modulate = RunData.get_background().outline_color
 
 

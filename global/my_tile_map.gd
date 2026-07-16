@@ -33,24 +33,33 @@ func init(zone: ZoneData) -> void :
 			my_set_cell(i, j)
 
 
-# 4.x 移植: 替代原 main.gd 中的 tile_set.tile_set_texture(0, tex)。
-# 用给定贴图重建 TileSet(一个 AtlasSource，按 64×64 切子块)。
-func set_tiles_texture(tex: Texture2D) -> void :
-	if tex == null:
-		return
-	_grid_w = max(1, int(tex.get_width() / TILE_PX))
-	_grid_h = max(1, int(tex.get_height() / TILE_PX))
-
+# 4.x 移植: 用给定贴图构建一个按 64×64 切块的 TileSet。
+# 3.x 的 TileSet 资源(ground_tiles.tres)格式与 4.x 完全不兼容、加载出来是空的，
+# 故一律运行时重建。source id 固定为 0，与场景中已摆放格子的引用保持一致。
+# 静态方法：本类与 character_panel_ui.gd(普通 TileMap 节点)共用。
+static func build_tileset(tex: Texture2D) -> TileSet:
 	var ts := TileSet.new()
 	ts.tile_size = Vector2i(TILE_PX, TILE_PX)
 	var src := TileSetAtlasSource.new()
 	src.texture = tex
 	src.texture_region_size = Vector2i(TILE_PX, TILE_PX)
-	for x in _grid_w:
-		for y in _grid_h:
+	var gw: int = max(1, int(tex.get_width() / TILE_PX))
+	var gh: int = max(1, int(tex.get_height() / TILE_PX))
+	for x in gw:
+		for y in gh:
 			src.create_tile(Vector2i(x, y))
-	_source_id = ts.add_source(src)
-	tile_set = ts
+	ts.add_source(src, 0)
+	return ts
+
+
+# 4.x 移植: 替代原 main.gd 中的 tile_set.tile_set_texture(0, tex)。
+func set_tiles_texture(tex: Texture2D) -> void :
+	if tex == null:
+		return
+	_grid_w = max(1, int(tex.get_width() / TILE_PX))
+	_grid_h = max(1, int(tex.get_height() / TILE_PX))
+	tile_set = build_tileset(tex)
+	_source_id = 0
 
 
 func my_set_cell(x: int, y: int) -> void :

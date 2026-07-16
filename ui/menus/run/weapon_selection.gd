@@ -156,7 +156,8 @@ func _on_selections_completed() -> void :
 			if element is WeaponData:
 				var _weapon = RunData.add_weapon(element, player_index, true)
 			elif element is ItemData:
-				var _item = RunData.add_item(element, player_index, true)
+				# 4.x 移植: add_item 返回 void，4.x 不允许把 void 赋给变量(3.x 容忍，会得到 null)
+				RunData.add_item(element, player_index, true)
 
 	RunData.add_starting_items_and_weapons()
 	_change_scene(MenuData.difficulty_selection_scene)
