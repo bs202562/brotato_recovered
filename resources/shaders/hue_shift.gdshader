@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-const float PI = 3.14159265358979323846;
+// 4.x 移植: Godot 4 着色器语言内置 PI 常量,重定义会编译失败,删除自定义声明
 
 uniform float hue : hint_range(0.0, 1.0);
 uniform float alpha : hint_range(0.0, 1.0);
