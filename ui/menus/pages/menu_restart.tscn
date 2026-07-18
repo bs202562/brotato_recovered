@@ -28,7 +28,7 @@ __meta__ = {
 offset_right = 600.0
 offset_bottom = 45.0
 text = "MENU_RESTART_QUESTION"
-align = 1
+horizontal_alignment = 1
 
 [node name="ConfirmButton" type="Button" parent="Buttons"]
 offset_top = 70.0

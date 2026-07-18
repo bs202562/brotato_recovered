@@ -61,7 +61,7 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_right = NodePath(".")
 theme_override_styles/focus = SubResource( 2 )
 theme_override_styles/normal = SubResource( 5 )
-align = 0
+alignment = 0
 script = ExtResource( 11 )
 resize_x = false
 
@@ -94,7 +94,7 @@ theme_override_styles/fg = SubResource( 7 )
 theme_override_styles/bg = SubResource( 8 )
 max_value = 1.0
 step = 0.001
-percent_visible = false
+show_percentage = false
 
 [node name="ItemDescription" parent="PanelContainer/BuyButton/HBoxContainer/MarginContainer" instance=ExtResource( 2 )]
 unique_name_in_owner = true
@@ -195,7 +195,7 @@ offset_right = 341.0
 offset_bottom = 195.0
 theme_override_fonts/font = ExtResource( 6 )
 text = "123"
-valign = 1
+vertical_alignment = 1
 
 [node name="GoldIcon" parent="PanelContainer/BuyButton/HBoxContainer" instance=ExtResource( 3 )]
 offset_left = 345.0

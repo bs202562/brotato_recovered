@@ -70,7 +70,7 @@ offset_bottom = 73.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 8 )
 text = "LEVEL_UP"
-align = 1
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UpgradesContainer"]
 offset_top = 123.0
@@ -228,7 +228,7 @@ theme_override_styles/fg = SubResource( 3 )
 theme_override_styles/bg = SubResource( 4 )
 max_value = 1.0
 step = 0.001
-percent_visible = false
+show_percentage = false
 
 [node name="AdditionalIcon" type="TextureRect" parent="UpgradesContainer/HBoxContainer2/RerollButton"]
 anchor_top = 0.5
@@ -275,7 +275,7 @@ offset_bottom = 73.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 8 )
 text = "ITEM_FOUND"
-align = 1
+horizontal_alignment = 1
 
 [node name="ItemPanelContainer" type="PanelContainer" parent="ItemsContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -367,7 +367,7 @@ theme_override_styles/fg = SubResource( 1 )
 theme_override_styles/bg = SubResource( 2 )
 max_value = 1.0
 step = 0.001
-percent_visible = false
+show_percentage = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ItemsContainer/VBoxContainer/HBoxContainer/BanButton"]
 anchor_right = 1.0
@@ -396,7 +396,7 @@ offset_right = 539.0
 offset_bottom = 53.0
 size_flags_horizontal = 3
 text = "MENU_BAN"
-align = 1
+horizontal_alignment = 1
 
 [node name="icon_ban" type="TextureRect" parent="ItemsContainer/VBoxContainer/HBoxContainer/BanButton/HBoxContainer"]
 unique_name_in_owner = true

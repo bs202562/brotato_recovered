@@ -42,7 +42,7 @@ offset_bottom = 54.0
 custom_minimum_size = Vector2( 90, 0 )
 theme_override_fonts/font = ExtResource( 4 )
 text = "100"
-align = 2
+horizontal_alignment = 2
 
 [connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="value_changed" from="HSlider" to="HSlider" method="_on_HSlider_value_changed"]

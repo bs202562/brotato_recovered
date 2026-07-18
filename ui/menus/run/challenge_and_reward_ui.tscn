@@ -31,7 +31,7 @@ theme_override_constants/separation = 25
 offset_right = 908.0
 offset_bottom = 45.0
 text = "REWARD"
-align = 1
+horizontal_alignment = 1
 
 [node name="ItemPanelUI" parent="VBoxContainer" instance=ExtResource( 4 )]
 offset_left = 274.0
@@ -67,7 +67,7 @@ offset_bottom = 154.0
 offset_right = 236.0
 offset_bottom = 45.0
 text = "ZONE_NAME"
-align = 1
+horizontal_alignment = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/ZonePanel/MarginContainer/VBoxContainer"]
 offset_top = 49.0

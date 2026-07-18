@@ -109,7 +109,7 @@ theme_override_styles/normal = ExtResource( 7 )
 text = "ITEM_CATEGORY"
 flat = true
 clip_text = true
-align = 0
+alignment = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -137,7 +137,7 @@ theme_override_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 text = "Bought :"
 text = "Bought :"
-fit_content_height = true
+fit_content = true
 scroll_active = false
 
 [node name="PlayerStatsDescr_right" type="RichTextLabel" parent="VBoxContainer/PlayerStatsDescr"]
@@ -151,7 +151,7 @@ theme_override_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 text = "[right][color=#65c071]%s"
 text = "%s"
-fit_content_height = true
+fit_content = true
 scroll_active = false
 
 [node name="WeaponStats" type="RichTextLabel" parent="VBoxContainer"]
@@ -168,7 +168,7 @@ qsdqsd"
 text = "BBCode blue
 qsdsqd
 qsdqsd"
-fit_content_height = true
+fit_content = true
 scroll_active = false
 
 [node name="Effects" type="VBoxContainer" parent="VBoxContainer"]
@@ -213,7 +213,7 @@ theme_override_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 text = "Bought :"
 text = "Bought :"
-fit_content_height = true
+fit_content = true
 scroll_active = false
 
 [node name="PlayerStatsDescr_scrolled_right" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/PlayerStatsDescr_scrolled"]
@@ -226,7 +226,7 @@ theme_override_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 text = "[right][color=#65c071]%s"
 text = "%s"
-fit_content_height = true
+fit_content = true
 scroll_active = false
 
 [node name="WeaponStats_scrolled" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
@@ -243,7 +243,7 @@ qsdqsd"
 text = "BBCode blue
 qsdsqd
 qsdqsd"
-fit_content_height = true
+fit_content = true
 scroll_active = false
 
 [node name="Effects_scrolled" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]

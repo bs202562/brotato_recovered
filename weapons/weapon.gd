@@ -31,9 +31,11 @@ var weapon_sets: Array = []
 var tier: int = 0
 var is_cursed: bool = false
 
+# 4.x 移植: 3.x 的 setget 不拦截类内赋值，4.x 会拦截，改用私有后备变量存储
+var _player_index_value: int = 0
 var player_index: int: get = _get_player_index, set = _set_player_index
 func _get_player_index() -> int:
-	return player_index
+	return _player_index_value
 func _set_player_index(_v: int) -> void :
 	printerr("player_index is readonly")
 
@@ -74,7 +76,7 @@ func _ready() -> void :
 	update_sprite(_original_sprite)
 
 	_parent = get_parent().get_parent()
-	player_index = _parent.player_index
+	_player_index_value = _parent.player_index
 
 	disable_hitbox()
 	var _behavior = _shooting_behavior.init(self)

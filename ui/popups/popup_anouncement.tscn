@@ -48,7 +48,7 @@ offset_right = 1253.0
 offset_bottom = 73.0
 theme_override_fonts/font = ExtResource( 3 )
 text = "Pop-up"
-align = 1
+horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
@@ -108,7 +108,7 @@ theme_override_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 text = "[center]ergergregr ergerg ergerg erger gerg erg erger gerg erger gergger ger"
 text = "ergergregr ergerg ergerg erger gerg erg erger gerg erger gergger ger"
-fit_content_height = true
+fit_content = true
 
 [node name="validation_button" type="Button" parent="."]
 unique_name_in_owner = true

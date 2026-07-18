@@ -21,7 +21,7 @@ offset_left = -84.0
 offset_top = -38.0
 offset_bottom = 7.0
 theme_override_fonts/font = ExtResource( 3 )
-align = 2
+horizontal_alignment = 2
 
 [connection signal="mouse_entered" from="." to="." method="_on_UIItemElement_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_UIItemElement_mouse_exited"]

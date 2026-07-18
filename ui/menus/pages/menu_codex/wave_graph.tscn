@@ -37,7 +37,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource( 1 )
 text = "HP :"
-valign = 1
+vertical_alignment = 1
 
 [node name="base_stat_label_number" type="Label" parent="left_column/HBoxContainer"]
 unique_name_in_owner = true
@@ -48,8 +48,8 @@ size_flags_horizontal = 0
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource( 1 )
 text = "12"
-align = 2
-valign = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="base_stat_texture" type="TextureRect" parent="left_column/HBoxContainer"]
 offset_left = 146.0
@@ -73,7 +73,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource( 1 )
 text = "+ HP/wave"
-valign = 1
+vertical_alignment = 1
 
 [node name="adding_stat_label_number" type="Label" parent="left_column/HBoxContainer2"]
 unique_name_in_owner = true
@@ -84,8 +84,8 @@ size_flags_horizontal = 0
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource( 1 )
 text = "10"
-align = 2
-valign = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="adding_stat_texture" type="TextureRect" parent="left_column/HBoxContainer2"]
 offset_left = 146.0
@@ -132,7 +132,7 @@ offset_bottom = 25.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 1 )
 text = "5"
-align = 2
+horizontal_alignment = 2
 
 [node name="wave_10_label" type="Label" parent="right_graph/top_container"]
 offset_left = 96.0
@@ -141,7 +141,7 @@ offset_bottom = 25.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 1 )
 text = "10"
-align = 2
+horizontal_alignment = 2
 
 [node name="wave_15_label" type="Label" parent="right_graph/top_container"]
 offset_left = 192.0
@@ -150,7 +150,7 @@ offset_bottom = 25.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 1 )
 text = "15"
-align = 2
+horizontal_alignment = 2
 
 [node name="wave_20_label" type="Label" parent="right_graph/top_container"]
 offset_left = 288.0
@@ -159,7 +159,7 @@ offset_bottom = 25.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 1 )
 text = "20"
-align = 2
+horizontal_alignment = 2
 
 [node name="left_container" type="VBoxContainer" parent="right_graph"]
 offset_top = 29.0
@@ -175,7 +175,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 7
 theme_override_fonts/font = ExtResource( 1 )
 text = "320"
-align = 2
+horizontal_alignment = 2
 
 [node name="scale_2" type="Label" parent="right_graph/left_container"]
 unique_name_in_owner = true
@@ -186,7 +186,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 7
 theme_override_fonts/font = ExtResource( 1 )
 text = "160"
-align = 2
+horizontal_alignment = 2
 
 [node name="scale_1" type="Label" parent="right_graph/left_container"]
 unique_name_in_owner = true
@@ -197,7 +197,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 7
 theme_override_fonts/font = ExtResource( 1 )
 text = "40"
-align = 2
+horizontal_alignment = 2
 
 [node name="scale_0" type="Label" parent="right_graph/left_container"]
 unique_name_in_owner = true
@@ -208,7 +208,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 7
 theme_override_fonts/font = ExtResource( 1 )
 text = "10"
-align = 2
+horizontal_alignment = 2
 
 [node name="GraphContainer" type="PanelContainer" parent="right_graph"]
 unique_name_in_owner = true

@@ -510,7 +510,7 @@ size_flags_horizontal = 7
 size_flags_vertical = 7
 theme_override_fonts/font = ExtResource( 11 )
 text = "DIFFICULTY"
-valign = 1
+vertical_alignment = 1
 script = ExtResource( 6 )
 
 [node name="ui_timeline" parent="MarginContainer/VBoxContainer/Timeline_margin_container" instance=ExtResource( 14 )]

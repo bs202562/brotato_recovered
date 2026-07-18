@@ -8,7 +8,7 @@
 offset_right = 30.0
 offset_bottom = 82.0
 theme = ExtResource( 2 )
-align = 0
+alignment = 0
 script = ExtResource( 3 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -29,7 +29,7 @@ offset_top = 18.0
 offset_right = 81.0
 offset_bottom = 63.0
 text = "123"
-valign = 1
+vertical_alignment = 1
 
 [node name="GoldIcon" parent="HBoxContainer" instance=ExtResource( 1 )]
 offset_left = 85.0

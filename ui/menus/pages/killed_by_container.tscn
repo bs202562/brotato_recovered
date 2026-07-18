@@ -26,14 +26,14 @@ bulletIcon = ExtResource( 5 )
 offset_right = 600.0
 offset_bottom = 45.0
 text = "KILLED_BY"
-align = 1
+horizontal_alignment = 1
 
 [node name="enemy_label" type="Label" parent="."]
 offset_top = 49.0
 offset_right = 600.0
 offset_bottom = 94.0
 text = "ENEMY_NAME"
-align = 1
+horizontal_alignment = 1
 
 [node name="IconPanel" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true

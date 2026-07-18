@@ -103,7 +103,7 @@ offset_right = 205.0
 offset_bottom = 40.0
 theme_override_fonts/font = ExtResource( 17 )
 text = "MENU_SHOP"
-align = 1
+horizontal_alignment = 1
 
 [node name="PrimaryStatsLabel" type="Label" parent="MarginContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="1"]
 visible = false
@@ -112,7 +112,7 @@ offset_right = 157.0
 offset_bottom = 40.0
 theme_override_fonts/font = ExtResource( 17 )
 text = "STATS"
-align = 1
+horizontal_alignment = 1
 
 [node name="SecondaryStatsLabel" type="Label" parent="MarginContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="2"]
 visible = false
@@ -121,7 +121,7 @@ offset_right = 157.0
 offset_bottom = 40.0
 theme_override_fonts/font = ExtResource( 17 )
 text = "STATS"
-align = 1
+horizontal_alignment = 1
 
 [node name="ArrowRight" parent="MarginContainer/Carousel/MarginContainer/HBoxContainer" index="2"]
 offset_left = 329.0
@@ -356,7 +356,7 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_right = NodePath(".")
 theme_override_fonts/font = SubResource( 4 )
 text = "ENDLESS"
-align = 1
+alignment = 1
 script = ExtResource( 16 )
 
 [node name="GoButton" type="Button" parent="MarginContainer/Carousel"]

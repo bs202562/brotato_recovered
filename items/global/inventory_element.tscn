@@ -61,8 +61,8 @@ offset_top = -45.0
 offset_right = -7.0
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource( 6 )
-align = 2
-valign = 2
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="frame" type="Panel" parent="."]
 visible = false

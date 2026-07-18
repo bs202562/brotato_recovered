@@ -42,7 +42,7 @@ theme_override_constants/separation = 35
 [node name="CoopPlayerLabel" parent="MarginContainer/VBoxContainer" instance=ExtResource( 5 )]
 offset_right = 1920.0
 theme_override_fonts/font = ExtResource( 8 )
-align = 1
+horizontal_alignment = 1
 
 [node name="CoopJoinInstructions" parent="MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
 offset_top = 80.0

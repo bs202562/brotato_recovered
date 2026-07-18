@@ -388,8 +388,8 @@ offset_bottom = 400.0
 theme = ExtResource( 41 )
 theme_override_fonts/font = ExtResource( 22 )
 text = "WAVE_COMPLETED"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 script = ExtResource( 9 )
 font_end_run = ExtResource( 23 )
@@ -453,8 +453,8 @@ offset_bottom = 39.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource( 21 )
 text = "8 / 8"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -486,8 +486,8 @@ offset_bottom = 39.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource( 21 )
 text = "LV. 1"
-align = 2
-valign = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -555,8 +555,8 @@ offset_bottom = 39.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource( 21 )
 text = "8 / 8"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -588,8 +588,8 @@ offset_bottom = 39.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource( 21 )
 text = "LV. 1"
-align = 2
-valign = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -657,8 +657,8 @@ offset_bottom = 39.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource( 21 )
 text = "8 / 8"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -690,8 +690,8 @@ offset_bottom = 39.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource( 21 )
 text = "LV. 1"
-align = 2
-valign = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -774,8 +774,8 @@ offset_bottom = 39.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource( 21 )
 text = "8 / 8"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -808,8 +808,8 @@ offset_bottom = 39.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource( 21 )
 text = "LV. 1"
-align = 2
-valign = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -853,7 +853,7 @@ offset_bottom = 45.0
 theme = ExtResource( 41 )
 theme_override_fonts/font = ExtResource( 40 )
 text = "WAVE {0}"
-align = 1
+horizontal_alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -865,7 +865,7 @@ offset_bottom = 122.0
 theme = ExtResource( 41 )
 theme_override_fonts/font = ExtResource( 22 )
 text = "60"
-align = 1
+horizontal_alignment = 1
 script = ExtResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false

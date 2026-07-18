@@ -66,7 +66,7 @@ offset_bottom = 40.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 3 )
 text = "INVENTORY"
-align = 1
+horizontal_alignment = 1
 
 [node name="PrimaryStatsLabel" type="Label" parent="MarginContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="1"]
 visible = false
@@ -75,7 +75,7 @@ offset_right = 149.0
 offset_bottom = 40.0
 theme_override_fonts/font = ExtResource( 3 )
 text = "STATS"
-align = 1
+horizontal_alignment = 1
 
 [node name="SecondaryStatsLabel" type="Label" parent="MarginContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="2"]
 visible = false
@@ -84,7 +84,7 @@ offset_right = 149.0
 offset_bottom = 40.0
 theme_override_fonts/font = ExtResource( 3 )
 text = "STATS"
-align = 1
+horizontal_alignment = 1
 
 [node name="ArrowRight" parent="MarginContainer/Carousel/MarginContainer/HBoxContainer" index="2"]
 offset_left = 314.0

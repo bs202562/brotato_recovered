@@ -793,12 +793,13 @@ func get_startup_arguments() -> Dictionary:
 func disconnect_all_signals(object: Object) -> void :
 	for object_signal in object.get_signal_list():
 		for connection in object.get_signal_connection_list(object_signal.name):
-			object.disconnect(connection.signal, Callable(connection.target, connection.method))
+			# 4.x 移植: 连接字典不再有 target/method 键，改为 signal + callable
+			connection.signal.disconnect(connection.callable)
 
 
 func disconnect_all_signal_connections(object: Object, signal_name: String) -> void :
 	for connection in object.get_signal_connection_list(signal_name):
-		object.disconnect(connection.signal, Callable(connection.target, connection.method))
+		connection.signal.disconnect(connection.callable)
 
 
 func get_first_scaling_stat(scaling_stats: Array) -> int:

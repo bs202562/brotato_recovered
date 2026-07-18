@@ -53,5 +53,5 @@ theme_override_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
 text = "+ [color=red]33%[/color] elemental damage"
 text = "+ 33% elemental damage"
-fit_content_height = true
+fit_content = true
 scroll_active = false

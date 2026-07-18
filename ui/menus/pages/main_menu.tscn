@@ -68,7 +68,7 @@ focus_neighbor_left = NodePath("../../ButtonsRight/ModsButton")
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_right = NodePath("../../ButtonsRight/ModsButton")
 text = "MENU_RESUME"
-align = 0
+alignment = 0
 expand_icon = true
 script = ExtResource( 5 )
 
@@ -81,7 +81,7 @@ custom_minimum_size = Vector2( 0, 80 )
 focus_neighbor_left = NodePath("../../ButtonsRight/ModsButton")
 focus_neighbor_right = NodePath("../../ButtonsRight/ModsButton")
 text = "MENU_START"
-align = 0
+alignment = 0
 expand_icon = true
 script = ExtResource( 5 )
 
@@ -99,7 +99,7 @@ offset_bottom = 267.0
 focus_neighbor_left = NodePath("../../ButtonsRight/ModsButton")
 focus_neighbor_right = NodePath("../../ButtonsRight/ModsButton")
 text = "MENU_PROFILE"
-align = 0
+alignment = 0
 expand_icon = true
 script = ExtResource( 5 )
 
@@ -111,7 +111,7 @@ offset_bottom = 342.0
 focus_neighbor_left = NodePath("../../ButtonsRight/NewsletterButton")
 focus_neighbor_right = NodePath("../../ButtonsRight/NewsletterButton")
 text = "MENU_CODEX"
-align = 0
+alignment = 0
 expand_icon = true
 script = ExtResource( 5 )
 
@@ -123,7 +123,7 @@ offset_bottom = 417.0
 focus_neighbor_left = NodePath("../../ButtonsRight/CommunityButton")
 focus_neighbor_right = NodePath("../../ButtonsRight/CommunityButton")
 text = "MENU_OPTIONS"
-align = 0
+alignment = 0
 expand_icon = true
 script = ExtResource( 5 )
 
@@ -136,7 +136,7 @@ focus_neighbor_left = NodePath("../../ButtonsRight/CreditsButton")
 focus_neighbor_right = NodePath("../../ButtonsRight/CreditsButton")
 focus_neighbor_bottom = NodePath("../StartButton")
 text = "MENU_QUIT"
-align = 0
+alignment = 0
 expand_icon = true
 script = ExtResource( 5 )
 
@@ -203,7 +203,7 @@ focus_neighbor_left = NodePath("../../ButtonsLeft/OptionsButton")
 focus_neighbor_right = NodePath("../../ButtonsLeft/OptionsButton")
 size_flags_horizontal = 8
 text = "MENU_COMMUNITY"
-align = 0
+alignment = 0
 script = ExtResource( 5 )
 
 [node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ButtonsRight"]
@@ -217,7 +217,7 @@ focus_neighbor_right = NodePath("../../ButtonsLeft/QuitButton")
 focus_neighbor_bottom = NodePath("../ModsButton")
 size_flags_horizontal = 8
 text = "MENU_CREDITS"
-align = 0
+alignment = 0
 script = ExtResource( 5 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -248,7 +248,7 @@ offset_right = 1836.0
 offset_bottom = 31.0
 theme_override_fonts/font = ExtResource( 4 )
 text = "early access version x.x.x"
-align = 2
+horizontal_alignment = 2
 
 [node name="XboxGamerTag" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
@@ -256,7 +256,7 @@ offset_left = 1840.0
 offset_right = 1840.0
 offset_bottom = 31.0
 theme_override_fonts/font = ExtResource( 4 )
-align = 2
+horizontal_alignment = 2
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ButtonsLeft/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ButtonsLeft/StartButton" to="." method="_on_StartButton_pressed"]

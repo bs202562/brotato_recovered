@@ -42,7 +42,7 @@ theme_override_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 text = "dsdsfdsfdsf"
 text = "dsdsfdsfdsf"
-fit_content_height = true
+fit_content = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

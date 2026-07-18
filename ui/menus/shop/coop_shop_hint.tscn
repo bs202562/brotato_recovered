@@ -33,7 +33,7 @@ theme_override_styles/fg = SubResource( 1 )
 theme_override_styles/bg = SubResource( 2 )
 max_value = 1.0
 step = 0.001
-percent_visible = false
+show_percentage = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -47,8 +47,8 @@ offset_right = 66.0
 offset_bottom = 29.0
 theme_override_fonts/font = ExtResource( 2 )
 text = "Press"
-align = 2
-valign = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="KeyIcon" type="TextureRect" parent="HBoxContainer"]
 unique_name_in_owner = true
@@ -69,4 +69,4 @@ offset_right = 152.0
 offset_bottom = 29.0
 theme_override_fonts/font = ExtResource( 2 )
 text = "to ..."
-valign = 1
+vertical_alignment = 1

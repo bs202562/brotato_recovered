@@ -68,8 +68,8 @@ offset_bottom = 73.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 2 )
 text = "WEAPONS_NAME"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap = true
 
 [node name="Category" type="Button" parent="HBoxContainer/VBoxContainer"]
@@ -122,7 +122,7 @@ theme_override_fonts/normal_font = ExtResource( 13 )
 bbcode_enabled = true
 text = "Bought :"
 text = "Bought :"
-fit_content_height = true
+fit_content = true
 scroll_active = false
 
 [node name="PlayerStatsDescr_right" type="RichTextLabel" parent="Control/VBoxContainer/PlayerStatsDescr"]
@@ -136,7 +136,7 @@ theme_override_fonts/normal_font = ExtResource( 13 )
 bbcode_enabled = true
 text = "[right][color=#65c071]%s"
 text = "%s"
-fit_content_height = true
+fit_content = true
 scroll_active = false
 
 [node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
@@ -161,7 +161,7 @@ qsdqsd"
 text = "BBCode blue
 qsdsqd
 qsdqsd"
-fit_content_height = true
+fit_content = true
 scroll_active = false
 
 [node name="Effects" type="VBoxContainer" parent="Control/VBoxContainer"]
@@ -204,7 +204,7 @@ theme_override_fonts/normal_font = ExtResource( 13 )
 bbcode_enabled = true
 text = "Bought :"
 text = "Bought :"
-fit_content_height = true
+fit_content = true
 scroll_active = false
 
 [node name="PlayerStatsDescr_scrolled_right" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/PlayerStatsDescr_scrolled"]
@@ -217,7 +217,7 @@ theme_override_fonts/normal_font = ExtResource( 13 )
 bbcode_enabled = true
 text = "[right][color=#65c071]%s"
 text = "%s"
-fit_content_height = true
+fit_content = true
 scroll_active = false
 
 [node name="HSeparator" type="HSeparator" parent="Control/ScrollContainer/VBoxContainer"]
@@ -241,7 +241,7 @@ qsdqsd"
 text = "BBCode blue
 qsdsqd
 qsdqsd"
-fit_content_height = true
+fit_content = true
 scroll_active = false
 
 [node name="Effects_scrolled" type="VBoxContainer" parent="Control/ScrollContainer/VBoxContainer"]

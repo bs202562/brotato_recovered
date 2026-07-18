@@ -110,7 +110,7 @@ offset_bottom = 636.0
 theme_override_colors/font_color = Color( 1, 0.415686, 0.415686, 1 )
 theme_override_fonts/font = ExtResource( 3 )
 text = "Error submitting report"
-align = 1
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Panel/InputContainer"]
 offset_top = 666.0
@@ -159,7 +159,7 @@ offset_bottom = 293.0
 theme_override_colors/font_color = Color( 0.415686, 1, 0.423529, 1 )
 theme_override_fonts/font = ExtResource( 3 )
 text = "BUG_REPORT_SUCCESS"
-align = 1
+horizontal_alignment = 1
 
 [node name="IDButton" type="Button" parent="UI/Panel/ResponseContainer"]
 offset_top = 323.0

@@ -46,7 +46,7 @@ offset_right = 361.0
 offset_bottom = 45.0
 theme_override_fonts/font = ExtResource( 6 )
 text = "CRASH_ZONE"
-align = 1
+horizontal_alignment = 1
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 offset_left = 148.0
@@ -76,7 +76,7 @@ offset_right = 211.0
 offset_bottom = 53.0
 theme_override_fonts/font = ExtResource( 6 )
 text = "DIFFICULTY"
-align = 1
+horizontal_alignment = 1
 
 [node name="DecreaseDifficultyButton" type="Button" parent="MarginContainer/VBoxContainer/DifficultyContainer/DifficultySliderContainer"]
 offset_left = 236.0

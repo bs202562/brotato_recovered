@@ -183,7 +183,7 @@ offset_right = 2223.0
 offset_bottom = 73.0
 theme_override_fonts/font = ExtResource( 9 )
 text = "CHARACTER_SELECTION"
-align = 1
+horizontal_alignment = 1
 
 [node name="DescriptionContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 offset_top = 108.0
@@ -343,7 +343,7 @@ offset_bottom = 208.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 8 )
 text = "RECORDS"
-align = 1
+horizontal_alignment = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -370,8 +370,8 @@ size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource( 10 )
 text = "MAX_DIFFICULTY_BEATEN"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -385,8 +385,8 @@ custom_minimum_size = Vector2( 300, 0 )
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource( 10 )
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/HBoxContainer/MarginContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer"]
@@ -404,8 +404,8 @@ size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource( 10 )
 text = "MAX_ENDLESS_WAVE_BEATEN"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap = true
 
 [node name="MaxEndlessWaveValue" type="Label" parent="MarginContainer/VBoxContainer/DescriptionContainer/HBoxContainer/MarginContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
@@ -416,8 +416,8 @@ custom_minimum_size = Vector2( 300, 0 )
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource( 10 )
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap = true
 
 [node name="RunOptionsPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer"]

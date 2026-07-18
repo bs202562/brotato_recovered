@@ -157,7 +157,7 @@ custom_minimum_size = Vector2( 0, 64 )
 theme_override_fonts/font = ExtResource( 2 )
 text = " Give/Remove items"
 icon = ExtResource( 10 )
-align = 0
+alignment = 0
 expand_icon = true
 
 [node name="givemeweapons_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
@@ -169,7 +169,7 @@ custom_minimum_size = Vector2( 0, 64 )
 theme_override_fonts/font = ExtResource( 2 )
 text = " Give/Remove weapons"
 icon = ExtResource( 9 )
-align = 0
+alignment = 0
 expand_icon = true
 
 [node name="givemeupgrades_but" type="Button" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
@@ -181,7 +181,7 @@ custom_minimum_size = Vector2( 0, 64 )
 theme_override_fonts/font = ExtResource( 2 )
 text = " Give/Remove upgrades"
 icon = ExtResource( 35 )
-align = 0
+alignment = 0
 expand_icon = true
 
 [node name="gold_cont" type="HBoxContainer" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
@@ -196,7 +196,7 @@ offset_bottom = 54.0
 size_flags_horizontal = 3
 max_value = 1000.0
 allow_greater = true
-align = 2
+alignment = 2
 suffix = "materials"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/TabContainer/Players_cont/Players_cont/gold_cont"]
@@ -217,7 +217,7 @@ custom_minimum_size = Vector2( 0, 64 )
 theme_override_fonts/font = ExtResource( 2 )
 text = " Randomize Equipment"
 icon = ExtResource( 16 )
-align = 0
+alignment = 0
 expand_icon = true
 
 [node name="invulnerable_but" type="CheckButton" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
@@ -287,7 +287,7 @@ offset_right = 495.0
 offset_bottom = 742.0
 theme_override_fonts/font = ExtResource( 2 )
 text = "PROGRESSION :"
-align = 1
+horizontal_alignment = 1
 
 [node name="All" type="HBoxContainer" parent="VBoxContainer/TabContainer/Players_cont/Players_cont"]
 offset_top = 746.0
@@ -621,7 +621,7 @@ custom_minimum_size = Vector2( 0, 64 )
 theme_override_fonts/font = ExtResource( 2 )
 text = " Spawn Entities"
 icon = ExtResource( 36 )
-align = 0
+alignment = 0
 expand_icon = true
 
 [node name="killall_but" type="Button" parent="VBoxContainer/TabContainer/Entities_cont/Entities_cont"]
@@ -633,7 +633,7 @@ custom_minimum_size = Vector2( 0, 64 )
 theme_override_fonts/font = ExtResource( 2 )
 text = " Kill All"
 icon = ExtResource( 8 )
-align = 0
+alignment = 0
 expand_icon = true
 
 [node name="NoSpawningEnemies_but" type="CheckButton" parent="VBoxContainer/TabContainer/Entities_cont/Entities_cont"]
@@ -943,7 +943,7 @@ offset_bottom = 70.0
 theme_override_colors/font_color = Color( 0.881875, 0.671875, 1, 1 )
 theme_override_fonts/font = ExtResource( 25 )
 text = "cursed items"
-align = 1
+alignment = 1
 icon_alignment = 1
 expand_icon = true
 
@@ -954,7 +954,7 @@ offset_bottom = 70.0
 theme_override_colors/font_color = Color( 0.881875, 0.671875, 1, 1 )
 theme_override_fonts/font = ExtResource( 25 )
 text = "forced shop  item"
-align = 1
+alignment = 1
 icon_alignment = 1
 expand_icon = true
 
@@ -1049,7 +1049,7 @@ offset_bottom = 70.0
 theme_override_colors/font_color = Color( 0.881875, 0.671875, 1, 1 )
 theme_override_fonts/font = ExtResource( 25 )
 text = "cursed items"
-align = 1
+alignment = 1
 icon_alignment = 1
 expand_icon = true
 
@@ -1117,7 +1117,7 @@ offset_bottom = 70.0
 theme_override_colors/font_color = Color( 0.881875, 0.671875, 1, 1 )
 theme_override_fonts/font = ExtResource( 25 )
 text = "cursed enemies"
-align = 1
+alignment = 1
 icon_alignment = 1
 expand_icon = true
 

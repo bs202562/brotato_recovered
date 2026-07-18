@@ -846,8 +846,8 @@ offset_right = -29.0
 offset_bottom = 145.0
 theme_override_colors/font_color = Color( 0, 0, 0, 1 )
 text = "PROFILE_1"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap = true
 
 [node name="margin_save2" type="MarginContainer" parent="MainPanel/HBoxContainer"]
@@ -877,8 +877,8 @@ offset_right = -29.0
 offset_bottom = 145.0
 theme_override_colors/font_color = Color( 0, 0, 0, 1 )
 text = "PROFILE_2"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap = true
 
 [node name="margin_save3" type="MarginContainer" parent="MainPanel/HBoxContainer"]
@@ -908,8 +908,8 @@ offset_right = -30.0
 offset_bottom = 145.0
 theme_override_colors/font_color = Color( 0, 0, 0, 1 )
 text = "PROFILE_3"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MainPanel"]
@@ -961,7 +961,7 @@ offset_right = 573.0
 offset_bottom = 66.0
 size_flags_horizontal = 3
 text = "PROFIL"
-align = 1
+horizontal_alignment = 1
 
 [node name="profil_is_selected" type="TextureRect" parent="MainPanel/Stats_VBox/label_profil_id"]
 unique_name_in_owner = true
@@ -1000,7 +1000,7 @@ offset_left = 509.0
 offset_right = 573.0
 offset_bottom = 45.0
 text = "150"
-align = 2
+horizontal_alignment = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MainPanel/Stats_VBox"]
 offset_top = 141.0
@@ -1019,7 +1019,7 @@ offset_left = 509.0
 offset_right = 573.0
 offset_bottom = 45.0
 text = "150"
-align = 2
+horizontal_alignment = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MainPanel/Stats_VBox"]
 offset_top = 190.0
@@ -1038,7 +1038,7 @@ offset_left = 509.0
 offset_right = 573.0
 offset_bottom = 45.0
 text = "150"
-align = 2
+horizontal_alignment = 2
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="MainPanel/Stats_VBox"]
 offset_top = 239.0
@@ -1057,7 +1057,7 @@ offset_left = 500.0
 offset_right = 573.0
 offset_bottom = 45.0
 text = "YES"
-align = 2
+horizontal_alignment = 2
 
 [node name="HasRunAnimation" type="TextureRect" parent="MainPanel/Stats_VBox"]
 offset_top = 288.0
@@ -1333,8 +1333,8 @@ offset_bottom = 195.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "PROFILE_RESET_QUOTE"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="ResetPopUpPanel/ResetPopUpPanel/ResetPopUpPanel/VBoxContainer"]
@@ -1398,8 +1398,8 @@ offset_bottom = 195.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "PROFILE_UNLOCK_QUOTE"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="UnlockAllPopUpPanel/UnlockAllPopUpPanel/UnlockAllPopUpPanel/VBoxContainer"]
@@ -1464,8 +1464,8 @@ offset_bottom = 195.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "PROFILE_COPY_QUOTE"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="CopyPopUpPanel/UnlockAllPopUpPanel/CopyPopUpPanel/VBoxContainer"]

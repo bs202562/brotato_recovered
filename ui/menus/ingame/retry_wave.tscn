@@ -58,7 +58,7 @@ theme_override_constants/separation = 25
 offset_right = 600.0
 offset_bottom = 45.0
 text = "RETRY_WAVE_QUESTION"
-align = 1
+horizontal_alignment = 1
 
 [node name="ConfirmButton" type="Button" parent="Menu/Retry_WaveContainer"]
 unique_name_in_owner = true
@@ -81,7 +81,7 @@ offset_top = 250.0
 offset_right = 600.0
 offset_bottom = 295.0
 text = "RETRY_WAVE_NUMBER"
-align = 1
+horizontal_alignment = 1
 
 [node name="OkButton" type="Button" parent="Menu"]
 unique_name_in_owner = true

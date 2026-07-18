@@ -110,7 +110,7 @@ theme_override_constants/separation = 20
 offset_right = 430.0
 offset_bottom = 40.0
 theme_override_fonts/font = ExtResource( 3 )
-align = 1
+horizontal_alignment = 1
 
 [node name="Carousel" parent="MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
 unique_name_in_owner = true
@@ -145,7 +145,7 @@ custom_minimum_size = Vector2( 250, 0 )
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 3 )
 text = "UPGRADES"
-align = 1
+horizontal_alignment = 1
 autowrap = true
 
 [node name="InventoryLabel" type="Label" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="1"]
@@ -156,7 +156,7 @@ custom_minimum_size = Vector2( 250, 0 )
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 3 )
 text = "INVENTORY"
-align = 1
+horizontal_alignment = 1
 autowrap = true
 
 [node name="PrimaryStatsLabel" type="Label" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="2"]
@@ -166,7 +166,7 @@ offset_bottom = 40.0
 custom_minimum_size = Vector2( 250, 0 )
 theme_override_fonts/font = ExtResource( 3 )
 text = "STATS"
-align = 1
+horizontal_alignment = 1
 autowrap = true
 
 [node name="SecondaryStatsLabel" type="Label" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="3"]
@@ -176,7 +176,7 @@ offset_bottom = 40.0
 custom_minimum_size = Vector2( 250, 0 )
 theme_override_fonts/font = ExtResource( 3 )
 text = "STATS"
-align = 1
+horizontal_alignment = 1
 autowrap = true
 
 [node name="ArrowRight" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer" index="2"]
@@ -395,7 +395,7 @@ offset_bottom = 40.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 3 )
 text = "ITEM_FOUND"
-align = 1
+horizontal_alignment = 1
 
 [node name="ItemPanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer"]
 unique_name_in_owner = true
@@ -504,7 +504,7 @@ theme_override_styles/fg = SubResource( 2 )
 theme_override_styles/bg = SubResource( 3 )
 max_value = 1.0
 step = 0.001
-percent_visible = false
+show_percentage = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/HBoxContainer/BanButton"]
 anchor_right = 1.0
@@ -532,7 +532,7 @@ offset_bottom = 39.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 7 )
 text = "MENU_BAN"
-align = 1
+horizontal_alignment = 1
 
 [node name="icon_ban" type="TextureRect" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/HBoxContainer/BanButton/HBoxContainer"]
 unique_name_in_owner = true
