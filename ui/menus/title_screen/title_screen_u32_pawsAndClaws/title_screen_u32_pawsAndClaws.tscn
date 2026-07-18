@@ -17,7 +17,7 @@ blend_mode = 1
 [sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -71,7 +71,7 @@ length = 2.5
 loop = true
 step = 0.25
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -399,7 +399,7 @@ tracks/7/keys = {
 [sub_resource type="Animation" id=10]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("brotato_pers/brotato/hand:rotation")
+tracks/0/path = NodePath("brotato_pers/brotato/hand:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -411,7 +411,7 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("bonkdog_pers/bonkdog:rotation")
+tracks/1/path = NodePath("bonkdog_pers/bonkdog:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -429,7 +429,7 @@ length = 3.5
 loop = true
 step = 0.25
 tracks/0/type = "value"
-tracks/0/path = NodePath("brotato_pers/brotato/hand:rotation")
+tracks/0/path = NodePath("brotato_pers/brotato/hand:rotation_degrees")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -441,7 +441,7 @@ tracks/0/keys = {
 "values": [ 0.0, -4.9, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("bonkdog_pers/bonkdog:rotation")
+tracks/1/path = NodePath("bonkdog_pers/bonkdog:rotation_degrees")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false

@@ -167,7 +167,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("MainPanel:rotation")
+tracks/4/path = NodePath("MainPanel:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -179,7 +179,7 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("MainPanel/electric_wire_1_back:rotation")
+tracks/5/path = NodePath("MainPanel/electric_wire_1_back:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -191,7 +191,7 @@ tracks/5/keys = {
 "values": [ 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("MainPanel/electric_wire_1:rotation")
+tracks/6/path = NodePath("MainPanel/electric_wire_1:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -203,7 +203,7 @@ tracks/6/keys = {
 "values": [ -5.10426 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("MainPanel/electric_wire_0:rotation")
+tracks/7/path = NodePath("MainPanel/electric_wire_0:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -215,7 +215,7 @@ tracks/7/keys = {
 "values": [ -5.10426 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("MainPanel/electric_wire_0_back:rotation")
+tracks/8/path = NodePath("MainPanel/electric_wire_0_back:rotation_degrees")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -328,7 +328,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 70 ), Vector2( 0, 2 ), Vector2( 0, -1 ), Vector2( 0, 25.8101 ), Vector2( 0, 0 ), Vector2( 0, 1085 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("MainPanel:rotation")
+tracks/4/path = NodePath("MainPanel:rotation_degrees")
 tracks/4/interp = 2
 tracks/4/loop_wrap = false
 tracks/4/imported = false
@@ -352,7 +352,7 @@ tracks/5/keys = {
 "values": [ Vector2( 519, -29 ), Vector2( 519, -29 ), Vector2( 519, -100 ), Vector2( 519, -500 ), Vector2( 519, -29 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("MainPanel/electric_wire_0_back:rotation")
+tracks/6/path = NodePath("MainPanel/electric_wire_0_back:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -364,7 +364,7 @@ tracks/6/keys = {
 "values": [ 0.531933, 10.4, 10.4 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("MainPanel/electric_wire_0:rotation")
+tracks/7/path = NodePath("MainPanel/electric_wire_0:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -376,7 +376,7 @@ tracks/7/keys = {
 "values": [ -0.857515 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("MainPanel/electric_wire_1_back:rotation")
+tracks/8/path = NodePath("MainPanel/electric_wire_1_back:rotation_degrees")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -388,7 +388,7 @@ tracks/8/keys = {
 "values": [ -1.89946, 10.4, 10.4 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("MainPanel/electric_wire_1:rotation")
+tracks/9/path = NodePath("MainPanel/electric_wire_1:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -479,7 +479,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 70 ), Vector2( 0, 70 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("MainPanel:rotation")
+tracks/4/path = NodePath("MainPanel:rotation_degrees")
 tracks/4/interp = 2
 tracks/4/loop_wrap = false
 tracks/4/imported = false
@@ -491,7 +491,7 @@ tracks/4/keys = {
 "values": [ 0.0, 0.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("MainPanel/electric_wire_0_back:rotation")
+tracks/5/path = NodePath("MainPanel/electric_wire_0_back:rotation_degrees")
 tracks/5/interp = 2
 tracks/5/loop_wrap = false
 tracks/5/imported = false
@@ -503,7 +503,7 @@ tracks/5/keys = {
 "values": [ 0.0, 3.16627, 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("MainPanel/electric_wire_0:rotation")
+tracks/6/path = NodePath("MainPanel/electric_wire_0:rotation_degrees")
 tracks/6/interp = 2
 tracks/6/loop_wrap = false
 tracks/6/imported = false
@@ -515,7 +515,7 @@ tracks/6/keys = {
 "values": [ 0.0, -5.10426, 0.0 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("MainPanel/electric_wire_1_back:rotation")
+tracks/7/path = NodePath("MainPanel/electric_wire_1_back:rotation_degrees")
 tracks/7/interp = 2
 tracks/7/loop_wrap = false
 tracks/7/imported = false
@@ -527,7 +527,7 @@ tracks/7/keys = {
 "values": [ -1.73231, -1.89946, 0.0, -1.58035 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("MainPanel/electric_wire_1:rotation")
+tracks/8/path = NodePath("MainPanel/electric_wire_1:rotation_degrees")
 tracks/8/interp = 2
 tracks/8/loop_wrap = false
 tracks/8/imported = false
@@ -616,7 +616,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 1085 ), Vector2( 0, 0 ), Vector2( 0, 25.8101 ), Vector2( 0, -1 ), Vector2( 0, 2 ), Vector2( 0, 70 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("MainPanel:rotation")
+tracks/4/path = NodePath("MainPanel:rotation_degrees")
 tracks/4/interp = 2
 tracks/4/loop_wrap = false
 tracks/4/imported = false
@@ -640,7 +640,7 @@ tracks/5/keys = {
 "values": [ Vector2( 519, -29 ), Vector2( 519, -100 ), Vector2( 519, -29 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("MainPanel/electric_wire_0_back:rotation")
+tracks/6/path = NodePath("MainPanel/electric_wire_0_back:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -652,7 +652,7 @@ tracks/6/keys = {
 "values": [ 10.4, 10.4, 0.531933 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("MainPanel/electric_wire_0:rotation")
+tracks/7/path = NodePath("MainPanel/electric_wire_0:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -664,7 +664,7 @@ tracks/7/keys = {
 "values": [ -0.857515 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("MainPanel/electric_wire_1_back:rotation")
+tracks/8/path = NodePath("MainPanel/electric_wire_1_back:rotation_degrees")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -676,7 +676,7 @@ tracks/8/keys = {
 "values": [ 10.4, 10.4, -1.89946 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("MainPanel/electric_wire_1:rotation")
+tracks/9/path = NodePath("MainPanel/electric_wire_1:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false

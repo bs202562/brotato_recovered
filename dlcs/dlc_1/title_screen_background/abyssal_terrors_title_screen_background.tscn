@@ -283,7 +283,7 @@ tracks/1/keys = {
 "values": [ Vector2( 862, 569 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:rotation")
+tracks/2/path = NodePath(".:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -325,7 +325,7 @@ tracks/1/keys = {
 "values": [ Vector2( 862, 569 ), Vector2( 960, 645 ), Vector2( 862, 569 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:rotation")
+tracks/2/path = NodePath(".:rotation_degrees")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/imported = false

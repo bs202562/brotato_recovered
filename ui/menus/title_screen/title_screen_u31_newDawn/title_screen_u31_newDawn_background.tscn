@@ -21,7 +21,7 @@
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -38,7 +38,7 @@ resource_name = "anim"
 length = 5.333
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -77,7 +77,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:rotation")
+tracks/2/path = NodePath(".:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -118,7 +118,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:rotation")
+tracks/2/path = NodePath(".:rotation_degrees")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -261,7 +261,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("..:rotation")
+tracks/0/path = NodePath("..:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -278,7 +278,7 @@ resource_name = "anim"
 length = 2.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("..:rotation")
+tracks/0/path = NodePath("..:rotation_degrees")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -293,7 +293,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -322,7 +322,7 @@ resource_name = "anim"
 length = 2.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -349,7 +349,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=9]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -378,7 +378,7 @@ resource_name = "anim"
 length = 3.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -429,7 +429,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../bandana_up:rotation")
+tracks/2/path = NodePath("../bandana_up:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -470,7 +470,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.742, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../bandana_up:rotation")
+tracks/2/path = NodePath("../bandana_up:rotation_degrees")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -497,7 +497,7 @@ tracks/0/keys = {
 "values": [ Vector2( 217.802, -18.9861 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:rotation")
+tracks/1/path = NodePath(".:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -538,7 +538,7 @@ tracks/0/keys = {
 "values": [ Vector2( 217.802, -18.9861 ), Vector2( 216.969, -3.33649 ), Vector2( 217.802, -18.9861 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:rotation")
+tracks/1/path = NodePath(".:rotation_degrees")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -565,7 +565,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("pile/brotato:rotation")
+tracks/0/path = NodePath("pile/brotato:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -577,7 +577,7 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("pile/brotato/sword:rotation")
+tracks/1/path = NodePath("pile/brotato/sword:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -589,7 +589,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("pile/brotato/hand_flag:rotation")
+tracks/2/path = NodePath("pile/brotato/hand_flag:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -601,7 +601,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("pile/brotato/hand_flag/flag_1:rotation")
+tracks/3/path = NodePath("pile/brotato/hand_flag/flag_1:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -613,7 +613,7 @@ tracks/3/keys = {
 "values": [ 0.0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("pile/brotato/hand_flag/flag_1/flag_2:rotation")
+tracks/4/path = NodePath("pile/brotato/hand_flag/flag_1/flag_2:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -630,7 +630,7 @@ resource_name = "anim"
 length = 2.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("pile/brotato:rotation")
+tracks/0/path = NodePath("pile/brotato:rotation_degrees")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -642,7 +642,7 @@ tracks/0/keys = {
 "values": [ 0.0, -2.7, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("pile/brotato/sword:rotation")
+tracks/1/path = NodePath("pile/brotato/sword:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/imported = false
