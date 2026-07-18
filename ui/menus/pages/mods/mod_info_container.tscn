@@ -51,7 +51,7 @@ offset_top = 99.0
 offset_right = 804.0
 offset_bottom = 449.0
 custom_minimum_size = Vector2( 0, 350 )
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="ModDescription" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true

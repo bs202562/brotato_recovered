@@ -89,9 +89,10 @@ func on_joy_connection_changed(_device: int, connected: bool) -> void :
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT:
-		if ProgressData.settings.mute_on_focus_lost:
+		# 设置可能尚未加载完成（启动瞬间失焦），用 get 防止空键报错
+		if ProgressData.settings.get("mute_on_focus_lost", false):
 			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(0.0))
-		if ProgressData.settings.on_lost_focus == 2:
+		if ProgressData.settings.get("on_lost_focus", 0) == 2:
 			_disable_input = true
 		emit_signal("game_lost_focus")
 	elif what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_IN:

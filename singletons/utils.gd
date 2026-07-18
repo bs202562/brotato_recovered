@@ -824,6 +824,9 @@ func is_manual_aim(player_index: int) -> bool:
 		
 		is_manual = not RunData.is_coop_run or is_player_using_gamepad(player_index)
 
+	# 4.x 移植: 两个分支都未命中时 is_manual 为 null，4.x 不允许 bool 返回 null
+	if is_manual == null:
+		is_manual = false
 	_manual_aim_cache[player_index] = is_manual
 	return is_manual
 

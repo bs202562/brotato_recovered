@@ -1036,7 +1036,8 @@ func remove_backgrounds(p_backgrounds: Array) -> void :
 	emit_signal("backgrounds_updated")
 
 
-func get_background_gradient_color() -> Resource:
+# 4.x 移植: background_colors 是 Color 数组，3.x 声明的 Resource 返回类型在 4.x 会报错
+func get_background_gradient_color() -> Color:
 	return Utils.get_rand_element(background_colors)
 
 

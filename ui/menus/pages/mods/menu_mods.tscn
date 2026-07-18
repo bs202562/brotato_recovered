@@ -65,7 +65,7 @@ offset_right = 822.0
 offset_bottom = 475.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="ModListContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ModList/MarginContainer/ScrollContainer"]
 unique_name_in_owner = true

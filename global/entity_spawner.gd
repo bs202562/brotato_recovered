@@ -343,7 +343,8 @@ class SpawnEntityArgs:
 		type = p_type
 
 
-func spawn_entity(scene: PackedScene, args: SpawnEntityArgs, data: Resource = null, source = null, charmed_by: int = - 1) -> CharacterBody2D:
+# 4.x 移植: 实体基类 Entity 改为继承 RigidBody2D，3.x 的 KinematicBody2D 返回类型不再适用
+func spawn_entity(scene: PackedScene, args: SpawnEntityArgs, data: Resource = null, source = null, charmed_by: int = - 1) -> Entity:
 	var type = args.type
 	if type == EntityType.PLAYER:
 		DebugService.handle_player_spawn_debug_options(args.player_index)

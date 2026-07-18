@@ -619,7 +619,7 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 size_flags_horizontal = 3
 follow_focus = true
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="root/BetterTabContainer/TabContainer/tab_challenges/VBoxContainer/HBoxContainer/ScrollContainer"]
 offset_right = 20.0
@@ -757,7 +757,7 @@ focus_neighbor_bottom = NodePath(".")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="InventoryItems" type="GridContainer" parent="root/BetterTabContainer/TabContainer/tab_items/HBoxContainer/VBoxContainer2/ScrollContainer"]
 unique_name_in_owner = true
@@ -788,7 +788,7 @@ offset_bottom = 710.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="codex_item_description" parent="root/BetterTabContainer/TabContainer/tab_items/HBoxContainer/scroll_right_items" instance=ExtResource( 14 )]
 unique_name_in_owner = true
@@ -875,7 +875,7 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 size_flags_vertical = 3
 follow_focus = true
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="InventoryWeapons" type="GridContainer" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer2/ScrollContainer"]
 unique_name_in_owner = true
@@ -920,7 +920,7 @@ offset_bottom = 658.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="codex_weapon_description" parent="root/BetterTabContainer/TabContainer/tab_weapons/HBoxContainer/VBoxContainer/scroll_right_weapons" instance=ExtResource( 13 )]
 unique_name_in_owner = true
@@ -1068,7 +1068,7 @@ focus_neighbor_bottom = NodePath(".")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="InventoryEnemies" type="GridContainer" parent="root/BetterTabContainer/TabContainer/tab_entities/HBoxContainer/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
@@ -1104,7 +1104,7 @@ focus_previous = NodePath("../VBoxContainer")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="codex_enemy_description" parent="root/BetterTabContainer/TabContainer/tab_entities/HBoxContainer/scroll_right_enemies" instance=ExtResource( 6 )]
 unique_name_in_owner = true

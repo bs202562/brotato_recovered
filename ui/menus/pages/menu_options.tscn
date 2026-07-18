@@ -418,7 +418,7 @@ focus_previous = NodePath("../../../HBoxContainer2")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="AudioContainer" type="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Audio_Container"]
 unique_name_in_owner = true
@@ -620,7 +620,7 @@ focus_previous = NodePath("../../../HBoxContainer2")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="VideoContainer" type="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Video_Container"]
 unique_name_in_owner = true
@@ -758,7 +758,7 @@ focus_next = NodePath("../../../HBoxContainer")
 focus_previous = NodePath("../../../HBoxContainer2")
 size_flags_vertical = 3
 follow_focus = true
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="GameplayVBoxContainer" type="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Gameplay_Container"]
 unique_name_in_owner = true
@@ -979,7 +979,7 @@ focus_previous = NodePath("../../../HBoxContainer2")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="AccessibilityContainer" type="VBoxContainer" parent="Buttons/HBoxContainer3/TabContainer/Accessibility_Container"]
 unique_name_in_owner = true

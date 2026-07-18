@@ -17,8 +17,8 @@ corner_radius_bottom_left = 8
 [node name="CoopShopHint" type="ScrollContainer"]
 size_flags_horizontal = 4
 theme = ExtResource( 4 )
-scroll_horizontal_enabled = false
-scroll_vertical_enabled = false
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
 script = ExtResource( 3 )
 
 [node name="progress" type="ProgressBar" parent="."]

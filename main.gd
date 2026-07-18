@@ -171,7 +171,8 @@ func _ready() -> void :
 	var _popup = _challenge_completed_ui.connect("started", Callable(self, "on_chal_popup"))
 	var _popout = _challenge_completed_ui.connect("finished", Callable(self, "on_chal_popout"))
 
-	_background.texture.gradient.colors[1] = ItemService.get_background_gradient_color()
+	# 4.x 移植: colors 属性返回 PackedColorArray 副本，按下标赋值不会写回，需用 set_color
+	_background.texture.gradient.set_color(1, ItemService.get_background_gradient_color())
 	# 4.x 移植: 3.x 的 tile_set_texture() 已移除，改为在 MyTileMap 里动态重建图集
 	_tile_map.set_tiles_texture(RunData.get_background().get_tiles_sprite())
 	_tile_map.outline.modulate = RunData.get_background().outline_color

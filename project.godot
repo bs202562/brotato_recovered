@@ -265,6 +265,13 @@ analog_move_down={
 ]
 }
 
+[internationalization]
+
+locale/translation_remaps={}
+locale/translations=PackedStringArray("res://resources/translations/translations.de.translation", "res://resources/translations/translations.en.translation", "res://resources/translations/translations.es.translation", "res://resources/translations/translations.fr.translation", "res://resources/translations/translations.ja.translation", "res://resources/translations/translations.ko.translation", "res://resources/translations/translations.pl.translation", "res://resources/translations/translations.pt.translation", "res://resources/translations/translations.ru.translation", "res://resources/translations/translations.it.translation", "res://resources/translations/translations.tr.translation", "res://resources/translations/translations.zh.translation", "res://resources/translations/translations.zh_TW.translation")
+locale/test="en"
+locale/locale_filter=[1, ["de", "en", "es", "fr", "it", "ja", "ko", "pl", "pt", "ru", "tr", "zh", "zh_TW"]]
+
 [layer_names]
 
 2d_physics/layer_1="neutral"
@@ -279,13 +286,6 @@ analog_move_down={
 2d_physics/layer_10="pets"
 2d_physics/layer_11="pet_projectiles"
 2d_physics/layer_12="structures"
-
-[internationalization]
-
-locale/test="en"
-locale/translations=PackedStringArray("res://resources/translations/translations.de.translation", "res://resources/translations/translations.en.translation", "res://resources/translations/translations.es.translation", "res://resources/translations/translations.fr.translation", "res://resources/translations/translations.ja.translation", "res://resources/translations/translations.ko.translation", "res://resources/translations/translations.pl.translation", "res://resources/translations/translations.pt.translation", "res://resources/translations/translations.ru.translation", "res://resources/translations/translations.it.translation", "res://resources/translations/translations.tr.translation", "res://resources/translations/translations.zh.translation", "res://resources/translations/translations.zh_TW.translation")
-locale/locale_filter=[1, ["de", "en", "es", "fr", "it", "ja", "ko", "pl", "pt", "ru", "tr", "zh", "zh_TW"]]
-locale/translation_remaps={}
 
 [memory]
 

@@ -13,7 +13,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_styles/bg = SubResource( 1 )
 follow_focus = true
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 script = ExtResource( 2 )
 
 [node name="Inventory" parent="." instance=ExtResource( 1 )]

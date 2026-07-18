@@ -303,7 +303,7 @@ unique_name_in_owner = true
 offset_right = 754.0
 offset_bottom = 73.0
 custom_minimum_size = Vector2( 370, 0 )
-scroll_vertical_enabled = false
+vertical_scroll_mode = 0
 
 [node name="CharacterName" type="Label" parent="vboxContainer/ScrollContainer_name"]
 unique_name_in_owner = true
@@ -557,7 +557,7 @@ theme_override_styles/panel = SubResource( 8 )
 unique_name_in_owner = true
 offset_right = 450.0
 offset_bottom = 513.0
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="vboxContainer/character_infos_container/right_panel/ScrollContainer"]
 unique_name_in_owner = true
