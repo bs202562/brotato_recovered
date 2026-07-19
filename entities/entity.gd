@@ -144,7 +144,7 @@ func _set_outlines(alpha: float = 1.0, desaturation: float = 0.0) -> void :
 		return
 
 	sprite.material = ShaderMaterial.new()
-	sprite.material.gdshader = outline_material.gdshader
+	sprite.material.shader = outline_material.shader
 
 	sprite.material.set_shader_parameter("texture_size", sprite.texture.get_size())
 
