@@ -351,7 +351,8 @@ func _on_CommunityButton_pressed() -> void :
 
 func _on_QuitButton_pressed() -> void :
 	if not Utils.is_on_console() or Utils.on_gdk_desktop:
-		get_tree().notification(Node.NOTIFICATION_WM_CLOSE_REQUEST)
+		# 4.x 移植: 3.x 靠向 SceneTree 发 WM_QUIT_REQUEST 通知退出，4.x SceneTree 不再响应该通知
+		get_tree().quit()
 
 
 func _on_NewsletterButton_pressed() -> void :

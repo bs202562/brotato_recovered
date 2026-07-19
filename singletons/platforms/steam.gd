@@ -60,7 +60,8 @@ func _init() -> void :
 
 func _enter_tree():
 	if quit_game:
-		get_tree().notification(Node.NOTIFICATION_WM_CLOSE_REQUEST)
+		# 4.x 移植: 3.x 靠向 SceneTree 发 WM_QUIT_REQUEST 通知退出，4.x SceneTree 不再响应该通知
+		get_tree().quit()
 
 
 func get_type() -> int:
