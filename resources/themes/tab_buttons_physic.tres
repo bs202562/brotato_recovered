@@ -9,52 +9,55 @@
 content_margin_top = 38.0
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 246, 118 )
-margin_left = 17.0
-margin_right = 17.0
-margin_top = 33.0
-margin_bottom = 50.0
+texture_margin_left = 17.0
+texture_margin_right = 17.0
+texture_margin_top = 33.0
+texture_margin_bottom = 50.0
 modulate_color = Color( 0.160784, 0.121569, 0.109804, 1 )
 
 [sub_resource type="StyleBoxTexture" id=23]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 128, 70 )
-margin_left = 25.0
-margin_right = 25.0
-margin_bottom = 25.0
+texture_margin_left = 25.0
+texture_margin_right = 25.0
+texture_margin_bottom = 25.0
 modulate_color = Color( 1, 0.733333, 0.168627, 0.0627451 )
 
 [sub_resource type="StyleBoxTexture" id=10]
 content_margin_top = 38.0
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 246, 118 )
-margin_left = 17.0
-margin_right = 17.0
-margin_top = 33.0
-margin_bottom = 50.0
+texture_margin_left = 17.0
+texture_margin_right = 17.0
+texture_margin_top = 33.0
+texture_margin_bottom = 50.0
 modulate_color = Color( 0.435294, 0.411765, 0.321569, 1 )
 
 [sub_resource type="StyleBoxTexture" id=9]
 content_margin_top = 38.0
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 246, 118 )
-margin_left = 17.0
-margin_right = 17.0
-margin_top = 33.0
-margin_bottom = 50.0
+texture_margin_left = 17.0
+texture_margin_right = 17.0
+texture_margin_top = 33.0
+texture_margin_bottom = 50.0
 modulate_color = Color( 0.207843, 0.196078, 0.172549, 1 )
 
 [sub_resource type="StyleBoxTexture" id=6]
 content_margin_top = 38.0
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 246, 118 )
-margin_left = 17.0
-margin_right = 17.0
-margin_top = 59.0
-margin_bottom = 5.0
+texture_margin_left = 17.0
+texture_margin_right = 17.0
+texture_margin_top = 59.0
+texture_margin_bottom = 5.0
 modulate_color = Color( 0.392157, 0.568627, 0.329412, 1 )
 
 [resource]
 Button/fonts/font = ExtResource( 4 )
+Button/font_sizes/font_size = 35
+Button/constants/outline_size = 2
+Button/colors/font_outline_color = Color( 0, 0, 0, 1 )
 Button/styles/disabled = SubResource( 8 )
 Button/styles/focus = SubResource( 23 )
 Button/styles/hover = SubResource( 10 )

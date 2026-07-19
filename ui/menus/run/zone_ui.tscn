@@ -45,6 +45,9 @@ theme_override_constants/separation = 50
 offset_right = 361.0
 offset_bottom = 45.0
 theme_override_fonts/font = ExtResource( 6 )
+theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 1
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 text = "CRASH_ZONE"
 horizontal_alignment = 1
 
@@ -75,6 +78,9 @@ offset_top = 8.0
 offset_right = 211.0
 offset_bottom = 53.0
 theme_override_fonts/font = ExtResource( 6 )
+theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 1
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 text = "DIFFICULTY"
 horizontal_alignment = 1
 
@@ -150,6 +156,9 @@ offset_right = 361.0
 offset_bottom = 434.0
 theme = ExtResource( 3 )
 theme_override_fonts/font = ExtResource( 6 )
+theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 1
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 text = "MENU_CHOOSE"
 script = ExtResource( 1 )
 

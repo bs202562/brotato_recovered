@@ -125,6 +125,9 @@ offset_right = 926.0
 offset_bottom = 63.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 22 )
+theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 text = "MENU_SHOP"
 
 [node name="GoldUI" type="HBoxContainer" parent="Content/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
@@ -146,6 +149,9 @@ offset_top = 4.0
 offset_right = 513.0
 offset_bottom = 77.0
 theme_override_fonts/font = ExtResource( 30 )
+theme_override_font_sizes/font_size = 60
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 text = "0"
 script = ExtResource( 7 )
 

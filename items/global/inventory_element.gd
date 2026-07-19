@@ -66,8 +66,13 @@ func set_number(p_number: int) -> void :
 	_number_label.text = str(p_number)
 
 
-func set_font(font: Resource) -> void :
+# 4.x 移植: 字号与描边不再随字体资源携带(3.x DynamicFont 内含 size/outline),
+# 调用方需一并传入
+func set_font(font: Resource, font_size: int = 40, outline_size: int = 3) -> void :
 	_number_label.add_theme_font_override("font", font)
+	_number_label.add_theme_font_size_override("font_size", font_size)
+	_number_label.add_theme_constant_override("outline_size", outline_size)
+	_number_label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
 
 
 func get_inventory_icon() -> Texture2D:

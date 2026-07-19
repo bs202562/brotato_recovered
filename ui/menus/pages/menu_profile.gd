@@ -258,7 +258,7 @@ func _display_save_selected(play_sound: bool = true):
 
 
 func _on_Reset_pressed():
-	resetPopUpPanel.popup()
+	resetPopUpPanel.show()
 	cancelResetPopUpButton.grab_focus()
 
 func _on_ResetConfirmButton_pressed():
@@ -278,7 +278,7 @@ func _on_ResetCancelButton_pressed():
 
 
 func _on_UnlockAll_pressed():
-	unlockPopUpPanel.popup()
+	unlockPopUpPanel.show()
 	cancelUnlockPopUpButton.grab_focus()
 
 
@@ -309,7 +309,7 @@ func _on_Copy1_pressed():
 	elif view_id == 1 or view_id == 2:
 		from_id = 0
 
-	copyPopUpPanel.popup()
+	copyPopUpPanel.show()
 	copyLabel.text = Text.text("PROFILE_COPY_QUOTE", [str(from_id + 1), str(to_id + 1)])
 	cancelCopyPopUpButton.grab_focus()
 
@@ -323,7 +323,7 @@ func _on_Copy2_pressed():
 	elif view_id == 2:
 		from_id = 1
 
-	copyPopUpPanel.popup()
+	copyPopUpPanel.show()
 	copyLabel.text = Text.text("PROFILE_COPY_QUOTE", [str(from_id + 1), str(to_id + 1)])
 	cancelCopyPopUpButton.grab_focus()
 

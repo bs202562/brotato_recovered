@@ -25,8 +25,10 @@ func set_data(tag: String) -> bool:
 	if RunData.is_coop_run:
 		if _tag_effects.text.length() >= 300:
 			_tag_effects.add_theme_font_override("normal_font", small_font)
+			_tag_effects.add_theme_font_size_override("normal_font_size", 17)
 		else:
 			_tag_effects.add_theme_font_override("normal_font", normal_font)
+			_tag_effects.add_theme_font_size_override("normal_font_size", 21)
 
 	show()
 	return true

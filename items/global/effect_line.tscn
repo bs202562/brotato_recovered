@@ -50,6 +50,7 @@ offset_bottom = 26.0
 mouse_filter = 2
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource( 5 )
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 text = "+ [color=red]33%[/color] elemental damage"
 text = "+ 33% elemental damage"

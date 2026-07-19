@@ -182,7 +182,7 @@ func remove_element(element: ItemParentData, nb_to_remove: int = 1, deep_compari
 
 func _spawn_element(element: Resource, _display_banned: float = 0, animated_entrance = false) -> InventoryElement:
 	var instance: InventoryElement = element_scene.instantiate()
-	instance.call_deferred("set_font", element_font)
+	instance.call_deferred("set_font", element_font, 40, 3)
 	instance.player_index = player_index
 	instance.display_banned = _display_banned
 	instance.background_transparency = item_background_transparency
@@ -191,7 +191,7 @@ func _spawn_element(element: Resource, _display_banned: float = 0, animated_entr
 	if element_size != Utils.BASE_INVENTORY_ELEMENT_SIZE:
 		instance.set_element_size(element_size)
 		if element_size.x <= 80 and element_size.y <= 80:
-			instance.call_deferred("set_font", element_font_small)
+			instance.call_deferred("set_font", element_font_small, 26, 1)
 
 	add_child(instance)
 	_update_mouse_focus_for_control(instance)

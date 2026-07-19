@@ -267,6 +267,7 @@ offset_bottom = 83.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource( 1 )
+theme_override_font_sizes/font_size = 26
 text = "MENU_BACK"
 icon = ExtResource( 13 )
 expand_icon = true

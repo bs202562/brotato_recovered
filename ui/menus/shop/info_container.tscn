@@ -47,6 +47,7 @@ offset_top = 15.0
 offset_right = 275.0
 offset_bottom = 67.0
 theme_override_fonts/normal_font = ExtResource( 1 )
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 text = "DAMAGE_DEALT_LAST_WAVE"
 text = "DAMAGE_DEALT_LAST_WAVE"

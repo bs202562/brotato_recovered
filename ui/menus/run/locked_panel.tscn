@@ -45,6 +45,7 @@ offset_top = 170.0
 offset_right = 224.0
 offset_bottom = 221.0
 theme_override_fonts/font = ExtResource( 2 )
+theme_override_font_sizes/font_size = 22
 text = "CHALLENGE_DESCRIPTION"
 horizontal_alignment = 1
 autowrap = true

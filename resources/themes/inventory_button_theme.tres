@@ -28,6 +28,7 @@ corner_radius_bottom_left = 12
 
 [resource]
 default_font = ExtResource( 1 )
+default_font_size = 50
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
@@ -35,6 +36,7 @@ Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
 Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = ExtResource( 1 )
+Button/font_sizes/font_size = 50
 Button/styles/focus = SubResource( 3 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 1 )

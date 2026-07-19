@@ -81,6 +81,9 @@ offset_right = 400.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 5 )
+theme_override_font_sizes/font_size = 26
+theme_override_constants/outline_size = 1
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 text = "BUG_REPORT_TITLE"
 
 [node name="FeedbackInput" type="TextEdit" parent="UI/Panel/InputContainer"]
@@ -89,6 +92,7 @@ offset_right = 400.0
 offset_bottom = 507.0
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource( 8 )
+theme_override_font_sizes/font_size = 21
 theme_override_styles/focus = SubResource( 23 )
 theme_override_styles/normal = SubResource( 23 )
 wrap_enabled = true
@@ -100,6 +104,7 @@ offset_right = 400.0
 offset_bottom = 582.0
 size_flags_stretch_ratio = 0.0
 theme_override_fonts/font = ExtResource( 8 )
+theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource( 24 )
 text = "BUG_REPORT_DATA"
 
@@ -109,6 +114,7 @@ offset_right = 400.0
 offset_bottom = 636.0
 theme_override_colors/font_color = Color( 1, 0.415686, 0.415686, 1 )
 theme_override_fonts/font = ExtResource( 3 )
+theme_override_font_sizes/font_size = 22
 text = "Error submitting report"
 horizontal_alignment = 1
 
@@ -124,6 +130,7 @@ offset_right = 190.0
 offset_bottom = 44.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 3 )
+theme_override_font_sizes/font_size = 22
 text = "MENU_SUBMIT"
 
 [node name="CancelButton" type="Button" parent="UI/Panel/InputContainer/HBoxContainer"]
@@ -133,6 +140,7 @@ offset_right = 400.0
 offset_bottom = 44.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 3 )
+theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource( 24 )
 text = "MENU_CANCEL"
 
@@ -158,6 +166,7 @@ offset_right = 400.0
 offset_bottom = 293.0
 theme_override_colors/font_color = Color( 0.415686, 1, 0.423529, 1 )
 theme_override_fonts/font = ExtResource( 3 )
+theme_override_font_sizes/font_size = 22
 text = "BUG_REPORT_SUCCESS"
 horizontal_alignment = 1
 
@@ -167,6 +176,7 @@ offset_right = 400.0
 offset_bottom = 367.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 3 )
+theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource( 24 )
 text = "ID: 2024-01-05/021437-O4XL6INP"
 
@@ -176,6 +186,7 @@ offset_right = 400.0
 offset_bottom = 441.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 3 )
+theme_override_font_sizes/font_size = 22
 text = "MENU_RETURN_GAME"
 
 [node name="Tooltip" parent="UI" instance=ExtResource( 2 )]

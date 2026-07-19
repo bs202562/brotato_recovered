@@ -5,4 +5,6 @@
 
 [resource]
 default_font = ExtResource( 2 )
+default_font_size = 40
 Label/fonts/font = ExtResource( 1 )
+Label/font_sizes/font_size = 26

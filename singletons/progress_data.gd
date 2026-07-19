@@ -1074,7 +1074,9 @@ func apply_settings() -> void :
 		settings.font_size = 1.2
 
 
-	smallest_text_font.fixed_size = SMALLEST_FONT_BASE_SIZE * settings.font_size
+	# 4.x 移植: 字号已不存于字体资源(FontVariation 无 size/fixed_size),
+	# 3.x 通过改共享 DynamicFont.size 实现的无障碍字号缩放需另行重设计,
+	# 这里仅保留设置值,避免对不存在的属性赋值导致报错
 	RunData.reset_background()
 	set_fps_limit(settings.limit_fps)
 
@@ -1091,7 +1093,7 @@ func set_font_size(value: float) -> void :
 		
 		value = 1.2
 
-	smallest_text_font.fixed_size = SMALLEST_FONT_BASE_SIZE * value
+	# 4.x 移植: 同 _apply_display_settings,字号缩放待重设计,仅记录设置
 	settings.font_size = value
 
 

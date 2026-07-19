@@ -112,6 +112,7 @@ Button/styles/pressed = SubResource( 10 )
 OptionButton/colors/font_color_focus = Color( 1, 1, 0, 1 )
 OptionButton/colors/font_color_hover = Color( 1, 1, 1, 1 )
 OptionButton/fonts/font = ExtResource( 1 )
+OptionButton/font_sizes/font_size = 22
 OptionButton/icons/arrow = ExtResource( 2 )
 OptionButton/styles/disabled = SubResource( 5 )
 OptionButton/styles/focus = SubResource( 4 )

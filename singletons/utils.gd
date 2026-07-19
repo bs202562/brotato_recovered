@@ -64,7 +64,8 @@ var _stat_keys: = {}
 var _primary_stat_keys: = []
 var _stat_caches: = [{}, {}, {}, {}]
 var _manual_aim_cache: = [null, null, null, null]
-var _popup: Popup
+# 4.x 移植: 弹窗已由 Popup(4.x 是 Window)改为 Control 实现
+var _popup: Control
 
 var on_console: bool = false
 var on_editor: bool = false

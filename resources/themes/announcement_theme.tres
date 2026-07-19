@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/themes/panel/announcement_panel_hover.tres" type="StyleBox" id=3]
 [ext_resource path="res://resources/themes/button_styles/announcement_button.tres" type="StyleBox" id=4]
 
-[sub_resource type="FontFile" id=6]
+[sub_resource type="FontVariation" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
@@ -16,5 +16,6 @@ Button/styles/normal = ExtResource( 4 )
 Button/styles/pressed = SubResource( 5 )
 Label/colors/font_color = Color( 0, 0, 0, 1 )
 Label/fonts/font = ExtResource( 1 )
+Label/font_sizes/font_size = 22
 PanelContainer/styles/hover = ExtResource( 3 )
 PanelContainer/styles/panel = ExtResource( 2 )

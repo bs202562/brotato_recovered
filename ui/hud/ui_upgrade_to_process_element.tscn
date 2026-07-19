@@ -22,6 +22,9 @@ offset_left = -84.0
 offset_top = -38.0
 offset_bottom = 7.0
 theme_override_fonts/font = ExtResource( 3 )
+theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 horizontal_alignment = 2
 
 [connection signal="mouse_entered" from="." to="." method="_on_UIUpgradeToProcessElement_mouse_entered"]

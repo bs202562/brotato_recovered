@@ -53,8 +53,10 @@ func set_data(set: SetData, player_index: int) -> void :
 	if RunData.is_coop_run:
 		if new_text.length() >= 300:
 			_synergy_effects.add_theme_font_override("normal_font", small_font)
+			_synergy_effects.add_theme_font_size_override("normal_font_size", 17)
 		else:
 			_synergy_effects.add_theme_font_override("normal_font", normal_font)
+			_synergy_effects.add_theme_font_size_override("normal_font_size", 21)
 
 	_resize_to_text()
 

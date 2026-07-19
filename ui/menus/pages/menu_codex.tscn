@@ -443,8 +443,8 @@ graph_offset = Vector2( -151, -78 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
-[node name="menu_codex" type="Popup"]
-visible = true
+[node name="menu_codex" type="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 pivot_offset = Vector2( -528, -91 )
@@ -455,7 +455,6 @@ focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 theme = ExtResource( 3 )
-exclusive = true
 script = ExtResource( 7 )
 
 [node name="Cache" type="Panel" parent="."]
@@ -941,6 +940,7 @@ offset_bottom = 48.0
 size_flags_horizontal = 3
 theme = ExtResource( 16 )
 theme_override_fonts/font = ExtResource( 5 )
+theme_override_font_sizes/font_size = 26
 toggle_mode = true
 pressed = true
 group = SubResource( 4 )
@@ -955,6 +955,7 @@ offset_bottom = 48.0
 size_flags_horizontal = 3
 theme = ExtResource( 16 )
 theme_override_fonts/font = ExtResource( 5 )
+theme_override_font_sizes/font_size = 26
 toggle_mode = true
 group = SubResource( 4 )
 text = "Tier 2"
@@ -968,6 +969,7 @@ offset_bottom = 48.0
 size_flags_horizontal = 3
 theme = ExtResource( 16 )
 theme_override_fonts/font = ExtResource( 5 )
+theme_override_font_sizes/font_size = 26
 toggle_mode = true
 group = SubResource( 4 )
 text = "Tier 3"
@@ -981,6 +983,7 @@ offset_bottom = 48.0
 size_flags_horizontal = 3
 theme = ExtResource( 16 )
 theme_override_fonts/font = ExtResource( 5 )
+theme_override_font_sizes/font_size = 26
 toggle_mode = true
 group = SubResource( 4 )
 text = "Tier 4"
@@ -1301,6 +1304,7 @@ focus_previous = NodePath("../root/HBoxContainer/but_tab_enemies")
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource( 5 )
+theme_override_font_sizes/font_size = 26
 text = "MENU_BACK"
 icon = ExtResource( 1 )
 expand_icon = true

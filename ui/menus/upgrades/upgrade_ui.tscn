@@ -66,6 +66,7 @@ offset_bottom = 472.0
 focus_neighbor_top = NodePath(".")
 theme = ExtResource( 4 )
 theme_override_fonts/font = ExtResource( 6 )
+theme_override_font_sizes/font_size = 40
 text = "MENU_CHOOSE"
 script = ExtResource( 5 )
 

@@ -14,7 +14,7 @@ func _ready() -> void :
 		if element_size != Utils.BASE_INVENTORY_ELEMENT_SIZE:
 			element.set_element_size(element_size)
 			if element_size.x <= 80 and element_size.y <= 80:
-				element.call_deferred("set_font", element_font_small)
+				element.call_deferred("set_font", element_font_small, 26, 1)
 
 	if RunData.elites_spawn.size() <= 0: return
 

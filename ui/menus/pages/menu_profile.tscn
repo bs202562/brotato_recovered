@@ -1297,8 +1297,9 @@ texture = ExtResource( 36 )
 script = ExtResource( 39 )
 input_string = "rtrigger"
 
-[node name="ResetPopUpPanel" type="Popup" parent="."]
+[node name="ResetPopUpPanel" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -1362,8 +1363,9 @@ offset_bottom = 85.0
 text = "CANCEL"
 script = ExtResource( 3 )
 
-[node name="UnlockAllPopUpPanel" type="Popup" parent="."]
+[node name="UnlockAllPopUpPanel" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -1427,8 +1429,9 @@ offset_bottom = 85.0
 text = "CANCEL"
 script = ExtResource( 3 )
 
-[node name="CopyPopUpPanel" type="Popup" parent="."]
+[node name="CopyPopUpPanel" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 

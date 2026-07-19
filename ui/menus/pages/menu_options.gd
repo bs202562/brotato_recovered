@@ -206,8 +206,10 @@ func adjust_buttons_font_size() -> void :
 	for check_button in all_check_buttons:
 		if tr(check_button.text).length() > 30:
 			check_button.add_theme_font_override("font", small_font)
+			check_button.add_theme_font_size_override("font_size", 32)
 		else:
 			check_button.add_theme_font_override("font", normal_font)
+			check_button.add_theme_font_size_override("font_size", 40)
 
 	var slider_children = accessibility_slider_container.get_children()
 
@@ -217,8 +219,13 @@ func adjust_buttons_font_size() -> void :
 
 		if tr(child._label.text).length() > 18:
 			child._label.add_theme_font_override("font", small_slider_font)
+			child._label.add_theme_font_size_override("font_size", 35)
+			child._label.add_theme_constant_override("outline_size", 2)
+			child._label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
 		else:
 			child._label.add_theme_font_override("font", normal_slider_font)
+			child._label.add_theme_font_size_override("font_size", 40)
+			child._label.add_theme_constant_override("outline_size", 0)
 
 
 func init_values_from_progress_data() -> void :

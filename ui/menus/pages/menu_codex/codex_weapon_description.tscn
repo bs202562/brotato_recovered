@@ -14,14 +14,9 @@
 [ext_resource path="res://items/global/effect_line.tscn" type="PackedScene" id=12]
 [ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="FontFile" id=13]
 
-[sub_resource type="FontFile" id=4]
-size = 35
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 8 )
-fallback/0 = ExtResource( 7 )
-fallback/1 = ExtResource( 10 )
-fallback/2 = ExtResource( 11 )
-fallback/3 = ExtResource( 9 )
+[sub_resource type="FontVariation" id=4]
+base_font = ExtResource( 8 )
+fallbacks = [ ExtResource( 7 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ) ]
 
 [sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 5 )
@@ -67,6 +62,9 @@ offset_right = 699.0
 offset_bottom = 73.0
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource( 2 )
+theme_override_font_sizes/font_size = 60
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 text = "WEAPONS_NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -83,6 +81,7 @@ theme_override_colors/font_color = Color( 0.917647, 0.886275, 0.690196, 1 )
 theme_override_colors/font_hover_color = Color( 0.980392, 0.956863, 0.8, 1 )
 theme_override_colors/font_pressed_color = Color( 0.980392, 0.956863, 0.8, 1 )
 theme_override_fonts/font = SubResource( 4 )
+theme_override_font_sizes/font_size = 35
 theme_override_styles/hover = ExtResource( 6 )
 theme_override_styles/pressed = ExtResource( 6 )
 theme_override_styles/focus = ExtResource( 6 )
@@ -119,6 +118,7 @@ offset_bottom = 26.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource( 13 )
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 text = "Bought :"
 text = "Bought :"
@@ -133,6 +133,7 @@ offset_bottom = 26.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource( 13 )
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 text = "[right][color=#65c071]%s"
 text = "%s"
@@ -154,6 +155,7 @@ offset_bottom = 275.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource( 13 )
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 text = "BBCode [color=blue]blue[/color]
 qsdsqd
@@ -201,6 +203,7 @@ offset_right = 833.0
 offset_bottom = 58.0
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource( 13 )
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 text = "Bought :"
 text = "Bought :"
@@ -214,6 +217,7 @@ offset_right = 833.0
 offset_bottom = 58.0
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource( 13 )
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 text = "[right][color=#65c071]%s"
 text = "%s"
@@ -234,6 +238,7 @@ offset_right = 873.0
 offset_bottom = 182.0
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource( 13 )
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 text = "BBCode [color=blue]blue[/color]
 qsdsqd

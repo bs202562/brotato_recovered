@@ -1,4 +1,5 @@
-extends Popup
+# 4.x 移植: 3.x 的 Popup 是 Control,4.x 改成了独立 Window,改用 Control + 手动显隐
+extends Control
 class_name PopupAnouncement
 
 @onready var _rich_text_description = $"%rich_text_description"
@@ -13,7 +14,7 @@ func _ready():
 func popup_announcement():
 	focus_before_created = get_viewport().gui_get_focus_owner()
 
-	super.popup()
+	show()
 	if RunData.is_coop_run:
 		Utils._popup = self
 

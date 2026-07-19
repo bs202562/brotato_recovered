@@ -42,11 +42,15 @@ func set_text(new_text: String) -> void :
 		horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 		_label1.add_theme_font_override("font", small_font)
 		_label2.add_theme_font_override("font", small_font)
+		_label1.add_theme_font_size_override("font_size", 17)
+		_label2.add_theme_font_size_override("font_size", 17)
 	else:
 		custom_minimum_size.x = 0
 		horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 		_label1.add_theme_font_override("font", normal_font)
 		_label2.add_theme_font_override("font", normal_font)
+		_label1.add_theme_font_size_override("font_size", 22)
+		_label2.add_theme_font_size_override("font_size", 22)
 
 
 func _update_key_icon() -> void :

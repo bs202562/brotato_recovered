@@ -147,7 +147,7 @@ func deserialize_and_merge(serialized: Dictionary) -> void:
 
 	sets = deserialized_sets
 
-	stats = serialized.stats
+	# 4.x 移植: 原先此处先把字典赋给 Resource 类型的 stats 再覆盖,4.x 类型检查报错,删除无用赋值
 	var deserialized_stats = WeaponStats.new()
 
 	if serialized.stats.type == "ranged":
