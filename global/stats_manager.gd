@@ -52,14 +52,14 @@ func _dequeue_structures() -> void :
 		for struct in player_structure_queue.keys():
 			if not struct.dead:
 				if not struct.is_cursed:
-					if structure_cache.has(struct.filename):
-						struct.set_current_stats(structure_cache[struct.filename])
+					if structure_cache.has(struct.scene_file_path):
+						struct.set_current_stats(structure_cache[struct.scene_file_path])
 						
 						count += 1
 						player_structure_queue.erase(struct)
 					elif _should_recalc_item(player_structure_queue[struct], count):
 						struct.reload_data()
-						structure_cache[struct.filename] = struct.stats
+						structure_cache[struct.scene_file_path] = struct.stats
 						count += 1
 						player_structure_queue.erase(struct)
 
@@ -80,12 +80,12 @@ func _dequeue_pets() -> void :
 		for pet in player_pet_queue:
 			if not pet.dead:
 				if not pet.is_cursed:
-					if pet_cache.has(pet.filename):
-						pet.set_current_stats(pet_cache[pet.filename])
+					if pet_cache.has(pet.scene_file_path):
+						pet.set_current_stats(pet_cache[pet.scene_file_path])
 						recalced_pets.append(pet)
 					elif _should_recalc_item(player_pet_queue[pet], recalced_pets.size()):
 						pet.reload_data()
-						pet_cache[pet.filename] = pet.get_stats()
+						pet_cache[pet.scene_file_path] = pet.get_stats()
 						recalced_pets.append(pet)
 
 				elif _should_recalc_item(player_pet_queue[pet], recalced_pets.size()):
