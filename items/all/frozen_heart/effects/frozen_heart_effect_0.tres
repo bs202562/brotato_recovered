@@ -1,22 +1,19 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" script_class="Effect" format=3 uid="uid://diisoq1ostk7n"]
 
-[ext_resource path="res://items/global/effect.gd" type="Script" id=1]
-[ext_resource path="res://items/global/custom_arg.gd" type="Script" id=2]
+[ext_resource type="Script" uid="uid://dh37x8ahllj7c" path="res://items/global/effect.gd" id="1"]
+[ext_resource type="Script" uid="uid://40ugyjs0jwyu" path="res://items/global/custom_arg.gd" id="2"]
 
-[sub_resource type="Resource" id=1]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="1"]
+script = ExtResource("2")
 arg_index = 1
 arg_sign = 0
 arg_value = 2
-arg_format = 0
-arg_key = ""
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 key = "stat_elemental_damage"
 text_key = "EFFECT_WEAPON_SCALING_STATS"
 value = 10
 custom_key = "weapon_scaling_stats"
 storage_method = 1
-effect_sign = 3
-custom_args = [ SubResource( 1 ) ]
+custom_args = [SubResource("1")]

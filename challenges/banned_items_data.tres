@@ -1,46 +1,21 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" script_class="ChallengeData" format=3 uid="uid://ddrl2gfl1u43v"]
 
-[ext_resource path="res://items/challenges/ban_system_icon.png" type="Texture2D" id=1]
-[ext_resource path="res://items/global/item_data.gd" type="Script" id=2]
-[ext_resource path="res://challenges/global/challenge_data.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://c5b7vimicxsqu" path="res://items/challenges/ban_system_icon.png" id="1"]
+[ext_resource type="Script" uid="uid://duv7h078a3mul" path="res://items/global/item_data.gd" id="2"]
+[ext_resource type="Script" uid="uid://cvt8msnty02qg" path="res://challenges/global/challenge_data.gd" id="3"]
 
-[sub_resource type="Resource" id=1]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="1"]
+script = ExtResource("2")
 my_id = "fake_item_banned_item"
-unlocked_by_default = false
-can_be_looted = true
-icon = ExtResource( 1 )
+icon = ExtResource("1")
 name = "SYSTEM_BANNEDITEM"
-tier = 0
-value = 1
-effects = [  ]
-tracking_text = ""
-is_lockable = true
-unlock_codex_descr_after_get_it = 1
-is_cursed = false
-curse_factor = 0.0
-max_nb = -1
-item_appearances = [  ]
-tags = [  ]
 
 [resource]
-script = ExtResource( 3 )
-my_id = "chal_banned_items"
-unlocked_by_default = false
-can_be_looted = true
-icon = ExtResource( 1 )
-name = "CHAL_BANNED_ITEMS"
-tier = 0
-value = 3
-effects = [  ]
-tracking_text = ""
-is_lockable = true
-unlock_codex_descr_after_get_it = 1
-is_cursed = false
-curse_factor = 0.0
+script = ExtResource("3")
 description = "CHAL_BANNED_ITEMS_DESC"
 reward_type = 8
-reward = SubResource( 1 )
-number = 0
-stat = ""
-additional_args = [  ]
+reward = SubResource("1")
+my_id = "chal_banned_items"
+icon = ExtResource("1")
+name = "CHAL_BANNED_ITEMS"
+value = 3

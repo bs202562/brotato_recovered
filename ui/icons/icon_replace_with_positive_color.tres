@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://mtg1wui44akl"]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id="1"]
 code = "shader_type canvas_item;
 uniform vec4 new_color : source_color = vec4(0.105882, 1.000000, 0.176471, 1.000000);
 uniform float detection_offset : hint_range(-1, 1) = 0.88;
@@ -46,8 +46,8 @@ void fragment() {
 "
 
 [resource]
-shader = SubResource( 1 )
-shader_param/new_color = Color( 0.105882, 1, 0.176471, 1 )
-shader_param/detection_offset = -0.648
-shader_param/detection_strenght = 2.128
-shader_param/color_to_replace = Color( 0.105882, 1, 0.176471, 1 )
+shader = SubResource("1")
+shader_parameter/new_color = Color(0.105882, 1, 0.176471, 1)
+shader_parameter/detection_offset = -0.648
+shader_parameter/detection_strenght = 2.128
+shader_parameter/color_to_replace = Color(0.105882, 1, 0.176471, 1)
