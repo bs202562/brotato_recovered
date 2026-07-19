@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=221 format=2]
+[gd_resource type="Resource" load_steps=234 format=2]
 
 [ext_resource path="res://dlcs/dlc_1/dlc_1_data.gd" type="Script" id=1]
 [ext_resource path="res://dlcs/dlc_1/zones/abyss/backgrounds/dlc_1_background_data_0.tres" type="Resource" id=2]
@@ -207,6 +207,19 @@
 [ext_resource path="res://dlcs/dlc_1/enemies/scaled_stargazer/scaled_stargazer_item.tres" type="Resource" id=218]
 [ext_resource path="res://dlcs/dlc_1/enemies/cool_walrus/cool_walrus_item.tres" type="Resource" id=219]
 [ext_resource path="res://dlcs/dlc_1/enemies/mad_dragonfish/mad_dragonfish_item.tres" type="Resource" id=220]
+[ext_resource path="res://dlcs/dlc_1/translations/translations.en.translation" type="Translation" id=221]
+[ext_resource path="res://dlcs/dlc_1/translations/translations.fr.translation" type="Translation" id=222]
+[ext_resource path="res://dlcs/dlc_1/translations/translations.zh.translation" type="Translation" id=223]
+[ext_resource path="res://dlcs/dlc_1/translations/translations.ja.translation" type="Translation" id=224]
+[ext_resource path="res://dlcs/dlc_1/translations/translations.ko.translation" type="Translation" id=225]
+[ext_resource path="res://dlcs/dlc_1/translations/translations.zh_TW.translation" type="Translation" id=226]
+[ext_resource path="res://dlcs/dlc_1/translations/translations.ru.translation" type="Translation" id=227]
+[ext_resource path="res://dlcs/dlc_1/translations/translations.pl.translation" type="Translation" id=228]
+[ext_resource path="res://dlcs/dlc_1/translations/translations.es.translation" type="Translation" id=229]
+[ext_resource path="res://dlcs/dlc_1/translations/translations.pt.translation" type="Translation" id=230]
+[ext_resource path="res://dlcs/dlc_1/translations/translations.de.translation" type="Translation" id=231]
+[ext_resource path="res://dlcs/dlc_1/translations/translations.tr.translation" type="Translation" id=232]
+[ext_resource path="res://dlcs/dlc_1/translations/translations.it.translation" type="Translation" id=233]
 
 [resource]
 script = ExtResource( 1 )
@@ -229,7 +242,7 @@ enemy_effect_behaviors = [ ExtResource( 149 ) ]
 player_effect_behaviors = [ ExtResource( 80 ), ExtResource( 104 ) ]
 music_tracks = [ ExtResource( 67 ), ExtResource( 159 ), ExtResource( 160 ), ExtResource( 113 ), ExtResource( 98 ), ExtResource( 6 ) ]
 title_screen_backgrounds = [ ExtResource( 163 ) ]
-translations = [  ]
+translations = [ ExtResource( 221 ), ExtResource( 222 ), ExtResource( 223 ), ExtResource( 224 ), ExtResource( 225 ), ExtResource( 226 ), ExtResource( 227 ), ExtResource( 228 ), ExtResource( 229 ), ExtResource( 230 ), ExtResource( 231 ), ExtResource( 232 ), ExtResource( 233 ) ]
 translation_keys_needing_operator = {
 "effect_bonus_damage_against_targets_above_hp": [ 0 ],
 "effect_bonus_damage_against_targets_below_hp": [ 0 ],
