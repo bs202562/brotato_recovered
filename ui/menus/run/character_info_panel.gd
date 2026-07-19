@@ -28,7 +28,8 @@ func set_element(character_id: int) -> void :
 	var max_endless_diff_data = ItemService.get_element(ItemService.difficulties, Keys.empty_hash, character_diff_data.max_endless_wave_beaten.difficulty_value)
 
 	if character_diff_data == null or max_difficulty_data == null:
-		_max_diff_title.text = "NOT_SET"
+		# 角色从未通关时 difficulty_value 为 -1,难度表中查不到对应项;
+		# "NOT_SET" 不在翻译表内会裸显 KEY,保留 reset_all() 的"尚无记录"文案即可
 		return
 
 	if character_diff_data.max_difficulty_beaten.difficulty_value != - 1:

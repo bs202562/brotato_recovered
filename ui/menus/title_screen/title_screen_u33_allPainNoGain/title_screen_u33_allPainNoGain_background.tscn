@@ -545,7 +545,7 @@ tracks/9/keys = {
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("../../Background:position")
-tracks/10/interp = 2
+tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
