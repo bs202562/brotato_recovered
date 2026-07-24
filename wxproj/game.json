@@ -1,0 +1,15 @@
+{
+  "deviceOrientation": "landscape",
+  "iOSHighPerformance": true,
+  "iOSHighPerformance+": true,
+  "subpackages": [
+    {
+      "name": "gdexport",
+      "root": "gdexport/"
+    }
+  ],
+  "workers": {
+    "path": "js/worker",
+    "isSubpackage": false
+  }
+}

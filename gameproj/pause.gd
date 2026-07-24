@@ -21,6 +21,9 @@ var state = State.READY
 # 存档加载完毕、可以进主菜单时置为 true（见 _on_progress_data_ready）
 var ready_for_main_menu: = false
 
+# 微信外置：CHANGE_SCENE 里 apply_settings 只应用一次，之后等 overlay 挂载
+var _settings_applied: = false
+
 
 func _init() -> void :
 	# Switch 类主机平台需要先开启 Joy-Con 手柄支持
@@ -47,8 +50,15 @@ func _process(_delta: float):
 			yield($AnimationPlayer, "animation_finished")
 			state = State.CHANGE_SCENE
 		State.CHANGE_SCENE:
-			# 应用全部设置（分辨率/语言等），然后进入标题界面
-			ProgressData.apply_settings()
+			# 应用全部设置（分辨率/语言等），只做一次
+			if not _settings_applied:
+				ProgressData.apply_settings()
+				_settings_applied = true
+			# 微信外置：等 overlay(贴图/字体/音效) 全部挂载后再进标题，
+			# 否则 title_screen 会先加载并缓存占位资源，之后挂载也刷不掉
+			if has_node("/root/WxAssets") and not WxAssets.overlay_ready:
+				return  # 留在本状态，下一帧再判
+			# 进入标题界面
 			var _error = get_tree().change_scene("res://ui/menus/title_screen/title_screen.tscn")
 
 

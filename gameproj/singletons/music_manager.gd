@@ -9,6 +9,11 @@ export (Array, Resource) var new_tracks
 
 var shuffled_tracks: = []
 
+# 微信外置：曲目 mp3 已从 pck 抽出，运行时经 WxAssets 按需下载再注入。
+# 未就绪时先静默，就绪后经 audio_ready 信号补播这首。
+var _waiting_track = null
+var _waiting_volume := 0.0
+
 
 func _ready() -> void :
 	pause_mode = PAUSE_MODE_PROCESS
@@ -19,6 +24,8 @@ func _ready() -> void :
 	player.bus = bus
 
 	var _error = player.connect("finished", self, "on_track_finished")
+	if Engine.has_singleton("WxAssets") or has_node("/root/WxAssets"):
+		WxAssets.connect("audio_ready", self, "_on_audio_ready")
 
 
 func on_track_finished() -> void :
@@ -54,14 +61,32 @@ func play(volume: float = player.volume_db) -> void :
 
 	var new_track = shuffled_tracks.pop_back()
 
-	if new_track != player.stream:
-		player.stream = new_track
-	else:
-		player.stream = shuffled_tracks.pop_back()
+	# 避免连播同一首（原逻辑）
+	if new_track == player.stream and shuffled_tracks.size() > 0:
+		new_track = shuffled_tracks.pop_back()
 
-	player.volume_db = - 20
-	player.play()
-	tween(volume)
+	_play_resolved(new_track, volume)
+
+
+# 微信外置：解析真实音频流。就绪则播，未就绪则登记等待（先静默）。
+func _play_resolved(track, volume: float) -> void :
+	var real = WxAssets.get_audio_stream(track)
+	if real != null:
+		_waiting_track = null
+		player.stream = real
+		player.volume_db = - 20
+		player.play()
+		tween(volume)
+	else:
+		_waiting_track = track
+		_waiting_volume = volume
+
+
+func _on_audio_ready(res_path: String) -> void :
+	if _waiting_track != null and _waiting_track.resource_path == res_path:
+		var t = _waiting_track
+		_waiting_track = null
+		_play_resolved(t, _waiting_volume)
 
 
 func has_tracks_to_add() -> bool:

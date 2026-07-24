@@ -2640,6 +2640,7 @@ default_bus_layout="res://resources/music/default_bus_layout.tres"
 [autoload]
 
 CrashReporter="*res://singletons/crash_reporter.gd"
+WxAssets="*res://singletons/wx_assets.gd"
 BugReporter="*res://singletons/bug_reporter.tscn"
 Platform="*res://singletons/platforms/platform.gd"
 Keys="*res://singletons/keys.gd"
@@ -2915,7 +2916,9 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
+vram_compression/import_etc=true
 quality/depth_prepass/enable=false
 environment/default_environment="res://default_env.tres"
 
