@@ -1,14 +1,11 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://ui/menus/shop/entity_description.gd" type="Script" id=1]
 [ext_resource path="res://resources/themes/separator/separator_horizontal_white.png" type="Texture" id=2]
 [ext_resource path="res://resources/themes/panel/outline_panel_simple.png" type="Texture" id=3]
 [ext_resource path="res://resources/fonts/actual/base/font_60_outline.tres" type="DynamicFont" id=4]
-[ext_resource path="res://resources/fonts/raw/NotoSansTC-Medium.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://resources/fonts/raw/Anybody-Medium.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://resources/fonts/raw/NotoSansKR-Medium.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://resources/fonts/raw/NotoSansSC-Medium.otf" type="DynamicFontData" id=8]
-[ext_resource path="res://resources/fonts/raw/NotoSansJP-Medium.otf" type="DynamicFontData" id=9]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=10]
 [ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="DynamicFont" id=11]
 [ext_resource path="res://entities/units/enemies/baby_alien/baby_alien_icon.png" type="Texture" id=12]
@@ -32,10 +29,7 @@ modulate_color = Color( 0.290196, 0.290196, 0.290196, 1 )
 size = 35
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
-fallback/0 = ExtResource( 9 )
-fallback/1 = ExtResource( 7 )
-fallback/2 = ExtResource( 8 )
-fallback/3 = ExtResource( 5 )
+fallback/0 = ExtResource( 8 )
 
 [sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 2 )
@@ -74,10 +68,7 @@ outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_top = 1
 extra_spacing_bottom = 1
 font_data = ExtResource( 6 )
-fallback/0 = ExtResource( 9 )
-fallback/1 = ExtResource( 7 )
-fallback/2 = ExtResource( 8 )
-fallback/3 = ExtResource( 5 )
+fallback/0 = ExtResource( 8 )
 
 [node name="codex_entity_description" type="VBoxContainer"]
 margin_right = 997.0

@@ -22,7 +22,12 @@ const zlib = require("zlib");
 const crypto = require("crypto");
 
 const GDEXPORT = path.join(__dirname, "..", "gdexport");
-const INDEX_JS = path.join(GDEXPORT, "index.js");
+// index.js 放【主包】而不是 gdexport 分包：分包上限 4MB，index.wasm.br 已占 3.6MB，
+// 再塞 335KB 的胶水只剩 79KB 余量，太险。主包才 100KB，放这里绰绰有余。
+// 分包里只留 index.wasm.br —— WXWebAssembly.instantiate 只接受【代码包内】路径，
+// 它没法像 pck 那样运行时下载，必须留在包里。
+const GLUE_DIR = path.join(__dirname, "..", "glue");
+const INDEX_JS = path.join(GLUE_DIR, "index.js");
 
 function log(ok, msg) {
   console.log(`${ok ? "✓" : "✗"} ${msg}`);
@@ -58,15 +63,33 @@ function compressWasm() {
   log(true, `index.wasm.br 生成：${(out.length / 1048576).toFixed(2)}MB（${((out.length / buf.length) * 100).toFixed(1)}%），已删除源 wasm`);
 }
 
-// ---------- 2. pck 改名 zip ----------
-function renamePck() {
-  const pck = path.join(GDEXPORT, "index.pck");
-  const zip = path.join(GDEXPORT, "index.zip");
-  if (fs.existsSync(pck)) {
-    fs.renameSync(pck, zip); // 新导出覆盖旧 zip
-    log(true, "index.pck → index.zip");
-  } else {
-    log(fs.existsSync(zip), fs.existsSync(zip) ? "index.zip 已存在" : "index.pck / index.zip 都不存在——缺产物！");
+// ---------- 2. 把 pck 踢出代码包 ----------
+// base pck 有 20MB+，放代码包必然超微信 4MB 分包上限。它由
+// tools_extern/externalize-base-pck.js 托管到 assetsrv，宿主启动时下载到 USER_DATA_PATH。
+// 这里只负责清掉 gdexport 里的残留，避免它们被打进包。
+function evictPck() {
+  let removed = 0;
+  for (const name of ["index.pck", "index.zip", "game.js"]) {
+    const p = path.join(GDEXPORT, name);
+    if (fs.existsSync(p)) {
+      fs.unlinkSync(p);
+      removed++;
+      log(true, `已从代码包移除 gdexport/${name}`);
+    }
+  }
+  if (!removed) log(true, "gdexport 内无 pck 残留");
+}
+
+// index.js 从 gdexport 挪到 glue/（主包）。Godot 每次导出都写到 gdexport，这里搬一次。
+function relocateGlue() {
+  fs.mkdirSync(GLUE_DIR, { recursive: true });
+  const from = path.join(GDEXPORT, "index.js");
+  if (fs.existsSync(from)) {
+    fs.renameSync(from, INDEX_JS);
+    log(true, "gdexport/index.js → glue/index.js（主包）");
+  } else if (!fs.existsSync(INDEX_JS)) {
+    log(false, "index.js 既不在 gdexport 也不在 glue——缺产物！");
+    process.exitCode = 1;
   }
 }
 
@@ -209,6 +232,12 @@ const PATCHES = [
     replace: "function _godot_js_display_window_icon_set(p_ptr,p_len){return;/* 小游戏适配(D): 无 DOM head/link，窗口图标无意义 */let link=",
   },
   {
+    name: "D-fullscreen: 全屏请求直接返回 OK（wx 无 DOM 全屏，避免 set_window_fullscreen 报错）",
+    applied: "小游戏适配(D-fullscreen)",
+    find: "function _godot_js_display_fullscreen_request(){return GodotDisplayScreen.requestFullscreen()}",
+    replace: "function _godot_js_display_fullscreen_request(){return 0/* 小游戏适配(D-fullscreen): wx 无 DOM 全屏请求，直接返回 OK 避免引擎报错 */}",
+  },
+  {
     name: "D-cursor: 禁用自定义鼠标光标（wx 无 URL.createObjectURL/Blob）",
     applied: "小游戏适配(D-cursor)",
     find: "_godot_js_display_cursor_set_custom_shape(p_shape,p_ptr,p_len,p_hotspot_x,p_hotspot_y){const shape=GodotRuntime.parseString(p_shape);",
@@ -225,7 +254,7 @@ const PATCHES = [
     applied: "小游戏适配(D2)",
     find: 'copy_to_fs:function(path,buffer){const idx=path.lastIndexOf("/");',
     replace:
-      'copy_to_adapter:function(path,adapter){/* 小游戏适配(D2): 递归导出引擎 FS 目录到 adapter(GodotSDK)，用于存档落盘 */let dirs;try{dirs=FS.readdir(path).filter(function(v){return v!=="."&&v!==".."})}catch(e){return Promise.resolve()}const promises=[];dirs.forEach(function(d){const _p=path+"/"+d;const st=FS.stat(_p);if(FS.isFile(st.mode)){promises.push(adapter.writeFile(_p,FS.readFile(_p)))}else if(FS.isDir(st.mode)){promises.push(GodotFS.copy_to_adapter(_p,adapter))}});return Promise.all(promises)},copy_to_fs:function(path,buffer){const idx=path.lastIndexOf("/");',
+      'copy_to_adapter:function(path,adapter){/* 小游戏适配(D2): 递归导出引擎 FS 目录到 adapter(GodotSDK)，用于存档落盘。\n\t\t\t\tSKIP: 外置资源缓存目录绝不参与同步——audiocache(~66MB 音乐) 与 packs(~41MB overlay) 是宿主\n\t\t\t\t下载时就已 copyFileSync 落过盘的只读缓存，磁盘上本来就有。它们只是被 preloadUserFiles 灌进\n\t\t\t\t引擎 MEMFS 供 File/load_resource_pack 读取，不该再写回去。不跳过的话，每次存档(战斗中极频繁)\n\t\t\t\t都会 readFile+write 整整 107MB，直接把帧冻住——实测表现为存档日志后紧跟 fps=3。 */\n\t\t\t\tconst SKIP_SYNC=["audiocache","packs"];let dirs;try{dirs=FS.readdir(path).filter(function(v){return v!=="."&&v!==".."})}catch(e){return Promise.resolve()}const promises=[];dirs.forEach(function(d){if(SKIP_SYNC.indexOf(d)>=0){return}const _p=path+"/"+d;const st=FS.stat(_p);if(FS.isFile(st.mode)){promises.push(adapter.writeFile(_p,FS.readFile(_p)))}else if(FS.isDir(st.mode)){promises.push(GodotFS.copy_to_adapter(_p,adapter))}});return Promise.all(promises)},copy_to_fs:function(path,buffer){const idx=path.lastIndexOf("/");',
   },
   {
     name: "D2-fs-export: Module 导出 copyToAdapter",
@@ -238,7 +267,7 @@ const PATCHES = [
     applied: "GameGlobal.godotWriteUserFile",
     find: 'Module["copyToAdapter"]=GodotFS.copy_to_adapter;',
     replace:
-      'Module["copyToAdapter"]=GodotFS.copy_to_adapter;/* 小游戏适配(D-userfile-bridge): FS 在胶水闭包内，暴露全局写入桥，供 asset-loader 把 wx.downloadFile 下来的字节写进引擎 FS 的 user:// 目录，GDScript 随后用 File 读取。absPath 由 GDScript 的 OS.get_user_data_dir() 提供，避免 user:// 映射猜测 */GameGlobal.godotWriteUserFile=function(absPath,bytes){try{const idx=absPath.lastIndexOf("/");const dir=absPath.slice(0,idx);if(dir){try{FS.mkdirTree(dir)}catch(e){}}FS.writeFile(absPath,bytes);return true}catch(e){console.error("[godotWriteUserFile]",absPath,e&&e.message);return false}};GameGlobal.godotUserFileExists=function(absPath){try{FS.stat(absPath);return true}catch(e){return false}};',
+      'Module["copyToAdapter"]=GodotFS.copy_to_adapter;/* 小游戏适配(D-userfile-bridge): FS 在胶水闭包内，暴露全局写入桥，供 asset-loader 把 wx.downloadFile 下来的字节写进引擎 FS 的 user:// 目录，GDScript 随后用 File 读取。absPath 由 GDScript 的 OS.get_user_data_dir() 提供，避免 user:// 映射猜测 */GameGlobal.godotWriteUserFile=function(absPath,bytes){try{const idx=absPath.lastIndexOf("/");const dir=absPath.slice(0,idx);if(dir){try{FS.mkdirTree(dir)}catch(e){}}FS.writeFile(absPath,bytes);return true}catch(e){console.error("[godotWriteUserFile]",absPath,e&&e.message);return false}};GameGlobal.godotUserFileExists=function(absPath){try{FS.stat(absPath);return true}catch(e){return false}};GameGlobal.godotReadUserFileText=function(absPath){try{return FS.readFile(absPath,{encoding:"utf8"})}catch(e){return ""}};',
   },
   {
     name: "D3-fs-persistent: is_persistent 返回真（触发引擎 fs_sync）",
@@ -257,7 +286,7 @@ const PATCHES = [
 
 function patchIndexJs() {
   if (!fs.existsSync(INDEX_JS)) {
-    log(false, "gdexport/index.js 不存在！");
+    log(false, "glue/index.js 不存在！");
     process.exitCode = 1;
     return;
   }
@@ -285,6 +314,7 @@ function patchIndexJs() {
 
 console.log("=== Godot 3.6.2 微信小游戏导出后处理 ===");
 compressWasm();
-renamePck();
+evictPck();
+relocateGlue();
 patchIndexJs();
 console.log("=== 完成 ===");

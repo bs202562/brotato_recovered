@@ -54,12 +54,16 @@ function buildOverlay() {
   ensureDir(PACKS_OUT);
   // 收集真实产物（当前 .import 尚未被占位覆盖）
   const entries = [];
-  for (const abs of walk(IMPORT, [".stex", ".sample"])) {
+  // .res 必须一起抓！用 texture_atlas 导入器的 png(宠物/菜单页/启动动画共 97 张)产出的是
+  // .res(AtlasTexture: 图集引用 + 区域矩形)而非 .stex。漏抓的话它们的源图照样被换成 1px 占位、
+  // 重导入后区域塌成 1x1，overlay 里又没有真身 → 该批精灵在游戏里完全不可见。
+  for (const abs of walk(IMPORT, [".stex", ".sample", ".res"])) {
     entries.push({ resPath: "res://.import/" + path.basename(abs), buf: fs.readFileSync(abs) });
   }
-  for (const abs of walk(FONTS, [".otf"])) {
-    entries.push({ resPath: toResPath(PROJ, abs), buf: fs.readFileSync(abs) });
-  }
+  // 字体【不进】overlay：SC 已由 export_presets 的 include_filter 打进 base pck，
+  // TC/KR/JP 的引用已从所有 .tres/.tscn 里删除(见 tools_extern/strip-cjk-fallback.js)且被
+  // exclude_filter 排除。放进 overlay 只会让客户端白下 22.5MB(SC 重复 8MB + 三个没人用的 14.5MB)。
+  void FONTS;
   // 按 ~7MB 贪心分块
   const chunks = [];
   let cur = [], curSize = 0;

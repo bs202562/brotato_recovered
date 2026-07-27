@@ -1,4 +1,6 @@
 import { GodotSDK } from "./sdk"
+import { PACKS_BASE, OVERLAY_PACKS } from "./wx-asset-manifest"
+import { BASE_PCK_NAME, BASE_PCK_URL, BASE_PCK_SIZE } from "./wx-base-pck"
 
 const LoaderConfig = {
   logo: "images/logo.png",
@@ -28,6 +30,121 @@ class FakeBlob {
     this.size = this.data.reduce((total, item) => total + (item.length || 0), 0);
   }
 }
+// GL 调用计数器（排查 wx 的 GL 桥开销；定位完把 GL_PROFILE 改回 false）。
+// Godot 3 的 GLES2 不上报绘制调用数，只能从宿主侧数。canvas.getContext("webgl") 重复调用
+// 返回同一个上下文对象，所以在 loader 里包一次，引擎后续的调用也全都算得到。
+const GL_PROFILE = true;
+// 只包热点函数，避免为了统计反而拖慢（每次调用多一层闭包）
+const GL_WATCH = [
+  "drawElements", "drawArrays", "bindTexture", "useProgram", "bindBuffer",
+  "bufferData", "bufferSubData", "vertexAttribPointer", "enableVertexAttribArray",
+  "activeTexture", "uniform1i", "uniform1f", "uniform4fv", "uniformMatrix4fv",
+  "texImage2D", "texSubImage2D", "scissor", "clear", "blendFunc",
+];
+
+function installGlCounter(gl) {
+  const counts = Object.create(null);
+  for (const name of GL_WATCH) {
+    const orig = gl[name];
+    if (typeof orig !== "function") continue;
+    counts[name] = 0;
+    gl[name] = function (...args) {
+      counts[name]++;
+      return orig.apply(gl, args);
+    };
+  }
+  let last = Date.now();
+  setInterval(() => {
+    const now = Date.now();
+    const secs = (now - last) / 1000;
+    last = now;
+    const entries = Object.keys(counts)
+      .map((k) => [k, counts[k]])
+      .filter((e) => e[1] > 0)
+      .sort((a, b) => b[1] - a[1]);
+    const total = entries.reduce((s, e) => s + e[1], 0);
+    const draws = (counts.drawElements || 0) + (counts.drawArrays || 0);
+    for (const k of Object.keys(counts)) counts[k] = 0;
+    if (!total) return;
+    console.log(
+      `[gl] ${Math.round(total / secs)} 次调用/秒，其中绘制 ${Math.round(draws / secs)} 次/秒 | ` +
+        entries.slice(0, 6).map((e) => `${e[0]}=${Math.round(e[1] / secs)}`).join(" ")
+    );
+  }, 2000);
+}
+
+// ---- canvas 事件桥 ----
+// 引擎把 keydown/keyup/mouse*/touch* 都注册在 GodotConfig.canvas 上，而 weapp-adapter 把
+// canvas.addEventListener 转发给它【内部那个 document 实例】。开发者工具是 Chromium，
+// window.document 是真 DOM 且属性不可配置，weapp-adapter 的覆盖会静默失败
+// (它只在 descriptor.configurable === true 时才 defineProperty)，于是
+// window.document !== weapp-adapter 的 document —— 往前者派发的键盘事件永远送不到引擎。
+// 这里不赌哪个 document 是真的：在引擎注册【之前】接管 canvas.addEventListener，
+// 自己留一份回调表，需要注入事件时直接调用，绕开 document 身份问题。
+const canvasListeners = Object.create(null);
+const inputCounts = Object.create(null);
+
+function hookCanvasListeners() {
+  const origAdd = canvas.addEventListener ? canvas.addEventListener.bind(canvas) : null;
+  const origRemove = canvas.removeEventListener ? canvas.removeEventListener.bind(canvas) : null;
+  canvas.addEventListener = function (type, listener, opts) {
+    (canvasListeners[type] = canvasListeners[type] || []).push(listener);
+    if (origAdd) origAdd(type, listener, opts);
+  };
+  canvas.removeEventListener = function (type, listener, opts) {
+    const arr = canvasListeners[type];
+    if (arr) {
+      const i = arr.indexOf(listener);
+      if (i >= 0) arr.splice(i, 1);
+    }
+    if (origRemove) origRemove(type, listener, opts);
+  };
+}
+
+// 直接投递给引擎注册在 canvas 上的回调。返回 false 表示引擎没注册这类事件。
+function emitToCanvas(evt) {
+  const arr = canvasListeners[evt.type];
+  if (!arr || !arr.length) return false;
+  inputCounts[evt.type] = (inputCounts[evt.type] || 0) + 1;
+  for (const fn of arr.slice()) {
+    try {
+      fn(evt);
+    } catch (e) {
+      console.error("[input] 回调抛错", evt.type, e && e.message);
+    }
+  }
+  return true;
+}
+
+// 输入诊断：引擎注册了哪些事件、我们实际送达了多少。定位完连同 GL_PROFILE 一起关掉。
+const INPUT_PROFILE = true;
+// 直接验证"两个 document 是不是同一个"：往 canvas 注册一个探针，再从 window.document 派发。
+// 收不到就证明旧的 doc.dispatchEvent 路径确实是断的。
+function probeDocumentIdentity() {
+  let hit = false;
+  const probe = () => { hit = true; };
+  canvas.addEventListener("__probe__", probe);
+  try {
+    window.document.dispatchEvent({ type: "__probe__" });
+  } catch (e) {
+    console.log("[input] 探针派发抛错:", e && e.message);
+  }
+  canvas.removeEventListener("__probe__", probe);
+  console.log(
+    `[input] window.document 与引擎监听目标一致? ${hit ? "是" : "否 ← 旧的 document.dispatchEvent 路径是断的，键盘收不到"}`
+  );
+}
+
+function startInputProfile() {
+  probeDocumentIdentity();
+  console.log("[input] 引擎在 canvas 上注册的事件: " + (Object.keys(canvasListeners).join(",") || "(无！)"));
+  setInterval(() => {
+    const parts = Object.keys(inputCounts).map((k) => `${k}=${inputCounts[k]}`);
+    for (const k of Object.keys(inputCounts)) delete inputCounts[k];
+    console.log(`[input] 注册=${Object.keys(canvasListeners).join(",") || "(无)"} | 送达 ${parts.join(" ") || "(本轮无输入)"}`);
+  }, 3000);
+}
+
 const godotSdk = new GodotSDK()
 GameGlobal.WebAssembly = WXWebAssembly;
 GameGlobal.crypto = crypto;
@@ -55,6 +172,9 @@ class Loader {
       wx.showModal({ title: "无法启动", content: msg, showCancel: false });
       throw new Error(msg);
     }
+    if (GL_PROFILE) installGlCounter(this.screenContext);
+    // 必须在 require(index.js) / startGame 之前接管，否则引擎已经注册完了
+    hookCanvasListeners();
     this.loadingCanvas = document.createElement("canvas");
     this.loadingContext = this.loadingCanvas.getContext("2d");
     this.loadingCanvas.width = window.innerWidth * dpr;
@@ -77,10 +197,13 @@ class Loader {
   }
 
   // 小游戏适配: 键盘/鼠标事件桥接（PC 端微信与开发者工具支持 wx.onKeyDown 等 API）。
-  // 引擎胶水把 keydown/keyup/mouse*/wheel 注册在 canvas 上，weapp-adapter 已把
-  // canvas.addEventListener 转到 document，所以往 document.dispatchEvent 派发即可送达。
+  // 投递优先走 emitToCanvas（直接调用引擎注册在 canvas 上的回调），送不到再退回
+  // document.dispatchEvent —— 见 hookCanvasListeners 处关于两个 document 不是同一个对象的说明。
   setupPcInput() {
     const doc = window.document;
+    const deliver = (evt) => {
+      if (!emitToCanvas(evt)) doc.dispatchEvent(evt);
+    };
     const mods = { shiftKey: false, ctrlKey: false, altKey: false, metaKey: false };
     const noop = () => {};
     const updateMods = (code, pressed) => {
@@ -92,22 +215,24 @@ class Loader {
     if (wx.onKeyDown) {
       wx.onKeyDown((e) => {
         updateMods(e.code, true);
-        doc.dispatchEvent({
+        deliver({
           type: "keydown", key: e.key, code: e.code, repeat: false,
           ...mods, preventDefault: noop, stopPropagation: noop,
         });
       });
       wx.onKeyUp((e) => {
         updateMods(e.code, false);
-        doc.dispatchEvent({
+        deliver({
           type: "keyup", key: e.key, code: e.code, repeat: false,
           ...mods, preventDefault: noop, stopPropagation: noop,
         });
       });
+    } else {
+      console.warn("[input] 此环境没有 wx.onKeyDown，键盘不可用（手机端正常，PC/开发者工具应有）");
     }
     // PC 端鼠标（手机/模拟器的点击走 wx.onTouchStart，weapp-adapter 已桥接）
     const mouseEvent = (type) => (e) => {
-      doc.dispatchEvent({
+      deliver({
         type, clientX: e.x, clientY: e.y, button: e.button || 0,
         ...mods, cancelable: false, preventDefault: noop, stopPropagation: noop,
       });
@@ -119,13 +244,105 @@ class Loader {
     }
     if (wx.onWheel) {
       wx.onWheel((e) => {
-        doc.dispatchEvent({
+        deliver({
           type: "wheel", deltaX: e.deltaX, deltaY: e.deltaY, deltaZ: 0, deltaMode: 0,
           clientX: e.x, clientY: e.y,
           ...mods, cancelable: false, preventDefault: noop, stopPropagation: noop,
         });
       });
     }
+  }
+
+  // 微信禁用 eval → Godot 的 JavaScript.eval 不可用，无法从 GDScript 调宿主下载。
+  // 改由宿主在【游戏启动前】直接下载 overlay 分块到 wx 存储的 /userfs/packs/，
+  // 随后 preloadUserFiles 会把它们恢复进引擎 FS，WxAssets._ready 即可同步挂载
+  // （早于加载贴图的自动加载单例）→ 贴图首帧即真实，且已持久化（下次免下载）。
+  downloadOverlayPacks() {
+    const fsm = wx.getFileSystemManager();
+    const dir = `${wx.env.USER_DATA_PATH}/userfs/packs`;
+    try { fsm.mkdirSync(dir, true); } catch (e) {}
+    let done = 0;
+    const total = OVERLAY_PACKS.length;
+    const tasks = OVERLAY_PACKS.map((file) => new Promise((resolve) => {
+      const dest = `${dir}/${file}`;
+      try { fsm.accessSync(dest); done++; resolve(); return; } catch (e) {} // 已在 wx 存储 → 免下载
+      wx.downloadFile({
+        url: PACKS_BASE + file,
+        success: (res) => {
+          if (res.statusCode === 200) {
+            try { fsm.copyFileSync(res.tempFilePath, dest); }
+            catch (e) { console.error("[overlay] 存储失败", file, e.message); }
+          } else { console.error("[overlay] HTTP", res.statusCode, file); }
+          done++;
+          resolve();
+        },
+        fail: (err) => { console.error("[overlay] 下载失败", file, err && err.errMsg); resolve(); },
+      });
+    }));
+    console.log(`[overlay] 启动前下载 ${total} 个分块...`);
+    return Promise.all(tasks).then(() => console.log(`[overlay] 就绪 ${done}/${total}（已存 wx 存储，下次免下载）`));
+  }
+
+  // base pck（20MB+）不能进代码包——微信主包/分包各限 4MB。改为托管在资源服务器上，
+  // 启动时下载到 USER_DATA_PATH 再作为 mainPack 传给引擎（C1 补丁读文件走 wx 文件系统，
+  // 对 USER_DATA_PATH 的绝对路径同样有效）。文件名带内容 hash，存在即免下载。
+  // 返回引擎可用的绝对路径。
+  downloadBasePck() {
+    const fsm = wx.getFileSystemManager();
+    const dir = `${wx.env.USER_DATA_PATH}/gamedata`;
+    try { fsm.mkdirSync(dir, true); } catch (e) {}
+    const dest = `${dir}/${BASE_PCK_NAME}`;
+
+    // 清掉旧版本的 base 包，避免占满本地存储配额
+    try {
+      for (const f of fsm.readdirSync(dir)) {
+        if (f.startsWith("base_") && f.endsWith(".pck") && f !== BASE_PCK_NAME) {
+          try { fsm.unlinkSync(`${dir}/${f}`); console.log("[base] 清理旧包", f); } catch (e) {}
+        }
+      }
+    } catch (e) {}
+
+    try {
+      const st = fsm.statSync(dest);
+      if (st.size === BASE_PCK_SIZE) {
+        console.log(`[base] 已缓存 ${BASE_PCK_NAME}（${(st.size / 1048576).toFixed(1)}MB），免下载`);
+        return Promise.resolve(dest);
+      }
+      console.warn("[base] 缓存大小不符，重新下载");
+    } catch (e) {} // 不存在 → 下载
+
+    console.log(`[base] 下载主资源包 ${(BASE_PCK_SIZE / 1048576).toFixed(1)}MB ...`);
+    return new Promise((resolve, reject) => {
+      const task = wx.downloadFile({
+        url: BASE_PCK_URL,
+        timeout: 180000,
+        success: (res) => {
+          if (res.statusCode !== 200) {
+            reject(new Error(`主资源包下载失败 HTTP ${res.statusCode}`));
+            return;
+          }
+          try {
+            fsm.copyFileSync(res.tempFilePath, dest);
+            console.log("[base] 就绪", BASE_PCK_NAME);
+            resolve(dest);
+          } catch (e) {
+            reject(new Error("主资源包落盘失败: " + (e && e.message)));
+          }
+        },
+        fail: (err) => reject(new Error("主资源包下载失败: " + (err && err.errMsg))),
+      });
+      if (task && task.onProgressUpdate) {
+        let last = -1;
+        task.onProgressUpdate((p) => {
+          // 每 10% 打一次，避免刷屏
+          const step = Math.floor(p.progress / 10);
+          if (step !== last) {
+            last = step;
+            console.log(`[base] 下载 ${p.progress}%`);
+          }
+        });
+      }
+    });
   }
 
   // 小游戏适配(D3): 启动前把 USER_DATA_PATH 里的存档递归收集并注册为引擎预载文件，
@@ -424,7 +641,9 @@ class Loader {
       })
       .then(() => {
         this.updateLoading();
-        // 引擎胶水在 gdexport 分包内，必须等 loadSubpackage 完成后才能 require；
+        // 引擎胶水 index.js 现在放在【主包】的 glue/ 下（分包 4MB 上限装不下它和 wasm），
+        // gdexport 分包里只剩 index.wasm.br —— WXWebAssembly.instantiate 只接受代码包内路径，
+        // 它没法像 pck 那样运行时下载，所以仍需 loadSubpackage 后才能被引擎读到。
         // index.js 执行时会把 Engine 挂到 window（weapp-adapter 提供）上
         // 小游戏适配: wx 主 canvas 没有 focus()，引擎在 init_config 和鼠标/触摸按下时都会调用
         if (typeof canvas.focus !== "function") {
@@ -482,25 +701,36 @@ class Loader {
           };
         }
         this.setupPcInput();
-        require("../gdexport/index.js");
+        require("../glue/index.js");
         console.log("[build] engine glue loaded, patched =", typeof window.Engine === "function" && String(window.Engine.load).includes("wasm.br"));
         const Engine = window.Engine;
         const engine = new Engine();
         GameGlobal.engine = engine;
         godotSdk.set_engine(engine);
-        // 存档回灌必须在引擎启动前完成：preloadFile 会在 callMain 之前把文件写进引擎 FS，
-        // 保证游戏脚本 _ready 里读 user:// 时数据已就位（启动后再灌就晚了）
-        return this.preloadUserFiles(engine).then(() => engine.startGame({
+        // 先下载 overlay 分块到 wx 存储，再由 preloadUserFiles 一并恢复进引擎 FS，
+        // 保证 WxAssets 能在贴图单例之前同步挂载。存档回灌必须在引擎启动前完成：
+        // preloadFile 会在 callMain 之前把文件写进引擎 FS（启动后再灌就晚了）。
+        // 先把 base pck 和 overlay 分块下到 wx 存储，再由 preloadUserFiles 把 overlay 与存档
+        // 恢复进引擎 FS，保证 WxAssets 能在贴图单例之前同步挂载。存档回灌必须在引擎启动前完成：
+        // preloadFile 会在 callMain 之前把文件写进引擎 FS（启动后再灌就晚了）。
+        // base pck 不走 preloadFile —— 它由引擎自己按 mainPack 路径读，无需进 MEMFS（省 20MB 内存）。
+        let mainPackPath = "";
+        return this.downloadBasePck()
+          .then((p) => { mainPackPath = p; })
+          .then(() => this.downloadOverlayPacks())
+          .then(() => this.preloadUserFiles(engine))
+          .then(() => engine.startGame({
           canvas: canvas,
           executable: "gdexport/index",
-          // .pck 不在小游戏代码包文件类型白名单内(readFile 会 permission denied)，
-          // 改名为 .zip 绕过；Godot 按文件头魔数(GDPC)识别 pack 格式，不看扩展名
-          mainPack: "gdexport/index.zip",
+          // 运行时下载到 USER_DATA_PATH 的绝对路径。".pck 不在文件类型白名单" 只约束
+          // 代码包内的文件，本地存储里的不受限，所以不用再改名 .zip
+          mainPack: mainPackPath,
           // Godot 3 无 --audio-driver 参数：JS 音频驱动按 has_worklet/has_script_processor
           // 自动选择，wx 音频上下文无 audioWorklet，会自动落到 ScriptProcessor
         }));
       })
       .then(() => {
+        if (INPUT_PROFILE) startInputProfile();
         // 存档持久化(C5/D2/D3)：主通道是事件驱动——引擎每次写完 user:// 会经
         // _godot_js_os_fs_sync 钩子立即落盘；这里的 30 秒轮询只是兜底
         setInterval(() => {

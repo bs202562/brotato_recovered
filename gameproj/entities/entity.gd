@@ -39,9 +39,13 @@ func init(zone_min_pos: Vector2, zone_max_pos: Vector2, _p_players_ref: Array = 
 	)
 
 	_max_pos = Vector2(
-		zone_max_pos.x - sprite.texture.get_width() / 2.0, 
+		zone_max_pos.x - sprite.texture.get_width() / 2.0,
 		zone_max_pos.y - sprite.texture.get_height() / 2.0
 	)
+
+	# 小游戏排查用探针：延迟一帧等变换/贴图落定后，打印这个实体的渲染状态。
+	# 限次输出，见 WxAssets.probe_entity（定位完把那边的 ENTITY_PROBE 改回 false）。
+	WxAssets.call_deferred("probe_entity", self)
 
 
 

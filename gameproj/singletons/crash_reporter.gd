@@ -16,6 +16,10 @@ func _init() -> void :
 	if OS.get_name().begins_with("Seaven"):
 		return ;
 
+	# 微信/Web 版无引擎日志文件，崩溃上报无意义，直接跳过（避免 Failed to collect/find logs 报错）
+	if OS.has_feature("web") or OS.get_name() == "HTML5":
+		return
+
 	var log_path: String = ProjectSettings.get_setting("logging/file_logging/log_path")
 	log_path = ProjectSettings.globalize_path(log_path)
 

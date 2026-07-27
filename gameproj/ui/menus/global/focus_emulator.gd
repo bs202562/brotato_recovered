@@ -204,6 +204,8 @@ func _open_option_button(button: OptionButton) -> void :
 
 
 func _handle_popup_menu_input(event: InputEvent, popup: PopupMenu) -> bool:
+	if _device < 0:
+		return false  # 无绑定设备，"ui_*_-1" 在 InputMap 里不存在，查询会刷 ERROR
 	var allow_echo: = true
 	var item_count = popup.get_item_count()
 
@@ -224,6 +226,8 @@ func _handle_popup_menu_input(event: InputEvent, popup: PopupMenu) -> bool:
 
 
 func _handle_hslider_input(event: InputEvent, slider: HSlider) -> bool:
+	if _device < 0:
+		return false  # 同上
 	var allow_echo: = true
 	if not event.is_action_pressed("ui_left_%s" % _device, allow_echo) and not event.is_action_pressed("ui_right_%s" % _device, allow_echo):
 		return false

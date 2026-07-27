@@ -6,6 +6,16 @@ const MIN_MOVE_DIST = 20
 var device: = 0
 
 
+# 手机端虚拟摇杆只在"场上有可操控玩家"时才显示并喂输入——用本行为的进出场树来界定，
+# 菜单/商店里没有玩家实体，摇杆自动隐藏，不会干扰 UI。见 wx_touch_joystick.gd。
+func _enter_tree() -> void:
+	WxTouchJoystick.register_player()
+
+
+func _exit_tree() -> void:
+	WxTouchJoystick.unregister_player()
+
+
 func get_movement() -> Vector2:
 	var movement: Vector2 = Vector2.ZERO
 

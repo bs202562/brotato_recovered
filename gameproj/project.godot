@@ -2675,6 +2675,7 @@ Streamplay="*res://singletons/streamplay.tscn"
 UIService="*res://singletons/ui_service.gd"
 SoundService="*res://singletons/sound_service.tscn"
 OS_Seaven="*res://singletons/os_seaven.gd"
+WxTouchJoystick="*res://singletons/wx_touch_joystick.gd"
 
 [debug]
 
@@ -2691,6 +2692,7 @@ window/size/test_height=720
 mouse_cursor/custom_image="res://ui/custom_cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2( 3, 3 )
 window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 

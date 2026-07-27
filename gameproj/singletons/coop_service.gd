@@ -96,7 +96,9 @@ func _input(event: InputEvent) -> void :
 		
 		pass
 	else:
-		if event.is_action_pressed("ui_accept_%s" % device_to_add) and not _hold_timers.has(device_to_add):
+		# 小游戏适配: wx 桥接进来的事件可能带 device == -1（非 0，逃过上面的重映射），
+		# 拼出的 "ui_accept_-1" 在 InputMap 里不存在，Godot 会每次刷 ERROR。先查存在性。
+		if Utils.is_maybe_action_pressed(event, "ui_accept_%s" % device_to_add) and not _hold_timers.has(device_to_add):
 			
 			_hold_timers[device_to_add] = 0.0
 			set_process(true)
@@ -112,7 +114,8 @@ func _process(delta: float) -> void :
 		_hold_timers.clear()
 
 	for device in _hold_timers.keys():
-		if not Input.is_action_pressed("ui_accept_%s" % device) or is_device_assigned(device):
+		var accept_action: String = "ui_accept_%s" % device
+		if not InputMap.has_action(accept_action) or not Input.is_action_pressed(accept_action) or is_device_assigned(device):
 			var _erased = _hold_timers.erase(device)
 			continue
 		_hold_timers[device] += delta

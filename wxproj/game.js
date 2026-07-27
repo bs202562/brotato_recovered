@@ -1,4 +1,4 @@
-console.log("[build] brotato-wxproj (godot 3.6.2) #13 (overlay diag)");
+console.log("[build] brotato-wxproj (godot 3.6.2) #22 (clean)");
 import "./weapp-adapter";
 import "./fetch";
 import "./js/asset-loader";
