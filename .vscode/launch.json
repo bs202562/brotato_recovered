@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Godot: Debug Main Scene",
+      "type": "godot",
+      "request": "launch",
+      "project": "${workspaceFolder}",
+      "address": "127.0.0.1",
+      "port": 6007,
+      "scene": "main",
+      "editor_path": "D:\\tools\\Godot_v4.7-stable_win64\\Godot_v4.7-stable_win64.exe"
+    },
+    {
+      "name": "Godot: Debug Current File",
+      "type": "godot",
+      "request": "launch",
+      "project": "${workspaceFolder}",
+      "address": "127.0.0.1",
+      "port": 6007,
+      "scene": "current",
+      "editor_path": "D:\\tools\\Godot_v4.7-stable_win64\\Godot_v4.7-stable_win64.exe"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "godotTools.editorPath.godot4": "D:\\tools\\Godot_v4.7-stable_win64\\Godot_v4.7-stable_win64.exe",
+  "godotTools.lsp.headless": true,
+  "files.associations": {
+    "*.gd": "gdscript",
+    "*.tscn": "gdresource",
+    "*.tres": "gdresource"
+  }
+}
