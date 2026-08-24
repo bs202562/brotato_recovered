@@ -10,7 +10,7 @@ extends Node
 @export var slow_motion: bool = false
 @export var instant_waves: bool = false
 @export var custom_wave_duration: int = - 1
-@export var no_fullscreen_on_launch: bool = false
+@export var no_fullscreen_on_launch: bool = true
 @export var debug_weapons: Array = [] # (Array, Resource)
 @export var debug_items: Array = [] # (Array, Resource)
 @export var remove_starting_weapons: bool = false
@@ -82,7 +82,7 @@ func reset() -> void :
 	one_shot_enemies = false
 	slow_motion = false
 	instant_waves = false
-	no_fullscreen_on_launch = false
+	no_fullscreen_on_launch = true
 	debug_weapons = []
 	debug_items = []
 	remove_starting_weapons = false
