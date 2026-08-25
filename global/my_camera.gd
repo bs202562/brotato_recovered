@@ -29,6 +29,12 @@ var _snap_start_zoom: = Vector2.ZERO
 func init(max_bounds: Rect2, edge_size: float) -> void :
 	_max_bounds = max_bounds
 	_edge_size = edge_size
+	if TowerDefenseRules.ENABLED:
+		_is_snapped = true
+		global_position = TowerDefenseRules.get_camera_position()
+		zoom = Vector2.ONE
+		_max_zoom = 1.0
+		return
 	_is_snapped = not RunData.is_coop_run
 
 	var max_x_zoom = _max_bounds.size.x / Utils.project_width
@@ -51,6 +57,10 @@ func _physics_process(delta: float) -> void :
 
 
 func _process_internal(delta: float):
+	if TowerDefenseRules.ENABLED:
+		global_position = TowerDefenseRules.get_camera_position()
+		zoom = Vector2.ONE
+		return
 	var alive_targets = _get_alive_targets()
 	if alive_targets.empty():
 		return

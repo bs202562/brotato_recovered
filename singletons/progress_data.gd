@@ -329,7 +329,7 @@ func init_general_options() -> Dictionary:
 			"sound": 0.75, 
 			"music": 0.25
 		}, 
-		"fullscreen": true, 
+		"fullscreen": false,
 		"screenshake": true, 
 		"language": "en", 
 		"main_screen_keyart": 0, 
@@ -1058,8 +1058,9 @@ func apply_settings() -> void :
 
 	TranslationServer.set_locale(settings.language)
 
-	if not DebugService.no_fullscreen_on_launch:
-		OS.window_fullscreen = settings.fullscreen
+	# Always launch in windowed mode. Fullscreen can still be enabled manually
+	# from the options menu, but a saved preference must not force it on startup.
+	OS.window_fullscreen = false
 
 	if Utils.is_on_console() and not Utils.on_gdk_desktop:
 		

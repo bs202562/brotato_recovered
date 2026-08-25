@@ -107,6 +107,15 @@ func _physics_process(delta: float) -> void :
 	_current_attack_behavior.physics_process(delta)
 
 
+func get_movement() -> Vector2:
+	if TowerDefenseRules.ENABLED and get_charmed_by_player_index() == - 1:
+		if _move_locked or players_ref.empty() or not is_instance_valid(players_ref[0]):
+			return Vector2.ZERO
+		current_target = players_ref[0]
+		return current_target.global_position - global_position
+	return .get_movement()
+
+
 func set_hitbox_damage_modifier() -> void :
 	_hitbox_damage_modifier = min(_hitbox.damage - 1, int(current_stats.damage * 0.9)) as int
 	_hitbox.damage = _hitbox.damage - _hitbox_damage_modifier

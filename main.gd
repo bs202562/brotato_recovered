@@ -183,9 +183,10 @@ func _ready() -> void :
 	var current_zone = ZoneService.get_zone_data(RunData.current_zone).duplicate()
 	var current_wave_data = ZoneService.get_wave_data(RunData.current_zone, RunData.current_wave)
 
-	var map_size_coef = (1 + (RunData.sum_all_player_effects(Keys.map_size_hash) / 100.0))
-	current_zone.width = max(MIN_MAP_SIZE, (current_zone.width * map_size_coef)) as int
-	current_zone.height = max(MIN_MAP_SIZE, (current_zone.height * map_size_coef)) as int
+	# Tower-defense battles use one stable 9:16 arena. Map-size effects are
+	# filtered from new runs and must not distort the portrait battlefield.
+	current_zone.width = TowerDefenseRules.MAP_WIDTH_TILES
+	current_zone.height = TowerDefenseRules.MAP_HEIGHT_TILES
 
 	ZoneService.set_current_zone(current_zone)
 	_tile_map.init(current_zone)
@@ -753,6 +754,7 @@ func spawn_consumables(unit: Unit) -> void :
 		var push_back_destination: Vector2 = ZoneService.get_rand_pos_in_area(pos, dist, 0)
 		consumable.drop(pos, 0, push_back_destination)
 		_consumables.push_back(consumable)
+		_start_tower_defense_auto_pickup(consumable)
 
 
 # 消耗品被拾取：节点回收进对象池；物品箱类记入"波后待处理"队列
@@ -841,6 +843,8 @@ func spawn_gold(value: float, pos: Vector2, spread: int) -> void :
 		_active_golds.push_back(gold)
 
 		for player in _get_shuffled_live_players():
+			if TowerDefenseRules.ENABLED:
+				break
 			var instant_gold_attracting = RunData.get_player_effect(Keys.instant_gold_attracting_hash, player.player_index)
 			if instant_gold_attracting != 0 and randf() < instant_gold_attracting / 100.0:
 				if RunData.get_player_effect_bool(Keys.stat_has_lootworm_hash, player.player_index) and _entity_spawner.lootworms[player.player_index] != null:
@@ -849,7 +853,20 @@ func spawn_gold(value: float, pos: Vector2, spread: int) -> void :
 					gold.attracted_by = player
 				gold.set_physics_process(true)
 				break
+		_start_tower_defense_auto_pickup(gold)
 	emit_signal("gold_spawned")
+
+
+# Keep the original pickup signal path, but remove the range and idle delay so
+# every drop visibly travels to the stationary defender as soon as it appears.
+func _start_tower_defense_auto_pickup(item: Item) -> void :
+	if not TowerDefenseRules.ENABLED or _players.empty() or not is_instance_valid(_players[0]):
+		return
+	item.push_back = false
+	item.idle_time_after_pushed_back = 0.0
+	item.attracted_by = _players[0]
+	item.set_deferred("monitorable", true)
+	item.set_physics_process(true)
 
 
 # 计算一个单位掉落的金币价值：
@@ -1647,6 +1664,7 @@ func on_structure_wanted_to_spawn_fruit(pos: Vector2) -> void :
 	var push_back_destination = Vector2(rand_range(pos.x - dist, pos.x + dist), rand_range(pos.y - dist, pos.y + dist))
 	consumable.drop(pos, 0, push_back_destination)
 	_consumables.push_back(consumable)
+	_start_tower_defense_auto_pickup(consumable)
 
 
 # 收获成长定时结算：普通波按"收获成长%"增加收获属性(皇冠道具会记录溯源)；

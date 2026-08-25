@@ -7,6 +7,9 @@ var device: = 0
 
 
 func get_movement() -> Vector2:
+	if TowerDefenseRules.ENABLED:
+		return Vector2.ZERO
+
 	var movement: Vector2 = Vector2.ZERO
 
 	if ProgressData.settings.mouse_only and not RunData.is_coop_run:

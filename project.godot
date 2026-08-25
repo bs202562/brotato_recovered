@@ -2674,6 +2674,8 @@ Streamplay="*res://singletons/streamplay.tscn"
 UIService="*res://singletons/ui_service.gd"
 SoundService="*res://singletons/sound_service.tscn"
 OS_Seaven="*res://singletons/os_seaven.gd"
+TowerDefenseRules="*res://singletons/tower_defense_rules.gd"
+PortraitUIAdapter="*res://singletons/portrait_ui_adapter.gd"
 
 [debug]
 
@@ -2683,13 +2685,14 @@ shapes/collision/shape_color=Color( 1, 1, 1, 0.419608 )
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
-window/size/test_width=1280
-window/size/test_height=720
+window/size/width=1080
+window/size/height=1920
+window/size/test_width=540
+window/size/test_height=960
 mouse_cursor/custom_image="res://ui/custom_cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2( 3, 3 )
 window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 

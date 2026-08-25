@@ -94,17 +94,8 @@ func init_coop_service() -> void :
 	
 	
 	
-	if RunData.menu_selection_back:
-		current_mode = RunData.play_mode
-		_play_mode_init(RunData.play_mode, true)
-	elif Utils.on_nintendo_nx_or_ounce:
-		var playMode = RunData.PlayMode.SOLO;
-		if Utils.on_nintendo_ounce:
-			if Streamplay.playing():
-				playMode = RunData.PlayMode.STREAMPLAY_LOCAL if not Streamplay.is_online() else RunData.PlayMode.STREAMPLAY_INTERNET
-		_play_mode_init(playMode, true)
-	else:
-		_play_mode_init(RunData.play_mode, false)
+	# Portrait tower-defense runs are deliberately single-player.
+	_play_mode_init(RunData.PlayMode.SOLO, false)
 	RunData.menu_selection_back = false
 	
 
@@ -115,21 +106,9 @@ func init_coop_service() -> void :
 
 
 func _init_play_mode_ui() -> void :
-	if Utils.on_nintendo_ounce or OS_Seaven.is_in_editor_mode():
-		_coop_button.visible = OS_Seaven.is_in_editor_mode()
-		if _mode_selection_button == null:
-			_mode_selection_button = OptionButton.new()
-			_run_options_panel_content.add_child(_mode_selection_button);
-			_mode_selection_button.connect("item_selected", self, "_on_ModeSelectionButton_item_selected")
-		_mode_selection_button.visible = true
-		_mode_selection_button.clear()
-		_mode_selection_button.add_item(tr("SOLO"), RunData.PlayMode.SOLO)
-		_mode_selection_button.add_item(tr("COOP"), RunData.PlayMode.COOP)
-		_mode_selection_button.add_item(tr("GAMESHARE_LOCAL"), RunData.PlayMode.STREAMPLAY_LOCAL)
-	else:
-		_coop_button.visible = true
-		if _mode_selection_button != null:
-			_mode_selection_button.visible = false
+	_coop_button.visible = false
+	if _mode_selection_button != null:
+		_mode_selection_button.visible = false
 
 
 func _exit_tree() -> void :
@@ -171,6 +150,8 @@ func _get_all_possible_elements(_player_index: int) -> Array:
 	
 	var elements: = []
 	for character in ItemService.characters:
+		if not TowerDefenseRules.is_content_compatible(character):
+			continue
 		var element = character.duplicate()
 		var diff_info = ProgressData.get_character_difficulty_info(element.my_id_hash, RunData.current_zone)
 		if diff_info.max_difficulty_beaten.difficulty_value == 0:
@@ -246,7 +227,8 @@ func _on_coop_initialized(active: bool, initialize: bool) -> void :
 
 
 func _play_mode_init(mode: int, initialize: bool) -> void :
-	
+	if TowerDefenseRules.ENABLED:
+		mode = RunData.PlayMode.SOLO
 
 	
 	

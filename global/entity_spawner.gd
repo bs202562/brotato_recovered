@@ -90,7 +90,9 @@ func init(
 
 	for player_index in RunData.get_player_count():
 		var position: Vector2
-		if RunData.get_player_count() > 1:
+		if TowerDefenseRules.ENABLED:
+			position = TowerDefenseRules.HERO_POSITION
+		elif RunData.get_player_count() > 1:
 			position = Vector2(
 				zone_max_pos.x / 2 - 100 + (player_index % 2) * 100, 
 				zone_max_pos.y / 2 + ((player_index / 2) % 2) * 100
@@ -191,6 +193,8 @@ func on_group_spawn_timing_reached(group_data: WaveGroupData) -> void :
 		for i in spawn_count:
 			var spawn_pos = get_spawn_pos_in_area(group_pos, group_data.area, group_data.spawn_dist_away_from_edges, group_data.spawn_edge_of_map)
 			spawn_pos = get_spawn_pos_away_from_players(spawn_pos, group_pos, group_data, unit_wave_data)
+			if TowerDefenseRules.ENABLED and (unit_wave_data.type == EntityType.ENEMY or group_data.is_boss):
+				spawn_pos = TowerDefenseRules.get_top_spawn_position()
 			if group_data.is_boss:
 				queue_to_spawn_bosses.push_back([unit_wave_data.type, unit_wave_data.unit_scene, spawn_pos])
 			elif unit_wave_data.type == EntityType.ENEMY:

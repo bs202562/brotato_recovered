@@ -111,6 +111,8 @@ func init_unlocked_pool() -> void :
 	for item in items:
 		if not item.can_be_looted:
 			continue
+		if not TowerDefenseRules.is_content_compatible(item):
+			continue
 
 		if ProgressData.items_unlocked.has(item.my_id_hash) and item.max_nb != 0:
 			_tiers_data[item.tier][TierData.ALL_ITEMS].push_back(item)
@@ -127,6 +129,8 @@ func init_unlocked_pool() -> void :
 			_tiers_data[weapon.tier][TierData.WEAPONS].push_back(weapon)
 
 	for upgrade in upgrades:
+		if not TowerDefenseRules.is_content_compatible(upgrade):
+			continue
 		if ProgressData.upgrades_unlocked.has(upgrade.upgrade_id_hash):
 			_tiers_data[upgrade.tier][TierData.UPGRADES].push_back(upgrade)
 

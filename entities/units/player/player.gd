@@ -681,10 +681,21 @@ func death_animation_finished() -> void :
 
 
 func _physics_process(delta: float) -> void :
+	if TowerDefenseRules.ENABLED and not dead:
+		global_position = TowerDefenseRules.HERO_POSITION
+		linear_velocity = Vector2.ZERO
+		knockback_vector = Vector2.ZERO
 	
 	var loop_count: = _health_regen_timer.try_loop(delta)
 	if loop_count > 0:
 		on_health_regen(loop_count)
+
+
+func get_next_velocity() -> Vector2:
+	if TowerDefenseRules.ENABLED:
+		knockback_vector = Vector2.ZERO
+		return Vector2.ZERO
+	return .get_next_velocity()
 
 
 
