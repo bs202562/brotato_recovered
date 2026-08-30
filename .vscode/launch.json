@@ -1,0 +1,41 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Godot 3 v2: 调试完整游戏",
+            "type": "godot",
+            "request": "launch",
+            "project": "${workspaceFolder}/gdproj",
+            "scene": "main",
+            "editor_path": "${config:godotTools.editorPath.godot3}",
+            "address": "127.0.0.1",
+            "port": 6007,
+            "debug_collisions": false,
+            "additional_options": ""
+        },
+        {
+            "name": "Godot 3 v2: 调试当前场景",
+            "type": "godot",
+            "request": "launch",
+            "project": "${workspaceFolder}/gdproj",
+            "scene": "current",
+            "editor_path": "${config:godotTools.editorPath.godot3}",
+            "address": "127.0.0.1",
+            "port": 6007,
+            "debug_collisions": false,
+            "additional_options": ""
+        },
+        {
+            "name": "Godot 3 官方版回滚（需官方兼容插件）",
+            "type": "godot",
+            "request": "launch",
+            "project": "${workspaceFolder}/gdproj",
+            "scene": "main",
+            "editor_path": "d:\\tools\\Godot_v3.6.3-stable_win64\\Godot_v3.6.3-stable_win64.exe",
+            "address": "127.0.0.1",
+            "port": 6007,
+            "debug_collisions": false,
+            "additional_options": ""
+        }
+    ]
+}
