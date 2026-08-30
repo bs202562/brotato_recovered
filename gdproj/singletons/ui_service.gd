@@ -19,7 +19,7 @@ func _ready():
 	_on_update_color_positive()
 	_on_update_color_negative()
 
-func _process(delta):
+func _process(_delta):
 	if Utils.on_nintendo_nx_or_ounce:
 		if OS_Seaven.has_controller_style_maybe_changed():
 			emit_signal("change_device")

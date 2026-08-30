@@ -15,7 +15,7 @@
 extends Control
 
 # 启动流程状态机：就绪 → 展示闪屏 → 淡出当前画面 → 切换场景
-enum State{READY, BOOT_SPLASH, HIDE_SCENE, CHANGE_SCENE}
+enum State{READY, BOOT_SPLASH, HIDE_SCENE, HIDING, CHANGE_SCENE}
 var state = State.READY
 
 # 存档加载完毕、可以进主菜单时置为 true（见 _on_progress_data_ready）
@@ -31,7 +31,7 @@ func _init() -> void :
 
 func _process(_delta: float):
 	# 每帧根据状态机推进启动流程
-	match state:
+	match state:   
 		State.READY:
 			# 等待 _draw() 完成首帧绘制后进入 BOOT_SPLASH
 			pass
@@ -40,23 +40,23 @@ func _process(_delta: float):
 			if ready_for_main_menu:
 				state = State.HIDE_SCENE
 		State.HIDE_SCENE:
+			state = State.HIDING
 			# 先应用声音设置，再播放淡出动画，动画放完才切场景
 			ProgressData._apply_sounds_settings()
-
 			$AnimationPlayer.play("start")
 			yield($AnimationPlayer, "animation_finished")
 			state = State.CHANGE_SCENE
+		State.HIDING:
+			pass
 		State.CHANGE_SCENE:
 			# 应用全部设置（分辨率/语言等），然后进入标题界面
 			ProgressData.apply_settings()
 			var _error = get_tree().change_scene("res://ui/menus/title_screen/title_screen.tscn")
 
-
 func _draw():
 	# 首帧真正画出来之后才进入闪屏状态，保证玩家能看到闪屏画面
 	if state == State.READY:
 		state = State.BOOT_SPLASH
-
 
 func _on_progress_data_ready() -> void :
 	# 存档加载完成回调：只要不是"云存档全部损坏"的致命情况就放行

@@ -6,7 +6,7 @@ export (int) var interval: = 5
 static func get_id() -> String:
 	return "effect_no_hit_boost"
 
-func get_args(player_index: int) -> Array:
+func get_args(_player_index: int) -> Array:
 	return [str(value), str(interval)]
 
 func serialize() -> Dictionary:

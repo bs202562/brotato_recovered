@@ -10,7 +10,7 @@ extends Viewport
 export (String) var file_name  # 导出文件名前缀
 var frame_index: int = 0  # 已保存的帧序号（用于文件名 6 位编号）
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("ui_ban"):
 		# 抓取当前视口纹理，保存为 user://<前缀>_000000.png 这样的序列帧
 		var capture: = get_texture().get_data()

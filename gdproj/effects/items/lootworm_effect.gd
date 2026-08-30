@@ -12,7 +12,7 @@ func apply(player_index: int) -> void :
 	effects[Keys.stat_has_lootworm_hash] = 1
 	Utils.reset_stat_cache(player_index)
 
-func get_args(player_index: int) -> Array:
+func get_args(_player_index: int) -> Array:
 	return [str(double_chance * 100)]
 
 func serialize() -> Dictionary:

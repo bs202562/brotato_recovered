@@ -55,7 +55,7 @@ func complete_challenge(chal_id: int) -> void :
 		gog.unlock_achievement(Keys.hash_to_string[chal_id])
 
 
-func is_dlc_owned(dlc_my_id: String) -> bool:
+func is_dlc_owned(_dlc_my_id: String) -> bool:
 	return true
 
 
