@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://items/consumables/consumable_data.gd" type="Script" id=1]
-[ext_resource path="res://items/consumables/fruit/fruit.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/props/fruit.png" type="Texture" id=2]
 [ext_resource path="res://items/consumables/fruit/comedy_bite_chew_01.wav" type="AudioStream" id=3]
 [ext_resource path="res://items/consumables/fruit/comedy_bite_chew_02.wav" type="AudioStream" id=4]
 [ext_resource path="res://items/consumables/fruit/comedy_bite_chew_03.wav" type="AudioStream" id=5]

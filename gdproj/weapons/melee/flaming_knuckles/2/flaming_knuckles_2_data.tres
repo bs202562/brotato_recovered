@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=9 format=2]
 
 [ext_resource path="res://weapons/melee/flaming_knuckles/2/flaming_knuckles_2_effect_1.tres" type="Resource" id=1]
-[ext_resource path="res://weapons/melee/flaming_knuckles/flaming_knuckles_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/weapons/weapon_flaming_brass_knuckles_1.png" type="Texture" id=2]
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=3]
 [ext_resource path="res://weapons/melee/flaming_knuckles/flaming_knuckles.tscn" type="PackedScene" id=4]
 [ext_resource path="res://weapons/melee/flaming_knuckles/2/flaming_knuckles_2_stats.tres" type="Resource" id=5]

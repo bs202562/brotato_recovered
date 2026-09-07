@@ -1,17 +1,16 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://items/all/bot_o_mine/bot_o_mine.tres" type="Resource" id=1]
 [ext_resource path="res://entities/units/pet/bot_o_mine/bot_o_mine_stats.tres" type="Resource" id=2]
 [ext_resource path="res://entities/units/pet/ItemPet.gd" type="Script" id=3]
-[ext_resource path="res://entities/units/pet/bot_o_mine/bot_o_mine_icon.png" type="Texture" id=4]
-[ext_resource path="res://entities/units/pet/bot_o_mine/bot_o_mine_screen.png" type="Texture" id=5]
+[ext_resource path="res://combat3d/art/props/bot_o_mine.png" type="Texture" id=5]
 
 [resource]
 script = ExtResource( 3 )
 my_id = "bot_o_mine_pet"
 unlocked_by_default = false
 can_be_looted = true
-icon = ExtResource( 4 )
+icon = ExtResource( 5 )
 name = "BOT_O_MINE_NAME"
 tier = 0
 value = 1

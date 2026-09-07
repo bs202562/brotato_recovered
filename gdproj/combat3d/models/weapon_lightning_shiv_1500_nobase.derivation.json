@@ -1,0 +1,14 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_lightning_shiv_1500.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_lightning_shiv_1500_nobase.glb",
+  "source_sha256": "9e8dc5b7ec622b1522b0ad19e88409394a08fc6557ab80d20658fc8c11d0a10d",
+  "derived_sha256": "84cc4f0ea818b51926ed67167c88ea820df2d469904f39567c616401f38d0134",
+  "kept_components": [
+    1
+  ],
+  "kept_triangles": 197,
+  "removed_triangles": 1190,
+  "original_binary_prefix_unchanged": true,
+  "materials_images_textures_unchanged": true,
+  "operation": "Explicit component selection; compacted only referenced vertex attributes and triangle indices without modifying their values. Original binary retained; no height cutoff."
+}

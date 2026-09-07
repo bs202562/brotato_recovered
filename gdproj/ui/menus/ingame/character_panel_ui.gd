@@ -2,6 +2,8 @@ class_name CharacterPanelUI
 extends ItemPanelUI
 
 const SCROLL_SPEED: = 600.0
+const MenuCharacterPreview = preload("res://combat3d/menu_character_preview.gd")
+var _preview_3d
 
 onready var _characterName: Label = $"%CharacterName"
 onready var _inventory: Inventory = $"%Inventory"
@@ -33,8 +35,11 @@ func _process(delta: float) -> void :
 
 
 func _ready():
-	_animation_player.play("idle")
-	_animation_player.advance(rand_range(0, _animation_player.get_animation("idle").length))
+	_animation_player.stop()
+	_characterAnimation.hide()
+	_preview_3d = MenuCharacterPreview.new()
+	_preview_3d.name = "CharacterPreview3D"
+	_chara_visual.add_child(_preview_3d)
 	_update_bg()
 
 
@@ -66,11 +71,13 @@ func on_show_focused_inventory_popup() -> void :
 
 
 func _update_bg():
-	_tilemap.tile_set.tile_set_texture(0, RunData.get_background().get_tiles_sprite())
-	_tilemap.get_node("Outline").modulate = RunData.get_background().outline_color
+	# The isolated 3D portrait replaces the old tiled paper-doll backdrop.
+	_tilemap.hide()
 
 
 func apply_objects_display(all_objects: Array, character: ItemParentData) -> void :
+	if character != null:
+		_preview_3d.show_character(character.my_id)
 	if character != null:
 		all_objects.append(character)
 	
@@ -87,40 +94,12 @@ func apply_objects_display(all_objects: Array, character: ItemParentData) -> voi
 
 
 func apply_items_appearance(all_items: Array) -> void :
-	var character_node = $"%Character"
-
 	for sprite in all_sprites_appearance:
 		sprite.queue_free()
 	all_sprites_appearance = []
-
-	var allAppearances: Array = []
-	
-	for item in all_items:
-		allAppearances.append_array(item.item_appearances)
-
-	allAppearances.sort_custom(Sorter, "sort_depth_ascending")
-	var appearances_behind = []
-
-	
-	for appearance in allAppearances:
-		if ProgressData.settings.no_item_appearance and not appearance.is_character_appearance:
-			continue
-
-		var item_sprite = Sprite.new()
-		all_sprites_appearance.append(item_sprite)
-		item_sprite.texture = appearance.get_sprite()
-		character_node.add_child(item_sprite)
-
-		if appearance.depth < - 1:
-			appearances_behind.push_back(item_sprite)
-
-		
-
-	var popped = appearances_behind.pop_back()
-
-	while popped != null:
-		character_node.move_child(popped, 0)
-		popped = appearances_behind.pop_back()
+	# Equipment stays in the inventory/details UI; old 2D cosmetic sprites are
+	# no longer layered over the identity supplied to the 3D visual factory.
+	_characterAnimation.hide()
 
 	
 
@@ -143,7 +122,7 @@ func _small(small):
 		_characterName.modulate = Color(1, 1, 1)
 		_left_panel_color.self_modulate.a = 0
 		_characterAnimation.position.y = - 46.8
-		_tilemap.visible = true
+		_tilemap.visible = false
 
 
 

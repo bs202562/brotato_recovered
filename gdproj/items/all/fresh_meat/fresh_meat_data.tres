@@ -4,7 +4,7 @@
 [ext_resource path="res://items/all/fresh_meat/appearance/fresh_meat_appearance.tres" type="Resource" id=2]
 [ext_resource path="res://items/all/fresh_meat/effects/fresh_meat_effect_1.tres" type="Resource" id=3]
 [ext_resource path="res://items/all/fresh_meat/effects/fresh_meat_effect_0.tres" type="Resource" id=4]
-[ext_resource path="res://items/all/fresh_meat/icon.png" type="Texture" id=5]
+[ext_resource path="res://combat3d/art/items/item_fresh_meat.tres" type="Texture" id=5]
 
 [resource]
 script = ExtResource( 1 )

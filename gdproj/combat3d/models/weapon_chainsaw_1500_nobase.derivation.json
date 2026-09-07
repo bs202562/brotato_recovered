@@ -1,0 +1,15 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_chainsaw_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_chainsaw_1500_nobase.glb",
+  "source_sha256": "90f88197eadf6da142da7c4793555fc5939779bc8a564d7b19cbcec681190ca3",
+  "derived_sha256": "c79bf1badf0e111e3c20637b3d9fde545b042481d2c71bb7b678ec646426789f",
+  "kept_components": [
+    0
+  ],
+  "kept_triangles": 837,
+  "removed_triangles": 568,
+  "original_binary_prefix_unchanged": true,
+  "materials_images_textures_unchanged": true,
+  "operation": "Explicit component selection; compacted only referenced vertex attributes and triangle indices without modifying their values. Original binary retained; no height cutoff.",
+  "rig_and_animation_definitions_unchanged": true
+}

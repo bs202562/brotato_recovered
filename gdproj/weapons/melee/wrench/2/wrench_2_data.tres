@@ -5,7 +5,7 @@
 [ext_resource path="res://weapons/melee/wrench/2/wrench_2_stats.tres" type="Resource" id=3]
 [ext_resource path="res://weapons/melee/wrench/wrench.tscn" type="PackedScene" id=4]
 [ext_resource path="res://items/all/turret_flame/turret_flame_effect_1.tres" type="Resource" id=5]
-[ext_resource path="res://weapons/melee/wrench/wrench_icon.png" type="Texture" id=6]
+[ext_resource path="res://combat3d/art/weapons/weapon_wrench_1.png" type="Texture" id=6]
 [ext_resource path="res://items/sets/tool/tool_set_data.tres" type="Resource" id=7]
 
 [resource]

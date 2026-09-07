@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://ui/menus/global/key_xbox_a.png" type="Texture" id=1]
+[ext_resource path="res://combat3d/art/ui/ui_input_key_xbox_a.svg" type="Texture" id=1]
 [ext_resource path="res://resources/fonts/actual/base/font_22.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/menus/shop/coop_shop_hint.gd" type="Script" id=3]
 [ext_resource path="res://resources/themes/actual_no_scrollbar_theme.tres" type="Theme" id=4]

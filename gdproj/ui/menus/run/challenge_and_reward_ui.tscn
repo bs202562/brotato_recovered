@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ui/menus/run/zone_panel.gd" type="Script" id=1]
 [ext_resource path="res://ui/menus/run/challenge_and_reward_ui.gd" type="Script" id=2]
-[ext_resource path="res://items/consumables/fruit/fruit.png" type="Texture" id=3]
+[ext_resource path="res://combat3d/art/props/fruit.png" type="Texture" id=3]
 [ext_resource path="res://ui/menus/ingame/item_panel_ui.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/menus/pages/progress_challenge_ui.tscn" type="PackedScene" id=5]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=6]

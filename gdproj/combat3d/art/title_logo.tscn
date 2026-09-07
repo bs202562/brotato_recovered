@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/fonts/raw/Anybody-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/fonts/raw/NotoSansSC-Medium.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+outline_size = 4
+outline_color = Color( 0.025, 0.06, 0.07, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+outline_size = 2
+outline_color = Color( 0.025, 0.06, 0.07, 1 )
+font_data = ExtResource( 2 )
+
+[node name="DeadShiftLogo" type="VBoxContainer"]
+rect_min_size = Vector2( 800, 240 )
+mouse_filter = 2
+custom_constants/separation = 0
+
+[node name="EnglishTitle" type="Label" parent="."]
+mouse_filter = 2
+custom_colors/font_color = Color( 1, 0.74, 0.3, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "DEAD SHIFT"
+align = 1
+
+[node name="ChineseTitle" type="Label" parent="."]
+mouse_filter = 2
+custom_colors/font_color = Color( 0.87, 0.96, 0.92, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "尸潮夜班 · 商场封锁"
+align = 1

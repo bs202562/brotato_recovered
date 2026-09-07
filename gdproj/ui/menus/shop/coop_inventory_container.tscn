@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/themes/verysmall_option_button_theme.tres" type="Theme" id=3]
 [ext_resource path="res://ui/menus/shop/inventory_container.gd" type="Script" id=4]
 [ext_resource path="res://ui/menus/pages/sort_inventory_button.gd" type="Script" id=5]
-[ext_resource path="res://ui/menus/global/inverse_order_icon.png" type="Texture" id=6]
+[ext_resource path="res://combat3d/art/ui/ui_archive_inverse_order_icon.svg" type="Texture" id=6]
 
 [node name="CoopInventoryContainer" type="VBoxContainer"]
 margin_right = 150.0

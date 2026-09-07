@@ -1,6 +1,6 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=2]
 
-[ext_resource path="res://ui/hud/frames_character/frame_character_8.png" type="Texture" id=1]
+[ext_resource path="res://combat3d/art/ui/ui_hud_frames_character_frame_character_8.svg" type="Texture" id=1]
 
 [resource]
 texture = ExtResource( 1 )

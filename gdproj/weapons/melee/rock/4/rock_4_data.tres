@@ -5,7 +5,7 @@
 [ext_resource path="res://weapons/melee/rock/4/rock_4_effect_2.tres" type="Resource" id=3]
 [ext_resource path="res://weapons/melee/rock/rock.tscn" type="PackedScene" id=4]
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=5]
-[ext_resource path="res://weapons/melee/rock/rock_icon.png" type="Texture" id=6]
+[ext_resource path="res://combat3d/art/weapons/weapon_rock_3.png" type="Texture" id=6]
 [ext_resource path="res://items/sets/blunt/blunt_set_data.tres" type="Resource" id=7]
 [ext_resource path="res://items/sets/primitive/primitive_set_data.tres" type="Resource" id=8]
 

@@ -1,0 +1,106 @@
+{
+  "blazemander": {
+    "kind": "pet",
+    "identity": "res://entities/units/pet/blazemander/blazemander.tscn"
+  },
+  "bonk_dog": {
+    "kind": "pet",
+    "identity": "res://entities/units/pet/bonk_dog/bonk_dog.tscn"
+  },
+  "bot_o_mine": {
+    "kind": "pet",
+    "identity": "res://entities/units/pet/bot_o_mine/bot_o_mine.tscn"
+  },
+  "catling_gun": {
+    "kind": "pet",
+    "identity": "res://entities/units/pet/catling_gun/catling_gun.tscn"
+  },
+  "doc_moth": {
+    "kind": "pet",
+    "identity": "res://entities/units/pet/doc_moth/doc_moth.tscn"
+  },
+  "jellyshield": {
+    "kind": "pet",
+    "identity": "res://entities/units/pet/jellyshield/jellyshield.tscn"
+  },
+  "lootworm": {
+    "kind": "pet",
+    "identity": "res://entities/units/pet/lootworm/lootworm.tscn"
+  },
+  "ratzilla": {
+    "kind": "pet",
+    "identity": "res://entities/units/pet/ratzilla/ratzilla.tscn"
+  },
+  "scapegoat": {
+    "kind": "pet",
+    "identity": "res://entities/units/pet/scapegoat/scapegoat.tscn"
+  },
+  "landmine": {
+    "kind": "structure",
+    "identity": "res://entities/structures/landmine/landmine.tscn"
+  },
+  "turret": {
+    "kind": "structure",
+    "identity": "res://entities/structures/turret/turret.tscn"
+  },
+  "builder_turret": {
+    "kind": "structure",
+    "identity": "res://entities/structures/turret/builder/builder_turret.tscn"
+  },
+  "flame_turret": {
+    "kind": "structure",
+    "identity": "res://entities/structures/turret/flame/flame_turret.tscn"
+  },
+  "garden": {
+    "kind": "structure",
+    "identity": "res://entities/structures/turret/garden/garden.tscn"
+  },
+  "healing_turret": {
+    "kind": "structure",
+    "identity": "res://entities/structures/turret/healing/healing_turret.tscn"
+  },
+  "laser_turret": {
+    "kind": "structure",
+    "identity": "res://entities/structures/turret/laser/laser_turret.tscn"
+  },
+  "rocket_turret": {
+    "kind": "structure",
+    "identity": "res://entities/structures/turret/rocket/rocket_turret.tscn"
+  },
+  "tyler": {
+    "kind": "structure",
+    "identity": "res://entities/structures/turret/tyler/tyler.tscn"
+  },
+  "wandering_bot": {
+    "kind": "structure",
+    "identity": "res://entities/structures/turret/wandering_bot/wandering_bot.tscn"
+  },
+  "tree": {
+    "kind": "tree",
+    "identity": "res://entities/units/neutral/tree.tscn"
+  },
+  "fruit": {
+    "kind": "consumable",
+    "identity": "consumable_fruit"
+  },
+  "poisoned_fruit": {
+    "kind": "consumable",
+    "identity": "consumable_poisoned_fruit"
+  },
+  "cursed_chest": {
+    "kind": "consumable",
+    "identity": "consumable_cursed_chest"
+  },
+  "item_box": {
+    "kind": "consumable",
+    "identity": "consumable_item_box"
+  },
+  "legendary_item_box": {
+    "kind": "consumable",
+    "identity": "consumable_legendary_item_box"
+  },
+  "material": {
+    "kind": "material",
+    "identity": "material"
+  }
+}

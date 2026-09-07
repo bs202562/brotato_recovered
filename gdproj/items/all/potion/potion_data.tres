@@ -4,7 +4,7 @@
 [ext_resource path="res://items/all/potion/potion_effect_1.tres" type="Resource" id=2]
 [ext_resource path="res://items/all/potion/potion_appearance.tres" type="Resource" id=3]
 [ext_resource path="res://items/all/potion/potion_effect_2.tres" type="Resource" id=5]
-[ext_resource path="res://items/all/potion/potion_icon.png" type="Texture" id=6]
+[ext_resource path="res://combat3d/art/items/item_potion.tres" type="Texture" id=6]
 
 [resource]
 script = ExtResource( 1 )

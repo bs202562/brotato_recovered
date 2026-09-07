@@ -93,6 +93,11 @@ func sort_by_priority(a, b):
 func reload_background() -> void :
 	for child in _animated_background_container.get_children():
 		child.queue_free()
+	if TowerDefenseRules.ENABLED:
+		current_keyart = load("res://combat3d/art/title_data.tres")
+		_animated_background_container.add_child(current_keyart.scene.instance())
+		_main_menu.reload_logo(current_keyart)
+		return
 
 	var key_art_mode: int = ProgressData.settings.main_screen_keyart
 	if key_art_mode - 2 >= ItemService.title_screen_backgrounds.size():

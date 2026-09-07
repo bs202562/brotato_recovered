@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=25 format=2]
 
 [ext_resource path="res://items/characters/character_data.gd" type="Script" id=1]
-[ext_resource path="res://items/characters/knight/knight_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/characters/character_knight.png" type="Texture" id=2]
 [ext_resource path="res://weapons/melee/sword/2/sword_2_data.tres" type="Resource" id=3]
 [ext_resource path="res://items/characters/knight/knight_mouth_appearance.tres" type="Resource" id=4]
 [ext_resource path="res://items/characters/knight/knight_helmet_appearance.tres" type="Resource" id=5]

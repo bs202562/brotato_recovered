@@ -1,7 +1,7 @@
 extends Node
 
-const normal_image = preload("res://ui/custom_cursor.png")
-const manual_image = preload("res://ui/manual_cursor.png")
+const normal_image = preload("res://combat3d/art/ui/ui_custom_cursor.svg")
+const manual_image = preload("res://combat3d/art/ui/ui_manual_cursor.svg")
 var current_image = null
 
 

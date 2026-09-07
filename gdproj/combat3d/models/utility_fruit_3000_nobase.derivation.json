@@ -1,0 +1,14 @@
+{
+  "source": "gdproj\\combat3d\\models\\utility_fruit_3000.glb",
+  "derived": "gdproj\\combat3d\\models\\utility_fruit_3000_nobase.glb",
+  "source_sha256": "86481e294aa206c2c0af842aabe49d557a61d56886485a6e5b18d5ad5447d2a6",
+  "derived_sha256": "b28d502a2a8110a6bc57062e3bfd0585ac6595335cf9784f0bf0cc35511d84fc",
+  "kept_components": [
+    1
+  ],
+  "kept_triangles": 730,
+  "removed_triangles": 2064,
+  "original_binary_prefix_unchanged": true,
+  "materials_images_textures_unchanged": true,
+  "operation": "Explicit component selection; compacted only referenced vertex attributes and triangle indices without modifying their values. Original binary retained; no height cutoff."
+}

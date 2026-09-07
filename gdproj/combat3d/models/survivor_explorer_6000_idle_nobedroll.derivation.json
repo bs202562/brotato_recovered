@@ -1,0 +1,15 @@
+{
+  "source": "gdproj\\combat3d\\models\\survivor_explorer_6000_idle.glb",
+  "derived": "gdproj\\combat3d\\models\\survivor_explorer_6000_idle_nobedroll.glb",
+  "source_sha256": "0da3f3024c5a41933a1d1b79b5087e57758eef604480ca6beb78757675285a24",
+  "derived_sha256": "3c1b50d1460eb36bbe09f93f26e54b4ff477df4ceff738624294b1296a1dc453",
+  "kept_components": [
+    0
+  ],
+  "kept_triangles": 5139,
+  "removed_triangles": 572,
+  "original_binary_prefix_unchanged": true,
+  "materials_images_textures_unchanged": true,
+  "operation": "Explicit component selection; compacted only referenced vertex attributes and triangle indices without modifying their values. Original binary retained; no height cutoff.",
+  "rig_and_animation_definitions_unchanged": true
+}

@@ -1,0 +1,42 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_lute_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_lute_1500_repaired.glb",
+  "source_sha256": "ffda628c8e3679f78e21333b0b08923cea19485531145782ea5d41932d2a0eb7",
+  "derived_sha256": "dddb5085f19426f294acc5acb2b5d41dea1b1b4da03b2a8fec8c826271e14de3",
+  "clip_world_y": 0.55,
+  "removed_lower_component": {
+    "component": 0,
+    "triangles": 590,
+    "min": [
+      -0.1978302299976349,
+      0.0,
+      -0.1963043510913849
+    ],
+    "max": [
+      0.1731567531824112,
+      0.55,
+      0.1735229641199112
+    ]
+  },
+  "preserved_lower_components": [
+    {
+      "component": 1,
+      "triangles": 545,
+      "min": [
+        -0.09381111711263657,
+        0.27618408203125,
+        -0.3691021565622933
+      ],
+      "max": [
+        0.13436201122012698,
+        0.55,
+        0.4909973740577698
+      ]
+    }
+  ],
+  "boundary_loops": 1,
+  "cap_triangles": 10,
+  "body_triangles": 976,
+  "triangles": 986,
+  "operation": "Audited cut followed by removal of only the lower connected display component; lower disconnected weapon parts retained. Cut loops sealed by ear triangulation. Original UVs interpolated only at cuts, embedded textures retained, recentered without rotation. Pending final Godot review."
+}

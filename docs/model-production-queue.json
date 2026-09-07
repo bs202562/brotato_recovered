@@ -1,0 +1,5956 @@
+{
+  "scope": "All selectable survivors, every enemy identity, all weapon families, active utility objects and mall environment pieces. Shared procedural substitutes do not satisfy independent-model acceptance.",
+  "estimated_full_pass_credits": 18720,
+  "models": [
+    {
+      "id": "character_buccaneer",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/buccaneer/buccaneer_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_buccaneer_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/bd666de0-e8e8-48c2-a3e1-ab574167bed7",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_buccaneer",
+      "evidence": {
+        "sha256": "b01fa0054eb54f045ea9a0cb749fad449d8183a5497d64ce061e092a22549a15",
+        "triangles": 6000,
+        "engine_review_log": "docs/prepare-character_buccaneer-icons.log",
+        "runtime_log": "docs/character_buccaneer-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/character_buccaneer-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/characters/character_buccaneer.png",
+        "animation_verified": "presetbipedidle",
+        "skins": 1
+      }
+    },
+    {
+      "id": "character_builder",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/builder/builder_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_builder_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/2bf297ef-b701-4885-991b-234c1a8b61f5",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_builder",
+      "evidence": {
+        "sha256": "0b89c4233da3e9eab17ffd8c071203cf67af44f49cab1423b3fbec86cf6645b9",
+        "triangles": 6000,
+        "engine_review_log": "docs/prepare-character_builder-icons.log",
+        "runtime_log": "docs/character_builder-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/character_builder-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/characters/character_builder.png",
+        "animation_verified": "presetbipedidle",
+        "skins": 1
+      }
+    },
+    {
+      "id": "character_captain",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/captain/captain_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_captain_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/b661933f-6c7f-45e7-85dd-3b5bdcc52e6a",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_captain",
+      "evidence": {
+        "sha256": "6f284c6363a0486c75bb5bd5f5c3cd5acd5fdaa8d0cf67fa6f2976523445165f",
+        "triangles": 6000,
+        "engine_review_log": "docs/prepare-character_captain-icons.log",
+        "runtime_log": "docs/character_captain-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/character_captain-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/characters/character_captain.png",
+        "animation_verified": "presetbipedidle",
+        "skins": 1
+      }
+    },
+    {
+      "id": "character_chef",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/chef/chef_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_chef_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/b5d933e6-c661-47e5-8160-b80b783ad7c6",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_chef",
+      "evidence": {
+        "sha256": "819ce45212978d41faa896a870f9eb42d8a96dfc6dd19ca60af9e9cafc0c5176",
+        "triangles": 6000,
+        "engine_review_log": "docs/prepare-character_chef-icons.log",
+        "runtime_log": "docs/character_chef-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/character_chef-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/characters/character_chef.png",
+        "animation_verified": "presetbipedidle",
+        "skins": 1
+      }
+    },
+    {
+      "id": "character_creature",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/creature/creature_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_creature_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/ec656aed-3b2d-423e-ab34-ee505b04f9cb",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_creature",
+      "evidence": {
+        "sha256": "e1a5a63fd9dca538742f5ee4f0e19e2c9346fbaf6cfd514744c551003220e47a",
+        "triangles": 6000,
+        "engine_review_log": "docs/prepare-character_creature-icons.log",
+        "runtime_log": "docs/character_creature-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/character_creature-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/characters/character_creature.png",
+        "animation_verified": "presetbipedidle",
+        "skins": 1
+      }
+    },
+    {
+      "id": "character_curious",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/curious/curious_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_curious_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/8a49a001-9473-4c51-89e3-76e665ed900e",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_curious",
+      "evidence": {
+        "sha256": "a0602740ecb62631bdbb6d681f04308c3161867dc7ed78e850d0feb0af001189",
+        "triangles": 6000,
+        "engine_review_log": "docs/prepare-character_curious-icons.log",
+        "runtime_log": "docs/character_curious-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/character_curious-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/characters/character_curious.png",
+        "animation_verified": "presetbipedidle",
+        "skins": 1
+      }
+    },
+    {
+      "id": "character_diver",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/diver/diver_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_druid",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/druid/druid_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_dwarf",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/dwarf/dwarf_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_gangster",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/gangster/gangster_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_hiker",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/hiker/hiker_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_ogre",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/ogre/ogre_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_romantic",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/romantic/romantic_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_sailor",
+      "category": "survivor",
+      "source": "res://dlcs/dlc_1/characters/sailor/sailor_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_apprentice",
+      "category": "survivor",
+      "source": "res://items/characters/apprentice/apprentice_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_arms_dealer",
+      "category": "survivor",
+      "source": "res://items/characters/arms_dealer/arms_dealer_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_artificer",
+      "category": "survivor",
+      "source": "res://items/characters/artificer/artificer_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_baby",
+      "category": "survivor",
+      "source": "res://items/characters/baby/baby_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_beast_master",
+      "category": "survivor",
+      "source": "res://items/characters/beast_master/beast_master_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_brawler",
+      "category": "survivor",
+      "source": "res://items/characters/brawler/brawler_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_brawler_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/a798d765-8915-4a1e-b434-5c08cb6c1289",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_brawler",
+      "evidence": {
+        "sha256": "94edc2e6521282818e4494c01d56179da796842c244900cce94d394e79097ac8",
+        "triangles": 6000,
+        "engine_review_log": "docs/prepare-character_brawler-icons.log",
+        "runtime_log": "docs/character_brawler-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/character_brawler-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/characters/character_brawler.png",
+        "animation_verified": "presetbipedidle",
+        "skins": 1
+      }
+    },
+    {
+      "id": "character_bull",
+      "category": "survivor",
+      "source": "res://items/characters/bull/bull_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_firefighter_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/original-stylized-low-poly-zombie-survival-game-character-full-body-a-b0f4ea77-7aba-4cd2-b556-b579a82f2d94",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_firefighter",
+      "evidence": {
+        "sha256": "b0cdd447c362c442bf985f4fc67b6b36dd0784b0fc21d91c1057a247c2636fbd",
+        "triangles": 6000,
+        "engine_review_log": "docs/firefighter-icons.log",
+        "runtime_log": "docs/environment-battle-final.log",
+        "visually_reviewed_runtime_capture": "docs/firefighter-battle.png"
+      }
+    },
+    {
+      "id": "character_chunky",
+      "category": "survivor",
+      "source": "res://items/characters/chunky/chunky_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_chunky_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/82eab7eb-b128-4e20-abd4-6615efd55c4f",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_chunky",
+      "evidence": {
+        "sha256": "e06086d694a9127138f05352a8f0036c820cb68aea99e5d290df0e415af76dbc",
+        "triangles": 6000,
+        "engine_review_log": "docs/prepare-character_chunky-icons.log",
+        "runtime_log": "docs/character_chunky-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/character_chunky-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/characters/character_chunky.png",
+        "animation_verified": "presetbipedidle",
+        "skins": 1
+      }
+    },
+    {
+      "id": "character_crazy",
+      "category": "survivor",
+      "source": "res://items/characters/crazy/crazy_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_crazy_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/7729a1b2-9796-4405-8bbe-30398216d0e6",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_crazy",
+      "evidence": {
+        "sha256": "a51ac9b7252515ffc59e1628b763038ee1d7576780d06b87a9d335e4e24c949a",
+        "triangles": 6000,
+        "engine_review_log": "docs/prepare-character_crazy-icons.log",
+        "runtime_log": "docs/character_crazy-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/character_crazy-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/characters/character_crazy.png",
+        "animation_verified": "presetbipedidle",
+        "skins": 1
+      }
+    },
+    {
+      "id": "character_cryptid",
+      "category": "survivor",
+      "source": "res://items/characters/cryptid/cryptid_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_cyborg",
+      "category": "survivor",
+      "source": "res://items/characters/cyborg/cyborg_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_demon",
+      "category": "survivor",
+      "source": "res://items/characters/demon/demon_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_doctor",
+      "category": "survivor",
+      "source": "res://items/characters/doctor/doctor_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_field_medic_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/original-stylized-low-poly-game-survivor-full-body-adult-female-field-2fed5993-ca9b-4add-bc12-9e8a4c3c3e94",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_field_medic",
+      "evidence": {
+        "sha256": "2b91c052f59aee472c6f566aff51eadcb6e16e85795c541493f59cd21de8af48",
+        "triangles": 6000,
+        "skins": 1,
+        "animations": [
+          "preset:biped:idle"
+        ],
+        "topology_review": "docs/foundation-models-topology.jsonl",
+        "runtime_log": "docs/foundation-doctor.log",
+        "visually_reviewed_runtime_capture": "docs/foundation-doctor.png"
+      }
+    },
+    {
+      "id": "character_engineer",
+      "category": "survivor",
+      "source": "res://items/characters/engineer/engineer_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_engineer_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/451bb3a5-e278-41a7-92f5-7b01817b692a",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_engineer",
+      "evidence": {
+        "sha256": "38e4e0f1e33ab9d434b692b57ca754689ab909be13e80aec6ab7c620d76587d1",
+        "triangles": 6000,
+        "engine_review_log": "docs/engineer-icons.log",
+        "runtime_log": "docs/engineer-battle.log",
+        "visually_reviewed_portrait": "gdproj/combat3d/art/characters/character_engineer.png",
+        "visually_reviewed_runtime_capture": "docs/engineer-battle.png"
+      }
+    },
+    {
+      "id": "character_entrepreneur",
+      "category": "survivor",
+      "source": "res://items/characters/entrepreneur/entrepreneur_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_explorer",
+      "category": "survivor",
+      "source": "res://items/characters/explorer/explorer_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_farmer",
+      "category": "survivor",
+      "source": "res://items/characters/farmer/farmer_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_fisherman",
+      "category": "survivor",
+      "source": "res://items/characters/fisherman/fisherman_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_generalist",
+      "category": "survivor",
+      "source": "res://items/characters/generalist/generalist_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_ghost",
+      "category": "survivor",
+      "source": "res://items/characters/ghost/ghost_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_gladiator",
+      "category": "survivor",
+      "source": "res://items/characters/gladiator/gladiator_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_glutton",
+      "category": "survivor",
+      "source": "res://items/characters/glutton/glutton_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_golem",
+      "category": "survivor",
+      "source": "res://items/characters/golem/golem_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_hunter",
+      "category": "survivor",
+      "source": "res://items/characters/hunter/hunter_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_jack",
+      "category": "survivor",
+      "source": "res://items/characters/jack/jack_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_king",
+      "category": "survivor",
+      "source": "res://items/characters/king/king_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_knight",
+      "category": "survivor",
+      "source": "res://items/characters/knight/knight_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_lich",
+      "category": "survivor",
+      "source": "res://items/characters/lich/lich_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_loud",
+      "category": "survivor",
+      "source": "res://items/characters/loud/loud_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_lucky",
+      "category": "survivor",
+      "source": "res://items/characters/lucky/lucky_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_lucky_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/9b901ff0-c7ca-413f-9b83-5fad277b050f",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_lucky",
+      "evidence": {
+        "sha256": "a402f9e773ce930b9416a95458404e356847a8fe1e116541c1b2878d4238b2d7",
+        "triangles": 6000,
+        "engine_review_log": "docs/prepare-character_lucky-icons.log",
+        "runtime_log": "docs/character_lucky-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/character_lucky-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/characters/character_lucky.png",
+        "animation_verified": "presetbipedidle",
+        "skins": 1
+      }
+    },
+    {
+      "id": "character_mage",
+      "category": "survivor",
+      "source": "res://items/characters/mage/mage_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_mage_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/2ca95a94-99ef-48f6-a86c-c9aad0f83caf",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_mage",
+      "evidence": {
+        "sha256": "65a898b0e0bbfbeb5ceb994d1827a4c7ed0d3188fe02b6e5b6730d379dcb40ab",
+        "triangles": 6000,
+        "engine_review_log": "docs/prepare-character_mage-icons.log",
+        "runtime_log": "docs/character_mage-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/character_mage-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/characters/character_mage.png",
+        "animation_verified": "presetbipedidle",
+        "skins": 1
+      }
+    },
+    {
+      "id": "character_masochist",
+      "category": "survivor",
+      "source": "res://items/characters/masochist/masochist_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_multitasker",
+      "category": "survivor",
+      "source": "res://items/characters/multitasker/multitasker_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_mutant",
+      "category": "survivor",
+      "source": "res://items/characters/mutant/mutant_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_old",
+      "category": "survivor",
+      "source": "res://items/characters/old/old_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_old_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/43cd895e-9151-4c05-b78b-775ed4148c26",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_old",
+      "evidence": {
+        "sha256": "8a2958c83e97a8055a3aecff6e126aacb7f7058e085c028f812aa2c53641346f",
+        "triangles": 6000,
+        "engine_review_log": "docs/prepare-character_old-icons.log",
+        "runtime_log": "docs/character_old-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/character_old-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/characters/character_old.png",
+        "animation_verified": "presetbipedidle",
+        "skins": 1
+      }
+    },
+    {
+      "id": "character_one_arm",
+      "category": "survivor",
+      "source": "res://items/characters/one_arm/one_arm_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_pacifist",
+      "category": "survivor",
+      "source": "res://items/characters/pacifist/pacifist_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_ranger",
+      "category": "survivor",
+      "source": "res://items/characters/ranger/ranger_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_scout_6000_idle.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/original-stylized-low-poly-full-body-survivor-for-a-zombie-mall-defens-feba357e-557e-4eaf-a9cf-32a0535ac5ab",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "survivor_scout",
+      "evidence": {
+        "sha256": "a031cfb3e06c4b573a639d4a7e9ee784156d370444f384750ac9c7d3d96b1d07",
+        "triangles": 6000,
+        "engine_review_log": "docs/scout-icons.log",
+        "runtime_log": "docs/scout-battle.log",
+        "visually_reviewed_runtime_capture": "docs/scout-battle.png"
+      }
+    },
+    {
+      "id": "character_renegade",
+      "category": "survivor",
+      "source": "res://items/characters/renegade/renegade_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_saver",
+      "category": "survivor",
+      "source": "res://items/characters/saver/saver_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_sick",
+      "category": "survivor",
+      "source": "res://items/characters/sick/sick_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_soldier",
+      "category": "survivor",
+      "source": "res://items/characters/soldier/soldier_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_speedy",
+      "category": "survivor",
+      "source": "res://items/characters/speedy/speedy_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_streamer",
+      "category": "survivor",
+      "source": "res://items/characters/streamer/streamer_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_technomage",
+      "category": "survivor",
+      "source": "res://items/characters/technomage/technomage_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_vagabond",
+      "category": "survivor",
+      "source": "res://items/characters/vagabond/vagabond_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_vampire",
+      "category": "survivor",
+      "source": "res://items/characters/vampire/vampire_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_well_rounded",
+      "category": "survivor",
+      "source": "res://items/characters/well_rounded/well_rounded_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/survivor_security_6000_idle.glb",
+      "studio_url": null,
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "evidence": {
+        "sha256": "936fa726cacac6dbba8510a8440cda8d45547b386116182395183d18875d7de5",
+        "triangles": 6000,
+        "engine_review_log": "docs/security-authored-icons.log",
+        "runtime_log": "docs/smg-security-final-battle.log",
+        "visually_reviewed_runtime_capture": "docs/smg-security-final-battle-hud.png"
+      }
+    },
+    {
+      "id": "character_wildling",
+      "category": "survivor",
+      "source": "res://items/characters/wildling/wildling_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "character_wounded",
+      "category": "survivor",
+      "source": "res://items/characters/wounded/wounded_data.tres",
+      "role": "",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:colossus",
+      "category": "enemy",
+      "source": "enemy:colossus",
+      "role": "armored",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+      "studio_url": null,
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "evidence": {
+        "sha256": "5f8e2ddddf882ac37fee3edda228ca70a4beb9a98424eb2f284ff81326cdcf7b",
+        "triangles": 6000,
+        "skins": 1,
+        "animations": [
+          "preset:biped:walk"
+        ],
+        "topology_review": "docs/foundation-models-topology.jsonl",
+        "runtime_log": "docs/foundation-riot.log",
+        "visually_reviewed_runtime_capture": "docs/foundation-riot.png"
+      }
+    },
+    {
+      "id": "enemy:rhino",
+      "category": "enemy",
+      "source": "enemy:rhino",
+      "role": "armored",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:bruiser",
+      "category": "enemy",
+      "source": "enemy:bruiser",
+      "role": "armored",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:horned_bruiser",
+      "category": "enemy",
+      "source": "enemy:horned_bruiser",
+      "role": "armored",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/enemy_horned_bruiser_3000_walk.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/26b0ec2b-88e6-400b-8f96-a3c01e574faf",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "enemy_horned_bruiser",
+      "evidence": {
+        "sha256": "514a834b15d72c13acf268149ff908d5c7e64125d96aa9649723f1397a389fc0",
+        "triangles": 2924,
+        "engine_review_log": "docs/prepare-enemy-bruiser-enemy-horned_bruiser-enemy-horned_charger-icons.log",
+        "runtime_log": "docs/enemy_horned_bruiser-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/enemy_horned_bruiser-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/enemies/horned_bruiser.png",
+        "animation_verified": "presetbipedwalk",
+        "skins": 1
+      }
+    },
+    {
+      "id": "enemy:helmet_alien",
+      "category": "enemy",
+      "source": "enemy:helmet_alien",
+      "role": "armored",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/enemy_helmet_alien_3000_walk.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/5a512393-5f71-4ec0-b59f-a0be7e214fc0",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "enemy_helmet_alien",
+      "evidence": {
+        "sha256": "4ba33455c189852aaa1f81942ae6d991fb102992a5d64fe5ff80e57cf8541f71",
+        "triangles": 2785,
+        "engine_review_log": "docs/prepare-enemy-helmet_alien-icons.log",
+        "runtime_log": "docs/enemy_helmet_alien-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/enemy_helmet_alien-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/enemies/helmet_alien.png",
+        "animation_verified": "presetbipedwalk",
+        "skins": 1
+      }
+    },
+    {
+      "id": "enemy:mom",
+      "category": "enemy",
+      "source": "enemy:mom",
+      "role": "bloated",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/zombie_foodcourt_chef_6000_walk.glb",
+      "studio_url": null,
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "evidence": {
+        "sha256": "037f01331e8447462e56f91f704a9e615648df850377aa30566f855dcfc0af50",
+        "triangles": 6000,
+        "skins": 1,
+        "animations": [
+          "preset:biped:walk"
+        ],
+        "topology_review": "docs/foundation-models-topology.jsonl",
+        "runtime_log": "docs/foundation-chef.log",
+        "visually_reviewed_runtime_capture": "docs/foundation-chef.png"
+      }
+    },
+    {
+      "id": "enemy:bloated_spawner",
+      "category": "enemy",
+      "source": "enemy:bloated_spawner",
+      "role": "bloated",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:butcher",
+      "category": "enemy",
+      "source": "enemy:butcher",
+      "role": "bloated",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:spitter",
+      "category": "enemy",
+      "source": "enemy:spitter",
+      "role": "toxic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+      "studio_url": null,
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "evidence": {
+        "sha256": "57fd162f369edee91291d01a1afd6e8f81e151407ed6a533cc383a76b95aca9d",
+        "triangles": 3000,
+        "skins": 1,
+        "animations": [
+          "preset:biped:walk"
+        ],
+        "topology_review": "docs/foundation-models-topology.jsonl",
+        "runtime_log": "docs/foundation-janitor.log",
+        "visually_reviewed_runtime_capture": "docs/foundation-janitor.png"
+      }
+    },
+    {
+      "id": "enemy:horned_spitter",
+      "category": "enemy",
+      "source": "enemy:horned_spitter",
+      "role": "toxic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:anemone",
+      "category": "enemy",
+      "source": "enemy:anemone",
+      "role": "toxic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:anglerfish",
+      "category": "enemy",
+      "source": "enemy:anglerfish",
+      "role": "toxic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:bat",
+      "category": "enemy",
+      "source": "enemy:bat",
+      "role": "runner",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:bloated_pufferfish",
+      "category": "enemy",
+      "source": "enemy:bloated_pufferfish",
+      "role": "bloated",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:blobfish",
+      "category": "enemy",
+      "source": "enemy:blobfish",
+      "role": "bloated",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:brainy_squid",
+      "category": "enemy",
+      "source": "enemy:brainy_squid",
+      "role": "toxic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:clam",
+      "category": "enemy",
+      "source": "enemy:clam",
+      "role": "bloated",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:colossal_squid",
+      "category": "enemy",
+      "source": "enemy:colossal_squid",
+      "role": "toxic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:cool_walrus",
+      "category": "enemy",
+      "source": "enemy:cool_walrus",
+      "role": "armored",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:crab",
+      "category": "enemy",
+      "source": "enemy:crab",
+      "role": "armored",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:dead_whale",
+      "category": "enemy",
+      "source": "enemy:dead_whale",
+      "role": "armored",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:diplocaulus",
+      "category": "enemy",
+      "source": "enemy:diplocaulus",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:dragonfish",
+      "category": "enemy",
+      "source": "enemy:dragonfish",
+      "role": "toxic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:eel",
+      "category": "enemy",
+      "source": "enemy:eel",
+      "role": "toxic",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:evil_mob",
+      "category": "enemy",
+      "source": "enemy:evil_mob",
+      "role": "small",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:firemane_anemone",
+      "category": "enemy",
+      "source": "enemy:firemane_anemone",
+      "role": "toxic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:giant",
+      "category": "enemy",
+      "source": "enemy:giant",
+      "role": "armored",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:giant_isopod",
+      "category": "enemy",
+      "source": "enemy:giant_isopod",
+      "role": "armored",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:goblin_shark",
+      "category": "enemy",
+      "source": "enemy:goblin_shark",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:hermit",
+      "category": "enemy",
+      "source": "enemy:hermit",
+      "role": "armored",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:impaled_worm",
+      "category": "enemy",
+      "source": "enemy:impaled_worm",
+      "role": "tentacle",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:infected_blobfish",
+      "category": "enemy",
+      "source": "enemy:infected_blobfish",
+      "role": "bloated",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:iron_lung",
+      "category": "enemy",
+      "source": "enemy:iron_lung",
+      "role": "armored",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:jellyfish",
+      "category": "enemy",
+      "source": "enemy:jellyfish",
+      "role": "toxic",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:lobster",
+      "category": "enemy",
+      "source": "enemy:lobster",
+      "role": "armored",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:looting_pig",
+      "category": "enemy",
+      "source": "enemy:looting_pig",
+      "role": "bloated",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:mad_dragonfish",
+      "category": "enemy",
+      "source": "enemy:mad_dragonfish",
+      "role": "toxic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:megalodon",
+      "category": "enemy",
+      "source": "enemy:megalodon",
+      "role": "armored",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:narwhal",
+      "category": "enemy",
+      "source": "enemy:narwhal",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:plankton",
+      "category": "enemy",
+      "source": "enemy:plankton",
+      "role": "small",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:prisoner",
+      "category": "enemy",
+      "source": "enemy:prisoner",
+      "role": "armored",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:pufferfish",
+      "category": "enemy",
+      "source": "enemy:pufferfish",
+      "role": "bloated",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:scaled_goblin_shark",
+      "category": "enemy",
+      "source": "enemy:scaled_goblin_shark",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:scaled_stargazer",
+      "category": "enemy",
+      "source": "enemy:scaled_stargazer",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:sea_pig",
+      "category": "enemy",
+      "source": "enemy:sea_pig",
+      "role": "bloated",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:shielded_diplocaulus",
+      "category": "enemy",
+      "source": "enemy:shielded_diplocaulus",
+      "role": "armored",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:shrimp",
+      "category": "enemy",
+      "source": "enemy:shrimp",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:spider_crab",
+      "category": "enemy",
+      "source": "enemy:spider_crab",
+      "role": "armored",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:spiky_lung",
+      "category": "enemy",
+      "source": "enemy:spiky_lung",
+      "role": "bloated",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:stargazer",
+      "category": "enemy",
+      "source": "enemy:stargazer",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:stonefish",
+      "category": "enemy",
+      "source": "enemy:stonefish",
+      "role": "armored",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:turtle",
+      "category": "enemy",
+      "source": "enemy:turtle",
+      "role": "armored",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:vampire_squid",
+      "category": "enemy",
+      "source": "enemy:vampire_squid",
+      "role": "toxic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:viperfish",
+      "category": "enemy",
+      "source": "enemy:viperfish",
+      "role": "toxic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:walrus",
+      "category": "enemy",
+      "source": "enemy:walrus",
+      "role": "armored",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:baby_alien",
+      "category": "enemy",
+      "source": "enemy:baby_alien",
+      "role": "small",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+      "studio_url": null,
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "evidence": {
+        "sha256": "cca05c77aee3a1eca2b1d697b065052b5df59cbafa87182124c888f6832de2d6",
+        "triangles": 3000,
+        "skins": 1,
+        "animations": [
+          "preset:biped:walk"
+        ],
+        "topology_review": "docs/foundation-models-topology.jsonl",
+        "runtime_log": "docs/foundation-shopper.log",
+        "visually_reviewed_runtime_capture": "docs/foundation-shopper.png"
+      }
+    },
+    {
+      "id": "enemy:buffer",
+      "category": "enemy",
+      "source": "enemy:buffer",
+      "role": "medic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:charger",
+      "category": "enemy",
+      "source": "enemy:charger",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/zombie_charger_3000_walk.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/11e7ae05-78ca-4dc4-810c-17c232c9d159",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "zombie_charger",
+      "evidence": {
+        "sha256": "0caec52fb707ff23cc257f8d3f7ed2cc96d364cf711a4704a53616a8d5999923",
+        "triangles": 3000,
+        "engine_review_log": "docs/charger-icons.log",
+        "runtime_log": "docs/charger-battle.log",
+        "visually_reviewed_portrait": "gdproj/combat3d/art/enemies/charger.png",
+        "visually_reviewed_runtime_capture": "docs/charger-battle.png"
+      }
+    },
+    {
+      "id": "enemy:chaser",
+      "category": "enemy",
+      "source": "enemy:chaser",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/zombie_chaser_3000_walk.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/345e8665-3321-476b-a0df-36b6bf8b2182",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "zombie_chaser",
+      "evidence": {
+        "sha256": "2279f7c852a4546d938c0ec800c03df0ed8bd5c0e1f537ce39e1aa31fc0b372e",
+        "triangles": 3000,
+        "engine_review_log": "docs/chaser-icons.log",
+        "runtime_log": "docs/chaser-battle.log",
+        "visually_reviewed_portrait": "gdproj/combat3d/art/enemies/chaser.png",
+        "visually_reviewed_runtime_capture": "docs/chaser-battle.png"
+      }
+    },
+    {
+      "id": "enemy:corrupted_buffer",
+      "category": "enemy",
+      "source": "enemy:corrupted_buffer",
+      "role": "medic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:croc",
+      "category": "enemy",
+      "source": "enemy:croc",
+      "role": "runner",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:dire_junkie",
+      "category": "enemy",
+      "source": "enemy:dire_junkie",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:fin_alien",
+      "category": "enemy",
+      "source": "enemy:fin_alien",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/enemy_fin_alien_3000_walk.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/adf886c8-8f11-480b-994a-ef98fd284b22",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "enemy_fin_alien",
+      "evidence": {
+        "sha256": "4ee4756d153c63cd7b04106dc455de3ee929be9c2e8bd1d2770089bb7d915891",
+        "triangles": 2934,
+        "engine_review_log": "docs/prepare-enemy-fin_alien-icons.log",
+        "runtime_log": "docs/enemy_fin_alien-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/enemy_fin_alien-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/enemies/fin_alien.png",
+        "animation_verified": "presetbipedwalk",
+        "skins": 1
+      }
+    },
+    {
+      "id": "enemy:fly",
+      "category": "enemy",
+      "source": "enemy:fly",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:gargoyle",
+      "category": "enemy",
+      "source": "enemy:gargoyle",
+      "role": "runner",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:healer",
+      "category": "enemy",
+      "source": "enemy:healer",
+      "role": "medic",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/zombie_pharmacist_3000_walk.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/original-stylized-low-poly-full-body-zombie-support-enemy-for-an-aband-bc17b6c3-11df-4369-9525-a9cba91779e2",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "zombie_pharmacist",
+      "evidence": {
+        "sha256": "722fdeeb10e040fbfd1cf32ac8b4f16433187b08bbec8709dd52432ceea185a8",
+        "triangles": 3000,
+        "engine_review_log": "docs/pharmacist-icons.log",
+        "runtime_log": "docs/pharmacist-battle.log",
+        "visually_reviewed_runtime_capture": "docs/pharmacist-battle.png"
+      }
+    },
+    {
+      "id": "enemy:horned_charger",
+      "category": "enemy",
+      "source": "enemy:horned_charger",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/enemy_horned_charger_3000_walk.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/b3cb666c-3b6e-4ad4-afcc-459ab246041f",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "enemy_horned_charger",
+      "evidence": {
+        "sha256": "64117d4b97eeeff204e2332f57ec0823ecf804a9baf188e67233b0b5a18b4d88",
+        "triangles": 2872,
+        "engine_review_log": "docs/prepare-enemy-bruiser-enemy-horned_bruiser-enemy-horned_charger-icons.log",
+        "runtime_log": "docs/enemy_horned_charger-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/enemy_horned_charger-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/enemies/horned_charger.png",
+        "animation_verified": "presetbipedwalk",
+        "skins": 1
+      }
+    },
+    {
+      "id": "enemy:horned_fly",
+      "category": "enemy",
+      "source": "enemy:horned_fly",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:infected_slasher_egg",
+      "category": "enemy",
+      "source": "enemy:infected_slasher_egg",
+      "role": "spore_nest",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:invoker",
+      "category": "enemy",
+      "source": "enemy:invoker",
+      "role": "toxic",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:junkie",
+      "category": "enemy",
+      "source": "enemy:junkie",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:lamprey",
+      "category": "enemy",
+      "source": "enemy:lamprey",
+      "role": "tentacle",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:looter",
+      "category": "enemy",
+      "source": "enemy:looter",
+      "role": "slasher",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:mad_slasher",
+      "category": "enemy",
+      "source": "enemy:mad_slasher",
+      "role": "slasher",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:mantis",
+      "category": "enemy",
+      "source": "enemy:mantis",
+      "role": "runner",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:monk",
+      "category": "enemy",
+      "source": "enemy:monk",
+      "role": "medic",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:predator",
+      "category": "enemy",
+      "source": "enemy:predator",
+      "role": "runner",
+      "target_triangles": 6000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:pursuer",
+      "category": "enemy",
+      "source": "enemy:pursuer",
+      "role": "runner",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:slasher",
+      "category": "enemy",
+      "source": "enemy:slasher",
+      "role": "slasher",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/zombie_slasher_3000_walk.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/c9bce4b8-bb5b-49b8-a799-c725f9962fe8",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "zombie_slasher",
+      "evidence": {
+        "sha256": "428d0d8087fec835b6bbcd76e685848d7eaf6230e8e01dd9a7aabe9db6205fee",
+        "triangles": 3000,
+        "engine_review_log": "docs/slasher-icons.log",
+        "runtime_log": "docs/slasher-battle.log",
+        "visually_reviewed_runtime_capture": "docs/slasher-battle.png"
+      }
+    },
+    {
+      "id": "enemy:slasher_egg",
+      "category": "enemy",
+      "source": "enemy:slasher_egg",
+      "role": "spore_nest",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "enemy:spawner",
+      "category": "enemy",
+      "source": "enemy:spawner",
+      "role": "bloated",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "humanoid",
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 80,
+      "local_glb": "res://combat3d/models/enemy_spawner_3000_walk.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/54d52ca9-f37f-4388-85c7-82c802fd29b7",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "enemy_spawner_v2",
+      "evidence": {
+        "sha256": "b55d1b689a5986cb4e6896053fc0772fb93dfe98e00f7edd999042c20889eb5d",
+        "triangles": 2828,
+        "engine_review_log": "docs/prepare-enemy-spawner-icons.log",
+        "runtime_log": "docs/enemy_spawner-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/enemy_spawner-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/enemies/spawner.png",
+        "animation_verified": "presetbipedwalk",
+        "skins": 1
+      }
+    },
+    {
+      "id": "enemy:tentacle",
+      "category": "enemy",
+      "source": "enemy:tentacle",
+      "role": "tentacle",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_anchor",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/melee/anchor/2/anchor_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_brick",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/melee/brick/1/brick_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_captains_sword",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/melee/captains_sword/3/captains_sword_3_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_chainsaw",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/melee/chainsaw/3/chainsaw_3_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_hiking_stick",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/melee/hiking_stick/1/hiking_stick_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_lute",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/melee/lute/1/lute_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_mace",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/melee/mace/2/mace_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_sickle",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/melee/sickle/1/sickle_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_spoon",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/melee/spoon/1/spoon_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_trident",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/melee/trident/2/trident_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_war_hammer",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/melee/war_hammer/3/war_hammer_3_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_blunderbuss",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/ranged/blunderbuss/2/blunderbuss_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_flute",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/ranged/flute/1/flute_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_grenade_launcher",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/ranged/grenade_launcher/2/grenade_launcher_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_harpoon_gun",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/ranged/harpoon_gun/2/harpoon_gun_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_javelin",
+      "category": "weapon",
+      "source": "res://dlcs/dlc_1/weapons/ranged/javelin/1/javelin_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_cacti_club",
+      "category": "weapon",
+      "source": "res://weapons/melee/cactus_mace/1/cactus_mace_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_chopper",
+      "category": "weapon",
+      "source": "res://weapons/melee/chopper/1/chopper_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_circular_saw",
+      "category": "weapon",
+      "source": "res://weapons/melee/circular_saw/2/circular_saw_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_claw",
+      "category": "weapon",
+      "source": "res://weapons/melee/claw/1/claw_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_dagger",
+      "category": "weapon",
+      "source": "res://weapons/melee/dagger/1/dagger_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_dextroyer",
+      "category": "weapon",
+      "source": "res://weapons/melee/dextroyer/4/dextroyer_4_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_drill",
+      "category": "weapon",
+      "source": "res://weapons/melee/drill/4/drill_4_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_excalibur",
+      "category": "weapon",
+      "source": "res://weapons/melee/excalibur/4/excalibur_4_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_fighting_stick",
+      "category": "weapon",
+      "source": "res://weapons/melee/fighting_stick/1/fighting_stick_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_fist",
+      "category": "weapon",
+      "source": "res://weapons/melee/fist/1/fist_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_flaming_brass_knuckles",
+      "category": "weapon",
+      "source": "res://weapons/melee/flaming_knuckles/2/flaming_knuckles_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_ghost_axe",
+      "category": "weapon",
+      "source": "res://weapons/melee/ghost_axe/1/ghost_axe_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_ghost_flint",
+      "category": "weapon",
+      "source": "res://weapons/melee/ghost_flint/1/ghost_flint_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_hammer",
+      "category": "weapon",
+      "source": "res://weapons/melee/hammer/2/hammer_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_hammer_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/5642569c-cb4a-47c7-8ff8-cb661b96cb31",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_hammer",
+      "evidence": {
+        "sha256": "a7a9bed7800f150144260611e5fe8708df8c986eea4b8d78d44d472e66f7331a",
+        "runtime_log": "docs/weapon_hammer-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_hammer-placement-battle.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_hammer_1.png",
+        "placement_and_tier_verified": true,
+        "triangles": 1500,
+        "engine_review_log": "docs/melee-facing-icons.log"
+      }
+    },
+    {
+      "id": "weapon_hand",
+      "category": "weapon",
+      "source": "res://weapons/melee/hand/1/hand_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_hatchet",
+      "category": "weapon",
+      "source": "res://weapons/melee/hatchet/1/hatchet_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_hatchet_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/70ca6c37-3dbd-4d22-9ca4-a5e24d83b511",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_hatchet",
+      "evidence": {
+        "sha256": "bc6f097d3df73280c6b40135a365ff13223fac3570e8c3a4e46b34e99dcd6400",
+        "runtime_log": "docs/weapon_hatchet-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_hatchet-placement-battle.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_hatchet_1.png",
+        "placement_and_tier_verified": true,
+        "triangles": 1500,
+        "engine_review_log": "docs/melee-facing-icons.log"
+      }
+    },
+    {
+      "id": "weapon_jousting_lance",
+      "category": "weapon",
+      "source": "res://weapons/melee/jousting_lance/1/jousting_lance_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_knife",
+      "category": "weapon",
+      "source": "res://weapons/melee/knife/1/knife_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_knife_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/2e89858c-5c5a-4d59-a482-3bee16d6ec0f",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_knife",
+      "evidence": {
+        "sha256": "69081fbdbd02df2f73927e4756dcc6338041b95d6ec14c81c78c989a33d223ab",
+        "runtime_log": "docs/weapon_knife-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_knife-placement-battle.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_knife_1.png",
+        "placement_and_tier_verified": true,
+        "triangles": 1500,
+        "engine_review_log": "docs/melee-facing-icons.log"
+      }
+    },
+    {
+      "id": "weapon_lightning_shiv",
+      "category": "weapon",
+      "source": "res://weapons/melee/lightning_shiv/1/lightning_shiv_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_plank",
+      "category": "weapon",
+      "source": "res://weapons/melee/plank/1/plank_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_plasma_sledgehammer",
+      "category": "weapon",
+      "source": "res://weapons/melee/plasma_sledgehammer/3/plasma_sledgehammer_3_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_plasma_sledgehammer_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/f64ecc17-77d6-4409-b56e-80a471779b11",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_plasma_sledgehammer",
+      "evidence": {
+        "sha256": "23f077f08f4c750faa01f9431cf38bec1bb2a01aa1c929a005032e432f8c5a74",
+        "triangles": 1499,
+        "engine_review_log": "docs/prepare-weapon_sniper_gun-weapon_plasma_sledgehammer-icons.log",
+        "runtime_log": "docs/weapon_plasma_sledgehammer-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_plasma_sledgehammer-placement-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_plasma_sledgehammer_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_power_fist",
+      "category": "weapon",
+      "source": "res://weapons/melee/power_fist/3/power_fist_3_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_pruner",
+      "category": "weapon",
+      "source": "res://weapons/melee/pruner/1/pruner_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_rock",
+      "category": "weapon",
+      "source": "res://weapons/melee/rock/1/rock_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_rock_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/5d6de09e-9635-4cfc-b548-f4c18fa5def4",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_rock",
+      "evidence": {
+        "sha256": "9f3d72b30f71a082fd84d7d4c72b38d78739db4e0de440a05cc0b2dfaf92c052",
+        "triangles": 1500,
+        "engine_review_log": "docs/prepare-weapon_stick-weapon_rock-icons.log",
+        "runtime_log": "docs/weapon_rock-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_rock-placement-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_rock_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_scissors",
+      "category": "weapon",
+      "source": "res://weapons/melee/scissors/1/scissors_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_scissors_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/65a9bba0-5443-4ed5-9571-6396ddc0307d",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_scissors",
+      "evidence": {
+        "sha256": "80dac401b399e3f8818e5643e41732dbf7672bc13d7d2e1631a6fc2ecca1952e",
+        "triangles": 1500,
+        "engine_review_log": "docs/prepare-weapon_scissors-icons.log",
+        "runtime_log": "docs/weapon_scissors-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_scissors-placement-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_scissors_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_screwdriver",
+      "category": "weapon",
+      "source": "res://weapons/melee/screwdriver/1/screwdriver_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_screwdriver_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/72e154cd-ee43-4219-8102-7813ea120819",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_screwdriver",
+      "evidence": {
+        "sha256": "3672e087433bf1103ff83d0b250dc0b42103e249da36f8250e73fe75eb61d2db",
+        "triangles": 1500,
+        "engine_review_log": "docs/prepare-weapon_screwdriver-weapon_taser-icons.log",
+        "runtime_log": "docs/weapon_screwdriver-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_screwdriver-placement-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_screwdriver_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_scythe",
+      "category": "weapon",
+      "source": "res://weapons/melee/scythe/4/scythe_4_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_sharp_tooth",
+      "category": "weapon",
+      "source": "res://weapons/melee/sharp_tooth/1/sharp_tooth_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_spear",
+      "category": "weapon",
+      "source": "res://weapons/melee/spear/1/spear_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_spear_1500_aligned.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/d5e662d5-3fe3-47da-adf0-98a68d674a1b",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_spear",
+      "evidence": {
+        "sha256": "6cc5ee6fe76c71d9218db446acffb3a92ed587bbb73bdaaa774245891ef2fccc",
+        "triangles": 1500,
+        "engine_review_log": "docs/spear-final-icons.log",
+        "runtime_log": "docs/weapon_spear-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_spear-placement-battle.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_spear_1.png",
+        "placement_and_tier_verified": true,
+        "alignment_validation": "docs/spear-alignment-check.json"
+      }
+    },
+    {
+      "id": "weapon_spiky_shield",
+      "category": "weapon",
+      "source": "res://weapons/melee/spiky_shield/1/spiky_shield_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_stick",
+      "category": "weapon",
+      "source": "res://weapons/melee/stick/1/stick_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_stick_1500_aligned.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/125bb22b-09f3-437d-ba5d-81bb5c2f8021",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_stick",
+      "evidence": {
+        "sha256": "9facba2a5d1652d9381dbb3a934597f5c383f6ce8ce40ec1ce65923d6513ae86",
+        "triangles": 1500,
+        "engine_review_log": "docs/prepare-weapon_stick-weapon_rock-icons.log",
+        "runtime_log": "docs/weapon_stick-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_stick-placement-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_stick_1.png",
+        "placement_and_tier_verified": true,
+        "derivation": "docs/agent-stick-alignment.json"
+      },
+      "source_export_glb": "res://combat3d/models/weapon_stick_1500.glb"
+    },
+    {
+      "id": "weapon_sword",
+      "category": "weapon",
+      "source": "res://weapons/melee/sword/2/sword_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_sword_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/4cb1ab83-4cd5-4407-8e8d-97eb49c79354",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_sword",
+      "evidence": {
+        "sha256": "6a54065b1f46f13479008cb79cc124546138c51a1e2459e6a6d9d134a43a1d70",
+        "triangles": 1499,
+        "engine_review_log": "docs/prepare-weapon_sword-icons.log",
+        "runtime_log": "docs/weapon_sword-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_sword-placement-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_sword_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_thunder_sword",
+      "category": "weapon",
+      "source": "res://weapons/melee/thunder_sword/3/thunder_sword_3_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_torch",
+      "category": "weapon",
+      "source": "res://weapons/melee/torch/1/torch_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_bloody_vorpal",
+      "category": "weapon",
+      "source": "res://weapons/melee/vorpal_sword/2/vorpal_sword_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_wrench",
+      "category": "weapon",
+      "source": "res://weapons/melee/wrench/1/wrench_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_wrench_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/4920125d-89a7-4617-a6eb-eef2cc057259",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_wrench",
+      "evidence": {
+        "sha256": "cc1f275f9bf6ddccc2edc0a04bc26507edf3931faabf1a788ba4e86f2a3dbfe7",
+        "runtime_log": "docs/weapon_wrench-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_wrench-placement-battle.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_wrench_1.png",
+        "placement_and_tier_verified": true,
+        "triangles": 1500,
+        "engine_review_log": "docs/wrench-final-icons.log"
+      }
+    },
+    {
+      "id": "weapon_chain_gun",
+      "category": "weapon",
+      "source": "res://weapons/ranged/chain_gun/4/chain_gun_4_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_crossbow",
+      "category": "weapon",
+      "source": "res://weapons/ranged/crossbow/1/crossbow_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_crossbow_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/f0b980a8-082f-4971-b16f-bb8fc91500ec",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_crossbow",
+      "evidence": {
+        "sha256": "ebe37411e4fd6077693be75e675a3aa22e1fe5355123e582ddfbbb1e424d074c",
+        "triangles": 1498,
+        "engine_review_log": "docs/rocket-crossbow-icons.log",
+        "runtime_log": "docs/weapon_crossbow-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_crossbow-placement-battle.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_crossbow_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_double_barrel_shotgun",
+      "category": "weapon",
+      "source": "res://weapons/ranged/double_barrel_shotgun/1/double_barrel_shotgun_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_double_barrel_shotgun_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/19bd7f11-30e7-4fb1-8d05-adfd77f8d970",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_double_barrel_shotgun",
+      "evidence": {
+        "sha256": "0cdee95fbdf63d67decd4e5dc875466a1773d028c0ce1fcbf7979c9fd97dbd69",
+        "runtime_log": "docs/weapon_double_barrel_shotgun-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_double_barrel_shotgun-placement-battle.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_double_barrel_shotgun_1.png",
+        "placement_and_tier_verified": true,
+        "triangles": 1499,
+        "engine_review_log": "docs/double-barrel-icons.log"
+      }
+    },
+    {
+      "id": "weapon_fireball",
+      "category": "weapon",
+      "source": "res://weapons/ranged/fireball/2/fireball_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_flamethrower",
+      "category": "weapon",
+      "source": "res://weapons/ranged/flamethrower/2/flamethrower_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_flamethrower_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/e1202cab-3ffe-4c1e-986c-bbc6cc6867b5",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_flamethrower",
+      "evidence": {
+        "sha256": "19d9c3f59589edb5cf55555f34c68675a075daa8cae7a36d41c06d9b8a8557f6",
+        "triangles": 1499,
+        "engine_review_log": "docs/prepare-weapon_flamethrower-icons.log",
+        "runtime_log": "docs/weapon_flamethrower-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_flamethrower-placement-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_flamethrower_1.png",
+        "placement_and_tier_verified": true,
+        "burning_effect_verified": true
+      }
+    },
+    {
+      "id": "weapon_gatling_laser",
+      "category": "weapon",
+      "source": "res://weapons/ranged/gatling_laser/4/gatling_laser_4_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_ghost_scepter",
+      "category": "weapon",
+      "source": "res://weapons/ranged/ghost_scepter/1/ghost_scepter_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_icicle",
+      "category": "weapon",
+      "source": "res://weapons/ranged/icicle/1/icicle_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_laser_gun",
+      "category": "weapon",
+      "source": "res://weapons/ranged/laser_gun/1/laser_gun_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_laser_gun_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/ba763ee5-9982-4731-87e9-e54a9c11f379",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_laser_gun",
+      "evidence": {
+        "sha256": "ab6cdea2adf979b4a0039de47429197dc310ca7b60fe4f8eb10fc1fbcf3a7748",
+        "triangles": 1500,
+        "engine_review_log": "docs/laser-final-icons.log",
+        "runtime_log": "docs/weapon_laser_gun-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_laser_gun-placement-battle.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_laser_gun_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_medical_gun",
+      "category": "weapon",
+      "source": "res://weapons/ranged/medical_gun/1/medical_gun_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_medical_gun_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/d609c050-7b6e-4e78-a9a0-07b8b409b690",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_medical_gun",
+      "evidence": {
+        "sha256": "da06d4c6920042d1683d9b58db4c3d43918f6f17081567651cb38369dccbe40e",
+        "triangles": 1490,
+        "engine_review_log": "docs/prepare-weapon_medical_gun-weapon_shredder-icons.log",
+        "runtime_log": "docs/weapon_medical_gun-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_medical_gun-placement-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_medical_gun_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_minigun",
+      "category": "weapon",
+      "source": "res://weapons/ranged/minigun/3/minigun_3_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_nuclear_launcher",
+      "category": "weapon",
+      "source": "res://weapons/ranged/nuclear_launcher/3/nuclear_launcher_3_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_obliterator",
+      "category": "weapon",
+      "source": "res://weapons/ranged/obliterator/3/obliterator_3_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_particle_accelerator",
+      "category": "weapon",
+      "source": "res://weapons/ranged/particle_accelerator/3/particle_accelerator_3_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_pistol",
+      "category": "weapon",
+      "source": "res://weapons/ranged/pistol/1/pistol_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_pistol_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/73f0b0d5-2a4e-498e-9e0e-a5e8f81b4d59",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_pistol",
+      "evidence": {
+        "sha256": "97a958084c28817af134a3b7d9f2cb9eea6f40384bd71fa8fb06faf2e72d0499",
+        "runtime_log": "docs/weapon_pistol-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_pistol-placement-battle.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_pistol_1.png",
+        "placement_and_tier_verified": true,
+        "triangles": 1500,
+        "engine_review_log": "docs/pistol-final-icons.log"
+      }
+    },
+    {
+      "id": "weapon_potato_thrower",
+      "category": "weapon",
+      "source": "res://weapons/ranged/potato_thrower/2/potato_thrower_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_rail_gun",
+      "category": "weapon",
+      "source": "res://weapons/ranged/rail_gun/1/rail_gun_1_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_revolver",
+      "category": "weapon",
+      "source": "res://weapons/ranged/revolver/1/revolver_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_revolver_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/b9fbe28d-c40e-4bd9-8532-0c664dff1c02",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_revolver",
+      "evidence": {
+        "sha256": "1e48a3effb0a7ce475a6b97dcc030cc98ad313468ccfd866d5b8fb1a19824a37",
+        "triangles": 1501,
+        "engine_review_log": "docs/revolver-final-icons.log",
+        "runtime_log": "docs/weapon_revolver-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_revolver-placement-battle.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_revolver_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_rocket_launcher",
+      "category": "weapon",
+      "source": "res://weapons/ranged/rocket_launcher/2/rocket_launcher_2_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_rocket_launcher_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/d533c532-ca5e-4a88-94cc-e4dbc7b8de06",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_rocket_launcher",
+      "evidence": {
+        "sha256": "3d00e642861b0bdf0896210f64a4119a02c47bc88dc7b4cac9060c0e87cce934",
+        "triangles": 1500,
+        "engine_review_log": "docs/rocket-final-icons.log",
+        "runtime_log": "docs/weapon_rocket_launcher-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_rocket_launcher-placement-battle.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_rocket_launcher_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_shredder",
+      "category": "weapon",
+      "source": "res://weapons/ranged/shredder/1/shredder_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_shredder_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/20622669-e9a0-4431-8880-c6fbeb7ebd21",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_shredder",
+      "evidence": {
+        "sha256": "aec1cd5f95fb29dc252c1ddab4343b0f7752d11188317b0b42a7454c1517bd3b",
+        "triangles": 1500,
+        "engine_review_log": "docs/prepare-weapon_medical_gun-weapon_shredder-icons.log",
+        "runtime_log": "docs/weapon_shredder-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_shredder-placement-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_shredder_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_shuriken",
+      "category": "weapon",
+      "source": "res://weapons/ranged/shuriken/1/shuriken_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "weapon_slingshot",
+      "category": "weapon",
+      "source": "res://weapons/ranged/slingshot/1/slingshot_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_slingshot_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/2c7b04a2-5395-4eef-9fde-c796e0004d7d",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_slingshot",
+      "evidence": {
+        "sha256": "bc3d4a8ad5cb713a51cc996b8cf32920f34bdd70014192e37585437ac5460063",
+        "triangles": 1500,
+        "engine_review_log": "docs/prepare-weapon_slingshot-icons.log",
+        "runtime_log": "docs/weapon_slingshot-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_slingshot-placement-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_slingshot_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_smg",
+      "category": "weapon",
+      "source": "res://weapons/ranged/smg/1/smg_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_smg_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/11a17834-8b04-4a8a-9643-dcc2995104f8",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_smg",
+      "evidence": {
+        "sha256": "497b6c1ae6cb21b1927a85c269769d86fd757eb1045fa20f9855bf3f3db7e697",
+        "runtime_log": "docs/weapon_smg-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_smg-placement-battle.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_smg_1.png",
+        "placement_and_tier_verified": true,
+        "triangles": 1496,
+        "engine_review_log": "docs/smg-final-icons.log"
+      }
+    },
+    {
+      "id": "weapon_sniper_gun",
+      "category": "weapon",
+      "source": "res://weapons/ranged/sniper_gun/3/sniper_gun_3_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_sniper_gun_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/452fb16f-11bf-42c6-a52c-c18e15122e41",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_sniper_gun",
+      "evidence": {
+        "sha256": "d8681e864f4e42a1c078630c65afe138cfab4a9cd94139aebb1fb834df586331",
+        "triangles": 1499,
+        "engine_review_log": "docs/prepare-weapon_sniper_gun-weapon_plasma_sledgehammer-icons.log",
+        "runtime_log": "docs/weapon_sniper_gun-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_sniper_gun-placement-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_sniper_gun_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_taser",
+      "category": "weapon",
+      "source": "res://weapons/ranged/taser/1/taser_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/weapon_taser_1500.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/2288a41b-1e65-4b10-93df-aefd9d3ee59d",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "weapon_taser",
+      "evidence": {
+        "sha256": "0079d213bf9003bbdb4283be759ccaa9927342dab4c93a65023dfd466a31d8fd",
+        "triangles": 1500,
+        "engine_review_log": "docs/prepare-weapon_screwdriver-weapon_taser-icons.log",
+        "runtime_log": "docs/weapon_taser-placement-battle.log",
+        "visually_reviewed_runtime_capture": "docs/weapon_taser-placement-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/weapons/weapon_taser_1.png",
+        "placement_and_tier_verified": true
+      }
+    },
+    {
+      "id": "weapon_wand",
+      "category": "weapon",
+      "source": "res://weapons/ranged/wand/1/wand_data.tres",
+      "role": "",
+      "target_triangles": 1500,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:blazemander",
+      "category": "pet",
+      "source": "res://entities/units/pet/blazemander/blazemander.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "animal",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:bonk_dog",
+      "category": "pet",
+      "source": "res://entities/units/pet/bonk_dog/bonk_dog.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "animal",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:bot_o_mine",
+      "category": "pet",
+      "source": "res://entities/units/pet/bot_o_mine/bot_o_mine.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "animal",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:catling_gun",
+      "category": "pet",
+      "source": "res://entities/units/pet/catling_gun/catling_gun.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "animal",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:doc_moth",
+      "category": "pet",
+      "source": "res://entities/units/pet/doc_moth/doc_moth.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "animal",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:jellyshield",
+      "category": "pet",
+      "source": "res://entities/units/pet/jellyshield/jellyshield.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "animal",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:lootworm",
+      "category": "pet",
+      "source": "res://entities/units/pet/lootworm/lootworm.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "animal",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:ratzilla",
+      "category": "pet",
+      "source": "res://entities/units/pet/ratzilla/ratzilla.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "animal",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:scapegoat",
+      "category": "pet",
+      "source": "res://entities/units/pet/scapegoat/scapegoat.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": "animal",
+      "status": "pending_generation",
+      "estimated_credits": 80,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:landmine",
+      "category": "structure",
+      "source": "res://entities/structures/landmine/landmine.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/utility_landmine_3000_low.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/2273a870-2739-4489-9cc4-7c9fb071ddf5",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "utility_landmine",
+      "evidence": {
+        "sha256": "ecdbbc800d5941a540d528e37a92d58a65018af4bbde8dec2a7467cfa27cfdbe",
+        "triangles": 3000,
+        "engine_review_log": "docs/prepare-prop-landmine-icons.log",
+        "runtime_log": "docs/landmine-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/landmine-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/props/landmine.png",
+        "derivation": "docs/agent-landmine-height-adjustment.json"
+      },
+      "source_export_glb": "res://combat3d/models/utility_landmine_3000.glb"
+    },
+    {
+      "id": "prop:turret",
+      "category": "structure",
+      "source": "res://entities/structures/turret/turret.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/utility_turret_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/dd98a259-5d2b-46b4-a80b-edce3662c17a",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "utility_turret",
+      "evidence": {
+        "sha256": "13ae7f6cd85149b6b5081c80f262c930207eb66fc9303d19ea8c06269f9fff1e",
+        "triangles": 3000,
+        "engine_review_log": "docs/prepare-prop-turret-icons.log",
+        "runtime_log": "docs/turret-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/turret-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/props/turret.png",
+        "actual_shooting_and_projected_aim_verified": true
+      }
+    },
+    {
+      "id": "prop:builder_turret",
+      "category": "structure",
+      "source": "res://entities/structures/turret/builder/builder_turret.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:flame_turret",
+      "category": "structure",
+      "source": "res://entities/structures/turret/flame/flame_turret.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:garden",
+      "category": "structure",
+      "source": "res://entities/structures/turret/garden/garden.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/utility_garden_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/cc3f6a02-77ec-4165-a901-971cad9eb8f4",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "utility_garden",
+      "evidence": {
+        "sha256": "e6b68451c335c103318afdecb8735de9a181b85313fbdb2efa73dd627293cd3d",
+        "triangles": 3000,
+        "engine_review_log": "docs/prepare-prop-garden-icons.log",
+        "runtime_log": "docs/garden-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/garden-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/props/garden.png"
+      }
+    },
+    {
+      "id": "prop:healing_turret",
+      "category": "structure",
+      "source": "res://entities/structures/turret/healing/healing_turret.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:laser_turret",
+      "category": "structure",
+      "source": "res://entities/structures/turret/laser/laser_turret.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:rocket_turret",
+      "category": "structure",
+      "source": "res://entities/structures/turret/rocket/rocket_turret.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:tyler",
+      "category": "structure",
+      "source": "res://entities/structures/turret/tyler/tyler.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:wandering_bot",
+      "category": "structure",
+      "source": "res://entities/structures/turret/wandering_bot/wandering_bot.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:tree",
+      "category": "tree",
+      "source": "res://entities/units/neutral/tree.tscn",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/utility_tree_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/d13a19a1-e421-4d00-8ef6-862c4f894269",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "utility_tree",
+      "evidence": {
+        "sha256": "713e1ff8c309fecd940826e3ae23222ec3d9b6306480103951fdee7d2c3116ad",
+        "triangles": 3000,
+        "engine_review_log": "docs/prepare-prop-tree-icons.log",
+        "runtime_log": "docs/tree-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/tree-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/props/tree.png"
+      }
+    },
+    {
+      "id": "prop:fruit",
+      "category": "consumable",
+      "source": "consumable_fruit",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:poisoned_fruit",
+      "category": "consumable",
+      "source": "consumable_poisoned_fruit",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/utility_poisoned_fruit_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/392a0acd-f5df-45a5-b8df-508e584779be",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "utility_poisoned_fruit",
+      "evidence": {
+        "sha256": "34103e5e2c676b95caa3274f4cc587b2cf946d42c28e738032731950b677dd84",
+        "triangles": 3000,
+        "engine_review_log": "docs/prepare-prop-poisoned_fruit-icons.log",
+        "runtime_log": "docs/poisoned_fruit-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/poisoned_fruit-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/props/poisoned_fruit.png",
+        "actual_pickup_and_pooling_verified": true
+      }
+    },
+    {
+      "id": "prop:cursed_chest",
+      "category": "consumable",
+      "source": "consumable_cursed_chest",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/utility_cursed_chest_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/29b9613a-697c-44e9-87b9-ed643ea73c82",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "utility_cursed_chest",
+      "evidence": {
+        "sha256": "606648c18b3243dc0d8bdbfd5d005746f2574a04d8bceed7ad341f88a57dadd6",
+        "triangles": 3000,
+        "engine_review_log": "docs/prepare-prop-cursed_chest-icons.log",
+        "runtime_log": "docs/cursed_chest-model-battle.log",
+        "visually_reviewed_runtime_capture": "docs/cursed_chest-model-battle-hud.png",
+        "visually_reviewed_icon": "gdproj/combat3d/art/props/cursed_chest.png",
+        "actual_pickup_and_pooling_verified": true,
+        "wave_end_queue_verified": true
+      }
+    },
+    {
+      "id": "prop:item_box",
+      "category": "consumable",
+      "source": "consumable_item_box",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:legendary_item_box",
+      "category": "consumable",
+      "source": "consumable_legendary_item_box",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "prop:material",
+      "category": "material",
+      "source": "material",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "pending_generation",
+      "estimated_credits": 60,
+      "local_glb": null,
+      "studio_url": null,
+      "acceptance": {
+        "local_file": false,
+        "topology": false,
+        "engine_import": false,
+        "visual_review": false,
+        "runtime_identity": false
+      }
+    },
+    {
+      "id": "environment:shopfront",
+      "category": "environment",
+      "source": "mall arena",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/mall_shopfront_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/00952d05-1057-4a7d-ad84-8ab15686139f",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "mall_shopfront",
+      "evidence": {
+        "sha256": "47270df3a3bd71d2940003993f04e5a8d2801d0b1e0809cd48fdcfe30f6f90d2",
+        "triangles": 2997,
+        "engine_review_log": "docs/environment-review.log",
+        "runtime_log": "docs/environment-battle-final.log",
+        "visually_reviewed_runtime_capture": "docs/environment-battle-final.png"
+      }
+    },
+    {
+      "id": "environment:vending_machine",
+      "category": "environment",
+      "source": "mall arena",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/mall_vending_machine_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/92f4b70f-10bd-47ea-b17d-3db290ac83d0",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "mall_vending_machine",
+      "evidence": {
+        "sha256": "94996e312e0ff7540613345a22b932e9f7c40b92d22e82e306a59dd041f5ed43",
+        "triangles": 3000,
+        "engine_review_log": "docs/environment-review.log",
+        "runtime_log": "docs/environment-battle-final.log",
+        "visually_reviewed_runtime_capture": "docs/environment-battle-final.png"
+      }
+    },
+    {
+      "id": "environment:bench",
+      "category": "environment",
+      "source": "mall arena",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/mall_bench_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/e9e05c44-3fd9-4d3f-8631-f7edc0760b68",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "mall_bench",
+      "evidence": {
+        "sha256": "6c2d14b9971816e2dcd43075bfcb4bd5abf7984488e09dc9057163325a711811",
+        "triangles": 3000,
+        "engine_review_log": "docs/mall-utilities-review.log",
+        "runtime_log": "docs/mall-utilities-battle-final.log",
+        "visually_reviewed_runtime_capture": "docs/mall-utilities-battle-final.png"
+      }
+    },
+    {
+      "id": "environment:shopping_cart",
+      "category": "environment",
+      "source": "mall arena",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/mall_shopping_cart_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/8b3ef696-63f7-4d1c-9e37-237701ae80d6",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "mall_shopping_cart",
+      "evidence": {
+        "sha256": "af948be626a650107c169635b76bdab78fb5047ca1f94333fc45336476f7b799",
+        "triangles": 3000,
+        "engine_review_log": "docs/mall-utilities-review.log",
+        "runtime_log": "docs/mall-utilities-battle-final.log",
+        "visually_reviewed_runtime_capture": "docs/mall-utilities-battle-final.png"
+      }
+    },
+    {
+      "id": "environment:kiosk",
+      "category": "environment",
+      "source": "mall arena",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/mall_kiosk_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/daa098b7-f5b8-4b12-a8e0-ab25cab29617",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "mall_kiosk",
+      "evidence": {
+        "sha256": "8e45ceba0684840aaa50eb166f565690f9dedf489ba6c6ec624e62ec0a3631bc",
+        "triangles": 3000,
+        "engine_review_log": "docs/kiosk-review.log",
+        "runtime_log": "docs/kiosk-battle-final.log",
+        "visually_reviewed_runtime_capture": "docs/kiosk-battle-final.png"
+      }
+    },
+    {
+      "id": "environment:barricade",
+      "category": "environment",
+      "source": "mall arena",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/mall_barricade_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/70ab2ae4-d05b-4327-ba51-43b83f803af2",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "mall_barricade",
+      "evidence": {
+        "sha256": "6607049d542abd66254faffbc3d49a5b5452f7d22eaf55706252372565a23d05",
+        "triangles": 3000,
+        "engine_review_log": "docs/environment-review.log",
+        "runtime_log": "docs/environment-battle-final.log",
+        "visually_reviewed_runtime_capture": "docs/environment-battle-final.png"
+      }
+    },
+    {
+      "id": "environment:pillar",
+      "category": "environment",
+      "source": "mall arena",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/mall_pillar_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/e8e939fd-7f38-4fa4-987a-530132dc86a3",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "mall_pillar",
+      "evidence": {
+        "sha256": "6f04e585fb41cf47dadb8a9b4f4f5240070de12a2cfeaf1cd7a09ba773bc960a",
+        "triangles": 3000,
+        "engine_review_log": "docs/pillar-review.log",
+        "runtime_log": "docs/pillar-battle.log",
+        "visually_reviewed_runtime_capture": "docs/pillar-battle.png"
+      }
+    },
+    {
+      "id": "environment:escalator",
+      "category": "environment",
+      "source": "mall arena",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/mall_escalator_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/36af4c5b-d7e2-4152-b6a2-81dc1d62a89a",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "mall_escalator",
+      "evidence": {
+        "sha256": "bb5178292a6e3ebd6c0be8ad1f7dc001c412a4f2b1e43500457a429307b6772b",
+        "triangles": 3000,
+        "engine_review_log": "docs/final-environment-review.log",
+        "runtime_log": "docs/environment-roster-retry.log",
+        "visually_reviewed_runtime_capture": "docs/environment-roster-retry.png"
+      }
+    },
+    {
+      "id": "environment:security_gate",
+      "category": "environment",
+      "source": "mall arena",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/mall_security_gate_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/8f95f997-e56a-44b8-a754-cd730406f15c",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "mall_security_gate",
+      "evidence": {
+        "sha256": "9674ed99d4751211f20b28fba6e998b2ae949b847522ecb481acf798e3e7942b",
+        "triangles": 3000,
+        "engine_review_log": "docs/gate-review.log",
+        "runtime_log": "docs/gate-battle.log",
+        "visually_reviewed_runtime_capture": "docs/gate-battle.png"
+      }
+    },
+    {
+      "id": "environment:supply_shelf",
+      "category": "environment",
+      "source": "mall arena",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/mall_supply_shelf_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/667a1f3d-9138-4644-93cc-cee33a978f81",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "mall_supply_shelf",
+      "evidence": {
+        "sha256": "0e850e2b4cc7dccca017c91d667e0ab535d1402467491945987378d72fe6fe61",
+        "triangles": 3000,
+        "engine_review_log": "docs/shelf-review.log",
+        "runtime_log": "docs/shelf-battle.log",
+        "visually_reviewed_runtime_capture": "docs/shelf-battle.png"
+      }
+    },
+    {
+      "id": "environment:generator",
+      "category": "environment",
+      "source": "mall arena",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/mall_generator_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/fc8f79e8-6831-408a-8ebd-a891406ca5c4",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "mall_generator",
+      "evidence": {
+        "sha256": "405797463d059b4bea6083cc686e0e419f9c0b5772c725eda23c20278d8c373a",
+        "triangles": 3001,
+        "engine_review_log": "docs/mall-utilities-review.log",
+        "runtime_log": "docs/mall-utilities-battle-final.log",
+        "visually_reviewed_runtime_capture": "docs/mall-utilities-battle-final.png",
+        "topology_note": "Accepted one triangle over the 3000 target after visual review."
+      }
+    },
+    {
+      "id": "environment:lamp",
+      "category": "environment",
+      "source": "mall arena",
+      "role": "",
+      "target_triangles": 3000,
+      "texture_size": 1024,
+      "rig": null,
+      "status": "downloaded_imported_engine_reviewed",
+      "estimated_credits": 60,
+      "local_glb": "res://combat3d/models/mall_lamp_3000.glb",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/92dc0cb7-6cd4-4046-a36d-5031344a3aff",
+      "acceptance": {
+        "local_file": true,
+        "topology": true,
+        "engine_import": true,
+        "visual_review": true,
+        "runtime_identity": true
+      },
+      "production_asset": "mall_lamp",
+      "evidence": {
+        "sha256": "3c08cd3fe72523867ff1a31bd3cc41f077a0b19f626f367a0975b90f9d968227",
+        "triangles": 3000,
+        "engine_review_log": "docs/final-environment-review.log",
+        "runtime_log": "docs/environment-roster-retry.log",
+        "visually_reviewed_runtime_capture": "docs/environment-roster-retry.png"
+      }
+    }
+  ]
+}

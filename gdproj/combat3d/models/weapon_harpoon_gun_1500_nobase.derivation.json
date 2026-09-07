@@ -1,0 +1,15 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_harpoon_gun_1500_tertiary_repaired.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_harpoon_gun_1500_nobase.glb",
+  "source_sha256": "b51c64d9ed5112d0638a6b4773d5c8666e9d9a3041aa1c6d21c8e7b17b7c0c82",
+  "derived_sha256": "623268bcb26c64214798bdaa9ffed4cc53888ac5e035566f3e7f594d47f780cb",
+  "kept_components": [
+    0
+  ],
+  "kept_triangles": 1296,
+  "removed_triangles": 30,
+  "original_binary_prefix_unchanged": true,
+  "materials_images_textures_unchanged": true,
+  "operation": "Explicit component selection; compacted only referenced vertex attributes and triangle indices without modifying their values. Original binary retained; no height cutoff.",
+  "rig_and_animation_definitions_unchanged": true
+}

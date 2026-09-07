@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
-[ext_resource path="res://dlcs/dlc_1/items/sunken_bell/sunken_bell_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/items/item_sunken_bell.tres" type="Texture" id=2]
 [ext_resource path="res://dlcs/dlc_1/items/sunken_bell/appearances/sunken_bell_app_0.tres" type="Resource" id=3]
 [ext_resource path="res://dlcs/dlc_1/items/sunken_bell/effects/sunken_bell_effect_0.tres" type="Resource" id=4]
 

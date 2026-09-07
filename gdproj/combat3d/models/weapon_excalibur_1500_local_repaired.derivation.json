@@ -1,0 +1,36 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_excalibur_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_excalibur_1500_local_repaired.glb",
+  "source_sha256": "00b3c3e5ade1b95da82e94c11612860a591f5e39b01dc928248d123492412bf6",
+  "derived_sha256": "f815a1e4193c39e502ca19a6cbfb52739c4d446988ba650feed5cbaf4fb23e5a",
+  "cut_profile_xy": [
+    [
+      -2,
+      0.08
+    ],
+    [
+      2,
+      0.08
+    ]
+  ],
+  "removed_lower_component": {
+    "component": 0,
+    "triangles": 874,
+    "min": [
+      -0.4133780697815202,
+      -0.08,
+      -0.3479004204273224
+    ],
+    "max": [
+      0.4176636338233948,
+      1.734723475976807e-18,
+      0.3485412895679474
+    ]
+  },
+  "preserved_lower_components": [],
+  "boundary_loops": 3,
+  "cap_triangles": 38,
+  "body_triangles": 598,
+  "triangles": 636,
+  "operation": "Audited cut followed by removal of only the lower connected display component; lower disconnected weapon parts retained. Cut loops sealed by ear triangulation. Original UVs interpolated only at cuts, embedded textures retained, recentered without rotation. Pending final Godot review."
+}

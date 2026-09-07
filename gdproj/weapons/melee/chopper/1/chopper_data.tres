@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=8 format=2]
 
-[ext_resource path="res://weapons/melee/chopper/chopper_icon.png" type="Texture" id=1]
+[ext_resource path="res://combat3d/art/weapons/weapon_chopper_0.png" type="Texture" id=1]
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=2]
 [ext_resource path="res://weapons/melee/chopper/1/chopper_stats.tres" type="Resource" id=3]
 [ext_resource path="res://weapons/melee/chopper/2/chopper_2_data.tres" type="Resource" id=4]

@@ -37,7 +37,7 @@ func _set_mouse_focus_enabled(v: bool) -> void :
 
 var element_font = preload("res://resources/fonts/actual/base/font_40_outline_thick.tres")
 var element_font_small = preload("res://resources/fonts/actual/base/font_26_outline.tres")
-var locked_icon = load("res://items/global/locked_icon.png")
+var locked_icon = load("res://combat3d/art/ui/items_global_locked_icon.svg")
 var category: int
 var _reversed_order: = false
 var _focused_element: InventoryElement = null

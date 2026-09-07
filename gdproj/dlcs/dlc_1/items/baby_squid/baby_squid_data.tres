@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
-[ext_resource path="res://dlcs/dlc_1/items/baby_squid/baby_squid_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/items/item_baby_squid.tres" type="Texture" id=2]
 [ext_resource path="res://dlcs/dlc_1/items/baby_squid/effects/baby_squid_effect_0.tres" type="Resource" id=3]
 [ext_resource path="res://dlcs/dlc_1/items/baby_squid/appearances/baby_squid_app_0.tres" type="Resource" id=4]
 [ext_resource path="res://dlcs/dlc_1/items/baby_squid/effects/baby_squid_effect_0b.tres" type="Resource" id=6]

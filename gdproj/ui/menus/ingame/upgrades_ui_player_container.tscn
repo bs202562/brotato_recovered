@@ -8,11 +8,11 @@
 [ext_resource path="res://ui/menus/shop/item_description.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=7]
 [ext_resource path="res://resources/fonts/actual/base/font_60_outline.tres" type="DynamicFont" id=8]
-[ext_resource path="res://ui/menus/global/key_xbox_b.png" type="Texture" id=9]
-[ext_resource path="res://items/global/baned_item.png" type="Texture" id=10]
+[ext_resource path="res://combat3d/art/ui/ui_input_key_xbox_b.svg" type="Texture" id=9]
+[ext_resource path="res://combat3d/art/ui/ui_state_baned_item.svg" type="Texture" id=10]
 [ext_resource path="res://ui/menus/global/CustomButton.gd" type="Script" id=11]
 [ext_resource path="res://ui/hud/ui_input_icon.gd" type="Script" id=12]
-[ext_resource path="res://ui/menus/global/key_xbox_y.png" type="Texture" id=13]
+[ext_resource path="res://combat3d/art/ui/ui_input_key_xbox_y.svg" type="Texture" id=13]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 1 )

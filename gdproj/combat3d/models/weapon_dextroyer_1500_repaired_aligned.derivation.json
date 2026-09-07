@@ -1,0 +1,16 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_dextroyer_1500_repaired.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_dextroyer_1500_repaired_aligned.glb",
+  "source_sha256": "74f406c89ecee37055cc1e2dcb3ab91e21aadb8f3c17174e81d8043bcc1818ef",
+  "derived_sha256": "412c5d582ae1c72435d64615d22df228f0d7e8cdb35fd21a44b04d2759b4ddc0",
+  "bytes": 867484,
+  "triangles": 950,
+  "operation": "Existing PCA static alignment; grip left and blade right, broad blade plane now XZ. Final icon roll remains to be selected.",
+  "embedded_image_sha256": [
+    "352fc8e8c2df93745c527d949a206e55ebedf25bc3c8b1ccdd6e0112a40470d9",
+    "a269096c01a513fcf506c0667e60771a041e6b4b60e8e95149011ddfe298117f",
+    "cdec868969cb665214acf343921e7935568cc749c4e5c270dbaf70831845d81b"
+  ],
+  "original_textures_unchanged": true,
+  "offline_preview": "docs/agent-dextroyer-aligned.png"
+}

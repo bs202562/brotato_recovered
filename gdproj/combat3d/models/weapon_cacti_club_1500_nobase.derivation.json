@@ -1,0 +1,14 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_cacti_club_1500.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_cacti_club_1500_nobase.glb",
+  "source_sha256": "115558d93fbe9042b7c3fed2818558d7cedaf551cf97ba870661915b2f36aff8",
+  "derived_sha256": "cdecaeda76ca4c52537a7d68ce9232629deb6768be65fa0f8bd65600c236f538",
+  "kept_components": [
+    1
+  ],
+  "kept_triangles": 537,
+  "removed_triangles": 848,
+  "original_binary_prefix_unchanged": true,
+  "materials_images_textures_unchanged": true,
+  "operation": "Explicit component selection; compacted only referenced vertex attributes and triangle indices without modifying their values. Original binary retained; no height cutoff."
+}

@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=1]
-[ext_resource path="res://ui/menus/global/key_positional_down.png" type="Texture" id=2]
-[ext_resource path="res://ui/menus/global/key_space.png" type="Texture" id=3]
+[ext_resource path="res://combat3d/art/ui/ui_input_key_positional_down.svg" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/ui/ui_input_key_space.svg" type="Texture" id=3]
 [ext_resource path="res://ui/menus/shop/coop_join_instructions.gd" type="Script" id=4]
-[ext_resource path="res://ui/menus/global/key_switch_positional_right.png" type="Texture" id=5]
+[ext_resource path="res://combat3d/art/ui/ui_input_key_switch_positional_right.svg" type="Texture" id=5]
 
 [node name="CoopJoinInstructions" type="HBoxContainer"]
 unique_name_in_owner = true

@@ -1,0 +1,15 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_minigun_1500_v2.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_minigun_1500_multibarrel.glb",
+  "source_sha256": "b363179bd03348e7f272c95cdd3e24aff1481e154398327d9723b295b92bd2ea",
+  "derived_sha256": "cb0e67658055066727b68cd29d7a1e31f9726105d82b1bae2d6f235143a07e28",
+  "triangles": 1483,
+  "barrels": 6,
+  "receiver_cut_local_x": 0.1,
+  "receiver_triangles": 1003,
+  "new_barrel_triangles": 480,
+  "operation": "Clip only forward geometry with interpolated original UVs/normals; preserve receiver material and embedded images; replace front with six equal tubes and recessed bores. Offline candidate, not Godot accepted.",
+  "receiver_cut_max_radius": 0.08312957754027574,
+  "sealing_sleeve_inscribed_radius": 0.08403554688714894,
+  "offline_review": "Root viewed three orthographic views; all receiver cut vertices are enclosed by the closed rear sleeve; Godot loading remains pending."
+}

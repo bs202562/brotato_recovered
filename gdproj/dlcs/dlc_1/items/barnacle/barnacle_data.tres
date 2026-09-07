@@ -3,7 +3,7 @@
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
 [ext_resource path="res://dlcs/dlc_1/items/barnacle/appearances/barnacle_app_0.tres" type="Resource" id=2]
 [ext_resource path="res://dlcs/dlc_1/items/barnacle/effects/barnacle_effect_0.tres" type="Resource" id=3]
-[ext_resource path="res://dlcs/dlc_1/items/barnacle/barnacle_icon.png" type="Texture" id=4]
+[ext_resource path="res://combat3d/art/items/item_barnacle.tres" type="Texture" id=4]
 [ext_resource path="res://dlcs/dlc_1/items/barnacle/effects/barnacle_effect_1.tres" type="Resource" id=5]
 
 [resource]

@@ -1,17 +1,16 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://entities/units/pet/blazemander/blazemander_stats.tres" type="Resource" id=1]
 [ext_resource path="res://items/all/blazemander/blazemander.tres" type="Resource" id=2]
-[ext_resource path="res://entities/units/pet/blazemander/blazemander_icon.png" type="Texture" id=3]
 [ext_resource path="res://entities/units/pet/ItemPet.gd" type="Script" id=4]
-[ext_resource path="res://entities/units/pet/blazemander/blazemander_screen.png" type="Texture" id=5]
+[ext_resource path="res://combat3d/art/props/blazemander.png" type="Texture" id=5]
 
 [resource]
 script = ExtResource( 4 )
 my_id = "blazemander"
 unlocked_by_default = false
 can_be_looted = true
-icon = ExtResource( 3 )
+icon = ExtResource( 5 )
 name = "BLAZEMANDER_NAME"
 tier = 0
 value = 1

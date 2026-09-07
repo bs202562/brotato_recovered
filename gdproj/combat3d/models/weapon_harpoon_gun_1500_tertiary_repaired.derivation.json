@@ -1,0 +1,50 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_harpoon_gun_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_harpoon_gun_1500_tertiary_repaired.glb",
+  "source_sha256": "5134978c38ea0a7d074efdca3b4a34c2311ab0a0836c0ff2da72fd76cfbf2224",
+  "derived_sha256": "b51c64d9ed5112d0638a6b4773d5c8666e9d9a3041aa1c6d21c8e7b17b7c0c82",
+  "cut_profile_xy": [
+    [
+      -2,
+      0.095
+    ],
+    [
+      -0.26,
+      0.095
+    ],
+    [
+      -0.08,
+      0.365
+    ],
+    [
+      0.1,
+      0.4
+    ],
+    [
+      2,
+      0.4
+    ]
+  ],
+  "component_coordinate_scope": "world x,z and flattened y=world_y-profile(world_x)",
+  "pommel_reconstruction": null,
+  "removed_lower_component": {
+    "component": 0,
+    "triangles": 630,
+    "min": [
+      -0.48950202763080597,
+      -0.39982780211143204,
+      -0.19630440324544907
+    ],
+    "max": [
+      0.1672363579273224,
+      3.469446951953614e-18,
+      0.19577030092477798
+    ]
+  },
+  "preserved_lower_components": [],
+  "boundary_loops": 3,
+  "cap_triangles": 49,
+  "body_triangles": 1277,
+  "triangles": 1326,
+  "operation": "Audited cut followed by removal of only the lower connected display component; lower disconnected weapon parts retained. Cut loops sealed by ear triangulation. Original UVs interpolated only at cuts, embedded textures retained, recentered without rotation. Pending final Godot review."
+}

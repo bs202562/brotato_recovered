@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=9 format=2]
 
 [ext_resource path="res://weapons/melee/hammer/4/hammer_4_data.tres" type="Resource" id=1]
-[ext_resource path="res://weapons/melee/hammer/hammer_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/weapons/weapon_hammer_2.png" type="Texture" id=2]
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=3]
 [ext_resource path="res://weapons/melee/hammer/hammer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://weapons/melee/hammer/3/hammer_3_stats.tres" type="Resource" id=5]

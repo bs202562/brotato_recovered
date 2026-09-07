@@ -2,7 +2,7 @@
 
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
 [ext_resource path="res://items/all/blood_donation/blood_donation_appearance.tres" type="Resource" id=2]
-[ext_resource path="res://items/all/blood_donation/blood_donation_icon.png" type="Texture" id=3]
+[ext_resource path="res://combat3d/art/items/item_blood_donation.tres" type="Texture" id=3]
 [ext_resource path="res://items/all/blood_donation/blood_donation_effect_1.tres" type="Resource" id=4]
 [ext_resource path="res://items/all/blood_donation/blood_donation_effect_2.tres" type="Resource" id=5]
 

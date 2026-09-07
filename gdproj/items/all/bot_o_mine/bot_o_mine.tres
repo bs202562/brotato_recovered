@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://items/all/bot_o_mine/bot_o_mine_remote_icon.png" type="Texture" id=1]
+[ext_resource path="res://combat3d/art/items/item_bot_o_mine.tres" type="Texture" id=1]
 [ext_resource path="res://items/all/bot_o_mine/bot_o_mine_effect_0.tres" type="Resource" id=2]
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=3]
 

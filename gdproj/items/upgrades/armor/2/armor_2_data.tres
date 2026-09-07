@@ -2,12 +2,13 @@
 
 [ext_resource path="res://items/upgrades/upgrade_data.gd" type="Script" id=1]
 [ext_resource path="res://items/upgrades/armor/2/armor_2_effect.tres" type="Resource" id=2]
-[ext_resource path="res://items/upgrades/armor/flat_dmg_reduction.png" type="Texture" id=3]
+[ext_resource path="res://combat3d/art/ui/items_upgrades_armor_flat_dmg_reduction.svg" type="Texture" id=3]
 
 [resource]
 script = ExtResource( 1 )
 my_id = "upgrade_armor_2"
 unlocked_by_default = true
+can_be_looted = true
 icon = ExtResource( 3 )
 name = "UPGRADE_ARMOR"
 tier = 1
@@ -15,6 +16,7 @@ value = 1
 effects = [ ExtResource( 2 ) ]
 tracking_text = ""
 is_lockable = true
+unlock_codex_descr_after_get_it = 1
 is_cursed = false
 curse_factor = 0.0
 max_nb = -1

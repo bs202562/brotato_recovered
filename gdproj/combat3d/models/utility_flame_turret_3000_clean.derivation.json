@@ -1,0 +1,16 @@
+{
+  "source": "gdproj\\combat3d\\models\\utility_flame_turret_3000.glb",
+  "derived": "gdproj\\combat3d\\models\\utility_flame_turret_3000_clean.glb",
+  "source_sha256": "3ba401cfdcdfad9486276ebabe0bc1e7b59d70b709e480d1079e3866ecab7c39",
+  "derived_sha256": "fbe678080ad181fc9740bc7488c6f180f935632d578fc7dae7929fefb4f48555",
+  "kept_components": [
+    0,
+    1
+  ],
+  "kept_triangles": 2834,
+  "removed_triangles": 8,
+  "original_binary_prefix_unchanged": true,
+  "materials_images_textures_unchanged": true,
+  "operation": "Explicit component selection; compacted only referenced vertex attributes and triangle indices without modifying their values. Original binary retained; no height cutoff.",
+  "rig_and_animation_definitions_unchanged": true
+}

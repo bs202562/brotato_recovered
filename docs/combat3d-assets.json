@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-05",
+  "theme": "Dead Shift / stylized zombie mall tower defense",
+  "authorized_credit_limit": 25000,
+  "observed_start_balance": 25110,
+  "observed_latest_balance": 11715,
+  "credits_spent": 13395,
+  "assets": [
+    {
+      "id": "survivor_security",
+      "studio_id": "58ffb73a-9d06-47c1-b7ef-40be8ab9f9d2",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/original-stylized-low-poly-game-character-for-a-zombie-survival-tower-58ffb73a-9d06-47c1-b7ef-40be8ab9f9d2",
+      "generation_credits": 55,
+      "retopology_credits": 5,
+      "rigging_credits": 20,
+      "triangles": 6000,
+      "texture_size": 1024,
+      "animation": "idle (in place)",
+      "file": "gdproj/combat3d/models/survivor_security_6000_idle.glb",
+      "prompt": "Original stylized low-poly game character for a zombie survival tower defense game. Full body male mall security survivor, chunky cartoon proportions 2.5 heads tall, navy blue uniform, orange reflective vest, short dark hair, sturdy black boots, utility belt, fingerless gloves. Friendly determined face, strong readable silhouette viewed from above. Neutral A pose, empty hands separated from body, two arms two legs, feet on ground. Matte hand-painted materials, teal and warm orange palette, clean simple geometry, no weapon, no pedestal, no background, no text. Game-ready character designed for skeletal animation."
+    },
+    {
+      "id": "zombie_shopper",
+      "studio_id": "2ab2847a-db3b-4eae-b5a8-71d0d1226ec9",
+      "studio_url": "https://studio.tripo3d.ai/zh/workspace/generate/original-stylized-low-poly-zombie-enemy-for-a-mall-survival-tower-defe-2ab2847a-db3b-4eae-b5a8-71d0d1226ec9",
+      "generation_credits": 55,
+      "retopology_credits": 5,
+      "rigging_credits": 20,
+      "triangles": 3000,
+      "texture_size": 1024,
+      "animation": "preset:biped:walk (in place)",
+      "file": "gdproj/combat3d/models/zombie_shopper_3000_walk.glb",
+      "prompt": "Original stylized low-poly zombie enemy for a mall survival tower defense game, full body. Chunky cartoon proportions 2.5 heads tall, pale green gray skin, oversized square head, tired yellow eyes, torn burgundy shopper shirt, dark brown trousers, worn shoes, small tears without gore. Menacing but playful, broad readable silhouette from overhead camera. Neutral A pose, empty hands separated from torso, two arms and two legs, feet flat. Matte hand-painted materials, simple clean game-ready geometry suitable for skeletal animation. No weapon, no pedestal, no scene, no lettering."
+    }
+  ],
+  "batch_ledgers": [
+    "tripo-batch-2026-09-06.json",
+    "tripo-production-2026-09-06.json"
+  ]
+}

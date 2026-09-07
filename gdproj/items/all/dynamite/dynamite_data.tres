@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
-[ext_resource path="res://items/all/dynamite/dynamite_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/items/item_dynamite.tres" type="Texture" id=2]
 [ext_resource path="res://items/all/dynamite/dynamite_effect_1.tres" type="Resource" id=3]
 [ext_resource path="res://items/all/dynamite/dynamite_appearance.tres" type="Resource" id=4]
 

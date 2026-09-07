@@ -149,9 +149,17 @@ var _gold_pool_id: int = Keys.empty_hash  # 金币对象池 id
 # 主要流程：初始化对象池 id → 音乐/HUD → 按"地图大小"效果缩放地图
 # → 启动波次计时器与刷怪管理器 → 连接升级 UI / RunData / 暂停菜单的
 # 大量信号 → 处理特殊波次(迷雾波/弹幕波)与开波触发的道具效果。
+func _attach_combat_3d() -> void:
+	var renderer = load("res://combat3d/battle_3d.gd").new()
+	renderer.name = "Combat3D"
+	add_child(renderer)
+
+
 func _ready() -> void :
+	call_deferred("_attach_combat_3d")
 	if DebugService.display_fps:
 		_fps_label.show()
+
 
 	if consumable_scene != null:
 		_consumable_pool_id = Keys.generate_hash(consumable_scene.resource_path)

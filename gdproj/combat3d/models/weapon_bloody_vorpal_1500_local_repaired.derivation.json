@@ -1,0 +1,40 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_bloody_vorpal_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_bloody_vorpal_1500_local_repaired.glb",
+  "source_sha256": "549208d05496dfddb83788c219e5cdb25580750f59eb03fead735c2e0f159408",
+  "derived_sha256": "81cb4ea6f78e3484f1987a6419252336325b1aab09ef6bc3e789a4bd843ae0d7",
+  "cut_profile_xy": [
+    [
+      -2,
+      -1.06
+    ],
+    [
+      -0.2,
+      0.38
+    ],
+    [
+      2,
+      -1.38
+    ]
+  ],
+  "removed_lower_component": {
+    "component": 0,
+    "triangles": 855,
+    "min": [
+      -0.3890076279640198,
+      -0.3799999999999999,
+      -0.2732849419116974
+    ],
+    "max": [
+      0.1713562160730362,
+      3.469446951953614e-18,
+      0.2763977348804474
+    ]
+  },
+  "preserved_lower_components": [],
+  "boundary_loops": 2,
+  "cap_triangles": 63,
+  "body_triangles": 950,
+  "triangles": 1013,
+  "operation": "Audited cut followed by removal of only the lower connected display component; lower disconnected weapon parts retained. Cut loops sealed by ear triangulation. Original UVs interpolated only at cuts, embedded textures retained, recentered without rotation. Pending final Godot review."
+}

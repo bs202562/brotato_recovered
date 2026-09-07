@@ -2,7 +2,7 @@
 
 [ext_resource path="res://entities/units/enemies/ItemEnemy.gd" type="Script" id=1]
 [ext_resource path="res://dlcs/dlc_1/enemies/firemane_anemone/firemane_anemone_stats.tres" type="Resource" id=2]
-[ext_resource path="res://dlcs/dlc_1/enemies/firemane_anemone/firemane_anemone_icon.png" type="Texture" id=3]
+[ext_resource path="res://combat3d/art/enemies/firemane_anemone.png" type="Texture" id=3]
 [ext_resource path="res://dlcs/dlc_1/enemies/firemane_anemone/firemane_anemone_screen.png" type="Texture" id=4]
 
 [resource]

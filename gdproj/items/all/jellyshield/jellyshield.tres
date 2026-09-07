@@ -2,7 +2,7 @@
 
 [ext_resource path="res://items/all/jellyshield/jellyshield_effect_0.tres" type="Resource" id=1]
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=2]
-[ext_resource path="res://items/all/jellyshield/jellyshield_egg_icon.png" type="Texture" id=3]
+[ext_resource path="res://combat3d/art/items/item_jellyshield.tres" type="Texture" id=3]
 [ext_resource path="res://items/all/jellyshield/jellyshield_effect_1.tres" type="Resource" id=4]
 
 [resource]

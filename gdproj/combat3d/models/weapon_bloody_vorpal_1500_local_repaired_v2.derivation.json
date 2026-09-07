@@ -1,0 +1,51 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_bloody_vorpal_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_bloody_vorpal_1500_local_repaired_v2.glb",
+  "source_sha256": "549208d05496dfddb83788c219e5cdb25580750f59eb03fead735c2e0f159408",
+  "derived_sha256": "bcb1cc037e39a710e6fb54a008fd62844db34651da7141bddfad40b19efce6e4",
+  "cut_profile_xy": [
+    [
+      -2,
+      -1.06
+    ],
+    [
+      -0.2,
+      0.38
+    ],
+    [
+      2,
+      -1.38
+    ]
+  ],
+  "component_coordinate_scope": "world x,z and flattened y=world_y-profile(world_x)",
+  "pommel_reconstruction": null,
+  "removed_lower_component": {
+    "component": 0,
+    "triangles": 855,
+    "min": [
+      -0.3890076279640198,
+      -0.3799999999999999,
+      -0.2732849419116974
+    ],
+    "max": [
+      0.1713562160730362,
+      3.469446951953614e-18,
+      0.2763977348804474
+    ]
+  },
+  "preserved_lower_components": [],
+  "boundary_loops": 2,
+  "cap_triangles": 63,
+  "body_triangles": 950,
+  "triangles": 1013,
+  "operation": "Piecewise-linear local cut profile avoids required lower blade / trigger loop. Original faces split at profile corners before clipping; only display-connected lower component removed. Contact loops sealed; original UVs interpolated only at cuts, cap face normals recalculated after restoring coordinates. No engine validation.",
+  "bytes": 826416,
+  "embedded_image_sha256": [
+    "e84a09a1925ca558193fd8603867f883c273119bdd8358a1aff5d5415cd5f151",
+    "dbf150359a05bda9ae7571cbfe9befef074c7b0b655264acc3996e888841fb81",
+    "10472300d88f665fd196bff8ab68149089905c6e653253a242bf342a475c2f40"
+  ],
+  "original_textures_unchanged": true,
+  "status": "offline_repair_candidate_pending_final_validation",
+  "offline_preview": "docs/agent-bloody_vorpal-final.png"
+}

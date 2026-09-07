@@ -2627,11 +2627,11 @@ _global_script_class_icons={
 config/name="Brotato"
 run/main_scene="res://pause.tscn"
 config/use_custom_user_dir=true
-boot_splash/image="res://splash.png"
-boot_splash/bg_color=Color( 0.109804, 0.109804, 0.109804, 1 )
-config/icon="res://brotato_icon.png"
-config/macos_native_icon="res://brotato_icon.icns"
-config/windows_native_icon="res://brotato_icon.ico"
+boot_splash/image="res://combat3d/art/application/dead_shift_splash.png"
+boot_splash/bg_color=Color( 0.066667, 0.168627, 0.207843, 1 )
+config/icon="res://combat3d/art/application/dead_shift_icon.png"
+config/macos_native_icon="res://combat3d/art/application/dead_shift_icon.icns"
+config/windows_native_icon="res://combat3d/art/application/dead_shift_icon.ico"
 
 [audio]
 
@@ -2689,7 +2689,7 @@ window/size/width=1080
 window/size/height=1920
 window/size/test_width=540
 window/size/test_height=960
-mouse_cursor/custom_image="res://ui/custom_cursor.png"
+mouse_cursor/custom_image="res://combat3d/art/ui/ui_custom_cursor.svg"
 mouse_cursor/custom_image_hotspot=Vector2( 3, 3 )
 window/stretch/mode="2d"
 window/stretch/aspect="keep"

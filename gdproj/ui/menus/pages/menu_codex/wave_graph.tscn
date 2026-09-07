@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="DynamicFont" id=1]
-[ext_resource path="res://items/stats/max_hp.png" type="Texture" id=2]
-[ext_resource path="res://ui/menus/pages/menu_codex/grid_graph.png" type="Texture" id=3]
+[ext_resource path="res://combat3d/art/ui/items_stats_max_hp.svg" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/ui/ui_archive_grid_graph.svg" type="Texture" id=3]
 [ext_resource path="res://ui/menus/pages/menu_codex/wave_graph.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxFlat" id=7]

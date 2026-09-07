@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=10 format=2]
 
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=1]
-[ext_resource path="res://weapons/ranged/fireball/fireball_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/weapons/weapon_fireball_1.png" type="Texture" id=2]
 [ext_resource path="res://weapons/ranged/fireball/2/fireball_2_stats.tres" type="Resource" id=3]
 [ext_resource path="res://weapons/ranged/fireball/3/fireball_3_data.tres" type="Resource" id=4]
 [ext_resource path="res://weapons/ranged/fireball/fireball.tscn" type="PackedScene" id=5]

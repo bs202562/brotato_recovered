@@ -1,0 +1,47 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_excalibur_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_excalibur_1500_local_repaired_v2.glb",
+  "source_sha256": "00b3c3e5ade1b95da82e94c11612860a591f5e39b01dc928248d123492412bf6",
+  "derived_sha256": "11c56bb76ec437886919b06bf465922277e80554b8e5c4c2b73f000a64e71e5d",
+  "cut_profile_xy": [
+    [
+      -2,
+      0.09
+    ],
+    [
+      2,
+      0.09
+    ]
+  ],
+  "component_coordinate_scope": "world x,z and flattened y=world_y-profile(world_x)",
+  "pommel_reconstruction": "gold bevel extends 0.07 below original contact ring",
+  "removed_lower_component": {
+    "component": 0,
+    "triangles": 879,
+    "min": [
+      -0.42162018182273076,
+      -0.09,
+      -0.3479004204273224
+    ],
+    "max": [
+      0.4176636338233948,
+      8.673617379884035e-19,
+      0.3485412895679474
+    ]
+  },
+  "preserved_lower_components": [],
+  "boundary_loops": 1,
+  "cap_triangles": 111,
+  "body_triangles": 579,
+  "triangles": 690,
+  "operation": "Remove connected pedestal at y=.09. Preserve blade, guard, wrapped grip and upper original gold pommel. Rebuild only contact-damaged lower pommel as closed gold bevel extending .07 below cut, recalculated face normals. Original body UVs/textures preserved; no engine validation.",
+  "bytes": 741836,
+  "embedded_image_sha256": [
+    "6a1396b9fc4f0a6cae42e28a86747cc22b0b8cecd015e38e6910a1626bafe4b1",
+    "b4d04cf48969674534568e15f2cf6615935e1281f6f1feaf33d961c7842711a8",
+    "d8d9a4a34d5ac2efa97abcd889e2ce8df30573c1e1ba74b7d9ebbca70d9723bb"
+  ],
+  "original_textures_unchanged": true,
+  "status": "offline_repair_candidate_pending_final_validation",
+  "offline_preview": "docs/agent-excalibur-final.png"
+}

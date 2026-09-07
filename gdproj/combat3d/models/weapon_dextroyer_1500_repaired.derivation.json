@@ -1,0 +1,51 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_dextroyer_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_dextroyer_1500_repaired.glb",
+  "source_sha256": "ba50471a0058d56416d90bd9e692205476647e44807e28c0c67511ce74b64f45",
+  "derived_sha256": "74f406c89ecee37055cc1e2dcb3ab91e21aadb8f3c17174e81d8043bcc1818ef",
+  "clip_world_y": 0.27,
+  "removed_lower_component": {
+    "component": 1,
+    "triangles": 560,
+    "min": [
+      -0.2702636867761612,
+      0.007904052734375,
+      -0.2467804253101349
+    ],
+    "max": [
+      0.2324981987476349,
+      0.27,
+      0.2465362846851349
+    ]
+  },
+  "preserved_lower_components": [
+    {
+      "component": 0,
+      "triangles": 184,
+      "min": [
+        -0.49060066044330597,
+        0.0,
+        -0.17504890263080597
+      ],
+      "max": [
+        -0.09728046662170747,
+        0.27,
+        0.057559944689273834
+      ]
+    }
+  ],
+  "boundary_loops": 1,
+  "cap_triangles": 10,
+  "body_triangles": 940,
+  "triangles": 950,
+  "operation": "Audited cut followed by removal of only the lower connected display component; lower disconnected weapon parts retained. Cut loops sealed by ear triangulation. Original UVs interpolated only at cuts, embedded textures retained, recentered without rotation. Pending final Godot review.",
+  "embedded_image_sha256": [
+    "352fc8e8c2df93745c527d949a206e55ebedf25bc3c8b1ccdd6e0112a40470d9",
+    "a269096c01a513fcf506c0667e60771a041e6b4b60e8e95149011ddfe298117f",
+    "cdec868969cb665214acf343921e7935568cc749c4e5c270dbaf70831845d81b"
+  ],
+  "original_textures_unchanged": true,
+  "bytes": 867484,
+  "offline_preview": "docs/agent-dextroyer-repaired.png",
+  "status": "offline_repair_candidate_pending_final_validation"
+}

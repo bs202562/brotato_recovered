@@ -3,7 +3,7 @@
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
 [ext_resource path="res://items/all/clockwork_wasp/effects/clockwork_wasp_effect_0.tres" type="Resource" id=2]
 [ext_resource path="res://items/all/clockwork_wasp/effects/clockwork_wasp_effect_1.tres" type="Resource" id=3]
-[ext_resource path="res://items/all/clockwork_wasp/clockwork_wasp_icon.png" type="Texture" id=4]
+[ext_resource path="res://combat3d/art/items/item_clockwork_wasp.tres" type="Texture" id=4]
 [ext_resource path="res://items/all/clockwork_wasp/appearances/clockwork_wasp_app_0.tres" type="Resource" id=5]
 
 [resource]

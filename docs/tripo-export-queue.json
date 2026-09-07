@@ -1,0 +1,569 @@
+[
+  {
+    "id": "character_jack",
+    "target_identity": "character_jack",
+    "studio_id": "117da290-89a8-42c1-87e1-633e9dd45ea6",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_jack_6000_walk.glb"
+  },
+  {
+    "id": "character_king",
+    "target_identity": "character_king",
+    "studio_id": "c09862cd-451d-43af-b0bc-cbf21afc22f4",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_king_6000_walk.glb"
+  },
+  {
+    "id": "character_knight",
+    "target_identity": "character_knight",
+    "studio_id": "2d5b6e9f-70fa-4f24-a1b3-06de58ea6883",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_knight_6000_walk.glb"
+  },
+  {
+    "id": "character_lich",
+    "target_identity": "character_lich",
+    "studio_id": "6a9d5221-701d-41cb-ba1a-886449c7906a",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_lich_6000_walk.glb"
+  },
+  {
+    "id": "character_loud",
+    "target_identity": "character_loud",
+    "studio_id": "584ca8cd-35df-495a-b12e-6439b82f4374",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_loud_6000_walk.glb"
+  },
+  {
+    "id": "character_masochist",
+    "target_identity": "character_masochist",
+    "studio_id": "022ed8d8-485c-47ea-a38c-0ef6826417ed",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_masochist_6000_walk.glb"
+  },
+  {
+    "id": "character_mutant",
+    "target_identity": "character_mutant",
+    "studio_id": "f1ccf1d6-2703-4ea4-8e5e-2589e53fe8e2",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_mutant_6000_walk.glb"
+  },
+  {
+    "id": "character_ogre",
+    "target_identity": "character_ogre",
+    "studio_id": "9593db53-b9e9-41ac-b6d0-ad74dae2c478",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_ogre_6000_walk.glb"
+  },
+  {
+    "id": "character_one_arm",
+    "target_identity": "character_one_arm",
+    "studio_id": "10e04180-b23c-4aea-ac01-03d9ee2e1717",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_one_arm_6000_walk.glb"
+  },
+  {
+    "id": "character_pacifist",
+    "target_identity": "character_pacifist",
+    "studio_id": "35732814-36e5-4a3f-badc-460d35d15c75",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_pacifist_6000_walk.glb"
+  },
+  {
+    "id": "character_renegade",
+    "target_identity": "character_renegade",
+    "studio_id": "33cfeb7c-7e5a-4be4-9d59-0e4469705adc",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_renegade_6000_walk.glb"
+  },
+  {
+    "id": "character_romantic",
+    "target_identity": "character_romantic",
+    "studio_id": "bcb22bb1-9d60-435e-ba0e-8bcce2501ba2",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_romantic_6000_walk.glb"
+  },
+  {
+    "id": "character_sailor",
+    "target_identity": "character_sailor",
+    "studio_id": "612e35b2-8b59-4a6e-8092-8c3514288724",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_sailor_6000_walk.glb"
+  },
+  {
+    "id": "character_saver",
+    "target_identity": "character_saver",
+    "studio_id": "8cfa3c1b-2989-4b27-a2f5-49963b6e6ed9",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_saver_6000_walk.glb"
+  },
+  {
+    "id": "character_sick",
+    "target_identity": "character_sick",
+    "studio_id": "194104b0-aab8-42fd-b792-b4fc84a81b4f",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_sick_6000_walk.glb"
+  },
+  {
+    "id": "character_soldier",
+    "target_identity": "character_soldier",
+    "studio_id": "5782fe2b-70e7-4a92-bd9f-b09d3605b7bb",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_soldier_6000_walk.glb"
+  },
+  {
+    "id": "character_speedy",
+    "target_identity": "character_speedy",
+    "studio_id": "d150f57a-ed21-4348-9f63-2c9612f579c6",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_speedy_6000_walk.glb"
+  },
+  {
+    "id": "character_streamer",
+    "target_identity": "character_streamer",
+    "studio_id": "2f2bcd6a-b8aa-4b63-a660-a3fb48d2d509",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_streamer_6000_walk.glb"
+  },
+  {
+    "id": "character_technomage",
+    "target_identity": "character_technomage",
+    "studio_id": "2c1f155e-26fe-4f0f-a6ad-068030865514",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_technomage_6000_walk.glb"
+  },
+  {
+    "id": "character_vagabond",
+    "target_identity": "character_vagabond",
+    "studio_id": "fb9229b2-deb2-4a91-b3d3-a4e10fc2c75a",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_vagabond_6000_walk.glb"
+  },
+  {
+    "id": "character_vampire",
+    "target_identity": "character_vampire",
+    "studio_id": "b50833d6-b67b-47ea-bbf1-3193c4a9a7bd",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_vampire_6000_walk.glb"
+  },
+  {
+    "id": "character_wildling",
+    "target_identity": "character_wildling",
+    "studio_id": "c0378384-179d-4507-9547-a20ef9eb8f84",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_wildling_6000_walk.glb"
+  },
+  {
+    "id": "character_wounded",
+    "target_identity": "character_wounded",
+    "studio_id": "6bb71ffe-799a-418d-aaad-213d43b613f8",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/character_wounded_6000_walk.glb"
+  },
+  {
+    "id": "enemy:evil_mob",
+    "target_identity": "enemy:evil_mob",
+    "studio_id": "f6076d45-0566-467b-92e0-b7a3bbd48be3",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_evil_mob_3000_walk.glb"
+  },
+  {
+    "id": "enemy:firemane_anemone",
+    "target_identity": "enemy:firemane_anemone",
+    "studio_id": "f8653470-4e59-4a88-8f35-a0af4faa1228",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_firemane_anemone_3000_walk.glb"
+  },
+  {
+    "id": "enemy:fly",
+    "target_identity": "enemy:fly",
+    "studio_id": "785cb425-545c-49a0-bf35-e2ab00b5da75",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_fly_3000_walk.glb"
+  },
+  {
+    "id": "enemy:gargoyle",
+    "target_identity": "enemy:gargoyle",
+    "studio_id": "30ad21e5-c546-4f1e-a465-d0f9b1582bcc",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_gargoyle_6000_walk.glb"
+  },
+  {
+    "id": "enemy:giant",
+    "target_identity": "enemy:giant",
+    "studio_id": "cd238274-2d93-4db2-bff2-b9095c1290cc",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_giant_6000_walk.glb"
+  },
+  {
+    "id": "enemy:giant_isopod",
+    "target_identity": "enemy:giant_isopod",
+    "studio_id": "7f58b217-9051-4a16-b60f-6db802534e65",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_giant_isopod_6000_walk.glb"
+  },
+  {
+    "id": "enemy:goblin_shark",
+    "target_identity": "enemy:goblin_shark",
+    "studio_id": "3aa60176-98fe-4925-8f22-02afef4b0978",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_goblin_shark_3000_walk.glb"
+  },
+  {
+    "id": "enemy:hermit",
+    "target_identity": "enemy:hermit",
+    "studio_id": "110b2d79-c916-4638-b06c-cf49fc80d304",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_hermit_3000_walk.glb"
+  },
+  {
+    "id": "enemy:horned_fly",
+    "target_identity": "enemy:horned_fly",
+    "studio_id": "60193b0a-6fbb-4aed-9b48-1aacae1494f1",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_horned_fly_3000_walk.glb"
+  },
+  {
+    "id": "enemy:impaled_worm",
+    "target_identity": "enemy:impaled_worm",
+    "studio_id": "b953642c-5c56-4a04-9951-44d607d5dcd4",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_impaled_worm_3000_walk.glb"
+  },
+  {
+    "id": "enemy:infected_blobfish",
+    "target_identity": "enemy:infected_blobfish",
+    "studio_id": "60d9421d-6a64-4da1-8ccd-4812bf08bd7c",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_infected_blobfish_3000_walk.glb"
+  },
+  {
+    "id": "enemy:invoker",
+    "target_identity": "enemy:invoker",
+    "studio_id": "5f0e880e-31eb-4959-83be-0fc2cb1e75df",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_invoker_6000_walk.glb"
+  },
+  {
+    "id": "enemy:iron_lung",
+    "target_identity": "enemy:iron_lung",
+    "studio_id": "35ef92d3-0f98-47ca-9518-9a795e508a99",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_iron_lung_3000_walk.glb"
+  },
+  {
+    "id": "enemy:jellyfish",
+    "target_identity": "enemy:jellyfish",
+    "studio_id": "f45598bc-09db-4874-b045-7a990b49524a",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_jellyfish_6000_walk.glb"
+  },
+  {
+    "id": "enemy:junkie",
+    "target_identity": "enemy:junkie",
+    "studio_id": "8f515e30-2dbd-47c0-b82d-f3430b27d222",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_junkie_3000_walk.glb"
+  },
+  {
+    "id": "enemy:lamprey",
+    "target_identity": "enemy:lamprey",
+    "studio_id": "6d6f6264-6cc5-408c-8ff8-9b109bd79ef8",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_lamprey_3000_walk.glb"
+  },
+  {
+    "id": "enemy:lobster",
+    "target_identity": "enemy:lobster",
+    "studio_id": "e0cc0c29-841c-411f-9be8-34e89236e925",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_lobster_3000_walk.glb"
+  },
+  {
+    "id": "enemy:looter",
+    "target_identity": "enemy:looter",
+    "studio_id": "5c4f8114-c968-4637-98c4-e6b1ff268833",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_looter_3000_walk.glb"
+  },
+  {
+    "id": "enemy:looting_pig",
+    "target_identity": "enemy:looting_pig",
+    "studio_id": "6b80c346-858b-4c2d-8e28-49aa44c14a13",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_looting_pig_3000_walk.glb"
+  },
+  {
+    "id": "enemy:mad_dragonfish",
+    "target_identity": "enemy:mad_dragonfish",
+    "studio_id": "b27b03ea-ff6c-411c-acde-466912b4f4fa",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_mad_dragonfish_3000_walk.glb"
+  },
+  {
+    "id": "enemy:mad_slasher",
+    "target_identity": "enemy:mad_slasher",
+    "studio_id": "7184e115-1dd6-4c7b-a175-f359bcb1b898",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_mad_slasher_3000_walk.glb"
+  },
+  {
+    "id": "enemy:mantis",
+    "target_identity": "enemy:mantis",
+    "studio_id": "fad4daa8-00bd-4bd8-aaba-a44401941c18",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_mantis_6000_walk.glb"
+  },
+  {
+    "id": "enemy:megalodon",
+    "target_identity": "enemy:megalodon",
+    "studio_id": "fb5f5d14-b1d4-4076-812f-d11fcbbe1568",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_megalodon_3000_walk.glb"
+  },
+  {
+    "id": "enemy:monk",
+    "target_identity": "enemy:monk",
+    "studio_id": "094d1596-7f6a-405f-a3d4-47d94715e9db",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_monk_6000_walk.glb"
+  },
+  {
+    "id": "enemy:narwhal",
+    "target_identity": "enemy:narwhal",
+    "studio_id": "6da6f028-0f14-4a87-a403-a4c7de61587a",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_narwhal_3000_walk.glb"
+  },
+  {
+    "id": "enemy:predator",
+    "target_identity": "enemy:predator",
+    "studio_id": "d8429da0-289c-4bef-9598-1a9cb7bf5aba",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_predator_6000_walk.glb"
+  },
+  {
+    "id": "enemy:prisoner",
+    "target_identity": "enemy:prisoner",
+    "studio_id": "b18a256e-b4f1-4f61-b118-cff3fb1cb33e",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_prisoner_6000_walk.glb"
+  },
+  {
+    "id": "enemy:pursuer",
+    "target_identity": "enemy:pursuer",
+    "studio_id": "0e240017-8d5a-44db-839d-e57f7787b103",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_pursuer_3000_walk.glb"
+  },
+  {
+    "id": "enemy:shielded_diplocaulus",
+    "target_identity": "enemy:shielded_diplocaulus",
+    "studio_id": "1b568004-6536-41fb-97f4-f0642978702b",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_shielded_diplocaulus_3000_walk.glb"
+  },
+  {
+    "id": "enemy:spiky_lung",
+    "target_identity": "enemy:spiky_lung",
+    "studio_id": "d871c19c-3b12-42ba-9a2c-f26de57c13fd",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_spiky_lung_3000_walk.glb"
+  },
+  {
+    "id": "enemy:stargazer",
+    "target_identity": "enemy:stargazer",
+    "studio_id": "f847d160-8ee5-4d60-a6ea-dcc8253320ae",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_stargazer_3000_walk.glb"
+  },
+  {
+    "id": "enemy:stonefish",
+    "target_identity": "enemy:stonefish",
+    "studio_id": "38c99008-81a0-4410-a0c8-4376a6a9b579",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_stonefish_3000_walk.glb"
+  },
+  {
+    "id": "enemy:tentacle",
+    "target_identity": "enemy:tentacle",
+    "studio_id": "0d12b69f-392c-4fef-b0a8-8b8b6d031b75",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_tentacle_3000_walk.glb"
+  },
+  {
+    "id": "enemy:turtle",
+    "target_identity": "enemy:turtle",
+    "studio_id": "16a31fd8-b876-40ea-af67-6f9cadea3ae2",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_turtle_6000_walk.glb"
+  },
+  {
+    "id": "enemy:vampire_squid",
+    "target_identity": "enemy:vampire_squid",
+    "studio_id": "b05adb0c-d343-4d54-9d5d-4421ca17062b",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_vampire_squid_3000_walk.glb"
+  },
+  {
+    "id": "enemy:viperfish",
+    "target_identity": "enemy:viperfish",
+    "studio_id": "67bdb814-92b9-4295-bdde-1af36ba77694",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_viperfish_3000_walk.glb"
+  },
+  {
+    "id": "enemy:walrus",
+    "target_identity": "enemy:walrus",
+    "studio_id": "eb47bf7b-9aae-4bd5-b143-b33b5b007451",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_walrus_3000_walk.glb"
+  },
+  {
+    "id": "enemy_croc",
+    "target_identity": "enemy:croc",
+    "studio_id": "13096b2c-a677-4229-b92c-b3f37c760c18",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_croc_6000_walk.glb"
+  },
+  {
+    "id": "enemy_dead_whale",
+    "target_identity": "enemy:dead_whale",
+    "studio_id": "7d40ebd1-4044-4aba-8c36-8a0a67e45019",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_dead_whale_6000_walk.glb"
+  },
+  {
+    "id": "enemy_diplocaulus",
+    "target_identity": "enemy:diplocaulus",
+    "studio_id": "4e8eb76a-4d4b-4316-ad63-31a0c355a66d",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_diplocaulus_3000_walk.glb"
+  },
+  {
+    "id": "enemy_dire_junkie",
+    "target_identity": "enemy:dire_junkie",
+    "studio_id": "01a5d5ac-f81b-4aac-abfc-3fb66ecc8c2f",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_dire_junkie_3000_walk.glb"
+  },
+  {
+    "id": "enemy_dragonfish",
+    "target_identity": "enemy:dragonfish",
+    "studio_id": "2f2e39c5-c1c8-4ae4-ae77-d817da46553c",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_dragonfish_3000_walk.glb"
+  },
+  {
+    "id": "enemy_eel",
+    "target_identity": "enemy:eel",
+    "studio_id": "08d0ec42-d8e2-4a20-a6a4-dc88133e29f8",
+    "status": "animated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/enemy_eel_6000_walk.glb"
+  },
+  {
+    "id": "weapon_nuclear_launcher",
+    "target_identity": "weapon_nuclear_launcher",
+    "studio_id": "58bdceb8-e03a-4e2b-8f55-bbd10e7518b5",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_nuclear_launcher_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_obliterator",
+    "target_identity": "weapon_obliterator",
+    "studio_id": "3a79755f-e5e4-469d-894a-52898d3ebbc4",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_obliterator_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_particle_accelerator",
+    "target_identity": "weapon_particle_accelerator",
+    "studio_id": "6c251ded-00fc-4caf-977c-c64184d5939c",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_particle_accelerator_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_plank",
+    "target_identity": "weapon_plank",
+    "studio_id": "238dba55-1c9a-480b-8d1f-13016acd5bda",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_plank_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_potato_thrower",
+    "target_identity": "weapon_potato_thrower",
+    "studio_id": "a11fda8b-82d1-47e6-8f08-4358b76025f9",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_potato_thrower_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_power_fist",
+    "target_identity": "weapon_power_fist",
+    "studio_id": "be256c6f-d803-4d63-8dbc-19a7380387e5",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_power_fist_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_rail_gun",
+    "target_identity": "weapon_rail_gun",
+    "studio_id": "6fd1803f-d640-4d75-a1d7-da0b6096cb75",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_rail_gun_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_scythe",
+    "target_identity": "weapon_scythe",
+    "studio_id": "aa3ee0ad-8443-4183-a953-ef94d285f556",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_scythe_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_sharp_tooth",
+    "target_identity": "weapon_sharp_tooth",
+    "studio_id": "9554d44b-9291-4259-a6a1-b78dc3d95a36",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_sharp_tooth_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_sickle",
+    "target_identity": "weapon_sickle",
+    "studio_id": "655535d1-0772-4dab-928d-7596da99aaa2",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_sickle_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_spiky_shield",
+    "target_identity": "weapon_spiky_shield",
+    "studio_id": "ec892078-b930-4cee-8e90-ba0ce099e60f",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_spiky_shield_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_spoon",
+    "target_identity": "weapon_spoon",
+    "studio_id": "afc6668b-363c-44ad-b812-1ba8c82d0eed",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_spoon_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_thunder_sword",
+    "target_identity": "weapon_thunder_sword",
+    "studio_id": "b2b7e498-e6c2-44cf-b4e5-99e729d02664",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_thunder_sword_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_trident",
+    "target_identity": "weapon_trident",
+    "studio_id": "32c1450a-7c05-44c7-b213-907ddb6b07ef",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_trident_tertiary_1500_raw.glb"
+  },
+  {
+    "id": "weapon_war_hammer",
+    "target_identity": "weapon_war_hammer",
+    "studio_id": "f3abb73f-fe04-4ab8-afea-1f6342a7b79b",
+    "status": "generated_pending_export",
+    "expected_local_file": "gdproj/combat3d/models/weapon_war_hammer_tertiary_1500_raw.glb"
+  }
+]

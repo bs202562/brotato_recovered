@@ -3,7 +3,7 @@
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=1]
 [ext_resource path="res://weapons/ranged/medical_gun/4/medical_gun_4_stats.tres" type="Resource" id=2]
 [ext_resource path="res://weapons/ranged/medical_gun/medical_gun.tscn" type="PackedScene" id=3]
-[ext_resource path="res://weapons/ranged/medical_gun/medical_gun_icon.png" type="Texture" id=4]
+[ext_resource path="res://combat3d/art/weapons/weapon_medical_gun_3.png" type="Texture" id=4]
 [ext_resource path="res://items/sets/gun/gun_set_data.tres" type="Resource" id=5]
 [ext_resource path="res://items/sets/medical/medical_set_data.tres" type="Resource" id=6]
 

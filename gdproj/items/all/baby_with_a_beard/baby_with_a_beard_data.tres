@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
-[ext_resource path="res://items/all/baby_with_a_beard/baby_with_a_beard_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/items/item_baby_with_a_beard.tres" type="Texture" id=2]
 [ext_resource path="res://items/all/baby_with_a_beard/baby_with_a_beard_appearance.tres" type="Resource" id=3]
 [ext_resource path="res://items/all/baby_with_a_beard/baby_with_a_beard_effect_2.tres" type="Resource" id=4]
 [ext_resource path="res://items/all/baby_with_a_beard/baby_with_a_beard_effect_1.tres" type="Resource" id=5]

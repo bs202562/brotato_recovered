@@ -1,0 +1,1629 @@
+{
+  "environment:lamp": {
+    "path": "res://combat3d/models/mall_lamp_3000.glb",
+    "scale": 1.6,
+    "yaw": 0,
+    "art_identity": "environment:lamp"
+  },
+  "environment:escalator": {
+    "path": "res://combat3d/models/mall_escalator_3000.glb",
+    "scale": 4.0,
+    "yaw": 0,
+    "art_identity": "environment:escalator"
+  },
+  "environment:supply_shelf": {
+    "path": "res://combat3d/models/mall_supply_shelf_3000.glb",
+    "scale": 2.0,
+    "yaw": 0,
+    "art_identity": "environment:supply_shelf"
+  },
+  "environment:pillar": {
+    "path": "res://combat3d/models/mall_pillar_3000.glb",
+    "scale": 2.5,
+    "yaw": 0,
+    "art_identity": "environment:pillar"
+  },
+  "environment:security_gate": {
+    "path": "res://combat3d/models/mall_security_gate_3000.glb",
+    "scale": 2.6,
+    "yaw": 0,
+    "art_identity": "environment:security_gate"
+  },
+  "environment:kiosk": {
+    "path": "res://combat3d/models/mall_kiosk_3000.glb",
+    "scale": 2.2,
+    "yaw": 0,
+    "art_identity": "environment:kiosk"
+  },
+  "environment:bench": {
+    "path": "res://combat3d/models/mall_bench_3000.glb",
+    "scale": 1.4,
+    "yaw": 0,
+    "art_identity": "environment:bench"
+  },
+  "environment:shopping_cart": {
+    "path": "res://combat3d/models/mall_shopping_cart_3000.glb",
+    "scale": 1.25,
+    "yaw": 0,
+    "art_identity": "environment:shopping_cart"
+  },
+  "environment:generator": {
+    "path": "res://combat3d/models/mall_generator_3000.glb",
+    "scale": 1.3,
+    "yaw": 0,
+    "art_identity": "environment:generator"
+  },
+  "environment:vending_machine": {
+    "path": "res://combat3d/models/mall_vending_machine_3000.glb",
+    "scale": 2.0,
+    "yaw": 0,
+    "art_identity": "environment:vending_machine"
+  },
+  "environment:barricade": {
+    "path": "res://combat3d/models/mall_barricade_3000.glb",
+    "scale": 2.0,
+    "yaw": 90,
+    "art_identity": "environment:barricade"
+  },
+  "environment:shopfront": {
+    "path": "res://combat3d/models/mall_shopfront_3000.glb",
+    "scale": 3.0,
+    "yaw": 0,
+    "art_identity": "environment:shopfront"
+  },
+  "character_ranger": {
+    "path": "res://combat3d/models/survivor_scout_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0.0,
+    "yaw": 180,
+    "animation": "presetbipedidle",
+    "authored_outfit": true,
+    "art_identity": "character_ranger"
+  },
+  "character_bull": {
+    "path": "res://combat3d/models/survivor_firefighter_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0.0,
+    "yaw": 180,
+    "animation": "presetbipedidle",
+    "authored_outfit": true,
+    "art_identity": "character_bull"
+  },
+  "character_doctor": {
+    "path": "res://combat3d/models/survivor_field_medic_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0.0,
+    "yaw": 180,
+    "animation": "presetbipedidle",
+    "authored_outfit": true,
+    "art_identity": "character_doctor"
+  },
+  "player": {
+    "path": "res://combat3d/models/survivor_security_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0.0,
+    "yaw": 180,
+    "animation": "presetbipedidle"
+  },
+  "enemy": {
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "scale": 1.35,
+    "offset_y": 0.0,
+    "yaw": 0,
+    "animation": "presetbipedwalk"
+  },
+  "elite": {
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "scale": 2.2,
+    "offset_y": 0.0,
+    "yaw": 0,
+    "animation": "presetbipedwalk"
+  },
+  "enemy:colossus": {
+    "role": "armored",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "colossus",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:rhino": {
+    "role": "armored",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "rhino",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:bruiser": {
+    "role": "armored",
+    "scale": 1.65,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "bruiser",
+    "path": "res://combat3d/models/enemy_bruiser_3000_walk_v2.glb",
+    "authored_model": true,
+    "animation": "presetbipedwalk"
+  },
+  "enemy:horned_bruiser": {
+    "role": "armored",
+    "scale": 1.65,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "horned_bruiser",
+    "path": "res://combat3d/models/enemy_horned_bruiser_3000_walk.glb",
+    "authored_model": true,
+    "animation": "presetbipedwalk"
+  },
+  "enemy:helmet_alien": {
+    "role": "armored",
+    "scale": 1.65,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "helmet_alien",
+    "path": "res://combat3d/models/enemy_helmet_alien_3000_walk.glb",
+    "authored_model": true,
+    "animation": "presetbipedwalk"
+  },
+  "enemy:mom": {
+    "role": "bloated",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "mom",
+    "path": "res://combat3d/models/zombie_foodcourt_chef_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:bloated_spawner": {
+    "role": "bloated",
+    "scale": 1.55,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "bloated_spawner",
+    "path": "res://combat3d/models/zombie_foodcourt_chef_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:butcher": {
+    "role": "bloated",
+    "scale": 1.55,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "butcher",
+    "path": "res://combat3d/models/zombie_foodcourt_chef_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:spitter": {
+    "role": "toxic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "spitter",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:horned_spitter": {
+    "role": "toxic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "horned_spitter",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:anemone": {
+    "role": "toxic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "anemone",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:anglerfish": {
+    "role": "toxic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "anglerfish",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:bat": {
+    "role": "runner",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "bat",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "bandana",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:bloated_pufferfish": {
+    "role": "bloated",
+    "scale": 1.55,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "bloated_pufferfish",
+    "path": "res://combat3d/models/zombie_foodcourt_chef_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:blobfish": {
+    "role": "bloated",
+    "scale": 1.55,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "blobfish",
+    "path": "res://combat3d/models/zombie_foodcourt_chef_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:brainy_squid": {
+    "role": "toxic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "brainy_squid",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:clam": {
+    "role": "bloated",
+    "scale": 1.55,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "clam",
+    "path": "res://combat3d/models/zombie_foodcourt_chef_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:colossal_squid": {
+    "role": "toxic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "colossal_squid",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:cool_walrus": {
+    "role": "armored",
+    "scale": 1.65,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "cool_walrus",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:crab": {
+    "role": "armored",
+    "scale": 1.65,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "crab",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:dead_whale": {
+    "role": "armored",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "dead_whale",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:diplocaulus": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "diplocaulus",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "bandana",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:dragonfish": {
+    "role": "toxic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "dragonfish",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:eel": {
+    "role": "toxic",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "eel",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:evil_mob": {
+    "role": "small",
+    "scale": 0.95,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "evil_mob",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "beanie",
+      "none",
+      "9a6876",
+      "aabd84"
+    ]
+  },
+  "enemy:firemane_anemone": {
+    "role": "toxic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "firemane_anemone",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:giant": {
+    "role": "armored",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "giant",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:giant_isopod": {
+    "role": "armored",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "giant_isopod",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:goblin_shark": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "goblin_shark",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "bandana",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:hermit": {
+    "role": "armored",
+    "scale": 1.65,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "hermit",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:impaled_worm": {
+    "role": "tentacle",
+    "scale": 1.65,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "impaled_worm",
+    "recipe": "tentacle"
+  },
+  "enemy:infected_blobfish": {
+    "role": "bloated",
+    "scale": 1.55,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "infected_blobfish",
+    "path": "res://combat3d/models/zombie_foodcourt_chef_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:iron_lung": {
+    "role": "armored",
+    "scale": 1.65,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "iron_lung",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:jellyfish": {
+    "role": "toxic",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "jellyfish",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:lobster": {
+    "role": "armored",
+    "scale": 1.65,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "lobster",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:looting_pig": {
+    "role": "bloated",
+    "scale": 1.55,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "looting_pig",
+    "path": "res://combat3d/models/zombie_foodcourt_chef_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:mad_dragonfish": {
+    "role": "toxic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "mad_dragonfish",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:megalodon": {
+    "role": "armored",
+    "scale": 1.65,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "megalodon",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:narwhal": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "narwhal",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "bandana",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:plankton": {
+    "role": "small",
+    "scale": 0.95,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "plankton",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "beanie",
+      "none",
+      "9a6876",
+      "aabd84"
+    ]
+  },
+  "enemy:prisoner": {
+    "role": "armored",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "prisoner",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:pufferfish": {
+    "role": "bloated",
+    "scale": 1.55,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "pufferfish",
+    "path": "res://combat3d/models/zombie_foodcourt_chef_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:scaled_goblin_shark": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "scaled_goblin_shark",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "bandana",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:scaled_stargazer": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "scaled_stargazer",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "bandana",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:sea_pig": {
+    "role": "bloated",
+    "scale": 1.55,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "sea_pig",
+    "path": "res://combat3d/models/zombie_foodcourt_chef_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:shielded_diplocaulus": {
+    "role": "armored",
+    "scale": 1.65,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "shielded_diplocaulus",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:shrimp": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "shrimp",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "bandana",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:spider_crab": {
+    "role": "armored",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "spider_crab",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:spiky_lung": {
+    "role": "bloated",
+    "scale": 1.55,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "spiky_lung",
+    "path": "res://combat3d/models/zombie_foodcourt_chef_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:stargazer": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "stargazer",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "bandana",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:stonefish": {
+    "role": "armored",
+    "scale": 1.65,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "stonefish",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:turtle": {
+    "role": "armored",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "turtle",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:vampire_squid": {
+    "role": "toxic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "vampire_squid",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:viperfish": {
+    "role": "toxic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "viperfish",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:walrus": {
+    "role": "armored",
+    "scale": 1.65,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "walrus",
+    "path": "res://combat3d/models/zombie_riot_captain_6000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:baby_alien": {
+    "role": "small",
+    "scale": 0.95,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "baby_alien",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "beanie",
+      "none",
+      "9a6876",
+      "aabd84"
+    ]
+  },
+  "enemy:buffer": {
+    "role": "medic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "buffer",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "medical",
+      "medbag",
+      "dde6ce",
+      "a9bc83"
+    ]
+  },
+  "enemy:charger": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "charger",
+    "path": "res://combat3d/models/zombie_charger_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "authored_model": true
+  },
+  "enemy:chaser": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "chaser",
+    "path": "res://combat3d/models/zombie_chaser_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "authored_model": true
+  },
+  "enemy:corrupted_buffer": {
+    "role": "medic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "corrupted_buffer",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "medical",
+      "medbag",
+      "af76ae",
+      "b0a27a"
+    ]
+  },
+  "enemy:croc": {
+    "role": "runner",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "croc",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "helmet",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:dire_junkie": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "dire_junkie",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "bandana",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:fin_alien": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "fin_alien",
+    "path": "res://combat3d/models/enemy_fin_alien_3000_walk.glb",
+    "authored_model": true,
+    "animation": "presetbipedwalk"
+  },
+  "enemy:fly": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "fly",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "bandana",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:gargoyle": {
+    "role": "runner",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "gargoyle",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "helmet",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:healer": {
+    "role": "medic",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "healer",
+    "path": "res://combat3d/models/zombie_pharmacist_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:horned_charger": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "horned_charger",
+    "path": "res://combat3d/models/enemy_horned_charger_3000_walk.glb",
+    "authored_model": true,
+    "animation": "presetbipedwalk"
+  },
+  "enemy:horned_fly": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "horned_fly",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "horns",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:infected_slasher_egg": {
+    "role": "spore_nest",
+    "scale": 1.0,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "infected_slasher_egg",
+    "recipe": "spore_nest"
+  },
+  "enemy:invoker": {
+    "role": "toxic",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "invoker",
+    "path": "res://combat3d/models/zombie_toxic_janitor_3000_walk.glb",
+    "animation": "presetbipedwalk"
+  },
+  "enemy:junkie": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "junkie",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "bandana",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:lamprey": {
+    "role": "tentacle",
+    "scale": 1.0,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "lamprey",
+    "recipe": "tentacle"
+  },
+  "enemy:looter": {
+    "role": "slasher",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "looter",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "hood",
+      "toolbox",
+      "7f678d",
+      "adbc8b"
+    ]
+  },
+  "enemy:mad_slasher": {
+    "role": "slasher",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "mad_slasher",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "hood",
+      "toolbox",
+      "7f678d",
+      "adbc8b"
+    ]
+  },
+  "enemy:mantis": {
+    "role": "runner",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "mantis",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "helmet",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:monk": {
+    "role": "medic",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "monk",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "medical",
+      "medbag",
+      "dde6ce",
+      "a9bc83"
+    ]
+  },
+  "enemy:predator": {
+    "role": "runner",
+    "scale": 2.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "predator",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "helmet",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:pursuer": {
+    "role": "runner",
+    "scale": 1.25,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "pursuer",
+    "path": "res://combat3d/models/zombie_shopper_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "outfit": [
+      "bandana",
+      "pouches",
+      "b56c48",
+      "a3b985"
+    ]
+  },
+  "enemy:slasher": {
+    "role": "slasher",
+    "scale": 1.35,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "slasher",
+    "path": "res://combat3d/models/zombie_slasher_3000_walk.glb",
+    "animation": "presetbipedwalk",
+    "authored_model": true
+  },
+  "enemy:slasher_egg": {
+    "role": "spore_nest",
+    "scale": 1.0,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "slasher_egg",
+    "recipe": "spore_nest"
+  },
+  "enemy:spawner": {
+    "role": "bloated",
+    "scale": 1.55,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "spawner",
+    "path": "res://combat3d/models/enemy_spawner_3000_walk.glb",
+    "authored_model": true,
+    "animation": "presetbipedwalk"
+  },
+  "enemy:tentacle": {
+    "role": "tentacle",
+    "scale": 1.0,
+    "yaw": 0,
+    "offset_y": 0.002,
+    "art_identity": "tentacle",
+    "recipe": "tentacle"
+  },
+  "character_engineer": {
+    "path": "res://combat3d/models/survivor_engineer_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0.0,
+    "yaw": 180,
+    "animation": "presetbipedidle",
+    "authored_outfit": true,
+    "art_identity": "character_engineer"
+  },
+  "weapon_smg": {
+    "path": "res://combat3d/models/weapon_smg_1500.glb",
+    "scale": 0.85,
+    "yaw": 0,
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_smg",
+    "tier_marker": [
+      -0.04999999999999999,
+      0.215,
+      0
+    ]
+  },
+  "character_well_rounded": {
+    "path": "res://combat3d/models/survivor_security_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0.0,
+    "yaw": 180,
+    "authored_outfit": true,
+    "art_identity": "character_well_rounded",
+    "animation": "presetbipedidle"
+  },
+  "weapon_wrench": {
+    "path": "res://combat3d/models/weapon_wrench_1500.glb",
+    "scale": 0.9,
+    "yaw": 0,
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_wrench",
+    "tier_marker": [
+      -0.33499999999999996,
+      0.048,
+      0
+    ]
+  },
+  "weapon_knife": {
+    "path": "res://combat3d/models/weapon_knife_1500.glb",
+    "scale": 0.8,
+    "rotation": [
+      -90,
+      0,
+      0
+    ],
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_knife",
+    "tier_marker": [
+      -0.31,
+      0.046,
+      0
+    ]
+  },
+  "weapon_hammer": {
+    "path": "res://combat3d/models/weapon_hammer_1500.glb",
+    "scale": 0.9,
+    "rotation": [
+      -90,
+      0,
+      0
+    ],
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_hammer",
+    "tier_marker": [
+      -0.31,
+      0.047,
+      0
+    ]
+  },
+  "weapon_hatchet": {
+    "path": "res://combat3d/models/weapon_hatchet_1500.glb",
+    "scale": 0.85,
+    "rotation": [
+      -90,
+      0,
+      0
+    ],
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_hatchet",
+    "tier_marker": [
+      -0.31,
+      0.045,
+      0
+    ]
+  },
+  "weapon_pistol": {
+    "path": "res://combat3d/models/weapon_pistol_1500.glb",
+    "scale": 0.58,
+    "yaw": 0,
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_pistol",
+    "tier_marker": [
+      -0.08000000000000002,
+      0.218,
+      0
+    ]
+  },
+  "weapon_double_barrel_shotgun": {
+    "path": "res://combat3d/models/weapon_double_barrel_shotgun_1500.glb",
+    "scale": 1.05,
+    "yaw": 0,
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_double_barrel_shotgun",
+    "tier_marker": [
+      -0.315,
+      0.045,
+      0
+    ]
+  },
+  "weapon_spear": {
+    "path": "res://combat3d/models/weapon_spear_1500_aligned.glb",
+    "scale": 1.3,
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_spear",
+    "tier_marker": [
+      -0.48,
+      0.05,
+      0
+    ]
+  },
+  "weapon_revolver": {
+    "path": "res://combat3d/models/weapon_revolver_1500.glb",
+    "scale": 0.68,
+    "yaw": 0,
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_revolver",
+    "tier_marker": [
+      -0.1,
+      0.14,
+      0
+    ]
+  },
+  "weapon_laser_gun": {
+    "path": "res://combat3d/models/weapon_laser_gun_1500.glb",
+    "scale": 0.68,
+    "yaw": 90,
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_laser_gun",
+    "tier_marker": [
+      -0.1,
+      0.2,
+      0
+    ]
+  },
+  "weapon_rocket_launcher": {
+    "path": "res://combat3d/models/weapon_rocket_launcher_1500.glb",
+    "scale": 1.1,
+    "yaw": 90,
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_rocket_launcher",
+    "tier_marker": [
+      -0.12,
+      0.23,
+      0
+    ]
+  },
+  "weapon_crossbow": {
+    "path": "res://combat3d/models/weapon_crossbow_1500.glb",
+    "scale": 1.1,
+    "yaw": 90,
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_crossbow",
+    "tier_marker": [
+      -0.1,
+      0.07,
+      0
+    ]
+  },
+  "weapon_flamethrower": {
+    "path": "res://combat3d/models/weapon_flamethrower_1500.glb",
+    "scale": 1.0,
+    "yaw": 90,
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_flamethrower",
+    "tier_marker": [
+      -0.12,
+      0.167,
+      0
+    ]
+  },
+  "weapon_sword": {
+    "path": "res://combat3d/models/weapon_sword_1500.glb",
+    "scale": 1.2,
+    "rotation": [
+      -90,
+      0,
+      0
+    ],
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_sword",
+    "tier_marker": [
+      -0.45,
+      0.039,
+      0
+    ]
+  },
+  "weapon_medical_gun": {
+    "path": "res://combat3d/models/weapon_medical_gun_1500.glb",
+    "scale": 0.7,
+    "yaw": 0,
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_medical_gun",
+    "tier_marker": [
+      -0.15,
+      0.209,
+      0
+    ]
+  },
+  "weapon_shredder": {
+    "path": "res://combat3d/models/weapon_shredder_1500.glb",
+    "scale": 0.95,
+    "yaw": 90,
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_shredder",
+    "tier_marker": [
+      -0.15,
+      0.234,
+      0
+    ]
+  },
+  "weapon_sniper_gun": {
+    "path": "res://combat3d/models/weapon_sniper_gun_1500.glb",
+    "scale": 1.25,
+    "yaw": 0,
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_sniper_gun",
+    "tier_marker": [
+      -0.4,
+      0.046,
+      0
+    ]
+  },
+  "weapon_plasma_sledgehammer": {
+    "path": "res://combat3d/models/weapon_plasma_sledgehammer_1500.glb",
+    "scale": 1.1,
+    "rotation": [
+      -90,
+      0,
+      0
+    ],
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_plasma_sledgehammer",
+    "tier_marker": [
+      -0.4,
+      0.037,
+      0
+    ]
+  },
+  "prop:turret": {
+    "path": "res://combat3d/models/utility_turret_3000.glb",
+    "scale": 1.0,
+    "yaw": 180,
+    "art_identity": "prop:turret"
+  },
+  "prop:garden": {
+    "path": "res://combat3d/models/utility_garden_3000.glb",
+    "scale": 1.0,
+    "yaw": 0,
+    "art_identity": "prop:garden"
+  },
+  "prop:landmine": {
+    "path": "res://combat3d/models/utility_landmine_3000_low.glb",
+    "scale": 0.7,
+    "yaw": 0,
+    "art_identity": "prop:landmine"
+  },
+  "prop:tree": {
+    "path": "res://combat3d/models/utility_tree_3000.glb",
+    "scale": 1.5,
+    "yaw": 0,
+    "art_identity": "prop:tree"
+  },
+  "prop:poisoned_fruit": {
+    "path": "res://combat3d/models/utility_poisoned_fruit_3000.glb",
+    "scale": 0.5,
+    "yaw": 0,
+    "art_identity": "prop:poisoned_fruit"
+  },
+  "prop:cursed_chest": {
+    "path": "res://combat3d/models/utility_cursed_chest_3000.glb",
+    "scale": 0.75,
+    "yaw": 0,
+    "art_identity": "prop:cursed_chest"
+  },
+  "weapon_stick": {
+    "path": "res://combat3d/models/weapon_stick_1500_aligned.glb",
+    "scale": 1.0,
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_stick",
+    "tier_marker": [
+      -0.35,
+      0.06,
+      0
+    ]
+  },
+  "weapon_rock": {
+    "path": "res://combat3d/models/weapon_rock_1500.glb",
+    "scale": 0.9,
+    "rotation": [
+      -90,
+      0,
+      0
+    ],
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_rock",
+    "tier_marker": [
+      -0.28,
+      0.106,
+      0
+    ]
+  },
+  "weapon_scissors": {
+    "path": "res://combat3d/models/weapon_scissors_1500.glb",
+    "scale": 0.95,
+    "rotation": [
+      -90,
+      0,
+      0
+    ],
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_scissors",
+    "tier_marker": [
+      -0.08,
+      0.057,
+      0
+    ]
+  },
+  "weapon_screwdriver": {
+    "path": "res://combat3d/models/weapon_screwdriver_1500.glb",
+    "scale": 0.9,
+    "rotation": [
+      -90,
+      0,
+      0
+    ],
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_screwdriver",
+    "tier_marker": [
+      -0.3,
+      0.067,
+      0
+    ]
+  },
+  "weapon_taser": {
+    "path": "res://combat3d/models/weapon_taser_1500.glb",
+    "scale": 0.65,
+    "yaw": 0,
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_taser",
+    "tier_marker": [
+      -0.08,
+      0.194,
+      0
+    ]
+  },
+  "weapon_slingshot": {
+    "path": "res://combat3d/models/weapon_slingshot_1500.glb",
+    "scale": 0.8,
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_slingshot",
+    "tier_marker": [
+      -0.25,
+      0.025,
+      0
+    ]
+  },
+  "character_brawler": {
+    "path": "res://combat3d/models/survivor_brawler_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0,
+    "yaw": 180,
+    "authored_outfit": true,
+    "art_identity": "character_brawler",
+    "animation": "presetbipedidle"
+  },
+  "character_crazy": {
+    "path": "res://combat3d/models/survivor_crazy_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0,
+    "yaw": 180,
+    "authored_outfit": true,
+    "art_identity": "character_crazy",
+    "animation": "presetbipedidle"
+  },
+  "character_mage": {
+    "path": "res://combat3d/models/survivor_mage_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0,
+    "yaw": 180,
+    "authored_outfit": true,
+    "art_identity": "character_mage",
+    "animation": "presetbipedidle"
+  },
+  "character_chunky": {
+    "path": "res://combat3d/models/survivor_chunky_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0,
+    "yaw": 180,
+    "authored_outfit": true,
+    "art_identity": "character_chunky",
+    "animation": "presetbipedidle"
+  },
+  "character_old": {
+    "path": "res://combat3d/models/survivor_old_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0,
+    "yaw": 180,
+    "authored_outfit": true,
+    "art_identity": "character_old",
+    "animation": "presetbipedidle"
+  },
+  "character_lucky": {
+    "path": "res://combat3d/models/survivor_lucky_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0,
+    "yaw": 180,
+    "authored_outfit": true,
+    "art_identity": "character_lucky",
+    "animation": "presetbipedidle"
+  },
+  "character_buccaneer": {
+    "path": "res://combat3d/models/survivor_buccaneer_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0,
+    "yaw": 180,
+    "authored_outfit": true,
+    "art_identity": "character_buccaneer",
+    "animation": "presetbipedidle"
+  },
+  "character_builder": {
+    "path": "res://combat3d/models/survivor_builder_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0,
+    "yaw": 180,
+    "authored_outfit": true,
+    "art_identity": "character_builder",
+    "animation": "presetbipedidle"
+  },
+  "character_captain": {
+    "path": "res://combat3d/models/survivor_captain_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0,
+    "yaw": 180,
+    "authored_outfit": true,
+    "art_identity": "character_captain",
+    "animation": "presetbipedidle"
+  },
+  "character_chef": {
+    "path": "res://combat3d/models/survivor_chef_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0,
+    "yaw": 180,
+    "authored_outfit": true,
+    "art_identity": "character_chef",
+    "animation": "presetbipedidle"
+  },
+  "character_creature": {
+    "path": "res://combat3d/models/survivor_creature_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0,
+    "yaw": 180,
+    "authored_outfit": true,
+    "art_identity": "character_creature",
+    "animation": "presetbipedidle"
+  },
+  "character_curious": {
+    "path": "res://combat3d/models/survivor_curious_6000_idle.glb",
+    "scale": 1.4,
+    "offset_y": 0,
+    "yaw": 180,
+    "authored_outfit": true,
+    "art_identity": "character_curious",
+    "animation": "presetbipedidle"
+  },
+  "weapon_torch": {
+    "path": "res://combat3d/models/weapon_torch_1500.glb",
+    "scale": 1.0,
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "weapon_offset": [
+      0,
+      0,
+      0
+    ],
+    "art_identity": "weapon_torch",
+    "tier_marker": [
+      -0.3,
+      0.075,
+      0
+    ],
+    "icon_flame_origin": [
+      0.33,
+      0.137,
+      0
+    ]
+  }
+}

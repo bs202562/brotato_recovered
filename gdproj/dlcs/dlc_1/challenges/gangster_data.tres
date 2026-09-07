@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://dlcs/dlc_1/weapons/ranged/grenade_launcher/2/grenade_launcher_2_data.tres" type="Resource" id=1]
-[ext_resource path="res://dlcs/dlc_1/characters/gangster/gangster_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/characters/character_gangster.png" type="Texture" id=2]
 [ext_resource path="res://challenges/global/challenge_data.gd" type="Script" id=3]
 
 [resource]

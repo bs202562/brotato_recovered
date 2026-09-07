@@ -1,0 +1,42 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_fireball_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_fireball_1500_repaired.glb",
+  "source_sha256": "6224ab786ac0ea57072daa2d2c5fe9e0717b84e82cc98d17d0d1fa3e41db3bab",
+  "derived_sha256": "5ee22a04911c1d1b11e98917ef5f1e9e7d6816406a49184be256aebaf3606812",
+  "clip_world_y": 0.3,
+  "removed_lower_component": {
+    "component": 0,
+    "triangles": 510,
+    "min": [
+      -0.22329715639352798,
+      0.0,
+      -0.2044067680835724
+    ],
+    "max": [
+      0.2199402078986168,
+      0.3,
+      0.31616172648409496
+    ]
+  },
+  "preserved_lower_components": [
+    {
+      "component": 1,
+      "triangles": 55,
+      "min": [
+        -0.0834222685820012,
+        0.161468505859375,
+        -0.4248657822608948
+      ],
+      "max": [
+        0.08913300965693596,
+        0.3,
+        -0.2466736137866974
+      ]
+    }
+  ],
+  "boundary_loops": 1,
+  "cap_triangles": 39,
+  "body_triangles": 1028,
+  "triangles": 1067,
+  "operation": "Audited cut followed by removal of only the lower connected display component; lower disconnected weapon parts retained. Cut loops sealed by ear triangulation. Original UVs interpolated only at cuts, embedded textures retained, recentered without rotation. Pending final Godot review."
+}

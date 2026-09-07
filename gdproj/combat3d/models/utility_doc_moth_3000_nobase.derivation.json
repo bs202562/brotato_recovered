@@ -1,0 +1,14 @@
+{
+  "source": "gdproj\\combat3d\\models\\utility_doc_moth_3000.glb",
+  "derived": "gdproj\\combat3d\\models\\utility_doc_moth_3000_nobase.glb",
+  "source_sha256": "ca736a89ac33183bfd8a6951bb535d9508ad1ef7a14f1f35c69d6008780329e4",
+  "derived_sha256": "6accf56e44abe8e1f51c5b666d789f4aeea86e0735d180561876e7ef43cf4ea1",
+  "kept_components": [
+    1
+  ],
+  "kept_triangles": 1015,
+  "removed_triangles": 1774,
+  "original_binary_prefix_unchanged": true,
+  "materials_images_textures_unchanged": true,
+  "operation": "Explicit component selection; compacted only referenced vertex attributes and triangle indices without modifying their values. Original binary retained; no height cutoff."
+}

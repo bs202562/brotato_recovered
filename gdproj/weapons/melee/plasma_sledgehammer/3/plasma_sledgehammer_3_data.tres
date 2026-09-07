@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=9 format=2]
 
 [ext_resource path="res://weapons/melee/plasma_sledgehammer/4/plasma_sledgehammer_4_data.tres" type="Resource" id=1]
-[ext_resource path="res://weapons/melee/plasma_sledgehammer/plasma_sledgehammer_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/weapons/weapon_plasma_sledgehammer_2.png" type="Texture" id=2]
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=3]
 [ext_resource path="res://weapons/melee/plasma_sledgehammer/3/plasma_sledgehammer_3_stats.tres" type="Resource" id=4]
 [ext_resource path="res://weapons/melee/plasma_sledgehammer/plasma_sledgehammer.tscn" type="PackedScene" id=5]

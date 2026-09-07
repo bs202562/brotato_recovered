@@ -4,8 +4,8 @@
 [ext_resource path="res://resources/themes/verysmall_option_button_theme.tres" type="Theme" id=2]
 [ext_resource path="res://ui/menus/shop/inventory.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/menus/pages/sort_inventory_button.gd" type="Script" id=4]
-[ext_resource path="res://resources/themes/separator/separator_horizontal_white_small.png" type="Texture" id=5]
-[ext_resource path="res://ui/menus/global/inverse_order_icon.png" type="Texture" id=6]
+[ext_resource path="res://combat3d/art/ui/resources_themes_separator_separator_horizontal_white_small.svg" type="Texture" id=5]
+[ext_resource path="res://combat3d/art/ui/ui_archive_inverse_order_icon.svg" type="Texture" id=6]
 [ext_resource path="res://ui/menus/global/my_menu_button.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxTexture" id=55]

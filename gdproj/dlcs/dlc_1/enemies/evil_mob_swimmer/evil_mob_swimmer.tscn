@@ -7,7 +7,7 @@
 [ext_resource path="res://entities/units/enemies/evil_mob/evil_mob.gd" type="Script" id=5]
 [ext_resource path="res://dlcs/dlc_1/enemies/evil_mob_swimmer/evil_mob_swimmer_1.png" type="Texture" id=6]
 [ext_resource path="res://dlcs/dlc_1/enemies/evil_mob_swimmer/evil_mob_swimmer_2.png" type="Texture" id=7]
-[ext_resource path="res://dlcs/dlc_1/enemies/evil_mob_swimmer/evil_mob_swimmer_0.png" type="Texture" id=8]
+[ext_resource path="res://combat3d/art/enemies/evil_mob.png" type="Texture" id=8]
 [ext_resource path="res://ui/hud/ui_progress_bar.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CircleShape2D" id=2]

@@ -1,0 +1,14 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_chopper_1500.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_chopper_1500_nobase.glb",
+  "source_sha256": "f66dd9134f43faf5debd0f313a98a67e52f81fa5d3ba536a3b674b5ed4bee83d",
+  "derived_sha256": "250792406d06c1fcbc595566251b88c3156bf882d791d558890084a768cba3b4",
+  "kept_components": [
+    0
+  ],
+  "kept_triangles": 847,
+  "removed_triangles": 570,
+  "original_binary_prefix_unchanged": true,
+  "materials_images_textures_unchanged": true,
+  "operation": "Explicit component selection; compacted only referenced vertex attributes and triangle indices without modifying their values. Original binary retained; no height cutoff."
+}

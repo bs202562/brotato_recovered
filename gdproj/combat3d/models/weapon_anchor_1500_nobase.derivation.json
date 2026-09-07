@@ -1,0 +1,12 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_anchor_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_anchor_1500_nobase.glb",
+  "source_sha256": "d43c04a47d242a5e5974aaa2bda1f9192e846e94b619a59dbe87fcfe2a22c724",
+  "derived_sha256": "bd47ea521fb6ca9cb9e210d7acbcd5121d7944891a37216255c4966559febad0",
+  "clip_local_y": 0.15,
+  "boundary_loops": 1,
+  "cap_triangles": 33,
+  "body_triangles": 479,
+  "triangles": 512,
+  "operation": "Audited anchor-only floor cut above display base; original anchor UVs interpolated at cut, closed crown underside, ring rotated left, recentered. Original source and embedded textures retained. Pending final Godot review."
+}

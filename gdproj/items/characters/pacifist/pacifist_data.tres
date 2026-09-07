@@ -8,7 +8,7 @@
 [ext_resource path="res://items/characters/pacifist/pacifist_effect_2.tres" type="Resource" id=6]
 [ext_resource path="res://items/characters/pacifist/pacifist_eyes_appearance.tres" type="Resource" id=7]
 [ext_resource path="res://weapons/melee/hand/1/hand_data.tres" type="Resource" id=8]
-[ext_resource path="res://items/characters/pacifist/pacifist_icon.png" type="Texture" id=9]
+[ext_resource path="res://combat3d/art/characters/character_pacifist.png" type="Texture" id=9]
 [ext_resource path="res://items/characters/pacifist/pacifist_effect_5.tres" type="Resource" id=11]
 [ext_resource path="res://items/characters/pacifist/pacifist_effect_4.tres" type="Resource" id=12]
 

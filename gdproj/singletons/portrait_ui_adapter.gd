@@ -22,7 +22,7 @@ func _apply_portrait_layout(scene: Node) -> void:
 		"TitleScreen":
 			_adapt_title_screen(scene)
 		"CharacterSelection":
-			_adapt_legacy_selection(scene, 0.46)
+			_adapt_character_selection(scene)
 		"WeaponSelection":
 			_adapt_single_player_selection(scene)
 		"DifficultySelection":
@@ -115,14 +115,43 @@ func _adapt_single_player_selection(scene: Node) -> void:
 		if panel:
 			panel.hide()
 
+func _adapt_character_selection(scene: Node) -> void:
+	_adapt_legacy_selection(scene,0.88)
+	var inventory = scene.find_node("Inventory1",true,false)
+	if inventory:
+		inventory.columns = 8
+		inventory.element_size = Vector2(110,110)
+		for element in inventory.get_children():
+			if element is Control: element.rect_min_size = Vector2(110,110)
+	var content = scene.get_node_or_null("MarginContainer/VBoxContainer")
+	if content:
+		content.alignment = BoxContainer.ALIGN_BEGIN
+		content.rect_min_size = Vector2(1120,0)
+	var scroll = scene.find_node("Inventories",true,false)
+	if scroll:
+		scroll.rect_min_size = Vector2(1000,1000)
+
 
 func _adapt_shop(scene: Node) -> void:
 	var content = scene.get_node_or_null("Content")
 	if content:
-		_fit_legacy_panel(content, 0.46, Vector2(8, 260))
+		_fit_legacy_panel(content, 0.72, Vector2(12, 150))
+		content.rect_size = Vector2(1340,2100)
+		var margin = content.get_node_or_null("MarginContainer")
+		if margin: _full_rect(margin)
 	var side_stats = scene.get_node_or_null("Content/MarginContainer/HBoxContainer/VBoxContainer2")
 	if side_stats:
 		side_stats.rect_min_size.x = 384.0
+	var offers = scene.find_node("ShopItemsContainer",true,false)
+	if offers:
+		for child in offers.get_children():
+			if child is Control and str(child.name).begins_with("EmptySpace"): child.hide()
+	var gear = scene.find_node("GearContainer",true,false)
+	if gear:
+		var spacer = gear.get_node_or_null("EmptySpace")
+		if spacer: spacer.hide()
+		var items = gear.get_node_or_null("ItemsContainer")
+		if items: items.reserve_column_count = 4
 
 
 func _adapt_combat_hud(scene: Node) -> void:

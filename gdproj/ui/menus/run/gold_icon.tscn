@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://items/materials/material_ui.png" type="Texture" id=1]
+[ext_resource path="res://combat3d/art/props/material.png" type="Texture" id=1]
 [ext_resource path="res://ui/menus/run/gold_icon.gd" type="Script" id=2]
 
 [node name="GoldIcon" type="TextureRect"]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://entities/units/unit/stats.gd" type="Script" id=1]
-[ext_resource path="res://entities/units/enemies/looter/looter_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/enemies/looter.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
@@ -19,6 +19,7 @@ gold_spread = 75
 can_drop_consumables = true
 always_drop_consumables = true
 base_drop_chance = 1.0
+legendary_drop_chance = 0.01
 item_drop_chance = 1.0
 min_consumable_tier = 0
 max_consumable_tier = 0

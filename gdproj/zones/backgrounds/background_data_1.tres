@@ -2,7 +2,7 @@
 
 [ext_resource path="res://zones/backgrounds/background_data.gd" type="Script" id=1]
 [ext_resource path="res://resources/tiles/tiles_1.png" type="Texture" id=2]
-[ext_resource path="res://resources/tiles/icon_1.png" type="Texture" id=3]
+[ext_resource path="res://combat3d/art/ui/ui_environment_dirt.svg" type="Texture" id=3]
 
 [resource]
 script = ExtResource( 1 )

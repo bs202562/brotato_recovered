@@ -1,0 +1,15 @@
+{
+  "source": "gdproj\\combat3d\\models\\enemy_horned_spitter_3000_walk.glb",
+  "derived": "gdproj\\combat3d\\models\\enemy_horned_spitter_3000_walk_clean.glb",
+  "source_sha256": "da9e83d34006b863b834ba0e06656454c52ccaa8eceee35b47573a1a27efb120",
+  "derived_sha256": "c038aa4189e4f0b59dd70fc468e9843106269004d60f8996401d3a6ae45b0b21",
+  "kept_components": [
+    0
+  ],
+  "kept_triangles": 2904,
+  "removed_triangles": 24,
+  "original_binary_prefix_unchanged": true,
+  "materials_images_textures_unchanged": true,
+  "operation": "Explicit component selection; compacted only referenced vertex attributes and triangle indices without modifying their values. Original binary retained; no height cutoff.",
+  "rig_and_animation_definitions_unchanged": true
+}

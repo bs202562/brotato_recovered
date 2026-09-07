@@ -3,7 +3,7 @@
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
 [ext_resource path="res://items/all/greek_fire/appearances/greek_fire_app_0.tres" type="Resource" id=2]
 [ext_resource path="res://items/all/greek_fire/effects/greek_fire_effect_0.tres" type="Resource" id=3]
-[ext_resource path="res://items/all/greek_fire/greek_fire_icon.png" type="Texture" id=4]
+[ext_resource path="res://combat3d/art/items/item_greek_fire.tres" type="Texture" id=4]
 [ext_resource path="res://items/all/greek_fire/effects/greek_fire_effect_1.tres" type="Resource" id=5]
 
 [resource]

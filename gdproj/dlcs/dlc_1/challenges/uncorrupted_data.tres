@@ -2,7 +2,7 @@
 
 [ext_resource path="res://dlcs/dlc_1/characters/romantic/romantic_data.tres" type="Resource" id=1]
 [ext_resource path="res://challenges/global/challenge_data.gd" type="Script" id=2]
-[ext_resource path="res://dlcs/dlc_1/items/mirror/mirror_icon.png" type="Texture" id=3]
+[ext_resource path="res://combat3d/art/items/item_mirror.tres" type="Texture" id=3]
 
 [resource]
 script = ExtResource( 2 )

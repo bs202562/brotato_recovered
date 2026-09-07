@@ -1,0 +1,59 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_blunderbuss_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_blunderbuss_1500_local_repaired_v2.glb",
+  "source_sha256": "fea901b10e4ea982063a20ad6287b5269d0f7b16228ea138410ee11f66137b14",
+  "derived_sha256": "1a1b74f2656ea1e49a6e9f5c65ee363e1f357fb889c7ecd96ad49ce799a34c46",
+  "cut_profile_xy": [
+    [
+      -2,
+      0.135
+    ],
+    [
+      -0.12,
+      0.135
+    ],
+    [
+      0.1,
+      0.235
+    ],
+    [
+      0.22,
+      0.235
+    ],
+    [
+      2,
+      0.135
+    ]
+  ],
+  "component_coordinate_scope": "world x,z and flattened y=world_y-profile(world_x)",
+  "pommel_reconstruction": null,
+  "removed_lower_component": {
+    "component": 0,
+    "triangles": 816,
+    "min": [
+      -0.3097229301929474,
+      -0.235,
+      -0.16119390726089478
+    ],
+    "max": [
+      0.2126007229089737,
+      2.168404344971009e-19,
+      0.1595306396484375
+    ]
+  },
+  "preserved_lower_components": [],
+  "boundary_loops": 2,
+  "cap_triangles": 20,
+  "body_triangles": 1118,
+  "triangles": 1138,
+  "operation": "Piecewise-linear local cut profile avoids required lower blade / trigger loop. Original faces split at profile corners before clipping; only display-connected lower component removed. Contact loops sealed; original UVs interpolated only at cuts, cap face normals recalculated after restoring coordinates. No engine validation.",
+  "bytes": 817032,
+  "embedded_image_sha256": [
+    "480c51923b095899feb3f694f5911829549d1812e9521c61ed82345f3ae10ae3",
+    "7dd9047075af9f0627e12c3e96ada06fd8223ee4c1fc3c195da5c22eaad1c08f",
+    "eca4038c89b06223a25ca44e4cdcc3e455b5083f755e1c09b8019900c0303216"
+  ],
+  "original_textures_unchanged": true,
+  "status": "offline_repair_candidate_pending_final_validation",
+  "offline_preview": "docs/agent-blunderbuss-final.png"
+}

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
-[ext_resource path="res://items/all/lost_duck/lost_duck_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/items/item_lost_duck.tres" type="Texture" id=2]
 [ext_resource path="res://items/all/lost_duck/lost_duck_appearance.tres" type="Resource" id=3]
 [ext_resource path="res://items/all/lost_duck/lost_duck_effect_2.tres" type="Resource" id=4]
 [ext_resource path="res://items/all/lost_duck/lost_duck_effect_1.tres" type="Resource" id=5]

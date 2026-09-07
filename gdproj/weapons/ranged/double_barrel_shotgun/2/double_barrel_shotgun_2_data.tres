@@ -3,7 +3,7 @@
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=1]
 [ext_resource path="res://weapons/ranged/double_barrel_shotgun/double_barrel_shotgun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://weapons/ranged/double_barrel_shotgun/3/double_barrel_shotgun_3_data.tres" type="Resource" id=3]
-[ext_resource path="res://weapons/ranged/double_barrel_shotgun/double_barrel_shotgun_icon.png" type="Texture" id=4]
+[ext_resource path="res://combat3d/art/weapons/weapon_double_barrel_shotgun_1.png" type="Texture" id=4]
 [ext_resource path="res://weapons/ranged/double_barrel_shotgun/2/double_barrel_shotgun_2_stats.tres" type="Resource" id=5]
 [ext_resource path="res://items/sets/gun/gun_set_data.tres" type="Resource" id=6]
 

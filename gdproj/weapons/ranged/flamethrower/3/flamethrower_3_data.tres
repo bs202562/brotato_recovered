@@ -5,7 +5,7 @@
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=3]
 [ext_resource path="res://weapons/ranged/flamethrower/3/flamethrower_3_stats.tres" type="Resource" id=4]
 [ext_resource path="res://weapons/ranged/flamethrower/3/flamethrower_3_effect_1.tres" type="Resource" id=5]
-[ext_resource path="res://weapons/ranged/flamethrower/flamethrower_icon.png" type="Texture" id=6]
+[ext_resource path="res://combat3d/art/weapons/weapon_flamethrower_2.png" type="Texture" id=6]
 [ext_resource path="res://items/sets/fire/fire_set_data.tres" type="Resource" id=7]
 [ext_resource path="res://items/sets/heavy/heavy_set_data.tres" type="Resource" id=8]
 

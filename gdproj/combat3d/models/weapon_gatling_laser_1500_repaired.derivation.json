@@ -1,0 +1,42 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_gatling_laser_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_gatling_laser_1500_repaired.glb",
+  "source_sha256": "0b25024a61cc076d656e4bfcdd7091219207a20bbd78c00d0a92a68baad6f139",
+  "derived_sha256": "d6284f8f973394d5af3f7effb5ccbdede0f39ba410c564da5837a30ab3a5b338",
+  "clip_world_y": 0.19,
+  "removed_lower_component": {
+    "component": 0,
+    "triangles": 199,
+    "min": [
+      -0.1939087212085724,
+      0.0,
+      -0.1962127983570099
+    ],
+    "max": [
+      0.1954040825366974,
+      0.19,
+      0.1885681450366974
+    ]
+  },
+  "preserved_lower_components": [
+    {
+      "component": 1,
+      "triangles": 42,
+      "min": [
+        -0.0716081335747468,
+        0.110076904296875,
+        -0.438344332216977
+      ],
+      "max": [
+        0.0749751476916689,
+        0.19,
+        -0.28689363438238036
+      ]
+    }
+  ],
+  "boundary_loops": 1,
+  "cap_triangles": 21,
+  "body_triangles": 1294,
+  "triangles": 1315,
+  "operation": "Audited cut followed by removal of only the lower connected display component; lower disconnected weapon parts retained. Cut loops sealed by ear triangulation. Original UVs interpolated only at cuts, embedded textures retained, recentered without rotation. Pending final Godot review."
+}

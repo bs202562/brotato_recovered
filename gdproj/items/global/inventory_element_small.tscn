@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://items/all/acid/acid_icon.png" type="Texture" id=1]
+[ext_resource path="res://combat3d/art/items/item_acid.tres" type="Texture" id=1]
 [ext_resource path="res://items/global/inventory_element.gd" type="Script" id=2]
 [ext_resource path="res://resources/fonts/actual/base/font_26_outline.tres" type="DynamicFont" id=3]
 [ext_resource path="res://ui/sounds/inventory_element_focus.wav" type="AudioStream" id=4]

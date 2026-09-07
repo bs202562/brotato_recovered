@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=9 format=2]
 
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=1]
-[ext_resource path="res://dlcs/dlc_1/weapons/melee/mace/mace_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/weapons/weapon_mace_1.png" type="Texture" id=2]
 [ext_resource path="res://dlcs/dlc_1/weapons/melee/mace/3/mace_3_data.tres" type="Resource" id=3]
 [ext_resource path="res://dlcs/dlc_1/weapons/melee/mace/2/mace_2_stats.tres" type="Resource" id=4]
 [ext_resource path="res://dlcs/dlc_1/weapons/melee/mace/mace.tscn" type="PackedScene" id=5]

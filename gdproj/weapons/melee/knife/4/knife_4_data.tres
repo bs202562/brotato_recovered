@@ -2,7 +2,7 @@
 
 [ext_resource path="res://items/global/weapon_data.gd" type="Script" id=1]
 [ext_resource path="res://weapons/melee/knife/knife.tscn" type="PackedScene" id=2]
-[ext_resource path="res://weapons/melee/knife/knife_icon.png" type="Texture" id=3]
+[ext_resource path="res://combat3d/art/weapons/weapon_knife_3.png" type="Texture" id=3]
 [ext_resource path="res://weapons/melee/knife/4/knife_4_stats.tres" type="Resource" id=4]
 [ext_resource path="res://items/sets/precise/precise_set_data.tres" type="Resource" id=5]
 

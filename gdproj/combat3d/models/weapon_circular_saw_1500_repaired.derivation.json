@@ -1,0 +1,65 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_circular_saw_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_circular_saw_1500_repaired.glb",
+  "source_sha256": "2ce116aefe1be449ec1f95faac2fb9777fa936481d4b43982d70bfa7ffd8b6a2",
+  "derived_sha256": "60755863b04a397091c68979d04c9a52b6f942e60c5c7dafbd041dc325a1bd94",
+  "clip_world_y": 0.12,
+  "removed_lower_component": {
+    "component": 0,
+    "triangles": 106,
+    "min": [
+      -0.2270660698413849,
+      0.0,
+      0.023839974775910378
+    ],
+    "max": [
+      0.1898803412914276,
+      0.12,
+      0.42630013823509216
+    ]
+  },
+  "preserved_lower_components": [
+    {
+      "component": 1,
+      "triangles": 47,
+      "min": [
+        -0.11956545660586168,
+        0.0682373046875,
+        0.29608607009837506
+      ],
+      "max": [
+        0.09603470375862988,
+        0.12,
+        0.41044928440218187
+      ]
+    },
+    {
+      "component": 2,
+      "triangles": 3,
+      "min": [
+        0.050869395360910806,
+        0.098602294921875,
+        0.3641905871941493
+      ],
+      "max": [
+        0.09104129827994567,
+        0.12,
+        0.36912440419197085
+      ]
+    }
+  ],
+  "boundary_loops": 1,
+  "cap_triangles": 8,
+  "body_triangles": 1356,
+  "triangles": 1364,
+  "operation": "Audited cut followed by removal of only the lower connected display component; lower disconnected weapon parts retained. Cut loops sealed by ear triangulation. Original UVs interpolated only at cuts, embedded textures retained, recentered without rotation. Pending final Godot review.",
+  "embedded_image_sha256": [
+    "a7672be329187668b2b1d7403cbcbfa674cdab459c98f2f2b3c7da9e10bc28f8",
+    "5c60246ac19d92ecd8580a20860d6dbf24c76519d86647329c6dba9947cddc2b",
+    "33f5bc7c27be10f330b1e7cdd12d4c81c9dd52d9d9e57e5ddce62c4db5337347"
+  ],
+  "original_textures_unchanged": true,
+  "bytes": 741948,
+  "offline_preview": "docs/agent-circular_saw-repaired.png",
+  "status": "offline_repair_candidate_pending_final_validation"
+}

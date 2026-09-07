@@ -1,17 +1,16 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://entities/units/pet/ItemPet.gd" type="Script" id=1]
-[ext_resource path="res://entities/units/pet/bonk_dog/bonk_dog_icon.png" type="Texture" id=2]
 [ext_resource path="res://entities/units/pet/bonk_dog/bonk_dog_stats.tres" type="Resource" id=3]
 [ext_resource path="res://items/all/bonk_dog/bonk_dog.tres" type="Resource" id=4]
-[ext_resource path="res://entities/units/pet/bonk_dog/bonk_dog_screen.png" type="Texture" id=5]
+[ext_resource path="res://combat3d/art/props/bonk_dog.png" type="Texture" id=5]
 
 [resource]
 script = ExtResource( 1 )
 my_id = "bonk_dog"
 unlocked_by_default = false
 can_be_looted = true
-icon = ExtResource( 2 )
+icon = ExtResource( 5 )
 name = "BONK_DOG_NAME"
 tier = 0
 value = 1

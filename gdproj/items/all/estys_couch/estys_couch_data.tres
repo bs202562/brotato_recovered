@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://items/all/estys_couch/estys_couch_appearance.tres" type="Resource" id=1]
-[ext_resource path="res://items/all/estys_couch/estys_couch_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/items/item_estys_couch.tres" type="Texture" id=2]
 [ext_resource path="res://items/all/estys_couch/estys_couch_effect_2.tres" type="Resource" id=3]
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=4]
 [ext_resource path="res://items/all/estys_couch/estys_couch_effect_1.tres" type="Resource" id=5]

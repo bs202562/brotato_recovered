@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
-[ext_resource path="res://items/all/bait/bait_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/items/item_bait.tres" type="Texture" id=2]
 [ext_resource path="res://items/all/bait/bait_effect_1.tres" type="Resource" id=3]
 [ext_resource path="res://items/all/bait/bait_effect_2.tres" type="Resource" id=4]
 [ext_resource path="res://items/all/bait/bait_appearance_0.tres" type="Resource" id=5]

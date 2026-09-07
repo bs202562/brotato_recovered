@@ -1,0 +1,121 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_chain_gun_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_chain_gun_1500_repaired.glb",
+  "source_sha256": "3458c3c94fdef63583edbdd09db47ddf718d483fa5fb7e812b914a70782180b8",
+  "derived_sha256": "9f9571561ff357f872798aa9952f2c5b4663ff1f2e452f573ebdde30dcc22e6b",
+  "clip_world_y": 0.31,
+  "removed_lower_component": {
+    "component": 2,
+    "triangles": 303,
+    "min": [
+      -0.1986084133386612,
+      0.0,
+      -0.24069217592477798
+    ],
+    "max": [
+      0.2750549614429474,
+      0.31,
+      0.2378692850470543
+    ]
+  },
+  "preserved_lower_components": [
+    {
+      "component": 0,
+      "triangles": 28,
+      "min": [
+        -0.4864603405015498,
+        0.2704601287841797,
+        -0.03383845798886387
+      ],
+      "max": [
+        -0.39453000818239714,
+        0.31,
+        0.04124826192855835
+      ]
+    },
+    {
+      "component": 1,
+      "triangles": 51,
+      "min": [
+        -0.2299957573413849,
+        0.17856597900390625,
+        -0.033626582473516464
+      ],
+      "max": [
+        -0.055519117245732934,
+        0.31,
+        0.038360580801963806
+      ]
+    },
+    {
+      "component": 3,
+      "triangles": 8,
+      "min": [
+        -0.10877863069619732,
+        0.2850775718688965,
+        -0.006816877517849207
+      ],
+      "max": [
+        -0.09207790838920214,
+        0.31,
+        0.017108960163901166
+      ]
+    },
+    {
+      "component": 4,
+      "triangles": 12,
+      "min": [
+        -0.02145940763113919,
+        0.2654991149902344,
+        -0.0700401351475884
+      ],
+      "max": [
+        0.013710985891520977,
+        0.31,
+        -0.0451049841940403
+      ]
+    },
+    {
+      "component": 5,
+      "triangles": 15,
+      "min": [
+        -0.020701242895211167,
+        0.2651996612548828,
+        0.05051804333925247
+      ],
+      "max": [
+        0.0145070418805675,
+        0.31,
+        0.0862274244427681
+      ]
+    },
+    {
+      "component": 6,
+      "triangles": 91,
+      "min": [
+        0.14312812884357765,
+        0.1658935546875,
+        -0.07390592992305756
+      ],
+      "max": [
+        0.2692566215991974,
+        0.31,
+        0.08078769594430923
+      ]
+    }
+  ],
+  "boundary_loops": 1,
+  "cap_triangles": 15,
+  "body_triangles": 1252,
+  "triangles": 1267,
+  "operation": "Audited cut followed by removal of only the lower connected display component; lower disconnected weapon parts retained. Cut loops sealed by ear triangulation. Original UVs interpolated only at cuts, embedded textures retained, recentered without rotation. Pending final Godot review.",
+  "embedded_image_sha256": [
+    "eb1220be27703addb8dbdcdfcd04828c00296ec95cbd26fc096ddf7b4a4c1900",
+    "1912de8b246e609f96cfefa77647236cbb84ad56625e214d2d118e68ab185d6b",
+    "e72b726baf2f48b9fd3742534b08f64adbb67ecd82e38c0b46356d0b3e533f1e"
+  ],
+  "original_textures_unchanged": true,
+  "bytes": 1058508,
+  "offline_preview": "docs/agent-chain_gun-repaired.png",
+  "status": "offline_repair_candidate_pending_final_validation"
+}

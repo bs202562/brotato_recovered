@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://entities/units/enemies/infected_slasher_egg/infected_slasher_egg_icon.png" type="Texture" id=1]
+[ext_resource path="res://combat3d/art/enemies/infected_slasher_egg.png" type="Texture" id=1]
 [ext_resource path="res://entities/units/unit/stats.gd" type="Script" id=2]
 
 [resource]

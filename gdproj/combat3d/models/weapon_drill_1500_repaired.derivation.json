@@ -1,0 +1,65 @@
+{
+  "source": "gdproj\\combat3d\\models\\weapon_drill_tertiary_1500_raw.glb",
+  "derived": "gdproj\\combat3d\\models\\weapon_drill_1500_repaired.glb",
+  "source_sha256": "b7402dfc9832c26c24abb8dad33c9088918a8ece2f30f113000e68588f7d11bd",
+  "derived_sha256": "f6aab8930075d2a06704af7a005d7f40fbc161f6ab00f937028f3ce7a48a0e51",
+  "clip_world_y": 0.3,
+  "removed_lower_component": {
+    "component": 2,
+    "triangles": 367,
+    "min": [
+      -0.2734375298023224,
+      0.0,
+      -0.1865997314453125
+    ],
+    "max": [
+      0.10436251014471054,
+      0.3,
+      0.1873321831226349
+    ]
+  },
+  "preserved_lower_components": [
+    {
+      "component": 0,
+      "triangles": 152,
+      "min": [
+        -0.4923096299171448,
+        0.043060302734375,
+        -0.05981452018022537
+      ],
+      "max": [
+        -0.31455692635129834,
+        0.3,
+        0.058681439608335495
+      ]
+    },
+    {
+      "component": 1,
+      "triangles": 12,
+      "min": [
+        -0.28589490280775015,
+        0.2950153350830078,
+        -0.019859086159874993
+      ],
+      "max": [
+        -0.2725964230390586,
+        0.3,
+        0.02178955694129612
+      ]
+    }
+  ],
+  "boundary_loops": 1,
+  "cap_triangles": 17,
+  "body_triangles": 1058,
+  "triangles": 1075,
+  "operation": "Audited cut followed by removal of only the lower connected display component; lower disconnected weapon parts retained. Cut loops sealed by ear triangulation. Original UVs interpolated only at cuts, embedded textures retained, recentered without rotation. Pending final Godot review.",
+  "embedded_image_sha256": [
+    "b44bbbf53b56aee9055682ab95bfd432c0d44ce4541736bf8bb0f138cf6c07e7",
+    "c9a5fb3eae12e1ae41656f3848705c615cda7b4e109fee017391d9e9dfebcb2d",
+    "f4196855a5dfd60965def6ab4d4e75bfdd380a7096a827c954d93c9d98e03e6b"
+  ],
+  "original_textures_unchanged": true,
+  "bytes": 863848,
+  "offline_preview": "docs/agent-drill-repaired.png",
+  "status": "offline_repair_candidate_pending_final_validation"
+}

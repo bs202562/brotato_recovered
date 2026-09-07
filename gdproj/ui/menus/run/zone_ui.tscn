@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/menus/global/my_menu_button.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/enemies/colossus.png" type="Texture" id=2]
 [ext_resource path="res://resources/themes/panel_button_theme.tres" type="Theme" id=3]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=4]
 [ext_resource path="res://ui/menus/run/zone_ui.gd" type="Script" id=5]
 [ext_resource path="res://resources/fonts/actual/base/font_40_outline.tres" type="DynamicFont" id=6]
-[ext_resource path="res://particles/sprites/particle_26.png" type="Texture" id=7]
-[ext_resource path="res://particles/sprites/particle_2.png" type="Texture" id=8]
-[ext_resource path="res://particles/sprites/particle_9.png" type="Texture" id=10]
+[ext_resource path="res://combat3d/art/ui/ui_status_zone_unselected.svg" type="Texture" id=7]
+[ext_resource path="res://combat3d/art/ui/ui_status_zone_initial.svg" type="Texture" id=8]
+[ext_resource path="res://combat3d/art/ui/ui_status_wave_point.svg" type="Texture" id=10]
 
 [node name="ZoneUI" type="PanelContainer"]
 margin_left = 563.0

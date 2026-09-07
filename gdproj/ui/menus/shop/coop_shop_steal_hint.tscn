@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/fonts/actual/base/font_22.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/menus/shop/coop_shop_hint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/menus/shop/coop_shop_steal_hint.gd" type="Script" id=4]
-[ext_resource path="res://ui/icons/misc/elite_icon_small.png" type="Texture" id=5]
+[ext_resource path="res://combat3d/art/ui/ui_input_coop_elite.svg" type="Texture" id=5]
 
 [node name="CoopShopStealHint" instance=ExtResource( 3 )]
 script = ExtResource( 4 )

@@ -1,0 +1,21 @@
+# New 3D importer caches. The recovered project's existing tracked caches stay as-is.
+/gdproj/.import/
+/gdproj/.import/*survivor_security*
+/gdproj/.import/*survivor_field_medic*
+/gdproj/.import/*zombie_shopper*
+/gdproj/.import/smoke_capture.png-*
+/gdproj/.import/*zombie_riot_captain*
+/gdproj/.import/*zombie_foodcourt_chef*
+/gdproj/.import/*zombie_toxic_janitor*
+
+# Temporary validation output.
+/docs/**/*.log
+/docs/**/*.err
+/docs/**/*.pid
+/docs/**/*.png
+/docs/**/*.jpg
+/docs/**/*.jpeg
+/docs/**/*.webp
+**/~RF*.TMP
+**/__pycache__/
+*.pyc

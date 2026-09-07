@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=14 format=2]
 
-[ext_resource path="res://items/characters/artificer/artificer_icon.png" type="Texture" id=1]
+[ext_resource path="res://combat3d/art/characters/character_artificer.png" type="Texture" id=1]
 [ext_resource path="res://items/characters/character_data.gd" type="Script" id=2]
 [ext_resource path="res://weapons/melee/screwdriver/1/screwdriver_data.tres" type="Resource" id=3]
 [ext_resource path="res://weapons/ranged/shredder/1/shredder_data.tres" type="Resource" id=4]

@@ -3,8 +3,8 @@
 [ext_resource path="res://ui/menus/ingame/item_panel_ui.gd" type="Script" id=1]
 [ext_resource path="res://ui/menus/shop/item_description.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=3]
-[ext_resource path="res://ui/menus/global/big_checkmark.png" type="Texture" id=4]
-[ext_resource path="res://items/global/random_icon.png" type="Texture" id=5]
+[ext_resource path="res://combat3d/art/ui/ui_menus_global_big_checkmark.svg" type="Texture" id=4]
+[ext_resource path="res://combat3d/art/ui/ui_state_random_icon.svg" type="Texture" id=5]
 [ext_resource path="res://ui/hud/frames_character/frame_character_1.tres" type="StyleBox" id=6]
 
 [sub_resource type="Animation" id=1]

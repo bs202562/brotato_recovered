@@ -172,7 +172,7 @@ func _get_icon(stat_id : int) -> String:
 		var w = 20 * ProgressData.settings.font_size
 		var small_icon : Resource = ItemService.get_stat_small_icon(stat_id)
 		if stat_id == Keys.harvesting_icon_hash :
-			small_icon = load("res://items/materials/harvesting_icon.png")
+			small_icon = load("res://combat3d/art/props/material.png")
 		if small_icon == null :
 			l_icon = "[img=%sx%s]%s[/img]" % [w, w, "res://items/stats/empty.png"]
 		else :

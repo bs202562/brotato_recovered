@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://items/all/recycling_machine/recycling_machine_appearance.tres" type="Resource" id=1]
-[ext_resource path="res://items/all/recycling_machine/recycling_machine_icon.png" type="Texture" id=2]
+[ext_resource path="res://combat3d/art/items/item_recycling_machine.tres" type="Texture" id=2]
 [ext_resource path="res://items/global/item_data.gd" type="Script" id=3]
 [ext_resource path="res://items/all/recycling_machine/recycling_machine_effect_1.tres" type="Resource" id=4]
 
