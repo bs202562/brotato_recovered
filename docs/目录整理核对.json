@@ -1,0 +1,12 @@
+{
+  "moved_top_level_entries": 43,
+  "sha256_verified_files": 13541,
+  "all_moved_file_contents_unchanged": true,
+  "project_config_resource_references_checked": 491,
+  "missing_project_config_resource_references": [],
+  "broken_document_links": [],
+  "game_entry": "gdproj/project.godot",
+  "documentation_generator": "Regenerated successfully with unchanged catalogue counts",
+  "runtime_validation": "Game not launched",
+  "git_index": "Existing staged state retained; no add/reset/commit performed"
+}

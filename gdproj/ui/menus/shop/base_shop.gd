@@ -103,12 +103,12 @@ func _ready() -> void :
 
 	var need_to_set_locked = false
 	if RunData.resumed_from_state_in_shop:
-		_shop_items = ProgressData.saved_run_state.shop_items
-		_reroll_count = ProgressData.saved_run_state.reroll_count
-		_paid_reroll_count = ProgressData.saved_run_state.paid_reroll_count
-		_initial_free_rerolls = ProgressData.saved_run_state.initial_free_rerolls
-		_free_rerolls = ProgressData.saved_run_state.free_rerolls
-		_item_steals = ProgressData.saved_run_state.item_steals
+		_shop_items = _restore_shop_array("shop_items", _shop_items)
+		_reroll_count = _restore_shop_array("reroll_count", _reroll_count)
+		_paid_reroll_count = _restore_shop_array("paid_reroll_count", _paid_reroll_count)
+		_initial_free_rerolls = _restore_shop_array("initial_free_rerolls", _initial_free_rerolls)
+		_free_rerolls = _restore_shop_array("free_rerolls", _free_rerolls)
+		_item_steals = _restore_shop_array("item_steals", _item_steals)
 
 		RunData.resumed_from_state_in_shop = false
 		need_to_set_locked = true
@@ -199,6 +199,23 @@ func _ready() -> void :
 	_background.texture = ZoneService.get_zone_data(RunData.current_zone).ui_background
 
 	ProgressData.save_run_state(_shop_items, _reroll_count, _paid_reroll_count, _initial_free_rerolls, _free_rerolls, _item_steals)
+
+func _restore_shop_array(key: String, defaults: Array) -> Array:
+	# Run snapshots taken before the shop opens can contain empty/short arrays.
+	# Keep initialized values for missing players, including item-granted rerolls.
+	var restored = defaults.duplicate(true)
+	var saved_values = ProgressData.saved_run_state.get(key, [])
+	if not saved_values is Array:
+		return restored
+	for player_index in min(saved_values.size(), restored.size()):
+		var value = saved_values[player_index]
+		if defaults[player_index] is Array:
+			if value is Array:
+				restored[player_index] = value.duplicate(true)
+		elif typeof(value) == TYPE_INT or typeof(value) == TYPE_REAL:
+			restored[player_index] = int(value)
+	return restored
+
 
 func update_go_next_button_text():
 	var player_count = RunData.get_player_count()
