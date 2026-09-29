@@ -1,5 +1,7 @@
 extends Node
 
+const CHARACTER_WORKBENCH_SCENE = preload("res://tools/character_workbench/character_workbench.tscn")
+
 export (PackedScene) var debug_menu
 
 export (int, 1, 1000) var starting_wave: = 1
@@ -56,6 +58,25 @@ var starting_weapons_removed: = [false, false, false, false]
 
 var current_debug_menu
 
+# [AI-NOTE] 2026-09-28: 调试工作台复用真实 main.tscn 战斗链路，配置保存在
+# DebugService 中以跨场景切换。不要把角色预览另做成假的战斗模拟器。
+var character_workbench_enabled := false
+var character_workbench_character_id := "character_well_rounded"
+var character_workbench_level := 1
+var character_workbench_test_mode := false
+var current_character_workbench = null
+
+
+func _process(_delta: float) -> void:
+	if not character_workbench_enabled:
+		return
+	if not get_tree().current_scene is Main:
+		return
+	if is_instance_valid(current_character_workbench):
+		return
+	current_character_workbench = CHARACTER_WORKBENCH_SCENE.instance()
+	get_tree().current_scene.add_child(current_character_workbench)
+
 
 func reset_for_new_run() -> void :
 	for i in 4:
@@ -77,6 +98,7 @@ func _input(event):
 func reset() -> void :
 	starting_wave = 1
 	starting_gold = 30
+	custom_wave_duration = - 1
 	invulnerable = false
 	invisible = false
 	one_shot_enemies = false
@@ -105,6 +127,9 @@ func reset() -> void :
 	coop_multiple_keyboard_inputs = false
 	debug_enemies = []
 	spawn_specific_elite = ""
+	character_workbench_enabled = false
+	character_workbench_test_mode = false
+	current_character_workbench = null
 
 
 func handle_player_spawn_debug_options(player_index: int) -> void :

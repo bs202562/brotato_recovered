@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://tools/character_workbench/character_workbench.gd" type="Script" id=1]
+
+[node name="CharacterWorkbench" type="CanvasLayer"]
+layer = 90
+script = ExtResource( 1 )
