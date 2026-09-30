@@ -1,11 +1,11 @@
 {
-  "checks": [
-    "all Markdown local links resolve",
-    "effect/set/starting weapon resource links resolve",
-    "well-rounded HP effect equals +5",
-    "SMG base display interval equals 1/6 second",
-    "HTML parsed with 9 matching navigation buttons and sections"
-  ],
-  "browser_preview": "Not performed: browser URL security policy blocks local file URLs. No workaround attempted.",
-  "scope": "Static resource and source analysis only; game not launched."
+  "markdown_links_checked": 3701,
+  "html_source_links_checked": 3699,
+  "embedded_source_files_verified": 2293,
+  "attribute_keys_covered": 25,
+  "chapters": 10,
+  "javascript_syntax": "passed",
+  "broken_links": 0,
+  "browser_interaction": "not tested",
+  "scope": "Static source and document checks; no game runtime test"
 }

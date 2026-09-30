@@ -4,7 +4,7 @@ No third-party dependencies; does not execute recovered game scripts.
 """
 from pathlib import Path
 import ast, csv, html, json, re
-from urllib.parse import quote
+from urllib.parse import quote, unquote
 
 ROOT = Path(__file__).resolve().parents[2] / 'gdproj'
 OUT = Path(__file__).resolve().parent
@@ -60,7 +60,39 @@ def res(p):
 
 def link(p):
     p = str(p).split('#')[0]
-    return '['+p+'](../../gdproj/'+quote(p,safe='/')+')'
+    return '['+p+']('+quote((ROOT/p).as_posix(),safe='/:')+')'
+
+SOURCE_FILES = {}
+
+def absolute_source_links(md):
+    def replace(m):
+        target=unquote(m[2])
+        if target.startswith('../../gdproj/'):
+            target=(ROOT/target[len('../../gdproj/'):]).as_posix()
+        elif target.startswith('../../'):
+            candidate=ROOT/target[len('../../'):]
+            if candidate.exists(): target=candidate.as_posix()
+        elif '/gdproj/' in target and re.match(r'^[A-Za-z]:/',target):
+            target=(ROOT/target.split('/gdproj/',1)[1]).as_posix()
+        return '['+m[1]+']('+quote(target,safe='/:#')+')'
+    return re.sub(r'\[([^\]]+)\]\(([^)]+)\)',replace,md)
+
+def html_link(m):
+    target=unquote(html.unescape(m[2]))
+    line=1
+    match=re.search(r':(\d+)$',target)
+    if match: line=int(match[1]);target=target[:match.start()]
+    p=Path(target)
+    if not p.is_absolute(): p=OUT/p
+    try:
+        rel=p.resolve().relative_to(ROOT.resolve()).as_posix()
+    except ValueError:
+        return '<a href="'+m[2]+'">'+m[1]+'</a>'
+    if not p.is_file(): raise ValueError('Broken source link: '+target)
+    source=p.read_text(encoding='utf-8-sig')
+    if not 1<=line<=len(source.splitlines()): raise ValueError('Invalid source line: '+target)
+    SOURCE_FILES[rel]=source
+    return '<a href="#source-viewer" data-source="'+html.escape(rel,quote=True)+'" data-line="'+str(line)+'">'+m[1]+'</a>'
 
 def named(p):
     d = res(p)
@@ -86,7 +118,7 @@ def describe(d):
     args = [str(v), label(dk)]
     supported = script in ('effect', 'null_effect')
     if script == 'stat_gains_modification_effect':
-        return f"{label(d.get('stat_displayed',''))}的后续获得量{'提高' if v>=0 else '降低'} {abs(v)}%；作用属性："+'、'.join(label(x) for x in d.get('stats_modified',[]))
+        return f"{label(d.get('stat_displayed',''))}的读取倍率修正 {'+' if v>=0 else '-'}{abs(v)}%（gain_*，含已累计值）；作用属性："+'、'.join(label(x) for x in d.get('stats_modified',[]))
     if d.get('custom_key') == 'starting_weapon':
         weapon=next((x for x in DB.values() if x.get('my_id')==key),{})
         return f"起始获得 {v} 把{label(weapon.get('name',dk))}（按该武器资源品质）"
@@ -221,7 +253,7 @@ def inline(s):
     for c in chunks:
         if c.startswith('`') and c.endswith('`'): out.append('<code>'+html.escape(c[1:-1])+'</code>'); continue
         c=html.escape(c)
-        c=re.sub(r'\[([^\]]+)\]\(([^)]+)\)',r'<a href="\2">\1</a>',c)
+        c=re.sub(r'\[([^\]]+)\]\(([^)]+)\)',html_link,c)
         c=re.sub(r'\*\*([^*]+)\*\*',r'<strong>\1</strong>',c)
         out.append(c)
     return ''.join(out)
@@ -257,8 +289,12 @@ def render(md):
 
 def main():
     OUT.mkdir(exist_ok=True)
-    guide=(OUT/'01_技能与数值设计学习指南.md').read_text(encoding='utf-8')
-    docs=[('学习指南',guide)]
+    docs=[]
+    for name,file in [('学习指南','01_技能与数值设计学习指南.md'),('属性计算公式','10_全属性计算公式.md')]:
+        path=OUT/file
+        md=absolute_source_links(path.read_text(encoding='utf-8'))
+        path.write_text(md,encoding='utf-8')
+        docs.append((name,md))
     for i,cat in enumerate(CATS,2):
         md=chapter(cat); (OUT/f'{i:02d}_{cat}数值图鉴.md').write_text(md,encoding='utf-8'); docs.append((cat,md))
     counts={k:len(v) for k,v in GROUPS.items()}
@@ -271,8 +307,15 @@ def main():
 <aside><h2>BROTATO<br>技能与数值设计手册</h2><p class="hint" style="color:#d4d9c9">基于当前工程 · 离线阅读</p>'''+nav+'''<p class="hint" style="color:#d4d9c9">先读学习指南，再按角色与武器追踪构筑。支持浏览器打印当前章节。</p></aside><main><div class="search"><input id="q" placeholder="搜索全部章节：例如 工程学、燃烧、冲锋枪" aria-label="搜索全部章节"><div class="hint" id="status">输入至少 2 个字符检索；也可使用 Ctrl+F 查找当前章节。</div></div><div id="results" hidden></div>'''+sections+'''</main><script>
 const sections=[...document.querySelectorAll('section')];let current='s0';function show(id){document.getElementById('q').value='';document.getElementById('results').hidden=true;sections.forEach(s=>s.hidden=s.id!==id);current=id;document.querySelectorAll('aside button').forEach(b=>b.classList.toggle('active',b.dataset.id===id));window.scrollTo(0,0)}
 const index=[];sections.forEach(s=>{let heading=null;for(const el of s.children){if(/^H[123]$/.test(el.tagName)){heading=el;el.id='h'+index.length;index.push({section:s.id,id:el.id,title:el.textContent,text:el.textContent})}else if(heading){index[index.length-1].text+=' '+el.textContent}}});let timer;document.getElementById('q').addEventListener('input',e=>{clearTimeout(timer);timer=setTimeout(()=>{const q=e.target.value.trim().toLowerCase();if(q.length<2){document.getElementById('results').hidden=true;sections.forEach(s=>s.hidden=s.id!==current);return}sections.forEach(s=>s.hidden=true);const r=document.getElementById('results');r.hidden=false;r.replaceChildren();const found=index.filter(x=>x.text.toLowerCase().includes(q));document.getElementById('status').textContent='找到 '+found.length+' 个章节／条目（最多显示 150 个）';found.slice(0,150).forEach(x=>{const a=document.createElement('a');a.href='#'+x.id;a.textContent=x.title;a.onclick=()=>{show(x.section);document.getElementById(x.id).scrollIntoView();};r.append(a)})},150)});show('s0');</script></html>'''
+    source_ui='''<style>#source-viewer{width:min(1100px,95vw);height:85vh;border:1px solid #b8c6ba;border-radius:10px;padding:18px}#source-viewer::backdrop{background:#14241dcc}#source-viewer header{display:flex;justify-content:space-between;gap:12px}#source-code{height:calc(100% - 65px);overflow:auto;white-space:pre;font:14px/22px Consolas,monospace;margin:12px 0}#source-title{overflow-wrap:anywhere}</style>
+<dialog id="source-viewer"><header><strong id="source-title"></strong><button id="close-source">关闭源码</button></header><pre id="source-code"></pre></dialog>
+<script id="source-data" type="application/json">'''+json.dumps(SOURCE_FILES,ensure_ascii=False).replace('<','\\u003c')+'''</script>
+<script>const sources=JSON.parse(document.getElementById('source-data').textContent);const sourceDialog=document.getElementById('source-viewer');document.getElementById('close-source').onclick=()=>sourceDialog.close();document.addEventListener('click',e=>{const a=e.target.closest('a[data-source]');if(!a)return;e.preventDefault();const key=a.dataset.source;const line=Number(a.dataset.line||1);document.getElementById('source-title').textContent='gdproj/'+key+' · 第 '+line+' 行（生成时源码快照）';const code=document.getElementById('source-code');code.textContent=sources[key].split('\\n').map((text,i)=>String(i+1).padStart(5)+'  '+text).join('\\n');sourceDialog.showModal();code.scrollTop=Math.max(0,(line-4)*22)});</script>'''
+    page=page.replace('</body>','') if '</body>' in page else page
+    page=page.replace('</html>',source_ui+'</html>')
     (OUT/'Brotato_技能与数值设计手册.html').write_text(page,encoding='utf-8')
     readme='# Brotato 技能与数值设计文档\n\n优先打开 [离线阅读手册](Brotato_技能与数值设计手册.html)，有目录、跨章节搜索和打印样式。\n\n'+ '\n'.join(f'- {k}：{v} 条配置记录' for k,v in counts.items())+'\n\n每个章节也提供独立 Markdown。`数据索引.json` 保留扫描资源和参数；`build_reference.py` 可重复生成图鉴与网页。学习指南人工编写，重新生成不会覆盖它。\n\n边界：仅对本地恢复工程做静态分析；目录中的测试、未注册、未解锁资源可能一起纳入，不宣称等同于某个商店发布版本。特殊效果中标为“描述模板”的条目需结合原始参数阅读，未伪造运行时数值。\n'
+    readme+='\n## 属性公式与源码阅读\n\n[全属性计算公式](10_全属性计算公式.md)逐项列出属性聚合、战斗结算、上限、取整及算例。\n\nMarkdown 的源码引用使用当前工程的绝对路径，适配 Codex 文件跳转；HTML 的源码链接直接打开内嵌源码快照，无需跳出页面或请求本地文件。工程路径或代码变化后重新运行生成脚本；人工章节中带 gdproj 标识的 Windows 旧路径也会自动重定位。HTML 内容是生成时快照，不是实时源码编辑器。\n'
     (OUT/'README.md').write_text(readme,encoding='utf-8')
     print(json.dumps(counts,ensure_ascii=False))
     print('Resources:',len(DB),'HTML bytes:',len(page.encode('utf-8')))
