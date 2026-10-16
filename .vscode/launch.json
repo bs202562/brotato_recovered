@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Brotato：启动游戏（Godot 3）",
+            "type": "godot",
+            "request": "launch",
+            "project": "${workspaceFolder}/gdproj",
+            "editor_path": "${config:godotTools.editorPath.godot3}",
+            "scene": "main",
+            "address": "127.0.0.1",
+            "port": 6007,
+            "debug_protocol_v2": false
+        },
+        {
+            "name": "Brotato：调试当前场景（Godot 3）",
+            "type": "godot",
+            "request": "launch",
+            "project": "${workspaceFolder}/gdproj",
+            "editor_path": "${config:godotTools.editorPath.godot3}",
+            "scene": "current",
+            "address": "127.0.0.1",
+            "port": 6007,
+            "debug_protocol_v2": false
+        },
+        {
+            "name": "Brotato：启动游戏并显示碰撞形状",
+            "type": "godot",
+            "request": "launch",
+            "project": "${workspaceFolder}/gdproj",
+            "editor_path": "${config:godotTools.editorPath.godot3}",
+            "scene": "main",
+            "address": "127.0.0.1",
+            "port": 6007,
+            "debug_protocol_v2": false,
+            "debug_collisions": true
+        }
+    ]
+}

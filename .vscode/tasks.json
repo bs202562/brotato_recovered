@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Brotato：打开 Godot 3 编辑器",
+            "type": "process",
+            "command": "${config:godotTools.editorPath.godot3}",
+            "args": [
+                "--editor",
+                "--path",
+                "${workspaceFolder}/gdproj"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/gdproj"
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        }
+    ]
+}

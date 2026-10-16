@@ -46,8 +46,7 @@ func _get_new_position(control: Control, panel: Node) -> Vector2:
 
 	var parent_rect: = _get_parent_rect()
 	
-	var anchor_top: = pos.y >= parent_rect.position.y + parent_rect.size.y / 2
-	
+	var anchor_bottom: = pos.y >= parent_rect.position.y + parent_rect.size.y / 2
 	var anchor_right: = pos.x >= parent_rect.position.x + parent_rect.size.x / 2
 
 	if control.rect_size.x > rect_size.x:
@@ -57,7 +56,7 @@ func _get_new_position(control: Control, panel: Node) -> Vector2:
 	if anchor_right:
 		pos.x = min(pos.x, parent_rect.position.x + parent_rect.size.x) + control.rect_size.x - anchor_node.rect_size.x
 
-	if anchor_top:
+	if anchor_bottom:
 		pos.y = min(pos.y, parent_rect.position.y + parent_rect.size.y) - rect_size.y - DIST
 	else:
 		pos.y = pos.y + control.rect_size.y + DIST

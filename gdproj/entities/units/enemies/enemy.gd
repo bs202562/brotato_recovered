@@ -1,3 +1,7 @@
+# 敌人公共层：Entity → Unit → Enemy → 各种具体敌人。
+# 增加目标选择、攻击行为、敌人数值修正、魅惑和击杀相关效果。
+# 首次生成走 init，对象池复用走 respawn；攻击动作委托给 AttackBehavior。
+# 通用碰撞受伤逻辑在 Unit，本文件补充敌人特有的伤害与状态规则。
 class_name Enemy
 extends Unit
 
@@ -15,8 +19,10 @@ export (bool) var to_be_removed_in_priority = false
 var enemy_id_hash: = Keys.empty_hash;
 
 
+# 普通敌人不属于玩家，用 -1 表示；魅惑归属从效果行为单独读取。
 const player_index = - 1
 
+# 多目标时每 0.25 秒重新选择，避免每帧遍历候选目标。
 const UPDATE_TARGET_DELAY: float = 0.25
 var update_target_timer: float = 0.0
 var current_target = null
@@ -35,6 +41,7 @@ onready var _hitbox = $Hitbox
 var _take_damage_args: = TakeDamageArgs.new(0)
 
 
+# 绑定默认攻击行为、动画完成事件和接触 Hitbox 的攻击来源。
 func _ready() -> void :
 	_current_attack_behavior = _attack_behavior
 	_animation_player.playback_speed = _idle_playback_speed
@@ -45,6 +52,7 @@ func _ready() -> void :
 	var _e = _animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
 
 
+# 首次出生：调用 Unit 初始化，再计算属性、挂载效果、初始化攻击并选目标。
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void :
 	.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
 
@@ -68,6 +76,7 @@ func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [
 	update_target()
 
 
+# 复用敌人：恢复父类状态、重置攻击和属性、重新挂载效果并开启接触伤害。
 func respawn() -> void :
 	.respawn()
 
@@ -85,6 +94,8 @@ func respawn() -> void :
 	update_target()
 
 
+# 定期重选目标、更新攻击冷却并驱动攻击行为。
+# 击退速度占主导时关闭接触 Hitbox，结束后恢复。
 func _physics_process(delta: float) -> void :
 	if dead:
 		return
@@ -96,6 +107,7 @@ func _physics_process(delta: float) -> void :
 			update_target_timer = 0.0
 			update_target()
 
+	# 冷却使用以 60 帧为基准的计数单位，delta 本身仍以秒计。
 	_current_attack_cd = max(_current_attack_cd - 60 * delta, 0)
 	var is_being_knocked_back = get_knockback_value().length_squared() > get_move_input().length_squared()
 
@@ -107,6 +119,7 @@ func _physics_process(delta: float) -> void :
 	_current_attack_behavior.physics_process(delta)
 
 
+# 拉近敌人时临时降低接触伤害，约一秒后恢复，降低后至少保留 1 点。
 func set_hitbox_damage_modifier() -> void :
 	_hitbox_damage_modifier = min(_hitbox.damage - 1, int(current_stats.damage * 0.9)) as int
 	_hitbox.damage = _hitbox.damage - _hitbox_damage_modifier
@@ -114,6 +127,7 @@ func set_hitbox_damage_modifier() -> void :
 	var _e = timer.connect("timeout", self, "reset_hitbox_damage_modifier")
 
 
+# 加回暂时扣除的接触伤害；死亡后不再恢复。
 func reset_hitbox_damage_modifier() -> void :
 
 	if dead:
@@ -124,6 +138,7 @@ func reset_hitbox_damage_modifier() -> void :
 	_hitbox_damage_modifier = 0
 
 
+# 重算接触伤害，同步所有已注册攻击行为与额外弹体的伤害。
 func reset_damage_stat(percent_modifier: int = 0) -> void :
 	.reset_damage_stat(percent_modifier)
 	_hitbox.damage = current_stats.damage
@@ -137,17 +152,20 @@ func reset_damage_stat(percent_modifier: int = 0) -> void :
 			set_additional_projectile_damage(additional_projectile, percent_modifier)
 
 
+# 登记需要同步伤害的攻击行为，并立即初始化伤害。
 func register_attack_behavior(p_attack_behavior: AttackBehavior) -> void :
 	_all_attack_behaviors.push_back(p_attack_behavior)
 	set_attack_behavior_damage(p_attack_behavior)
 
 
+# 射击行为伤害先按波次成长，再应用 EntityService 的全局修正。
 func set_attack_behavior_damage(p_attack_behavior: AttackBehavior, percent_modifier: int = 0) -> void :
 	if p_attack_behavior is ShootingAttackBehavior:
 		var base_damage = p_attack_behavior.damage + p_attack_behavior.damage_increase_each_wave * (RunData.current_wave - 1)
 		p_attack_behavior.projectile_damage = EntityService.get_final_enemy_damage(base_damage, percent_modifier)
 
 
+# 登记需要同步伤害的额外弹体，忽略无效实例。
 func register_additional_projectile(p_additional_projectile: EnemyProjectile) -> void :
 
 	if not p_additional_projectile or not is_instance_valid(p_additional_projectile):
@@ -157,17 +175,21 @@ func register_additional_projectile(p_additional_projectile: EnemyProjectile) ->
 	set_additional_projectile_damage(p_additional_projectile)
 
 
+# 按额外弹体的基础伤害与波次成长重新计算最终伤害。
 func set_additional_projectile_damage(p_additional_projectile: EnemyProjectile, percent_modifier: int = 0) -> void :
 	var base_damage = p_additional_projectile.damage + p_additional_projectile.damage_increase_each_wave * (RunData.current_wave - 1)
 	p_additional_projectile.set_damage(EntityService.get_final_enemy_damage(base_damage, percent_modifier))
 
 
+# 实例化当前启用的敌人效果行为；断言要求旧行为已清理，避免重复添加。
 func init_effect_behaviors() -> void :
 	assert (effect_behaviors.get_child_count() == 0, "init_effect_behaviors should only be called once")
 	for effect_behavior_data in EffectBehaviorService.active_enemy_effect_behavior_data:
 		effect_behaviors.add_child(effect_behavior_data.scene.instance().init(self))
 
 
+# 按距离平方选择存活的宠物或玩家，再让效果行为调整目标。
+# 监听目标死亡以立即重选；多目标的周期性重选在 _physics_process 中节流。
 func update_target() -> void :
 	var min_dist_squared: int = Utils.LARGE_NUMBER
 
@@ -194,37 +216,46 @@ func update_target() -> void :
 		var _error_died = current_target.connect("died", self, "_on_target_died")
 
 
+# 目标死亡后立即重选。
 func _on_target_died(_entity: Entity, _die_args: Entity.DieArgs) -> void :
 	update_target()
 
 
+# 当前目标被魅惑时重新评估追击目标。
 func _on_enemy_charmed(enemy: Enemy):
 	if current_target == enemy:
 		update_target()
 
 
+# 转交父层属性更新流程，再同步接触 Hitbox 的伤害。
 func update_stats(hp_coef: float, damage_coef: float, speed_coef: float) -> void :
 	.update_stats(hp_coef, damage_coef, speed_coef)
 	_hitbox.damage = current_stats.damage
 
 
+# 在 Unit 的速度修正上增加战利品敌人的专属速度效果。
 func get_speed_effect_mods(player_index: int) -> int:
 	var speed_from_loot = RunData.get_player_effect(Keys.loot_alien_speed_hash, player_index) if is_loot else 0
 	return .get_speed_effect_mods(player_index) + speed_from_loot
 
 
+# 委托当前攻击行为开始攻击准备。
 func start_shoot() -> void :
 	_current_attack_behavior.start_shoot()
 
 
+# 委托当前攻击行为执行攻击；射击行为会在其中生成子弹。
 func shoot() -> void :
 	_current_attack_behavior.shoot()
 
 
+# 先执行 Unit / Entity 的死亡流程并关闭接触伤害，再处理击杀距离、过量伤害爆炸等。
+# 清场时跳过下方正常击杀相关逻辑。
 func die(args: = Utils.default_die_args) -> void :
 	.die(args)
 	_hitbox.disable()
 	source_spawner = null
+	# 清场不算普通击杀，不继续触发下方挑战、爆炸和战利品敌人统计。
 	if args.cleaning_up:
 		return
 
@@ -245,6 +276,7 @@ func die(args: = Utils.default_die_args) -> void :
 		RunData.loot_aliens_killed_this_run += 1
 
 
+# 施加攻击者提供的命中减速；调试模式可额外触发巨额伤害。
 func _on_hurt(hitbox: Hitbox) -> void :
 	var from_player_index: int = RunData.DUMMY_PLAYER_INDEX
 
@@ -260,6 +292,7 @@ func _on_hurt(hitbox: Hitbox) -> void :
 		var _damage_taken = take_damage(Utils.LARGE_NUMBER, _take_damage_args)
 
 
+# 复用 Unit 的受伤结算，再用完整伤害检查过量伤害挑战。
 func take_damage(value: int, args: TakeDamageArgs) -> Array:
 	var damage_taken: = .take_damage(value, args)
 
@@ -268,6 +301,8 @@ func take_damage(value: int, args: TakeDamageArgs) -> Array:
 	return damage_taken
 
 
+# 在父类结果上追加基于敌人当前生命的伤害，包括暴击和燃烧道具效果。
+# 追加伤害受无尽模式系数影响，并更新对应道具统计。
 func get_damage_value(dmg_value: int, from_player_index: int, armor_applied: = true, dodgeable: = true, is_crit: = false, hitbox: Hitbox = null, is_burning: = false) -> GetDamageValueResult:
 	var dmg_value_result = .get_damage_value(dmg_value, from_player_index, armor_applied, dodgeable, is_crit, hitbox)
 
@@ -308,6 +343,7 @@ func get_damage_value(dmg_value: int, from_player_index: int, armor_applied: = t
 	return dmg_value_result
 
 
+# 保存基础强化状态后，重算敌人生命、伤害和速度。
 func boost(boost_args: BoostArgs) -> void :
 	if not can_be_boosted:
 		return
@@ -318,10 +354,12 @@ func boost(boost_args: BoostArgs) -> void :
 	reset_speed_stat(boost_args.speed_boost)
 
 
+# 接触命中后加入短暂减速，速度随后逐步恢复。
 func _on_hit_something(_thing_hit: Node, _damage_dealt: int) -> void :
 	add_decaying_speed(int( - max(200, current_stats.speed * 0.8)), false)
 
 
+# 非待机/死亡动画结束后恢复待机，再通知当前攻击行为动画完成。
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void :
 	if anim_name != "idle" and anim_name != "death":
 		_animation_player.play("idle")
@@ -330,10 +368,12 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void :
 	_current_attack_behavior.animation_finished(anim_name)
 
 
+# 转发生成敌人的请求，并附带本敌人作为来源及魅惑玩家归属。
 func _on_AttackBehavior_wanted_to_spawn_an_enemy(enemy_scene: PackedScene, at_position: Vector2) -> void :
 	emit_signal("wanted_to_spawn_an_enemy", enemy_scene, at_position, self, get_charmed_by_player_index())
 
 
+# 从支持魅惑的效果行为中读取归属，没有则返回 -1。
 func get_charmed_by_player_index() -> int:
 	for effect_behavior in effect_behaviors.get_children():
 		if "charmed" in effect_behavior and effect_behavior.charmed:
@@ -341,19 +381,23 @@ func get_charmed_by_player_index() -> int:
 	return - 1
 
 
+# 把魅惑请求交给支持该能力的效果行为。
 func set_charmed(from_player_index: int) -> void :
 	for effect_behavior in effect_behaviors.get_children():
 		if "charmed" in effect_behavior:
 			effect_behavior.charm(from_player_index)
 
 
+# 记录产生本敌人的来源；死亡时清除。
 func set_source(source) -> void :
 	source_spawner = source
 
 
+# 检查当前动画是否为普通或魅惑射击。
 func is_playing_shoot_animation() -> bool:
 	return _animation_player.current_animation == "shoot" or _animation_player.current_animation == "shoot_charmed"
 
 
+# 检查传入动画名是否为射击动画。
 func is_shooting_anim(anim_name: String) -> bool:
 	return anim_name == "shoot" or anim_name == "shoot_charmed"

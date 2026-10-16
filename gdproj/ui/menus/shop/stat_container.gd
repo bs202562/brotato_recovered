@@ -9,9 +9,9 @@ signal unhovered(player_index)
 export (String) var key
 onready var key_hash: int = Keys.generate_hash(key.to_lower())
 
-onready var _icon = $HBoxContainer / Icon
-onready var _label = $HBoxContainer / Label
-onready var _value = $HBoxContainer / Value
+onready var _icon = $HBoxContainer/Icon
+onready var _label = $HBoxContainer/Label
+onready var _value = $HBoxContainer/Value
 
 var color_override: Color = Color.black
 

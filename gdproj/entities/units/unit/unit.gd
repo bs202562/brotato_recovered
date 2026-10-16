@@ -1,3 +1,7 @@
+# 单位公共层：继承 Entity，为 Enemy、Player 等提供移动、受伤和燃烧能力。
+# 受击链：Hurtbox.area_entered → 延迟处理 → take_damage → 延迟 die → 死亡动画回收。
+# 移动由 MovementBehavior 提供方向，效果扩展由 EffectBehaviors 下的节点处理。
+# .init()、.die() 等带前导点的调用表示执行父类实现。
 class_name Unit
 extends Entity
 
@@ -19,6 +23,7 @@ export (Resource) var flash_mat
 const THRESHOLD_DIST_TO_LOWER_DMG_ON_PULL: = 200
 const MIN_DEATH_KNOCKBACK_AMOUNT: = 15.0
 
+# stats 是配置；current_stats 是实时战斗值，max_stats 是重算后的基准/上限。
 var current_stats: LiveStats = LiveStats.new()
 var max_stats: LiveStats = LiveStats.new()
 
@@ -45,22 +50,26 @@ var _is_burning: bool = false
 var _explode_args_unit: = WeaponServiceExplodeArgs.new()
 
 var _current_movement_behavior: MovementBehavior
+# 高频路径复用参数对象；每次使用前需要填写本次命中/死亡的参数。
 var _die_args_unit: = Entity.DieArgs.new()
 var _spawn_projectile_args = WeaponServiceSpawnProjectileArgs.new()
 var _take_damage_args_unit: = TakeDamageArgs.new(0)
 
 onready var effect_behaviors: = $EffectBehaviors
 onready var _flash_timer: = $FlashTimer as Timer
+# Hurtbox 接收攻击；攻击方 Hitbox 携带伤害、来源和附加效果。
 onready var _hurtbox: = $Hurtbox as Area2D
 onready var _movement_behavior: = $MovementBehavior
 onready var _burning_timer: = $BurningTimer as Timer
 onready var _burning_particles: = $BurningParticles
 
 
+# 缓存默认移动行为节点。
 func _ready() -> void :
 	_current_movement_behavior = _movement_behavior
 
 
+# 首次初始化：设置父类边界、燃烧间隔、玩家/生成器引用及移动行为。
 func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void :
 	.init(zone_min_pos, zone_max_pos)
 
@@ -77,6 +86,7 @@ func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [
 	_speed_rand_value = rand_range( - stats.speed_randomization * RunData.current_run_accessibility_settings.speed, stats.speed_randomization * RunData.current_run_accessibility_settings.speed) as int
 
 
+# 复用时恢复移动、受击检测和临时状态；子类继续刷新自身属性。
 func respawn() -> void :
 	.respawn()
 	knockback_vector = Vector2.ZERO
@@ -88,6 +98,7 @@ func respawn() -> void :
 	_speed_rand_value = rand_range( - stats.speed_randomization * RunData.current_run_accessibility_settings.speed, stats.speed_randomization * RunData.current_run_accessibility_settings.speed) as int
 
 
+# 从配置复制运行时属性，再应用当前波次和效果修正。
 func init_current_stats() -> void :
 	max_stats.copy_stats(stats)
 	current_stats.copy(max_stats)
@@ -96,19 +107,23 @@ func init_current_stats() -> void :
 	reset_speed_stat(0)
 	reset_armor_stat(0)
 
+# 读取配置资源中的 value，供外部逻辑使用。
 func get_stats_value() -> int:
 	return stats.value
 
+# 按波次和敌人缩放重算生命；同时重设当前生命与上限。
 func reset_health_stat(percent_modifier: int = 0) -> void :
 	current_stats.health = EntityService.get_final_enemy_health(stats.get_base_health(RunData.current_wave), percent_modifier)
 	max_stats.health = current_stats.health
 
 
+# 通过 EntityService 重算伤害及其基准值。
 func reset_damage_stat(percent_modifier: int = 0) -> void :
 	current_stats.damage = EntityService.get_final_enemy_damage(stats.get_base_damage(RunData.current_wave), percent_modifier)
 	max_stats.damage = current_stats.damage
 
 
+# 组合各玩家的敌人速度效果，再应用随机偏移和百分比修正。
 func reset_speed_stat(percent_modifier: int = 0) -> void :
 	_speed_percent_modifier = percent_modifier
 
@@ -120,12 +135,14 @@ func reset_speed_stat(percent_modifier: int = 0) -> void :
 	max_stats.speed = current_stats.speed
 
 
+# 单个玩家贡献的敌人速度修正，包括燃烧期间的额外影响。
 func get_speed_effect_mods(player_index: int) -> int:
 	var enemy_speed = Utils.get_stat(Keys.enemy_speed_hash, player_index)
 	var speed_from_burn = RunData.get_player_effect(Keys.burning_enemy_speed_hash, player_index) if _is_burning else 0
 	return enemy_speed + speed_from_burn
 
 
+# 按波次成长和百分比修正计算护甲。
 func reset_armor_stat(percent_modifier: = 0) -> void :
 	var base_armor = (stats.armor + (stats.armor_increase_each_wave * (RunData.current_wave - 1))) * (1.0 + percent_modifier / 100.0)
 	current_stats.armor = round(base_armor) as int
@@ -133,6 +150,8 @@ func reset_armor_stat(percent_modifier: = 0) -> void :
 
 
 var _integrate_forces_velocity: Vector2
+# 取得移动方向、更新朝向并合成击退速度。
+# KINEMATIC 模式手动检测碰撞与滑动，其他模式在 _integrate_forces 提交速度。
 func _physics_process(delta: float) -> void :
 	_current_movement = get_movement() if _can_move else Vector2.ZERO
 	update_animation(_current_movement)
@@ -161,6 +180,8 @@ func _physics_process(delta: float) -> void :
 		decaying_bonus_speed = min(decaying_bonus_speed + 60 * delta * 5, 0.0)
 
 
+# 同步刚体运动，限制地图边界，并在一步越过目标时停在目标位置。
+# KINEMATIC 模式的位置已更新，这里只同步变换。
 func _integrate_forces(state: Physics2DDirectBodyState) -> void :
 	if sleeping:
 		return
@@ -211,22 +232,27 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void :
 	state.linear_velocity = _integrate_forces_velocity
 
 
+# 从当前行为取移动向量；锁定时沿用上一帧向量。
 func get_movement() -> Vector2:
 	return _current_movement_behavior.get_movement() if not _move_locked else _current_movement
 
 
+# 归一化移动方向，再乘以实际速度。
 func get_move_input() -> Vector2:
 	return _current_movement.normalized() * get_move_speed()
 
 
+# 基础速度、额外速度与渐变速度相加，结果不低于零。
 func get_move_speed() -> float:
 	return max(0.0, (current_stats.speed + bonus_speed + decaying_bonus_speed))
 
 
+# 最终速度 = 主动移动速度 + 衰减后的击退速度。
 func get_next_velocity() -> Vector2:
 	return get_move_input() + get_next_knockback_value()
 
 
+# 击退向量逐帧趋近零，再计算抗性后的实际速度贡献。
 func get_next_knockback_value() -> Vector2:
 	if knockback_vector.length_squared() == 0:
 		return Vector2.ZERO
@@ -235,18 +261,22 @@ func get_next_knockback_value() -> Vector2:
 	return get_knockback_value()
 
 
+# 按配置中的抗击退比例缩放击退向量。
 func get_knockback_value() -> Vector2:
 	return (knockback_vector * (100 - (stats.knockback_resistance * 100)))
 
 
+# 返回精灵水平缩放的整数值，用于表示朝向。
 func get_direction() -> int:
 	return sprite.scale.x as int
 
 
+# 返回移动行为的目标位置，不是目标节点。
 func get_current_target() -> Vector2:
 	return _current_movement_behavior.get_target_position()
 
 
+# 根据水平移动方向镜像精灵，保留缩放幅度。
 func update_animation(movement: Vector2) -> void :
 	if mirror_sprite_with_movement:
 		if movement.x > 0:
@@ -255,10 +285,13 @@ func update_animation(movement: Vector2) -> void :
 			sprite.scale.x = - abs(sprite.scale.x)
 
 
+# 默认零向量接口；本类 get_movement 的主要路径使用移动行为节点。
 func _get_movement() -> Vector2:
 	return Vector2.ZERO
 
 
+# 受伤主流程：暴击/秒杀 → 伤害修正 → 扣血 → 击退/反馈 → 延迟死亡。
+# 返回 [完整伤害, 被剩余生命截断的实际伤害, false]，第三项在本实现中固定为 false。
 func take_damage(value: int, args: TakeDamageArgs) -> Array:
 	if _pending_die:
 		return [0, 0, false]
@@ -305,6 +338,7 @@ func take_damage(value: int, args: TakeDamageArgs) -> Array:
 		dmg_value_result.value = max(current_stats.health, dmg_value_result.value)
 		if hitbox:
 			hitbox.one_shot_something(self)
+	# 完整伤害保留过量部分供效果统计；实际伤害不超过剩余生命。
 	var full_dmg_value = dmg_value_result.value
 	dmg_taken = clamp(full_dmg_value, 0, current_stats.health)
 	current_stats.health = max(0.0, current_stats.health - full_dmg_value) as int
@@ -349,6 +383,7 @@ func take_damage(value: int, args: TakeDamageArgs) -> Array:
 		_die_args_unit.killed_by_player_index = from_player_index
 		_die_args_unit.killing_blow_dmg_value = full_dmg_value
 		_die_args_unit.is_burning = args.is_burning
+		# 安排延迟死亡后立即置 _pending_die，阻止等待期间再次结算伤害。
 		call_deferred("die", _die_args_unit)
 		_pending_die = true
 
@@ -399,6 +434,8 @@ func take_damage(value: int, args: TakeDamageArgs) -> Array:
 	return [full_dmg_value, dmg_taken, false]
 
 
+# 处理负击退（拉近）：结合双方体型、运动方向和距离限制拉动幅度。
+# 较长距离拉动时触发接触伤害修正，避免拉近过程伤害过高。
 func get_knockback_amount_based_on_distance_to_attacker(base_amount: float, hitbox: Hitbox, attacker: Unit) -> float:
 	var adjusted_amount = base_amount
 	var direction_to_attacker = global_position.direction_to(attacker.global_position)
@@ -437,17 +474,20 @@ func get_knockback_amount_based_on_distance_to_attacker(base_amount: float, hitb
 	return adjusted_amount
 
 
+# 接触伤害修正钩子；Enemy 实现临时降低接触伤害。
 func set_hitbox_damage_modifier() -> void :
 	pass
 
 
 
+# 根据穿透与抗性补偿击退幅度，抗性为 1 时跳过除法。
 func get_increased_piercing_knockback_amount(amount: float, piercing: float, resistance: float) -> float:
 	if resistance == 1:
 		return amount
 	return amount + (amount * min(resistance, piercing) / (1 - resistance))
 
 
+# 伤害计算中间结果；子类可填写闪避、保护等标记，供反馈与表现使用。
 class GetDamageValueResult:
 	var value: int = 0
 	var dodged: = false
@@ -455,6 +495,8 @@ class GetDamageValueResult:
 	var armor_did_something: = false
 
 
+# 叠加生命阈值、燃烧目标等伤害加成，再按本层固定护甲减伤规则计算。
+# Enemy / Player 可以覆盖此函数，因此它不代表所有单位的最终减伤规则。
 func get_damage_value(dmg_value: int, from_player_index: int, armor_applied: = true, _dodgeable: = true, _is_crit: = false, hitbox: Hitbox = null, _p_is_burning: = false) -> GetDamageValueResult:
 	var result = GetDamageValueResult.new()
 	var total_bonus_damage = 0
@@ -499,6 +541,7 @@ func get_damage_value(dmg_value: int, from_player_index: int, armor_applied: = t
 
 	dmg_value = round(dmg_value * (1.0 + (total_bonus_damage / 100.0))) as int
 
+	# 本层护甲直接减去伤害；启用护甲时伤害下限为 1。
 	result.value = max(1, dmg_value - current_stats.armor) as int if armor_applied else dmg_value
 
 	if armor_applied and dmg_value != result.value:
@@ -507,6 +550,7 @@ func get_damage_value(dmg_value: int, from_player_index: int, armor_applied: = t
 	return result
 
 
+# 保存原材质并切换到闪白材质；连续受击不重复覆盖原材质引用。
 func flash() -> void :
 	
 	
@@ -517,6 +561,7 @@ func flash() -> void :
 	_flash_timer.start()
 
 
+# 先执行 Entity 死亡流程，再关闭移动和 Hurtbox，并通知、移除效果行为。
 func die(args: = Utils.default_die_args) -> void :
 	if dead:
 		return
@@ -529,10 +574,13 @@ func die(args: = Utils.default_die_args) -> void :
 		effect_behavior.queue_free()
 
 
+# 直接命中结算前的子类钩子；Enemy 在此处理命中减速。
 func _on_hurt(_hitbox: Hitbox) -> void :
 	pass
 
 
+# 延迟受击入口：过滤无效命中，处理爆炸、燃烧、命中生成子弹与减速。
+# 结束时通知攻击方 Hitbox，接上子弹的穿透、反弹和停止逻辑。
 func hurt_area_entered_deferred(hitbox: Area2D) -> void :
 	if get_parent() == null or not hitbox.active or hitbox.ignored_objects.has(self) or _pending_die:
 		return
@@ -575,6 +623,7 @@ func hurt_area_entered_deferred(hitbox: Area2D) -> void :
 				dmg += effect.get_bonus_damage(from_player_index)
 
 		
+		# 成功触发爆炸时不重复结算这段直接命中伤害，交由爆炸对象处理。
 		if not is_exploding:
 			_take_damage_args_unit._init(from_player_index, hitbox)
 			_take_damage_args_unit.from = from
@@ -605,16 +654,21 @@ func hurt_area_entered_deferred(hitbox: Area2D) -> void :
 		if hitbox.speed_percent_modifier != 0:
 			add_decaying_speed((get_base_speed_value_for_pct_based_decrease() * hitbox.speed_percent_modifier / 100.0) as int)
 
+	# 回传实际伤害并触发攻击方命中信号，例如 PlayerProjectile 的命中回调。
 	hitbox.hit_something(self, dmg_taken[1])
 
+# 物理重叠信号入口；延迟处理伤害，避免直接在碰撞回调中改动相关物理节点。
 func _on_Hurtbox_area_entered(hitbox: Area2D) -> void :
 	call_deferred("hurt_area_entered_deferred", hitbox)
 
 
+# 百分比减速的速度基数，允许子类覆盖。
 func get_base_speed_value_for_pct_based_decrease() -> int:
 	return current_stats.speed
 
 
+# 合并燃烧时，伤害、剩余次数和传播能力分别取较大值，不直接相加。
+# 首次施加启动计时器；新伤害不低于旧伤害时更新来源与缩放属性。
 func apply_burning(burning_data: BurningData) -> void :
 	if dead:
 		
@@ -653,11 +707,14 @@ func apply_burning(burning_data: BurningData) -> void :
 
 
 
+# 闪白结束后恢复原材质；若期间已经换为其他材质则不覆盖。
 func _on_FlashTimer_timeout() -> void :
 	if sprite.material == flash_mat:
 		sprite.material = _non_flash_material
 
 
+# 每次计时器触发结算一跳燃烧，关闭护甲和闪避，再更新道具统计与相关效果。
+# duration 在此按触发次数递减；耗尽时停止燃烧。
 func _on_BurningTimer_timeout() -> void :
 	if _burning != null:
 		
@@ -706,6 +763,7 @@ func _on_BurningTimer_timeout() -> void :
 			_burning_particles.deactivate_spread()
 
 
+# 停止计时器、粒子及燃烧状态，清除本次燃烧数据。
 func stop_burning() -> void :
 	_burning_timer.stop()
 	_burning_particles.stop_emitting()
@@ -713,6 +771,7 @@ func stop_burning() -> void :
 	_burning = null
 
 
+# 只在状态切换时增减全局燃烧计数，并重算燃烧相关速度效果。
 func set_burning(p_is_burning: bool) -> void :
 	if p_is_burning:
 		assert ( not dead)
@@ -726,6 +785,7 @@ func set_burning(p_is_burning: bool) -> void :
 	ChallengeService.try_complete_challenge(ChallengeService.chal_barbecue_hash, RunData.current_burning_enemies)
 
 
+# 加入会逐步消退的速度修正，对反复叠加的负速度设置阈值和衰减。
 func add_decaying_speed(value: int, emit_signal: = true) -> void :
 
 	if value < 0 and emit_signal:
@@ -740,18 +800,22 @@ func add_decaying_speed(value: int, emit_signal: = true) -> void :
 	decaying_bonus_speed += value
 
 
+# 将本次实际位移通知效果行为节点。
 func _on_moved(delta_position: Vector2) -> void :
 	for effect_behavior in effect_behaviors.get_children():
 		effect_behavior.on_moved(delta_position)
 
 
+# 播放秒杀音效并通知表现层；实际扣血仍在 take_damage 中完成。
 func _on_one_shotted(effect: OneShotOnHitEffect) -> void :
 	SoundManager2D.play(effect.sound_one_shot, global_position, 0, 0.2)
 	emit_signal("one_shot_effect", self)
 
+# 生命百分比效果的换算基数，默认 100 表示百分比。
 func _get_health_effect_percent_factor() -> float:
 	return 100.0
 
 
+# 保留的物理碰撞回调，本层没有额外处理。
 func _on_Hitbox_body_entered(_body: Node) -> void :
 	pass
