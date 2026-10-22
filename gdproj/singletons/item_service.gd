@@ -1,3 +1,8 @@
+# ItemService 全局资源与规则服务，通过 item_service.tscn 配置各类资源总表。
+# 负责解锁抽取池、战斗掉落、物品箱、商店商品、升级选项、价格和 UI 展示辅助。
+# 与 items/global/item.gd 区分：此处处理数据资源与抽取规则，不处理掉落物的移动和拾取碰撞。
+# 商店阅读路线：get_player_shop_items → _get_rand_item_for_wave → get_tier_from_wave。
+# 价格阅读路线：get_value（购买）、get_reroll_price（刷新）、get_recycling_value（回收）。
 extends Node
 
 signal backgrounds_updated
@@ -19,8 +24,10 @@ const TIER_LEGENDARY_COLOR_DARK = Color(36.0 / 255, 9.0 / 255, 9.0 / 255, 1)
 const TIER_RARE_COLOR_DARK = Color(16.0 / 255, 10.0 / 255, 27.0 / 255, 1)
 const TIER_UNCOMMON_COLOR_DARK = Color(15.0 / 255, 32.0 / 255, 40.0 / 255, 1)
 
+# 默认商店槽位数；具体一次生成多少个商品由 get_player_shop_items 的 args.count 决定。
 const NB_SHOP_ITEMS: = 4
 
+# 商店抽取的基础概率与前期武器保底阈值；最终行为还受角色效果和已有武器影响。
 const CHANCE_WEAPON: = 0.35
 const CHANCE_SAME_WEAPON: = 0.2
 const CHANCE_SAME_WEAPON_SET: = 0.35
@@ -31,6 +38,7 @@ const BONUS_CHANCE_SAME_WEAPON: = 0.05
 const CHANCE_WANTED_ITEM_TAG: = 0.05
 const BOOSTED_WANTED_ITEM_TAG: = 0.1
 
+# _tiers_data 每行的字段索引：候选池分类 + 品质概率参数，避免直接写数字下标。
 enum TierData{
 	ALL_ITEMS, 
 	ITEMS, 
@@ -43,10 +51,13 @@ enum TierData{
 	MAX_CHANCE
 }
 
+# 按品质分层的解锁候选池，与下面导出的完整资源总表分开维护。
 var _tiers_data: Array
+# 按需填充的 ID 查询缓存；道具按具体 ID，武器按系列 ID 保存各品质资源。
 var _item_id_lookup: Dictionary
 var _weapon_id_lookup: Dictionary
 
+# 由场景配置的资源总表；DLC/Mod 可在运行期间补充或移除部分资源。
 export (Array, Resource) var elites
 export (Array, Resource) var bosses
 export (Array, Resource) var effects
@@ -68,6 +79,7 @@ export (Array, StyleBox) var frames_element_level
 export (Resource) var weapon_slot_upgrade_data = null
 
 
+# 角色禁用道具组的字符串 ID 配置，供随机道具过滤使用。
 var item_groups: Dictionary = {
 	"harvesting": ["item_blood_donation", "item_crown", "item_fertilizer", "item_tractor", "item_wheelbarrow"], 
 	"melee_damage": ["item_mastery", "item_goat_skull", "item_riposte"], 
@@ -84,9 +96,11 @@ var item_groups: Dictionary = {
 	"dodge": ["item_adrenaline", "item_chameleon", "item_gambling_token", "item_ghost_outfit"], 
 }
 
+# 无尽阶段过滤列表；其成员类型需与下方 has() 比较使用的 ID 类型一致。
 var banned_items_for_endless = ["item_piggy_bank", "item_crown"]
 
 
+# 初始化属性键，并为武器升级链补上反向引用 previous_upgrade。
 func _ready() -> void :
 	Utils.reset_stat_keys()
 
@@ -95,6 +109,8 @@ func _ready() -> void :
 			weapon.upgrades_into.previous_upgrade = weapon
 
 
+# 重建普通、不常见、稀有、传奇四档数据；每行字段顺序由 TierData 枚举定义。
+# 前五项为候选池，后四项为品质概率参数；MIN_WAVE 参与概率公式，不是单独的准入判断。
 func reset_tiers_data() -> void :
 		_tiers_data = [
 		[[], [], [], [], [], 0, 1.0, 0.0, 1.0], 
@@ -104,6 +120,8 @@ func reset_tiers_data() -> void :
 	]
 
 
+# 按存档解锁情况填充各品质候选池；RunData.reset() 会调用此函数。
+# 普通道具还检查可掉落标记和数量上限，武器按武器系列 ID 判断是否解锁。
 func init_unlocked_pool() -> void :
 
 	reset_tiers_data()
@@ -135,6 +153,8 @@ func init_unlocked_pool() -> void :
 			_tiers_data[consumable.tier][TierData.CONSUMABLES].push_back(consumable)
 
 
+# 把 Mod 道具加入资源总表；若默认解锁，则同时补入存档的解锁 ID 列表。
+# 这里不直接更新 _tiers_data，抽取池由 init_unlocked_pool 重建。
 func add_mod_item(item: ItemParentData) -> void :
 
 	items.push_back(item)
@@ -146,6 +166,7 @@ func add_mod_item(item: ItemParentData) -> void :
 		ProgressData.items_unlocked.push_back(item.my_id_hash)
 
 
+# 按具体道具 ID 从总表移除首个匹配资源，并移除其存档解锁记录。
 func remove_mod_item(p_item: ItemParentData) -> void :
 
 	for item in items:
@@ -157,11 +178,14 @@ func remove_mod_item(p_item: ItemParentData) -> void :
 		ProgressData.items_unlocked.erase(p_item.my_id_hash)
 
 
+# 决定敌人死亡是否掉落消耗品：汇总玩家幸运，计算基础掉率，再选择掉落品质。
+# item_chance 用于命中掉落后进一步决定箱子品质；未掉落时还可触发额外水果效果。
 func get_consumable_to_drop(unit: Unit, item_chance: float) -> ConsumableData:
 	var luck: = 0.0
 	for player_index in RunData.get_player_count():
 		luck += Utils.get_stat(Keys.stat_luck_hash, player_index) / 100.0
 
+	# 联机时先累加所有玩家幸运；超过常规波数后再用无尽系数降低掉率。
 	var consumable_drop_chance: = min(1.0, unit.stats.base_drop_chance * (1.0 + luck))
 	if RunData.current_wave > RunData.nb_of_waves:
 		consumable_drop_chance /= (1.0 + RunData.get_endless_factor())
@@ -190,6 +214,7 @@ func get_consumable_to_drop(unit: Unit, item_chance: float) -> ConsumableData:
 	return consumable_to_drop
 
 
+# 从指定品质的消耗品池抽取，经启用的 DLC 调整后复制资源，替换为当前区域的图标。
 func get_consumable_for_tier(tier: int = Tier.COMMON) -> ConsumableData:
 	var consumable = Utils.get_rand_element(_tiers_data[tier][TierData.CONSUMABLES])
 
@@ -205,6 +230,8 @@ func get_consumable_for_tier(tier: int = Tier.COMMON) -> ConsumableData:
 	return consumable
 
 
+# 开启物品箱：将已持有道具与锁定商品纳入限量检查，再抽取普通道具。
+# 传奇箱固定传奇品质；普通箱按波次和幸运决定品质。
 func process_item_box(consumable_data: ConsumableData, wave: int, player_index: int) -> ItemParentData:
 	var owned_items: Array = RunData.get_player_items(player_index)
 	
@@ -219,6 +246,8 @@ func process_item_box(consumable_data: ConsumableData, wave: int, player_index: 
 	return item
 
 
+# 生成本次新增的商店商品，返回 [[资源, 波次], ...]；锁定商品由调用方另行管理。
+# 先决定武器/道具类型及武器保底，再应用保证出现的道具或随机抽取。
 func get_player_shop_items(wave: int, player_index: int, args: ItemServiceGetShopItemsArgs) -> Array:
 	var new_items: = []
 	var nb_weapons_guaranteed = 0
@@ -270,22 +299,28 @@ func get_player_shop_items(wave: int, player_index: int, args: ItemServiceGetSho
 			rand_item_args.increase_tier = args.increase_tier
 			new_item = _get_rand_item_for_wave(wave, player_index, type, rand_item_args)
 
+		# 把生成时波次一并返回，供商店后续价格等逻辑使用。
 		new_items.push_back([new_item, wave])
 	return new_items
 
 
+# 返回指定品质/类别的数组副本，筛选时不会删除原始候选池成员；资源本身仍共享。
 func get_pool(item_tier: int, type: int) -> Array:
 	return _tiers_data[item_tier][type].duplicate()
 
 
+# 随机抽取参数：排除商品、持有/商店道具、固定品质、品质加成与标签限制。
 class GetRandItemForWaveArgs:
+	# 排除项使用商店条目格式 [资源, 波次]，不是单独的资源数组。
 	var excluded_items: = []
+	# 限量统计使用的资源数组；调用者必须填入持有道具及需要计入数量的商品。
 	var owned_and_shop_items
 	var fixed_tier: = - 1
 	var increase_tier: = 0
 	var forced_shop_tag = null
 
 
+# 对外的普通道具随机入口：把已有道具和锁定道具作为数量上限检查依据。
 func get_rand_item_for_wave(wave: int, player_index: int) -> ItemParentData:
 	var args: = GetRandItemForWaveArgs.new()
 	var owned_items: Array = RunData.get_player_items(player_index)
@@ -298,6 +333,8 @@ func get_rand_item_for_wave(wave: int, player_index: int) -> ItemParentData:
 	return _get_rand_item_for_wave(wave, player_index, TierData.ITEMS, args)
 
 
+# 随机抽取核心：定品质 → 排除与偏好筛选 → 限量检查 → 空池回退 → DLC 效果调整。
+# WEAPONS 和 ITEMS 使用不同筛选规则；注意过滤不等于绝对禁止，空池时有回退逻辑。
 func _get_rand_item_for_wave(wave: int, player_index: int, type: int, args: GetRandItemForWaveArgs) -> ItemParentData:
 	var player_character = RunData.get_player_character(player_index)
 	var rand_wanted = randf()
@@ -313,6 +350,7 @@ func _get_rand_item_for_wave(wave: int, player_index: int, type: int, args: GetR
 
 	var banned_items = RunData.players_data[player_index].banned_items
 	var pool = get_pool(item_tier, type)
+	# 主池承载偏好筛选，备选池只同步部分排除条件；主池为空时可放宽这些偏好。
 	var backup_pool = get_pool(item_tier, type)
 	var items_to_remove = []
 
@@ -328,6 +366,7 @@ func _get_rand_item_for_wave(wave: int, player_index: int, type: int, args: GetR
 
 
 	
+	# 把上批和本批需要排除的具体商品从主池、备选池中移除，减少重复。
 	for shop_item in args.excluded_items:
 		pool = remove_element_by_id_with_item(pool, shop_item[0])
 		backup_pool = remove_element_by_id_with_item(pool, shop_item[0])
@@ -375,6 +414,7 @@ func _get_rand_item_for_wave(wave: int, player_index: int, type: int, args: GetR
 				backup_pool = remove_element_by_id_with_item(backup_pool, item)
 				items_to_remove.append(item)
 
+			# 同武器/同套装共用 rand_wanted，并按 if/elif 优先匹配，不是两次独立概率。
 			if rand_wanted < chance_same_weapon:
 				if not item.weapon_id in unique_weapon_ids:
 					items_to_remove.push_back(item)
@@ -405,6 +445,7 @@ func _get_rand_item_for_wave(wave: int, player_index: int, type: int, args: GetR
 				if not has_wanted_tag:
 					items_to_remove.push_back(item)
 
+		# 标签限制在这里作用于主池；后面的空池回退仍可能抽到不匹配标签的道具。
 		if args.forced_shop_tag != null:
 			for item in pool:
 				if not items_to_remove.has(item) and not item.tags.has(args.forced_shop_tag):
@@ -443,6 +484,7 @@ func _get_rand_item_for_wave(wave: int, player_index: int, type: int, args: GetR
 				if banned_items_for_endless.has(item.my_id_hash):
 					items_to_remove.append(item)
 
+	# 限量道具达到 max_nb 后同时排除主池和备选池，数量由调用方传入的数据决定。
 	var limited_items = get_limited_items(args.owned_and_shop_items)
 
 	for key in limited_items:
@@ -455,6 +497,8 @@ func _get_rand_item_for_wave(wave: int, player_index: int, type: int, args: GetR
 
 	var elt
 
+	# 分两级兜底：优先备选池，再退回未经本轮过滤的原始品质池。
+	# 因此极端情况下可能重新抽到本轮已排除的资源，不应把筛选条件理解为绝对保证。
 	if pool.size() == 0:
 		if backup_pool.size() > 0:
 			elt = Utils.get_rand_element(backup_pool)
@@ -462,6 +506,7 @@ func _get_rand_item_for_wave(wave: int, player_index: int, type: int, args: GetR
 			elt = Utils.get_rand_element(_tiers_data[item_tier][type])
 	else:
 		elt = Utils.get_rand_element(pool)
+		# 抽到美西螈时有一半概率再抽一次；重抽仍可能再次命中它。
 		if elt.my_id_hash == Keys.item_axolotl_hash and randf() < 0.5:
 			elt = Utils.get_rand_element(pool)
 
@@ -477,6 +522,8 @@ func _get_rand_item_for_wave(wave: int, player_index: int, type: int, args: GetR
 	return apply_item_effect_modifications(elt, player_index)
 
 
+# 统计有数量上限的道具，返回 {my_id_hash: [基准道具资源, 数量]}。
+# 诅咒实例使用总表中的原始资源作为基准；max_nb == -1 表示不限量。
 func get_limited_items(from_items: Array) -> Dictionary:
 	var limited_items = {}
 
@@ -494,6 +541,7 @@ func get_limited_items(from_items: Array) -> Dictionary:
 	return limited_items
 
 
+# 复制数组后按具体 ID 移除首个匹配项，保留传入数组不变。
 func remove_element_by_id(from: Array, my_id_hash: int) -> Array:
 	var from_copy = from.duplicate()
 
@@ -504,10 +552,13 @@ func remove_element_by_id(from: Array, my_id_hash: int) -> Array:
 
 	return from_copy
 
+# 以给定资源的 my_id_hash 调用数组移除方法。
 func remove_element_by_id_with_item(from: Array, element: ItemParentData) -> Array:
 	return remove_element_by_id(from, element.my_id_hash)
 
 
+# 按启用顺序调用 DLC 的道具效果处理钩子；后一个 DLC 接收前一个的结果。
+# 本函数自身不统一复制资源，是否复制由各 DLC 实现决定。
 func apply_item_effect_modifications(item: ItemParentData, player_index: int) -> ItemParentData:
 	for dlc_id in RunData.enabled_dlcs:
 		var dlc_data = ProgressData.get_dlc_data(dlc_id)
@@ -518,7 +569,10 @@ func apply_item_effect_modifications(item: ItemParentData, player_index: int) ->
 	return item
 
 
+# 依据波次和幸运选品质，再叠加 increase_tier 并限制在普通到传奇之间。
+# 只生成一个随机数，从高品质向低品质比较阈值，不是每档独立投骰。
 func get_tier_from_wave(wave: int, player_index: int, increase_tier: = 0) -> int:
+	# 整次品质选择共用一个随机数，高品质优先。
 	var rand = rand_range(0.0, 1.0)
 	var luck = Utils.get_stat(Keys.stat_luck_hash, player_index) / 100.0
 
@@ -531,6 +585,7 @@ func get_tier_from_wave(wave: int, player_index: int, increase_tier: = 0) -> int
 
 		
 		var wave_chance = 0.0
+		# 正幸运乘以 (1 + luck)，负幸运除以 (1 + abs(luck))，并非直接让概率变负。
 		if luck >= 0:
 			wave_chance = wave_base_chance * (1 + luck)
 		else:
@@ -539,6 +594,7 @@ func get_tier_from_wave(wave: int, player_index: int, increase_tier: = 0) -> int
 		var chance = tier_data[TierData.BASE_CHANCE] + wave_chance
 		var max_chance = tier_data[TierData.MAX_CHANCE]
 
+		# 限制每档阈值上限；首次匹配就结束，低品质不会再覆盖高品质结果。
 		if rand <= min(chance, max_chance):
 			tier = i
 			break
@@ -548,6 +604,8 @@ func get_tier_from_wave(wave: int, player_index: int, increase_tier: = 0) -> int
 	return tier
 
 
+# 生成升级选项；满足武器槽升级条件时，直接返回该专用选项。
+# 普通流程尽量避开禁用、已展示和上次选项，但每个选项最多重抽 50 次。
 func get_upgrades(level: int, number: int, old_upgrades: Array, player_index: int) -> Array:
 
 	var weapon_slot_upgrades = RunData.get_player_effect(Keys.weapon_slot_upgrades_hash, player_index)
@@ -562,6 +620,7 @@ func get_upgrades(level: int, number: int, old_upgrades: Array, player_index: in
 
 	for i in number:
 		var upgrade = get_upgrade_data(level, player_index)
+		# 最多重抽 50 次，避免可选资源太少时无限循环；达到上限仍接收当前结果。
 		var tries = 0
 
 		while ((not_endless and is_upgrade_in_banned_items(banned_upgrades, upgrade)) or 
@@ -575,9 +634,11 @@ func get_upgrades(level: int, number: int, old_upgrades: Array, player_index: in
 
 	return upgrades_to_show
 
+# 使用升级系列的字符串 upgrade_id 检查角色禁用列表。
 func is_upgrade_in_banned_items(banned_upgrades: Array, upgrade: UpgradeData) -> bool:
 	return banned_upgrades.has(upgrade.upgrade_id)
 
+# 按 upgrade_id_hash 判断同系列升级是否已存在，不以资源实例是否相同判断。
 func is_upgrade_already_added(p_upgrades: Array, upgrade: UpgradeData) -> bool:
 
 	for upg in p_upgrades:
@@ -587,6 +648,8 @@ func is_upgrade_already_added(p_upgrades: Array, upgrade: UpgradeData) -> bool:
 	return false
 
 
+# 抽取单个升级选项：以等级代入品质公式，并在特定等级覆盖结果。
+# 5 级固定不常见，10/15/20 级固定稀有，其余 5 的倍数固定传奇。
 func get_upgrade_data(level: int, player_index: int) -> UpgradeData:
 	var tier = get_tier_from_wave(level, player_index)
 
@@ -600,6 +663,7 @@ func get_upgrade_data(level: int, player_index: int) -> UpgradeData:
 	var upgrade_data: UpgradeData = Utils.get_rand_element(_tiers_data[tier][TierData.UPGRADES])
 	var level_upgrades_modifications = RunData.get_player_effect(Keys.level_upgrades_modifications_hash, player_index)
 	if level_upgrades_modifications != 0:
+		# 升级数值被角色效果修改时，复制资源和各效果，避免污染全局模板。
 		upgrade_data = upgrade_data.duplicate()
 		var new_effects: = []
 		for effect in upgrade_data.effects:
@@ -610,6 +674,7 @@ func get_upgrade_data(level: int, player_index: int) -> UpgradeData:
 	return upgrade_data
 
 
+# 读取用户设置中的品质/难度颜色，支持深色版本；未匹配时返回白色。
 func get_color_from_tier(tier: int, dark_version: bool = false) -> Color:
 	match tier:
 		Tier.UNCOMMON:
@@ -628,6 +693,7 @@ func get_color_from_tier(tier: int, dark_version: bool = false) -> Color:
 			return Color.white
 
 
+# 按宠物、精英、Boss 等实体类型选择界面强调色。
 func get_color_from_entity_type(item: ItemEntity) -> Color:
 	var color: Color = Color.white
 	if item is ItemPet:
@@ -640,6 +706,7 @@ func get_color_from_entity_type(item: ItemEntity) -> Color:
 	return color
 
 
+# 返回品质的翻译键，不在此执行翻译。
 func get_tier_text(tier: int) -> String:
 	if tier == 0: return "TIER_COMMON"
 	elif tier == 1: return "TIER_UNCOMMON"
@@ -647,6 +714,7 @@ func get_tier_text(tier: int) -> String:
 	else: return "TIER_LEGENDARY"
 
 
+# 返回品质罗马数字标记；普通品质不显示编号。
 func get_tier_number(tier: int) -> String:
 	if tier == 0: return ""
 	elif tier == 1: return "II"
@@ -654,6 +722,7 @@ func get_tier_number(tier: int) -> String:
 	else: return "IV"
 
 
+# 翻译并拼接武器套装名称，去掉末尾多余的逗号。
 func get_weapon_sets_text(weapon_sets: Array) -> String:
 	var text = ""
 
@@ -665,11 +734,14 @@ func get_weapon_sets_text(weapon_sets: Array) -> String:
 	return text
 
 
+# 返回道具或武器类别的翻译键。
 func get_category_text(category: int) -> String:
 	if category == Category.ITEM: return "CATEGORY_ITEM"
 	else: return "CATEGORY_WEAPON"
 
 
+# 直接修改传入 StyleBox 的品质边框与背景色，并可同步额外边框节点。
+# 没有在此复制样式；若样式被多处共享，调用方需自行决定是否 duplicate。
 func change_panel_stylebox_from_tier(stylebox: StyleBox, tier: int, is_popup: = false, frame: Panel = null) -> void :
 	var tier_color: Color = get_color_from_tier(tier)
 	var dark_tier_color: Color = get_color_from_tier(tier, true)
@@ -692,6 +764,7 @@ func change_panel_stylebox_from_tier(stylebox: StyleBox, tier: int, is_popup: = 
 		change_panel_from_tier(frame, tier)
 
 
+# 按品质设置背包条目的背景色和透明度，可同时更新额外边框。
 func change_inventory_element_stylebox_from_tier(stylebox: StyleBox, tier: int, alpha: float = 1, frame: Panel = null) -> void :
 	var tier_color: Color = get_color_from_tier(tier)
 
@@ -707,6 +780,7 @@ func change_inventory_element_stylebox_from_tier(stylebox: StyleBox, tier: int, 
 		change_panel_from_tier(frame, tier)
 
 
+# 用 tier - 5 映射特殊边框资源；索引不在配置范围时隐藏边框节点。
 func change_panel_from_tier(frame: Panel, tier: int) -> void :
 	var level_frame = tier - 5
 	if level_frame < 1 or level_frame - 1 >= frames_element_level.size():
@@ -716,6 +790,7 @@ func change_panel_from_tier(frame: Panel, tier: int) -> void :
 		frame.add_stylebox_override("panel", frames_element_level[level_frame - 1])
 
 
+# 按实体类型设置条目背景色，并使用指定透明度。
 func change_inventory_element_stylebox_from_entity_type(stylebox: StyleBox, item_entity: ItemEntity, alpha: float = 1) -> void :
 	var color: Color = get_color_from_entity_type(item_entity)
 	if color == Color.white:
@@ -723,6 +798,8 @@ func change_inventory_element_stylebox_from_entity_type(stylebox: StyleBox, item
 	color.a = alpha
 	stylebox.bg_color = color
 
+# 计算购买价格：基础价/武器价修正 → 波次增长 → 道具价修正 → 无尽加价。
+# affected_by_items_price_stat 同时控制武器价、普通/指定道具价和无尽倍率，结果至少为 1。
 func get_value(wave: int, base_value: int, player_index: int, affected_by_items_price_stat: bool, is_weapon: bool, item_id: int = Keys.empty_hash) -> int:
 	var value_after_weapon_price = base_value
 	var specific_item_price_factor = 0
@@ -741,6 +818,7 @@ func get_value(wave: int, base_value: int, player_index: int, affected_by_items_
 	items_price_factor = 1.0 + (items_price + specific_item_price_factor) / 100.0 if affected_by_items_price_stat else 1.0
 
 	var base_inflation = 0.1
+	# 此处通胀修正固定读取玩家 0，与前面的 player_index 定价修正不同。
 	var inflation_modifier = RunData.get_player_effect(Keys.inflation_modifier_hash, 0)
 	if (inflation_modifier > 0):
 		base_inflation = (1.0 + float(inflation_modifier / 100.0)) / 10.0
@@ -750,6 +828,8 @@ func get_value(wave: int, base_value: int, player_index: int, affected_by_items_
 
 
 
+# 计算刷新费用，随波次、无尽系数和传入刷新次数递增。
+# 返回 [实际费用, 原价减实际费用]；价格倍率最低 0.1，最终费用向上取整。
 func get_reroll_price(wave: int, reroll_count: int, player_index: int) -> Array:
 	var delta: = int(max(1.0, (0.4 * wave * pow(1.0 + RunData.get_endless_factor(wave), 0.5))))
 	var normal_price: = int(wave * 0.75) + delta + delta * reroll_count
@@ -759,7 +839,10 @@ func get_reroll_price(wave: int, reroll_count: int, player_index: int) -> Array:
 	return [discounted_price, normal_price - discounted_price]
 
 
+# 计算回收收益：以价格为基数，乘以限制在 1%～100% 的回收比例。
+# 基础回收比例为 25%；基础价值为 1 时固定返还 1，其他情况不超过对应购买价。
 func get_recycling_value(wave: int, from_value: int, player_index: int, is_weapon: bool = false, affected_by_items_price_stat: bool = true) -> int:
+	# 回收基数在超过常规波数后关闭价格属性修正；购买价上限仍按原开关计算。
 	var actually_affected = affected_by_items_price_stat and RunData.current_wave <= RunData.nb_of_waves
 	var recycling_gains = RunData.get_player_effect(Keys.recycling_gains_hash, player_index)
 	var shop_value = get_value(wave, from_value, player_index, affected_by_items_price_stat, is_weapon)
@@ -772,6 +855,8 @@ func get_recycling_value(wave: int, from_value: int, player_index: int, is_weapo
 	return min(shop_value, recycling_value) as int
 
 
+# 按字符串 my_id 查找资源；id 为空时也允许按 value 匹配，找不到返回 null。
+# 与 get_element 的主要区别是 ID 类型，并非这里提供了更多空值防护。
 func get_element_safe(from_array: Array, id: String = "", value: int = - 1) -> Resource:
 	for elt in from_array:
 		if elt.my_id == id or (id == "" and elt.value == value):
@@ -780,6 +865,7 @@ func get_element_safe(from_array: Array, id: String = "", value: int = - 1) -> R
 	return null
 
 
+# 按整数 my_id_hash 查找资源；使用空哈希时也允许按 value 匹配，找不到返回 null。
 func get_element(from_array: Array, id: int = Keys.empty_hash, value: int = - 1) -> Resource:
 	for elt in from_array:
 		if elt.my_id_hash == id or (id == Keys.empty_hash and elt.value == value):
@@ -788,6 +874,7 @@ func get_element(from_array: Array, id: int = Keys.empty_hash, value: int = - 1)
 	return null
 
 
+# 按套装 ID 哈希查找；未找到时返回新的空 SetData，而不是 null。
 func get_set(p_set: int) -> SetData:
 	for set in sets:
 		assert (set.my_id_hash != Keys.empty_hash)
@@ -797,6 +884,7 @@ func get_set(p_set: int) -> SetData:
 	return SetData.new()
 
 
+# 取得属性的大图标；不存在该属性时返回 null。
 func get_stat_icon(stat_hash: int) -> Resource:
 	var stat = get_stat(stat_hash)
 
@@ -806,6 +894,7 @@ func get_stat_icon(stat_hash: int) -> Resource:
 	return null
 
 
+# 取得属性的小图标，供属性列表使用；不存在时返回 null。
 func get_stat_small_icon(stat_hash: int) -> Resource:
 	var stat = get_stat(stat_hash)
 
@@ -816,6 +905,7 @@ func get_stat_small_icon(stat_hash: int) -> Resource:
 	return null
 
 
+# 按 stat_hash 从属性资源总表查找。
 func get_stat(stat_hash: int) -> Resource:
 	for stat in stats:
 		if stat.stat_hash == stat_hash:
@@ -824,6 +914,8 @@ func get_stat(stat_hash: int) -> Resource:
 	return null
 
 
+# 生成属性说明：先根据正负值选择翻译键，再填入护甲减伤、回血间隔、上限等参数。
+# 普通属性直接显示绝对值；具体数值语义由对应分支和翻译模板决定。
 func get_stat_description_text(stat_hash: int, value: int, player_index: int) -> String:
 	
 	
@@ -861,13 +953,16 @@ func get_stat_description_text(stat_hash: int, value: int, player_index: int) ->
 	return Text.text(key, [str(abs(value))])
 
 
+# 从指定区域的精英资源中随机取一个，返回字符串 my_id；要求候选池非空。
 func get_random_elite_id_from_zone(zone_id: int) -> String:
 	return Utils.get_rand_element(get_elites_from_zone(zone_id)).my_id
 
+# 从区域精英池随机取一个并返回其 my_id_hash；要求候选池非空。
 func get_random_elite_id_hash_from_zone(zone_id: int) -> String:
 	return Utils.get_rand_element(get_elites_from_zone(zone_id)).my_id_hash
 
 
+# 按 zone_id 过滤精英资源总表。
 func get_elites_from_zone(zone_id: int) -> Array:
 	var possible_elites = []
 
@@ -878,6 +973,7 @@ func get_elites_from_zone(zone_id: int) -> Array:
 	return possible_elites
 
 
+# 按 zone_id 过滤 Boss 资源总表。
 func get_bosses_from_zone(zone_id: int) -> Array:
 	var possible_bosses = []
 
@@ -888,6 +984,7 @@ func get_bosses_from_zone(zone_id: int) -> Array:
 	return possible_bosses
 
 
+# 检查道具 ID 是否存在；缓存为空或查找未命中时，遍历总表补充缓存。
 func is_item_id(item_id: int) -> bool:
 	if not _item_id_lookup or not _item_id_lookup.has(item_id):
 		for item in items:
@@ -895,6 +992,7 @@ func is_item_id(item_id: int) -> bool:
 
 	return _item_id_lookup.has(item_id)
 
+# 检查武器系列 ID 是否存在；同系列不同品质的资源按数组缓存。
 func is_weapon_id(weapon_id: int) -> bool:
 	if not _weapon_id_lookup or not _weapon_id_lookup.has(weapon_id):
 		for weapon in weapons:
@@ -905,6 +1003,7 @@ func is_weapon_id(weapon_id: int) -> bool:
 
 	return _weapon_id_lookup.has(weapon_id)
 
+# 按具体道具 ID 取得缓存资源；必要时补充缓存，未找到则触发断言。
 func get_item_from_id(item_id: int) -> ItemData:
 	if not _item_id_lookup or not _item_id_lookup.has(item_id):
 		for item in items:
@@ -913,6 +1012,8 @@ func get_item_from_id(item_id: int) -> ItemData:
 	assert (_item_id_lookup.has(item_id), "item_id not found in items")
 	return _item_id_lookup[item_id]
 
+# 按武器系列 ID 取得缓存数组的首个资源，顺序沿用 weapons 总表。
+# 这里没有按品质排序或挑选最高品质，未找到系列时触发断言。
 func get_weapon_from_weapon_id(weapon_id: int) -> WeaponData:
 	if not _weapon_id_lookup or not _weapon_id_lookup.has(weapon_id):
 		for weapon in weapons:
@@ -924,10 +1025,13 @@ func get_weapon_from_weapon_id(weapon_id: int) -> WeaponData:
 	assert (_weapon_id_lookup.has(weapon_id), "weapon_id not found in weapons")
 	return _weapon_id_lookup[weapon_id][0]
 
+# 按图标 ID 查找资源并返回 icon 字段；调用方需保证 ID 存在。
 func get_icon(icon_id: int) -> Resource:
 	return get_element(icons, icon_id).icon
 
 
+# 根据已有副本、武器自动合成条件及角色/仙女效果，选择商品提示图标。
+# 有多个条件命中时按下方分支优先级返回；不需要提示则返回 null。
 func get_icon_for_duplicate_shop_item(character: CharacterData, player_items: Array, player_weapons: Array, shop_item: ItemParentData, player_index: int) -> Texture:
 
 	if character == null or shop_item == null:
@@ -956,6 +1060,7 @@ func get_icon_for_duplicate_shop_item(character: CharacterData, player_items: Ar
 
 	var already_has_it = copies > 0
 	var weapon_is_max_tier = shop_item.tier == Tier.LEGENDARY
+	# 武器槽已满且持有同品质可升级副本时，提示逻辑视为购买后会自动合成。
 	var would_combine_on_buy = not weapon_is_max_tier and not has_free_weapon_slot and same_tier_copies >= 1
 
 	var renegade_cond = character.my_id_hash == Keys.character_renegade_hash and shop_item is ItemData and shop_item.tier == Tier.COMMON and not already_has_it
@@ -985,6 +1090,7 @@ func get_icon_for_duplicate_shop_item(character: CharacterData, player_items: Ar
 	return null
 
 
+# 计算偷窃被发现概率：基础概率 + 波次因子 × 商品价格因子 × 品质因子，上限 95%。
 func get_chance_getting_caught(shop_item: ShopItem, wave: int, base_chance: float = 0.0) -> float:
 	var wave_factor: float = wave * 10.0 / 100.0
 	var value_factor: float = shop_item.value / 300.0
@@ -993,6 +1099,8 @@ func get_chance_getting_caught(shop_item: ShopItem, wave: int, base_chance: floa
 	return caught_chance
 
 
+# 比较具体 ID、伤害、诅咒状态，以及按顺序对应的缩放属性和效果 key/value。
+# 这不是所有字段的深度比较，也不是只比较武器系列 ID。
 func is_same_weapon(a: WeaponData, b: WeaponData) -> bool:
 	var scaling_stats_are_the_same = false
 
@@ -1021,25 +1129,30 @@ func is_same_weapon(a: WeaponData, b: WeaponData) -> bool:
 	)
 
 
+# 把道具序列化为字符串后比较；判断依据是序列化内容。
 func is_same_item(a: ItemData, b: ItemData) -> bool:
 	return str(a.serialize()) == str(b.serialize())
 
 
+# 追加可用背景资源，并发信号通知界面刷新。
 func add_backgrounds(p_backgrounds: Array) -> void :
 	backgrounds.append_array(p_backgrounds)
 	emit_signal("backgrounds_updated")
 
 
+# 逐个移除背景资源，再通知界面刷新。
 func remove_backgrounds(p_backgrounds: Array) -> void :
 	for p_background in p_backgrounds:
 		backgrounds.erase(p_background)
 	emit_signal("backgrounds_updated")
 
 
+# 从 background_colors 配置中随机取一个背景颜色。
 func get_background_gradient_color() -> Resource:
 	return Utils.get_rand_element(background_colors)
 
 
+# 起始武器按近战在前、远程在后分组，保留各组内部原有顺序。
 func get_ordered_starting_weapons(starting_weapons: Array) -> Array:
 	var new_starting_weapons = []
 
@@ -1053,6 +1166,7 @@ func get_ordered_starting_weapons(starting_weapons: Array) -> Array:
 
 	return new_starting_weapons
 
+# 复制起始道具数组后按品质排序，不改变传入数组顺序。
 func get_ordered_starting_items(starting_items: Array) -> Array:
 	var new_starting_items = starting_items.duplicate()
 	new_starting_items.sort_custom(Sorter, "sort_item_by_tier")
