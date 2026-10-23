@@ -1,23 +1,32 @@
+# 输入服务：管理手柄 UI 连发、设备专用动作、焦点变化及鼠标显示。
+# 映射主线：_ready → _copy_device_actions；连发主线：_process → _process_input_timers → _emulate_action。
 extends Node
 
 signal game_lost_focus
 signal game_regained_focus
 
+# 连发扫描的物理设备编号范围为 0～7。
 const MAX_DEVICE_COUNT: = 8
 
 
 var using_gamepad = false
+# 轴输入转为 UI 动作的阈值，独立于 InputMap 中每个动作的死区。
 var joystick_deadzone: = 0.5
 
+# 首次连发延迟与后续间隔，单位为秒。
 var _echo_delay: = 0.3
 var _echo_interval: = 0.09
+# 物理设备 ID → FixedTimer；方向键和摇杆分别计时，不按单个方向分开。
 var _dpad_timers: = {}
 var _joystick_timers: = {}
 
+# 防止控制器数量持续不匹配时重复请求暂停。
 var _switch_asked_pause: = false
+# 仅阻止本服务 _process 中的模拟输入，不是全局禁用 Input。
 var _disable_input: = false
 
 
+# 暂停时仍处理输入服务，并根据设置重建输入映射、启动手柄方向连发。
 func _ready() -> void :
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	var _input_connect = Input.connect("joy_connection_changed", self, "on_joy_connection_changed")
@@ -30,6 +39,7 @@ func _ready() -> void :
 	set_gamepad_echo_processing(true)
 
 
+# 根据本次输入切换鼠标显示及 using_gamepad；报告窗口和多人合作模式有优先处理分支。
 func _input(event: InputEvent) -> void :
 	
 	if BugReporter.visible:
@@ -56,6 +66,8 @@ func _input(event: InputEvent) -> void :
 		using_gamepad = false
 
 
+# 重载项目输入配置后，移除指定基础移动/右摇杆动作的手柄事件。
+# 带设备后缀的动作已提前复制，不在此处移除；部分主机平台强制启用手柄移动。
 func disable_gamepad_movement() -> void :
 	if Utils.on_console and not Utils.on_gdk_desktop:
 		enable_gamepad_movement()
@@ -75,11 +87,13 @@ func disable_gamepad_movement() -> void :
 					InputMap.action_erase_event(action, input_event)
 
 
+# 恢复项目默认输入配置，再生成各设备专用动作。
 func enable_gamepad_movement() -> void :
 	InputMap.load_from_globals()
 	_copy_device_actions()
 
 
+# 手柄插拔后重新判断是否需要逐帧处理；断开或指定 Nintendo 平台的插拔会发出失焦信号。
 func on_joy_connection_changed(_device: int, connected: bool) -> void :
 	set_gamepad_echo_processing(true)
 	
@@ -87,6 +101,7 @@ func on_joy_connection_changed(_device: int, connected: bool) -> void :
 		emit_signal("game_lost_focus")
 
 
+# 响应窗口焦点变化，按设置静音、恢复音量及暂停模拟输入，并通知其他节点。
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
 		if ProgressData.settings.mute_on_focus_lost:
@@ -101,6 +116,7 @@ func _notification(what):
 		emit_signal("game_regained_focus")
 
 
+# 仅在允许处理且存在已连接手柄时启用 _process。
 func set_gamepad_echo_processing(enable: bool) -> void :
 	if enable and Input.get_connected_joypads().size() > 0:
 		set_process(true)
@@ -108,6 +124,7 @@ func set_gamepad_echo_processing(enable: bool) -> void :
 		set_process(false)
 
 
+# 清理已松开的方向输入计时，推进按住连发，并检查 Nintendo 合作模式的控制器人数。
 func _process(delta: float) -> void :
 	if _disable_input:
 		return
@@ -143,6 +160,7 @@ func _process(delta: float) -> void :
 			_switch_asked_pause = false
 
 
+# 每个设备、每类输入共用一个计时器：首次等待 _echo_delay，之后按 _echo_interval 连发。
 func _process_input_timers(delta: float, input_range: Array, timeout_callback: FuncRef, input_type: String) -> void :
 	var timers = _dpad_timers if input_type == "button" else _joystick_timers
 
@@ -173,12 +191,14 @@ func _process_input_timers(delta: float, input_range: Array, timeout_callback: F
 				timer.wait_time = _echo_delay
 				timer.start()
 				timers[device] = timer
+				# 摇杆首次超过死区时立即导航，之后才等待连发计时。
 				if input_type == "axis":
 					
 					timeout_callback.call_func(device)
 				break
 
 
+# 判断物理手柄按钮是否按下，或轴偏移是否超过本服务的摇杆死区。
 func _is_input_pressed(device: int, input, input_type: String) -> bool:
 	if input_type == "axis":
 		return abs(Input.get_joy_axis(device, input)) > joystick_deadzone
@@ -186,10 +206,12 @@ func _is_input_pressed(device: int, input, input_type: String) -> bool:
 		return Input.is_joy_button_pressed(device, input)
 
 
+# 返回方向键按钮编号 12～15，对应上、下、左、右。
 func _d_pad_button_range() -> Array:
 	return range(12, 16)
 
 
+# 为仍按住的方向键生成 UI 导航动作；多个方向可以在同次回调中触发。
 func _on_dpad_timer_timeout(device: int) -> void :
 	_emulate_action(device, 12, "ui_up")
 	_emulate_action(device, 13, "ui_down")
@@ -197,6 +219,7 @@ func _on_dpad_timer_timeout(device: int) -> void :
 	_emulate_action(device, 15, "ui_right")
 
 
+# 将左摇杆映射为 UI 导航；横轴优先，横轴未超过死区才处理纵轴。
 func _on_joystick_timer_timeout(device: int) -> void :
 	if abs(Input.get_joy_axis(device, JOY_AXIS_0)) > joystick_deadzone:
 		_emulate_action(device, JOY_AXIS_0, "ui_right" if Input.get_joy_axis(device, JOY_AXIS_0) > 0 else "ui_left")
@@ -204,11 +227,13 @@ func _on_joystick_timer_timeout(device: int) -> void :
 		_emulate_action(device, JOY_AXIS_1, "ui_down" if Input.get_joy_axis(device, JOY_AXIS_1) > 0 else "ui_up")
 
 
+# 注入一个按下状态的 UI 动作事件；已绑定合作玩家的设备使用带设备后缀的动作。
 func _emulate_action(device: int, input, action: String) -> void :
 	var input_type = "axis" if input in [JOY_AXIS_0, JOY_AXIS_1] else "button"
 	if not _is_input_pressed(device, input, input_type):
 		return
 
+	# 物理手柄 0 映射为逻辑设备 6；未绑定玩家时发送不带后缀的通用动作。
 	var remapped_device = device if device > 0 else CoopService.GAMEPAD_REMAPPED_DEVICE_ID
 	var suffix = ("_%s" % remapped_device) if CoopService.is_device_assigned(remapped_device) else ""
 
@@ -219,6 +244,8 @@ func _emulate_action(device: int, input, action: String) -> void :
 	Input.parse_input_event(a)
 
 
+# 复制项目中的手柄按钮、轴和键盘动作，生成 action_设备ID 形式的多人输入映射。
+# 同时配置编辑器报告快捷键，以及调试模式下的四套键盘操作。
 func _copy_device_actions():
 	_set_bug_report_key()
 
@@ -252,6 +279,7 @@ func _copy_device_actions():
 					var device = 0 if remapped_device == CoopService.KEYBOARD_REMAPPED_DEVICE_ID else remapped_device
 					add_key_action(action_name, remapped_device, device, event)
 
+	# 用 WASD、TFGH、IJKL 和方向键模拟四个设备，同时补充已有的 ui/move 动作。
 	if DebugService.coop_multiple_keyboard_inputs:
 		var debug_device_id = CoopService.FIRST_DEBUG_DEVICE_ID
 		var debug_key_mappings = {
@@ -309,6 +337,7 @@ func _copy_device_actions():
 				add_key_action(action_name, remapped_device, device, new_event)
 
 
+# 复制键盘事件的逻辑键码和物理键码，并添加到指定逻辑设备的动作。
 func add_key_action(action_name: String, remapped_device: int, device: int, event: InputEventKey) -> void :
 	var new_event = InputEventKey.new()
 	new_event.device = device
@@ -317,6 +346,7 @@ func add_key_action(action_name: String, remapped_device: int, device: int, even
 	add_action(action_name, remapped_device, 0.5, new_event)
 
 
+# 按逻辑设备 ID 创建动作（如 ui_up_6），再把输入事件追加进去。
 func add_action(action_name: String, remapped_device: int, deadzone: float, new_event: InputEvent) -> void :
 	var new_action_name = action_name + "_" + str(remapped_device)
 	if not InputMap.has_action(new_action_name):
@@ -324,6 +354,7 @@ func add_action(action_name: String, remapped_device: int, deadzone: float, new_
 	InputMap.action_add_event(new_action_name, new_event)
 
 
+# 编辑器环境下将错误报告快捷键改为物理 F7，替换该动作原有事件。
 func _set_bug_report_key() -> void :
 	
 	
